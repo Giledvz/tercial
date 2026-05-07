@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ejercicios — Física: Electricidad</title>
+<style>
+  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
+  .portada { margin-bottom:2rem; border-bottom:2px solid #1a4f8a; padding-bottom:1rem; }
+  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1a4f8a; font-weight:700; }
+  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1a4f8a; margin:.2rem 0 .5rem; }
+  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
+  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
+  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
+  .card-header { display:flex; align-items:flex-start; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
+  .card-header:active { background:var(--gris); }
+  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; padding-top:2px; }
+  .enun { flex:1; }
+  .enun p { font-size:15px; }
+  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
+  .enun svg { display:block; margin:8px auto 4px; max-width:280px; width:100%; }
+  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; align-self:flex-start; }
+  .chip:active { opacity:.6; }
+  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .panel.open { max-height:200px; }
+  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
+  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
+  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
+  .resp-pill .val { font-size:15px; font-weight:bold; }
+  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
+  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <small>Ejercicios</small>
+  <h1>Física: Electricidad</h1>
+  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Usa <b>k = 9×10⁹ N·m²/C²</b>.</p>
+</div>
+
+<div id="contenido"></div>
+<div class="footer">Física: Electricidad · Bachillerato</div>
+
+<script>
+// Componentes SVG reutilizables
+const C = {
+  // Batería vertical (terminales arriba/abajo) en x dado, con etiqueta
+  bateria: (x, label) => `
+    <line x1="${x}" y1="40" x2="${x}" y2="58" stroke="#000" stroke-width="1.5"/>
+    <line x1="${x-10}" y1="58" x2="${x+10}" y2="58" stroke="#000" stroke-width="3"/>
+    <line x1="${x-5}" y1="65" x2="${x+5}" y2="65" stroke="#000" stroke-width="3"/>
+    <line x1="${x}" y1="65" x2="${x}" y2="100" stroke="#000" stroke-width="1.5"/>
+    <text x="${x+15}" y="64" font-size="12" font-family="Arial">${label}</text>`,
+  // Resistor horizontal (rectángulo) en (x,y) con etiqueta
+  resistor: (x, y, label) => `
+    <rect x="${x}" y="${y-8}" width="60" height="16" fill="#fff" stroke="#000" stroke-width="1.5"/>
+    <text x="${x+30}" y="${y+4}" font-size="11" font-family="Arial" text-anchor="middle">${label}</text>`,
+  // Línea (cable)
+  wire: (x1, y1, x2, y2) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#000" stroke-width="1.5"/>`,
+};
+
+// Circuitos diseñados (devuelven SVG completo)
+const CIRCUITOS = {
+  serieSimple: (V, R) => `<svg viewBox="0 0 280 120">
+    ${C.wire(40,40, 100,40)}${C.resistor(100,40, 'R = '+R+' Ω')}${C.wire(160,40, 240,40)}
+    ${C.wire(240,40, 240,100)}${C.wire(40,100, 240,100)}
+    ${C.bateria(40, V+' V')}
+  </svg>`,
+  serieDos: (V, R1, R2) => `<svg viewBox="0 0 280 120">
+    ${C.wire(40,40, 60,40)}${C.resistor(60,40, 'R₁='+R1+'Ω')}${C.wire(120,40, 145,40)}${C.resistor(145,40, 'R₂='+R2+'Ω')}${C.wire(205,40, 240,40)}
+    ${C.wire(240,40, 240,100)}${C.wire(40,100, 240,100)}
+    ${C.bateria(40, V+' V')}
+  </svg>`,
+  paralelo: (V, R1, R2) => `<svg viewBox="0 0 280 140">
+    ${C.wire(40,40, 100,40)}
+    ${C.wire(100,40, 100,110)}
+    ${C.wire(100,40, 130,40)}${C.resistor(130,40, 'R₁='+R1+'Ω')}${C.wire(190,40, 220,40)}
+    ${C.wire(100,110, 130,110)}${C.resistor(130,110, 'R₂='+R2+'Ω')}${C.wire(190,110, 220,110)}
+    ${C.wire(220,40, 220,110)}
+    ${C.wire(220,110, 220,128)}${C.wire(40,128, 220,128)}
+    ${C.wire(40,100, 40,128)}
+    ${C.bateria(40, V+' V')}
+  </svg>`,
+  serieParalelo: (V, R1, R2, R3) => `<svg viewBox="0 0 320 140">
+    ${C.wire(40,40, 60,40)}${C.resistor(60,40, 'R₁='+R1+'Ω')}${C.wire(120,40, 160,40)}
+    ${C.wire(160,40, 160,110)}
+    ${C.wire(160,40, 190,40)}${C.resistor(190,40, 'R₂='+R2+'Ω')}${C.wire(250,40, 280,40)}
+    ${C.wire(160,110, 190,110)}${C.resistor(190,110, 'R₃='+R3+'Ω')}${C.wire(250,110, 280,110)}
+    ${C.wire(280,40, 280,110)}
+    ${C.wire(280,110, 280,128)}${C.wire(40,128, 280,128)}
+    ${C.wire(40,100, 40,128)}
+    ${C.bateria(40, V+' V')}
+  </svg>`,
+};
+
+const SECCIONES = [
+
+  // ── 1. Carga eléctrica y Ley de Coulomb ───────────────────────────────────
+  { titulo:"1 · Carga eléctrica y Coulomb", color:"#1a4f8a", ejercicios:[
+    { n:"01", t:"Convierte 5 µC a coulombs.",
+      d:"1 µC = 10⁻⁶ C",
+      r:"5 × 10⁻⁶ C" },
+    { n:"02", t:"Calcula la fuerza eléctrica entre dos cargas de 3 µC y 5 µC separadas 0.1 m.",
+      d:"F = kq₁q₂/r²",
+      r:"F = 13.5 N" },
+    { n:"03", t:"Dos cargas de 1 µC se repelen con una fuerza de 0.9 N. ¿Cuál es la distancia entre ellas?",
+      d:"r² = kq²/F",
+      r:"r = 0.1 m = 10 cm" },
+    { n:"04", t:"¿Qué le pasa a la fuerza entre dos cargas si la distancia se duplica?",
+      d:"F ∝ 1/r²",
+      r:"La fuerza se reduce a F/4" },
+    { n:"05", t:"Dos cargas de +4 µC y −4 µC están separadas 20 cm. Calcula la magnitud de la fuerza entre ellas.",
+      d:"F = kq₁q₂/r² (las cargas opuestas se atraen)",
+      r:"F = 3.6 N (atractiva)" },
+    { n:"06", t:"Si la distancia entre dos cargas se reduce a la mitad, ¿qué pasa con la fuerza entre ellas?",
+      d:"F ∝ 1/r²",
+      r:"La fuerza se cuadruplica (F → 4F)" },
+    { n:"07", t:"¿La fuerza entre una carga de +5 µC y una de −3 µC es atractiva o repulsiva?",
+      d:"Cargas de signo opuesto…",
+      r:"Atractiva" },
+  ]},
+
+  // ── 2. Campo eléctrico ────────────────────────────────────────────────────
+  { titulo:"2 · Campo eléctrico", color:"#5b2d8e", ejercicios:[
+    { n:"01", t:"Calcula la magnitud del campo eléctrico generado por una carga puntual de 4 µC a 0.5 m de distancia.",
+      d:"E = kq/r²",
+      r:"E = 144 000 N/C" },
+    { n:"02", t:"Una carga de 2 µC experimenta una fuerza de 0.5 N en un campo eléctrico. ¿Cuál es la magnitud del campo?",
+      d:"E = F/q",
+      r:"E = 2.5 × 10⁵ N/C" },
+    { n:"03", t:"Calcula la fuerza sobre una carga de 3 µC colocada en un punto donde el campo eléctrico es de 200 000 N/C.",
+      d:"F = qE",
+      r:"F = 0.6 N" },
+    { n:"04", t:"¿En qué unidades se mide el campo eléctrico?",
+      d:"También se puede expresar como V/m",
+      r:"N/C (newtons por coulomb)" },
+    { n:"05", t:"¿Hacia dónde apunta el campo eléctrico generado por una carga puntual positiva?",
+      d:"Por convención, el campo va de + a −",
+      r:"Radialmente hacia afuera (alejándose de la carga)" },
+  ]},
+
+  // ── 3. Potencial y energía eléctrica ──────────────────────────────────────
+  { titulo:"3 · Potencial y energía eléctrica", color:"#047857", ejercicios:[
+    { n:"01", t:"Calcula el potencial eléctrico a 0.3 m de una carga puntual de 2 µC.",
+      d:"V = kq/r",
+      r:"V = 60 000 V" },
+    { n:"02", t:"¿Cuánto trabajo se realiza para mover una carga de 2 µC entre dos puntos con diferencia de potencial de 100 V?",
+      d:"W = qΔV",
+      r:"W = 2 × 10⁻⁴ J = 0.2 mJ" },
+    { n:"03", t:"Una carga de 5 µC tiene una energía potencial eléctrica de 0.01 J en un punto. ¿Cuál es el potencial en ese punto?",
+      d:"V = U/q",
+      r:"V = 2 000 V" },
+    { n:"04", t:"¿Cuál es la unidad del potencial eléctrico?",
+      d:"También: 1 J/C",
+      r:"Volt (V)" },
+    { n:"05", t:"Una carga de +3 µC se mueve de un punto A (V = 50 V) a un punto B (V = 20 V). ¿Cuánto trabajo realiza el campo?",
+      d:"W = q(V<sub>A</sub> − V<sub>B</sub>)",
+      r:"W = 9 × 10⁻⁵ J (positivo: el campo hace trabajo a favor)" },
+  ]},
+
+  // ── 4. Ley de Ohm y potencia ──────────────────────────────────────────────
+  { titulo:"4 · Ley de Ohm y potencia", color:"#b45309", ejercicios:[
+    { n:"01", t:"Por una resistencia de 4 Ω pasa una corriente de 3 A. ¿Cuál es el voltaje aplicado?",
+      d:"V = IR",
+      r:"V = 12 V" },
+    { n:"02", t:"Una resistencia de 5 Ω se conecta a 20 V. ¿Cuál es la corriente?",
+      d:"I = V/R",
+      r:"I = 4 A" },
+    { n:"03", t:"Una corriente de 2 A pasa por un conductor donde la diferencia de potencial es de 30 V. ¿Cuál es la resistencia?",
+      d:"R = V/I",
+      r:"R = 15 Ω" },
+    { n:"04", t:"Calcula la potencia disipada por una resistencia de 10 Ω por la que pasan 2 A.",
+      d:"P = I²R",
+      r:"P = 40 W" },
+    { n:"05", t:"Una bombilla consume 60 W al conectarse a 120 V. ¿Cuál es la corriente que la atraviesa?",
+      d:"I = P/V",
+      r:"I = 0.5 A" },
+    { n:"06", t:"¿Cuál es la resistencia de la bombilla del problema anterior?",
+      d:"R = V²/P",
+      r:"R = 240 Ω" },
+    { n:"07", t:"Un calentador eléctrico consume 1 500 W a 120 V. ¿Cuál es su resistencia?",
+      d:"R = V²/P",
+      r:"R = 9.6 Ω" },
+    { n:"08", t:"¿Cuánta energía disipa una resistencia de 8 Ω en 10 minutos si por ella pasan 3 A?",
+      d:"E = Pt; convierte a segundos",
+      r:"P = 72 W &nbsp;·&nbsp; E = 43 200 J = 43.2 kJ" },
+  ]},
+
+  // ── 5. Resistencias en serie y paralelo ───────────────────────────────────
+  { titulo:"5 · Resistencias: serie y paralelo", color:"#a44a3f", ejercicios:[
+    { n:"01", t:"Dos resistencias de 6 Ω y 4 Ω se conectan en serie. ¿Cuál es la resistencia equivalente?",
+      d:"R<sub>eq</sub> = R₁ + R₂",
+      r:"R<sub>eq</sub> = 10 Ω" },
+    { n:"02", t:"Tres resistencias de 5 Ω cada una en serie. ¿Cuál es la resistencia equivalente?",
+      d:"Suma las tres",
+      r:"R<sub>eq</sub> = 15 Ω" },
+    { n:"03", t:"Dos resistencias de 6 Ω y 3 Ω en paralelo. ¿Cuál es la resistencia equivalente?",
+      d:"1/R<sub>eq</sub> = 1/R₁ + 1/R₂",
+      r:"R<sub>eq</sub> = 2 Ω" },
+    { n:"04", t:"Dos resistencias iguales de 12 Ω en paralelo. ¿Cuál es la resistencia equivalente?",
+      d:"Para iguales en paralelo: R/N",
+      r:"R<sub>eq</sub> = 6 Ω" },
+    { n:"05", t:"Tres resistencias de 4 Ω en paralelo. ¿Cuál es la resistencia equivalente?",
+      d:"R/N para iguales",
+      r:"R<sub>eq</sub> = 4/3 ≈ 1.33 Ω" },
+    { n:"06", t:"Una resistencia de 3 Ω en serie con la combinación en paralelo de 4 Ω y 12 Ω. ¿Cuál es la resistencia equivalente del conjunto?",
+      d:"Calcula primero el paralelo, luego suma",
+      r:"R<sub>par</sub> = 3 Ω &nbsp;·&nbsp; R<sub>eq</sub> = 6 Ω" },
+    { n:"07", t:"Si se aplican 24 V al circuito del problema 06, ¿cuál es la corriente total?",
+      d:"I = V/R<sub>eq</sub>",
+      r:"I = 4 A" },
+    { n:"08", t:"Dos resistencias en paralelo dan R<sub>eq</sub> = 4 Ω. Si una vale 12 Ω, ¿cuánto vale la otra?",
+      d:"1/R<sub>eq</sub> = 1/R₁ + 1/R₂; despeja R₂",
+      r:"R₂ = 6 Ω" },
+  ]},
+
+  // ── 6. Circuitos (con diagramas) ──────────────────────────────────────────
+  { titulo:"6 · Circuitos con diagramas", color:"#6d28d9", ejercicios:[
+    { n:"01", t:"En el circuito mostrado, calcula la corriente que circula." + CIRCUITOS.serieSimple(9, 3),
+      d:"I = V/R",
+      r:"I = 3 A" },
+    { n:"02", t:"En el siguiente circuito en serie, calcula la corriente total." + CIRCUITOS.serieDos(12, 4, 8),
+      d:"R<sub>eq</sub> = R₁ + R₂; I = V/R<sub>eq</sub>",
+      r:"R<sub>eq</sub> = 12 Ω &nbsp;·&nbsp; I = 1 A" },
+    { n:"03", t:"En el siguiente circuito en paralelo, calcula la corriente total que entrega la batería." + CIRCUITOS.paralelo(6, 6, 3),
+      d:"1/R<sub>eq</sub> = 1/R₁ + 1/R₂; I = V/R<sub>eq</sub>",
+      r:"R<sub>eq</sub> = 2 Ω &nbsp;·&nbsp; I = 3 A" },
+    { n:"04", t:"En el circuito mostrado (R₁ en serie con R₂ ∥ R₃), calcula la resistencia equivalente." + CIRCUITOS.serieParalelo(12, 2, 4, 4),
+      d:"Calcula primero el paralelo, luego suma R₁",
+      r:"R<sub>par</sub> = 2 Ω &nbsp;·&nbsp; R<sub>eq</sub> = 4 Ω" },
+    { n:"05", t:"En el siguiente circuito en serie, calcula el voltaje en R₂." + CIRCUITOS.serieDos(18, 6, 3),
+      d:"Encuentra I primero, luego V<sub>R₂</sub> = I·R₂",
+      r:"I = 2 A &nbsp;·&nbsp; V<sub>R₂</sub> = 6 V" },
+  ]},
+
+];
+
+// ── Render ────────────────────────────────────────────────────────────────────
+const root = document.getElementById('contenido');
+
+SECCIONES.forEach(sec => {
+  const banner = document.createElement('div');
+  banner.className = 'banner';
+  banner.style.background = sec.color;
+  banner.textContent = sec.titulo;
+  root.appendChild(banner);
+
+  sec.ejercicios.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="num">${p.n}</span>
+        <div class="enun">
+          <p>${p.t}</p>
+          <p class="datos">${p.d}</p>
+        </div>
+        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
+      </div>
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="resp-pill" style="background:${sec.color}">
+            <span class="tag">Respuesta</span>
+            <span class="val">${p.r}</span>
+          </div>
+          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
+        </div>
+      </div>
+    `;
+    root.appendChild(card);
+
+    const hdr     = card.querySelector('.card-header');
+    const panel   = card.querySelector('.panel');
+    const btn     = card.querySelector('.chip');
+    const ocultar = card.querySelector('.ocultar');
+
+    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
+    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+
+    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
+    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
+    ocultar.addEventListener('click', cerrar);
+  });
+});
+</script>
+</body>
+</html>
