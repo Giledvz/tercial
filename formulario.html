@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Formulario — Física</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<style>
+  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:760px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.55; }
+
+  .portada { margin-bottom:1.5rem; border-bottom:2px solid #1a1a1a; padding-bottom:.9rem; }
+  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:700; }
+  .portada h1 { font-size:1.7rem; font-weight:normal; margin:.2rem 0 .3rem; }
+  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
+
+  .constantes { background:var(--gris); padding:.85rem 1rem; border-radius:6px; margin-bottom:1.8rem; border:1px solid var(--borde); }
+  .constantes h3 { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:.55rem; }
+  .const-grid { display:grid; grid-template-columns:1fr 1fr; gap:.35rem .9rem; font-size:13px; }
+  .const-grid .item { display:flex; gap:.5rem; align-items:baseline; }
+  .const-grid .v { min-width:120px; }
+  .const-grid .lbl { color:var(--muted); font-size:11px; font-family:Arial,sans-serif; }
+
+  .unidad { margin-bottom:1.6rem; }
+  .titulo-bar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#fff; padding:6px 12px; border-radius:3px; display:inline-block; margin-bottom:.55rem; }
+  .subtitulo { font-family:Arial,sans-serif; font-size:11px; color:var(--muted); margin-bottom:.6rem; padding-left:2px; letter-spacing:.02em; }
+
+  .formula { display:grid; grid-template-columns:minmax(120px, 30%) 1fr minmax(110px, 28%); gap:.5rem 1.1rem; padding:.5rem .25rem; font-size:14px; align-items:baseline; border-bottom:1px dotted #e8e6df; }
+  .formula:last-child { border-bottom:none; }
+  .formula .eq { font-size:15px; padding-top:1px; }
+  .formula .desc { color:var(--texto); }
+  .formula .unit { color:var(--muted); font-size:11px; font-family:Arial,sans-serif; text-align:right; }
+
+  .nota { font-style:italic; font-size:12px; color:var(--muted); padding-top:.7rem; margin-top:.4rem; border-top:1px solid var(--borde); }
+
+  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
+
+  @media (max-width:600px) {
+    .formula { grid-template-columns:1fr; gap:.15rem; padding:.55rem .15rem; }
+    .formula .unit { text-align:left; padding-bottom:.1rem; }
+    .const-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <small>Formulario · Bachillerato</small>
+  <h1>Formulario de Física</h1>
+  <p>10 unidades · g = 10 m/s² · todas las fórmulas usadas en los ejercicios</p>
+</div>
+
+<!-- ── Constantes ─────────────────────────────────────────────────────── -->
+<div class="constantes">
+  <h3>Constantes</h3>
+  <div class="const-grid">
+    <div class="item"><span class="v">$g = 10\,\mathrm{m/s^2}$</span><span class="lbl">gravedad (examen)</span></div>
+    <div class="item"><span class="v">$c = 3 \times 10^{8}\,\mathrm{m/s}$</span><span class="lbl">velocidad de la luz</span></div>
+    <div class="item"><span class="v">$k = 9 \times 10^{9}\,\mathrm{N \cdot m^2 / C^2}$</span><span class="lbl">cte. de Coulomb</span></div>
+    <div class="item"><span class="v">$h = 6.63 \times 10^{-34}\,\mathrm{J \cdot s}$</span><span class="lbl">cte. de Planck</span></div>
+    <div class="item"><span class="v">$\mu_0 = 4\pi \times 10^{-7}\,\mathrm{T \cdot m/A}$</span><span class="lbl">cte. magnética</span></div>
+    <div class="item"><span class="v">$R = 0.082\,\mathrm{atm \cdot L / mol \cdot K}$</span><span class="lbl">cte. universal de los gases</span></div>
+    <div class="item"><span class="v">$\rho_{\mathrm{agua}} = 1000\,\mathrm{kg/m^3}$</span><span class="lbl">densidad del agua</span></div>
+    <div class="item"><span class="v">$c_{\mathrm{agua}} = 1\,\mathrm{cal/g\,°C}$</span><span class="lbl">calor específico del agua</span></div>
+    <div class="item"><span class="v">$L_f = 80\,\mathrm{cal/g}$</span><span class="lbl">calor latente de fusión (agua)</span></div>
+    <div class="item"><span class="v">$L_v = 540\,\mathrm{cal/g}$</span><span class="lbl">calor latente de vaporización (agua)</span></div>
+    <div class="item"><span class="v">$v_{\mathrm{sonido}} \approx 340\,\mathrm{m/s}$</span><span class="lbl">en aire a 20 °C</span></div>
+  </div>
+</div>
+
+<!-- ── 1. Cinemática ──────────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#1a4f8a">1 · Cinemática</div>
+  <div class="subtitulo">MRU · MRUA · Caída libre · Tiro vertical · MCU</div>
+  <div class="formula"><span class="eq">$d = v \cdot t$</span><span class="desc">MRU — distancia a velocidad constante</span><span class="unit">[m] = [m/s]·[s]</span></div>
+  <div class="formula"><span class="eq">$v = v_0 + a\,t$</span><span class="desc">MRUA — velocidad en función del tiempo</span><span class="unit">[m/s]</span></div>
+  <div class="formula"><span class="eq">$d = v_0 t + \tfrac{1}{2} a\,t^2$</span><span class="desc">MRUA — distancia en función del tiempo</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$v^2 = v_0^2 + 2 a\,d$</span><span class="desc">MRUA — velocidad sin tiempo (Torricelli)</span><span class="unit">[m²/s²]</span></div>
+  <div class="formula"><span class="eq">$d = \tfrac{1}{2} g\,t^2$</span><span class="desc">Caída libre — desde el reposo ($v_0 = 0$)</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$v = g\,t$</span><span class="desc">Caída libre — velocidad al tiempo $t$</span><span class="unit">[m/s]</span></div>
+  <div class="formula"><span class="eq">$h_{\max} = \dfrac{v_0^2}{2g}$</span><span class="desc">Tiro vertical — altura máxima</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$t_{\mathrm{sub}} = \dfrac{v_0}{g}$</span><span class="desc">Tiro vertical — tiempo hasta $h_{\max}$</span><span class="unit">[s]</span></div>
+  <div class="formula"><span class="eq">$a_c = \dfrac{v^2}{r}$</span><span class="desc">MCU — aceleración centrípeta</span><span class="unit">[m/s²]</span></div>
+  <div class="formula"><span class="eq">$\omega = 2\pi f$, $\;v = \omega r$</span><span class="desc">MCU — velocidad angular y tangencial</span><span class="unit">[rad/s]</span></div>
+  <p class="nota">Caída libre: $v_0 = 0$, $a = +g$. Tiro vertical hacia arriba: $a = -g$; en $h_{\max}$ la velocidad es cero.</p>
+</div>
+
+<!-- ── 2. Fuerzas y leyes de Newton ───────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#5b2d8e">2 · Fuerzas y leyes de Newton</div>
+  <div class="subtitulo">Newton · Hooke · Fricción · Gravitación</div>
+  <div class="formula"><span class="eq">$F = m\,a$</span><span class="desc">2ª ley — fuerza neta sobre un objeto</span><span class="unit">[N] = [kg]·[m/s²]</span></div>
+  <div class="formula"><span class="eq">$W = m\,g$</span><span class="desc">Peso — fuerza gravitacional sobre el objeto</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$F_f = \mu\,N$</span><span class="desc">Fricción — $\mu$ adimensional, $N$ = normal</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$F = k\,x$</span><span class="desc">Hooke — $k$: cte. del resorte; $x$: elongación</span><span class="unit">[N] = [N/m]·[m]</span></div>
+  <div class="formula"><span class="eq">$R = \sqrt{F_1^2 + F_2^2}$</span><span class="desc">Magnitud de fuerzas perpendiculares</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$F = G\,\dfrac{m_1 m_2}{r^2}$</span><span class="desc">Gravitación universal — $G = 6.67\times10^{-11}$</span><span class="unit">[N]</span></div>
+  <p class="nota">1ª ley: si $F_{\mathrm{neta}} = 0$ el objeto permanece en reposo o MRU. 3ª ley: acción = reacción. En plano horizontal $N = W$.</p>
+</div>
+
+<!-- ── 3. Trabajo y leyes de conservación ─────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#047857">3 · Trabajo y leyes de conservación</div>
+  <div class="subtitulo">Energía · Potencia · Colisiones</div>
+  <div class="formula"><span class="eq">$W = F\,d \cos\theta$</span><span class="desc">Trabajo mecánico — fuerza × desplazamiento</span><span class="unit">[J] = [N]·[m]</span></div>
+  <div class="formula"><span class="eq">$E_c = \tfrac{1}{2} m\,v^2$</span><span class="desc">Energía cinética</span><span class="unit">[J] = [kg]·[m²/s²]</span></div>
+  <div class="formula"><span class="eq">$E_p = m\,g\,h$</span><span class="desc">Energía potencial gravitacional</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$E_p = \tfrac{1}{2} k\,x^2$</span><span class="desc">Energía potencial elástica (resorte)</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$E_m = E_c + E_p = \mathrm{cte}$</span><span class="desc">Conservación de la energía mecánica</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$P = \dfrac{W}{t}$</span><span class="desc">Potencia — trabajo por unidad de tiempo</span><span class="unit">[W] = [J/s]</span></div>
+  <div class="formula"><span class="eq">$p = m\,v$</span><span class="desc">Momento lineal (ímpetu)</span><span class="unit">[kg·m/s]</span></div>
+  <div class="formula"><span class="eq">$m_1 v_1 + m_2 v_2 = (m_1 + m_2) v_f$</span><span class="desc">Colisión perfectamente inelástica</span><span class="unit">[kg·m/s]</span></div>
+  <p class="nota">Con fricción: $W_{\mathrm{total}} = \Delta E_c + \Delta E_p + W_{\mathrm{rozamiento}}$.</p>
+</div>
+
+<!-- ── 4. Fluidos ─────────────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#0e7490">4 · Fluidos</div>
+  <div class="subtitulo">Pascal · Arquímedes · Bernoulli</div>
+  <div class="formula"><span class="eq">$P = \dfrac{F}{A}$</span><span class="desc">Presión — fuerza por unidad de área</span><span class="unit">[Pa] = [N/m²]</span></div>
+  <div class="formula"><span class="eq">$\rho = \dfrac{m}{V}$</span><span class="desc">Densidad</span><span class="unit">[kg/m³]</span></div>
+  <div class="formula"><span class="eq">$P_h = \rho\,g\,h$</span><span class="desc">Presión hidrostática a profundidad $h$</span><span class="unit">[Pa]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{F_1}{A_1} = \dfrac{F_2}{A_2}$</span><span class="desc">Principio de Pascal — prensa hidráulica</span><span class="unit">[N/m²]</span></div>
+  <div class="formula"><span class="eq">$E = \rho_f\,V_s\,g$</span><span class="desc">Empuje de Arquímedes ($V_s$: vol. sumergido)</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$A_1 v_1 = A_2 v_2$</span><span class="desc">Continuidad — flujo incompresible</span><span class="unit">[m³/s]</span></div>
+  <div class="formula"><span class="eq">$P + \tfrac{1}{2}\rho v^2 + \rho g h = \mathrm{cte}$</span><span class="desc">Ecuación de Bernoulli</span><span class="unit">[Pa]</span></div>
+  <p class="nota">Un objeto flota si $\rho_{\mathrm{objeto}} < \rho_{\mathrm{fluido}}$. Pascal: la presión en un fluido cerrado se transmite igual a todos los puntos.</p>
+</div>
+
+<!-- ── 5. Termodinámica ───────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#c2410c">5 · Termodinámica</div>
+  <div class="subtitulo">Temperatura · Dilatación · Calor · Gases · 1ª ley · Eficiencia</div>
+  <div class="formula"><span class="eq">$T(\mathrm{K}) = T(°\mathrm{C}) + 273$</span><span class="desc">Conversión Celsius → Kelvin</span><span class="unit">[K]</span></div>
+  <div class="formula"><span class="eq">$T(°\mathrm{F}) = \tfrac{9}{5}\,T(°\mathrm{C}) + 32$</span><span class="desc">Conversión Celsius → Fahrenheit</span><span class="unit">[°F]</span></div>
+  <div class="formula"><span class="eq">$\Delta L = \alpha\,L_0\,\Delta T$</span><span class="desc">Dilatación lineal — $\alpha$: coef. lineal</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$\Delta A = 2\alpha\,A_0\,\Delta T$</span><span class="desc">Dilatación superficial</span><span class="unit">[m²]</span></div>
+  <div class="formula"><span class="eq">$\Delta V = 3\alpha\,V_0\,\Delta T$</span><span class="desc">Dilatación volumétrica</span><span class="unit">[m³]</span></div>
+  <div class="formula"><span class="eq">$Q = m\,c\,\Delta T$</span><span class="desc">Calor sensible — sin cambio de fase</span><span class="unit">[cal] o [J]</span></div>
+  <div class="formula"><span class="eq">$Q = m\,L$</span><span class="desc">Calor latente — fusión ($L_f$) o vaporización ($L_v$)</span><span class="unit">[cal]</span></div>
+  <div class="formula"><span class="eq">$P_1 V_1 = P_2 V_2$</span><span class="desc">Boyle — isotérmico ($T$ cte.)</span><span class="unit">[Pa·m³]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$</span><span class="desc">Charles — isobárico ($P$ cte.)</span><span class="unit">[m³/K]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{P_1}{T_1} = \dfrac{P_2}{T_2}$</span><span class="desc">Gay-Lussac — isocórico ($V$ cte.)</span><span class="unit">[Pa/K]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{P_1 V_1}{T_1} = \dfrac{P_2 V_2}{T_2}$</span><span class="desc">Ley combinada de los gases</span><span class="unit">[Pa·m³/K]</span></div>
+  <div class="formula"><span class="eq">$P V = n R T$</span><span class="desc">Ecuación del gas ideal — $n$: moles</span><span class="unit">[Pa·m³]</span></div>
+  <div class="formula"><span class="eq">$\Delta U = Q - W$</span><span class="desc">1ª ley — energía interna del sistema</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$\eta = \dfrac{W}{Q_c}$</span><span class="desc">Eficiencia térmica — $Q_c$: calor absorbido</span><span class="unit">adimensional</span></div>
+  <div class="formula"><span class="eq">$\eta_{\mathrm{Carnot}} = 1 - \dfrac{T_f}{T_c}$</span><span class="desc">Eficiencia máxima de Carnot — $T$ en kelvin</span><span class="unit">adimensional</span></div>
+  <p class="nota">¡La temperatura en gases siempre en kelvin! Isotérmico: $\Delta U = 0$ ($Q = W$). Adiabático: $Q = 0$. Isocórico: $W = 0$.</p>
+</div>
+
+<!-- ── 6. Ondas y sonido ──────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#0e7490">6 · Ondas y sonido</div>
+  <div class="subtitulo">MAS · Péndulo · Ondas mecánicas · Sonido · Doppler</div>
+  <div class="formula"><span class="eq">$v = \lambda\,f$</span><span class="desc">Velocidad de onda</span><span class="unit">[m/s] = [m]·[Hz]</span></div>
+  <div class="formula"><span class="eq">$T = \dfrac{1}{f}$</span><span class="desc">Período = inverso de la frecuencia</span><span class="unit">[s]</span></div>
+  <div class="formula"><span class="eq">$\omega = 2\pi f$</span><span class="desc">Frecuencia angular</span><span class="unit">[rad/s]</span></div>
+  <div class="formula"><span class="eq">$\omega = \sqrt{\dfrac{k}{m}}$</span><span class="desc">MAS de un resorte</span><span class="unit">[rad/s]</span></div>
+  <div class="formula"><span class="eq">$T = 2\pi\sqrt{\dfrac{m}{k}}$</span><span class="desc">Período del MAS de un resorte</span><span class="unit">[s]</span></div>
+  <div class="formula"><span class="eq">$T = 2\pi\sqrt{\dfrac{L}{g}}$</span><span class="desc">Péndulo simple (oscilaciones pequeñas)</span><span class="unit">[s]</span></div>
+  <div class="formula"><span class="eq">$v_{\max} = \omega\,A$</span><span class="desc">Velocidad máxima en MAS — $A$: amplitud</span><span class="unit">[m/s]</span></div>
+  <div class="formula"><span class="eq">$f' = f\,\dfrac{v}{v - v_f}$</span><span class="desc">Doppler — fuente acercándose al observador en reposo</span><span class="unit">[Hz]</span></div>
+  <div class="formula"><span class="eq">$f' = f\,\dfrac{v}{v + v_f}$</span><span class="desc">Doppler — fuente alejándose del observador en reposo</span><span class="unit">[Hz]</span></div>
+  <p class="nota">El periodo del péndulo no depende ni de la masa ni de la amplitud (oscilaciones chicas). Sonido en aire: $\approx 340\,\mathrm{m/s}$. Rango audible: 20 Hz – 20 000 Hz.</p>
+</div>
+
+<!-- ── 7. Óptica ──────────────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#b45309">7 · Óptica</div>
+  <div class="subtitulo">Reflexión · Refracción · Espejos · Lentes</div>
+  <div class="formula"><span class="eq">$\theta_i = \theta_r$</span><span class="desc">Ley de reflexión (respecto a la normal)</span><span class="unit">[°] o [rad]</span></div>
+  <div class="formula"><span class="eq">$n_1 \sin\theta_1 = n_2 \sin\theta_2$</span><span class="desc">Ley de Snell — refracción</span><span class="unit">adimensional</span></div>
+  <div class="formula"><span class="eq">$n = \dfrac{c}{v}$</span><span class="desc">Índice de refracción del medio</span><span class="unit">adimensional</span></div>
+  <div class="formula"><span class="eq">$v = \dfrac{c}{n}$</span><span class="desc">Velocidad de la luz en el medio</span><span class="unit">[m/s]</span></div>
+  <div class="formula"><span class="eq">$\sin\theta_c = \dfrac{n_2}{n_1}$</span><span class="desc">Ángulo crítico para reflexión total ($n_1 > n_2$)</span><span class="unit">[°]</span></div>
+  <div class="formula"><span class="eq">$f = \dfrac{R}{2}$</span><span class="desc">Distancia focal de un espejo esférico</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{1}{f} = \dfrac{1}{p} + \dfrac{1}{q}$</span><span class="desc">Espejos y lentes delgadas — $p$: objeto, $q$: imagen</span><span class="unit">[m] o [cm]</span></div>
+  <div class="formula"><span class="eq">$M = -\dfrac{q}{p}$</span><span class="desc">Aumento lateral — $M>0$ derecha, $M<0$ invertida</span><span class="unit">adimensional</span></div>
+  <p class="nota">Espejo cóncavo / lente convergente: $f > 0$. Espejo convexo / lente divergente: $f < 0$. Imagen virtual: $q < 0$.</p>
+</div>
+
+<!-- ── 8. Electricidad ────────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#b91c1c">8 · Electricidad</div>
+  <div class="subtitulo">Coulomb · Campo · Ohm · Circuitos</div>
+  <div class="formula"><span class="eq">$F = k\,\dfrac{q_1 q_2}{r^2}$</span><span class="desc">Ley de Coulomb — fuerza entre dos cargas</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$E = \dfrac{F}{q}$</span><span class="desc">Campo eléctrico</span><span class="unit">[N/C] = [V/m]</span></div>
+  <div class="formula"><span class="eq">$V = I R$</span><span class="desc">Ley de Ohm</span><span class="unit">[V] = [A]·[Ω]</span></div>
+  <div class="formula"><span class="eq">$P = V I = I^2 R$</span><span class="desc">Potencia eléctrica disipada</span><span class="unit">[W] = [V]·[A]</span></div>
+  <div class="formula"><span class="eq">$E = P\,t$</span><span class="desc">Energía eléctrica consumida</span><span class="unit">[J] = [W]·[s]</span></div>
+  <div class="formula"><span class="eq">$R_s = R_1 + R_2 + \cdots$</span><span class="desc">Resistencias en serie</span><span class="unit">[Ω]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{1}{R_p} = \dfrac{1}{R_1} + \dfrac{1}{R_2} + \cdots$</span><span class="desc">Resistencias en paralelo</span><span class="unit">[Ω]</span></div>
+  <div class="formula"><span class="eq">$C = \dfrac{Q}{V}$</span><span class="desc">Capacitancia — carga por voltaje</span><span class="unit">[F] = [C/V]</span></div>
+  <p class="nota">En serie: $I$ igual en todos. En paralelo: $V$ igual en todos. Si $r$ se duplica, $F$ de Coulomb se divide entre 4.</p>
+</div>
+
+<!-- ── 9. Magnetismo y electromagnetismo ──────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#6d28d9">9 · Magnetismo y electromagnetismo</div>
+  <div class="subtitulo">Lorentz · Conductores · Campo · Faraday · Transformador</div>
+  <div class="formula"><span class="eq">$F = q\,v\,B \sin\theta$</span><span class="desc">Fuerza de Lorentz sobre carga en movimiento</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$F = B\,I\,L \sin\theta$</span><span class="desc">Fuerza sobre un conductor con corriente</span><span class="unit">[N]</span></div>
+  <div class="formula"><span class="eq">$B = \dfrac{\mu_0 I}{2\pi r}$</span><span class="desc">Campo magnético de un alambre largo</span><span class="unit">[T]</span></div>
+  <div class="formula"><span class="eq">$B = \mu_0\,n\,I$</span><span class="desc">Campo dentro de un solenoide ($n$: espiras/m)</span><span class="unit">[T]</span></div>
+  <div class="formula"><span class="eq">$\Phi = B\,A \cos\theta$</span><span class="desc">Flujo magnético a través de una superficie</span><span class="unit">[Wb] = [T·m²]</span></div>
+  <div class="formula"><span class="eq">$\varepsilon = -N\,\dfrac{\Delta\Phi}{\Delta t}$</span><span class="desc">FEM inducida — ley de Faraday</span><span class="unit">[V]</span></div>
+  <div class="formula"><span class="eq">$\dfrac{V_1}{V_2} = \dfrac{N_1}{N_2} = \dfrac{I_2}{I_1}$</span><span class="desc">Transformador ideal</span><span class="unit">adimensional</span></div>
+  <p class="nota">La ley de Lenz indica que la corriente inducida se opone al cambio de flujo que la produce. Corrientes paralelas en el mismo sentido se atraen; en sentidos opuestos, se repelen.</p>
+</div>
+
+<!-- ── 10. Física moderna ─────────────────────────────────────────────── -->
+<div class="unidad">
+  <div class="titulo-bar" style="background:#1e3a8a">10 · Física moderna</div>
+  <div class="subtitulo">Fotón · Dualidad · Átomo · Radiactividad · Nuclear</div>
+  <div class="formula"><span class="eq">$E = h\,f = \dfrac{h\,c}{\lambda}$</span><span class="desc">Energía de un fotón — Planck/Einstein</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$E_{\mathrm{cin}} = h f - W$</span><span class="desc">Efecto fotoeléctrico — $W$: función de trabajo</span><span class="unit">[J]</span></div>
+  <div class="formula"><span class="eq">$\lambda = \dfrac{h}{p}$</span><span class="desc">Longitud de onda de De Broglie</span><span class="unit">[m]</span></div>
+  <div class="formula"><span class="eq">$E = \Delta m\,c^2$</span><span class="desc">Equivalencia masa-energía (Einstein)</span><span class="unit">[J] = [kg]·[m²/s²]</span></div>
+  <div class="formula"><span class="eq">$N = A - Z$</span><span class="desc">Neutrones = núm. de masa − núm. atómico</span><span class="unit">adimensional</span></div>
+  <div class="formula"><span class="eq">$m(t) = m_0 \left(\tfrac{1}{2}\right)^n$</span><span class="desc">Decaimiento radiactivo — $n$: núm. de semividas</span><span class="unit">[g] o [kg]</span></div>
+  <div class="formula"><span class="eq">$n = \dfrac{t_{\mathrm{total}}}{t_{1/2}}$</span><span class="desc">Número de semividas transcurridas</span><span class="unit">adimensional</span></div>
+  <p class="nota">Ejemplo: $800\,\mathrm{g}$, $t_{1/2} = 10$ años. Después de 30 años: $n = 3 \Rightarrow 800 \times \left(\tfrac{1}{2}\right)^3 = 100\,\mathrm{g}$.</p>
+</div>
+
+<div class="footer">Formulario de Física · giledvz.github.io/clases</div>
+
+</body>
+</html>
