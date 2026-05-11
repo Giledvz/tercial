@@ -4006,6 +4006,203 @@ const PREGUNTAS = [
     opciones: ["Carlos Fuentes", "Octavio Paz", "Juan Rulfo", "Alfonso Reyes"],
     correcta: 1,
     explicacion: "Octavio Paz (1914-1998) recibió el Nobel de Literatura en 1990, único mexicano en obtenerlo. Su obra ensayística (<i>El laberinto de la soledad</i>) y poética es referencia mundial."
+  },
+  // —— Matemáticas: cónica forma ordinaria — circunferencia centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — circunferencia",
+    pregunta: "El centro y el radio de la circunferencia $(x-3)^2 + (y+2)^2 = 25$ son",
+    opciones: [
+      "Centro $(3, -2)$, radio $5$",
+      "Centro $(-3, 2)$, radio $5$",
+      "Centro $(3, -2)$, radio $25$",
+      "Centro $(-3, 2)$, radio $25$"
+    ],
+    correcta: 0,
+    explicacion: "Forma ordinaria $(x-h)^2 + (y-k)^2 = r^2$. Aquí $h=3$, $k=-2$ (porque $y+2 = y-(-2)$), y $r^2 = 25 \\Rightarrow r = 5$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — circunferencia centro 2 ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — circunferencia",
+    pregunta: "El centro de la circunferencia $(x+5)^2 + (y-1)^2 = 16$ es",
+    opciones: ["$(-5, 1)$", "$(5, -1)$", "$(-5, -1)$", "$(5, 1)$"],
+    correcta: 0,
+    explicacion: "$(x+5)^2 = (x-(-5))^2$ y $(y-1)^2$. Entonces $h=-5$, $k=1$. Centro $(-5, 1)$. (El radio sería $r=\\sqrt{16}=4$.)"
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola vértice ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "El vértice de la parábola $(y-2)^2 = 8(x-3)$ es",
+    opciones: ["$(3, 2)$", "$(-3, -2)$", "$(2, 3)$", "$(-3, 2)$"],
+    correcta: 0,
+    explicacion: "Forma $(y-k)^2 = 4p(x-h)$ tiene vértice en $(h,k)$. Aquí $h=3$, $k=2 \\Rightarrow V(3, 2)$. La parábola abre hacia la derecha."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola foco ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "El foco de la parábola $(y-2)^2 = 8(x-3)$ es",
+    opciones: ["$(5, 2)$", "$(3, 4)$", "$(1, 2)$", "$(3, 0)$"],
+    correcta: 0,
+    explicacion: "$4p = 8 \\Rightarrow p = 2$. Como abre hacia la derecha, el foco está a $p$ unidades a la derecha del vértice $(3,2)$: $F(3+2, 2) = (5, 2)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola parámetro p ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "Para la parábola $(x+1)^2 = 12(y-4)$, el valor del parámetro $p$ es",
+    opciones: ["$3$", "$6$", "$12$", "$2$"],
+    correcta: 0,
+    explicacion: "Forma $(x-h)^2 = 4p(y-k)$ con $4p = 12 \\Rightarrow p = 3$. La parábola abre hacia arriba (eje vertical). Vértice en $(-1, 4)$, foco en $(-1, 7)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola dirección ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "¿Hacia dónde abre la parábola $(y+3)^2 = -16(x-2)$?",
+    opciones: ["A la izquierda", "A la derecha", "Hacia arriba", "Hacia abajo"],
+    correcta: 0,
+    explicacion: "Forma $(y-k)^2 = 4p(x-h)$: eje horizontal. Como $4p = -16 \\Rightarrow p = -4 < 0$, abre a la izquierda. Vértice en $(2, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola lado recto ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "La longitud del lado recto de la parábola $(x-4)^2 = 6(y+1)$ es",
+    opciones: ["$6$", "$3$", "$12$", "$1.5$"],
+    correcta: 0,
+    explicacion: "El lado recto de una parábola es $|4p|$. Como $4p = 6$, el lado recto vale $6$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "El centro de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ es",
+    opciones: ["$(2, -1)$", "$(-2, 1)$", "$(2, 1)$", "$(5, 3)$"],
+    correcta: 0,
+    explicacion: "Forma ordinaria $\\dfrac{(x-h)^2}{a^2} + \\dfrac{(y-k)^2}{b^2} = 1$. Aquí $h=2$, $k=-1$ ⇒ centro $(2, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse vértices ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los vértices de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ son",
+    opciones: [
+      "$(-3, -1)$ y $(7, -1)$",
+      "$(2, -6)$ y $(2, 4)$",
+      "$(-3, 2)$ y $(7, 2)$",
+      "$(-2, 1)$ y $(2, 1)$"
+    ],
+    correcta: 0,
+    explicacion: "Como $a^2 = 25 > b^2 = 9$ y está en el término de $x$, el eje focal es horizontal. $a = 5$. Vértices en $(h \\pm a, k) = (2 \\pm 5, -1)$, es decir $(-3, -1)$ y $(7, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse focos ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los focos de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ son",
+    opciones: [
+      "$(-2, -1)$ y $(6, -1)$",
+      "$(2, -5)$ y $(2, 3)$",
+      "$(-2, 1)$ y $(6, 1)$",
+      "$(-3, -1)$ y $(7, -1)$"
+    ],
+    correcta: 0,
+    explicacion: "En la elipse, $c^2 = a^2 - b^2 = 25 - 9 = 16 \\Rightarrow c = 4$. Eje focal horizontal, focos en $(h \\pm c, k) = (2 \\pm 4, -1)$: $(-2, -1)$ y $(6, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse excentricidad ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "La excentricidad de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ es",
+    opciones: ["$\\dfrac{4}{5}$", "$\\dfrac{3}{5}$", "$\\dfrac{5}{4}$", "$\\dfrac{9}{25}$"],
+    correcta: 0,
+    explicacion: "$e = \\dfrac{c}{a}$ con $c = \\sqrt{a^2 - b^2} = \\sqrt{16} = 4$ y $a = 5$. Entonces $e = \\dfrac{4}{5}$. (Para una elipse siempre $0 < e < 1$.)"
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse vertical ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los vértices de la elipse $\\dfrac{(x+3)^2}{16} + \\dfrac{(y-2)^2}{25} = 1$ son",
+    opciones: [
+      "$(-3, 7)$ y $(-3, -3)$",
+      "$(-3, 6)$ y $(-3, -2)$",
+      "$(1, 2)$ y $(-7, 2)$",
+      "$(-7, 2)$ y $(1, 2)$"
+    ],
+    correcta: 0,
+    explicacion: "Como $a^2 = 25 > 16$ y está en el término de $y$, el eje focal es vertical. $a = 5$. Vértices en $(h, k \\pm a) = (-3, 2 \\pm 5)$: $(-3, 7)$ y $(-3, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse lado recto ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "La longitud del lado recto de la elipse $\\dfrac{(x-1)^2}{9} + \\dfrac{(y+2)^2}{4} = 1$ es",
+    opciones: ["$\\dfrac{8}{3}$", "$\\dfrac{4}{3}$", "$\\dfrac{9}{2}$", "$\\dfrac{16}{3}$"],
+    correcta: 0,
+    explicacion: "Lado recto de una elipse: $LR = \\dfrac{2b^2}{a}$ donde $a$ es el semieje mayor. Aquí $a^2 = 9$ ($a=3$), $b^2 = 4$. $LR = \\dfrac{2(4)}{3} = \\dfrac{8}{3}$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "El centro de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ es",
+    opciones: ["$(1, -3)$", "$(-1, 3)$", "$(1, 3)$", "$(4, -3)$"],
+    correcta: 0,
+    explicacion: "Forma ordinaria $\\dfrac{(x-h)^2}{a^2} - \\dfrac{(y-k)^2}{b^2} = 1$. Aquí $h=1$, $k=-3$ ⇒ centro $(1, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola vértices ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Los vértices de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$(-3, -3)$ y $(5, -3)$",
+      "$(1, -7)$ y $(1, 1)$",
+      "$(-4, -3)$ y $(6, -3)$",
+      "$(1, 0)$ y $(1, -6)$"
+    ],
+    correcta: 0,
+    explicacion: "El término positivo está en $x$, así que el eje transverso es horizontal. $a^2 = 16 \\Rightarrow a = 4$. Vértices en $(h \\pm a, k) = (1 \\pm 4, -3)$: $(-3, -3)$ y $(5, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola focos ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Los focos de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$(-4, -3)$ y $(6, -3)$",
+      "$(-3, -3)$ y $(5, -3)$",
+      "$(1, -8)$ y $(1, 2)$",
+      "$(1, 2)$ y $(1, -8)$"
+    ],
+    correcta: 0,
+    explicacion: "En la hipérbola, $c^2 = a^2 + b^2 = 16 + 9 = 25 \\Rightarrow c = 5$ (¡suma, no resta!). Eje transverso horizontal: focos en $(h \\pm c, k) = (1 \\pm 5, -3)$: $(-4, -3)$ y $(6, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola asíntotas ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Las ecuaciones de las asíntotas de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$y + 3 = \\pm \\dfrac{3}{4}(x - 1)$",
+      "$y - 3 = \\pm \\dfrac{4}{3}(x + 1)$",
+      "$y + 3 = \\pm \\dfrac{4}{3}(x - 1)$",
+      "$y + 3 = \\pm \\dfrac{9}{16}(x - 1)$"
+    ],
+    correcta: 0,
+    explicacion: "Para una hipérbola horizontal con centro $(h, k)$, las asíntotas son $y - k = \\pm \\dfrac{b}{a}(x - h)$. Aquí $a = 4$, $b = 3$, centro $(1, -3)$: $y + 3 = \\pm \\dfrac{3}{4}(x - 1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola excentricidad ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "La excentricidad de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ es",
+    opciones: ["$\\dfrac{5}{4}$", "$\\dfrac{4}{5}$", "$\\dfrac{3}{4}$", "$\\dfrac{4}{3}$"],
+    correcta: 0,
+    explicacion: "$e = \\dfrac{c}{a}$ con $c = \\sqrt{a^2 + b^2} = \\sqrt{25} = 5$ y $a = 4$. Entonces $e = \\dfrac{5}{4}$. (Para una hipérbola siempre $e > 1$.)"
   }
 ];
 

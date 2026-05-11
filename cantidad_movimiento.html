@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ejercicios — Física: Cantidad de movimiento</title>
+<style>
+  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
+  .portada { margin-bottom:2rem; border-bottom:2px solid #1a4f8a; padding-bottom:1rem; }
+  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1a4f8a; font-weight:700; }
+  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1a4f8a; margin:.2rem 0 .5rem; }
+  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
+  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
+  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
+  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
+  .card-header:active { background:var(--gris); }
+  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
+  .enun { flex:1; }
+  .enun p { font-size:15px; }
+  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
+  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
+  .chip:active { opacity:.6; }
+  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .panel.open { max-height:200px; }
+  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
+  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
+  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
+  .resp-pill .val { font-size:15px; font-weight:bold; }
+  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
+  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <small>Ejercicios</small>
+  <h1>Física: Cantidad de movimiento</h1>
+  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta.</p>
+</div>
+
+<div id="contenido"></div>
+<div class="footer">Física: Cantidad de movimiento e impulso · Bachillerato</div>
+
+<script>
+const SECCIONES = [
+
+  // ── 1. Cantidad de movimiento (momento lineal) ────────────────────────────
+  { titulo:"1 · Cantidad de movimiento (momento lineal)", color:"#1a4f8a", ejercicios:[
+    { n:"01", t:"¿Cuál es la cantidad de movimiento de un cuerpo de 5 kg que se mueve a 4 m/s?",
+      d:"p = mv",
+      r:"p = 20 kg·m/s" },
+    { n:"02", t:"Un balón de 0.5 kg viaja a 12 m/s. ¿Cuál es su cantidad de movimiento?",
+      d:"p = mv",
+      r:"p = 6 kg·m/s" },
+    { n:"03", t:"Un coche tiene cantidad de movimiento de 30 000 kg·m/s al moverse a 30 m/s. ¿Cuál es su masa?",
+      d:"m = p/v",
+      r:"m = 1 000 kg" },
+    { n:"04", t:"Si un objeto duplica su velocidad, ¿qué pasa con su momento lineal?",
+      d:"p ∝ v",
+      r:"También se duplica" },
+    { n:"05", t:"¿Cuál es la cantidad de movimiento de un objeto en reposo?",
+      d:"v = 0",
+      r:"p = 0" },
+  ]},
+
+  // ── 2. Impulso ────────────────────────────────────────────────────────────
+  { titulo:"2 · Impulso", color:"#5b2d8e", ejercicios:[
+    { n:"01", t:"Una fuerza de 50 N actúa durante 4 s sobre un objeto. ¿Cuál es el impulso?",
+      d:"J = F·Δt",
+      r:"J = 200 N·s" },
+    { n:"02", t:"Un objeto de 2 kg cambia su velocidad de 3 m/s a 8 m/s. ¿Cuál es el cambio en su cantidad de movimiento?",
+      d:"Δp = m·Δv",
+      r:"Δp = 10 kg·m/s" },
+    { n:"03", t:"¿En qué unidades se mide el impulso?",
+      d:"J = Δp, así que tienen las mismas unidades",
+      r:"N·s = kg·m/s" },
+    { n:"04", t:"Una pelota de 0.2 kg se mueve a 10 m/s y rebota con la misma rapidez en sentido opuesto. ¿Cuál es la magnitud del cambio en su momento lineal?",
+      d:"Δp = m(v<sub>f</sub> − v<sub>i</sub>); cuidado con los signos",
+      r:"|Δp| = 4 kg·m/s" },
+    { n:"05", t:"Si un balón de 0.5 kg recibe un impulso de 6 N·s, ¿cuál es el cambio en su velocidad?",
+      d:"Δv = J/m",
+      r:"Δv = 12 m/s" },
+  ]},
+
+  // ── 3. Conservación del momento (choques) ─────────────────────────────────
+  { titulo:"3 · Conservación del momento (choques)", color:"#047857", ejercicios:[
+    { n:"01", t:"Un objeto A de 3 kg con velocidad 4 m/s choca contra un objeto B de 1 kg en reposo y quedan unidos. ¿Cuál es la velocidad final del conjunto?",
+      d:"m<sub>A</sub>v<sub>A</sub> = (m<sub>A</sub>+m<sub>B</sub>)v<sub>f</sub>",
+      r:"v<sub>f</sub> = 3 m/s" },
+    { n:"02", t:"Dos cuerpos de 4 kg cada uno se mueven uno hacia el otro a 5 m/s y −2 m/s. Si chocan y se quedan unidos, ¿cuál es la velocidad final?",
+      d:"p<sub>total</sub> = m<sub>A</sub>v<sub>A</sub> + m<sub>B</sub>v<sub>B</sub>",
+      r:"v<sub>f</sub> = 1.5 m/s" },
+    { n:"03", t:"Una pelota de 2 kg viaja a 8 m/s y choca contra otra de 6 kg en reposo. La primera rebota a −2 m/s. ¿Cuál es la velocidad de la segunda después?",
+      d:"Conservación: p<sub>i</sub> = p<sub>f</sub>",
+      r:"v₂ ≈ 3.33 m/s" },
+    { n:"04", t:"¿Qué tipo de choque conserva la energía cinética?",
+      d:"Hay dos categorías principales",
+      r:"Choque elástico (perfecto)" },
+    { n:"05", t:"¿Qué tipo de choque NO conserva la energía cinética pero sí el momento?",
+      d:"Parte de la E<sub>c</sub> se convierte en otras formas (calor, deformación)",
+      r:"Choque inelástico" },
+    { n:"06", t:"Un cuerpo de 1 kg a 10 m/s choca elásticamente contra otro de 1 kg en reposo. ¿Cuáles son las velocidades finales?",
+      d:"En choque elástico de masas iguales, intercambian velocidades",
+      r:"v₁' = 0 &nbsp;·&nbsp; v₂' = 10 m/s" },
+    { n:"07", t:"Dos vagones de tren de 2 000 kg y 3 000 kg se mueven en la misma dirección a 5 m/s y 2 m/s. Si se enganchan al chocar, ¿cuál es la velocidad final?",
+      d:"p<sub>total</sub> = m<sub>1</sub>v<sub>1</sub> + m<sub>2</sub>v<sub>2</sub>; luego v<sub>f</sub> = p/m<sub>total</sub>",
+      r:"v<sub>f</sub> = 3.2 m/s" },
+    { n:"08", t:"Un proyectil de 0.5 kg viaja a 200 m/s y se incrusta en un bloque de 9.5 kg en reposo. ¿Cuál es la velocidad final del conjunto?",
+      d:"Choque perfectamente inelástico",
+      r:"v<sub>f</sub> = 10 m/s" },
+  ]},
+
+  // ── 4. Aplicaciones y fuerza media ────────────────────────────────────────
+  { titulo:"4 · Aplicaciones y fuerza media", color:"#b45309", ejercicios:[
+    { n:"01", t:"¿Qué fuerza media se necesita para detener un objeto de 5 kg que va a 10 m/s en 0.5 s?",
+      d:"F = Δp/Δt",
+      r:"|F| = 100 N (en sentido opuesto)" },
+    { n:"02", t:"Un coche de 1 200 kg pasa de 30 m/s a 0 en 5 s. ¿Cuál es la fuerza media de frenado?",
+      d:"F = mΔv/Δt",
+      r:"|F| = 7 200 N" },
+    { n:"03", t:"¿Por qué los airbags reducen las lesiones en un choque?",
+      d:"Pista: F·Δt = Δp; si Δp es fijo y Δt aumenta…",
+      r:"Aumentan Δt, reduciendo la fuerza promedio sobre el cuerpo" },
+    { n:"04", t:"Un cohete de 1 000 kg expulsa 10 kg de combustible a 200 m/s. ¿Cuál es el cambio de velocidad del cohete? (asume masa casi constante)",
+      d:"Conservación: M·Δv = m·v<sub>gas</sub>",
+      r:"Δv = 2 m/s" },
+  ]},
+
+];
+
+// ── Render ────────────────────────────────────────────────────────────────────
+const root = document.getElementById('contenido');
+
+SECCIONES.forEach(sec => {
+  const banner = document.createElement('div');
+  banner.className = 'banner';
+  banner.style.background = sec.color;
+  banner.textContent = sec.titulo;
+  root.appendChild(banner);
+
+  sec.ejercicios.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="num">${p.n}</span>
+        <div class="enun">
+          <p>${p.t}</p>
+          <p class="datos">${p.d}</p>
+        </div>
+        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
+      </div>
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="resp-pill" style="background:${sec.color}">
+            <span class="tag">Respuesta</span>
+            <span class="val">${p.r}</span>
+          </div>
+          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
+        </div>
+      </div>
+    `;
+    root.appendChild(card);
+
+    const hdr     = card.querySelector('.card-header');
+    const panel   = card.querySelector('.panel');
+    const btn     = card.querySelector('.chip');
+    const ocultar = card.querySelector('.ocultar');
+
+    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
+    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+
+    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
+    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
+    ocultar.addEventListener('click', cerrar);
+  });
+});
+</script>
+</body>
+</html>
