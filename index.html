@@ -520,10 +520,21 @@ const EXAMENES = [
     let numClass = 'contador-numero';
     if (dias <= 7) numClass += ' urgente';
 
-    let numContent, sufijo;
-    if (dias === 0) { numContent = '¡Hoy!'; sufijo = ''; numClass += ' pequeno'; }
-    else if (dias === 1) { numContent = '1'; sufijo = 'día'; }
-    else { numContent = String(dias); sufijo = 'días'; }
+    let numContent, sufijo, titulo;
+    if (dias === 0) {
+      numContent = '¡Hoy!';
+      sufijo = '';
+      numClass += ' pequeno';
+      titulo = `¡Hoy es el examen de ${ex.nombre}!`;
+    } else if (dias === 1) {
+      numContent = '1';
+      sufijo = 'día';
+      titulo = `Falta 1 día para el examen de ${ex.nombre}`;
+    } else {
+      numContent = String(dias);
+      sufijo = 'días';
+      titulo = `Faltan ${dias} días para el examen de ${ex.nombre}`;
+    }
 
     const item = document.createElement('div');
     item.className = 'contador-item';
@@ -533,7 +544,7 @@ const EXAMENES = [
         ${sufijo ? `<div class="contador-sufijo">${sufijo}</div>` : ''}
       </div>
       <div class="contador-texto">
-        <div class="contador-titulo">Examen de ${ex.nombre}</div>
+        <div class="contador-titulo">${titulo}</div>
         <div class="contador-fecha">${formatearFecha(ex.fecha)}</div>
       </div>
     `;
