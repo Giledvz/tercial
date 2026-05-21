@@ -168,12 +168,19 @@ body {
   border-radius: 10px; flex-shrink: 0; letter-spacing: .04em;
 }
 
-/* ── Contadores de examen ── */
+/* ── Contadores de examen (carrusel) ── */
 .contadores {
   max-width: 700px;
   margin: 1.5rem auto 0;
   padding: 0 1.25rem;
 }
+.contadores-pista {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+}
+.contadores-pista:active { transform: scale(.99); transition: transform .12s; }
 .contador-item {
   display: flex;
   align-items: center;
@@ -182,11 +189,42 @@ body {
   border: 1px solid var(--borde);
   border-radius: 12px;
   padding: 12px 16px 12px 14px;
-  margin-bottom: .55rem;
   box-shadow: var(--shadow);
-  transition: transform .12s;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  opacity: 0;
+  transform: translateY(-115%);
+  transition: transform .38s cubic-bezier(.4,0,.2,1), opacity .26s ease;
+  pointer-events: none;
 }
-.contador-item:active { transform: scale(.99); }
+.contador-item.activo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.contador-item.saliendo {
+  opacity: 0;
+  transform: translateY(115%);
+}
+.contadores-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .55rem;
+  padding: 0 4px;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--muted);
+}
+.contadores-pos {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+.contadores-hint {
+  font-size: 10px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
 .contador-tiempo {
   min-width: 56px;
   text-align: center;
@@ -491,7 +529,12 @@ body {
    El examen se oculta automáticamente después de la fecha.
    ────────────────────────────────────────────────────────────────── */
 const EXAMENES = [
-  { nombre: "Lupita", fecha: "2026-05-24" },
+  { nombre: "Lupita",    fecha: "2026-05-24" },
+  { nombre: "Óscar",     fecha: "2026-06-06" },
+  { nombre: "Danna",     fecha: "2026-06-06" },
+  { nombre: "Alfredo",   fecha: "2026-06-07" },
+  { nombre: "Esmeralda", fecha: "2026-06-07" },
+  { nombre: "Yuri",      fecha: "2026-06-07" },
 ];
 
 (function() {
@@ -513,9 +556,24 @@ const EXAMENES = [
   }
 
   const container = document.getElementById('contadores');
-  EXAMENES.forEach(ex => {
+
+  // Filtrar exámenes vigentes y ordenar por proximidad de fecha
+  const vigentes = EXAMENES
+    .filter(ex => diasFaltantes(ex.fecha) >= 0)
+    .sort((a, b) => diasFaltantes(a.fecha) - diasFaltantes(b.fecha));
+
+  if (vigentes.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  // Pista del carrusel
+  const pista = document.createElement('div');
+  pista.className = 'contadores-pista';
+  container.appendChild(pista);
+
+  vigentes.forEach(ex => {
     const dias = diasFaltantes(ex.fecha);
-    if (dias < 0) return; // ya pasó
 
     let numClass = 'contador-numero';
     if (dias <= 7) numClass += ' urgente';
@@ -548,7 +606,41 @@ const EXAMENES = [
         <div class="contador-fecha">${formatearFecha(ex.fecha)}</div>
       </div>
     `;
-    container.appendChild(item);
+    pista.appendChild(item);
+  });
+
+  const items = pista.querySelectorAll('.contador-item');
+  items[0].classList.add('activo');
+
+  // Ajustar la altura de la pista a la del item más alto
+  requestAnimationFrame(() => {
+    let maxH = 0;
+    items.forEach(it => { maxH = Math.max(maxH, it.offsetHeight); });
+    pista.style.height = maxH + 'px';
+  });
+
+  // Si solo hay 1, no necesitamos carrusel
+  if (items.length === 1) return;
+
+  // Indicador y hint
+  const footer = document.createElement('div');
+  footer.className = 'contadores-footer';
+  footer.innerHTML = `
+    <span class="contadores-pos">1 / ${items.length}</span>
+    <span class="contadores-hint">toca para el siguiente ↓</span>
+  `;
+  container.appendChild(footer);
+
+  let actual = 0;
+  pista.addEventListener('click', () => {
+    const siguiente = (actual + 1) % items.length;
+    const prev = items[actual];
+    prev.classList.remove('activo');
+    prev.classList.add('saliendo');
+    setTimeout(() => prev.classList.remove('saliendo'), 420);
+    items[siguiente].classList.add('activo');
+    actual = siguiente;
+    footer.querySelector('.contadores-pos').textContent = `${actual + 1} / ${items.length}`;
   });
 })();
 </script>
