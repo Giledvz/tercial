@@ -1370,32 +1370,185 @@ const PREGUNTAS = [
     correcta: 2,
     explicacion: "$A=1$, $B=0$, $C=0$. $B^2 - 4AC = 0 \\Rightarrow$ parábola. Sólo $x$ está al cuadrado."
   },
-  // —— Matemáticas: cónica forma general con xy — parábola ——
+  // —— Matemáticas: cónica forma general con xy (01) ——
   {
     materia: "matematicas",
-    tema: "cónica forma general con xy — parábola",
-    pregunta: "La cónica representada por $4x^2 + 4xy + y^2 - 5x + 2y - 7 = 0$ es",
+    tema: "cónica forma general con xy (01)",
+    pregunta: "La cónica representada por $x^2 - 2xy + y^2 - 2x - 2y = 0$ es",
     opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
     correcta: 2,
-    explicacion: "$A=4$, $B=4$, $C=1$. $B^2 - 4AC = 16 - 16 = 0 \\Rightarrow$ parábola (rotada por la presencia del término $xy$)."
+    explicacion: "$A=1$, $B=-2$, $C=1$. $B^2 - 4AC = 4 - 4 = 0 \\Rightarrow$ parábola (rotada por la presencia del término $xy$)."
   },
-  // —— Matemáticas: cónica forma general con xy — elipse ——
+  // —— Matemáticas: cónica forma general con xy (02) ——
   {
     materia: "matematicas",
-    tema: "cónica forma general con xy — elipse",
-    pregunta: "La cónica representada por $3x^2 + 2xy + 3y^2 - 4x + 6y - 1 = 0$ es",
+    tema: "cónica forma general con xy (02)",
+    pregunta: "La cónica representada por $13x^2 + 2\\sqrt{3}\\,xy + 15y^2 - 48 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=13$, $B=2\\sqrt{3}$, $C=15$. $B^2 - 4AC = 12 - 780 = -768 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (03) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (03)",
+    pregunta: "La cónica representada por $x^2 - 2\\sqrt{3}\\,xy - y^2 - 8 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=-2\\sqrt{3}$, $C=-1$. $B^2 - 4AC = 12 - 4(1)(-1) = 16 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (04) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (04)",
+    pregunta: "La cónica representada por $3x^2 + 2\\sqrt{3}\\,xy + y^2 - 2x + 2\\sqrt{3}\\,y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=3$, $B=2\\sqrt{3}$, $C=1$. $B^2 - 4AC = 12 - 12 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (05) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (05)",
+    pregunta: "La cónica representada por $3x^2 + 2xy + 3y^2 - 8\\sqrt{2}\\,x - 6 = 0$ es",
     opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
     correcta: 1,
     explicacion: "$A=3$, $B=2$, $C=3$. $B^2 - 4AC = 4 - 36 = -32 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
   },
-  // —— Matemáticas: cónica forma general con xy — hipérbola ——
+  // —— Matemáticas: cónica forma general con xy (06) ——
   {
     materia: "matematicas",
-    tema: "cónica forma general con xy — hipérbola",
-    pregunta: "La cónica representada por $2x^2 + 5xy + 2y^2 + x - 3y - 6 = 0$ es",
+    tema: "cónica forma general con xy (06)",
+    pregunta: "La cónica representada por $3x^2 - 6xy + 3y^2 - 8\\sqrt{2}\\,x - 8\\sqrt{2}\\,y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=3$, $B=-6$, $C=3$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (07) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (07)",
+    pregunta: "La cónica representada por $13x^2 - 10xy + 13y^2 + 16x + 16y - 56 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=13$, $B=-10$, $C=13$. $B^2 - 4AC = 100 - 676 = -576 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (08) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (08)",
+    pregunta: "La cónica representada por $5x^2 + 4xy + 2y^2 - 20x + 10y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=5$, $B=4$, $C=2$. $B^2 - 4AC = 16 - 40 = -24 < 0 \\Rightarrow$ elipse (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (09) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (09)",
+    pregunta: "La cónica representada por $2x^2 - 4xy + 2y^2 - 40x + 20y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=2$, $B=-4$, $C=2$. $B^2 - 4AC = 16 - 16 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (10) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (10)",
+    pregunta: "La cónica representada por $x^2 + 4xy + y^2 - 24x - 24y + 104 = 0$ es",
     opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
     correcta: 3,
-    explicacion: "$A=2$, $B=5$, $C=2$. $B^2 - 4AC = 25 - 16 = 9 > 0 \\Rightarrow$ hipérbola (rotada por el término $xy$)."
+    explicacion: "$A=1$, $B=4$, $C=1$. $B^2 - 4AC = 16 - 4 = 12 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (11) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (11)",
+    pregunta: "La cónica representada por $4x^2 + 8xy + y^2 - 6x + 2y - 10 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=4$, $B=8$, $C=1$. $B^2 - 4AC = 64 - 16 = 48 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (12) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (12)",
+    pregunta: "La cónica representada por $2x^2 + 6xy - y^2 + 4x - 8 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=2$, $B=6$, $C=-1$. $B^2 - 4AC = 36 - 4(2)(-1) = 36 + 8 = 44 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (13) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (13)",
+    pregunta: "La cónica representada por $9x^2 + 6xy + y^2 - 18x - 6y + 4 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=9$, $B=6$, $C=1$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (14) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (14)",
+    pregunta: "La cónica representada por $x^2 - 6xy + 9y^2 + 5x - 15y - 7 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=1$, $B=-6$, $C=9$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (15) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (15)",
+    pregunta: "La cónica representada por $7x^2 + 4xy + 4y^2 - 14x - 16y + 7 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=7$, $B=4$, $C=4$. $B^2 - 4AC = 16 - 112 = -96 < 0 \\Rightarrow$ elipse (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (16) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (16)",
+    pregunta: "La cónica representada por $3x^2 - 8xy + 3y^2 + 12x - 4y - 5 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=3$, $B=-8$, $C=3$. $B^2 - 4AC = 64 - 36 = 28 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (17) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (17)",
+    pregunta: "La cónica representada por $5x^2 - 2xy + 5y^2 - 12x + 4y + 4 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=5$, $B=-2$, $C=5$. $B^2 - 4AC = 4 - 100 = -96 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (18) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (18)",
+    pregunta: "La cónica representada por $x^2 + 24xy + 6y^2 - 4x - 2 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=24$, $C=6$. $B^2 - 4AC = 576 - 24 = 552 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (19) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (19)",
+    pregunta: "La cónica representada por $4x^2 - 4xy + y^2 + 10x - 5y + 1 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=4$, $B=-4$, $C=1$. $B^2 - 4AC = 16 - 16 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (20) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (20)",
+    pregunta: "La cónica representada por $6x^2 + 4xy + 9y^2 - 12x + 18y - 11 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=6$, $B=4$, $C=9$. $B^2 - 4AC = 16 - 216 = -200 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
   },
   // —— Matemáticas: integral inmediata (potencia) ——
   {
@@ -4551,11 +4704,19 @@ function mezclarOpciones(preguntas) {
 
 function prepararPreguntas(lista) {
   // Modo revisión: todas las preguntas en orden, sin shuffle de orden ni de opciones.
-  // Permite filtrar por fuente (ej. solo las del PDF "320_UNAM").
+  // Permite filtrar por fuente (ej. solo las del PDF "320_UNAM") y/o por tema/materia.
   if (MODO_REVISAR) {
     let filtradas = lista;
     if (FILTRO_FUENTE) {
       filtradas = filtradas.filter(p => p.fuente === FILTRO_FUENTE);
+    }
+    if (FILTRO_TEMA) {
+      const filtros = FILTRO_TEMA.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+      filtradas = filtradas.filter(p => {
+        const tema = (p.tema || '').toLowerCase();
+        const materia = (p.materia || '').toLowerCase();
+        return filtros.some(f => tema.includes(f) || materia.includes(f));
+      });
     }
     return filtradas;
   }
@@ -4566,6 +4727,14 @@ function prepararPreguntas(lista) {
     let filtradas = lista;
     if (FILTRO_FUENTE) {
       filtradas = filtradas.filter(p => p.fuente === FILTRO_FUENTE);
+    }
+    if (FILTRO_TEMA) {
+      const filtros = FILTRO_TEMA.toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+      filtradas = filtradas.filter(p => {
+        const tema = (p.tema || '').toLowerCase();
+        const materia = (p.materia || '').toLowerCase();
+        return filtros.some(f => tema.includes(f) || materia.includes(f));
+      });
     }
     return mezclarOpciones(shuffle(filtradas));
   }
