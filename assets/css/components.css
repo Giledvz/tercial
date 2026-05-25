@@ -269,6 +269,23 @@
   white-space: nowrap;
 }
 
+/* Section-header categorical — mismo patrón que .hero[data-cat].
+   Border-top con color por categoría/unidad. margin-top genera
+   respiro vertical entre secciones consecutivas (ej. unidades
+   de formulario.html). */
+.section-header[data-cat] {
+  padding-top: var(--space-3);
+  margin-top: var(--space-9);
+}
+.section-header[data-cat="blue"]   { border-top: var(--border-thick) solid var(--cat-blue); }
+.section-header[data-cat="amber"]  { border-top: var(--border-thick) solid var(--cat-amber); }
+.section-header[data-cat="coral"]  { border-top: var(--border-thick) solid var(--cat-coral); }
+.section-header[data-cat="teal"]   { border-top: var(--border-thick) solid var(--cat-teal); }
+.section-header[data-cat="purple"] { border-top: var(--border-thick) solid var(--cat-purple); }
+.section-header[data-cat="navy"]   { border-top: var(--border-thick) solid var(--cat-navy); }
+.section-header[data-cat="ok"]     { border-top: var(--border-thick) solid var(--color-state-ok); }
+.section-header[data-cat="err"]    { border-top: var(--border-thick) solid var(--color-state-err); }
+
 
 /* ============================================================
    4.4 — Card editorial
@@ -2190,4 +2207,116 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   .question { font-size: var(--font-size-18); }
   .result-headline { font-size: var(--font-size-20); }
   .final .score-number { font-size: var(--font-size-40); }
+}
+
+
+/* ============================================================
+   4.16 — Formulario de física
+
+   Selectores específicos del widget de formulario.html. NO
+   REUTILIZABLES. .constantes-grid es un listado denso de
+   constantes con KaTeX inline; .formula-row es la tabla
+   3-col (ecuación · descripción · unidad) que se repite
+   por cada fórmula dentro de cada unidad de física.
+   ============================================================ */
+
+/* Constantes — grid 2-col en desktop, 1-col en mobile */
+.constantes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-14);
+}
+
+.constantes-grid__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.constantes-grid__value {
+  font-family: var(--font-family-body);
+  color: var(--color-text-primary);
+}
+
+.constantes-grid__label {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+}
+
+@media (max-width: 760px) {
+  .constantes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Formula table — tabla 3-col (ecuación · descripción · unidad)
+   que se repite por cada fórmula. En desktop, grid 3-col;
+   en mobile (<760px), stack vertical. */
+.formula-table {
+  margin-block: var(--space-4);
+}
+
+.formula-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 30%) 1fr minmax(110px, 28%);
+  gap: var(--space-2) var(--space-5);
+  padding: var(--space-3) 0;
+  border-bottom: 1px dotted var(--color-border);
+  align-items: baseline;
+  font-size: var(--font-size-14);
+}
+
+.formula-row:last-child {
+  border-bottom: none;
+}
+
+.formula-row__eq {
+  font-size: var(--font-size-15);
+  color: var(--color-text-primary);
+}
+
+.formula-row__desc {
+  color: var(--color-text-primary);
+}
+
+.formula-row__unit {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+  text-align: right;
+}
+
+.formula-note {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+  padding-top: var(--space-3);
+  margin-top: var(--space-2);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+/* Botón "Practicar este tema" en formulario — respiro vertical
+   cuando viene después de la nota italic o la tabla de fórmulas. */
+.formula-note + .btn,
+.formula-table + .btn {
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 760px) {
+  .formula-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+    padding: var(--space-3) 0;
+  }
+  .formula-row__unit {
+    text-align: left;
+  }
 }
