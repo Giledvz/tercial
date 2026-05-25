@@ -1,216 +1,221 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Cinemática</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #1a4f8a; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1a4f8a; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1a4f8a; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Cinemática · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Cinemática</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Usa <b>g = 10 m/s²</b> salvo indicación contraria.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Cinemática · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="coral">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Cinemática</h1>
+    <p class="hero__lede">
+      MRU, MRUA, caída libre, tiro parabólico y movimiento circular uniforme. Toca cada ejercicio para revelar su respuesta. Usa <strong>g = 10 m/s²</strong> salvo indicación contraria.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. MRU ────────────────────────────────────────────────────────────────
-  { titulo:"1 · Movimiento rectilíneo uniforme (MRU)", color:"#1a4f8a", ejercicios:[
-    { n:"01", t:"Un auto se mueve a velocidad constante de 20 m/s. ¿Qué distancia recorre en 30 s?",
-      d:"d = v·t",
-      r:"d = 600 m" },
-    { n:"02", t:"Un ciclista recorre 90 km en 3 horas a velocidad constante. ¿Cuál es su velocidad en m/s?",
-      d:"Convierte km/h → m/s dividiendo entre 3.6",
-      r:"v = 30 km/h ≈ 8.33 m/s" },
-    { n:"03", t:"¿Cuánto tiempo tarda un objeto en recorrer 200 m a velocidad constante de 25 m/s?",
-      d:"t = d/v",
-      r:"t = 8 s" },
-    { n:"04", t:"Un tren viaja a 72 km/h. Convierte esta velocidad a m/s.",
-      d:"Divide entre 3.6",
-      r:"v = 20 m/s" },
-    { n:"05", t:"Un avión vuela 800 km en 1 h 20 min. ¿Cuál es su velocidad media en km/h?",
-      d:"1 h 20 min = 4/3 h",
-      r:"v = 600 km/h" },
-    { n:"06", t:"Dos autos parten al mismo tiempo de un punto en sentidos opuestos: uno a 60 km/h y el otro a 80 km/h. ¿A qué distancia se encuentran después de 2 horas?",
-      d:"Distancia = velocidad relativa × tiempo",
-      r:"d = 280 km" },
+  { titulo: 'Movimiento rectilíneo uniforme (MRU)', ejercicios: [
+    { n:'01', t:'Un auto se mueve a velocidad constante de 20 m/s. ¿Qué distancia recorre en 30 s?',
+      d:'d = v·t',
+      r:'d = 600 m' },
+    { n:'02', t:'Un ciclista recorre 90 km en 3 horas a velocidad constante. ¿Cuál es su velocidad en m/s?',
+      d:'Convierte km/h → m/s dividiendo entre 3.6',
+      r:'v = 30 km/h ≈ 8.33 m/s' },
+    { n:'03', t:'¿Cuánto tiempo tarda un objeto en recorrer 200 m a velocidad constante de 25 m/s?',
+      d:'t = d/v',
+      r:'t = 8 s' },
+    { n:'04', t:'Un tren viaja a 72 km/h. Convierte esta velocidad a m/s.',
+      d:'Divide entre 3.6',
+      r:'v = 20 m/s' },
+    { n:'05', t:'Un avión vuela 800 km en 1 h 20 min. ¿Cuál es su velocidad media en km/h?',
+      d:'1 h 20 min = 4/3 h',
+      r:'v = 600 km/h' },
+    { n:'06', t:'Dos autos parten al mismo tiempo de un punto en sentidos opuestos: uno a 60 km/h y el otro a 80 km/h. ¿A qué distancia se encuentran después de 2 horas?',
+      d:'Distancia = velocidad relativa × tiempo',
+      r:'d = 280 km' },
   ]},
 
-  // ── 2. MRUA ───────────────────────────────────────────────────────────────
-  { titulo:"2 · Movimiento rectilíneo uniformemente acelerado (MRUA)", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"Un auto parte del reposo con aceleración constante de 3 m/s². ¿Cuál es su velocidad a los 5 s?",
-      d:"v<sub>f</sub> = v₀ + at",
-      r:"v = 15 m/s" },
-    { n:"02", t:"¿Qué distancia recorre el auto del problema anterior en esos 5 s?",
-      d:"d = ½at² (parte del reposo)",
-      r:"d = 37.5 m" },
-    { n:"03", t:"Un coche va a 20 m/s y frena con aceleración de −4 m/s². ¿Cuánto tiempo tarda en detenerse?",
-      d:"v<sub>f</sub> = 0",
-      r:"t = 5 s" },
-    { n:"04", t:"Un objeto parte con v₀ = 3 m/s y acelera a 4 m/s². ¿Cuál es su velocidad después de recorrer 14 m?",
-      d:"v<sub>f</sub>² = v₀² + 2ad",
-      r:"v<sub>f</sub> = 11 m/s" },
-    { n:"05", t:"Un coche arranca y alcanza 30 m/s en 6 s. ¿Cuál es su aceleración?",
-      d:"a = (v<sub>f</sub> − v₀)/t",
-      r:"a = 5 m/s²" },
-    { n:"06", t:"¿Qué distancia recorre el coche del problema 05 en esos 6 s?",
-      d:"d = v<sub>prom</sub> · t (con v<sub>prom</sub> = (0+30)/2)",
-      r:"d = 90 m" },
-    { n:"07", t:"Un tren va a 40 m/s y frena uniformemente recorriendo 200 m hasta detenerse. ¿Cuál es su aceleración?",
-      d:"v<sub>f</sub>² = v₀² + 2ad con v<sub>f</sub> = 0",
-      r:"a = −4 m/s²" },
-    { n:"08", t:"Un auto se mueve con velocidad inicial 10 m/s y aceleración 2 m/s². ¿Qué distancia recorre en 4 s?",
-      d:"d = v₀t + ½at²",
-      r:"d = 56 m" },
+  { titulo: 'Movimiento rectilíneo uniformemente acelerado (MRUA)', ejercicios: [
+    { n:'01', t:'Un auto parte del reposo con aceleración constante de 3 m/s². ¿Cuál es su velocidad a los 5 s?',
+      d:'v<sub>f</sub> = v₀ + at',
+      r:'v = 15 m/s' },
+    { n:'02', t:'¿Qué distancia recorre el auto del problema anterior en esos 5 s?',
+      d:'d = ½at² (parte del reposo)',
+      r:'d = 37.5 m' },
+    { n:'03', t:'Un coche va a 20 m/s y frena con aceleración de −4 m/s². ¿Cuánto tiempo tarda en detenerse?',
+      d:'v<sub>f</sub> = 0',
+      r:'t = 5 s' },
+    { n:'04', t:'Un objeto parte con v₀ = 3 m/s y acelera a 4 m/s². ¿Cuál es su velocidad después de recorrer 14 m?',
+      d:'v<sub>f</sub>² = v₀² + 2ad',
+      r:'v<sub>f</sub> = 11 m/s' },
+    { n:'05', t:'Un coche arranca y alcanza 30 m/s en 6 s. ¿Cuál es su aceleración?',
+      d:'a = (v<sub>f</sub> − v₀)/t',
+      r:'a = 5 m/s²' },
+    { n:'06', t:'¿Qué distancia recorre el coche del problema 05 en esos 6 s?',
+      d:'d = v<sub>prom</sub> · t (con v<sub>prom</sub> = (0+30)/2)',
+      r:'d = 90 m' },
+    { n:'07', t:'Un tren va a 40 m/s y frena uniformemente recorriendo 200 m hasta detenerse. ¿Cuál es su aceleración?',
+      d:'v<sub>f</sub>² = v₀² + 2ad con v<sub>f</sub> = 0',
+      r:'a = −4 m/s²' },
+    { n:'08', t:'Un auto se mueve con velocidad inicial 10 m/s y aceleración 2 m/s². ¿Qué distancia recorre en 4 s?',
+      d:'d = v₀t + ½at²',
+      r:'d = 56 m' },
   ]},
 
-  // ── 3. Caída libre ────────────────────────────────────────────────────────
-  { titulo:"3 · Caída libre", color:"#047857", ejercicios:[
-    { n:"01", t:"Se deja caer un objeto desde el reposo. ¿Cuál es su velocidad a los 3 s?",
-      d:"v = gt",
-      r:"v = 30 m/s" },
-    { n:"02", t:"¿Qué distancia ha caído el objeto del problema 01 en esos 3 s?",
-      d:"h = ½gt²",
-      r:"h = 45 m" },
-    { n:"03", t:"Se deja caer un objeto desde 80 m de altura. ¿Cuánto tarda en llegar al suelo?",
-      d:"t = √(2h/g)",
-      r:"t = 4 s" },
-    { n:"04", t:"¿Con qué velocidad llega al suelo el objeto del problema 03?",
-      d:"v = gt",
-      r:"v = 40 m/s" },
-    { n:"05", t:"Se lanza una pelota verticalmente hacia arriba con velocidad inicial 20 m/s. ¿Qué altura máxima alcanza?",
-      d:"En h<sub>máx</sub>: v<sub>f</sub> = 0",
-      r:"h = 20 m" },
-    { n:"06", t:"¿Cuánto tiempo tarda la pelota del problema 05 en alcanzar su altura máxima?",
-      d:"v<sub>f</sub> = v₀ − gt = 0",
-      r:"t = 2 s" },
+  { titulo: 'Caída libre', ejercicios: [
+    { n:'01', t:'Se deja caer un objeto desde el reposo. ¿Cuál es su velocidad a los 3 s?',
+      d:'v = gt',
+      r:'v = 30 m/s' },
+    { n:'02', t:'¿Qué distancia ha caído el objeto del problema 01 en esos 3 s?',
+      d:'h = ½gt²',
+      r:'h = 45 m' },
+    { n:'03', t:'Se deja caer un objeto desde 80 m de altura. ¿Cuánto tarda en llegar al suelo?',
+      d:'t = √(2h/g)',
+      r:'t = 4 s' },
+    { n:'04', t:'¿Con qué velocidad llega al suelo el objeto del problema 03?',
+      d:'v = gt',
+      r:'v = 40 m/s' },
+    { n:'05', t:'Se lanza una pelota verticalmente hacia arriba con velocidad inicial 20 m/s. ¿Qué altura máxima alcanza?',
+      d:'En h<sub>máx</sub>: v<sub>f</sub> = 0',
+      r:'h = 20 m' },
+    { n:'06', t:'¿Cuánto tiempo tarda la pelota del problema 05 en alcanzar su altura máxima?',
+      d:'v<sub>f</sub> = v₀ − gt = 0',
+      r:'t = 2 s' },
   ]},
 
-  // ── 4. Tiro parabólico ────────────────────────────────────────────────────
-  { titulo:"4 · Tiro parabólico", color:"#b45309", ejercicios:[
-    { n:"01", t:"Un proyectil se lanza horizontalmente desde 45 m de altura con velocidad 20 m/s. ¿Cuánto tarda en caer?",
-      d:"El tiempo sólo depende de la altura: t = √(2h/g)",
-      r:"t = 3 s" },
-    { n:"02", t:"¿Qué alcance horizontal tuvo el proyectil del problema 01?",
-      d:"x = v<sub>x</sub>·t",
-      r:"x = 60 m" },
-    { n:"03", t:"Una pelota se lanza horizontalmente desde una mesa de 1.25 m de alto con velocidad 4 m/s. ¿Cuánto tarda en caer?",
-      d:"t = √(2h/g)",
-      r:"t = 0.5 s" },
-    { n:"04", t:"¿Qué distancia horizontal recorre la pelota del problema 03 antes de tocar el suelo?",
-      d:"x = v<sub>x</sub>·t",
-      r:"x = 2 m" },
-    { n:"05", t:"Un proyectil se lanza con velocidad inicial 50 m/s formando un ángulo de 30° con la horizontal. ¿Cuáles son las componentes de la velocidad inicial?",
-      d:"v<sub>x</sub> = v cos θ &nbsp;·&nbsp; v<sub>y</sub> = v sin θ",
-      r:"v<sub>x</sub> ≈ 43.3 m/s &nbsp;·&nbsp; v<sub>y</sub> = 25 m/s" },
-    { n:"06", t:"¿Cuál es el tiempo total de vuelo del proyectil del problema 05 (suelo plano)?",
-      d:"t<sub>vuelo</sub> = 2v<sub>y</sub>/g",
-      r:"t = 5 s" },
+  { titulo: 'Tiro parabólico', ejercicios: [
+    { n:'01', t:'Un proyectil se lanza horizontalmente desde 45 m de altura con velocidad 20 m/s. ¿Cuánto tarda en caer?',
+      d:'El tiempo sólo depende de la altura: t = √(2h/g)',
+      r:'t = 3 s' },
+    { n:'02', t:'¿Qué alcance horizontal tuvo el proyectil del problema 01?',
+      d:'x = v<sub>x</sub>·t',
+      r:'x = 60 m' },
+    { n:'03', t:'Una pelota se lanza horizontalmente desde una mesa de 1.25 m de alto con velocidad 4 m/s. ¿Cuánto tarda en caer?',
+      d:'t = √(2h/g)',
+      r:'t = 0.5 s' },
+    { n:'04', t:'¿Qué distancia horizontal recorre la pelota del problema 03 antes de tocar el suelo?',
+      d:'x = v<sub>x</sub>·t',
+      r:'x = 2 m' },
+    { n:'05', t:'Un proyectil se lanza con velocidad inicial 50 m/s formando un ángulo de 30° con la horizontal. ¿Cuáles son las componentes de la velocidad inicial?',
+      d:'v<sub>x</sub> = v cos θ &nbsp;·&nbsp; v<sub>y</sub> = v sin θ',
+      r:'v<sub>x</sub> ≈ 43.3 m/s &nbsp;·&nbsp; v<sub>y</sub> = 25 m/s' },
+    { n:'06', t:'¿Cuál es el tiempo total de vuelo del proyectil del problema 05 (suelo plano)?',
+      d:'t<sub>vuelo</sub> = 2v<sub>y</sub>/g',
+      r:'t = 5 s' },
   ]},
 
-  // ── 5. MCU ────────────────────────────────────────────────────────────────
-  { titulo:"5 · Movimiento circular uniforme (MCU)", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Un disco gira con período T = 0.5 s. ¿Cuál es su frecuencia?",
-      d:"f = 1/T",
-      r:"f = 2 Hz" },
-    { n:"02", t:"Una rueda da 60 vueltas por minuto. ¿Cuál es su frecuencia en Hz?",
-      d:"f = vueltas/segundo",
-      r:"f = 1 Hz" },
-    { n:"03", t:"Un cuerpo gira en círculo de radio 2 m con velocidad tangencial 4 m/s. ¿Cuál es su aceleración centrípeta?",
-      d:"a<sub>c</sub> = v²/r",
-      r:"a<sub>c</sub> = 8 m/s²" },
-    { n:"04", t:"¿Cuál es la velocidad angular ω de un disco que da 3 vueltas por segundo?",
-      d:"ω = 2πf",
-      r:"ω = 6π rad/s ≈ 18.85 rad/s" },
-    { n:"05", t:"Un objeto gira en círculo de radio 0.5 m con velocidad tangencial 4 m/s. ¿Cuál es su velocidad angular?",
-      d:"v = ωr → ω = v/r",
-      r:"ω = 8 rad/s" },
-    { n:"06", t:"Un satélite tiene período de 90 minutos en una órbita circular. ¿Cuál es su frecuencia en Hz?",
-      d:"Convierte el período a segundos primero",
-      r:"T = 5 400 s &nbsp;·&nbsp; f ≈ 1.85 × 10⁻⁴ Hz" },
+  { titulo: 'Movimiento circular uniforme (MCU)', ejercicios: [
+    { n:'01', t:'Un disco gira con período T = 0.5 s. ¿Cuál es su frecuencia?',
+      d:'f = 1/T',
+      r:'f = 2 Hz' },
+    { n:'02', t:'Una rueda da 60 vueltas por minuto. ¿Cuál es su frecuencia en Hz?',
+      d:'f = vueltas/segundo',
+      r:'f = 1 Hz' },
+    { n:'03', t:'Un cuerpo gira en círculo de radio 2 m con velocidad tangencial 4 m/s. ¿Cuál es su aceleración centrípeta?',
+      d:'a<sub>c</sub> = v²/r',
+      r:'a<sub>c</sub> = 8 m/s²' },
+    { n:'04', t:'¿Cuál es la velocidad angular ω de un disco que da 3 vueltas por segundo?',
+      d:'ω = 2πf',
+      r:'ω = 6π rad/s ≈ 18.85 rad/s' },
+    { n:'05', t:'Un objeto gira en círculo de radio 0.5 m con velocidad tangencial 4 m/s. ¿Cuál es su velocidad angular?',
+      d:'v = ωr → ω = v/r',
+      r:'ω = 8 rad/s' },
+    { n:'06', t:'Un satélite tiene período de 90 minutos en una órbita circular. ¿Cuál es su frecuencia en Hz?',
+      d:'Convierte el período a segundos primero',
+      r:'T = 5 400 s &nbsp;·&nbsp; f ≈ 1.85 × 10⁻⁴ Hz' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

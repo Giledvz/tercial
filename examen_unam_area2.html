@@ -1,253 +1,246 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Examen Adaptativo — UNAM Área 2</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="window.katexReady=true;if(window.katexQueue){window.katexQueue.forEach(fn=>fn());window.katexQueue=[];}"></script>
-<style>
-:root {
-  --u1:#1d4ed8; --u1l:#dbeafe;
-  --u2:#6d28d9; --u2l:#ede9fe;
-  --u3:#047857; --u3l:#d1fae5;
-  --u4:#b91c1c; --u4l:#fee2e2;
-  --u5:#0e7490; --u5l:#cffafe;
-  --u6:#b45309; --u6l:#fef3c7;
-  --u7:#4338ca; --u7l:#e0e7ff;
-  --u8:#475569; --u8l:#f1f5f9;
-  --u9:#7c2d12; --u9l:#fef3c7;
-  --ok:#065f46; --ok-l:#d1fae5;
-  --err:#7f1d1d; --err-l:#fee2e2;
-  --bg:#f6f7f9; --card:#ffffff;
-  --txt:#111827; --muted:#6b7280; --borde:#e5e7eb;
-  --nav:#0f172a;
-  --letra-bg:#f3f4f6;
-  --fb-ok-txt:#064e3b; --fb-err-txt:#7f1d1d;
-  --desglose-hd:#f9fafb; --barra-bg:#e5e7eb;
-  --shadow:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.05);
-}
-[data-theme="dark"] {
-  --bg:#0f172a; --card:#1e293b; --txt:#f1f5f9; --muted:#94a3b8; --borde:#334155;
-  --letra-bg:#334155; --fb-ok-txt:#6ee7b7; --fb-err-txt:#fca5a5;
-  --desglose-hd:#1e293b; --barra-bg:#334155;
-  --shadow:0 1px 3px rgba(0,0,0,.3),0 4px 12px rgba(0,0,0,.2);
-  --u1l:#1e3a5f; --u2l:#2e1065; --u3l:#064e3b; --u4l:#450a0a;
-  --u5l:#164e63; --u6l:#451a03; --u7l:#1e1b4b; --u8l:#1e293b; --u9l:#431407;
-  --ok-l:#064e3b; --err-l:#450a0a;
-}
-* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
-html { font-size:16px; }
-body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--txt); min-height:100vh; transition:background .25s,color .25s; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Examen UNAM Área 2 — clases</title>
 
-/* ── INICIO ── */
-#pantalla-inicio {
-  min-height:100vh; display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  padding:2rem 1.25rem; text-align:center;
-  background:linear-gradient(160deg,#0f172a 0%,#1e1b4b 100%); color:white;
-}
-[data-theme="dark"] #pantalla-inicio { background:linear-gradient(160deg,#020617 0%,#0f172a 100%); }
-.inicio-icon { font-size:3rem; margin-bottom:1rem; }
-#pantalla-inicio h1 { font-family:'Lora',Georgia,serif; font-size:2rem; font-weight:600; line-height:1.2; margin-bottom:.4rem; }
-#pantalla-inicio .subtitulo { font-size:.9rem; color:rgba(255,255,255,.65); margin-bottom:1.5rem; line-height:1.6; }
-.stats-row { display:flex; gap:1rem; margin-bottom:1.5rem; justify-content:center; }
-.stat-box { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:.9rem 1.2rem; min-width:80px; }
-.stat-num { font-size:1.6rem; font-weight:600; }
-.stat-label { font-size:.72rem; color:rgba(255,255,255,.55); letter-spacing:.04em; text-transform:uppercase; margin-top:2px; }
-.unidades-grid { display:grid; grid-template-columns:1fr 1fr; gap:.45rem; margin-bottom:1.5rem; width:100%; max-width:380px; text-align:left; }
-.u-chip { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:6px 10px; font-size:.76rem; }
-.u-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-.tiempo-info { display:flex; gap:.5rem; margin-bottom:1.75rem; flex-wrap:wrap; justify-content:center; }
-.t-pill { background:rgba(255,255,255,.08); border-radius:20px; padding:4px 12px; font-size:.78rem; color:rgba(255,255,255,.7); }
-.btn-start { display:block; width:100%; max-width:320px; padding:1rem; background:white; color:#0f172a; border:none; border-radius:12px; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; cursor:pointer; transition:opacity .15s; }
-.btn-start:active { opacity:.85; }
-.nota-adaptativo { margin-top:1.25rem; font-size:.76rem; color:rgba(255,255,255,.4); max-width:300px; line-height:1.6; }
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
 
-/* ── HEADER EXAMEN ── */
-#pantalla-examen { display:none; min-height:100vh; }
-.header-examen { position:sticky; top:0; background:var(--nav); padding:.75rem 1.25rem .6rem; z-index:10; }
-.header-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:.5rem; }
-.pregunta-num { font-size:.88rem; font-weight:600; color:rgba(255,255,255,.7); }
-.header-derecha { display:flex; align-items:center; gap:10px; }
-.score-badge { font-size:.8rem; font-weight:600; color:rgba(255,255,255,.6); }
-.timer-circle { position:relative; width:38px; height:38px; flex-shrink:0; }
-.timer-svg { transform:rotate(-90deg); }
-.timer-track { fill:none; stroke:#334155; stroke-width:3.5; }
-.timer-fill { fill:none; stroke-width:3.5; stroke-linecap:round; transition:stroke-dashoffset 1s linear,stroke .5s; }
-.timer-num { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:10px; font-weight:700; color:white; line-height:1; }
-.dm-toggle { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); border-radius:8px; padding:5px 8px; font-size:14px; cursor:pointer; color:white; line-height:1; }
-.barra-progreso { height:3px; background:rgba(255,255,255,.15); border-radius:2px; overflow:hidden; }
-.barra-fill { height:100%; background:#60a5fa; transition:width .4s ease; border-radius:2px; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-/* ── CUERPO ── */
-.cuerpo-examen { padding:1.5rem 1.25rem; max-width:680px; margin:0 auto; background:var(--card); min-height:calc(100vh - 80px); }
-.tags-row { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:1rem; }
-.tag-unidad { display:inline-block; padding:4px 11px; border-radius:20px; font-size:.75rem; font-weight:600; letter-spacing:.03em; }
-.tag-dificultad { display:inline-block; padding:3px 9px; border-radius:20px; font-size:.72rem; font-weight:600; border:1.5px solid; }
-.dif-1 { color:#166534; border-color:#166534; background:#dcfce7; }
-.dif-2 { color:#92400e; border-color:#92400e; background:#fef3c7; }
-.dif-3 { color:#7f1d1d; border-color:#7f1d1d; background:#fee2e2; }
-[data-theme="dark"] .dif-1 { background:#052e16; color:#6ee7b7; border-color:#6ee7b7; }
-[data-theme="dark"] .dif-2 { background:#451a03; color:#fcd34d; border-color:#fcd34d; }
-[data-theme="dark"] .dif-3 { background:#450a0a; color:#fca5a5; border-color:#fca5a5; }
-.enunciado { font-family:'Lora',Georgia,serif; font-size:1.05rem; line-height:1.7; color:var(--txt); margin-bottom:1.5rem; font-weight:400; }
-.opciones { display:flex; flex-direction:column; gap:.6rem; }
-.opcion-btn { display:flex; align-items:flex-start; gap:12px; width:100%; text-align:left; padding:.9rem 1rem; border:1.5px solid var(--borde); border-radius:11px; background:var(--card); cursor:pointer; font-family:'DM Sans',sans-serif; font-size:.93rem; line-height:1.5; color:var(--txt); transition:border-color .12s,background .12s; }
-.opcion-btn:active:not(:disabled) { background:var(--borde); }
-.opcion-btn:disabled { cursor:default; }
-.letra-opcion { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--letra-bg); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:var(--muted); margin-top:1px; }
-.opcion-btn.correcta { border-color:var(--ok); background:var(--ok-l); }
-.opcion-btn.incorrecta { border-color:var(--err); background:var(--err-l); }
-.opcion-btn.correcta .letra-opcion { background:var(--ok); color:white; }
-.opcion-btn.incorrecta .letra-opcion { background:var(--err); color:white; }
-.feedback-box { margin-top:1.25rem; padding:1rem; border-radius:10px; font-size:.9rem; line-height:1.65; display:none; }
-.feedback-box.correcto { background:var(--ok-l); border-left:3px solid var(--ok); color:var(--fb-ok-txt); }
-.feedback-box.incorrecto { background:var(--err-l); border-left:3px solid var(--err); color:var(--fb-err-txt); }
-.feedback-icono { font-weight:700; margin-right:4px; }
-.btn-siguiente { display:none; width:100%; margin-top:1.25rem; padding:1rem; background:var(--nav); color:white; border:none; border-radius:11px; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; cursor:pointer; transition:opacity .15s; }
-.btn-siguiente:active { opacity:.85; }
-[data-theme="dark"] .btn-siguiente { background:#2563eb; }
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
 
-/* ── TABLAS DE RELACIONAR ── */
-.rel-tabla { width:100%; border-collapse:collapse; margin-top:.75rem; font-size:.88rem; font-family:'DM Sans',sans-serif; }
-.rel-tabla th, .rel-tabla td { padding:.45rem .7rem; border:1px solid var(--borde); vertical-align:top; line-height:1.5; }
-.rel-tabla th { background:var(--letra-bg); font-weight:600; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
-.rel-lista { margin-top:.75rem; border:1px solid var(--borde); border-radius:8px; overflow:hidden; font-size:.88rem; }
-.rel-lista > div { padding:.45rem .85rem; border-bottom:1px solid var(--borde); line-height:1.5; }
-.rel-lista > div:last-child { border-bottom:none; }
-/* ── KATEX ── */
-.katex { font-size:1em; }
-.katex-display { margin:.4em 0; overflow-x:auto; overflow-y:hidden; }
-[data-theme="dark"] .katex { color:var(--txt); }
-
-/* ── RESULTADOS ── */
-#pantalla-resultados { display:none; min-height:100vh; }
-.res-header { background:var(--nav); color:white; padding:2rem 1.25rem 1.5rem; text-align:center; }
-.res-header h2 { font-family:'Lora',Georgia,serif; font-size:1.5rem; margin-bottom:.25rem; }
-.res-sub { font-size:.85rem; color:rgba(255,255,255,.55); margin-bottom:1rem; }
-.puntaje-grande { font-size:3.5rem; font-weight:600; line-height:1; }
-.puntaje-den { font-size:1.1rem; color:rgba(255,255,255,.5); }
-.nivel-badge { display:inline-block; padding:5px 16px; border-radius:20px; font-size:.82rem; font-weight:600; margin-top:.75rem; }
-.res-body { padding:1.25rem; max-width:680px; margin:0 auto; }
-.res-stats-mini { display:flex; gap:.5rem; margin-bottom:1.25rem; }
-.res-stat { flex:1; background:var(--card); border-radius:12px; padding:.8rem; text-align:center; box-shadow:var(--shadow); }
-.res-stat-num { font-size:1.4rem; font-weight:600; }
-.res-stat-lbl { font-size:.7rem; color:var(--muted); margin-top:2px; }
-.desglose { background:var(--card); border-radius:14px; overflow:hidden; margin-bottom:1.5rem; box-shadow:var(--shadow); }
-.desglose-titulo { padding:.75rem 1rem; font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); background:var(--desglose-hd); border-bottom:1px solid var(--borde); }
-.desglose-fila { display:flex; align-items:center; padding:.85rem 1rem; border-bottom:1px solid var(--borde); gap:12px; }
-.desglose-fila:last-child { border-bottom:none; }
-.desglose-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
-.desglose-nombre { flex:1; font-size:.88rem; }
-.desglose-barra-wrap { width:80px; height:6px; background:var(--barra-bg); border-radius:3px; overflow:hidden; flex-shrink:0; }
-.desglose-barra-fill { height:100%; border-radius:3px; }
-.desglose-score { font-size:.85rem; font-weight:600; min-width:40px; text-align:right; }
-.btn-reiniciar { display:block; width:100%; padding:1rem; background:var(--nav); color:white; border:none; border-radius:11px; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:600; cursor:pointer; }
-</style>
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
+  <script defer src="/clases/assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<!-- INICIO -->
-<div id="pantalla-inicio">
-  <div class="inicio-icon">🎓</div>
-  <h1>Examen Adaptativo<br>UNAM Área 2</h1>
-  <p class="subtitulo">Banco Especial · 9 materias · 120 preguntas en orden</p>
-  <div class="stats-row">
-    <div class="stat-box"><div class="stat-num">120</div><div class="stat-label">Preguntas</div></div>
-    <div class="stat-box"><div class="stat-num">9</div><div class="stat-label">Materias</div></div>
-    <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">Opciones distintas</div></div>
-  </div>
-  <div class="unidades-grid">
-    <div class="u-chip"><div class="u-dot" style="background:var(--u1)"></div>Español</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u2)"></div>Matemáticas</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u3)"></div>Geografía</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u4)"></div>Física</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u5)"></div>Biología</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u6)"></div>Química</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u7)"></div>Literatura</div>
-    <div class="u-chip"><div class="u-dot" style="background:var(--u8)"></div>Hist. Universal</div>
-    <div class="u-chip" style="grid-column:span 2"><div class="u-dot" style="background:var(--u9)"></div>Historia de México</div>
-  </div>
-  <div class="tiempo-info">
-    <div class="t-pill">🟢 Básico · 90 seg</div>
-    <div class="t-pill">🟡 Intermedio · 2.5 min</div>
-    <div class="t-pill">🔴 Avanzado · 4 min</div>
-  </div>
-  <button class="btn-start" onclick="iniciarExamen()">Comenzar examen →</button>
-  <p class="nota-adaptativo">Las preguntas siguen el orden del examen real: Español → Matemáticas → Geografía → Física → Biología → Química → Literatura → Historia. Las opciones se mezclan diferente cada sesión.</p>
-</div>
+<site-nav active="examenes"></site-nav>
 
-<!-- EXAMEN -->
-<div id="pantalla-examen">
-  <div class="header-examen">
-    <div class="header-top">
-      <span class="pregunta-num" id="lbl-num">Pregunta 1 de 60</span>
-      <div class="header-derecha">
-        <span class="score-badge" id="lbl-score">✓ 0 &nbsp;✗ 0</span>
-        <div class="timer-circle">
-          <svg class="timer-svg" width="38" height="38" viewBox="0 0 38 38">
-            <circle class="timer-track" cx="19" cy="19" r="16"/>
-            <circle class="timer-fill" id="timer-arc" cx="19" cy="19" r="16" stroke="#60a5fa" stroke-dasharray="100.53" stroke-dashoffset="0"/>
-          </svg>
-          <span class="timer-num" id="timer-num">—</span>
+<main>
+
+  <!-- ══════════════ PANTALLA INICIO ══════════════ -->
+  <section class="exam-stage is-active" data-stage="inicio">
+    <div class="container container--base exam-intro">
+
+      <header class="hero" data-cat="navy">
+        <p class="eyebrow">Examen adaptativo</p>
+        <h1 class="hero__title">UNAM <em>Área 2</em></h1>
+        <p class="hero__lede">
+          Banco especial · 9 materias · 120 preguntas en el orden del examen real. Las opciones se mezclan diferente en cada sesión.
+        </p>
+      </header>
+
+      <div class="exam-stats">
+        <div class="exam-stat">
+          <span class="exam-stat__num">120</span>
+          <span class="exam-stat__label">Preguntas</span>
         </div>
-        <button class="dm-toggle" onclick="toggleDark()" id="dm-btn">🌙</button>
+        <div class="exam-stat">
+          <span class="exam-stat__num">9</span>
+          <span class="exam-stat__label">Materias</span>
+        </div>
+        <div class="exam-stat">
+          <span class="exam-stat__num">3</span>
+          <span class="exam-stat__label">Niveles</span>
+        </div>
+      </div>
+
+      <div class="exam-intro__label">
+        <p class="eyebrow">Materias del examen</p>
+        <ul class="tag-list">
+          <li class="tag">Español</li>
+          <li class="tag">Matemáticas</li>
+          <li class="tag">Geografía</li>
+          <li class="tag">Física</li>
+          <li class="tag">Biología</li>
+          <li class="tag">Química</li>
+          <li class="tag">Literatura</li>
+          <li class="tag">Historia Universal</li>
+          <li class="tag">Historia de México</li>
+        </ul>
+      </div>
+
+      <div class="exam-intro__label">
+        <p class="eyebrow">Tiempo por nivel</p>
+        <ul class="tag-list">
+          <li class="tag tag--ok">Básico · 90 seg</li>
+          <li class="tag tag--warn">Intermedio · 2.5 min</li>
+          <li class="tag tag--err">Avanzado · 4 min</li>
+        </ul>
+      </div>
+
+      <div class="exam-intro__actions">
+        <button class="btn btn--primary" type="button" id="btn-start">Comenzar examen →</button>
+        <p class="meta">El examen presenta las preguntas en el orden curricular de UNAM Área 2.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════ PANTALLA EXAMEN ══════════════ -->
+  <section class="exam-stage" data-stage="examen">
+
+    <div class="exam-status">
+      <div class="exam-status__row">
+        <span class="exam-status__num" id="status-num">Pregunta 1 de 120</span>
+        <div class="exam-status__right">
+          <span class="exam-status__score" id="status-score">
+            <span class="exam-status__score-ok">✓ 0</span>
+            <span class="exam-status__score-err">✗ 0</span>
+          </span>
+          <div class="exam-timer" id="exam-timer">
+            <svg class="exam-timer__svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
+              <circle class="exam-timer__track" cx="20" cy="20" r="17"/>
+              <circle class="exam-timer__fill" id="timer-arc" cx="20" cy="20" r="17"
+                pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>
+            </svg>
+            <span class="exam-timer__num" id="timer-num">—</span>
+          </div>
+          <button class="theme-toggle" type="button" id="exam-theme-toggle" aria-label="Cambiar modo de color">
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2"/><path d="M12 20v2"/>
+              <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+              <path d="M2 12h2"/><path d="M20 12h2"/>
+              <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+            </svg>
+            <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/>
+              <path d="M12 2v2"/><path d="M12 20v2"/>
+              <path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/>
+              <path d="M2 12h2"/><path d="M20 12h2"/>
+              <path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="exam-progress">
+        <div class="exam-progress__fill" id="progress-fill"></div>
       </div>
     </div>
-    <div class="barra-progreso"><div class="barra-fill" id="barra" style="width:0%"></div></div>
-  </div>
-  <div class="cuerpo-examen">
-    <div class="tags-row">
-      <span class="tag-unidad" id="tag-unidad"></span>
-      <span class="tag-dificultad" id="tag-dif"></span>
-    </div>
-    <p class="enunciado" id="enunciado"></p>
-    <div class="opciones" id="opciones"></div>
-    <div class="feedback-box" id="feedback"></div>
-    <button class="btn-siguiente" id="btn-sig" onclick="siguientePregunta()">Siguiente →</button>
-  </div>
-</div>
 
-<!-- RESULTADOS -->
-<div id="pantalla-resultados">
-  <div class="res-header">
-    <h2>Examen completado</h2>
-    <p class="res-sub" id="res-fecha"></p>
-    <div><span class="puntaje-grande" id="res-pct" style="color:white">—</span><span class="puntaje-den"> / 60</span></div>
-    <div class="nivel-badge" id="res-nivel"></div>
-  </div>
-  <div class="res-body">
-    <div class="res-stats-mini">
-      <div class="res-stat"><div class="res-stat-num" id="res-corr" style="color:var(--ok)">—</div><div class="res-stat-lbl">Correctas</div></div>
-      <div class="res-stat"><div class="res-stat-num" id="res-inco" style="color:var(--err)">—</div><div class="res-stat-lbl">Incorrectas</div></div>
-      <div class="res-stat"><div class="res-stat-num" id="res-pct2">—</div><div class="res-stat-lbl">Aciertos</div></div>
+    <div class="container container--base">
+      <article class="exam-question">
+        <ul class="tag-list">
+          <li class="tag" id="tag-unidad"></li>
+          <li class="tag" id="tag-dif"></li>
+        </ul>
+        <div class="exam-question__statement" id="statement"></div>
+        <div class="exam-options" id="opciones"></div>
+        <div id="feedback"></div>
+        <button class="btn btn--primary" id="btn-sig" type="button" hidden aria-keyshortcuts="Enter">Siguiente →</button>
+        <p class="exam-question__shortcuts" aria-hidden="true">
+          Atajos: <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> para responder · <kbd>Enter</kbd> para continuar
+        </p>
+      </article>
     </div>
-    <div class="desglose"><div class="desglose-titulo">Rendimiento por materia</div><div id="desglose-rows"></div></div>
-    <button class="btn-reiniciar" onclick="reiniciar()">🔄 Intentar de nuevo</button>
-  </div>
-</div>
+  </section>
+
+  <!-- ══════════════ PANTALLA RESULTADOS ══════════════ -->
+  <section class="exam-stage" data-stage="resultados">
+    <div class="container container--base">
+
+      <header class="hero" data-cat="navy">
+        <p class="eyebrow">Examen completado</p>
+        <h1 class="hero__title">
+          <span id="res-correct">—</span><span class="exam-result__total"> / <span id="res-total">—</span></span>
+        </h1>
+        <p class="hero__lede" id="res-fecha">—</p>
+        <ul class="tag-list">
+          <li class="tag" id="res-nivel">—</li>
+        </ul>
+      </header>
+
+      <div class="exam-stats">
+        <div class="exam-stat">
+          <span class="exam-stat__num" id="res-corr">—</span>
+          <span class="exam-stat__label">Correctas</span>
+        </div>
+        <div class="exam-stat">
+          <span class="exam-stat__num" id="res-inco">—</span>
+          <span class="exam-stat__label">Incorrectas</span>
+        </div>
+        <div class="exam-stat">
+          <span class="exam-stat__num" id="res-pct">—</span>
+          <span class="exam-stat__label">Aciertos</span>
+        </div>
+      </div>
+
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">i.</span>
+          Rendimiento por materia
+        </h2>
+      </header>
+
+      <div class="exam-breakdown" id="breakdown-rows"></div>
+
+      <button class="btn btn--primary" type="button" id="btn-restart">Intentar de nuevo</button>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#examenes">Más exámenes</a>
+  </nav>
+</footer>
 
 <script>
+/* ──────────────────────────────────────────────────────────────
+   CONFIG
+   ────────────────────────────────────────────────────────────── */
 const UNIDADES = [
-  { id:1, nombre:'Español',          color:'#1d4ed8', bg:'#dbeafe' },
-  { id:2, nombre:'Matemáticas',      color:'#6d28d9', bg:'#ede9fe' },
-  { id:3, nombre:'Geografía',        color:'#047857', bg:'#d1fae5' },
-  { id:4, nombre:'Física',           color:'#b91c1c', bg:'#fee2e2' },
-  { id:5, nombre:'Biología',         color:'#0e7490', bg:'#cffafe' },
-  { id:6, nombre:'Química',          color:'#b45309', bg:'#fef3c7' },
-  { id:7, nombre:'Literatura',       color:'#4338ca', bg:'#e0e7ff' },
-  { id:8, nombre:'Historia Universal',color:'#475569',bg:'#f1f5f9' },
-  { id:9, nombre:'Historia de México',color:'#7c2d12',bg:'#fef3c7' },
+  { id:1, nombre:'Español' },
+  { id:2, nombre:'Matemáticas' },
+  { id:3, nombre:'Geografía' },
+  { id:4, nombre:'Física' },
+  { id:5, nombre:'Biología' },
+  { id:6, nombre:'Química' },
+  { id:7, nombre:'Literatura' },
+  { id:8, nombre:'Historia Universal' },
+  { id:9, nombre:'Historia de México' },
 ];
-const TIEMPOS = {1:90, 2:150, 3:240};
-const CIRCUNF = 100.53;
-const LETRAS  = ['A','B','C','D'];
-const DIF_LABEL = {1:'Básico', 2:'Intermedio', 3:'Avanzado'};
 
+const TIEMPOS   = { 1: 90, 2: 150, 3: 240 };  // segundos por dificultad
+const LETRAS    = ['A', 'B', 'C', 'D'];
+const DIF_LABEL = { 1: 'Básico', 2: 'Intermedio', 3: 'Avanzado' };
+const DIF_TAG   = { 1: 'tag--ok', 2: 'tag--warn', 3: 'tag--err' };
+
+const ICON_CHECK = '<svg class="exam-option__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+const ICON_X     = '<svg class="exam-option__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+const ICON_OPT_BLANK = '<svg class="exam-option__icon" viewBox="0 0 24 24" aria-hidden="true"></svg>';
+
+/* ──────────────────────────────────────────────────────────────
+   BANCO — 120 preguntas en el orden curricular del examen UNAM Área 2
+   ────────────────────────────────────────────────────────────── */
 const BANCO = [
 
 // ══ ESPAÑOL (u:1) ══
@@ -509,7 +502,23 @@ const BANCO = [
   exp:'Egipto está en el noreste de África. Argelia también está al norte, pero la respuesta correcta según el banco es Egipto. Congo y Sudáfrica están en el centro y sur.' },
 
 { id:52, u:3, d:3,
-  q:`Relaciona cada caso con el país correspondiente:<table class="rel-tabla"><tr><th>Surgimiento</th><th>País</th></tr><tr><td><b>I.</b> Formaban parte de la ex Yugoslavia</td><td><b>a.</b> Alemania</td></tr><tr><td><b>II.</b> Se separan de la URSS</td><td><b>b.</b> Croacia, Serbia y Montenegro</td></tr><tr><td><b>III.</b> Surgen al desintegrarse la URSS</td><td><b>c.</b> Kazajistán, Uzbekistán y Turkmenistán</td></tr><tr><td><b>IV.</b> Resurge como país unificado</td><td><b>d.</b> Estonia, Lituania y Letonia</td></tr></table>`,
+  q:'Relaciona cada caso con el país correspondiente:',
+  rel: {
+    leftHeader: 'Surgimiento',
+    rightHeader: 'País',
+    left: [
+      { k:'I',   v:'Formaban parte de la ex Yugoslavia' },
+      { k:'II',  v:'Se separan de la URSS' },
+      { k:'III', v:'Surgen al desintegrarse la URSS' },
+      { k:'IV',  v:'Resurge como país unificado' },
+    ],
+    right: [
+      { k:'a', v:'Alemania' },
+      { k:'b', v:'Croacia, Serbia y Montenegro' },
+      { k:'c', v:'Kazajistán, Uzbekistán y Turkmenistán' },
+      { k:'d', v:'Estonia, Lituania y Letonia' },
+    ],
+  },
   ops:['I:d − II:b − III:c − IV:a','I:a − II:c − III:d − IV:b','I:b − II:c − III:d − IV:a','I:c − II:a − III:d − IV:b'], ans:2,
   exp:'I→b (ex Yugoslavia: Croacia, Serbia, Montenegro). II→c (repúblicas centroasiáticas). III→d (países bálticos al desintegrarse URSS). IV→a (Alemania unificada en 1990).' },
 
@@ -692,7 +701,26 @@ const BANCO = [
   exp:'El Galio tiene estado de oxidación +3 típico. Con oxígeno forma Ga₂O₃ (óxido de galio III): 4Ga + 3O₂ → 2Ga₂O₃.' },
 
 { id:88, u:6, d:3,
-  q:`Relaciona cada tipo de hidrocarburo con su estructura:<table class="rel-tabla"><tr><th>#</th><th>Tipo</th><th>Estructura</th></tr><tr><td><b>1.</b></td><td>Alquino</td><td>CH₃−C≡C−CH₂−CH₂−CH₃</td></tr><tr><td><b>2.</b></td><td>Alcano</td><td>CH₃−CH₂−CH₂−CH₂−CH₂−CH₃</td></tr><tr><td><b>3.</b></td><td>Alqueno</td><td>CH₃−CH₂−CH₂−CH=CH−CH₃</td></tr></table>`,
+  q:'Relaciona cada tipo de hidrocarburo con su estructura:',
+  rel: {
+    leftHeader: 'Tipo',
+    rightHeader: 'Estructura',
+    left: [
+      { k:'1', v:'Alquino' },
+      { k:'2', v:'Alcano' },
+      { k:'3', v:'Alqueno' },
+    ],
+    /* Estructuras en orden A/B/C distinto al orden tipo 1/2/3.
+       Mapeo correcto (answer "1C, 2A, 3B"):
+       1 Alquino → C (triple enlace ≡)
+       2 Alcano  → A (cadena saturada)
+       3 Alqueno → B (doble enlace =) */
+    right: [
+      { k:'A', v:'CH₃−CH₂−CH₂−CH₂−CH₂−CH₃' },
+      { k:'B', v:'CH₃−CH₂−CH₂−CH=CH−CH₃' },
+      { k:'C', v:'CH₃−C≡C−CH₂−CH₂−CH₃' },
+    ],
+  },
   ops:['1A, 2B, 3C','1B, 2C, 3A','1C, 2B, 3A','1C, 2A, 3B'], ans:3,
   exp:'Alquino(1)→C (triple enlace ≡). Alcano(2)→A (solo enlaces simples, cadena saturada). Alqueno(3)→B (doble enlace =).' },
 
@@ -789,7 +817,7 @@ const BANCO = [
   exp:'Los regímenes totalitarios (fascismo, nazismo, estalinismo) se caracterizan por un líder carismático con poder absoluto, partido único, represión de oposición y control total del Estado.' },
 
 { id:107, u:8, d:3,
-  q:`De los siguientes hechos, ¿cuál(es) fue(ron) consecuencia(s) de la <b>Segunda Guerra Mundial</b>?<div class="rel-lista"><div><b>I.</b> La ocupación de los países vencidos y la creación de la ONU</div><div><b>II.</b> Las violaciones del tratado de Versalles</div><div><b>III.</b> Formación del eje Berlín–Roma–Tokio</div><div><b>IV.</b> La división de Alemania por parte de Italia</div><div><b>V.</b> La invasión de Abisinia por parte de Italia</div><div><b>VI.</b> El fracaso de la Sociedad de Naciones</div></div>`,
+  q:`De los siguientes hechos, ¿cuál(es) fue(ron) consecuencia(s) de la <b>Segunda Guerra Mundial</b>?<div class="exam-rel-list"><div><b>I.</b> La ocupación de los países vencidos y la creación de la ONU</div><div><b>II.</b> Las violaciones del tratado de Versalles</div><div><b>III.</b> Formación del eje Berlín–Roma–Tokio</div><div><b>IV.</b> La división de Alemania por parte de Italia</div><div><b>V.</b> La invasión de Abisinia por parte de Italia</div><div><b>VI.</b> El fracaso de la Sociedad de Naciones</div></div>`,
   ops:['I y IV','V y VI','Solo I','IV y III'], ans:2,
   exp:'Solo el hecho I (ocupación de países vencidos y creación de la ONU en 1945) es consecuencia directa de la SGWW. Los demás son causas o hechos anteriores a la guerra.' },
 
@@ -804,13 +832,47 @@ const BANCO = [
   exp:'La Ilustración (siglo XVIII) aportó los fundamentos ideológicos (soberanía popular, derechos naturales, separación de poderes) que impulsaron la Revolución Francesa y las independencias americanas.' },
 
 { id:110, u:8, d:3,
-  q:`Relaciona cada país con su movimiento independentista:<table class="rel-tabla"><tr><th>País</th><th>Movimiento</th></tr><tr><td><b>I.</b> India</td><td><b>a.</b> Condena la segregación racial; busca la unidad nacional</td></tr><tr><td><b>II.</b> Argelia</td><td><b>b.</b> Reivindica derechos laborales; crea un movimiento nacional</td></tr><tr><td><b>III.</b> Sudáfrica</td><td><b>c.</b> No violencia y resistencia pasiva; propone un Estado único</td></tr><tr><td><b>IV.</b> Congo Belga</td><td><b>d.</b> Autonomía por golpe militar; guerra de 8 años</td></tr></table>`,
+  q:'Relaciona cada país con su movimiento independentista:',
+  rel: {
+    leftHeader: 'País',
+    rightHeader: 'Movimiento',
+    left: [
+      { k:'I',   v:'India' },
+      { k:'II',  v:'Argelia' },
+      { k:'III', v:'Sudáfrica' },
+      { k:'IV',  v:'Congo Belga' },
+    ],
+    right: [
+      { k:'a', v:'Condena la segregación racial; busca la unidad nacional' },
+      { k:'b', v:'Reivindica derechos laborales; crea un movimiento nacional' },
+      { k:'c', v:'No violencia y resistencia pasiva; propone un Estado único' },
+      { k:'d', v:'Autonomía por golpe militar; guerra de 8 años' },
+    ],
+  },
   ops:['I:d − II:a − III:c − IV:b','I:c − II:d − III:a − IV:b','I:a − II:c − III:b − IV:d','I:b − II:a − III:d − IV:c'], ans:1,
   exp:'India(I)→c (Gandhi, no violencia). Argelia(II)→d (guerra vs Francia, 1954–62). Sudáfrica(III)→a (lucha contra el apartheid). Congo Belga(IV)→b (Lumumba, derechos laborales).' },
 
 // ══ HISTORIA DE MÉXICO (u:9) ══
 { id:111, u:9, d:3,
-  q:`Relaciona cada personaje con su aporte:<table class="rel-tabla"><tr><th>Personaje</th><th>Aporte</th></tr><tr><td><b>I.</b> Carlos II</td><td><b>a.</b> Abdicó a favor de Napoleón</td></tr><tr><td><b>II.</b> Antonio de Mendoza</td><td><b>b.</b> Dirigió la conquista en el Nuevo Mundo</td></tr><tr><td><b>III.</b> Bartolomé de las Casas</td><td><b>c.</b> Fraile defensor de los derechos indígenas</td></tr><tr><td><b>IV.</b> Hernán Cortés</td><td><b>d.</b> Primer virrey de la Nueva España</td></tr><tr><td><b>V.</b> Carlos IV</td><td><b>e.</b> Reformas Borbónicas</td></tr></table>`,
+  q:'Relaciona cada personaje con su aporte:',
+  rel: {
+    leftHeader: 'Personaje',
+    rightHeader: 'Aporte',
+    left: [
+      { k:'I',   v:'Carlos II' },
+      { k:'II',  v:'Antonio de Mendoza' },
+      { k:'III', v:'Bartolomé de las Casas' },
+      { k:'IV',  v:'Hernán Cortés' },
+      { k:'V',   v:'Carlos IV' },
+    ],
+    right: [
+      { k:'a', v:'Abdicó a favor de Napoleón' },
+      { k:'b', v:'Dirigió la conquista en el Nuevo Mundo' },
+      { k:'c', v:'Fraile defensor de los derechos indígenas' },
+      { k:'d', v:'Primer virrey de la Nueva España' },
+      { k:'e', v:'Reformas Borbónicas' },
+    ],
+  },
   ops:['I:d − II:e − III:a − IV:b − V:c','I:e − II:d − III:c − IV:b − V:a','I:a − II:d − III:c − IV:b − V:e','I:b − II:a − III:c − IV:d − V:e'], ans:1,
   exp:'Carlos II(I)→e (Reformas Borbónicas). Antonio de Mendoza(II)→d (primer virrey). Bartolomé de las Casas(III)→c. Hernán Cortés(IV)→b. Carlos IV(V)→a (abdicó ante Napoleón, 1808).' },
 
@@ -861,48 +923,98 @@ const BANCO = [
 
 ];
 
-// ─────────────────────────────────────
-// RENDER KATEX
-// ─────────────────────────────────────
+/* Banco ordenado por materia (u) y luego por id curricular */
+const BANCO_ORDENADO = [...BANCO].sort((a, b) => a.u !== b.u ? a.u - b.u : a.id - b.id);
+
+/* ──────────────────────────────────────────────────────────────
+   ESTADO
+   ────────────────────────────────────────────────────────────── */
+let estado = {};
+let preguntaActual = null;
+let timerInterval = null;
+let timerSegundos = 0;
+let timerTotal    = 0;
+let timerActivo   = false;
+
+/* ──────────────────────────────────────────────────────────────
+   KATEX — usa ClasesKatex.load() del sistema
+   ────────────────────────────────────────────────────────────── */
 const KATEX_OPTS = {
-  delimiters:[
-    {left:'$$', right:'$$', display:true},
-    {left:'$',  right:'$',  display:false},
+  delimiters: [
+    { left: '$$', right: '$$', display: true },
+    { left: '$',  right: '$',  display: false },
   ],
   throwOnError: false,
 };
-function renderKatex(el) {
-  if (window.katexReady && window.renderMathInElement) {
-    renderMathInElement(el, KATEX_OPTS);
-  } else {
-    window.katexQueue = window.katexQueue || [];
-    window.katexQueue.push(() => renderMathInElement(el, KATEX_OPTS));
+let katexReadyPromise = null;
+
+/* expandBlanks — convierte secuencias de 2+ underscores en el texto
+   de una pregunta/opción a una <span class="blank-line"> con ancho
+   proporcional. Visualmente reemplaza "______" (guiones disjuntos por
+   letter-spacing) por una línea continua. NO modifica el banco. */
+function expandBlanks(html) {
+  return String(html).replace(/_{2,}/g, (match) =>
+    `<span class="blank-line" style="--blank-len:${match.length}"></span>`
+  );
+}
+
+/* renderRelPair — preguntas "relacionar dos conjuntos". Renderiza
+   dos columnas INDEPENDIENTES (izq numerada con items, der letrada
+   con opciones en orden distinto). Reemplaza el patrón viejo de
+   <table> con dos columnas paired-by-row que mostraba la respuesta
+   inadvertidamente. Ver memoria rel-questions-two-column-pattern. */
+function renderRelPair(rel) {
+  const col = (header, items) => `
+    <div class="exam-rel-pair__col">
+      <p class="exam-rel-pair__header">${header}</p>
+      <ul class="exam-rel-pair__list">
+        ${items.map(({ k, v }) =>
+          `<li><span class="exam-rel-pair__key">${k}.</span><span>${v}</span></li>`
+        ).join('')}
+      </ul>
+    </div>`;
+  return `<div class="exam-rel-pair">${col(rel.leftHeader, rel.left)}${col(rel.rightHeader, rel.right)}</div>`;
+}
+
+/* renderKatex con guard de re-intentos. ANTES: si KaTeX se cargaba
+   pero renderMathInElement seguía indefinido, el .then disparaba
+   recursivamente otro renderKatex que volvía a quedar undefined,
+   que volvía a programar otro .then, en un bucle infinito de
+   microtasks que congelaba el navegador. AHORA: máximo 1 reintento
+   tras la resolución de la promesa; si tras eso renderMathInElement
+   sigue undefined, abortamos silenciosamente (la pregunta se ve sin
+   math renderizada, pero el navegador no se traba). */
+function renderKatex(el, retries = 1) {
+  if (!el) return;
+  if (window.renderMathInElement) {
+    window.renderMathInElement(el, KATEX_OPTS);
+    return;
+  }
+  if (retries > 0 && katexReadyPromise) {
+    katexReadyPromise.then(() => renderKatex(el, retries - 1));
   }
 }
 
-// ─────────────────────────────────────
-// ESTADO
-// ─────────────────────────────────────
-let estado = {};
-let preguntaActual = null;
-let timerInterval  = null;
-let timerSegundos  = 0;
-let timerTotal     = 0;
-let timerActivo    = false;
+/* ──────────────────────────────────────────────────────────────
+   STAGE HELPERS
+   ────────────────────────────────────────────────────────────── */
+function showStage(nombre) {
+  document.querySelectorAll('.exam-stage').forEach(s => {
+    s.classList.toggle('is-active', s.dataset.stage === nombre);
+  });
+}
 
-// Banco ordenado por materia (u) y luego por id
-const BANCO_ORDENADO = [...BANCO].sort((a,b) => a.u !== b.u ? a.u - b.u : a.id - b.id);
-
+/* ──────────────────────────────────────────────────────────────
+   FLOW
+   ────────────────────────────────────────────────────────────── */
 function iniciarExamen() {
   estado = {
-    respondidas:0, correctas:0, incorrectas:0,
+    respondidas: 0, correctas: 0, incorrectas: 0,
     totalPreguntas: BANCO_ORDENADO.length,
-    resultados:{},
+    resultados: {},
   };
-  UNIDADES.forEach(u => { estado.resultados[u.id] = {c:0, t:0}; });
-  document.getElementById('pantalla-inicio').style.display    = 'none';
-  document.getElementById('pantalla-resultados').style.display = 'none';
-  document.getElementById('pantalla-examen').style.display    = 'block';
+  UNIDADES.forEach(u => { estado.resultados[u.id] = { c: 0, t: 0 }; });
+  showStage('examen');
   mostrarPregunta();
 }
 
@@ -931,62 +1043,132 @@ function detenerTimer() {
 function actualizarTimer() {
   const arc = document.getElementById('timer-arc');
   const num = document.getElementById('timer-num');
-  if (!arc || !num) return;
+  const wrap = document.getElementById('exam-timer');
+  if (!arc || !num || !wrap) return;
+
   const pct = timerSegundos / timerTotal;
-  arc.style.strokeDashoffset = CIRCUNF * (1 - pct);
-  arc.style.stroke = pct < .25 ? '#f87171' : pct < .5 ? '#fbbf24' : '#60a5fa';
+  arc.setAttribute('stroke-dashoffset', String(100 - (pct * 100)));
+
+  /* Crítico: últimos <10 % del tiempo. La transición de color es
+     sutil (fade --motion-slow), sin pulsar. */
+  wrap.classList.toggle('exam-timer--critical', pct < 0.10);
+
   num.textContent = timerSegundos >= 60
     ? `${Math.floor(timerSegundos/60)}:${String(timerSegundos%60).padStart(2,'0')}`
     : `${timerSegundos}s`;
 }
 
+function actualizarScore() {
+  document.getElementById('status-score').innerHTML =
+    `<span class="exam-status__score-ok">✓ ${estado.correctas}</span>` +
+    `<span class="exam-status__score-err">✗ ${estado.incorrectas}</span>`;
+}
+
 function mostrarPregunta() {
   preguntaActual = elegirPregunta();
-  if (!preguntaActual) {
-    mostrarResultados(); return;
-  }
+  if (!preguntaActual) { mostrarResultados(); return; }
   const u = UNIDADES.find(x => x.id === preguntaActual.u);
+  const n = estado.respondidas + 1;
 
-  document.getElementById('lbl-num').textContent = `Pregunta ${estado.respondidas+1} de ${estado.totalPreguntas}`;
-  document.getElementById('lbl-score').innerHTML =
-    `<span style="color:#6ee7b7;font-weight:700">✓ ${estado.correctas}</span>&nbsp;<span style="color:#fca5a5;font-weight:700">✗ ${estado.incorrectas}</span>`;
-  document.getElementById('barra').style.width = `${(estado.respondidas/estado.totalPreguntas)*100}%`;
+  document.getElementById('status-num').textContent = `Pregunta ${n} de ${estado.totalPreguntas}`;
+  actualizarScore();
+  document.getElementById('progress-fill').style.width = `${(estado.respondidas / estado.totalPreguntas) * 100}%`;
 
-  const tagU = document.getElementById('tag-unidad');
-  tagU.textContent = u.nombre;
-  tagU.style.background = u.bg;
-  tagU.style.color = u.color;
+  document.getElementById('tag-unidad').textContent = u.nombre;
+  document.getElementById('tag-unidad').className = 'tag';
 
-  const tagD = document.getElementById('tag-dif');
-  tagD.textContent = DIF_LABEL[preguntaActual.d];
-  tagD.className = `tag-dificultad dif-${preguntaActual.d}`;
+  const tagDif = document.getElementById('tag-dif');
+  tagDif.textContent = DIF_LABEL[preguntaActual.d];
+  tagDif.className = `tag ${DIF_TAG[preguntaActual.d]}`;
 
-  document.getElementById('enunciado').innerHTML = preguntaActual.q;
+  let stmtHtml = expandBlanks(preguntaActual.q);
+  if (preguntaActual.rel) stmtHtml += renderRelPair(preguntaActual.rel);
+  document.getElementById('statement').innerHTML = stmtHtml;
 
-  const indices = [0,1,2,3];
-  for (let i=3; i>0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [indices[i],indices[j]] = [indices[j],indices[i]];
+  /* Barajar el orden visual de opciones (la answer no se mueve) */
+  const indices = [0, 1, 2, 3];
+  for (let i = 3; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
   }
   const cont = document.getElementById('opciones');
   cont.innerHTML = '';
   indices.forEach((opIdx, pos) => {
     const btn = document.createElement('button');
-    btn.className = 'opcion-btn';
+    btn.type = 'button';
+    btn.className = 'exam-option';
     btn.dataset.opIdx = opIdx;
-    btn.innerHTML = `<span class="letra-opcion">${LETRAS[pos]}</span><span>${preguntaActual.ops[opIdx]}</span>`;
+    /* aria-keyshortcuts: anuncia a screen readers la tecla
+       numérica que activa esta opción. Independiente del hint
+       visual de .exam-question__shortcuts. */
+    btn.setAttribute('aria-keyshortcuts', String(pos + 1));
+    btn.innerHTML = `
+      <span class="exam-option__letter">${LETRAS[pos]}</span>
+      <span class="exam-option__text">${expandBlanks(preguntaActual.ops[opIdx])}</span>
+      ${ICON_OPT_BLANK}
+    `;
     btn.addEventListener('click', () => responder(opIdx, btn));
     cont.appendChild(btn);
   });
 
-  const fb = document.getElementById('feedback');
-  fb.style.display = 'none'; fb.className = 'feedback-box';
-  document.getElementById('btn-sig').style.display = 'none';
+  document.getElementById('feedback').innerHTML = '';
 
-  // Renderizar KaTeX en toda la zona de la pregunta
-  renderKatex(document.querySelector('.cuerpo-examen'));
+  /* "Siguiente" visible pero deshabilitado hasta que el alumno
+     responda. Esto previene que un click sin respuesta dispare un
+     re-render con re-shuffle de la misma pregunta. */
+  const btnSig = document.getElementById('btn-sig');
+  btnSig.hidden = false;
+  btnSig.disabled = true;
+
+  /* Hint visual de atajos: SÓLO en la primera pregunta del examen.
+     A partir de la segunda, oculto (sin borrar del DOM). Los
+     aria-keyshortcuts y el handler global siguen activos siempre,
+     así que la funcionalidad NO cambia — sólo la pista visual. */
+  const hint = document.querySelector('.exam-question__shortcuts');
+  if (hint) hint.hidden = estado.respondidas > 0;
+
+  /* KaTeX en la pregunta completa */
+  renderKatex(document.querySelector('.exam-question'));
 
   iniciarTimer(preguntaActual.d);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function setOptionIcon(btn, kind) {
+  const svg = btn.querySelector('.exam-option__icon');
+  if (!svg) return;
+  svg.innerHTML = kind === 'check'
+    ? '<path d="M20 6 9 17l-5-5"/>'
+    : '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>';
+}
+
+function aplicarEstadosOpciones(clickeada) {
+  document.querySelectorAll('.exam-option').forEach(b => {
+    b.disabled = true;
+    const idx = parseInt(b.dataset.opIdx, 10);
+    if (idx === preguntaActual.ans) {
+      b.classList.add('exam-option--correct');
+      setOptionIcon(b, 'check');
+    } else if (b === clickeada) {
+      b.classList.add('exam-option--incorrect');
+      setOptionIcon(b, 'x');
+    }
+  });
+}
+
+function mostrarFeedback(ok, exp, prefijo) {
+  const fb = document.getElementById('feedback');
+  const icon = ok
+    ? '<svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+    : '<svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+  const label = ok ? 'Correcto' : (prefijo || 'Incorrecto');
+  fb.innerHTML = `
+    <div class="response response--${ok ? 'ok' : 'err'}">
+      ${icon}
+      <span class="response__label">${label}</span>
+      <div class="response__detail">${exp}</div>
+    </div>`;
+  renderKatex(fb);
 }
 
 function responder(opIdx, btnClickado) {
@@ -996,125 +1178,158 @@ function responder(opIdx, btnClickado) {
   estado.respondidas++;
   estado.resultados[preguntaActual.u].t++;
 
-  document.querySelectorAll('.opcion-btn').forEach(b => {
-    b.disabled = true;
-    if (parseInt(b.dataset.opIdx) === preguntaActual.ans) b.classList.add('correcta');
-  });
+  aplicarEstadosOpciones(btnClickado);
 
   if (esCorrecta) {
     estado.correctas++;
     estado.resultados[preguntaActual.u].c++;
-    btnClickado.classList.add('correcta');
   } else {
     estado.incorrectas++;
-    btnClickado.classList.add('incorrecta');
   }
-
-  document.getElementById('lbl-score').innerHTML =
-    `<span style="color:#6ee7b7;font-weight:700">✓ ${estado.correctas}</span>&nbsp;<span style="color:#fca5a5;font-weight:700">✗ ${estado.incorrectas}</span>`;
-
-  const fb = document.getElementById('feedback');
-  fb.className = `feedback-box ${esCorrecta ? 'correcto' : 'incorrecto'}`;
-  fb.innerHTML = `<span class="feedback-icono">${esCorrecta ? '✓' : '✗'}</span> ${preguntaActual.exp}`;
-  fb.style.display = 'block';
-  renderKatex(fb);
+  actualizarScore();
+  mostrarFeedback(esCorrecta, preguntaActual.exp);
 
   const btnSig = document.getElementById('btn-sig');
   btnSig.textContent = estado.respondidas >= estado.totalPreguntas ? 'Ver resultados' : 'Siguiente →';
-  btnSig.style.display = 'block';
+  btnSig.disabled = false;
 }
 
 function tiempoAgotado() {
   estado.incorrectas++;
   estado.respondidas++;
   estado.resultados[preguntaActual.u].t++;
-
-  document.querySelectorAll('.opcion-btn').forEach(b => {
-    b.disabled = true;
-    if (parseInt(b.dataset.opIdx) === preguntaActual.ans) b.classList.add('correcta');
-  });
-  document.getElementById('lbl-score').innerHTML =
-    `<span style="color:#6ee7b7;font-weight:700">✓ ${estado.correctas}</span>&nbsp;<span style="color:#fca5a5;font-weight:700">✗ ${estado.incorrectas}</span>`;
-
-  const arc = document.getElementById('timer-arc');
-  if (arc) { arc.style.strokeDashoffset = CIRCUNF; arc.style.stroke = '#f87171'; }
-
-  const fb2 = document.getElementById('feedback');
-  fb2.className = 'feedback-box incorrecto';
-  fb2.innerHTML = `<span class="feedback-icono">⏱</span> Tiempo agotado. ${preguntaActual.exp}`;
-  fb2.style.display = 'block';
-  renderKatex(fb2);
+  aplicarEstadosOpciones(null);
+  actualizarScore();
+  mostrarFeedback(false, preguntaActual.exp, 'Tiempo agotado');
 
   const btnSig = document.getElementById('btn-sig');
   btnSig.textContent = estado.respondidas >= estado.totalPreguntas ? 'Ver resultados' : 'Siguiente →';
-  btnSig.style.display = 'block';
+  btnSig.disabled = false;
 }
 
 function siguientePregunta() {
+  /* Defensa: si el botón está disabled (sin respuesta) no avanzamos.
+     El attribute disabled ya bloquea el click event a nivel browser,
+     pero esto cubre invocaciones programáticas o teclado raros. */
+  const btn = document.getElementById('btn-sig');
+  if (btn && btn.disabled) return;
   if (estado.respondidas >= estado.totalPreguntas) {
     mostrarResultados();
   } else {
     mostrarPregunta();
-    window.scrollTo({top:0, behavior:'smooth'});
   }
 }
 
 function mostrarResultados() {
   detenerTimer();
-  document.getElementById('pantalla-examen').style.display    = 'none';
-  document.getElementById('pantalla-resultados').style.display = 'block';
-  window.scrollTo({top:0, behavior:'smooth'});
+  showStage('resultados');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const tot = estado.respondidas;
   const cor = estado.correctas;
-  const pct = Math.round((cor/tot)*100);
+  const pct = tot > 0 ? Math.round((cor / tot) * 100) : 0;
 
-  document.getElementById('res-pct').textContent = cor;
+  document.getElementById('res-correct').textContent = cor;
+  document.getElementById('res-total').textContent   = tot;
   document.getElementById('res-corr').textContent = cor;
   document.getElementById('res-inco').textContent = estado.incorrectas;
-  document.getElementById('res-pct2').textContent = pct+'%';
+  document.getElementById('res-pct').textContent  = pct + '%';
 
   const ahora = new Date();
   document.getElementById('res-fecha').textContent =
-    `${tot} preguntas · ${ahora.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'})}`;
+    `${tot} preguntas · ${ahora.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })}`;
 
   const nivelEl = document.getElementById('res-nivel');
-  let nivel, nivelBg, nivelColor;
-  if (pct >= 90)      { nivel='🏆 Excelente'; nivelBg='#d1fae5'; nivelColor='#065f46'; }
-  else if (pct >= 75) { nivel='✅ Buen nivel'; nivelBg='#dbeafe'; nivelColor='#1d4ed8'; }
-  else if (pct >= 60) { nivel='📚 En desarrollo'; nivelBg='#fef3c7'; nivelColor='#92400e'; }
-  else                { nivel='📖 A reforzar'; nivelBg='#fee2e2'; nivelColor='#7f1d1d'; }
-  nivelEl.textContent = nivel;
-  nivelEl.style.background = nivelBg;
-  nivelEl.style.color = nivelColor;
+  let label, mod;
+  if      (pct >= 90) { label = 'Excelente';     mod = 'tag--ok'; }
+  else if (pct >= 75) { label = 'Buen nivel';    mod = 'tag--ok'; }
+  else if (pct >= 60) { label = 'En desarrollo'; mod = 'tag--warn'; }
+  else                { label = 'A reforzar';    mod = 'tag--err'; }
+  nivelEl.textContent = label;
+  nivelEl.className   = `tag ${mod}`;
 
-  const cont = document.getElementById('desglose-rows');
+  const cont = document.getElementById('breakdown-rows');
   cont.innerHTML = '';
   UNIDADES.forEach(u => {
     const r = estado.resultados[u.id];
     if (r.t === 0) return;
-    const p = Math.round((r.c/r.t)*100);
+    const p = Math.round((r.c / r.t) * 100);
     const row = document.createElement('div');
-    row.className = 'desglose-fila';
+    row.className = 'exam-breakdown__row';
     row.innerHTML = `
-      <div class="desglose-dot" style="background:${u.color}"></div>
-      <div class="desglose-nombre">${u.nombre}</div>
-      <div class="desglose-barra-wrap"><div class="desglose-barra-fill" style="width:${p}%;background:${u.color}"></div></div>
-      <div class="desglose-score" style="color:${u.color}">${r.c}/${r.t}</div>`;
+      <div class="exam-breakdown__name">${u.nombre}</div>
+      <div class="exam-breakdown__bar"><div class="exam-breakdown__bar-fill" style="width:${p}%"></div></div>
+      <div class="exam-breakdown__score">${r.c}/${r.t}</div>`;
     cont.appendChild(row);
   });
 }
 
 function reiniciar() {
-  document.getElementById('pantalla-resultados').style.display = 'none';
-  document.getElementById('pantalla-inicio').style.display     = 'flex';
+  showStage('inicio');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function toggleDark() {
-  const isDark = document.documentElement.dataset.theme === 'dark';
-  document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
-  document.getElementById('dm-btn').textContent = isDark ? '🌙' : '☀️';
-}
+/* ──────────────────────────────────────────────────────────────
+   INIT — bindeo de botones + carga de KaTeX
+   ────────────────────────────────────────────────────────────── */
+window.addEventListener('DOMContentLoaded', () => {
+  /* Bindear botones explícitamente (en lugar de inline onclick).
+     Más robusto: tolera CSP estricto, no depende de scope global
+     de funciones, y es trivialmente debuggeable si se quiebra. */
+  const bind = (id, fn) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', fn);
+  };
+  bind('btn-start',   iniciarExamen);
+  bind('btn-sig',     siguientePregunta);
+  bind('btn-restart', reiniciar);
+  bind('exam-theme-toggle', () => window.ClasesTheme && window.ClasesTheme.toggle());
+
+  /* Atajos de teclado durante la pantalla examen:
+     - Enter → siguientePregunta (sólo si btn-sig.disabled === false)
+     - 1-4   → click en la opción n-ésima visible (sólo si no fue
+               respondida; el browser bloquea click en disabled)
+     Único listener en document; reusa los click handlers existentes
+     vía .click() (zero lógica duplicada). La fuente de verdad para
+     "habilitado" es btn.disabled del DOM, no estado paralelo. */
+  document.addEventListener('keydown', (e) => {
+    /* No interferir cuando el alumno escribe en un campo. */
+    const t = e.target;
+    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+
+    /* Sólo activos durante la pantalla examen. */
+    if (!document.querySelector('.exam-stage[data-stage="examen"].is-active')) return;
+
+    if (e.key === 'Enter') {
+      const btnSig = document.getElementById('btn-sig');
+      if (btnSig && !btnSig.disabled) {
+        e.preventDefault();
+        siguientePregunta();
+      }
+      return;
+    }
+
+    if (e.key >= '1' && e.key <= '4') {
+      const opts = document.querySelectorAll('.exam-option');
+      const opt = opts[parseInt(e.key, 10) - 1];
+      if (opt && !opt.disabled) {
+        e.preventDefault();
+        opt.click();
+      }
+    }
+  });
+
+  /* Carga eager de KaTeX para que las preguntas con math (mate,
+     parte de física) rendereen sin delay perceptible. Usamos el
+     default (autoRender: true) — sin esto, el loader sólo trae
+     katex.min.js pero NO auto-render.min.js, y renderMathInElement
+     nunca queda definido. El auto-render inicial del body es un
+     no-op (no hay math en el HTML estático). */
+  if (window.ClasesKatex) {
+    katexReadyPromise = window.ClasesKatex.load();
+  }
+});
 </script>
+
 </body>
 </html>

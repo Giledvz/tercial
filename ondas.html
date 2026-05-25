@@ -1,210 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Ondas y sonido</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #0e7490; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#0e7490; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#0e7490; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Ondas y sonido · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Ondas y sonido</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Velocidad del sonido en aire: <b>v = 340 m/s</b>. Usa <b>g = 10 m/s²</b>. Recuerda: <b>v = λ·f</b>, <b>T = 1/f</b>.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Ondas y sonido · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="teal">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Ondas y <em>sonido</em></h1>
+    <p class="hero__lede">
+      MAS, péndulo simple, ondas mecánicas, sonido y efecto Doppler. Toca cada ejercicio para revelar su respuesta. Velocidad del sonido en aire: <strong>v = 340 m/s</strong>. Recuerda <strong>v = λ · f</strong> y <strong>T = 1/f</strong>.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Movimiento Armónico Simple ─────────────────────────────────────────
-  { titulo:"1 · Movimiento armónico simple (MAS)", color:"#0e7490", ejercicios:[
-    { n:"01", t:"Un cuerpo realiza un MAS con periodo T = 0.5 s. ¿Cuál es su frecuencia?",
-      d:"f = 1/T",
-      r:"f = 2 Hz" },
-    { n:"02", t:"Un objeto oscila con frecuencia 4 Hz. ¿Cuál es su periodo?",
-      d:"T = 1/f",
-      r:"T = 0.25 s" },
-    { n:"03", t:"Un péndulo realiza 30 oscilaciones en 60 s. ¿Periodo y frecuencia?",
-      d:"T = tiempo total / oscilaciones",
-      r:"T = 2 s &nbsp;·&nbsp; f = 0.5 Hz" },
-    { n:"04", t:"Un MAS tiene amplitud A = 0.1 m y frecuencia 2 Hz. ¿Velocidad máxima? (v<sub>máx</sub> = ωA)",
-      d:"ω = 2πf",
-      r:"v<sub>máx</sub> ≈ 1.26 m/s" },
-    { n:"05", t:"Un resorte con k = 200 N/m sostiene 0.5 kg. ¿Frecuencia angular ω del MAS?",
-      d:"ω = √(k/m)",
-      r:"ω = 20 rad/s" },
-    { n:"06", t:"En el problema 05, ¿cuál es el periodo de oscilación?",
-      d:"T = 2π/ω",
-      r:"T ≈ 0.314 s" },
+  { titulo: 'Movimiento armónico simple (MAS)', ejercicios: [
+    { n:'01', t:'Un cuerpo realiza un MAS con periodo T = 0.5 s. ¿Cuál es su frecuencia?',
+      d:'f = 1/T',
+      r:'f = 2 Hz' },
+    { n:'02', t:'Un objeto oscila con frecuencia 4 Hz. ¿Cuál es su periodo?',
+      d:'T = 1/f',
+      r:'T = 0.25 s' },
+    { n:'03', t:'Un péndulo realiza 30 oscilaciones en 60 s. ¿Periodo y frecuencia?',
+      d:'T = tiempo total / oscilaciones',
+      r:'T = 2 s &nbsp;·&nbsp; f = 0.5 Hz' },
+    { n:'04', t:'Un MAS tiene amplitud A = 0.1 m y frecuencia 2 Hz. ¿Velocidad máxima? (v<sub>máx</sub> = ωA)',
+      d:'ω = 2πf',
+      r:'v<sub>máx</sub> ≈ 1.26 m/s' },
+    { n:'05', t:'Un resorte con k = 200 N/m sostiene 0.5 kg. ¿Frecuencia angular ω del MAS?',
+      d:'ω = √(k/m)',
+      r:'ω = 20 rad/s' },
+    { n:'06', t:'En el problema 05, ¿cuál es el periodo de oscilación?',
+      d:'T = 2π/ω',
+      r:'T ≈ 0.314 s' },
   ]},
 
-  // ── 2. Péndulo simple ─────────────────────────────────────────────────────
-  { titulo:"2 · Péndulo simple", color:"#1d4ed8", ejercicios:[
-    { n:"01", t:"¿Cuál es el periodo de un péndulo simple de 1 m de longitud? (g = 10 m/s²)",
-      d:"T = 2π√(L/g)",
-      r:"T ≈ 1.99 s ≈ 2 s" },
-    { n:"02", t:"Un péndulo tiene periodo T = 1 s. ¿Cuál es su longitud aproximada? (g = 10)",
-      d:"L = g·T²/(4π²)",
-      r:"L ≈ 0.253 m ≈ 25 cm" },
-    { n:"03", t:"Si la longitud de un péndulo se cuadruplica, ¿cómo cambia su periodo?",
-      d:"T es proporcional a √L",
-      r:"Se duplica" },
-    { n:"04", t:"Un péndulo en la Luna (g ≈ 1.6 m/s²) y otro idéntico en la Tierra. ¿Dónde oscila más despacio?",
-      d:"T es inversamente proporcional a √g",
-      r:"En la Luna (mayor periodo)" },
-    { n:"05", t:"¿De qué NO depende el periodo de un péndulo simple (con oscilaciones pequeñas)?",
-      d:"T = 2π√(L/g)",
-      r:"De la masa ni de la amplitud" },
-    { n:"06", t:"Un péndulo de 0.4 m oscila con g = 10 m/s². ¿Cuántas oscilaciones por minuto?",
-      d:"Calcula T y luego 60/T",
-      r:"T ≈ 1.26 s &nbsp;·&nbsp; ≈ 47.6 osc/min" },
+  { titulo: 'Péndulo simple', ejercicios: [
+    { n:'01', t:'¿Cuál es el periodo de un péndulo simple de 1 m de longitud? (g = 10 m/s²)',
+      d:'T = 2π√(L/g)',
+      r:'T ≈ 1.99 s ≈ 2 s' },
+    { n:'02', t:'Un péndulo tiene periodo T = 1 s. ¿Cuál es su longitud aproximada? (g = 10)',
+      d:'L = g·T²/(4π²)',
+      r:'L ≈ 0.253 m ≈ 25 cm' },
+    { n:'03', t:'Si la longitud de un péndulo se cuadruplica, ¿cómo cambia su periodo?',
+      d:'T es proporcional a √L',
+      r:'Se duplica' },
+    { n:'04', t:'Un péndulo en la Luna (g ≈ 1.6 m/s²) y otro idéntico en la Tierra. ¿Dónde oscila más despacio?',
+      d:'T es inversamente proporcional a √g',
+      r:'En la Luna (mayor periodo)' },
+    { n:'05', t:'¿De qué NO depende el periodo de un péndulo simple (con oscilaciones pequeñas)?',
+      d:'T = 2π√(L/g)',
+      r:'De la masa ni de la amplitud' },
+    { n:'06', t:'Un péndulo de 0.4 m oscila con g = 10 m/s². ¿Cuántas oscilaciones por minuto?',
+      d:'Calcula T y luego 60/T',
+      r:'T ≈ 1.26 s &nbsp;·&nbsp; ≈ 47.6 osc/min' },
   ]},
 
-  // ── 3. Ondas mecánicas ────────────────────────────────────────────────────
-  { titulo:"3 · Ondas mecánicas", color:"#047857", ejercicios:[
-    { n:"01", t:"Una onda tiene frecuencia 20 Hz y longitud de onda 5 m. ¿Velocidad de propagación?",
-      d:"v = λ·f",
-      r:"v = 100 m/s" },
-    { n:"02", t:"Una onda viaja a 340 m/s y tiene frecuencia 680 Hz. ¿Longitud de onda?",
-      d:"λ = v/f",
-      r:"λ = 0.5 m" },
-    { n:"03", t:"Una onda en una cuerda tiene λ = 2 m y periodo T = 0.4 s. ¿Velocidad?",
-      d:"v = λ/T",
-      r:"v = 5 m/s" },
-    { n:"04", t:"En una onda transversal, la dirección de la oscilación es:",
-      d:"Comparar con onda longitudinal",
-      r:"Perpendicular a la dirección de propagación" },
-    { n:"05", t:"En una onda longitudinal (como el sonido), las partículas oscilan:",
-      d:"Comprimen y descomprimen el medio",
-      r:"Paralelo a la dirección de propagación" },
-    { n:"06", t:"Una onda en el agua tarda 2 s en recorrer 8 m. Si su frecuencia es 4 Hz, ¿longitud de onda?",
-      d:"v = d/t, luego λ = v/f",
-      r:"v = 4 m/s &nbsp;·&nbsp; λ = 1 m" },
+  { titulo: 'Ondas mecánicas', ejercicios: [
+    { n:'01', t:'Una onda tiene frecuencia 20 Hz y longitud de onda 5 m. ¿Velocidad de propagación?',
+      d:'v = λ·f',
+      r:'v = 100 m/s' },
+    { n:'02', t:'Una onda viaja a 340 m/s y tiene frecuencia 680 Hz. ¿Longitud de onda?',
+      d:'λ = v/f',
+      r:'λ = 0.5 m' },
+    { n:'03', t:'Una onda en una cuerda tiene λ = 2 m y periodo T = 0.4 s. ¿Velocidad?',
+      d:'v = λ/T',
+      r:'v = 5 m/s' },
+    { n:'04', t:'En una onda transversal, la dirección de la oscilación es:',
+      d:'Comparar con onda longitudinal',
+      r:'Perpendicular a la dirección de propagación' },
+    { n:'05', t:'En una onda longitudinal (como el sonido), las partículas oscilan:',
+      d:'Comprimen y descomprimen el medio',
+      r:'Paralelo a la dirección de propagación' },
+    { n:'06', t:'Una onda en el agua tarda 2 s en recorrer 8 m. Si su frecuencia es 4 Hz, ¿longitud de onda?',
+      d:'v = d/t, luego λ = v/f',
+      r:'v = 4 m/s &nbsp;·&nbsp; λ = 1 m' },
   ]},
 
-  // ── 4. Sonido ─────────────────────────────────────────────────────────────
-  { titulo:"4 · Sonido", color:"#7c2d12", ejercicios:[
-    { n:"01", t:"¿Cuál es la velocidad aproximada del sonido en el aire?",
-      d:"Recuérdalo: ~340 m/s",
-      r:"v ≈ 340 m/s" },
-    { n:"02", t:"Un sonido tiene frecuencia 1 700 Hz en el aire. ¿Longitud de onda?",
-      d:"λ = v/f con v = 340",
-      r:"λ = 0.2 m" },
-    { n:"03", t:"Calcula la longitud de onda de un sonido de 17 000 Hz (límite agudo audible).",
-      d:"λ = v/f",
-      r:"λ = 0.02 m = 2 cm" },
-    { n:"04", t:"Un eco regresa después de 4 s. ¿A qué distancia está el obstáculo? (v = 340 m/s)",
-      d:"El sonido va y vuelve: d = v·t/2",
-      r:"d = 680 m" },
-    { n:"05", t:"¿En qué medio el sonido viaja más rápido: aire, agua o acero?",
-      d:"Mayor rigidez del medio → mayor velocidad",
-      r:"En el acero" },
-    { n:"06", t:"¿Cuál es el rango de frecuencias audibles para el ser humano?",
-      d:"Por debajo: infrasonido. Por encima: ultrasonido",
-      r:"De 20 Hz a 20 000 Hz" },
+  { titulo: 'Sonido', ejercicios: [
+    { n:'01', t:'¿Cuál es la velocidad aproximada del sonido en el aire?',
+      d:'Recuérdalo: ~340 m/s',
+      r:'v ≈ 340 m/s' },
+    { n:'02', t:'Un sonido tiene frecuencia 1 700 Hz en el aire. ¿Longitud de onda?',
+      d:'λ = v/f con v = 340',
+      r:'λ = 0.2 m' },
+    { n:'03', t:'Calcula la longitud de onda de un sonido de 17 000 Hz (límite agudo audible).',
+      d:'λ = v/f',
+      r:'λ = 0.02 m = 2 cm' },
+    { n:'04', t:'Un eco regresa después de 4 s. ¿A qué distancia está el obstáculo? (v = 340 m/s)',
+      d:'El sonido va y vuelve: d = v·t/2',
+      r:'d = 680 m' },
+    { n:'05', t:'¿En qué medio el sonido viaja más rápido: aire, agua o acero?',
+      d:'Mayor rigidez del medio → mayor velocidad',
+      r:'En el acero' },
+    { n:'06', t:'¿Cuál es el rango de frecuencias audibles para el ser humano?',
+      d:'Por debajo: infrasonido. Por encima: ultrasonido',
+      r:'De 20 Hz a 20 000 Hz' },
   ]},
 
-  // ── 5. Efecto Doppler ─────────────────────────────────────────────────────
-  { titulo:"5 · Efecto Doppler", color:"#9f1239", ejercicios:[
-    { n:"01", t:"Una ambulancia se acerca al observador en reposo. ¿La frecuencia percibida es mayor o menor?",
-      d:"Fuente acercándose → λ menor → f mayor",
-      r:"Mayor (sonido más agudo)" },
-    { n:"02", t:"Un automóvil se aleja del observador. ¿Cómo se percibe el sonido?",
-      d:"Fuente alejándose → λ mayor → f menor",
-      r:"Más grave (frecuencia menor)" },
-    { n:"03", t:"¿Qué fenómeno explica el cambio de tono de la sirena de una patrulla cuando pasa?",
-      d:"Se acerca y luego se aleja",
-      r:"Efecto Doppler" },
-    { n:"04", t:"Un tren toca el silbato a 600 Hz y se acerca a un observador a 34 m/s. Frecuencia percibida (v<sub>sonido</sub> = 340 m/s):",
+  { titulo: 'Efecto Doppler', ejercicios: [
+    { n:'01', t:'Una ambulancia se acerca al observador en reposo. ¿La frecuencia percibida es mayor o menor?',
+      d:'Fuente acercándose → λ menor → f mayor',
+      r:'Mayor (sonido más agudo)' },
+    { n:'02', t:'Un automóvil se aleja del observador. ¿Cómo se percibe el sonido?',
+      d:'Fuente alejándose → λ mayor → f menor',
+      r:'Más grave (frecuencia menor)' },
+    { n:'03', t:'¿Qué fenómeno explica el cambio de tono de la sirena de una patrulla cuando pasa?',
+      d:'Se acerca y luego se aleja',
+      r:'Efecto Doppler' },
+    { n:'04', t:"Un tren toca el silbato a 600 Hz y se acerca a un observador a 34 m/s. Frecuencia percibida (v<sub>sonido</sub> = 340 m/s):",
       d:"f' = f · v/(v − v<sub>fuente</sub>)",
       r:"f' = 600 · 340/306 ≈ 666.7 Hz" },
-    { n:"05", t:"El mismo tren se aleja del observador a 34 m/s. Frecuencia percibida ahora:",
+    { n:'05', t:'El mismo tren se aleja del observador a 34 m/s. Frecuencia percibida ahora:',
       d:"f' = f · v/(v + v<sub>fuente</sub>)",
       r:"f' = 600 · 340/374 ≈ 545.5 Hz" },
-    { n:"06", t:"En astronomía, el corrimiento al rojo (red shift) es un ejemplo de efecto Doppler aplicado a:",
-      d:"Galaxias que se alejan",
-      r:"Ondas electromagnéticas (luz)" },
+    { n:'06', t:'En astronomía, el corrimiento al rojo (red shift) es un ejemplo de efecto Doppler aplicado a:',
+      d:'Galaxias que se alejan',
+      r:'Ondas electromagnéticas (luz)' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

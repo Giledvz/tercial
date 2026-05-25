@@ -1,220 +1,224 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Trabajo y Energía</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #1a4f8a; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1a4f8a; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1a4f8a; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Trabajo y energía · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Trabajo y Energía</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Usa <b>g = 10 m/s²</b> salvo indicación contraria.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Trabajo y Energía · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="blue">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Trabajo y <em>energía</em></h1>
+    <p class="hero__lede">
+      Trabajo mecánico, energía cinética y potencial gravitatoria, conservación, potencia y resortes. Toca cada ejercicio para revelar su respuesta. Usa <strong>g = 10 m/s²</strong> salvo indicación contraria.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Trabajo mecánico ───────────────────────────────────────────────────
-  { titulo:"1 · Trabajo mecánico", color:"#1a4f8a", ejercicios:[
-    { n:"01", t:"Una fuerza horizontal de 50 N empuja una caja a lo largo de 8 m. ¿Cuál es el trabajo realizado?",
-      d:"W = F·d (cuando son paralelos)",
-      r:"W = 400 J" },
-    { n:"02", t:"Una fuerza de 30 N forma un ángulo de 60° con el desplazamiento de 4 m. ¿Cuál es el trabajo? (cos 60° = 0.5)",
-      d:"W = F·d·cos θ",
-      r:"W = 60 J" },
-    { n:"03", t:"¿Cuál es el trabajo realizado por la gravedad sobre un objeto de 2 kg que cae 5 m?",
-      d:"W = mgh",
-      r:"W = 100 J" },
-    { n:"04", t:"Si una fuerza es perpendicular al desplazamiento (θ = 90°), ¿cuál es el trabajo realizado?",
-      d:"cos 90° = 0",
-      r:"W = 0" },
-    { n:"05", t:"Un objeto se mueve 10 m mientras se le aplica una fuerza de fricción de 8 N en sentido contrario al movimiento. ¿Cuál es el trabajo de la fricción?",
-      d:"Fricción se opone al movimiento ⇒ W < 0",
-      r:"W = −80 J" },
-    { n:"06", t:"Calcula el trabajo necesario para levantar verticalmente una caja de 20 kg una altura de 3 m.",
-      d:"W = mgh",
-      r:"W = 600 J" },
-    { n:"07", t:"Una fuerza de 100 N empuja un objeto 50 m en la misma dirección del movimiento. ¿Cuál es el trabajo?",
-      d:"W = F·d",
-      r:"W = 5 000 J = 5 kJ" },
+  { titulo: 'Trabajo mecánico', ejercicios: [
+    { n:'01', t:'Una fuerza horizontal de 50 N empuja una caja a lo largo de 8 m. ¿Cuál es el trabajo realizado?',
+      d:'W = F·d (cuando son paralelos)',
+      r:'W = 400 J' },
+    { n:'02', t:'Una fuerza de 30 N forma un ángulo de 60° con el desplazamiento de 4 m. ¿Cuál es el trabajo? (cos 60° = 0.5)',
+      d:'W = F·d·cos θ',
+      r:'W = 60 J' },
+    { n:'03', t:'¿Cuál es el trabajo realizado por la gravedad sobre un objeto de 2 kg que cae 5 m?',
+      d:'W = mgh',
+      r:'W = 100 J' },
+    { n:'04', t:'Si una fuerza es perpendicular al desplazamiento (θ = 90°), ¿cuál es el trabajo realizado?',
+      d:'cos 90° = 0',
+      r:'W = 0' },
+    { n:'05', t:'Un objeto se mueve 10 m mientras se le aplica una fuerza de fricción de 8 N en sentido contrario al movimiento. ¿Cuál es el trabajo de la fricción?',
+      d:'Fricción se opone al movimiento ⇒ W < 0',
+      r:'W = −80 J' },
+    { n:'06', t:'Calcula el trabajo necesario para levantar verticalmente una caja de 20 kg una altura de 3 m.',
+      d:'W = mgh',
+      r:'W = 600 J' },
+    { n:'07', t:'Una fuerza de 100 N empuja un objeto 50 m en la misma dirección del movimiento. ¿Cuál es el trabajo?',
+      d:'W = F·d',
+      r:'W = 5 000 J = 5 kJ' },
   ]},
 
-  // ── 2. Energía cinética ───────────────────────────────────────────────────
-  { titulo:"2 · Energía cinética", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"¿Cuál es la energía cinética de un cuerpo de 4 kg que se mueve a 5 m/s?",
-      d:"E<sub>c</sub> = ½mv²",
-      r:"E<sub>c</sub> = 50 J" },
-    { n:"02", t:"Un coche de 1 000 kg viaja a 20 m/s. ¿Cuál es su energía cinética?",
-      d:"E<sub>c</sub> = ½mv²",
-      r:"E<sub>c</sub> = 200 000 J = 200 kJ" },
-    { n:"03", t:"Si la velocidad de un objeto se duplica, ¿qué pasa con su energía cinética?",
-      d:"E<sub>c</sub> ∝ v²",
-      r:"Se cuadruplica (4 E<sub>c</sub>)" },
-    { n:"04", t:"Una pelota de 0.5 kg tiene 16 J de energía cinética. ¿Cuál es su velocidad?",
-      d:"v = √(2E<sub>c</sub>/m)",
-      r:"v = 8 m/s" },
-    { n:"05", t:"¿Qué fuerza neta se necesita para que un objeto de 3 kg, partiendo del reposo, alcance 36 J de energía cinética en una distancia de 4 m? (Teorema trabajo-energía)",
-      d:"W = ΔE<sub>c</sub>; F·d = E<sub>c</sub>",
-      r:"F = 9 N" },
+  { titulo: 'Energía cinética', ejercicios: [
+    { n:'01', t:'¿Cuál es la energía cinética de un cuerpo de 4 kg que se mueve a 5 m/s?',
+      d:'E<sub>c</sub> = ½mv²',
+      r:'E<sub>c</sub> = 50 J' },
+    { n:'02', t:'Un coche de 1 000 kg viaja a 20 m/s. ¿Cuál es su energía cinética?',
+      d:'E<sub>c</sub> = ½mv²',
+      r:'E<sub>c</sub> = 200 000 J = 200 kJ' },
+    { n:'03', t:'Si la velocidad de un objeto se duplica, ¿qué pasa con su energía cinética?',
+      d:'E<sub>c</sub> ∝ v²',
+      r:'Se cuadruplica (4 E<sub>c</sub>)' },
+    { n:'04', t:'Una pelota de 0.5 kg tiene 16 J de energía cinética. ¿Cuál es su velocidad?',
+      d:'v = √(2E<sub>c</sub>/m)',
+      r:'v = 8 m/s' },
+    { n:'05', t:'¿Qué fuerza neta se necesita para que un objeto de 3 kg, partiendo del reposo, alcance 36 J de energía cinética en una distancia de 4 m? (Teorema trabajo-energía)',
+      d:'W = ΔE<sub>c</sub>; F·d = E<sub>c</sub>',
+      r:'F = 9 N' },
   ]},
 
-  // ── 3. Energía potencial gravitatoria ─────────────────────────────────────
-  { titulo:"3 · Energía potencial gravitatoria", color:"#047857", ejercicios:[
-    { n:"01", t:"¿Cuál es la energía potencial gravitatoria de un cuerpo de 2 kg a una altura de 5 m?",
-      d:"E<sub>p</sub> = mgh",
-      r:"E<sub>p</sub> = 100 J" },
-    { n:"02", t:"Un objeto de 10 kg está a 4 m de altura. ¿Cuánta E<sub>p</sub> tiene?",
-      d:"E<sub>p</sub> = mgh",
-      r:"E<sub>p</sub> = 400 J" },
-    { n:"03", t:"Si la altura se duplica (con la misma masa), ¿qué pasa con la E<sub>p</sub>?",
-      d:"E<sub>p</sub> ∝ h",
-      r:"Se duplica" },
-    { n:"04", t:"Un libro de 1.5 kg está sobre una mesa de 0.8 m de alto. ¿Cuál es su E<sub>p</sub> respecto al suelo?",
-      d:"E<sub>p</sub> = mgh",
-      r:"E<sub>p</sub> = 12 J" },
-    { n:"05", t:"¿A qué altura debe levantarse un objeto de 5 kg para que tenga E<sub>p</sub> de 250 J?",
-      d:"h = E<sub>p</sub>/(mg)",
-      r:"h = 5 m" },
+  { titulo: 'Energía potencial gravitatoria', ejercicios: [
+    { n:'01', t:'¿Cuál es la energía potencial gravitatoria de un cuerpo de 2 kg a una altura de 5 m?',
+      d:'E<sub>p</sub> = mgh',
+      r:'E<sub>p</sub> = 100 J' },
+    { n:'02', t:'Un objeto de 10 kg está a 4 m de altura. ¿Cuánta E<sub>p</sub> tiene?',
+      d:'E<sub>p</sub> = mgh',
+      r:'E<sub>p</sub> = 400 J' },
+    { n:'03', t:'Si la altura se duplica (con la misma masa), ¿qué pasa con la E<sub>p</sub>?',
+      d:'E<sub>p</sub> ∝ h',
+      r:'Se duplica' },
+    { n:'04', t:'Un libro de 1.5 kg está sobre una mesa de 0.8 m de alto. ¿Cuál es su E<sub>p</sub> respecto al suelo?',
+      d:'E<sub>p</sub> = mgh',
+      r:'E<sub>p</sub> = 12 J' },
+    { n:'05', t:'¿A qué altura debe levantarse un objeto de 5 kg para que tenga E<sub>p</sub> de 250 J?',
+      d:'h = E<sub>p</sub>/(mg)',
+      r:'h = 5 m' },
   ]},
 
-  // ── 4. Conservación de la energía mecánica ────────────────────────────────
-  { titulo:"4 · Conservación de la energía mecánica", color:"#b45309", ejercicios:[
-    { n:"01", t:"Un objeto de 2 kg se deja caer desde 5 m. ¿Cuál es su rapidez al llegar al suelo? (sin fricción)",
-      d:"E<sub>p</sub> inicial = E<sub>c</sub> final ⇒ v = √(2gh)",
-      r:"v = 10 m/s" },
-    { n:"02", t:"Una pelota se lanza hacia arriba con velocidad inicial 12 m/s. ¿Qué altura máxima alcanza? (sin fricción)",
-      d:"E<sub>c</sub> inicial = E<sub>p</sub> en h<sub>máx</sub>",
-      r:"h = 7.2 m" },
-    { n:"03", t:"Un péndulo se libera desde una altura de 1.25 m sobre su punto más bajo. ¿Cuál es su velocidad en el punto más bajo? (sin pérdida)",
-      d:"v = √(2gh)",
-      r:"v = 5 m/s" },
-    { n:"04", t:"Un esquiador de 60 kg desciende 50 m de desnivel sin fricción. ¿Cuál es su E<sub>c</sub> al final?",
-      d:"E<sub>c</sub> = mgh (toda la E<sub>p</sub> se convierte)",
-      r:"E<sub>c</sub> = 30 000 J = 30 kJ" },
-    { n:"05", t:"Un objeto de 4 kg parte del reposo en una rampa lisa de 3 m de altura. ¿Con qué velocidad llega abajo?",
-      d:"v = √(2gh)",
-      r:"v = √60 ≈ 7.75 m/s" },
-    { n:"06", t:"Una pelota de 0.5 kg cae desde 8 m. Cuando ha caído 3 m, ¿cuánto vale su E<sub>c</sub> y su E<sub>p</sub>? (toma el suelo como referencia)",
-      d:"E<sub>p</sub> inicial = mgh<sub>0</sub>; en altura 5 m: E<sub>p</sub> = mg(5); E<sub>c</sub> = E<sub>total</sub> − E<sub>p</sub>",
-      r:"E<sub>p</sub> = 25 J &nbsp;·&nbsp; E<sub>c</sub> = 15 J" },
+  { titulo: 'Conservación de la energía mecánica', ejercicios: [
+    { n:'01', t:'Un objeto de 2 kg se deja caer desde 5 m. ¿Cuál es su rapidez al llegar al suelo? (sin fricción)',
+      d:'E<sub>p</sub> inicial = E<sub>c</sub> final ⇒ v = √(2gh)',
+      r:'v = 10 m/s' },
+    { n:'02', t:'Una pelota se lanza hacia arriba con velocidad inicial 12 m/s. ¿Qué altura máxima alcanza? (sin fricción)',
+      d:'E<sub>c</sub> inicial = E<sub>p</sub> en h<sub>máx</sub>',
+      r:'h = 7.2 m' },
+    { n:'03', t:'Un péndulo se libera desde una altura de 1.25 m sobre su punto más bajo. ¿Cuál es su velocidad en el punto más bajo? (sin pérdida)',
+      d:'v = √(2gh)',
+      r:'v = 5 m/s' },
+    { n:'04', t:'Un esquiador de 60 kg desciende 50 m de desnivel sin fricción. ¿Cuál es su E<sub>c</sub> al final?',
+      d:'E<sub>c</sub> = mgh (toda la E<sub>p</sub> se convierte)',
+      r:'E<sub>c</sub> = 30 000 J = 30 kJ' },
+    { n:'05', t:'Un objeto de 4 kg parte del reposo en una rampa lisa de 3 m de altura. ¿Con qué velocidad llega abajo?',
+      d:'v = √(2gh)',
+      r:'v = √60 ≈ 7.75 m/s' },
+    { n:'06', t:'Una pelota de 0.5 kg cae desde 8 m. Cuando ha caído 3 m, ¿cuánto vale su E<sub>c</sub> y su E<sub>p</sub>? (toma el suelo como referencia)',
+      d:'E<sub>p</sub> inicial = mgh<sub>0</sub>; en altura 5 m: E<sub>p</sub> = mg(5); E<sub>c</sub> = E<sub>total</sub> − E<sub>p</sub>',
+      r:'E<sub>p</sub> = 25 J &nbsp;·&nbsp; E<sub>c</sub> = 15 J' },
   ]},
 
-  // ── 5. Potencia ───────────────────────────────────────────────────────────
-  { titulo:"5 · Potencia", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Un motor realiza un trabajo de 600 J en 12 s. ¿Cuál es su potencia?",
-      d:"P = W/t",
-      r:"P = 50 W" },
-    { n:"02", t:"¿Cuánta potencia se requiere para subir un objeto de 50 kg a 4 m de altura en 5 s?",
-      d:"P = mgh/t",
-      r:"P = 400 W" },
-    { n:"03", t:"Un coche se mueve a 20 m/s aplicando una fuerza constante de 500 N. ¿Cuál es la potencia desarrollada?",
-      d:"P = F·v",
-      r:"P = 10 000 W = 10 kW" },
-    { n:"04", t:"Un foco de 60 W se mantiene encendido 1 hora. ¿Cuánta energía consume?",
-      d:"E = P·t (convierte t a segundos)",
-      r:"E = 216 000 J = 216 kJ" },
-    { n:"05", t:"¿Cuántos watts son 2 hp? (1 hp ≈ 746 W)",
-      d:"Multiplica",
-      r:"P ≈ 1 492 W ≈ 1.5 kW" },
+  { titulo: 'Potencia', ejercicios: [
+    { n:'01', t:'Un motor realiza un trabajo de 600 J en 12 s. ¿Cuál es su potencia?',
+      d:'P = W/t',
+      r:'P = 50 W' },
+    { n:'02', t:'¿Cuánta potencia se requiere para subir un objeto de 50 kg a 4 m de altura en 5 s?',
+      d:'P = mgh/t',
+      r:'P = 400 W' },
+    { n:'03', t:'Un coche se mueve a 20 m/s aplicando una fuerza constante de 500 N. ¿Cuál es la potencia desarrollada?',
+      d:'P = F·v',
+      r:'P = 10 000 W = 10 kW' },
+    { n:'04', t:'Un foco de 60 W se mantiene encendido 1 hora. ¿Cuánta energía consume?',
+      d:'E = P·t (convierte t a segundos)',
+      r:'E = 216 000 J = 216 kJ' },
+    { n:'05', t:'¿Cuántos watts son 2 hp? (1 hp ≈ 746 W)',
+      d:'Multiplica',
+      r:'P ≈ 1 492 W ≈ 1.5 kW' },
   ]},
 
-  // ── 6. Energía potencial elástica (resortes) ──────────────────────────────
-  { titulo:"6 · Energía potencial elástica (resortes)", color:"#6d28d9", ejercicios:[
-    { n:"01", t:"Un resorte con constante k = 200 N/m se comprime 0.1 m. ¿Cuál es su energía potencial elástica?",
-      d:"E<sub>p,e</sub> = ½kx²",
-      r:"E<sub>p,e</sub> = 1 J" },
-    { n:"02", t:"¿Cuánto se estira un resorte de k = 50 N/m cuando se le aplica una fuerza de 10 N?",
-      d:"Ley de Hooke: F = kx ⇒ x = F/k",
-      r:"x = 0.2 m = 20 cm" },
-    { n:"03", t:"Calcula la energía almacenada en un resorte de k = 80 N/m comprimido 0.5 m.",
-      d:"E<sub>p,e</sub> = ½kx²",
-      r:"E<sub>p,e</sub> = 10 J" },
-    { n:"04", t:"Un resorte tiene E<sub>p,e</sub> = 4 J cuando se estira 0.2 m. ¿Cuál es su constante k?",
-      d:"k = 2E<sub>p,e</sub>/x²",
-      r:"k = 200 N/m" },
+  { titulo: 'Energía potencial elástica (resortes)', ejercicios: [
+    { n:'01', t:'Un resorte con constante k = 200 N/m se comprime 0.1 m. ¿Cuál es su energía potencial elástica?',
+      d:'E<sub>p,e</sub> = ½kx²',
+      r:'E<sub>p,e</sub> = 1 J' },
+    { n:'02', t:'¿Cuánto se estira un resorte de k = 50 N/m cuando se le aplica una fuerza de 10 N?',
+      d:'Ley de Hooke: F = kx ⇒ x = F/k',
+      r:'x = 0.2 m = 20 cm' },
+    { n:'03', t:'Calcula la energía almacenada en un resorte de k = 80 N/m comprimido 0.5 m.',
+      d:'E<sub>p,e</sub> = ½kx²',
+      r:'E<sub>p,e</sub> = 10 J' },
+    { n:'04', t:'Un resorte tiene E<sub>p,e</sub> = 4 J cuando se estira 0.2 m. ¿Cuál es su constante k?',
+      d:'k = 2E<sub>p,e</sub>/x²',
+      r:'k = 200 N/m' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

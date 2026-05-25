@@ -1,210 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Óptica</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #b45309; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#b45309; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#b45309; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Óptica · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Óptica</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Usa <b>c = 3×10⁸ m/s</b>. Ecuación de espejos y lentes delgadas: <b>1/p + 1/q = 1/f</b>. Aumento: <b>M = −q/p</b>.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Óptica · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="amber">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Óptica</h1>
+    <p class="hero__lede">
+      Reflexión, espejos planos y esféricos, refracción y ley de Snell, lentes delgadas y aplicaciones. Toca cada ejercicio para revelar su respuesta. Usa <strong>c = 3 × 10⁸ m/s</strong>. Ecuación de espejos y lentes: <strong>1/p + 1/q = 1/f</strong>. Aumento: <strong>M = −q/p</strong>.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Reflexión y espejos planos ─────────────────────────────────────────
-  { titulo:"1 · Reflexión y espejos planos", color:"#b45309", ejercicios:[
-    { n:"01", t:"Un rayo de luz incide sobre un espejo plano formando un ángulo de 30° con la normal. ¿Cuál es el ángulo reflejado?",
-      d:"Ley de reflexión: θ<sub>i</sub> = θ<sub>r</sub>",
-      r:"θ<sub>r</sub> = 30°" },
-    { n:"02", t:"Una persona se encuentra a 2 m frente a un espejo plano. ¿A qué distancia ve a su imagen?",
-      d:"Imagen virtual a la misma distancia detrás del espejo",
-      r:"d = 4 m (entre persona e imagen)" },
-    { n:"03", t:"Si la persona del problema 02 se acerca 1 m al espejo, ¿qué pasa con la distancia a su imagen?",
-      d:"La imagen también se acerca 1 m",
-      r:"Disminuye 2 m (ambos se acercan 1 m)" },
-    { n:"04", t:"En un espejo plano, ¿la imagen es real o virtual?",
-      d:"Los rayos no convergen físicamente detrás del espejo",
-      r:"Virtual, derecha y del mismo tamaño" },
-    { n:"05", t:"Un rayo incide formando 40° con la superficie del espejo (no con la normal). ¿Ángulo reflejado respecto a la normal?",
-      d:"El ángulo con la normal = 90° − 40°",
-      r:"50°" },
-    { n:"06", t:"¿Qué característica tiene la imagen de un espejo plano respecto a la lateralidad?",
-      d:"Inversión izquierda-derecha",
-      r:"Está invertida lateralmente" },
+  { titulo: 'Reflexión y espejos planos', ejercicios: [
+    { n:'01', t:'Un rayo de luz incide sobre un espejo plano formando un ángulo de 30° con la normal. ¿Cuál es el ángulo reflejado?',
+      d:'Ley de reflexión: θ<sub>i</sub> = θ<sub>r</sub>',
+      r:'θ<sub>r</sub> = 30°' },
+    { n:'02', t:'Una persona se encuentra a 2 m frente a un espejo plano. ¿A qué distancia ve a su imagen?',
+      d:'Imagen virtual a la misma distancia detrás del espejo',
+      r:'d = 4 m (entre persona e imagen)' },
+    { n:'03', t:'Si la persona del problema 02 se acerca 1 m al espejo, ¿qué pasa con la distancia a su imagen?',
+      d:'La imagen también se acerca 1 m',
+      r:'Disminuye 2 m (ambos se acercan 1 m)' },
+    { n:'04', t:'En un espejo plano, ¿la imagen es real o virtual?',
+      d:'Los rayos no convergen físicamente detrás del espejo',
+      r:'Virtual, derecha y del mismo tamaño' },
+    { n:'05', t:'Un rayo incide formando 40° con la superficie del espejo (no con la normal). ¿Ángulo reflejado respecto a la normal?',
+      d:'El ángulo con la normal = 90° − 40°',
+      r:'50°' },
+    { n:'06', t:'¿Qué característica tiene la imagen de un espejo plano respecto a la lateralidad?',
+      d:'Inversión izquierda-derecha',
+      r:'Está invertida lateralmente' },
   ]},
 
-  // ── 2. Espejos esféricos ──────────────────────────────────────────────────
-  { titulo:"2 · Espejos esféricos", color:"#9f1239", ejercicios:[
-    { n:"01", t:"Un espejo cóncavo tiene un radio de curvatura R = 20 cm. ¿Cuál es su distancia focal?",
-      d:"f = R/2",
-      r:"f = 10 cm" },
-    { n:"02", t:"Un objeto se coloca a 30 cm de un espejo cóncavo de f = 10 cm. ¿Dónde se forma la imagen?",
-      d:"1/p + 1/q = 1/f &nbsp;·&nbsp; 1/30 + 1/q = 1/10",
-      r:"q = 15 cm (real, frente al espejo)" },
-    { n:"03", t:"¿Cuál es el aumento de la imagen del problema 02?",
-      d:"M = −q/p",
-      r:"M = −0.5 (invertida y reducida a la mitad)" },
-    { n:"04", t:"Un objeto está a 5 cm de un espejo cóncavo de f = 10 cm. ¿Imagen?",
-      d:"Objeto entre F y el vértice → imagen virtual",
-      r:"q = −10 cm (virtual, derecha, ampliada)" },
-    { n:"05", t:"En un espejo convexo, ¿cómo es siempre la imagen de un objeto real?",
-      d:"f es negativo y |q| < |f|",
-      r:"Virtual, derecha y reducida" },
-    { n:"06", t:"Un espejo convexo tiene f = −15 cm. Un objeto está a 30 cm. ¿Posición de la imagen?",
-      d:"1/30 + 1/q = 1/(−15)",
-      r:"q = −10 cm (virtual)" },
+  { titulo: 'Espejos esféricos', ejercicios: [
+    { n:'01', t:'Un espejo cóncavo tiene un radio de curvatura R = 20 cm. ¿Cuál es su distancia focal?',
+      d:'f = R/2',
+      r:'f = 10 cm' },
+    { n:'02', t:'Un objeto se coloca a 30 cm de un espejo cóncavo de f = 10 cm. ¿Dónde se forma la imagen?',
+      d:'1/p + 1/q = 1/f &nbsp;·&nbsp; 1/30 + 1/q = 1/10',
+      r:'q = 15 cm (real, frente al espejo)' },
+    { n:'03', t:'¿Cuál es el aumento de la imagen del problema 02?',
+      d:'M = −q/p',
+      r:'M = −0.5 (invertida y reducida a la mitad)' },
+    { n:'04', t:'Un objeto está a 5 cm de un espejo cóncavo de f = 10 cm. ¿Imagen?',
+      d:'Objeto entre F y el vértice → imagen virtual',
+      r:'q = −10 cm (virtual, derecha, ampliada)' },
+    { n:'05', t:'En un espejo convexo, ¿cómo es siempre la imagen de un objeto real?',
+      d:'f es negativo y |q| < |f|',
+      r:'Virtual, derecha y reducida' },
+    { n:'06', t:'Un espejo convexo tiene f = −15 cm. Un objeto está a 30 cm. ¿Posición de la imagen?',
+      d:'1/30 + 1/q = 1/(−15)',
+      r:'q = −10 cm (virtual)' },
   ]},
 
-  // ── 3. Refracción y ley de Snell ──────────────────────────────────────────
-  { titulo:"3 · Refracción y ley de Snell", color:"#0e7490", ejercicios:[
-    { n:"01", t:"Un rayo pasa de aire (n=1) a vidrio (n=1.5) con un ángulo de incidencia de 30°. ¿Ángulo de refracción?",
-      d:"n₁ sen θ₁ = n₂ sen θ₂",
-      r:"θ₂ ≈ 19.5°" },
-    { n:"02", t:"¿Cuál es la velocidad de la luz dentro de agua (n = 1.33)?",
-      d:"v = c/n",
-      r:"v ≈ 2.26 × 10⁸ m/s" },
-    { n:"03", t:"En un vidrio crown la luz viaja a 2 × 10⁸ m/s. ¿Cuál es su índice de refracción?",
-      d:"n = c/v",
-      r:"n = 1.5" },
-    { n:"04", t:"¿Cuál es el ángulo crítico para la reflexión total interna del agua al aire? (n<sub>agua</sub> = 1.33)",
-      d:"sen θ<sub>c</sub> = n₂/n₁",
-      r:"θ<sub>c</sub> ≈ 48.8°" },
-    { n:"05", t:"Un rayo pasa de aire a un líquido con ángulos de 60° y 30° respectivamente. ¿Índice de refracción del líquido?",
-      d:"n = sen 60° / sen 30°",
-      r:"n ≈ 1.73" },
-    { n:"06", t:"Cuando la luz pasa de un medio menos denso a uno más denso, ¿el rayo se acerca o se aleja de la normal?",
-      d:"n mayor → menor velocidad → rayo más cercano a la normal",
-      r:"Se acerca a la normal" },
+  { titulo: 'Refracción y ley de Snell', ejercicios: [
+    { n:'01', t:'Un rayo pasa de aire (n=1) a vidrio (n=1.5) con un ángulo de incidencia de 30°. ¿Ángulo de refracción?',
+      d:'n₁ sen θ₁ = n₂ sen θ₂',
+      r:'θ₂ ≈ 19.5°' },
+    { n:'02', t:'¿Cuál es la velocidad de la luz dentro de agua (n = 1.33)?',
+      d:'v = c/n',
+      r:'v ≈ 2.26 × 10⁸ m/s' },
+    { n:'03', t:'En un vidrio crown la luz viaja a 2 × 10⁸ m/s. ¿Cuál es su índice de refracción?',
+      d:'n = c/v',
+      r:'n = 1.5' },
+    { n:'04', t:'¿Cuál es el ángulo crítico para la reflexión total interna del agua al aire? (n<sub>agua</sub> = 1.33)',
+      d:'sen θ<sub>c</sub> = n₂/n₁',
+      r:'θ<sub>c</sub> ≈ 48.8°' },
+    { n:'05', t:'Un rayo pasa de aire a un líquido con ángulos de 60° y 30° respectivamente. ¿Índice de refracción del líquido?',
+      d:'n = sen 60° / sen 30°',
+      r:'n ≈ 1.73' },
+    { n:'06', t:'Cuando la luz pasa de un medio menos denso a uno más denso, ¿el rayo se acerca o se aleja de la normal?',
+      d:'n mayor → menor velocidad → rayo más cercano a la normal',
+      r:'Se acerca a la normal' },
   ]},
 
-  // ── 4. Lentes delgadas ────────────────────────────────────────────────────
-  { titulo:"4 · Lentes delgadas", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"Una lente convergente tiene f = 10 cm. Un objeto está a 20 cm. ¿Posición de la imagen?",
-      d:"1/20 + 1/q = 1/10",
-      r:"q = 20 cm (real, invertida, igual tamaño)" },
-    { n:"02", t:"¿Cuál es el aumento de la imagen del problema 01?",
-      d:"M = −q/p",
-      r:"M = −1 (igual tamaño, invertida)" },
-    { n:"03", t:"Una lente convergente de f = 20 cm tiene un objeto a 10 cm. ¿Imagen?",
-      d:"Objeto dentro de la focal → lupa",
-      r:"q = −20 cm (virtual, derecha, ampliada)" },
-    { n:"04", t:"Una lente divergente tiene f = −15 cm. Un objeto está a 30 cm. ¿Posición y naturaleza de la imagen?",
-      d:"1/30 + 1/q = 1/(−15)",
-      r:"q = −10 cm (virtual, derecha, reducida)" },
-    { n:"05", t:"En una lupa, ¿cómo se ve la imagen del objeto?",
-      d:"Lupa = lente convergente con objeto dentro del foco",
-      r:"Virtual, derecha y ampliada" },
-    { n:"06", t:"¿Qué tipo de lente se usa para corregir la miopía?",
-      d:"La miopía enfoca antes de la retina",
-      r:"Lente divergente (negativa)" },
+  { titulo: 'Lentes delgadas', ejercicios: [
+    { n:'01', t:'Una lente convergente tiene f = 10 cm. Un objeto está a 20 cm. ¿Posición de la imagen?',
+      d:'1/20 + 1/q = 1/10',
+      r:'q = 20 cm (real, invertida, igual tamaño)' },
+    { n:'02', t:'¿Cuál es el aumento de la imagen del problema 01?',
+      d:'M = −q/p',
+      r:'M = −1 (igual tamaño, invertida)' },
+    { n:'03', t:'Una lente convergente de f = 20 cm tiene un objeto a 10 cm. ¿Imagen?',
+      d:'Objeto dentro de la focal → lupa',
+      r:'q = −20 cm (virtual, derecha, ampliada)' },
+    { n:'04', t:'Una lente divergente tiene f = −15 cm. Un objeto está a 30 cm. ¿Posición y naturaleza de la imagen?',
+      d:'1/30 + 1/q = 1/(−15)',
+      r:'q = −10 cm (virtual, derecha, reducida)' },
+    { n:'05', t:'En una lupa, ¿cómo se ve la imagen del objeto?',
+      d:'Lupa = lente convergente con objeto dentro del foco',
+      r:'Virtual, derecha y ampliada' },
+    { n:'06', t:'¿Qué tipo de lente se usa para corregir la miopía?',
+      d:'La miopía enfoca antes de la retina',
+      r:'Lente divergente (negativa)' },
   ]},
 
-  // ── 5. Naturaleza de la luz y aplicaciones ────────────────────────────────
-  { titulo:"5 · Naturaleza de la luz y aplicaciones", color:"#1d4ed8", ejercicios:[
-    { n:"01", t:"¿Cuál es la velocidad de la luz en el vacío?",
-      d:"Constante universal",
-      r:"c = 3 × 10⁸ m/s" },
-    { n:"02", t:"La luz de longitud de onda 600 nm pasa al agua (n = 1.33). ¿Cambia su frecuencia?",
-      d:"f no cambia al cambiar de medio; sí cambia λ",
-      r:"No (la frecuencia se conserva)" },
-    { n:"03", t:"¿Qué tipo de lente corrige la hipermetropía?",
-      d:"En la hipermetropía la imagen se forma detrás de la retina",
-      r:"Lente convergente (positiva)" },
-    { n:"04", t:"Una persona ve un objeto a través de una lupa de f = 5 cm. ¿A qué distancia debe colocar el objeto para que la imagen sea ampliada y derecha?",
-      d:"Dentro de la focal",
-      r:"A menos de 5 cm" },
-    { n:"05", t:"¿Qué fenómeno explica la descomposición de la luz blanca al pasar por un prisma?",
-      d:"n depende de la longitud de onda",
-      r:"Dispersión cromática" },
-    { n:"06", t:"La fibra óptica funciona gracias al fenómeno de:",
-      d:"La luz se queda atrapada dentro del núcleo",
-      r:"Reflexión total interna" },
+  { titulo: 'Naturaleza de la luz y aplicaciones', ejercicios: [
+    { n:'01', t:'¿Cuál es la velocidad de la luz en el vacío?',
+      d:'Constante universal',
+      r:'c = 3 × 10⁸ m/s' },
+    { n:'02', t:'La luz de longitud de onda 600 nm pasa al agua (n = 1.33). ¿Cambia su frecuencia?',
+      d:'f no cambia al cambiar de medio; sí cambia λ',
+      r:'No (la frecuencia se conserva)' },
+    { n:'03', t:'¿Qué tipo de lente corrige la hipermetropía?',
+      d:'En la hipermetropía la imagen se forma detrás de la retina',
+      r:'Lente convergente (positiva)' },
+    { n:'04', t:'Una persona ve un objeto a través de una lupa de f = 5 cm. ¿A qué distancia debe colocar el objeto para que la imagen sea ampliada y derecha?',
+      d:'Dentro de la focal',
+      r:'A menos de 5 cm' },
+    { n:'05', t:'¿Qué fenómeno explica la descomposición de la luz blanca al pasar por un prisma?',
+      d:'n depende de la longitud de onda',
+      r:'Dispersión cromática' },
+    { n:'06', t:'La fibra óptica funciona gracias al fenómeno de:',
+      d:'La luz se queda atrapada dentro del núcleo',
+      r:'Reflexión total interna' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

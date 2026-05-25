@@ -1,217 +1,221 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Dinámica</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #1a4f8a; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1a4f8a; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1a4f8a; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Dinámica · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Dinámica</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Usa <b>g = 10 m/s²</b> salvo indicación contraria.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Dinámica · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="blue">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Dinámica</h1>
+    <p class="hero__lede">
+      Las tres leyes de Newton, fricción, fuerza centrípeta, planos inclinados y poleas. Toca cada ejercicio para revelar su respuesta. Usa <strong>g = 10 m/s²</strong> salvo indicación contraria.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Primera ley (inercia) ──────────────────────────────────────────────
-  { titulo:"1 · Primera ley de Newton (inercia)", color:"#1a4f8a", ejercicios:[
-    { n:"01", t:"Un libro está en reposo sobre una mesa. ¿Cuál es la fuerza neta sobre él?",
-      d:"Reposo ⇒ equilibrio",
-      r:"F<sub>neta</sub> = 0" },
-    { n:"02", t:"¿Por qué cuando un autobús frena bruscamente los pasajeros se inclinan hacia adelante?",
-      d:"Inercia: tendencia a mantener el estado de movimiento",
-      r:"Por inercia: los pasajeros tienden a seguir moviéndose" },
-    { n:"03", t:"Un cuerpo se mueve a velocidad constante de 20 m/s sobre una superficie horizontal sin fricción. ¿Cuál es la fuerza neta sobre él?",
-      d:"Velocidad constante ⇒ equilibrio",
-      r:"F<sub>neta</sub> = 0" },
-    { n:"04", t:"¿Qué fuerza necesita aplicarse a un cuerpo en el espacio (sin fricción ni gravedad) para que se mueva a velocidad constante?",
-      d:"Recuerda la 1ra ley",
-      r:"Ninguna (sigue en MRU sin necesidad de fuerza)" },
+  { titulo: 'Primera ley de Newton (inercia)', ejercicios: [
+    { n:'01', t:'Un libro está en reposo sobre una mesa. ¿Cuál es la fuerza neta sobre él?',
+      d:'Reposo ⇒ equilibrio',
+      r:'F<sub>neta</sub> = 0' },
+    { n:'02', t:'¿Por qué cuando un autobús frena bruscamente los pasajeros se inclinan hacia adelante?',
+      d:'Inercia: tendencia a mantener el estado de movimiento',
+      r:'Por inercia: los pasajeros tienden a seguir moviéndose' },
+    { n:'03', t:'Un cuerpo se mueve a velocidad constante de 20 m/s sobre una superficie horizontal sin fricción. ¿Cuál es la fuerza neta sobre él?',
+      d:'Velocidad constante ⇒ equilibrio',
+      r:'F<sub>neta</sub> = 0' },
+    { n:'04', t:'¿Qué fuerza necesita aplicarse a un cuerpo en el espacio (sin fricción ni gravedad) para que se mueva a velocidad constante?',
+      d:'Recuerda la 1ra ley',
+      r:'Ninguna (sigue en MRU sin necesidad de fuerza)' },
   ]},
 
-  // ── 2. Segunda ley (F = ma) ───────────────────────────────────────────────
-  { titulo:"2 · Segunda ley de Newton (F = ma)", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"Una fuerza neta de 20 N se aplica sobre un cuerpo de 4 kg. ¿Cuál es su aceleración?",
-      d:"a = F/m",
-      r:"a = 5 m/s²" },
-    { n:"02", t:"Un objeto de 10 kg adquiere una aceleración de 3 m/s². ¿Cuál es la fuerza neta?",
-      d:"F = ma",
-      r:"F = 30 N" },
-    { n:"03", t:"Un coche de 1 200 kg acelera de 0 a 30 m/s en 10 s. ¿Cuál es la fuerza neta?",
-      d:"Calcula a primero, luego F = ma",
-      r:"a = 3 m/s² &nbsp;·&nbsp; F = 3 600 N" },
-    { n:"04", t:"Una caja de 5 kg se empuja con fuerza de 25 N en una superficie sin fricción. ¿Cuál es su aceleración?",
-      d:"a = F/m",
-      r:"a = 5 m/s²" },
-    { n:"05", t:"Si la masa se duplica y la fuerza se mantiene, ¿qué pasa con la aceleración?",
-      d:"a ∝ 1/m",
-      r:"Se reduce a la mitad" },
-    { n:"06", t:"¿Qué fuerza se necesita para acelerar una pelota de 0.5 kg a 8 m/s²?",
-      d:"F = ma",
-      r:"F = 4 N" },
-    { n:"07", t:"Un objeto de 2 kg cae libremente. ¿Cuál es la fuerza neta sobre él? (g = 10 m/s²)",
-      d:"F<sub>neta</sub> = peso = mg",
-      r:"F = 20 N (su peso)" },
-    { n:"08", t:"Sobre un objeto de 3 kg actúan dos fuerzas: 20 N hacia la derecha y 8 N hacia la izquierda. ¿Cuál es su aceleración?",
-      d:"Calcula F<sub>neta</sub> primero",
-      r:"F<sub>neta</sub> = 12 N &nbsp;·&nbsp; a = 4 m/s² (a la derecha)" },
+  { titulo: 'Segunda ley de Newton (F = ma)', ejercicios: [
+    { n:'01', t:'Una fuerza neta de 20 N se aplica sobre un cuerpo de 4 kg. ¿Cuál es su aceleración?',
+      d:'a = F/m',
+      r:'a = 5 m/s²' },
+    { n:'02', t:'Un objeto de 10 kg adquiere una aceleración de 3 m/s². ¿Cuál es la fuerza neta?',
+      d:'F = ma',
+      r:'F = 30 N' },
+    { n:'03', t:'Un coche de 1 200 kg acelera de 0 a 30 m/s en 10 s. ¿Cuál es la fuerza neta?',
+      d:'Calcula a primero, luego F = ma',
+      r:'a = 3 m/s² &nbsp;·&nbsp; F = 3 600 N' },
+    { n:'04', t:'Una caja de 5 kg se empuja con fuerza de 25 N en una superficie sin fricción. ¿Cuál es su aceleración?',
+      d:'a = F/m',
+      r:'a = 5 m/s²' },
+    { n:'05', t:'Si la masa se duplica y la fuerza se mantiene, ¿qué pasa con la aceleración?',
+      d:'a ∝ 1/m',
+      r:'Se reduce a la mitad' },
+    { n:'06', t:'¿Qué fuerza se necesita para acelerar una pelota de 0.5 kg a 8 m/s²?',
+      d:'F = ma',
+      r:'F = 4 N' },
+    { n:'07', t:'Un objeto de 2 kg cae libremente. ¿Cuál es la fuerza neta sobre él? (g = 10 m/s²)',
+      d:'F<sub>neta</sub> = peso = mg',
+      r:'F = 20 N (su peso)' },
+    { n:'08', t:'Sobre un objeto de 3 kg actúan dos fuerzas: 20 N hacia la derecha y 8 N hacia la izquierda. ¿Cuál es su aceleración?',
+      d:'Calcula F<sub>neta</sub> primero',
+      r:'F<sub>neta</sub> = 12 N &nbsp;·&nbsp; a = 4 m/s² (a la derecha)' },
   ]},
 
-  // ── 3. Tercera ley (acción-reacción) ──────────────────────────────────────
-  { titulo:"3 · Tercera ley (acción y reacción)", color:"#047857", ejercicios:[
-    { n:"01", t:"Una persona empuja una pared con fuerza de 50 N. ¿Cuál es la fuerza con la que la pared empuja a la persona?",
-      d:"Acción y reacción: iguales y opuestas",
-      r:"50 N (en sentido contrario)" },
-    { n:"02", t:"Un nadador empuja el agua hacia atrás con sus brazos. ¿Por qué avanza?",
-      d:"3ra ley: el agua le aplica una fuerza opuesta",
-      r:"El agua lo empuja hacia adelante con la misma fuerza" },
-    { n:"03", t:"Un caballo tira de una carreta con fuerza F. La carreta tira del caballo con fuerza F en sentido opuesto. ¿Por qué se mueve el sistema?",
-      d:"Las fuerzas de acción-reacción actúan sobre cuerpos distintos",
-      r:"Por la fricción del caballo con el suelo (fuerza externa al sistema)" },
+  { titulo: 'Tercera ley (acción y reacción)', ejercicios: [
+    { n:'01', t:'Una persona empuja una pared con fuerza de 50 N. ¿Cuál es la fuerza con la que la pared empuja a la persona?',
+      d:'Acción y reacción: iguales y opuestas',
+      r:'50 N (en sentido contrario)' },
+    { n:'02', t:'Un nadador empuja el agua hacia atrás con sus brazos. ¿Por qué avanza?',
+      d:'3ra ley: el agua le aplica una fuerza opuesta',
+      r:'El agua lo empuja hacia adelante con la misma fuerza' },
+    { n:'03', t:'Un caballo tira de una carreta con fuerza F. La carreta tira del caballo con fuerza F en sentido opuesto. ¿Por qué se mueve el sistema?',
+      d:'Las fuerzas de acción-reacción actúan sobre cuerpos distintos',
+      r:'Por la fricción del caballo con el suelo (fuerza externa al sistema)' },
   ]},
 
-  // ── 4. Fricción ───────────────────────────────────────────────────────────
-  { titulo:"4 · Fuerza de fricción", color:"#b45309", ejercicios:[
-    { n:"01", t:"Un bloque de 10 kg está sobre una superficie horizontal con coeficiente de fricción dinámica μ = 0.3. ¿Cuál es la fuerza de fricción al moverlo?",
-      d:"f = μN; en horizontal N = mg",
-      r:"f = 30 N" },
-    { n:"02", t:"Se aplica una fuerza horizontal de 50 N a un bloque de 5 kg sobre una superficie con μ = 0.4. ¿Cuál es su aceleración?",
-      d:"F<sub>neta</sub> = F − f; a = F<sub>neta</sub>/m",
-      r:"f = 20 N &nbsp;·&nbsp; a = 6 m/s²" },
-    { n:"03", t:"¿Cuál es la fuerza horizontal mínima para empezar a mover un bloque de 8 kg si μ<sub>e</sub> = 0.5?",
-      d:"f<sub>máx</sub> = μ<sub>e</sub>·N",
-      r:"F<sub>mín</sub> = 40 N" },
-    { n:"04", t:"Un objeto de 4 kg se mueve con velocidad constante en una superficie horizontal mientras se le aplica una fuerza de 16 N. ¿Cuál es μ?",
-      d:"v constante ⇒ F = f = μmg",
-      r:"μ = 0.4" },
-    { n:"05", t:"Un coche de 1 000 kg frena por la fricción de los neumáticos con μ = 0.6. ¿Cuál es su desaceleración?",
-      d:"a = f/m = μg",
-      r:"a = 6 m/s² (frenando)" },
-    { n:"06", t:"Un trineo de 20 kg es jalado horizontalmente por una fuerza de 60 N en una superficie con μ = 0.2. ¿Cuál es su aceleración?",
-      d:"f = μmg; a = (F − f)/m",
-      r:"f = 40 N &nbsp;·&nbsp; a = 1 m/s²" },
+  { titulo: 'Fuerza de fricción', ejercicios: [
+    { n:'01', t:'Un bloque de 10 kg está sobre una superficie horizontal con coeficiente de fricción dinámica μ = 0.3. ¿Cuál es la fuerza de fricción al moverlo?',
+      d:'f = μN; en horizontal N = mg',
+      r:'f = 30 N' },
+    { n:'02', t:'Se aplica una fuerza horizontal de 50 N a un bloque de 5 kg sobre una superficie con μ = 0.4. ¿Cuál es su aceleración?',
+      d:'F<sub>neta</sub> = F − f; a = F<sub>neta</sub>/m',
+      r:'f = 20 N &nbsp;·&nbsp; a = 6 m/s²' },
+    { n:'03', t:'¿Cuál es la fuerza horizontal mínima para empezar a mover un bloque de 8 kg si μ<sub>e</sub> = 0.5?',
+      d:'f<sub>máx</sub> = μ<sub>e</sub>·N',
+      r:'F<sub>mín</sub> = 40 N' },
+    { n:'04', t:'Un objeto de 4 kg se mueve con velocidad constante en una superficie horizontal mientras se le aplica una fuerza de 16 N. ¿Cuál es μ?',
+      d:'v constante ⇒ F = f = μmg',
+      r:'μ = 0.4' },
+    { n:'05', t:'Un coche de 1 000 kg frena por la fricción de los neumáticos con μ = 0.6. ¿Cuál es su desaceleración?',
+      d:'a = f/m = μg',
+      r:'a = 6 m/s² (frenando)' },
+    { n:'06', t:'Un trineo de 20 kg es jalado horizontalmente por una fuerza de 60 N en una superficie con μ = 0.2. ¿Cuál es su aceleración?',
+      d:'f = μmg; a = (F − f)/m',
+      r:'f = 40 N &nbsp;·&nbsp; a = 1 m/s²' },
   ]},
 
-  // ── 5. Fuerza centrípeta ──────────────────────────────────────────────────
-  { titulo:"5 · Fuerza centrípeta", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Un cuerpo de 2 kg gira en círculo de radio 0.5 m con velocidad tangencial 4 m/s. ¿Cuál es la fuerza centrípeta?",
-      d:"F<sub>c</sub> = mv²/r",
-      r:"F<sub>c</sub> = 64 N" },
-    { n:"02", t:"Un coche de 1 000 kg toma una curva de radio 50 m a 20 m/s. ¿Cuál es la fuerza centrípeta requerida?",
-      d:"F<sub>c</sub> = mv²/r",
-      r:"F<sub>c</sub> = 8 000 N" },
-    { n:"03", t:"¿Cuál es la fuerza centrípeta sobre una pelota de 0.5 kg que gira con ω = 4 rad/s en un círculo de 0.8 m?",
-      d:"F<sub>c</sub> = mω²r",
-      r:"F<sub>c</sub> = 6.4 N" },
-    { n:"04", t:"Si la velocidad tangencial de un objeto en MCU se duplica (con r constante), ¿qué pasa con la fuerza centrípeta?",
-      d:"F<sub>c</sub> ∝ v²",
-      r:"Se cuadruplica (4F<sub>c</sub>)" },
-    { n:"05", t:"Un objeto de 1 kg gira en círculo de 2 m de radio con velocidad angular ω = 3 rad/s. ¿Cuál es la fuerza centrípeta?",
-      d:"F<sub>c</sub> = mω²r",
-      r:"F<sub>c</sub> = 18 N" },
+  { titulo: 'Fuerza centrípeta', ejercicios: [
+    { n:'01', t:'Un cuerpo de 2 kg gira en círculo de radio 0.5 m con velocidad tangencial 4 m/s. ¿Cuál es la fuerza centrípeta?',
+      d:'F<sub>c</sub> = mv²/r',
+      r:'F<sub>c</sub> = 64 N' },
+    { n:'02', t:'Un coche de 1 000 kg toma una curva de radio 50 m a 20 m/s. ¿Cuál es la fuerza centrípeta requerida?',
+      d:'F<sub>c</sub> = mv²/r',
+      r:'F<sub>c</sub> = 8 000 N' },
+    { n:'03', t:'¿Cuál es la fuerza centrípeta sobre una pelota de 0.5 kg que gira con ω = 4 rad/s en un círculo de 0.8 m?',
+      d:'F<sub>c</sub> = mω²r',
+      r:'F<sub>c</sub> = 6.4 N' },
+    { n:'04', t:'Si la velocidad tangencial de un objeto en MCU se duplica (con r constante), ¿qué pasa con la fuerza centrípeta?',
+      d:'F<sub>c</sub> ∝ v²',
+      r:'Se cuadruplica (4F<sub>c</sub>)' },
+    { n:'05', t:'Un objeto de 1 kg gira en círculo de 2 m de radio con velocidad angular ω = 3 rad/s. ¿Cuál es la fuerza centrípeta?',
+      d:'F<sub>c</sub> = mω²r',
+      r:'F<sub>c</sub> = 18 N' },
   ]},
 
-  // ── 6. Plano inclinado y poleas ───────────────────────────────────────────
-  { titulo:"6 · Plano inclinado y poleas", color:"#6d28d9", ejercicios:[
-    { n:"01", t:"Un bloque de 6 kg está sobre un plano inclinado de 30° (sin fricción). ¿Cuál es la componente del peso paralela al plano?",
-      d:"W<sub>∥</sub> = mg sin θ",
-      r:"W<sub>∥</sub> = 30 N" },
-    { n:"02", t:"¿Cuál es la aceleración del bloque del problema 01 si desliza sin fricción?",
-      d:"a = g sin θ (la masa se cancela)",
-      r:"a = 5 m/s²" },
-    { n:"03", t:"Sobre un plano inclinado de 37° hay un bloque de 4 kg con fricción μ = 0.2. ¿Empieza a moverse? (sin 37° = 0.6, cos 37° = 0.8)",
-      d:"Compara W<sub>∥</sub> con f<sub>máx</sub> = μN",
-      r:"W<sub>∥</sub> = 24 N &gt; f<sub>máx</sub> = 6.4 N → Sí se mueve" },
-    { n:"04", t:"Una polea ideal soporta dos masas iguales de 5 kg cada una. ¿Cuál es la tensión en la cuerda?",
-      d:"Sistema en equilibrio; T iguala el peso",
-      r:"T = 50 N (sistema en reposo)" },
-    { n:"05", t:"En una polea ideal, una masa de 6 kg cuelga de un lado y una de 4 kg del otro. ¿Cuál es la aceleración del sistema?",
-      d:"a = (m₁ − m₂)g/(m₁ + m₂)",
-      r:"a = 2 m/s²" },
+  { titulo: 'Plano inclinado y poleas', ejercicios: [
+    { n:'01', t:'Un bloque de 6 kg está sobre un plano inclinado de 30° (sin fricción). ¿Cuál es la componente del peso paralela al plano?',
+      d:'W<sub>∥</sub> = mg sin θ',
+      r:'W<sub>∥</sub> = 30 N' },
+    { n:'02', t:'¿Cuál es la aceleración del bloque del problema 01 si desliza sin fricción?',
+      d:'a = g sin θ (la masa se cancela)',
+      r:'a = 5 m/s²' },
+    { n:'03', t:'Sobre un plano inclinado de 37° hay un bloque de 4 kg con fricción μ = 0.2. ¿Empieza a moverse? (sin 37° = 0.6, cos 37° = 0.8)',
+      d:'Compara W<sub>∥</sub> con f<sub>máx</sub> = μN',
+      r:'W<sub>∥</sub> = 24 N &gt; f<sub>máx</sub> = 6.4 N → Sí se mueve' },
+    { n:'04', t:'Una polea ideal soporta dos masas iguales de 5 kg cada una. ¿Cuál es la tensión en la cuerda?',
+      d:'Sistema en equilibrio; T iguala el peso',
+      r:'T = 50 N (sistema en reposo)' },
+    { n:'05', t:'En una polea ideal, una masa de 6 kg cuelga de un lado y una de 4 kg del otro. ¿Cuál es la aceleración del sistema?',
+      d:'a = (m₁ − m₂)g/(m₁ + m₂)',
+      r:'a = 2 m/s²' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

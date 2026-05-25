@@ -1,210 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Física moderna</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #1e3a8a; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1e3a8a; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#1e3a8a; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Física moderna · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Física moderna</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Constante de Planck: <b>h = 6.63×10⁻³⁴ J·s</b>. Velocidad de la luz: <b>c = 3×10⁸ m/s</b>. Fotón: <b>E = h·f = h·c/λ</b>. De Broglie: <b>λ = h/p</b>.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Física moderna · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="navy">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Física <em>moderna</em></h1>
+    <p class="hero__lede">
+      Modelos atómicos, fotón y efecto fotoeléctrico, dualidad onda-partícula, radiactividad, fisión y fusión. Toca cada ejercicio para revelar su respuesta. Constante de Planck: <strong>h = 6.63 × 10⁻³⁴ J·s</strong>. Velocidad de la luz: <strong>c = 3 × 10⁸ m/s</strong>. Fotón: <strong>E = h·f = h·c/λ</strong>. De Broglie: <strong>λ = h/p</strong>.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Modelos atómicos ───────────────────────────────────────────────────
-  { titulo:"1 · Modelos atómicos", color:"#1e3a8a", ejercicios:[
-    { n:"01", t:"¿Quién propuso que el átomo es la partícula más pequeña e indivisible de la materia?",
-      d:"Modelo \"esferas macizas\"",
-      r:"John Dalton (1808)" },
-    { n:"02", t:"¿Quién propuso el modelo atómico de \"pudín de pasas\" tras descubrir el electrón?",
-      d:"Cargas negativas embebidas en una esfera positiva",
-      r:"J. J. Thomson" },
-    { n:"03", t:"¿Quién descubrió el núcleo atómico mediante el experimento de la lámina de oro?",
-      d:"La mayoría de partículas alfa pasaban; algunas rebotaban",
-      r:"Ernest Rutherford" },
-    { n:"04", t:"En el modelo de Bohr, los electrones se mueven en:",
-      d:"Solo ciertos valores de energía permitidos",
-      r:"Órbitas circulares cuantizadas" },
-    { n:"05", t:"¿Qué partícula subatómica descubrió James Chadwick en 1932?",
-      d:"Sin carga, masa similar al protón",
-      r:"El neutrón" },
-    { n:"06", t:"En el modelo cuántico actual, ¿cómo se describe la posición del electrón?",
-      d:"No hay órbitas definidas",
-      r:"Por orbitales (zonas de probabilidad)" },
+  { titulo: 'Modelos atómicos', ejercicios: [
+    { n:'01', t:'¿Quién propuso que el átomo es la partícula más pequeña e indivisible de la materia?',
+      d:'Modelo "esferas macizas"',
+      r:'John Dalton (1808)' },
+    { n:'02', t:'¿Quién propuso el modelo atómico de "pudín de pasas" tras descubrir el electrón?',
+      d:'Cargas negativas embebidas en una esfera positiva',
+      r:'J. J. Thomson' },
+    { n:'03', t:'¿Quién descubrió el núcleo atómico mediante el experimento de la lámina de oro?',
+      d:'La mayoría de partículas alfa pasaban; algunas rebotaban',
+      r:'Ernest Rutherford' },
+    { n:'04', t:'En el modelo de Bohr, los electrones se mueven en:',
+      d:'Solo ciertos valores de energía permitidos',
+      r:'Órbitas circulares cuantizadas' },
+    { n:'05', t:'¿Qué partícula subatómica descubrió James Chadwick en 1932?',
+      d:'Sin carga, masa similar al protón',
+      r:'El neutrón' },
+    { n:'06', t:'En el modelo cuántico actual, ¿cómo se describe la posición del electrón?',
+      d:'No hay órbitas definidas',
+      r:'Por orbitales (zonas de probabilidad)' },
   ]},
 
-  // ── 2. El fotón y el efecto fotoeléctrico ─────────────────────────────────
-  { titulo:"2 · Fotón y efecto fotoeléctrico", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"Un fotón tiene frecuencia 5×10¹⁴ Hz. ¿Cuál es su energía? (h = 6.63×10⁻³⁴ J·s)",
-      d:"E = h·f",
-      r:"E ≈ 3.32×10⁻¹⁹ J" },
-    { n:"02", t:"Calcula la energía de un fotón con λ = 600 nm.",
-      d:"E = h·c/λ",
-      r:"E ≈ 3.32×10⁻¹⁹ J" },
-    { n:"03", t:"¿Quién explicó el efecto fotoeléctrico tratando a la luz como cuantos de energía y obtuvo el Nobel por ello?",
-      d:"En 1905 (\"annus mirabilis\")",
-      r:"Albert Einstein" },
-    { n:"04", t:"En el efecto fotoeléctrico, si la frecuencia de la luz es menor que la frecuencia umbral del metal:",
-      d:"No hay energía suficiente para arrancar electrones",
-      r:"No se emiten electrones (sin importar la intensidad)" },
-    { n:"05", t:"¿Qué pasa con la energía cinética de los fotoelectrones si aumenta la frecuencia de la luz?",
-      d:"E<sub>cin</sub> = h·f − W",
-      r:"Aumenta linealmente con f" },
-    { n:"06", t:"Si aumenta la intensidad de la luz incidente (a misma frecuencia), ¿qué cambia en el efecto fotoeléctrico?",
-      d:"Más fotones, no más energía por fotón",
-      r:"Aumenta el número de fotoelectrones" },
+  { titulo: 'Fotón y efecto fotoeléctrico', ejercicios: [
+    { n:'01', t:'Un fotón tiene frecuencia 5×10¹⁴ Hz. ¿Cuál es su energía? (h = 6.63×10⁻³⁴ J·s)',
+      d:'E = h·f',
+      r:'E ≈ 3.32×10⁻¹⁹ J' },
+    { n:'02', t:'Calcula la energía de un fotón con λ = 600 nm.',
+      d:'E = h·c/λ',
+      r:'E ≈ 3.32×10⁻¹⁹ J' },
+    { n:'03', t:'¿Quién explicó el efecto fotoeléctrico tratando a la luz como cuantos de energía y obtuvo el Nobel por ello?',
+      d:'En 1905 ("annus mirabilis")',
+      r:'Albert Einstein' },
+    { n:'04', t:'En el efecto fotoeléctrico, si la frecuencia de la luz es menor que la frecuencia umbral del metal:',
+      d:'No hay energía suficiente para arrancar electrones',
+      r:'No se emiten electrones (sin importar la intensidad)' },
+    { n:'05', t:'¿Qué pasa con la energía cinética de los fotoelectrones si aumenta la frecuencia de la luz?',
+      d:'E<sub>cin</sub> = h·f − W',
+      r:'Aumenta linealmente con f' },
+    { n:'06', t:'Si aumenta la intensidad de la luz incidente (a misma frecuencia), ¿qué cambia en el efecto fotoeléctrico?',
+      d:'Más fotones, no más energía por fotón',
+      r:'Aumenta el número de fotoelectrones' },
   ]},
 
-  // ── 3. Dualidad onda-partícula ────────────────────────────────────────────
-  { titulo:"3 · Dualidad onda-partícula", color:"#0e7490", ejercicios:[
-    { n:"01", t:"¿Quién propuso que las partículas tienen una longitud de onda asociada λ = h/p?",
-      d:"Tesis doctoral de 1924",
-      r:"Louis de Broglie" },
-    { n:"02", t:"Calcula la longitud de onda de De Broglie para un electrón con cantidad de movimiento p = 1×10⁻²⁴ kg·m/s.",
-      d:"λ = h/p",
-      r:"λ ≈ 6.63×10⁻¹⁰ m" },
-    { n:"03", t:"¿Por qué no observamos la naturaleza ondulatoria de un balón de fútbol?",
-      d:"Compara λ = h/p con las dimensiones del balón",
-      r:"Su λ es ridículamente pequeña por su gran masa" },
-    { n:"04", t:"El experimento que demostró el comportamiento ondulatorio de los electrones (difracción) fue el de:",
-      d:"1927, con cristal de níquel",
-      r:"Davisson y Germer" },
-    { n:"05", t:"¿Quién enunció el principio de incertidumbre que limita el conocimiento simultáneo de posición y momento?",
-      d:"Δx · Δp ≥ ℏ/2",
-      r:"Werner Heisenberg" },
-    { n:"06", t:"¿Cómo se le llama al comportamiento de la luz que a veces se manifiesta como onda y a veces como partícula?",
-      d:"Tema central de la mecánica cuántica",
-      r:"Dualidad onda-partícula" },
+  { titulo: 'Dualidad onda-partícula', ejercicios: [
+    { n:'01', t:'¿Quién propuso que las partículas tienen una longitud de onda asociada λ = h/p?',
+      d:'Tesis doctoral de 1924',
+      r:'Louis de Broglie' },
+    { n:'02', t:'Calcula la longitud de onda de De Broglie para un electrón con cantidad de movimiento p = 1×10⁻²⁴ kg·m/s.',
+      d:'λ = h/p',
+      r:'λ ≈ 6.63×10⁻¹⁰ m' },
+    { n:'03', t:'¿Por qué no observamos la naturaleza ondulatoria de un balón de fútbol?',
+      d:'Compara λ = h/p con las dimensiones del balón',
+      r:'Su λ es ridículamente pequeña por su gran masa' },
+    { n:'04', t:'El experimento que demostró el comportamiento ondulatorio de los electrones (difracción) fue el de:',
+      d:'1927, con cristal de níquel',
+      r:'Davisson y Germer' },
+    { n:'05', t:'¿Quién enunció el principio de incertidumbre que limita el conocimiento simultáneo de posición y momento?',
+      d:'Δx · Δp ≥ ℏ/2',
+      r:'Werner Heisenberg' },
+    { n:'06', t:'¿Cómo se le llama al comportamiento de la luz que a veces se manifiesta como onda y a veces como partícula?',
+      d:'Tema central de la mecánica cuántica',
+      r:'Dualidad onda-partícula' },
   ]},
 
-  // ── 4. Radiactividad ──────────────────────────────────────────────────────
-  { titulo:"4 · Radiactividad", color:"#b91c1c", ejercicios:[
-    { n:"01", t:"¿Quién descubrió la radiactividad en 1896 estudiando sales de uranio?",
-      d:"Compartió el Nobel de Física en 1903 con los Curie",
-      r:"Henri Becquerel" },
-    { n:"02", t:"Una partícula alfa (α) consiste en:",
-      d:"Núcleo de helio",
-      r:"2 protones + 2 neutrones" },
-    { n:"03", t:"Una partícula beta (β⁻) es esencialmente:",
-      d:"Emitida desde el núcleo cuando un neutrón decae",
-      r:"Un electrón de alta energía" },
-    { n:"04", t:"La radiación gamma (γ) es:",
-      d:"Sin masa y sin carga",
-      r:"Radiación electromagnética de muy alta energía" },
-    { n:"05", t:"Ordena por capacidad de penetración (de menor a mayor): α, β, γ.",
-      d:"α se detiene con papel; γ requiere plomo",
-      r:"α < β < γ" },
-    { n:"06", t:"Un isótopo tiene vida media de 10 años. Si tienes 80 g, ¿cuántos quedan después de 30 años?",
-      d:"Cada 10 años se reduce a la mitad",
-      r:"10 g (3 vidas medias: 80→40→20→10)" },
+  { titulo: 'Radiactividad', ejercicios: [
+    { n:'01', t:'¿Quién descubrió la radiactividad en 1896 estudiando sales de uranio?',
+      d:'Compartió el Nobel de Física en 1903 con los Curie',
+      r:'Henri Becquerel' },
+    { n:'02', t:'Una partícula alfa (α) consiste en:',
+      d:'Núcleo de helio',
+      r:'2 protones + 2 neutrones' },
+    { n:'03', t:'Una partícula beta (β⁻) es esencialmente:',
+      d:'Emitida desde el núcleo cuando un neutrón decae',
+      r:'Un electrón de alta energía' },
+    { n:'04', t:'La radiación gamma (γ) es:',
+      d:'Sin masa y sin carga',
+      r:'Radiación electromagnética de muy alta energía' },
+    { n:'05', t:'Ordena por capacidad de penetración (de menor a mayor): α, β, γ.',
+      d:'α se detiene con papel; γ requiere plomo',
+      r:'α < β < γ' },
+    { n:'06', t:'Un isótopo tiene vida media de 10 años. Si tienes 80 g, ¿cuántos quedan después de 30 años?',
+      d:'Cada 10 años se reduce a la mitad',
+      r:'10 g (3 vidas medias: 80→40→20→10)' },
   ]},
 
-  // ── 5. Fisión, fusión y aplicaciones ──────────────────────────────────────
-  { titulo:"5 · Fisión, fusión y aplicaciones", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Proceso en el cual un núcleo pesado se rompe en dos núcleos más pequeños liberando energía:",
-      d:"Sucede en reactores nucleares y bombas atómicas",
-      r:"Fisión nuclear" },
-    { n:"02", t:"Proceso en el cual dos núcleos ligeros se unen para formar uno más pesado liberando energía:",
-      d:"Fuente de energía del Sol",
-      r:"Fusión nuclear" },
-    { n:"03", t:"¿Qué isótopo de uranio se utiliza típicamente como combustible en los reactores nucleares?",
-      d:"El que es fácilmente fisionable",
-      r:"Uranio-235" },
-    { n:"04", t:"Ecuación que relaciona masa y energía, propuesta por Einstein:",
-      d:"Equivalencia masa-energía",
-      r:"E = m·c²" },
-    { n:"05", t:"Si en una reacción nuclear se pierden 1×10⁻³ kg de masa, ¿cuánta energía se libera? (c = 3×10⁸)",
-      d:"E = mc²",
-      r:"E = 9×10¹³ J" },
-    { n:"06", t:"¿Cómo se llama la técnica que utiliza la desintegración del carbono-14 para fechar restos arqueológicos?",
-      d:"Vida media ~5 730 años",
-      r:"Datación por radiocarbono (C-14)" },
+  { titulo: 'Fisión, fusión y aplicaciones', ejercicios: [
+    { n:'01', t:'Proceso en el cual un núcleo pesado se rompe en dos núcleos más pequeños liberando energía:',
+      d:'Sucede en reactores nucleares y bombas atómicas',
+      r:'Fisión nuclear' },
+    { n:'02', t:'Proceso en el cual dos núcleos ligeros se unen para formar uno más pesado liberando energía:',
+      d:'Fuente de energía del Sol',
+      r:'Fusión nuclear' },
+    { n:'03', t:'¿Qué isótopo de uranio se utiliza típicamente como combustible en los reactores nucleares?',
+      d:'El que es fácilmente fisionable',
+      r:'Uranio-235' },
+    { n:'04', t:'Ecuación que relaciona masa y energía, propuesta por Einstein:',
+      d:'Equivalencia masa-energía',
+      r:'E = m·c²' },
+    { n:'05', t:'Si en una reacción nuclear se pierden 1×10⁻³ kg de masa, ¿cuánta energía se libera? (c = 3×10⁸)',
+      d:'E = mc²',
+      r:'E = 9×10¹³ J' },
+    { n:'06', t:'¿Cómo se llama la técnica que utiliza la desintegración del carbono-14 para fechar restos arqueológicos?',
+      d:'Vida media ~5 730 años',
+      r:'Datación por radiocarbono (C-14)' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

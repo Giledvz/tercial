@@ -1,210 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Magnetismo y electromagnetismo</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #6d28d9; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6d28d9; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#6d28d9; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Magnetismo y electromagnetismo · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Magnetismo y electromagnetismo</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Constante magnética: <b>μ₀ = 4π×10⁻⁷ T·m/A</b>. Recuerda: <b>F = qvB sen θ</b>, <b>F = BIL sen θ</b>, <b>ε = −dΦ/dt</b>.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Magnetismo · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="purple">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Magnetismo y <em>electromagnetismo</em></h1>
+    <p class="hero__lede">
+      Fuerza magnética sobre cargas y conductores, campo magnético producido por corrientes, inducción de Faraday y aplicaciones. Toca cada ejercicio para revelar su respuesta. Constante magnética: <strong>μ₀ = 4π × 10⁻⁷ T·m/A</strong>. Recuerda <strong>F = qvB sen θ</strong>, <strong>F = BIL sen θ</strong>, <strong>ε = −dΦ/dt</strong>.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Campo magnético y fuerza sobre cargas ──────────────────────────────
-  { titulo:"1 · Fuerza magnética sobre cargas en movimiento", color:"#6d28d9", ejercicios:[
-    { n:"01", t:"Una carga de 2 C se mueve a 5 m/s perpendicular a un campo magnético de 0.4 T. ¿Fuerza?",
-      d:"F = qvB sen θ &nbsp;·&nbsp; sen 90° = 1",
-      r:"F = 4 N" },
-    { n:"02", t:"Si la carga del problema 01 se mueve paralela al campo, ¿fuerza?",
-      d:"sen 0° = 0",
-      r:"F = 0 N" },
-    { n:"03", t:"Una carga de 1 μC viaja a 10⁶ m/s perpendicular a B = 2 T. ¿Fuerza?",
-      d:"F = qvB",
-      r:"F = 2 N" },
-    { n:"04", t:"¿Qué nombre recibe la fuerza F = qvB que actúa sobre una carga en movimiento dentro de un campo magnético?",
-      d:"Lleva el nombre de un físico holandés",
-      r:"Fuerza de Lorentz" },
-    { n:"05", t:"Un electrón (q = 1.6×10⁻¹⁹ C) entra a un campo de 0.5 T con velocidad 2×10⁶ m/s perpendicular. ¿Fuerza?",
-      d:"F = qvB",
-      r:"F = 1.6×10⁻¹³ N" },
-    { n:"06", t:"Una carga positiva entra perpendicular a un campo magnético uniforme. ¿Qué trayectoria describe?",
-      d:"La fuerza siempre apunta al centro",
-      r:"Circular (a velocidad constante)" },
+  { titulo: 'Fuerza magnética sobre cargas en movimiento', ejercicios: [
+    { n:'01', t:'Una carga de 2 C se mueve a 5 m/s perpendicular a un campo magnético de 0.4 T. ¿Fuerza?',
+      d:'F = qvB sen θ &nbsp;·&nbsp; sen 90° = 1',
+      r:'F = 4 N' },
+    { n:'02', t:'Si la carga del problema 01 se mueve paralela al campo, ¿fuerza?',
+      d:'sen 0° = 0',
+      r:'F = 0 N' },
+    { n:'03', t:'Una carga de 1 μC viaja a 10⁶ m/s perpendicular a B = 2 T. ¿Fuerza?',
+      d:'F = qvB',
+      r:'F = 2 N' },
+    { n:'04', t:'¿Qué nombre recibe la fuerza F = qvB que actúa sobre una carga en movimiento dentro de un campo magnético?',
+      d:'Lleva el nombre de un físico holandés',
+      r:'Fuerza de Lorentz' },
+    { n:'05', t:'Un electrón (q = 1.6×10⁻¹⁹ C) entra a un campo de 0.5 T con velocidad 2×10⁶ m/s perpendicular. ¿Fuerza?',
+      d:'F = qvB',
+      r:'F = 1.6×10⁻¹³ N' },
+    { n:'06', t:'Una carga positiva entra perpendicular a un campo magnético uniforme. ¿Qué trayectoria describe?',
+      d:'La fuerza siempre apunta al centro',
+      r:'Circular (a velocidad constante)' },
   ]},
 
-  // ── 2. Fuerza sobre conductores con corriente ─────────────────────────────
-  { titulo:"2 · Fuerza sobre conductores con corriente", color:"#9f1239", ejercicios:[
-    { n:"01", t:"Un alambre de 0.5 m porta 4 A perpendicular a B = 0.2 T. ¿Fuerza sobre el alambre?",
-      d:"F = BIL sen θ",
-      r:"F = 0.4 N" },
-    { n:"02", t:"Un alambre de 2 m con 6 A forma 30° con B = 0.5 T. ¿Fuerza?",
-      d:"F = BIL sen 30°",
-      r:"F = 3 N" },
-    { n:"03", t:"Si dos alambres paralelos llevan corrientes en el mismo sentido, ¿se atraen o se repelen?",
-      d:"Regla de la mano derecha",
-      r:"Se atraen" },
-    { n:"04", t:"Si las corrientes en dos alambres paralelos van en sentidos opuestos:",
-      d:"Sentidos contrarios → repulsión",
-      r:"Se repelen" },
-    { n:"05", t:"Un alambre de 1 m con I = 10 A está paralelo a un campo magnético de 0.3 T. ¿Fuerza?",
-      d:"sen 0° = 0",
-      r:"F = 0 N" },
-    { n:"06", t:"¿En qué dispositivo cotidiano se aprovecha la fuerza F = BIL para producir movimiento mecánico?",
-      d:"Convierte energía eléctrica en mecánica",
-      r:"Motor eléctrico" },
+  { titulo: 'Fuerza sobre conductores con corriente', ejercicios: [
+    { n:'01', t:'Un alambre de 0.5 m porta 4 A perpendicular a B = 0.2 T. ¿Fuerza sobre el alambre?',
+      d:'F = BIL sen θ',
+      r:'F = 0.4 N' },
+    { n:'02', t:'Un alambre de 2 m con 6 A forma 30° con B = 0.5 T. ¿Fuerza?',
+      d:'F = BIL sen 30°',
+      r:'F = 3 N' },
+    { n:'03', t:'Si dos alambres paralelos llevan corrientes en el mismo sentido, ¿se atraen o se repelen?',
+      d:'Regla de la mano derecha',
+      r:'Se atraen' },
+    { n:'04', t:'Si las corrientes en dos alambres paralelos van en sentidos opuestos:',
+      d:'Sentidos contrarios → repulsión',
+      r:'Se repelen' },
+    { n:'05', t:'Un alambre de 1 m con I = 10 A está paralelo a un campo magnético de 0.3 T. ¿Fuerza?',
+      d:'sen 0° = 0',
+      r:'F = 0 N' },
+    { n:'06', t:'¿En qué dispositivo cotidiano se aprovecha la fuerza F = BIL para producir movimiento mecánico?',
+      d:'Convierte energía eléctrica en mecánica',
+      r:'Motor eléctrico' },
   ]},
 
-  // ── 3. Campo magnético creado por corrientes ──────────────────────────────
-  { titulo:"3 · Campo magnético creado por corrientes", color:"#0e7490", ejercicios:[
-    { n:"01", t:"Un alambre largo y recto lleva 5 A. ¿Magnitud del campo a 2 cm de distancia? (μ₀ = 4π×10⁻⁷)",
-      d:"B = μ₀I/(2πr)",
-      r:"B = 5×10⁻⁵ T" },
-    { n:"02", t:"Para el alambre del problema 01, ¿qué forma tienen las líneas de campo?",
-      d:"Regla de la mano derecha",
-      r:"Círculos concéntricos al alambre" },
-    { n:"03", t:"En el centro de una bobina de N = 100 espiras, R = 5 cm, I = 2 A. Campo aproximado:",
-      d:"B = μ₀NI/(2R)",
-      r:"B ≈ 2.5×10⁻³ T" },
-    { n:"04", t:"Un solenoide tiene 1 000 vueltas/m con I = 3 A. ¿Campo en su interior?",
-      d:"B = μ₀nI con n = N/L",
-      r:"B ≈ 3.77×10⁻³ T" },
-    { n:"05", t:"¿Cómo se llama el dispositivo que es un solenoide con núcleo de hierro y se usa como imán temporal?",
-      d:"Acciona timbres, relés, etc.",
-      r:"Electroimán" },
-    { n:"06", t:"Si se duplica la corriente en un alambre largo, ¿qué pasa con B a la misma distancia?",
-      d:"B es proporcional a I",
-      r:"Se duplica" },
+  { titulo: 'Campo magnético creado por corrientes', ejercicios: [
+    { n:'01', t:'Un alambre largo y recto lleva 5 A. ¿Magnitud del campo a 2 cm de distancia? (μ₀ = 4π×10⁻⁷)',
+      d:'B = μ₀I/(2πr)',
+      r:'B = 5×10⁻⁵ T' },
+    { n:'02', t:'Para el alambre del problema 01, ¿qué forma tienen las líneas de campo?',
+      d:'Regla de la mano derecha',
+      r:'Círculos concéntricos al alambre' },
+    { n:'03', t:'En el centro de una bobina de N = 100 espiras, R = 5 cm, I = 2 A. Campo aproximado:',
+      d:'B = μ₀NI/(2R)',
+      r:'B ≈ 2.5×10⁻³ T' },
+    { n:'04', t:'Un solenoide tiene 1 000 vueltas/m con I = 3 A. ¿Campo en su interior?',
+      d:'B = μ₀nI con n = N/L',
+      r:'B ≈ 3.77×10⁻³ T' },
+    { n:'05', t:'¿Cómo se llama el dispositivo que es un solenoide con núcleo de hierro y se usa como imán temporal?',
+      d:'Acciona timbres, relés, etc.',
+      r:'Electroimán' },
+    { n:'06', t:'Si se duplica la corriente en un alambre largo, ¿qué pasa con B a la misma distancia?',
+      d:'B es proporcional a I',
+      r:'Se duplica' },
   ]},
 
-  // ── 4. Inducción electromagnética ─────────────────────────────────────────
-  { titulo:"4 · Inducción electromagnética (Faraday)", color:"#b91c1c", ejercicios:[
-    { n:"01", t:"El flujo magnético a través de una espira pasa de 0.4 Wb a 0.1 Wb en 0.6 s. ¿FEM media inducida?",
-      d:"|ε| = |ΔΦ|/Δt",
-      r:"ε = 0.5 V" },
-    { n:"02", t:"Una bobina de 200 espiras tiene un cambio de flujo de 0.02 Wb en 0.1 s. ¿FEM inducida?",
-      d:"ε = N · |ΔΦ|/Δt",
-      r:"ε = 40 V" },
-    { n:"03", t:"¿Qué nombre recibe la ley que dice que la corriente inducida se opone al cambio de flujo que la produce?",
-      d:"Físico ruso del siglo XIX",
-      r:"Ley de Lenz" },
-    { n:"04", t:"Si introduces rápidamente un imán por una bobina conectada a un galvanómetro, ¿qué observas?",
-      d:"Cambio de flujo → corriente inducida",
-      r:"Una corriente inducida (la aguja se desvía)" },
-    { n:"05", t:"Una espira de 0.2 m² está en un campo de 0.5 T perpendicular a su plano. ¿Flujo magnético?",
-      d:"Φ = B·A·cos θ",
-      r:"Φ = 0.1 Wb" },
-    { n:"06", t:"Si la espira del problema 05 gira hasta quedar paralela al campo, ¿flujo final?",
-      d:"cos 90° = 0",
-      r:"Φ = 0 Wb" },
+  { titulo: 'Inducción electromagnética (Faraday)', ejercicios: [
+    { n:'01', t:'El flujo magnético a través de una espira pasa de 0.4 Wb a 0.1 Wb en 0.6 s. ¿FEM media inducida?',
+      d:'|ε| = |ΔΦ|/Δt',
+      r:'ε = 0.5 V' },
+    { n:'02', t:'Una bobina de 200 espiras tiene un cambio de flujo de 0.02 Wb en 0.1 s. ¿FEM inducida?',
+      d:'ε = N · |ΔΦ|/Δt',
+      r:'ε = 40 V' },
+    { n:'03', t:'¿Qué nombre recibe la ley que dice que la corriente inducida se opone al cambio de flujo que la produce?',
+      d:'Físico ruso del siglo XIX',
+      r:'Ley de Lenz' },
+    { n:'04', t:'Si introduces rápidamente un imán por una bobina conectada a un galvanómetro, ¿qué observas?',
+      d:'Cambio de flujo → corriente inducida',
+      r:'Una corriente inducida (la aguja se desvía)' },
+    { n:'05', t:'Una espira de 0.2 m² está en un campo de 0.5 T perpendicular a su plano. ¿Flujo magnético?',
+      d:'Φ = B·A·cos θ',
+      r:'Φ = 0.1 Wb' },
+    { n:'06', t:'Si la espira del problema 05 gira hasta quedar paralela al campo, ¿flujo final?',
+      d:'cos 90° = 0',
+      r:'Φ = 0 Wb' },
   ]},
 
-  // ── 5. Aplicaciones electromagnéticas ─────────────────────────────────────
-  { titulo:"5 · Aplicaciones electromagnéticas", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Dispositivo que transforma energía mecánica en eléctrica usando inducción:",
-      d:"Faraday lo descubrió",
-      r:"Generador (dinamo, alternador)" },
-    { n:"02", t:"Dispositivo que cambia el voltaje de la corriente alterna usando dos bobinas acopladas:",
-      d:"Razón de espiras: V₂/V₁ = N₂/N₁",
-      r:"Transformador" },
-    { n:"03", t:"Un transformador tiene 100 espiras en el primario y 500 en el secundario. Si el voltaje primario es 110 V, ¿voltaje secundario?",
-      d:"V₂ = V₁ · N₂/N₁",
-      r:"V₂ = 550 V (elevador)" },
-    { n:"04", t:"Si el transformador anterior es ideal y hay 5 A en el primario, ¿corriente en el secundario?",
-      d:"V₁I₁ = V₂I₂",
-      r:"I₂ = 1 A" },
-    { n:"05", t:"¿Por qué los transformadores funcionan únicamente con corriente alterna y no con directa?",
-      d:"Necesitan flujo variable",
-      r:"La CD no produce variación de flujo" },
-    { n:"06", t:"¿En qué dispositivo doméstico común se usa un electroimán para abrir y cerrar circuitos?",
-      d:"Timbre, relé, freno electromagnético",
-      r:"Relé / contactor / timbre" },
+  { titulo: 'Aplicaciones electromagnéticas', ejercicios: [
+    { n:'01', t:'Dispositivo que transforma energía mecánica en eléctrica usando inducción:',
+      d:'Faraday lo descubrió',
+      r:'Generador (dinamo, alternador)' },
+    { n:'02', t:'Dispositivo que cambia el voltaje de la corriente alterna usando dos bobinas acopladas:',
+      d:'Razón de espiras: V₂/V₁ = N₂/N₁',
+      r:'Transformador' },
+    { n:'03', t:'Un transformador tiene 100 espiras en el primario y 500 en el secundario. Si el voltaje primario es 110 V, ¿voltaje secundario?',
+      d:'V₂ = V₁ · N₂/N₁',
+      r:'V₂ = 550 V (elevador)' },
+    { n:'04', t:'Si el transformador anterior es ideal y hay 5 A en el primario, ¿corriente en el secundario?',
+      d:'V₁I₁ = V₂I₂',
+      r:'I₂ = 1 A' },
+    { n:'05', t:'¿Por qué los transformadores funcionan únicamente con corriente alterna y no con directa?',
+      d:'Necesitan flujo variable',
+      r:'La CD no produce variación de flujo' },
+    { n:'06', t:'¿En qué dispositivo doméstico común se usa un electroimán para abrir y cerrar circuitos?',
+      d:'Timbre, relé, freno electromagnético',
+      r:'Relé / contactor / timbre' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

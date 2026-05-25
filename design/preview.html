@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<!--
+  preview.html — galería del sistema editorial · clases.
+
+  Para que los hrefs absolutos (/clases/...) de <site-nav> resuelvan,
+  sirve este archivo desde la RAÍZ DEL REPOSITORIO (el directorio que
+  contiene clases/), no desde dentro de clases/:
+
+      cd $(dirname /path/to/clases)
+      python3 -m http.server 8000
+
+  Luego abre: http://localhost:8000/clases/design/preview.html
+
+  Si lo sirves desde dentro de clases/, los links de la nav apuntan
+  a /clases/* y 404'an. En producción (giledvz.github.io/clases/) no
+  hay ese problema.
+-->
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Sistema de diseño · vista previa — clases</title>
+
+  <script>
+    /* Anti-flash: aplica el tema antes del primer paint.
+       Snippet auto-contenido documentado en design-system § 11. */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+
+  <script defer src="../assets/js/theme.js"></script>
+  <script defer src="../assets/js/site-nav.js"></script>
+  <script defer src="../assets/js/katex-loader.js"></script>
+</head>
+<body id="top">
+
+  <site-nav active="inicio"></site-nav>
+
+  <main class="preview-page">
+
+    <header class="hero">
+      <p class="eyebrow">Sistema de diseño · v1.0 · 2026-05-22</p>
+      <h1 class="hero__title">Editorial <em>cálido</em> funcional</h1>
+      <p class="hero__lede">
+        Galería de componentes y página de muestra. Cambia el modo desde la barra superior; el ciclo es light → dark → auto.
+      </p>
+    </header>
+
+    <section class="preview-section" id="sec-nav">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">i.</span>
+          Navegación persistente
+        </h2>
+        <span class="section-header__count">arriba</span>
+      </header>
+      <p class="preview-section__intro">
+        Sticky en la parte superior. Brand <em>clases</em> en Fraunces italic accent coñac. Links en IBM Plex Sans. Toggle de modo con tres iconos (moon/sun/sun-moon) según la preferencia del usuario. La página actual lleva underline <em>accent</em> de 2px.
+      </p>
+    </section>
+
+    <section class="preview-section" id="sec-hero">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">ii.</span>
+          Hero header
+        </h2>
+        <span class="section-header__count">con marginalia</span>
+      </header>
+      <header class="hero hero--with-marginalia">
+        <div class="hero__main">
+          <p class="eyebrow">Examen UNAM · 5 de julio 2026</p>
+          <h1 class="hero__title">Practica <em>cónicas</em> con tarjetas</h1>
+          <p class="hero__lede">
+            Veinte ejercicios resueltos con término xy.
+          </p>
+        </div>
+        <aside class="hero__marginalia">
+          Faltan <strong>44 días</strong> para tu examen, Lupita.
+        </aside>
+      </header>
+    </section>
+
+    <section class="preview-section" id="sec-section-header">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">iii.</span>
+          Encabezados de sección
+        </h2>
+        <span class="section-header__count">numeración italic + conteo</span>
+      </header>
+      <p class="preview-section__intro">
+        Numeración minúscula italic en accent coñac. Título Fraunces medium. Conteo en IBM Plex Sans, color meta. Separador hairline abajo.
+      </p>
+      <div class="preview-stack">
+        <header class="section-header">
+          <h3 class="section-header__title">
+            <span class="section-header__num">i.</span>
+            Exámenes adaptativos
+          </h3>
+          <span class="section-header__count">3 disponibles</span>
+        </header>
+        <header class="section-header">
+          <h3 class="section-header__title">
+            <span class="section-header__num">ii.</span>
+            Materias y temas
+          </h3>
+          <span class="section-header__count">12 unidades</span>
+        </header>
+        <header class="section-header">
+          <h3 class="section-header__title">
+            <span class="section-header__num">iii.</span>
+            Tarjetas de práctica
+          </h3>
+          <span class="section-header__count">350 tarjetas</span>
+        </header>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-cards">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">iv.</span>
+          Card editorial
+        </h2>
+        <span class="section-header__count">regular + 6 categorías</span>
+      </header>
+      <p class="preview-section__intro">
+        Sin categoría arriba a la izquierda, luego las 6 variantes de física como border-top 3px. Hover: <em>border-color</em> profundiza, fondo cambia un stop de crema; sin transforms.
+      </p>
+      <div class="card-grid card-grid--cols-3">
+
+        <article class="card">
+          <header class="card__header">
+            <p class="eyebrow">Sin categoría</p>
+            <h3 class="card__title">Regla de la <em>cadena</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Cómo derivar funciones compuestas, con un par de ejemplos clásicos.</p>
+            <ul class="tag-list">
+              <li class="tag">15 tarjetas</li>
+              <li class="tag">5 ejercicios</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">actualizado 2026-05-22</span>
+            <a class="card__cta" href="#">Practicar →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-blue">
+          <header class="card__header">
+            <p class="eyebrow">Física · Cinemática</p>
+            <h3 class="card__title">Movimiento <em>rectilíneo</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Velocidad, aceleración y caída libre.</p>
+            <ul class="tag-list">
+              <li class="tag">22 tarjetas</li>
+              <li class="tag tag--accent">Trampa común</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">26 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-coral">
+          <header class="card__header">
+            <p class="eyebrow">Física · Termodinámica</p>
+            <h3 class="card__title">Calor y <em>entropía</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Primera y segunda ley, ciclos termodinámicos.</p>
+            <ul class="tag-list">
+              <li class="tag">18 tarjetas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">14 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-amber">
+          <header class="card__header">
+            <p class="eyebrow">Física · Óptica</p>
+            <h3 class="card__title">Lentes y <em>espejos</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Reflexión, refracción y formación de imágenes.</p>
+            <ul class="tag-list">
+              <li class="tag">12 tarjetas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">9 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-teal">
+          <header class="card__header">
+            <p class="eyebrow">Física · Ondas</p>
+            <h3 class="card__title">Sonido y <em>resonancia</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Frecuencia, longitud de onda, interferencia.</p>
+            <ul class="tag-list">
+              <li class="tag">14 tarjetas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">11 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-purple">
+          <header class="card__header">
+            <p class="eyebrow">Física · Magnetismo</p>
+            <h3 class="card__title">Campos y <em>fuerzas</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Ley de Biot-Savart, inducción electromagnética.</p>
+            <ul class="tag-list">
+              <li class="tag">16 tarjetas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">12 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-navy">
+          <header class="card__header">
+            <p class="eyebrow">Física · Moderna</p>
+            <h3 class="card__title">Cuántica e <em>incertidumbre</em></h3>
+          </header>
+          <div class="card__body">
+            <p>Heisenberg, dualidad onda-partícula.</p>
+            <ul class="tag-list">
+              <li class="tag">10 tarjetas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">8 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-tags">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">v.</span>
+          Tag pill
+        </h2>
+        <span class="section-header__count">regular + accent</span>
+      </header>
+      <ul class="tag-list">
+        <li class="tag">15 tarjetas</li>
+        <li class="tag">26 ejercicios</li>
+        <li class="tag">Bachillerato</li>
+        <li class="tag tag--accent">Trampa común</li>
+        <li class="tag tag--accent">Importante</li>
+      </ul>
+    </section>
+
+    <section class="preview-section" id="sec-buttons">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">vi.</span>
+          Botones
+        </h2>
+        <span class="section-header__count">3 estilos · 4 estados</span>
+      </header>
+      <p class="preview-section__intro">
+        Los estados <em>hover</em> y <em>active</em> se reproducen estáticamente con modificadores demo (<code>is-hover-demo</code>, <code>is-active-demo</code>) que viven en components.css bajo "Preview helpers".
+      </p>
+      <div class="preview-states">
+        <span class="preview-label">Default</span>
+        <button class="btn btn--primary" type="button">Iniciar examen</button>
+        <button class="btn btn--secondary" type="button">Cancelar</button>
+        <button class="btn btn--ghost" type="button">Saltar</button>
+
+        <span class="preview-label">Hover</span>
+        <button class="btn btn--primary is-hover-demo" type="button">Iniciar examen</button>
+        <button class="btn btn--secondary is-hover-demo" type="button">Cancelar</button>
+        <button class="btn btn--ghost is-hover-demo" type="button">Saltar</button>
+
+        <span class="preview-label">Active</span>
+        <button class="btn btn--primary is-active-demo" type="button">Iniciar examen</button>
+        <button class="btn btn--secondary is-active-demo" type="button">Cancelar</button>
+        <button class="btn btn--ghost is-active-demo" type="button">Saltar</button>
+
+        <span class="preview-label">Disabled</span>
+        <button class="btn btn--primary" type="button" disabled>Iniciar examen</button>
+        <button class="btn btn--secondary" type="button" disabled>Cancelar</button>
+        <button class="btn btn--ghost" type="button" disabled>Saltar</button>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-inputs">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">vii.</span>
+          Inputs, select, textarea
+        </h2>
+        <span class="section-header__count">default / focus / invalid / disabled</span>
+      </header>
+      <div class="preview-stack">
+
+        <label class="field">
+          <span class="field__label">Nombre (default)</span>
+          <input class="input" type="text" placeholder="María Lupita">
+          <span class="field__hint">Aparecerá en tu reporte de progreso.</span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Materia favorita (focus simulado)</span>
+          <input class="input is-focus-demo" type="text" value="Cálculo diferencial">
+          <span class="field__hint">Outline accent coñac, border-color sincronizado.</span>
+        </label>
+
+        <label class="field field--invalid">
+          <span class="field__label">Edad (invalid)</span>
+          <input class="input" type="text" value="quince">
+          <span class="field__hint">Ingresa un número entero entre 15 y 19.</span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Examen objetivo</span>
+          <select class="select">
+            <option>UNAM Área 1 — Físico-matemáticas</option>
+            <option>UNAM Área 2 — Biológicas</option>
+            <option>UNAM Área 3 — Sociales</option>
+          </select>
+          <span class="field__hint">El chevron se inyecta como SVG inline en background-image y respeta el modo.</span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Notas (textarea)</span>
+          <textarea class="textarea" placeholder="Apunta lo que se te resista…"></textarea>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Disabled</span>
+          <input class="input" type="text" value="No editable en este examen" disabled>
+        </label>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-theme">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">viii.</span>
+          Toggle de modo
+        </h2>
+        <span class="section-header__count">light → dark → auto</span>
+      </header>
+      <p class="preview-section__intro">
+        El toggle vive en la barra superior dentro del web component <code>&lt;site-nav&gt;</code>, que internamente llama a <code>ClasesTheme.toggle()</code>. La preferencia persiste en <code>localStorage</code> bajo la clave <code>clases-theme-pref</code>. El modo <em>auto</em> respeta <code>prefers-color-scheme</code> y reacciona a cambios del sistema en vivo. El snippet anti-flash en <code>&lt;head&gt;</code> aplica el tema antes del primer paint (ver § 11 del design-system).
+      </p>
+    </section>
+
+    <section class="preview-section" id="sec-responses">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">ix.</span>
+          Estados de respuesta
+        </h2>
+        <span class="section-header__count">icon + label + color + stripe</span>
+      </header>
+      <p class="preview-section__intro">
+        Combinación deliberada de cuatro señales para no depender sólo del color (WCAG 1.4.1). El detail conserva <em>siempre</em> la tinta secundaria, independiente de la variante.
+      </p>
+      <div class="preview-stack">
+
+        <div class="response response--ok">
+          <svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+          <span class="response__label">Correcto</span>
+          <div class="response__detail">
+            La derivada de x² es 2x. Aplicaste bien la regla de la potencia.
+          </div>
+        </div>
+
+        <div class="response response--err">
+          <svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+          <span class="response__label">Incorrecto</span>
+          <div class="response__detail">
+            La derivada de sen(x) es cos(x), no −cos(x). El signo no cambia cuando derivas seno.
+          </div>
+        </div>
+
+        <div class="response response--warn">
+          <svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+          </svg>
+          <span class="response__label">Revisar</span>
+          <div class="response__detail">
+            Marca este tema para volver. Has fallado 2 de las últimas 5 preguntas relacionadas.
+          </div>
+        </div>
+
+        <div class="response response--empty">
+          <svg class="response__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.1 2.18a9.93 9.93 0 0 1 3.8 0"/>
+            <path d="M17.6 3.71a9.95 9.95 0 0 1 2.69 2.7"/>
+            <path d="M21.82 10.1a9.93 9.93 0 0 1 0 3.8"/>
+            <path d="M20.29 17.6a9.95 9.95 0 0 1-2.7 2.69"/>
+            <path d="M13.9 21.82a9.94 9.94 0 0 1-3.8 0"/>
+            <path d="M6.4 20.29a9.95 9.95 0 0 1-2.69-2.7"/>
+            <path d="M2.18 13.9a9.93 9.93 0 0 1 0-3.8"/>
+            <path d="M3.71 6.4a9.95 9.95 0 0 1 2.7-2.69"/>
+          </svg>
+          <span class="response__label">Sin contestar</span>
+          <div class="response__detail">
+            Aún no has respondido esta tarjeta. Vuelve cuando quieras.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-katex">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">x.</span>
+          Bloque KaTeX
+        </h2>
+        <span class="section-header__count">inline · display · highlight</span>
+      </header>
+      <p class="preview-section__intro">
+        Tres tratamientos editoriales: inline dentro de párrafo, display centrado y display destacado con barra accent coñac. La librería se carga sólo en páginas que la usan.
+      </p>
+
+      <p>
+        La regla de la potencia es central en cálculo diferencial:
+        <span class="math-inline">$\frac{d}{dx}\left[\,x^n\,\right] = n\,x^{n-1}$</span>.
+        Se aplica para cualquier exponente real n.
+      </p>
+
+      <div class="math-display">
+        $$\int_{0}^{\infty} e^{-x^{2}}\,dx = \frac{\sqrt{\pi}}{2}$$
+      </div>
+
+      <p>Una fórmula destacada (variante <code>--highlight</code>):</p>
+
+      <div class="math-display math-display--highlight">
+        $$\frac{d}{dx}\bigl[\sin(x)\bigr] = \cos(x)$$
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-accordion">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">xi.</span>
+          Acordeón
+        </h2>
+        <span class="section-header__count">regular + stack</span>
+      </header>
+
+      <div class="preview-stack">
+        <details class="accordion" open>
+          <summary class="accordion__summary">
+            <span>Repaso · derivadas básicas</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <p>La derivada describe la pendiente instantánea de una función. Para polinomios se usa la regla de la potencia; para combinaciones, regla del producto y regla de la cadena.</p>
+            <p>Si f(x) = c (constante), entonces f'(x) = 0. Si f(x) = x, entonces f'(x) = 1.</p>
+          </div>
+        </details>
+
+        <details class="accordion">
+          <summary class="accordion__summary">
+            <span>Repaso · integración por partes</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <p>Útil cuando la integral involucra el producto de dos funciones. La fórmula clásica viene de derivar el producto.</p>
+          </div>
+        </details>
+      </div>
+
+      <hr class="hairline hairline--dotted">
+
+      <p class="preview-section__intro">Variante <code>accordion--stack</code> con summary tipo eyebrow:</p>
+
+      <div>
+        <details class="accordion accordion--stack">
+          <summary class="accordion__summary">
+            <span>Convención de signos</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <p>En lentes convergentes, la distancia focal es positiva; en divergentes, negativa.</p>
+          </div>
+        </details>
+        <details class="accordion accordion--stack">
+          <summary class="accordion__summary">
+            <span>Unidades en el SI</span>
+            <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </summary>
+          <div class="accordion__body">
+            <p>Newton (N) = kg·m/s². Joule (J) = N·m. Watt (W) = J/s.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="preview-section" id="sec-sample">
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">xii.</span>
+          Página de muestra
+        </h2>
+        <span class="section-header__count">reconstrucción del index</span>
+      </header>
+      <p class="preview-section__intro">
+        Hero con marginalia, dos secciones con cards en grid. Aplica la dirección editorial cálida funcional al index actual.
+      </p>
+
+      <header class="hero hero--with-marginalia">
+        <div class="hero__main">
+          <p class="eyebrow">clases · curso UNAM</p>
+          <h1 class="hero__title">Estudia <em>matemáticas</em> y <em>física</em> con calma.</h1>
+          <p class="hero__lede">
+            Tarjetas, ejercicios y exámenes adaptativos pensados para repasar día a día sin saturarse.
+          </p>
+          <div class="preview-row">
+            <a class="btn btn--primary" href="#">Iniciar examen adaptativo</a>
+            <a class="btn btn--secondary" href="#">Practicar con tarjetas</a>
+          </div>
+        </div>
+        <aside class="hero__marginalia">
+          Faltan <strong>44 días</strong> para tu examen, Lupita.
+        </aside>
+      </header>
+
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">i.</span>
+          Exámenes <em>adaptativos</em>
+        </h2>
+        <span class="section-header__count">3 disponibles</span>
+      </header>
+
+      <div class="card-grid card-grid--cols-3">
+        <article class="card">
+          <header class="card__header">
+            <p class="eyebrow">Matemáticas · Área 1</p>
+            <h3 class="card__title">UNAM Área 1</h3>
+          </header>
+          <div class="card__body">
+            <p>120 preguntas con dificultad adaptativa por tema.</p>
+            <ul class="tag-list">
+              <li class="tag">Físico-matemáticas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">~90 min</span>
+            <a class="card__cta" href="#">Empezar →</a>
+          </footer>
+        </article>
+
+        <article class="card">
+          <header class="card__header">
+            <p class="eyebrow">Física · Adaptativo</p>
+            <h3 class="card__title">Física UNAM</h3>
+          </header>
+          <div class="card__body">
+            <p>Banco específico de los 12 temas curriculares.</p>
+            <ul class="tag-list">
+              <li class="tag">Área 1 y 2</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">~60 min</span>
+            <a class="card__cta" href="#">Empezar →</a>
+          </footer>
+        </article>
+
+        <article class="card">
+          <header class="card__header">
+            <p class="eyebrow">Matemáticas · Área 2</p>
+            <h3 class="card__title">UNAM Área 2</h3>
+          </header>
+          <div class="card__body">
+            <p>Para aspirantes a biológicas y de la salud.</p>
+            <ul class="tag-list">
+              <li class="tag">Biológicas</li>
+            </ul>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">~80 min</span>
+            <a class="card__cta" href="#">Empezar →</a>
+          </footer>
+        </article>
+      </div>
+
+      <hr class="hairline">
+
+      <header class="section-header">
+        <h2 class="section-header__title">
+          <span class="section-header__num">ii.</span>
+          Materias y <em>temas</em>
+        </h2>
+        <span class="section-header__count">12 unidades</span>
+      </header>
+
+      <div class="card-grid card-grid--cols-3">
+        <article class="card card--cat-blue">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Cinemática</h3>
+          </header>
+          <div class="card__body">
+            <p>MRU, MRUV, caída libre y tiro parabólico.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">22 tarjetas · 9 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-blue">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Dinámica</h3>
+          </header>
+          <div class="card__body">
+            <p>Las tres leyes de Newton y el diagrama de cuerpo libre.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">18 tarjetas · 12 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-coral">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Termodinámica</h3>
+          </header>
+          <div class="card__body">
+            <p>Calor, energía interna, primera y segunda ley.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">14 tarjetas · 8 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-teal">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Ondas</h3>
+          </header>
+          <div class="card__body">
+            <p>Mecánicas y electromagnéticas. Frecuencia, periodo, longitud.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">12 tarjetas · 7 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-amber">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Óptica</h3>
+          </header>
+          <div class="card__body">
+            <p>Reflexión, refracción, lentes y espejos.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">10 tarjetas · 6 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+
+        <article class="card card--cat-purple">
+          <header class="card__header">
+            <p class="eyebrow">Física</p>
+            <h3 class="card__title">Magnetismo</h3>
+          </header>
+          <div class="card__body">
+            <p>Campos, fuerzas, ley de Faraday e inducción.</p>
+          </div>
+          <footer class="card__footer">
+            <span class="card__meta">16 tarjetas · 10 ejercicios</span>
+            <a class="card__cta" href="#">Abrir →</a>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+    <p class="site-footer__credits">
+      Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026
+    </p>
+    <nav class="site-footer__links" aria-label="enlaces de pie">
+      <a href="#top">Inicio</a>
+      <a href="#sec-sample">Muestra</a>
+      <a href="design-system.md">Sistema</a>
+    </nav>
+  </footer>
+
+  <script>
+    /* La nav y el toggle se montan vía <site-nav>. KaTeX se carga
+       on-demand vía ClasesKatex.load() (defer → disponible en DCL). */
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.ClasesKatex) window.ClasesKatex.load();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+/* ============================================================
+   tokens.css
+   Sistema de diseño "Editorial cálido funcional"
+   Fase 1 · v1.0 · 2026-05-22
+
+   Dos capas:
+   1. Primitivos: escalas con nombre por familia (--crema-*, --ink-*).
+      Cambian de valor entre modo light y dark.
+   2. Semánticos: alias por rol (--color-bg-page, --color-text-primary).
+      Los componentes usan SOLO la capa semántica.
+   ============================================================ */
+
+:root {
+
+  /* ============================================================
+     COLOR-SCHEME — opt-out de auto-dark de Chrome/Edge
+     Declara explícitamente que la página maneja sus propios temas.
+     Sin esto, Chrome con "Auto Dark Mode for Web Contents" o
+     extensiones tipo Dark Reader fuerzan un oscurecimiento
+     algorítmico que produce colores muddy (cafés en lugar de
+     crema). El meta tag <meta name="color-scheme"> en HTML no es
+     suficiente para todos los browsers — esta propiedad CSS sí.
+     ============================================================ */
+  color-scheme: light;
+
+
+  /* ============================================================
+     TIPOGRAFÍA
+     ============================================================ */
+
+  /* Familias.
+     Stacks de fallback usan únicamente genéricos (serif, sans-serif,
+     monospace). Cero Inter / Roboto / Arial / Helvetica / system-ui
+     / ui-monospace / ui-serif declarados. */
+  --font-family-display: 'Fraunces', serif;
+  --font-family-body: 'IBM Plex Sans', sans-serif;
+  --font-family-mono: 'IBM Plex Mono', monospace;
+
+  /* Pesos */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Tamaños (rem-based, base 16px) */
+  --font-size-11: 0.6875rem;
+  --font-size-12: 0.75rem;
+  --font-size-13: 0.8125rem;
+  --font-size-14: 0.875rem;
+  --font-size-15: 0.9375rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-32: 2rem;
+  --font-size-40: 2.5rem;
+  --font-size-48: 3rem;
+
+  /* Line-heights */
+  --line-height-tight: 1.05;
+  --line-height-snug: 1.15;
+  --line-height-heading: 1.3;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.65;
+
+  /* Letter-spacings */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-meta: 0.02em;
+  --tracking-eyebrow: 0.08em;
+  --tracking-display-eyebrow: 0.12em;
+
+  /* ============================================================
+     ESPACIADO — escala base 4
+     ============================================================ */
+
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-7: 2rem;      /* 32px */
+  --space-8: 2.5rem;    /* 40px */
+  --space-9: 3rem;      /* 48px */
+  --space-10: 4rem;     /* 64px */
+  --space-11: 5rem;     /* 80px */
+  --space-12: 6rem;     /* 96px */
+
+  /* ============================================================
+     CONTAINERS
+     ============================================================ */
+
+  --container-narrow: 40rem;    /*  640px — lectura de repaso */
+  --container-base: 47.5rem;    /*  760px — hero, ejercicios */
+  --container-wide: 67.5rem;    /* 1080px — grids, index */
+  --container-full: 80rem;      /* 1280px — nav, footer */
+
+  /* ============================================================
+     BREAKPOINTS — referencia (CSS no permite vars en @media;
+     usar los mismos valores literales en components.css)
+     --bp-sm:  480px
+     --bp-md:  760px
+     --bp-lg: 1080px
+     ============================================================ */
+
+  /* ============================================================
+     RADIOS
+     ============================================================ */
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-pill: 999px;
+
+  /* ============================================================
+     BORDES
+     ============================================================ */
+
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+
+  --motion-instant: 0ms;
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-slow: 280ms;
+
+  --motion-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ============================================================
+     ICONOS — Lucide (stroke-based)
+     ============================================================ */
+
+  --icon-stroke-width: 1.5;
+  --icon-size-sm: 14px;
+  --icon-size-md: 16px;
+  --icon-size-lg: 18px;
+  --icon-size-xl: 20px;
+  --icon-size-2xl: 24px;
+
+  /* ============================================================
+     z-INDEX
+     ============================================================ */
+
+  --z-base: 1;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-tooltip: 200;
+  --z-modal: 300;
+
+  /* ============================================================
+     COLOR — capa de primitivos (LIGHT por default en :root)
+     ============================================================ */
+
+  /* Crema (fondo + grays cálidos). Stops 50→200 son backgrounds,
+     500→600 son borders, 700→900 son acentos meta. */
+  --crema-50:  #faf7f0;
+  --crema-100: #f8f3e8;
+  --crema-200: #f5efe4;
+  --crema-300: #efe7d8;
+  --crema-400: #e6dcc4;
+  --crema-500: #d9ccae;
+  --crema-600: #c9bda3;
+  --crema-700: #a89880;
+  --crema-800: #8c7556;
+  --crema-900: #6b5a44;
+
+  /* Tinta (texto) */
+  --ink-100: #c9bda3;
+  --ink-300: #8c7556;
+  --ink-500: #7a6448;
+  --ink-700: #4a3f33;
+  --ink-900: #1f1a16;
+
+  /* Acentos editoriales */
+  --accent-conac: #6b3a2e;
+  --accent-conac-soft: #8c5240;
+  --accent-terracota: #c2410c;
+  --accent-terracota-soft: #dd6638;
+
+  /* Estados (calibrados al tono cálido del sistema) */
+  --state-ok: #4a6b3f;
+  --state-ok-bg: #e7ecd9;
+  --state-err: #9c3525;
+  --state-err-bg: #f1dcd4;
+  --state-warn: #8a5208;
+  --state-warn-bg: #f1e6c4;
+
+  /* Categorías de física — idénticas en light y dark
+     (sólo se usan como border-top de 3px sobre cards). */
+  --cat-blue:   #1a4f8a;
+  --cat-amber:  #b45309;
+  --cat-coral:  #c2410c;
+  --cat-teal:   #0e7490;
+  --cat-purple: #6d28d9;
+  --cat-navy:   #1e3a8a;
+
+  /* Atmósfera (grain) */
+  --grain-1: rgba(140, 117, 86, 0.04);
+  --grain-2: rgba(107, 58, 46, 0.03);
+
+  /* Selección */
+  --selection-bg: rgba(107, 58, 46, 0.18);
+
+  /* ============================================================
+     COLOR — capa semántica (lo que consumen los componentes)
+     ============================================================ */
+
+  /* Fondos */
+  --color-bg-page: var(--crema-200);
+  --color-bg-raised: var(--crema-100);
+  --color-bg-hover: var(--crema-300);
+  --color-bg-tooltip: var(--crema-50);
+  --color-bg-input: var(--crema-100);
+  --color-bg-input-disabled: var(--crema-400);
+
+  /* Texto */
+  --color-text-primary: var(--ink-900);
+  --color-text-secondary: var(--ink-700);
+  --color-text-meta: var(--ink-500);          /* body inline meta (AA body) */
+  --color-text-meta-large: var(--ink-300);    /* eyebrow / tags / ≥14px bold (AA-large) */
+  --color-text-placeholder: var(--ink-100);
+  --color-text-on-dark: var(--crema-100);
+
+  /* Acentos */
+  --color-accent: var(--accent-conac);
+  --color-accent-soft: var(--accent-conac-soft);
+  --color-accent-strong: var(--accent-terracota);
+  --color-accent-strong-soft: var(--accent-terracota-soft);
+
+  /* Bordes */
+  --color-border-subtle: var(--crema-500);
+  --color-border: var(--crema-600);
+  --color-border-strong: var(--crema-700);
+  --color-border-focus: var(--accent-conac);
+
+  /* Estados (alias) */
+  --color-state-ok: var(--state-ok);
+  --color-state-ok-bg: var(--state-ok-bg);
+  --color-state-err: var(--state-err);
+  --color-state-err-bg: var(--state-err-bg);
+  --color-state-warn: var(--state-warn);
+  --color-state-warn-bg: var(--state-warn-bg);
+
+  /* Misc */
+  --color-selection-bg: var(--selection-bg);
+  --color-selection-text: var(--ink-900);
+}
+
+/* ============================================================
+   COLOR — modo oscuro ("papel quemado", no tech-dark)
+   Sólo redefine primitivos; los alias semánticos se reusan tal cual.
+   ============================================================ */
+
+[data-theme="dark"] {
+
+  color-scheme: dark;
+
+  /* Crema dark — escala invertida en luminosidad pero misma función:
+     stops bajos siguen siendo "más cerca del fondo", stops altos
+     siguen siendo "más contraste". */
+  --crema-50:  #2a2420;
+  --crema-100: #221d1a;
+  --crema-200: #1a1614;
+  --crema-300: #231e1b;
+  --crema-400: #2e2823;
+  --crema-500: #3a3229;
+  --crema-600: #4a3f33;
+  --crema-700: #6b5a44;
+  --crema-800: #8a7861;
+  --crema-900: #a89880;
+
+  /* Tinta dark */
+  --ink-100: #4a3f33;
+  --ink-300: #8a7861;
+  --ink-500: #a89880;
+  --ink-700: #d9cbb0;
+  --ink-900: #efe4cf;
+
+  /* Acentos dark (desaturados para no quemar sobre grafito) */
+  --accent-conac: #c79a82;
+  --accent-conac-soft: #a07a64;
+  --accent-terracota: #dd8055;
+  --accent-terracota-soft: #c2663d;
+
+  /* Estados dark */
+  --state-ok: #a3bd92;
+  --state-ok-bg: #2a3526;
+  --state-err: #d68a73;
+  --state-err-bg: #3a2622;
+  --state-warn: #d4a04a;
+  --state-warn-bg: #3a3020;
+
+  /* Atmósfera dark — mismos tonos, opacidades ajustadas */
+  --grain-1: rgba(140, 117, 86, 0.05);
+  --grain-2: rgba(199, 154, 130, 0.04);
+
+  /* Selección dark */
+  --selection-bg: rgba(199, 154, 130, 0.22);
+
+  /* Selección dark (texto) */
+  --color-selection-text: var(--ink-900);
+}

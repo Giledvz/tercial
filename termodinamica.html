@@ -1,232 +1,236 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Ejercicios — Física: Termodinámica</title>
-<style>
-  :root { --borde:#d0d0cc; --gris:#f5f5f3; --muted:#777; --texto:#1a1a1a; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Georgia,serif; color:var(--texto); background:#fff; max-width:700px; margin:0 auto; padding:1.5rem 1.1rem 4rem; line-height:1.65; }
-  .portada { margin-bottom:2rem; border-bottom:2px solid #c2410c; padding-bottom:1rem; }
-  .portada small { font-family:Arial,sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#c2410c; font-weight:700; }
-  .portada h1 { font-size:1.45rem; font-weight:normal; color:#c2410c; margin:.2rem 0 .5rem; }
-  .portada p { font-family:Arial,sans-serif; font-size:13px; color:var(--muted); }
-  .banner { font-family:Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:5px 12px; border-radius:3px; display:inline-block; margin:1.8rem 0 .9rem; }
-  .card { border:1px solid var(--borde); border-radius:6px; margin-bottom:.75rem; overflow:hidden; }
-  .card-header { display:flex; align-items:center; gap:10px; padding:.85rem 1rem; cursor:pointer; -webkit-tap-highlight-color:transparent; user-select:none; background:#fff; }
-  .card-header:active { background:var(--gris); }
-  .num { font-family:Arial,sans-serif; font-size:11px; font-weight:700; color:var(--muted); min-width:22px; flex-shrink:0; }
-  .enun { flex:1; }
-  .enun p { font-size:15px; }
-  .enun .datos { font-size:11px; color:var(--muted); margin-top:4px; border-left:2px solid var(--borde); padding-left:7px; }
-  .chip { flex-shrink:0; font-family:Arial,sans-serif; font-size:12px; font-weight:700; border:1.5px solid currentColor; border-radius:4px; padding:4px 9px; background:transparent; cursor:pointer; line-height:1.3; -webkit-tap-highlight-color:transparent; }
-  .chip:active { opacity:.6; }
-  .panel { max-height:0; overflow:hidden; transition:max-height .25s ease; }
-  .panel.open { max-height:200px; }
-  .panel-inner { border-top:1px solid var(--borde); display:flex; align-items:center; justify-content:space-between; padding:.75rem 1rem .75rem 2.5rem; }
-  .resp-pill { display:inline-flex; align-items:center; gap:9px; padding:7px 14px; border-radius:4px; color:#fff; }
-  .resp-pill .tag { font-family:Arial,sans-serif; font-size:9px; font-weight:700; opacity:.8; text-transform:uppercase; letter-spacing:.07em; }
-  .resp-pill .val { font-size:15px; font-weight:bold; }
-  .ocultar { font-family:Arial,sans-serif; font-size:11px; font-weight:700; border:none; background:none; cursor:pointer; padding:0; -webkit-tap-highlight-color:transparent; }
-  .footer { margin-top:2.5rem; padding-top:.75rem; border-top:1px solid var(--borde); font-family:Arial,sans-serif; font-size:11px; color:var(--muted); text-align:center; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Termodinámica · ejercicios — clases</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="portada">
-  <small>Ejercicios</small>
-  <h1>Física: Termodinámica</h1>
-  <p>Resuelve cada ejercicio y toca <b>▸ R</b> para verificar tu respuesta. Calores específicos: agua = 1 cal/g°C, hierro = 0.11 cal/g°C, aluminio = 0.22 cal/g°C. Calores latentes del agua: L<sub>f</sub> = 80 cal/g, L<sub>v</sub> = 540 cal/g.</p>
-</div>
+<site-nav active="fisica"></site-nav>
 
-<div id="contenido"></div>
-<div class="footer">Física: Termodinámica · Bachillerato</div>
+<main class="container container--base">
+
+  <header class="hero" data-cat="coral">
+    <p class="eyebrow">Unidad · Física</p>
+    <h1 class="hero__title">Termodinámica</h1>
+    <p class="hero__lede">
+      Temperatura, dilatación, calorimetría, cambios de fase, gases ideales, primera ley y ciclo de Carnot. Toca cada ejercicio para revelar su respuesta. Calores específicos: agua = 1 cal/g°C, hierro = 0.11 cal/g°C, aluminio = 0.22 cal/g°C. Latentes del agua: <strong>L<sub>f</sub> = 80 cal/g</strong>, <strong>L<sub>v</sub> = 540 cal/g</strong>.
+    </p>
+  </header>
+
+  <div id="contenido"></div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/index.html#fisica">Más física</a>
+  </nav>
+</footer>
 
 <script>
 const SECCIONES = [
 
-  // ── 1. Temperatura y dilatación ────────────────────────────────────────────
-  { titulo:"1 · Temperatura y dilatación", color:"#c2410c", ejercicios:[
-    { n:"01", t:"Convierte 25 °C a kelvin.",
-      d:"K = °C + 273",
-      r:"T = 298 K" },
-    { n:"02", t:"Convierte 77 °F a grados Celsius.",
-      d:"°C = (°F − 32) × 5/9",
-      r:"T = 25 °C" },
-    { n:"03", t:"Convierte 100 °C a grados Fahrenheit.",
-      d:"°F = °C × 9/5 + 32",
-      r:"T = 212 °F" },
-    { n:"04", t:"Una varilla de hierro mide 10 m a 20 °C. ¿Cuánto se alarga al calentarla a 220 °C? (α = 12×10⁻⁶ /°C)",
-      d:"ΔL = α·L₀·ΔT",
-      r:"ΔL = 0.024 m = 2.4 cm" },
-    { n:"05", t:"Una placa de aluminio tiene 2 m² a 30 °C. ¿Cuánto aumenta su área al calentarla a 130 °C? (α = 24×10⁻⁶ /°C, β ≈ 2α)",
-      d:"ΔA = β·A₀·ΔT, con β = 2α",
-      r:"ΔA ≈ 9.6×10⁻³ m²" },
-    { n:"06", t:"Un termómetro marca 0 K. ¿A qué corresponde en grados Celsius?",
-      d:"Cero absoluto",
-      r:"T = −273 °C" },
+  { titulo: 'Temperatura y dilatación', ejercicios: [
+    { n:'01', t:'Convierte 25 °C a kelvin.',
+      d:'K = °C + 273',
+      r:'T = 298 K' },
+    { n:'02', t:'Convierte 77 °F a grados Celsius.',
+      d:'°C = (°F − 32) × 5/9',
+      r:'T = 25 °C' },
+    { n:'03', t:'Convierte 100 °C a grados Fahrenheit.',
+      d:'°F = °C × 9/5 + 32',
+      r:'T = 212 °F' },
+    { n:'04', t:'Una varilla de hierro mide 10 m a 20 °C. ¿Cuánto se alarga al calentarla a 220 °C? (α = 12×10⁻⁶ /°C)',
+      d:'ΔL = α·L₀·ΔT',
+      r:'ΔL = 0.024 m = 2.4 cm' },
+    { n:'05', t:'Una placa de aluminio tiene 2 m² a 30 °C. ¿Cuánto aumenta su área al calentarla a 130 °C? (α = 24×10⁻⁶ /°C, β ≈ 2α)',
+      d:'ΔA = β·A₀·ΔT, con β = 2α',
+      r:'ΔA ≈ 9.6×10⁻³ m²' },
+    { n:'06', t:'Un termómetro marca 0 K. ¿A qué corresponde en grados Celsius?',
+      d:'Cero absoluto',
+      r:'T = −273 °C' },
   ]},
 
-  // ── 2. Calor específico y calorimetría ────────────────────────────────────
-  { titulo:"2 · Calor específico y calorimetría", color:"#b91c1c", ejercicios:[
-    { n:"01", t:"¿Cuánto calor se necesita para elevar la temperatura de 200 g de agua de 20 °C a 80 °C?",
-      d:"Q = m·c·ΔT",
-      r:"Q = 12 000 cal" },
-    { n:"02", t:"¿Qué calor se requiere para calentar 500 g de aluminio de 25 °C a 75 °C?",
-      d:"Q = m·c·ΔT &nbsp;·&nbsp; c<sub>Al</sub> = 0.22",
-      r:"Q = 5 500 cal" },
-    { n:"03", t:"Se mezclan 100 g de agua a 20 °C con 100 g de agua a 80 °C. ¿Temperatura de equilibrio?",
-      d:"Q<sub>frío</sub> = Q<sub>caliente</sub> (mismas masas y c)",
-      r:"T = 50 °C" },
-    { n:"04", t:"En 200 g de agua a 20 °C se sumerge una pieza de hierro de 100 g a 100 °C. ¿Temperatura final del equilibrio? (c<sub>Fe</sub> = 0.11)",
-      d:"m₁c₁(T<sub>f</sub>−T₁) = m₂c₂(T₂−T<sub>f</sub>)",
-      r:"T<sub>f</sub> ≈ 24.2 °C" },
-    { n:"05", t:"Una barra de cobre de 300 g se calienta de 25 °C a 125 °C absorbiendo 2 790 cal. ¿Cuál es su calor específico?",
-      d:"c = Q/(m·ΔT)",
-      r:"c ≈ 0.093 cal/g°C" },
-    { n:"06", t:"¿Cuántas calorías equivalen a 1 000 J? (1 cal = 4.18 J)",
-      d:"cal = J / 4.18",
-      r:"≈ 239.2 cal" },
+  { titulo: 'Calor específico y calorimetría', ejercicios: [
+    { n:'01', t:'¿Cuánto calor se necesita para elevar la temperatura de 200 g de agua de 20 °C a 80 °C?',
+      d:'Q = m·c·ΔT',
+      r:'Q = 12 000 cal' },
+    { n:'02', t:'¿Qué calor se requiere para calentar 500 g de aluminio de 25 °C a 75 °C?',
+      d:'Q = m·c·ΔT &nbsp;·&nbsp; c<sub>Al</sub> = 0.22',
+      r:'Q = 5 500 cal' },
+    { n:'03', t:'Se mezclan 100 g de agua a 20 °C con 100 g de agua a 80 °C. ¿Temperatura de equilibrio?',
+      d:'Q<sub>frío</sub> = Q<sub>caliente</sub> (mismas masas y c)',
+      r:'T = 50 °C' },
+    { n:'04', t:'En 200 g de agua a 20 °C se sumerge una pieza de hierro de 100 g a 100 °C. ¿Temperatura final del equilibrio? (c<sub>Fe</sub> = 0.11)',
+      d:'m₁c₁(T<sub>f</sub>−T₁) = m₂c₂(T₂−T<sub>f</sub>)',
+      r:'T<sub>f</sub> ≈ 24.2 °C' },
+    { n:'05', t:'Una barra de cobre de 300 g se calienta de 25 °C a 125 °C absorbiendo 2 790 cal. ¿Cuál es su calor específico?',
+      d:'c = Q/(m·ΔT)',
+      r:'c ≈ 0.093 cal/g°C' },
+    { n:'06', t:'¿Cuántas calorías equivalen a 1 000 J? (1 cal = 4.18 J)',
+      d:'cal = J / 4.18',
+      r:'≈ 239.2 cal' },
   ]},
 
-  // ── 3. Cambios de fase ────────────────────────────────────────────────────
-  { titulo:"3 · Cambios de fase", color:"#7c2d12", ejercicios:[
-    { n:"01", t:"¿Cuánto calor se requiere para fundir 200 g de hielo a 0 °C?",
-      d:"Q = m·L<sub>f</sub> con L<sub>f</sub> = 80 cal/g",
-      r:"Q = 16 000 cal" },
-    { n:"02", t:"¿Cuánto calor se requiere para vaporizar 100 g de agua a 100 °C?",
-      d:"Q = m·L<sub>v</sub> con L<sub>v</sub> = 540 cal/g",
-      r:"Q = 54 000 cal" },
-    { n:"03", t:"¿Calor total para llevar 100 g de hielo a 0 °C hasta 100 g de vapor a 100 °C?",
-      d:"Suma: fusión + calentamiento + vaporización",
-      r:"Q = 8 000 + 10 000 + 54 000 = 72 000 cal" },
-    { n:"04", t:"Un cubo de hielo de 50 g a 0 °C se funde dentro de 200 g de agua a 50 °C. ¿Temperatura final aproximada?",
-      d:"Calor para fundir hielo + calentar 0 → T<sub>f</sub> = calor cedido por agua",
-      r:"T<sub>f</sub> ≈ 24 °C" },
-    { n:"05", t:"Durante un cambio de fase a presión constante, ¿qué pasa con la temperatura?",
-      d:"Toda la energía se usa en romper enlaces",
-      r:"Permanece constante" },
-    { n:"06", t:"¿Qué proceso libera más energía: condensar 1 g de vapor o solidificar 1 g de agua?",
-      d:"Compara L<sub>v</sub> vs L<sub>f</sub>",
-      r:"Condensación (540 vs 80 cal/g)" },
+  { titulo: 'Cambios de fase', ejercicios: [
+    { n:'01', t:'¿Cuánto calor se requiere para fundir 200 g de hielo a 0 °C?',
+      d:'Q = m·L<sub>f</sub> con L<sub>f</sub> = 80 cal/g',
+      r:'Q = 16 000 cal' },
+    { n:'02', t:'¿Cuánto calor se requiere para vaporizar 100 g de agua a 100 °C?',
+      d:'Q = m·L<sub>v</sub> con L<sub>v</sub> = 540 cal/g',
+      r:'Q = 54 000 cal' },
+    { n:'03', t:'¿Calor total para llevar 100 g de hielo a 0 °C hasta 100 g de vapor a 100 °C?',
+      d:'Suma: fusión + calentamiento + vaporización',
+      r:'Q = 8 000 + 10 000 + 54 000 = 72 000 cal' },
+    { n:'04', t:'Un cubo de hielo de 50 g a 0 °C se funde dentro de 200 g de agua a 50 °C. ¿Temperatura final aproximada?',
+      d:'Calor para fundir hielo + calentar 0 → T<sub>f</sub> = calor cedido por agua',
+      r:'T<sub>f</sub> ≈ 24 °C' },
+    { n:'05', t:'Durante un cambio de fase a presión constante, ¿qué pasa con la temperatura?',
+      d:'Toda la energía se usa en romper enlaces',
+      r:'Permanece constante' },
+    { n:'06', t:'¿Qué proceso libera más energía: condensar 1 g de vapor o solidificar 1 g de agua?',
+      d:'Compara L<sub>v</sub> vs L<sub>f</sub>',
+      r:'Condensación (540 vs 80 cal/g)' },
   ]},
 
-  // ── 4. Gases ideales ──────────────────────────────────────────────────────
-  { titulo:"4 · Gases ideales", color:"#1d4ed8", ejercicios:[
-    { n:"01", t:"Un gas ocupa 5 L a 1 atm. Si la presión sube a 2 atm a temperatura constante, ¿nuevo volumen?",
-      d:"Ley de Boyle: P₁V₁ = P₂V₂",
-      r:"V = 2.5 L" },
-    { n:"02", t:"Un gas tiene 6 L a 300 K. Si T sube a 600 K a presión constante, ¿nuevo volumen?",
-      d:"Ley de Charles: V₁/T₁ = V₂/T₂",
-      r:"V = 12 L" },
-    { n:"03", t:"Un gas a 1 atm y 300 K. Si T pasa a 600 K (V constante), ¿nueva presión?",
-      d:"Ley de Gay-Lussac: P₁/T₁ = P₂/T₂",
-      r:"P = 2 atm" },
-    { n:"04", t:"¿Cuántos moles hay en 24.6 L de un gas ideal a 1 atm y 27 °C? (R = 0.082 atm·L/mol·K)",
-      d:"PV = nRT &nbsp;·&nbsp; T = 300 K",
-      r:"n = 1 mol" },
-    { n:"05", t:"Un gas a 2 atm, 300 K y 4 L se lleva a 1 atm y 600 K. ¿Nuevo volumen?",
-      d:"P₁V₁/T₁ = P₂V₂/T₂",
-      r:"V = 16 L" },
-    { n:"06", t:"¿Volumen molar de un gas ideal en condiciones normales (1 atm, 273 K)?",
-      d:"V = nRT/P con n=1",
-      r:"V ≈ 22.4 L" },
+  { titulo: 'Gases ideales', ejercicios: [
+    { n:'01', t:'Un gas ocupa 5 L a 1 atm. Si la presión sube a 2 atm a temperatura constante, ¿nuevo volumen?',
+      d:'Ley de Boyle: P₁V₁ = P₂V₂',
+      r:'V = 2.5 L' },
+    { n:'02', t:'Un gas tiene 6 L a 300 K. Si T sube a 600 K a presión constante, ¿nuevo volumen?',
+      d:'Ley de Charles: V₁/T₁ = V₂/T₂',
+      r:'V = 12 L' },
+    { n:'03', t:'Un gas a 1 atm y 300 K. Si T pasa a 600 K (V constante), ¿nueva presión?',
+      d:'Ley de Gay-Lussac: P₁/T₁ = P₂/T₂',
+      r:'P = 2 atm' },
+    { n:'04', t:'¿Cuántos moles hay en 24.6 L de un gas ideal a 1 atm y 27 °C? (R = 0.082 atm·L/mol·K)',
+      d:'PV = nRT &nbsp;·&nbsp; T = 300 K',
+      r:'n = 1 mol' },
+    { n:'05', t:'Un gas a 2 atm, 300 K y 4 L se lleva a 1 atm y 600 K. ¿Nuevo volumen?',
+      d:'P₁V₁/T₁ = P₂V₂/T₂',
+      r:'V = 16 L' },
+    { n:'06', t:'¿Volumen molar de un gas ideal en condiciones normales (1 atm, 273 K)?',
+      d:'V = nRT/P con n=1',
+      r:'V ≈ 22.4 L' },
   ]},
 
-  // ── 5. Primera ley de la termodinámica ────────────────────────────────────
-  { titulo:"5 · Primera ley de la termodinámica", color:"#5b2d8e", ejercicios:[
-    { n:"01", t:"Un sistema absorbe 500 J de calor y realiza 200 J de trabajo. ¿Cuál es el cambio de energía interna?",
-      d:"ΔU = Q − W",
-      r:"ΔU = 300 J" },
-    { n:"02", t:"Un sistema libera 100 J de calor mientras se le hace 50 J de trabajo. ¿ΔU?",
-      d:"Q = −100, W = −50 (sobre el sistema)",
-      r:"ΔU = −50 J" },
-    { n:"03", t:"En un proceso isotérmico para un gas ideal, ¿cuánto vale ΔU?",
-      d:"T constante implica energía interna constante",
-      r:"ΔU = 0 (Q = W)" },
-    { n:"04", t:"En un proceso adiabático un gas realiza 300 J de trabajo. ¿ΔU?",
-      d:"Adiabático: Q = 0",
-      r:"ΔU = −300 J" },
-    { n:"05", t:"Un gas absorbe 800 cal y se expande realizando un trabajo de 200 cal. ¿ΔU en calorías?",
-      d:"ΔU = Q − W",
-      r:"ΔU = 600 cal" },
-    { n:"06", t:"En un proceso isocórico (V constante) ¿qué tipo de trabajo realiza el gas?",
-      d:"W = P·ΔV",
-      r:"W = 0 (no hay cambio de volumen)" },
+  { titulo: 'Primera ley de la termodinámica', ejercicios: [
+    { n:'01', t:'Un sistema absorbe 500 J de calor y realiza 200 J de trabajo. ¿Cuál es el cambio de energía interna?',
+      d:'ΔU = Q − W',
+      r:'ΔU = 300 J' },
+    { n:'02', t:'Un sistema libera 100 J de calor mientras se le hace 50 J de trabajo. ¿ΔU?',
+      d:'Q = −100, W = −50 (sobre el sistema)',
+      r:'ΔU = −50 J' },
+    { n:'03', t:'En un proceso isotérmico para un gas ideal, ¿cuánto vale ΔU?',
+      d:'T constante implica energía interna constante',
+      r:'ΔU = 0 (Q = W)' },
+    { n:'04', t:'En un proceso adiabático un gas realiza 300 J de trabajo. ¿ΔU?',
+      d:'Adiabático: Q = 0',
+      r:'ΔU = −300 J' },
+    { n:'05', t:'Un gas absorbe 800 cal y se expande realizando un trabajo de 200 cal. ¿ΔU en calorías?',
+      d:'ΔU = Q − W',
+      r:'ΔU = 600 cal' },
+    { n:'06', t:'En un proceso isocórico (V constante) ¿qué tipo de trabajo realiza el gas?',
+      d:'W = P·ΔV',
+      r:'W = 0 (no hay cambio de volumen)' },
   ]},
 
-  // ── 6. Eficiencia y ciclo de Carnot ───────────────────────────────────────
-  { titulo:"6 · Eficiencia y ciclo de Carnot", color:"#a44a3f", ejercicios:[
-    { n:"01", t:"Una máquina térmica recibe 1 000 J y libera 700 J al sumidero frío. ¿Trabajo realizado?",
-      d:"W = Q<sub>c</sub> − Q<sub>f</sub>",
-      r:"W = 300 J" },
-    { n:"02", t:"¿Cuál es la eficiencia de la máquina del problema 01?",
-      d:"η = W/Q<sub>c</sub>",
-      r:"η = 0.30 = 30 %" },
-    { n:"03", t:"Una máquina de Carnot opera entre 600 K y 300 K. ¿Eficiencia máxima?",
-      d:"η = 1 − T<sub>f</sub>/T<sub>c</sub>",
-      r:"η = 0.50 = 50 %" },
-    { n:"04", t:"Una máquina con eficiencia del 25 % produce 250 J de trabajo. ¿Calor absorbido?",
-      d:"Q<sub>c</sub> = W/η",
-      r:"Q<sub>c</sub> = 1 000 J" },
-    { n:"05", t:"¿Puede una máquina térmica real superar la eficiencia de Carnot a las mismas temperaturas?",
-      d:"Segunda ley de la termodinámica",
-      r:"No (Carnot es el límite teórico)" },
-    { n:"06", t:"Carnot entre 500 K y 250 K, absorbe 800 J de calor. ¿Trabajo máximo?",
-      d:"W = η · Q<sub>c</sub>",
-      r:"W = 400 J (η = 0.5)" },
+  { titulo: 'Eficiencia y ciclo de Carnot', ejercicios: [
+    { n:'01', t:'Una máquina térmica recibe 1 000 J y libera 700 J al sumidero frío. ¿Trabajo realizado?',
+      d:'W = Q<sub>c</sub> − Q<sub>f</sub>',
+      r:'W = 300 J' },
+    { n:'02', t:'¿Cuál es la eficiencia de la máquina del problema 01?',
+      d:'η = W/Q<sub>c</sub>',
+      r:'η = 0.30 = 30 %' },
+    { n:'03', t:'Una máquina de Carnot opera entre 600 K y 300 K. ¿Eficiencia máxima?',
+      d:'η = 1 − T<sub>f</sub>/T<sub>c</sub>',
+      r:'η = 0.50 = 50 %' },
+    { n:'04', t:'Una máquina con eficiencia del 25 % produce 250 J de trabajo. ¿Calor absorbido?',
+      d:'Q<sub>c</sub> = W/η',
+      r:'Q<sub>c</sub> = 1 000 J' },
+    { n:'05', t:'¿Puede una máquina térmica real superar la eficiencia de Carnot a las mismas temperaturas?',
+      d:'Segunda ley de la termodinámica',
+      r:'No (Carnot es el límite teórico)' },
+    { n:'06', t:'Carnot entre 500 K y 250 K, absorbe 800 J de calor. ¿Trabajo máximo?',
+      d:'W = η · Q<sub>c</sub>',
+      r:'W = 400 J (η = 0.5)' },
   ]},
 
 ];
 
-// ── Render ────────────────────────────────────────────────────────────────────
+/* ── Render ──────────────────────────────────────────────────────── */
+const NUMERALS = ['i.', 'ii.', 'iii.', 'iv.', 'v.', 'vi.', 'vii.', 'viii.', 'ix.', 'x.'];
+const CHEVRON  = '<svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+
 const root = document.getElementById('contenido');
 
-SECCIONES.forEach(sec => {
-  const banner = document.createElement('div');
-  banner.className = 'banner';
-  banner.style.background = sec.color;
-  banner.textContent = sec.titulo;
-  root.appendChild(banner);
+SECCIONES.forEach((sec, sIdx) => {
+  const sectionEl = document.createElement('section');
+  sectionEl.innerHTML = `
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">${NUMERALS[sIdx]}</span>
+        ${sec.titulo}
+      </h2>
+      <span class="section-header__count">${sec.ejercicios.length} ejercicios</span>
+    </header>
+    <div class="exercise-list"></div>
+  `;
+  const list = sectionEl.querySelector('.exercise-list');
 
   sec.ejercicios.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <div class="card-header">
-        <span class="num">${p.n}</span>
-        <div class="enun">
-          <p>${p.t}</p>
-          <p class="datos">${p.d}</p>
+    const ex = document.createElement('details');
+    ex.className = 'exercise';
+    ex.innerHTML = `
+      <summary class="exercise__summary">
+        <span class="exercise__num">${p.n}</span>
+        <div class="exercise__statement">
+          <div class="exercise__text">${p.t}</div>
+          <p class="exercise__hint">${p.d}</p>
         </div>
-        <button class="chip" style="color:${sec.color};border-color:${sec.color}">▸ R</button>
-      </div>
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="resp-pill" style="background:${sec.color}">
-            <span class="tag">Respuesta</span>
-            <span class="val">${p.r}</span>
-          </div>
-          <button class="ocultar" style="color:${sec.color}">▴ Ocultar</button>
-        </div>
+        ${CHEVRON}
+      </summary>
+      <div class="exercise__answer">
+        <p class="exercise__answer-label">Respuesta</p>
+        <p class="exercise__answer-text">${p.r}</p>
       </div>
     `;
-    root.appendChild(card);
-
-    const hdr     = card.querySelector('.card-header');
-    const panel   = card.querySelector('.panel');
-    const btn     = card.querySelector('.chip');
-    const ocultar = card.querySelector('.ocultar');
-
-    function abrir()  { panel.classList.add('open');    btn.textContent = '▾ R'; }
-    function cerrar() { panel.classList.remove('open'); btn.textContent = '▸ R'; card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
-
-    hdr.addEventListener('click', e => { if (e.target===btn||e.target===ocultar) return; panel.classList.contains('open')?cerrar():abrir(); });
-    btn.addEventListener('click', e => { e.stopPropagation(); panel.classList.contains('open')?cerrar():abrir(); });
-    ocultar.addEventListener('click', cerrar);
+    list.appendChild(ex);
   });
+
+  root.appendChild(sectionEl);
 });
 </script>
+
 </body>
 </html>

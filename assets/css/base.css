@@ -1,0 +1,325 @@
+/* ============================================================
+   base.css
+   Reset moderno + tipografía base + utilidades editoriales
+   Sistema "Editorial cálido funcional" · Fase 1 · v1.0
+
+   Depende de tokens.css. Cargar después de tokens.css y antes
+   de components.css.
+   ============================================================ */
+
+/* ============================================================
+   Reset
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-page);
+  background-image:
+    radial-gradient(at 20% 30%, var(--grain-1) 0, transparent 50%),
+    radial-gradient(at 80% 70%, var(--grain-2) 0, transparent 50%);
+  background-attachment: fixed;
+  transition:
+    background-color var(--motion-slow) var(--motion-ease-emphasized),
+    color var(--motion-slow) var(--motion-ease-emphasized);
+}
+
+img,
+svg,
+video,
+canvas,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  border-top: var(--border-thin) solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* ============================================================
+   Tipografía base
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-40);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 96;
+}
+
+h2 {
+  font-size: var(--font-size-32);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 64;
+}
+
+h3 {
+  font-size: var(--font-size-24);
+  letter-spacing: var(--tracking-snug);
+  font-variation-settings: "opsz" 32;
+}
+
+h4 {
+  font-size: var(--font-size-20);
+  letter-spacing: var(--tracking-snug);
+  font-variation-settings: "opsz" 24;
+}
+
+h5 {
+  font-size: var(--font-size-18);
+  font-variation-settings: "opsz" 18;
+}
+
+h6 {
+  font-size: var(--font-size-16);
+  font-variation-settings: "opsz" 16;
+}
+
+/* Italic en headings con accent coñac — gesto editorial central */
+h1 em, h2 em, h3 em, h4 em, h5 em, h6 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 4px;
+  text-decoration-thickness: var(--border-thin);
+  transition: color var(--motion-fast) var(--motion-ease-standard);
+}
+
+a:hover {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+strong,
+b {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+}
+
+/* ============================================================
+   Focus visible global
+   ============================================================ */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   Selección de texto
+   ============================================================ */
+
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
+}
+
+/* ============================================================
+   Scrollbars sutiles
+   ============================================================ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  border: var(--border-medium) solid var(--color-bg-page);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-border-strong);
+}
+
+/* ============================================================
+   prefers-reduced-motion
+
+   Excepción única documentada al "cero !important": este patrón
+   es la convención WCAG/MDN para reducir movimiento sin pelear
+   con la cascada de cada componente.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Utilidades editoriales mínimas
+   ============================================================ */
+
+.eyebrow {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+.lede {
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-loose);
+  color: var(--color-text-secondary);
+}
+
+.meta {
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+}
+
+.hairline {
+  border: none;
+  border-top: var(--border-thin) solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+.hairline--dotted {
+  border-top-style: dotted;
+}
+
+/* ============================================================
+   Containers
+   ============================================================ */
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.container--narrow { max-width: var(--container-narrow); }
+.container--base   { max-width: var(--container-base); }
+.container--wide   { max-width: var(--container-wide); }
+.container--full   { max-width: var(--container-full); }
+
+@media (min-width: 760px) {
+  .container {
+    padding-inline: var(--space-7);
+  }
+}
+
+/* ============================================================
+   A11y helpers
+   ============================================================ */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

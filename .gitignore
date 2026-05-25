@@ -1,0 +1,22 @@
+# Claude Code (herramientas de desarrollo local)
+.claude/
+.agents/
+skills-lock.json
+
+# Backup pre-refactor (git ya tiene el historial completo)
+backup/
+
+# Screenshots de desarrollo
+screenshots/
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Editores
+.vscode/
+.idea/
+*.swp
