@@ -1,221 +1,143 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practicar por tema · Materiales de Clase</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>practicar · clases</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
 
-<style>
-  :root {
-    --bg: #f4efe6;
-    --bg-grain: #ebe4d6;
-    --ink: #1a1a2e;
-    --ink-soft: #4a4a5e;
-    --paper: #fdfbf6;
-    --accent: #8b2635;
-    --line: #d4cbb8;
-    --serif: 'Fraunces', Georgia, serif;
-    --sans: 'IBM Plex Sans', system-ui, sans-serif;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
 
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    background-image:
-      radial-gradient(circle at 15% 20%, var(--bg-grain) 0%, transparent 50%),
-      radial-gradient(circle at 85% 80%, var(--bg-grain) 0%, transparent 50%);
-    color: var(--ink);
-    min-height: 100vh;
-    padding: 24px 20px 48px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .wrap { width: 100%; max-width: 720px; }
-
-  header {
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .back-link {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--ink-soft);
-    text-decoration: none;
-    margin-bottom: 14px;
-    letter-spacing: 0.02em;
-  }
-  .back-link:hover { color: var(--accent); }
-
-  h1.title {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 8px;
-  }
-  h1.title em {
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-
-  h2.materia-titulo {
-    font-family: var(--sans);
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 32px 0 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .tema-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 8px;
-  }
-
-  .tema-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 11px 14px;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    text-decoration: none;
-    color: var(--ink);
-    transition: all .15s;
-    font-family: var(--sans);
-    font-size: 14px;
-  }
-  .tema-item:hover {
-    border-color: var(--accent);
-    transform: translateX(2px);
-  }
-  .tema-nombre {
-    flex: 1;
-    line-height: 1.3;
-  }
-  .tema-arrow {
-    color: var(--accent);
-    font-family: var(--serif);
-    font-size: 18px;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-
-  .footer-note {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    font-size: 12px;
-    color: var(--ink-soft);
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  @media (max-width: 560px) {
-    body { padding: 16px 14px 36px; }
-    h1.title { font-size: 26px; }
-    .tema-item { font-size: 13px; padding: 10px 12px; }
-  }
-</style>
+  <script defer src="/clases/assets/js/theme.js"></script>
+  <script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="wrap">
+<site-nav active="tarjetas"></site-nav>
 
-  <header>
-    <a href="index.html" class="back-link">← Volver al índice</a>
-    <h1 class="title">Practicar <em>por tema</em></h1>
-    <p class="subtitle">Cada link abre las flashcards filtradas sólo con ese tema. Las opciones se barajean en cada sesión.</p>
+<main class="container container--base">
+
+  <header class="hero">
+    <p class="eyebrow">Tarjetas · práctica por tema</p>
+    <h1 class="hero__title">Practicar <em>por tema</em></h1>
+    <p class="hero__lede">
+      Cada tema abre un mazo de flashcards con sólo sus preguntas. Las opciones se barajean en cada intento, así que repetir el tema nunca es repetir las respuestas.
+    </p>
   </header>
 
-  <h2 class="materia-titulo">Matemáticas</h2>
-  <div class="tema-list">
-    <a class="tema-item" href="flashcards.html?tema=trig"><span class="tema-nombre">Trigonometría — valores en ángulos notables</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=ecuación trigonométrica"><span class="tema-nombre">Trigonometría — ecuaciones</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=gráfica"><span class="tema-nombre">Trigonometría — identificar gráficas (sin/cos/tan)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=triángulo rectángulo"><span class="tema-nombre">Triángulos rectángulos (Pitágoras y razones trig)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=ley de"><span class="tema-nombre">Triángulos oblicuángulos (ley de senos y cosenos)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=cónica forma ordinaria"><span class="tema-nombre">Cónicas — identificar elementos (forma ordinaria)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=cónica por discriminante"><span class="tema-nombre">Cónicas — identificar tipo (forma general)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=forma general con xy"><span class="tema-nombre">Cónicas — con término <i>xy</i> (rotadas)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=circunferencia,elipse,hipérbola,parábola"><span class="tema-nombre">Cónicas — completar el cuadrado (forma general)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=sistema"><span class="tema-nombre">Sistemas de ecuaciones</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=ec. 2do grado"><span class="tema-nombre">Ecuaciones cuadráticas</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=factorización,producto notable,operaciones con enteros"><span class="tema-nombre">Factorización, productos notables y operaciones</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=ecuación lineal"><span class="tema-nombre">Ecuaciones lineales</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=logarítmica,logaritmo"><span class="tema-nombre">Logaritmos y ecuaciones logarítmicas</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=punto medio,pendiente"><span class="tema-nombre">La recta — punto medio y pendiente</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=ecuación de la recta"><span class="tema-nombre">La recta — ecuación dados puntos o pendiente</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=paralelismo"><span class="tema-nombre">La recta — paralelismo y perpendicularidad</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=conversión de formas"><span class="tema-nombre">La recta — conversión entre formas</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=límite por factorización"><span class="tema-nombre">Cálculo — límites por factorización</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=L'Hôpital"><span class="tema-nombre">Cálculo — límites por L'Hôpital (con trig)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=límite al infinito,límite forma 0/0,límite por racionalización"><span class="tema-nombre">Cálculo — otros límites (∞, racionalización)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=derivada"><span class="tema-nombre">Cálculo — derivadas (polinomios y orden superior)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=integral inmediata"><span class="tema-nombre">Cálculo — integrales inmediatas</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=integral por sustitución"><span class="tema-nombre">Cálculo — integrales por sustitución</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=integral por partes"><span class="tema-nombre">Cálculo — integrales por partes</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=función"><span class="tema-nombre">Funciones (evaluación, composición, dominio)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=inecuación"><span class="tema-nombre">Inecuaciones (lineales, cuadráticas, fraccionales)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=máximo o mínimo,mínimo de parábola"><span class="tema-nombre">Máximos y mínimos de funciones</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=conversión radianes"><span class="tema-nombre">Otros (conversión radianes ↔ grados)</span><span class="tema-arrow">→</span></a>
-  </div>
+  <section>
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">i.</span>
+        Matemáticas
+      </h2>
+      <span class="section-header__count">29 temas</span>
+    </header>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=trig"><span class="topic-list__name">Trigonometría — valores en ángulos notables</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ecuaci%C3%B3n+trigonom%C3%A9trica"><span class="topic-list__name">Trigonometría — ecuaciones</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=gr%C3%A1fica"><span class="topic-list__name">Trigonometría — identificar gráficas (sin/cos/tan)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=tri%C3%A1ngulo+rect%C3%A1ngulo"><span class="topic-list__name">Triángulos rectángulos (Pitágoras y razones trig)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ley+de"><span class="topic-list__name">Triángulos oblicuángulos (ley de senos y cosenos)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=c%C3%B3nica+forma+ordinaria"><span class="topic-list__name">Cónicas — identificar elementos (forma ordinaria)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=c%C3%B3nica+por+discriminante"><span class="topic-list__name">Cónicas — identificar tipo (forma general)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=forma+general+con+xy"><span class="topic-list__name">Cónicas — con término <em>xy</em> (rotadas)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=circunferencia%2Celipse%2Chip%C3%A9rbola%2Cpar%C3%A1bola"><span class="topic-list__name">Cónicas — completar el cuadrado (forma general)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=sistema"><span class="topic-list__name">Sistemas de ecuaciones</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ec.+2do+grado"><span class="topic-list__name">Ecuaciones cuadráticas</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=factorizaci%C3%B3n%2Cproducto+notable%2Coperaciones+con+enteros"><span class="topic-list__name">Factorización, productos notables y operaciones</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ecuaci%C3%B3n+lineal"><span class="topic-list__name">Ecuaciones lineales</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=logar%C3%ADtmica%2Clogaritmo"><span class="topic-list__name">Logaritmos y ecuaciones logarítmicas</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=punto+medio%2Cpendiente"><span class="topic-list__name">La recta — punto medio y pendiente</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ecuaci%C3%B3n+de+la+recta"><span class="topic-list__name">La recta — ecuación dados puntos o pendiente</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=paralelismo"><span class="topic-list__name">La recta — paralelismo y perpendicularidad</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=conversi%C3%B3n+de+formas"><span class="topic-list__name">La recta — conversión entre formas</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=l%C3%ADmite+por+factorizaci%C3%B3n"><span class="topic-list__name">Cálculo — límites por factorización</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=L%27H%C3%B4pital"><span class="topic-list__name">Cálculo — límites por L'Hôpital (con trig)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=l%C3%ADmite+al+infinito%2Cl%C3%ADmite+forma+0%2F0%2Cl%C3%ADmite+por+racionalizaci%C3%B3n"><span class="topic-list__name">Cálculo — otros límites (∞, racionalización)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=derivada"><span class="topic-list__name">Cálculo — derivadas (polinomios y orden superior)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=integral+inmediata"><span class="topic-list__name">Cálculo — integrales inmediatas</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=integral+por+sustituci%C3%B3n"><span class="topic-list__name">Cálculo — integrales por sustitución</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=integral+por+partes"><span class="topic-list__name">Cálculo — integrales por partes</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=funci%C3%B3n"><span class="topic-list__name">Funciones (evaluación, composición, dominio)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=inecuaci%C3%B3n"><span class="topic-list__name">Inecuaciones (lineales, cuadráticas, fraccionales)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=m%C3%A1ximo+o+m%C3%ADnimo%2Cm%C3%ADnimo+de+par%C3%A1bola"><span class="topic-list__name">Máximos y mínimos de funciones</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=conversi%C3%B3n+radianes"><span class="topic-list__name">Otros (conversión radianes ↔ grados)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
 
-  <h2 class="materia-titulo">Física</h2>
-  <div class="tema-list">
-    <a class="tema-item" href="flashcards.html?tema=caída libre,MRUA,tiro parabólico"><span class="tema-nombre">Cinemática (caída libre, MRUA, tiro parabólico)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=segunda ley de Newton,MCU"><span class="tema-nombre">Dinámica (Newton, fuerza centrípeta)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=trabajo mecánico,energía cinética,conservación de energía,Hooke"><span class="tema-nombre">Trabajo y energía (incluye resortes)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=cantidad de movimiento,choque"><span class="tema-nombre">Cantidad de movimiento e impulso</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=presión hidrostática,gravitación"><span class="tema-nombre">Hidrostática y gravitación</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=calor (operación),termodinámica"><span class="tema-nombre">Calor y termodinámica</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=Coulomb,Ohm,resistencias"><span class="tema-nombre">Electricidad (Coulomb, Ohm, resistencias)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=óptica"><span class="tema-nombre">Óptica (Snell, lentes)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=velocidad de una onda"><span class="tema-nombre">Ondas</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=fotoeléctrico"><span class="tema-nombre">Física moderna (efecto fotoeléctrico)</span><span class="tema-arrow">→</span></a>
-  </div>
+  <section>
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">ii.</span>
+        Física
+      </h2>
+      <span class="section-header__count">10 temas</span>
+    </header>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=ca%C3%ADda+libre%2CMRUA%2Ctiro+parab%C3%B3lico"><span class="topic-list__name">Cinemática (caída libre, MRUA, tiro parabólico)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=segunda+ley+de+Newton%2CMCU"><span class="topic-list__name">Dinámica (Newton, fuerza centrípeta)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=trabajo+mec%C3%A1nico%2Cenerg%C3%ADa+cin%C3%A9tica%2Cconservaci%C3%B3n+de+energ%C3%ADa%2CHooke"><span class="topic-list__name">Trabajo y energía (incluye resortes)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=cantidad+de+movimiento%2Cchoque"><span class="topic-list__name">Cantidad de movimiento e impulso</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=presi%C3%B3n+hidrost%C3%A1tica%2Cgravitaci%C3%B3n"><span class="topic-list__name">Hidrostática y gravitación</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=calor+(operaci%C3%B3n)%2Ctermodin%C3%A1mica"><span class="topic-list__name">Calor y termodinámica</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=Coulomb%2COhm%2Cresistencias"><span class="topic-list__name">Electricidad (Coulomb, Ohm, resistencias)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=%C3%B3ptica"><span class="topic-list__name">Óptica (Snell, lentes)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=velocidad+de+una+onda"><span class="topic-list__name">Ondas</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=fotoel%C3%A9ctrico"><span class="topic-list__name">Física moderna (efecto fotoeléctrico)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
 
-  <h2 class="materia-titulo">Historia, sociales y lengua (banco UNAM)</h2>
-  <div class="tema-list">
-    <a class="tema-item" href="flashcards.html?tema=historia"><span class="tema-nombre">Historia de México (Planes, Tratados, siglo XX)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=historia_universal"><span class="tema-nombre">Historia universal</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=geografia"><span class="tema-nombre">Geografía</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=biologia"><span class="tema-nombre">Biología</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=quimica"><span class="tema-nombre">Química</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=espanol"><span class="tema-nombre">Español (gramática, ortografía, sinónimos)</span><span class="tema-arrow">→</span></a>
-    <a class="tema-item" href="flashcards.html?tema=literatura"><span class="tema-nombre">Literatura</span><span class="tema-arrow">→</span></a>
-  </div>
+  <section>
+    <header class="section-header">
+      <h2 class="section-header__title">
+        <span class="section-header__num">iii.</span>
+        Historia, sociales y lengua (banco UNAM)
+      </h2>
+      <span class="section-header__count">7 temas</span>
+    </header>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=historia"><span class="topic-list__name">Historia de México (Planes, Tratados, siglo XX)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=historia_universal"><span class="topic-list__name">Historia universal</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=geografia"><span class="topic-list__name">Geografía</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=biologia"><span class="topic-list__name">Biología</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=quimica"><span class="topic-list__name">Química</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=espanol"><span class="topic-list__name">Español (gramática, ortografía, sinónimos)</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/flashcards.html?tema=literatura"><span class="topic-list__name">Literatura</span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
 
-  <div class="footer-note">
-    ¿Falta un tema? Avísale a tu profe — agregar uno nuevo aquí toma menos de un minuto.
-  </div>
+  <p class="meta">¿Falta un tema? Avísale a tu profe — agregar uno nuevo aquí toma menos de un minuto.</p>
 
-</div>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/repaso.html">Notas de repaso</a>
+  </nav>
+</footer>
 
 </body>
 </html>

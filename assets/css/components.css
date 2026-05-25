@@ -1813,3 +1813,70 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   outline-offset: -1px;
   border-color: var(--color-border-focus);
 }
+
+
+/* ============================================================
+   4.14 — Topic list
+   Lista hairline densa de links a temas. Uso: directorios de
+   temas (practicar.html), índices de capítulos, listas de
+   referencias editoriales. Densidad alta sin perder respiro.
+   ============================================================ */
+
+.topic-list {
+  list-style: none;
+  margin: 0 0 var(--space-9);
+  padding: 0;
+}
+
+.topic-list:last-child {
+  margin-bottom: 0;
+}
+
+.topic-list__item {
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.topic-list__item:last-child {
+  border-bottom: none;
+}
+
+.topic-list__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--motion-fast) ease;
+}
+
+.topic-list__link:hover,
+.topic-list__link:focus-visible {
+  color: var(--color-accent);
+}
+
+.topic-list__link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.topic-list__name {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-snug);
+}
+
+.topic-list__name em {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.topic-list__chevron {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
