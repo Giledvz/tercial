@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarjetas de práctica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>flashcards · clases</title>
 
-<!-- KaTeX para fórmulas matemáticas -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body, {delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});"></script>
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/clases/assets/css/tokens.css">
+<link rel="stylesheet" href="/clases/assets/css/base.css">
+<link rel="stylesheet" href="/clases/assets/css/components.css">
 
 <style>
   :root {
@@ -395,14 +407,26 @@
 
   .option.revealed-dim { opacity: 0.45; }
 </style>
+
+<script defer src="/clases/assets/js/theme.js"></script>
+<script defer src="/clases/assets/js/site-nav.js"></script>
+<script defer src="/clases/assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <h1 class="title">Tarjetas de <em>práctica</em></h1>
-    <span class="meta" id="counter">0 / 0</span>
+<site-nav active="tarjetas"></site-nav>
+
+<main class="container container--base">
+
+  <header class="hero">
+    <p class="eyebrow">Tarjetas · práctica</p>
+    <h1 class="hero__title">Flashcards</h1>
+    <p class="hero__lede">
+      Una pregunta a la vez, opciones barajadas. Voltea la tarjeta para ver la respuesta y la explicación. Sigue con la siguiente cuando estés listo.
+    </p>
   </header>
+
+  <span class="meta" id="counter">0 / 0</span>
 
   <div id="filtroBanner" class="filtro-banner hidden">
     Practicando: <strong id="filtroTema"></strong>
@@ -431,7 +455,7 @@
       </div>
     </div>
     <div class="card-footer">
-      <button class="btn" id="nextBtn" disabled>Siguiente →</button>
+      <button class="btn" id="nextBtn" aria-keyshortcuts="Enter Space ArrowRight" disabled>Siguiente →</button>
     </div>
   </div>
 
@@ -442,7 +466,18 @@
     <p id="finalMessage">Has completado todas las tarjetas.</p>
     <button class="btn ghost" id="restartBtn">Volver a empezar</button>
   </div>
-</div>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/">Inicio</a>
+    <a href="/clases/practicar.html">Practicar por tema</a>
+    <a href="/clases/repaso.html">Repaso por tema</a>
+  </nav>
+</footer>
 
 <script>
 /* =========================================================
@@ -5416,14 +5451,30 @@ const progressBar = $('progressBar');
 const finalScreen = $('finalScreen');
 const cardContainer = $('cardContainer');
 
-function renderKatex(el) {
+/* KaTeX: loader centralizado + retries=1 guard
+   Memoria katex-loader-autorender-trap. */
+let katexReadyPromise = null;
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.ClasesKatex) {
+    katexReadyPromise = window.ClasesKatex.load();
+  }
+});
+
+function renderKatex(el, retries = 1) {
   if (window.renderMathInElement) {
-    renderMathInElement(el, {
+    window.renderMathInElement(el, {
       delimiters: [
         {left:'$$',right:'$$',display:true},
-        {left:'$',right:'$',display:false}
-      ]
+        {left:'$',right:'$',display:false},
+        {left:'\\(',right:'\\)',display:false},
+        {left:'\\[',right:'\\]',display:true}
+      ],
+      throwOnError: false
     });
+    return;
+  }
+  if (retries > 0 && katexReadyPromise) {
+    katexReadyPromise.then(() => renderKatex(el, retries - 1));
   }
 }
 
@@ -5441,6 +5492,7 @@ function mostrarPregunta() {
   p.opciones.forEach((op, i) => {
     const btn = document.createElement('button');
     btn.className = 'option';
+    btn.setAttribute('aria-keyshortcuts', `${letras[i]} ${i + 1}`);
     btn.innerHTML = `<span class="option-letter">${letras[i]}</span><span class="option-text">${op}</span>`;
     btn.addEventListener('click', () => responder(i));
     optionsEl.appendChild(btn);
@@ -5536,18 +5588,49 @@ function reiniciar() {
 nextBtn.addEventListener('click', siguiente);
 $('restartBtn').addEventListener('click', reiniciar);
 
-// Permitir teclas A/B/C/D y 1-4
+/* Atajos de teclado — patrón canónico exam-keyboard-shortcuts.
+   Diferencia funcional preservada: flashcards acepta A/B/C/D
+   además de 1-4. */
 document.addEventListener('keydown', (e) => {
-  if (respondida && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) {
-    if (!nextBtn.disabled) { e.preventDefault(); siguiente(); }
+  const t = e.target;
+  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+  if (cardContainer.classList.contains('hidden')) return;
+
+  const key = e.key;
+
+  if (key === 'Enter' || key === ' ' || key === 'ArrowRight') {
+    if (respondida && !nextBtn.disabled) {
+      e.preventDefault();
+      siguiente();
+    }
     return;
   }
+
   if (respondida) return;
-  const k = e.key.toLowerCase();
-  const map = { a:0, b:1, c:2, d:3, '1':0, '2':1, '3':2, '4':3 };
-  if (k in map) {
-    const botones = optionsEl.querySelectorAll('.option');
-    if (botones[map[k]]) botones[map[k]].click();
+
+  if (key >= '1' && key <= '4') {
+    const opts = optionsEl.querySelectorAll('.option');
+    const opt = opts[parseInt(key, 10) - 1];
+    if (opt && !opt.disabled) {
+      e.preventDefault();
+      opt.click();
+    }
+    return;
+  }
+
+  const letter = key.toUpperCase();
+  if (letter >= 'A' && letter <= 'D') {
+    const opts = optionsEl.querySelectorAll('.option');
+    for (const opt of opts) {
+      const letterEl = opt.querySelector('.option-letter');
+      if (letterEl && letterEl.textContent.trim().toUpperCase() === letter) {
+        if (!opt.disabled) {
+          e.preventDefault();
+          opt.click();
+        }
+        return;
+      }
+    }
   }
 });
 
