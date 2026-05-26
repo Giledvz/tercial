@@ -2093,6 +2093,20 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
 
 .option.revealed-dim { opacity: 0.45; }
 
+/* Selector de modos en hero de flashcards (4 chips bajo el lede) */
+.flashcards-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.flashcards-modes .btn.is-active {
+  background: var(--color-accent);
+  color: var(--color-bg-page);
+  border-color: var(--color-accent);
+}
+
 /* Tema tag — preservado como flashcards-specific (motor setea
    textContent vía $('temaTag'); ::before mantiene el label
    "Tema · " que el sistema .tag no provee). */

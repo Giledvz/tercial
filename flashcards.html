@@ -43,6 +43,12 @@
     <p class="hero__lede">
       Una pregunta a la vez, opciones barajadas. Voltea la tarjeta para ver la respuesta y la explicación. Sigue con la siguiente cuando estés listo.
     </p>
+    <div class="flashcards-modes" role="group" aria-label="Modo de práctica">
+      <a href="/clases/flashcards.html" class="btn btn--ghost" data-mode="normal">Sesión normal</a>
+      <a href="/clases/flashcards.html?modo=estudio" class="btn btn--ghost" data-mode="estudio">Modo estudio</a>
+      <a href="/clases/flashcards.html?modo=revisar" class="btn btn--ghost" data-mode="revisar">Modo revisar</a>
+      <a href="/clases/flashcards.html?modo=estudio&amp;fuente=320_UNAM" class="btn btn--ghost" data-mode="unam320">Banco UNAM 320</a>
+    </div>
   </header>
 
   <span class="eyebrow" id="counter">0 / 0</span>
@@ -5077,6 +5083,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.ClasesKatex) {
     katexReadyPromise = window.ClasesKatex.load();
   }
+
+  /* Selector de modos en hero: marca el chip activo según URL */
+  const params = new URLSearchParams(location.search);
+  const modoActual = params.get('modo');
+  const fuenteActual = params.get('fuente');
+  let activeMode = 'normal';
+  if (fuenteActual === '320_UNAM') activeMode = 'unam320';
+  else if (modoActual === 'estudio') activeMode = 'estudio';
+  else if (modoActual === 'revisar') activeMode = 'revisar';
+
+  document.querySelectorAll('.flashcards-modes [data-mode]').forEach(el => {
+    if (el.dataset.mode === activeMode) {
+      el.classList.add('is-active');
+      el.setAttribute('aria-current', 'true');
+    }
+  });
 });
 
 function renderKatex(el, retries = 1) {
