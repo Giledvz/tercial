@@ -69,7 +69,7 @@
       this.setAttribute('role', 'navigation');
       this.setAttribute('aria-label', 'principal');
       this.innerHTML = `
-        <a class="site-nav__brand" href="${HOME}" aria-label="clases — ir al inicio">clases</a>
+        <a class="site-nav__brand" href="${HOME}" aria-label="Tercial — ir al inicio">Tercial</a>
         <ul class="site-nav__links">${links}</ul>
         <button class="site-nav__theme" type="button" aria-label="Cambiar modo de color">
           ${ICONS.moon}${ICONS.sun}${ICONS.sunmoon}
