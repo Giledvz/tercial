@@ -195,14 +195,16 @@
   --state-warn: #8a5208;
   --state-warn-bg: #f1e6c4;
 
-  /* Categorías de física — idénticas en light y dark
-     (sólo se usan como border-top de 3px sobre cards). */
-  --cat-blue:   #1a4f8a;
-  --cat-amber:  #b45309;
-  --cat-coral:  #c2410c;
-  --cat-teal:   #0e7490;
-  --cat-purple: #6d28d9;
-  --cat-navy:   #1e3a8a;
+  /* Categorías — paleta bimodal warm-muted ("earth palette").
+     Cada cat-* se redefine en [data-theme="dark"] para mantener
+     contraste sobre el bg de cada modo, igual que --crema-* e --ink-*.
+     Usadas como border-top de 3px sobre cards/heros. */
+  --cat-blue:   #2d4f7a;   /* denim */
+  --cat-amber:  #8a5a1e;   /* mostaza */
+  --cat-coral:  #8c4a3a;   /* rust — diferenciado de --accent-terracota */
+  --cat-teal:   #2d5c63;   /* verdigris */
+  --cat-purple: #7a4a6b;   /* polvo */
+  --cat-navy:   #2d3955;   /* slate */
 
   /* Atmósfera (grain) */
   --grain-1: rgba(140, 117, 86, 0.04);
@@ -299,6 +301,17 @@
   --state-err-bg: #3a2622;
   --state-warn: #d4a04a;
   --state-warn-bg: #3a3020;
+
+  /* Categorías dark — variantes lightened para pop sobre grafito.
+     Mismo orden que light, mismas identidades (denim, mostaza, …),
+     sólo subidas en luminosidad y chroma para ganar contraste sobre
+     el bg de modo oscuro. */
+  --cat-blue:   #7e9ec1;
+  --cat-amber:  #d4a04a;
+  --cat-coral:  #c7836b;
+  --cat-teal:   #7eb0b5;
+  --cat-purple: #b08299;
+  --cat-navy:   #8090b0;
 
   /* Atmósfera dark — mismos tonos, opacidades ajustadas */
   --grain-1: rgba(140, 117, 86, 0.05);

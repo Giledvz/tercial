@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Comparar paleta bimodal — Tercial</title>
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem('clases-theme-pref') || 'auto';
+        var applied = p === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : p;
+        document.documentElement.setAttribute('data-theme', applied);
+        document.documentElement.setAttribute('data-theme-pref', p);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
+  <link rel="stylesheet" href="/clases/assets/css/base.css">
+  <link rel="stylesheet" href="/clases/assets/css/components.css">
+  <style>
+    .topbar {
+      max-width: var(--container-wide);
+      margin: var(--space-6) auto var(--space-4);
+      padding: 0 var(--space-6);
+    }
+    .topbar h1 {
+      font: italic var(--font-weight-semibold) var(--font-size-32)/1.2 var(--font-family-display);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-2);
+    }
+    .topbar p {
+      font: var(--font-size-14)/1.55 var(--font-family-body);
+      color: var(--color-text-secondary);
+      max-width: 64ch;
+      margin: 0 0 var(--space-2);
+    }
+    .topbar kbd {
+      font: 500 var(--font-size-12) var(--font-family-mono);
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .theme-tag {
+      display: inline-block;
+      margin-left: var(--space-3);
+      font: 500 var(--font-size-12)/1 var(--font-family-mono);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border-subtle);
+      color: var(--color-text-meta);
+    }
+
+    /* ----- Overview band ----- */
+    .overview {
+      max-width: var(--container-wide);
+      margin: var(--space-7) auto var(--space-6);
+      padding: var(--space-6);
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-md);
+    }
+    .overview h2 {
+      font: 600 var(--font-size-15)/1.3 var(--font-family-body);
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--color-text-meta-large);
+      margin: 0 0 var(--space-5);
+    }
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-4);
+    }
+    @media (max-width: 760px) {
+      .palette-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .swatch-pair {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .swatch-pair__name {
+      font: 600 var(--font-size-13)/1.2 var(--font-family-body);
+      color: var(--color-text-primary);
+      text-align: center;
+    }
+    .swatch-pair__chips {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .swatch-pair__chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-2) var(--space-1);
+      border-radius: var(--radius-sm);
+    }
+    .swatch-pair__chip--light {
+      background: #f5efe4; /* fijo crema-200 light */
+    }
+    .swatch-pair__chip--dark {
+      background: #1a1614; /* fijo crema-200 dark */
+    }
+    .swatch-pair__bar {
+      width: 100%;
+      height: 28px;
+      border-radius: 2px;
+    }
+    .swatch-pair__mode {
+      font: 600 var(--font-size-11)/1 var(--font-family-body);
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+    }
+    .swatch-pair__chip--light .swatch-pair__mode { color: #4a3f33; }
+    .swatch-pair__chip--dark  .swatch-pair__mode { color: #d9cbb0; }
+    .swatch-pair__hex {
+      font: var(--font-size-11)/1 var(--font-family-mono);
+    }
+    .swatch-pair__chip--light .swatch-pair__hex { color: #7a6448; }
+    .swatch-pair__chip--dark  .swatch-pair__hex { color: #a89880; }
+
+    /* ----- Per-color comparison ----- */
+    .cmp {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: var(--space-7) var(--space-6);
+      border-top: 1px dashed var(--color-border-subtle);
+    }
+    .cmp__head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      flex-wrap: wrap;
+    }
+    .cmp__head h2 {
+      font: italic var(--font-weight-semibold) var(--font-size-24)/1.2 var(--font-family-display);
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+    .cmp__head .note {
+      color: var(--color-state-ok);
+      font: italic var(--font-size-13)/1.3 var(--font-family-body);
+      flex-basis: 100%;
+    }
+    .cmp__pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .cmp__pair { grid-template-columns: 1fr; }
+    }
+    .cmp__col-label {
+      font: 600 var(--font-size-12)/1.3 var(--font-family-body);
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--color-text-meta-large);
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .cmp__col-label .hex-inline {
+      font: var(--font-size-12)/1.3 var(--font-family-mono);
+      color: var(--color-text-meta);
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .cmp__col-label .active-now {
+      font: 500 var(--font-size-11)/1 var(--font-family-body);
+      letter-spacing: var(--tracking-meta);
+      color: var(--color-state-ok);
+      padding: 2px 6px;
+      border-radius: var(--radius-pill);
+      background: var(--color-state-ok-bg);
+    }
+    /* Show the "renderiza en este tema" pill only on the matching column */
+    .cmp__col-light .active-now { display: none; }
+    .cmp__col-dark  .active-now { display: none; }
+    [data-theme="light"] .cmp__col-light .active-now { display: inline; }
+    [data-theme="dark"]  .cmp__col-dark  .active-now { display: inline; }
+
+    /* Force border color per column override */
+    .cmp__col-light .hero[data-cat] { border-color: var(--cat-light) !important; }
+    .cmp__col-dark  .hero[data-cat] { border-color: var(--cat-dark)  !important; }
+
+    /* Per-color values: set on each comparison section */
+    .cmp--blue   { --cat-light: #2d4f7a; --cat-dark: #7e9ec1; }
+    .cmp--amber  { --cat-light: #8a5a1e; --cat-dark: #d4a04a; }
+    .cmp--coral  { --cat-light: #8c4a3a; --cat-dark: #c7836b; }
+    .cmp--teal   { --cat-light: #2d5c63; --cat-dark: #7eb0b5; }
+    .cmp--purple { --cat-light: #7a4a6b; --cat-dark: #b08299; }
+    .cmp--navy   { --cat-light: #2d3955; --cat-dark: #8090b0; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Paleta bimodal · light + dark</h1>
+    <p>
+      Cada categoría tiene ahora <strong>dos variantes</strong>: una tuneada para crema (light) y otra para grafito (dark). El sistema elige automáticamente según el tema activo. Mismo patrón que ya siguen <code>--crema-*</code> y <code>--ink-*</code>.
+    </p>
+    <p>
+      Tecla <kbd>D</kbd> alterna light/dark. La etiqueta verde <span class="theme-tag" style="color: var(--color-state-ok)">renderiza en este tema</span> marca cuál variante es la que se vería con el modo actual.
+    </p>
+  </header>
+
+  <section class="overview">
+    <h2>Vista de paleta · pares light/dark por categoría</h2>
+    <div class="palette-grid">
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">blue · denim</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#2d4f7a"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#2d4f7a</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#7e9ec1"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#7e9ec1</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">amber · mostaza</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#8a5a1e"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#8a5a1e</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#d4a04a"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#d4a04a</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">coral · rust</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#8c4a3a"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#8c4a3a</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#c7836b"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#c7836b</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">teal · verdigris</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#2d5c63"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#2d5c63</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#7eb0b5"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#7eb0b5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">purple · polvo</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#7a4a6b"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#7a4a6b</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#b08299"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#b08299</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="swatch-pair">
+        <span class="swatch-pair__name">navy · slate</span>
+        <div class="swatch-pair__chips">
+          <div class="swatch-pair__chip swatch-pair__chip--light">
+            <span class="swatch-pair__bar" style="background:#2d3955"></span>
+            <span class="swatch-pair__mode">light</span>
+            <span class="swatch-pair__hex">#2d3955</span>
+          </div>
+          <div class="swatch-pair__chip swatch-pair__chip--dark">
+            <span class="swatch-pair__bar" style="background:#8090b0"></span>
+            <span class="swatch-pair__mode">dark</span>
+            <span class="swatch-pair__hex">#8090b0</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLUE -->
+  <section class="cmp cmp--blue">
+    <div class="cmp__head">
+      <h2>Blue · denim</h2>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#2d4f7a</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="blue">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Dinámica y <em>leyes de Newton</em></h1>
+          <p class="hero__lede">Fuerzas, fricción, segunda ley aplicada a sistemas de bloques en plano e inclinado.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#7e9ec1</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="blue">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Dinámica y <em>leyes de Newton</em></h1>
+          <p class="hero__lede">Fuerzas, fricción, segunda ley aplicada a sistemas de bloques en plano e inclinado.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMBER -->
+  <section class="cmp cmp--amber">
+    <div class="cmp__head">
+      <h2>Amber · mostaza</h2>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#8a5a1e</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="amber">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Óptica y <em>luz</em></h1>
+          <p class="hero__lede">Reflexión, refracción, espejos cóncavos y convexos. Índice de refracción y ángulo crítico.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#d4a04a</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="amber">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Óptica y <em>luz</em></h1>
+          <p class="hero__lede">Reflexión, refracción, espejos cóncavos y convexos. Índice de refracción y ángulo crítico.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORAL -->
+  <section class="cmp cmp--coral">
+    <div class="cmp__head">
+      <h2>Coral · rust</h2>
+      <span class="note">↳ Resuelve además el conflicto histórico con <code>--accent-terracota</code> (#c2410c).</span>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#8c4a3a</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="coral">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Cinemática y <em>movimiento</em></h1>
+          <p class="hero__lede">MRU, MRUA, caída libre y tiro parabólico. Gráficas de posición, velocidad y aceleración.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#c7836b</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="coral">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Cinemática y <em>movimiento</em></h1>
+          <p class="hero__lede">MRU, MRUA, caída libre y tiro parabólico. Gráficas de posición, velocidad y aceleración.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAL -->
+  <section class="cmp cmp--teal">
+    <div class="cmp__head">
+      <h2>Teal · verdigris</h2>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#2d5c63</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="teal">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Ondas y <em>oscilaciones</em></h1>
+          <p class="hero__lede">MAS, resonancia, interferencia, ondas estacionarias y efecto Doppler.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#7eb0b5</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="teal">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Ondas y <em>oscilaciones</em></h1>
+          <p class="hero__lede">MAS, resonancia, interferencia, ondas estacionarias y efecto Doppler.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- PURPLE -->
+  <section class="cmp cmp--purple">
+    <div class="cmp__head">
+      <h2>Purple · polvo</h2>
+      <span class="note">↳ El #7a4a6b que ya aprobaste se queda como variante light. La variante dark se propone un poco más luminosa para ganar pop sobre grafito.</span>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#7a4a6b</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="purple">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Magnetismo y <em>electromagnetismo</em></h1>
+          <p class="hero__lede">Fuerza magnética, campo, inducción de Faraday y aplicaciones.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#b08299</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="purple">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Magnetismo y <em>electromagnetismo</em></h1>
+          <p class="hero__lede">Fuerza magnética, campo, inducción de Faraday y aplicaciones.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVY -->
+  <section class="cmp cmp--navy">
+    <div class="cmp__head">
+      <h2>Navy · slate</h2>
+    </div>
+    <div class="cmp__pair">
+      <div class="cmp__col-light">
+        <div class="cmp__col-label">Variante light <span class="hex-inline">#2d3955</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="navy">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Física <em>moderna</em></h1>
+          <p class="hero__lede">Relatividad especial, efecto fotoeléctrico, modelo atómico y núcleo. Una intro al siglo XX.</p>
+        </header>
+      </div>
+      <div class="cmp__col-dark">
+        <div class="cmp__col-label">Variante dark <span class="hex-inline">#8090b0</span> <span class="active-now">renderiza en este tema</span></div>
+        <header class="hero" data-cat="navy">
+          <p class="eyebrow">Unidad · Física</p>
+          <h1 class="hero__title">Física <em>moderna</em></h1>
+          <p class="hero__lede">Relatividad especial, efecto fotoeléctrico, modelo atómico y núcleo. Una intro al siglo XX.</p>
+        </header>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'd' || e.key === 'D') {
+        const cur = document.documentElement.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
