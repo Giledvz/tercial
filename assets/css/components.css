@@ -324,6 +324,7 @@
 }
 
 .card__body {
+  flex: 1;
   font-size: var(--font-size-15);
   line-height: var(--line-height-loose);
   color: var(--color-text-secondary);
@@ -363,9 +364,14 @@
 
 /* Card como link envolvente */
 .card-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
+}
+
+.card-link > .card {
+  flex: 1;
 }
 
 .card-link:hover .card,
@@ -870,6 +876,21 @@ button.tag--accent:hover {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-5);
+  align-items: stretch;
+}
+
+/* Estiramiento explícito solo dentro de grids — cards solas
+   (Formulario, UNAM Área 2) NO se afectan porque no son
+   hijos directos de .card-grid. Aplico altura en ambos
+   niveles + flex para garantizar que el card-link estire al
+   row y el .card adentro llene el card-link. */
+.card-grid > .card-link {
+  height: 100%;
+  align-self: stretch;
+}
+
+.card-grid > .card-link > .card {
+  height: 100%;
 }
 
 @media (min-width: 480px) {
@@ -878,7 +899,7 @@ button.tag--accent:hover {
   }
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 760px) {
   .card-grid--cols-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1891,6 +1912,11 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   color: var(--color-accent);
 }
 
+.topic-list__hint {
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+}
+
 .topic-list__chevron {
   font-family: var(--font-family-display);
   font-style: italic;
@@ -1957,13 +1983,13 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   margin-bottom: var(--space-5);
 }
 
-.card {
+.card-stage > .card {
   position: relative;
   transform-style: preserve-3d;
   transition: transform var(--motion-slow) var(--motion-ease-standard);
   min-height: 420px;
 }
-.card.flipped {
+.card-stage > .card.flipped {
   transform: rotateY(180deg);
 }
 
@@ -2319,4 +2345,213 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   .formula-row__unit {
     text-align: left;
   }
+}
+
+
+/* ============================================================
+   4.17 — Hero con aside
+   Modifier reusable de .hero. Layout grid 2-col en desktop
+   (1.4fr 1fr), stack vertical en mobile. Usado en index.html
+   para combinar portada con widget de contadores.
+   ============================================================ */
+
+.hero--with-aside {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 760px) {
+  .hero--with-aside {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+.hero__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hero__aside {
+  /* el contenido define su layout; container neutro */
+}
+
+
+/* ============================================================
+   4.18 — Card destacada
+   Modifier de .card que añade un border-left de 3px con un
+   color categorical. El color se setea vía data-cat en la
+   card misma (no hereda del padre, para mantener composición
+   simple). Reusable.
+   ============================================================ */
+
+.card--featured[data-cat="blue"]   { border-left: var(--border-thick) solid var(--cat-blue); }
+.card--featured[data-cat="amber"]  { border-left: var(--border-thick) solid var(--cat-amber); }
+.card--featured[data-cat="coral"]  { border-left: var(--border-thick) solid var(--cat-coral); }
+.card--featured[data-cat="teal"]   { border-left: var(--border-thick) solid var(--cat-teal); }
+.card--featured[data-cat="purple"] { border-left: var(--border-thick) solid var(--cat-purple); }
+.card--featured[data-cat="navy"]   { border-left: var(--border-thick) solid var(--cat-navy); }
+.card--featured[data-cat="ok"]     { border-left: var(--border-thick) solid var(--color-state-ok); }
+.card--featured[data-cat="err"]    { border-left: var(--border-thick) solid var(--color-state-err); }
+
+/* Gap vertical entre una card-link standalone (featured) y el
+   bloque siguiente. Scope estricto: ambos elementos deben ser
+   hijos directos de <section>. Esto excluye card-links dentro
+   de .card-grid (que tienen su propio `gap` del grid). */
+section > .card-link + .card-grid,
+section > .card-link + .topic-list,
+section > .card-link + .card-link {
+  margin-top: var(--space-5);
+}
+
+
+/* ============================================================
+   4.19 — Section intro
+   Texto entre section-header y el contenido. Italic display
+   color meta. Reusable.
+   ============================================================ */
+
+.section-intro {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+  max-width: 56ch;
+}
+
+
+/* ============================================================
+   4.20 — Index countdown
+
+   Carrusel de contadores de examen de index.html. NO
+   REUTILIZABLE. Los nombres legacy (.contador-item, .activo,
+   .saliendo, .contador-numero, .urgente, .pequeno) están
+   preservados intencionalmente porque el motor JS los
+   manipula via classList.
+   ============================================================ */
+
+.exam-countdown {
+  position: relative;
+  background: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.exam-countdown__pista {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+}
+
+.contador-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(-115%);
+  transition:
+    transform var(--motion-slow) var(--motion-ease-standard),
+    opacity var(--motion-base) ease;
+  pointer-events: none;
+}
+
+.contador-item.activo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contador-item.saliendo {
+  opacity: 0;
+  transform: translateY(115%);
+}
+
+.contador-tiempo {
+  min-width: 80px;
+  text-align: center;
+  padding-right: var(--space-4);
+  border-right: var(--border-thin) solid var(--color-border);
+}
+
+.contador-numero {
+  font-family: var(--font-family-display);
+  font-size: 3.5rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+}
+
+.contador-numero.urgente {
+  color: var(--color-state-err);
+}
+
+.contador-numero.pequeno {
+  font-size: var(--font-size-20);
+  padding: var(--space-2) 0;
+}
+
+.contador-sufijo {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-11);
+  color: var(--color-text-meta);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+  font-weight: var(--font-weight-medium);
+}
+
+.contador-texto {
+  flex: 1;
+  min-width: 0;
+}
+
+.contador-titulo {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  color: var(--color-text-primary);
+}
+
+.contador-fecha {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+  margin-top: var(--space-1);
+  text-transform: capitalize;
+}
+
+.exam-countdown__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family-body);
+  color: var(--color-text-meta);
+  padding-top: var(--space-2);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+.exam-countdown__pos {
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-meta);
+}
+
+.exam-countdown__hint {
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
 }

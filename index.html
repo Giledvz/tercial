@@ -1,533 +1,285 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materiales de Clase</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --calc:  #1d4ed8; --calc-l:#dbeafe;
-  --geo:   #047857; --geo-l: #d1fae5;
-  --trig:  #b45309; --trig-l:#fef3c7;
-  --flash: #9f1239; --flash-l:#ffe4e6;
-  --txt:   #111827;
-  --muted: #6b7280;
-  --borde: #e5e7eb;
-  --bg:    #f6f7f9;
-  --card:  #ffffff;
-  --shadow: 0 1px 3px rgba(0,0,0,.07), 0 4px 12px rgba(0,0,0,.05);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-body {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--txt);
-  min-height: 100vh;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>clases · materiales</title>
 
-/* ── Header ── */
-.header {
-  background: linear-gradient(160deg, #0f172a 0%, #1e3a5f 100%);
-  padding: 3rem 1.5rem 2.5rem;
-  text-align: center;
-}
-.header-tag {
-  display: inline-block;
-  background: rgba(255,255,255,.12);
-  color: rgba(255,255,255,.8);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-}
-.header h1 {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: white;
-  line-height: 1.2;
-  margin-bottom: .5rem;
-}
-.header p {
-  color: rgba(255,255,255,.65);
-  font-size: .95rem;
-  font-weight: 300;
-}
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
 
-/* ── Exámenes ── */
-.seccion-examenes {
-  max-width: 700px;
-  margin: 2.5rem auto 0;
-  padding: 0 1.25rem;
-}
-.examenes-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: .75rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.examenes-label::before {
-  content: '';
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: #60a5fa;
-}
-.examenes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .75rem;
-}
-@media (max-width: 480px) {
-  .examenes-grid { grid-template-columns: 1fr; }
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-.card-examen {
-  border-radius: 14px;
-  padding: 1.4rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  text-decoration: none;
-  transition: transform .15s;
-  box-shadow: 0 4px 20px rgba(15,23,42,.25);
-  position: relative;
-  overflow: hidden;
-}
-.card-examen::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.08);
-  pointer-events: none;
-}
-.card-examen:active { transform: scale(.97); }
-.card-examen.mate   { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); }
-.card-examen.fisica { background: linear-gradient(135deg, #0f172a 0%, #2e1065 100%); }
-.card-examen.area2  { background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%); }
+<link rel="stylesheet" href="/clases/assets/css/tokens.css">
+<link rel="stylesheet" href="/clases/assets/css/base.css">
+<link rel="stylesheet" href="/clases/assets/css/components.css">
 
-.exam-icono  { font-size: 1.6rem; margin-bottom: .15rem; }
-.exam-titulo {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 1rem; font-weight: 600;
-  color: white; line-height: 1.3;
-}
-.exam-sub { font-size: .75rem; color: rgba(255,255,255,.5); line-height: 1.4; }
-.exam-arrow {
-  position: absolute; right: 1.1rem; top: 1.2rem;
-  color: rgba(255,255,255,.25); font-size: 1.1rem;
-}
-
-/* ── Secciones ── */
-.seccion {
-  max-width: 700px;
-  margin: 2rem auto 0;
-  padding: 0 1.25rem;
-}
-.seccion-header {
-  display: flex; align-items: center; gap: 10px; margin-bottom: .75rem;
-}
-.seccion-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.seccion-titulo {
-  font-size: 11px; font-weight: 600; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
-}
-
-.cards-grid { display: flex; flex-direction: column; gap: .55rem; }
-
-.card-recurso {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--card); border: 1px solid var(--borde);
-  border-radius: 11px; padding: 1rem 1.1rem;
-  text-decoration: none; color: var(--txt);
-  transition: background .12s;
-  box-shadow: var(--shadow);
-}
-.card-recurso:active { background: #f0f4ff; }
-
-.recurso-icono {
-  width: 38px; height: 38px; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-}
-.recurso-texto { flex: 1; min-width: 0; }
-.recurso-nombre { font-weight: 600; font-size: .92rem; line-height: 1.3; margin-bottom: 2px; }
-.recurso-desc   { font-size: .78rem; color: var(--muted); }
-.recurso-badge  {
-  font-size: 10px; font-weight: 600; padding: 3px 8px;
-  border-radius: 10px; flex-shrink: 0; letter-spacing: .04em;
-}
-
-/* ── Contadores de examen (carrusel) ── */
-.contadores {
-  max-width: 700px;
-  margin: 1.5rem auto 0;
-  padding: 0 1.25rem;
-}
-.contadores-pista {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 12px;
-}
-.contadores-pista:active { transform: scale(.99); transition: transform .12s; }
-.contador-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--card);
-  border: 1px solid var(--borde);
-  border-radius: 12px;
-  padding: 12px 16px 12px 14px;
-  box-shadow: var(--shadow);
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  opacity: 0;
-  transform: translateY(-115%);
-  transition: transform .38s cubic-bezier(.4,0,.2,1), opacity .26s ease;
-  pointer-events: none;
-}
-.contador-item.activo {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-.contador-item.saliendo {
-  opacity: 0;
-  transform: translateY(115%);
-}
-.contadores-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: .55rem;
-  padding: 0 4px;
-  font-family: 'DM Sans', system-ui, sans-serif;
-  color: var(--muted);
-}
-.contadores-pos {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .05em;
-}
-.contadores-hint {
-  font-size: 10px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-.contador-tiempo {
-  min-width: 56px;
-  text-align: center;
-  padding-right: 14px;
-  border-right: 1px solid var(--borde);
-}
-.contador-numero {
-  font-family: 'Lora', Georgia, serif;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1e3a5f;
-  line-height: 1;
-}
-.contador-numero.urgente { color: #b91c1c; }
-.contador-numero.pequeno { font-size: 1rem; padding: 6px 0; }
-.contador-sufijo {
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  margin-top: 4px;
-  font-weight: 600;
-}
-.contador-texto { flex: 1; min-width: 0; }
-.contador-titulo {
-  font-weight: 600;
-  font-size: .92rem;
-  line-height: 1.3;
-}
-.contador-fecha {
-  font-size: .78rem;
-  color: var(--muted);
-  margin-top: 2px;
-  text-transform: capitalize;
-}
-
-/* ── Footer ── */
-.footer {
-  text-align: center;
-  padding: 3rem 1.5rem 2rem;
-  font-size: 12px; color: var(--muted);
-  margin-top: 1rem;
-}
-</style>
+<script defer src="/clases/assets/js/theme.js"></script>
+<script defer src="/clases/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-tag">Preparatoria · Materiales de apoyo</div>
-  <h1>Materiales de Clase</h1>
-  <p>Ejercicios de práctica y exámenes adaptativos</p>
-</div>
+<site-nav active="inicio"></site-nav>
 
-<!-- Contadores de examen (configurables abajo en el script) -->
-<div id="contadores" class="contadores"></div>
+<main class="container container--base">
 
-<!-- Exámenes Adaptativos -->
-<div class="seccion-examenes">
-  <div class="examenes-label">Exámenes Adaptativos</div>
-  <div class="examenes-grid">
+  <header class="hero hero--with-aside">
+    <div class="hero__main">
+      <p class="eyebrow">Nivel superior · ingreso a universidad</p>
+      <h1 class="hero__title">Materiales de <em>clases</em></h1>
+      <p class="hero__lede">
+        Ejercicios resueltos, exámenes adaptativos y tarjetas de práctica para preparar tu examen.
+      </p>
+    </div>
+    <aside id="contadores" class="hero__aside exam-countdown" aria-label="contadores de examen">
+      <!-- contenido inyectado por el JS del carrusel -->
+    </aside>
+  </header>
 
-    <a class="card-examen mate" href="examen_adaptativo.html">
-      <span class="exam-arrow">›</span>
-      <div class="exam-icono">📐</div>
-      <div class="exam-titulo">Matemáticas</div>
-      <div class="exam-sub">50 preguntas · Cálculo · Geometría · Trigonometría</div>
+  <section id="tarjetas">
+    <header class="section-header" data-cat="coral">
+      <h2 class="section-header__title">
+        <span class="section-header__num">i.</span>
+        Tarjetas y notas
+      </h2>
+      <span class="section-header__count">3 recursos</span>
+    </header>
+
+    <div class="card-grid card-grid--cols-3">
+      <a class="card-link" href="/clases/practicar.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Practicar <em>por tema</em></h3>
+          </header>
+          <p class="card__body">
+            Elige un tema y entra directo a sus flashcards. El orden cambia cada sesión, así que repetir un tema nunca es repetir las respuestas.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/clases/flashcards.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Práctica <em>rápida</em></h3>
+          </header>
+          <p class="card__body">
+            30 preguntas al azar de todas las materias. Para soltar la mente, calentar o cerrar una sesión de estudio en 15 minutos.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/clases/repaso.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Notas <em>de repaso</em></h3>
+          </header>
+          <p class="card__body">
+            La idea clave de cada tema, los errores que más caen y un par de ejemplos. Pensado para repasar la noche antes.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <section id="fisica">
+    <header class="section-header" data-cat="purple">
+      <h2 class="section-header__title">
+        <span class="section-header__num">ii.</span>
+        Física
+      </h2>
+      <span class="section-header__count">12 recursos</span>
+    </header>
+
+    <a class="card-link" href="/clases/formulario.html">
+      <article class="card card--featured" data-cat="purple">
+        <header class="card__header">
+          <h3 class="card__title">Formulario <em>completo</em></h3>
+        </header>
+        <p class="card__body">
+          Diez unidades, más de cien fórmulas para consultar mientras resuelves. Tenlo abierto al lado.
+        </p>
+        <footer class="card__footer">
+          <span class="card__meta">html</span>
+          <span class="card__cta">Abrir →</span>
+        </footer>
+      </article>
     </a>
 
-    <a class="card-examen fisica" href="examen_adaptativo_fisica.html">
-      <span class="exam-arrow">›</span>
-      <div class="exam-icono">⚛️</div>
-      <div class="exam-titulo">Física</div>
-      <div class="exam-sub">100 preguntas · 9 unidades · cálculo y teóricas</div>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/clases/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section id="matematicas">
+    <header class="section-header" data-cat="blue">
+      <h2 class="section-header__title">
+        <span class="section-header__num">iii.</span>
+        Matemáticas
+      </h2>
+      <span class="section-header__count">4 recursos</span>
+    </header>
+
+    <div class="card-grid">
+      <a class="card-link" href="/clases/calculo_diferencial_v3.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Cálculo <em>diferencial</em></h3>
+          </header>
+          <p class="card__body">Límites, derivadas, optimización con problemas resueltos.</p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/clases/calculo_diferencial_latex.pdf">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Cálculo <em>resumen</em></h3>
+          </header>
+          <p class="card__body">Resumen LaTeX con teoría y fórmulas para imprimir.</p>
+          <footer class="card__footer">
+            <span class="card__meta">pdf</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/clases/geometria_analitica.pdf">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title"><em>Geometría</em> analítica</h3>
+          </header>
+          <p class="card__body">Rectas, circunferencias, parábolas y elipses, con ejercicios.</p>
+          <footer class="card__footer">
+            <span class="card__meta">pdf</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/clases/trigonometria_con_figuras.pdf">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title"><em>Trigonometría</em></h3>
+          </header>
+          <p class="card__body">Identidades, ecuaciones, ley de senos y cosenos con figuras.</p>
+          <footer class="card__footer">
+            <span class="card__meta">pdf</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+    </div>
+  </section>
+
+  <section id="examenes">
+    <header class="section-header" data-cat="navy">
+      <h2 class="section-header__title">
+        <span class="section-header__num">iv.</span>
+        Exámenes adaptativos
+      </h2>
+      <span class="section-header__count">3 simulares</span>
+    </header>
+
+    <p class="section-intro">Para cuando ya practicaste. Simulan la dificultad del examen real, miden tu nivel y te dicen dónde estás parado.</p>
+
+    <a class="card-link" href="/clases/examen_unam_area2.html">
+      <article class="card card--featured" data-cat="navy">
+        <header class="card__header">
+          <h3 class="card__title">UNAM Área 2 — <em>banco especial</em></h3>
+        </header>
+        <p class="card__body">
+          120 preguntas curadas del banco UNAM, en el formato exacto del examen oficial.
+        </p>
+        <footer class="card__footer">
+          <span class="card__meta">html</span>
+          <span class="card__cta">Abrir →</span>
+        </footer>
+      </article>
     </a>
 
-    <a class="card-examen area2" href="examen_unam_area2.html" style="grid-column:span 2">
-      <span class="exam-arrow">›</span>
-      <div class="exam-icono">🎓</div>
-      <div class="exam-titulo">UNAM Área 2 — Banco Especial</div>
-      <div class="exam-sub">120 preguntas · Español · Matemáticas · Geografía · Física · Biología · Química · Literatura · Historia</div>
-    </a>
+    <div class="card-grid">
+      <a class="card-link" href="/clases/examen_adaptativo.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title"><em>Matemáticas</em></h3>
+          </header>
+          <p class="card__body">Adaptativo. La dificultad sube si vas bien, baja si te trabas.</p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
 
-  </div>
-</div>
+      <a class="card-link" href="/clases/examen_adaptativo_fisica.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title"><em>Física</em></h3>
+          </header>
+          <p class="card__body">Adaptativo. Cubre las 10 unidades del curso.</p>
+          <footer class="card__footer">
+            <span class="card__meta">html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+    </div>
+  </section>
 
-<!-- Tarjetas de Práctica -->
-<div class="seccion">
-  <div class="seccion-header">
-    <div class="seccion-dot" style="background:var(--flash)"></div>
-    <span class="seccion-titulo">Tarjetas de Práctica</span>
-  </div>
-  <div class="cards-grid">
-    <a class="card-recurso" href="flashcards.html">
-      <div class="recurso-icono" style="background:var(--flash-l)">🎴</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Práctica rápida</div>
-        <div class="recurso-desc">30 preguntas al azar · todas las materias · se voltea la carta al contestar</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--flash-l);color:var(--flash)">HTML</span>
-    </a>
-    <a class="card-recurso" href="flashcards.html?modo=estudio&amp;fuente=320_UNAM">
-      <div class="recurso-icono" style="background:var(--flash-l)">📚</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Banco de preguntas</div>
-        <div class="recurso-desc">189 preguntas · orden y opciones aleatorios · sesión larga para estudio profundo</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--flash-l);color:var(--flash)">HTML</span>
-    </a>
-    <a class="card-recurso" href="practicar.html">
-      <div class="recurso-icono" style="background:var(--flash-l)">🎯</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Practicar por tema</div>
-        <div class="recurso-desc">Browser de temas · cada uno abre las flashcards filtradas a sólo ese tema · más de 40 temas disponibles</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--flash-l);color:var(--flash)">HTML</span>
-    </a>
-    <a class="card-recurso" href="repaso.html">
-      <div class="recurso-icono" style="background:var(--flash-l)">📒</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Notas de repaso</div>
-        <div class="recurso-desc">14 temas con fórmula clave, error típico y ejemplo · link directo a practicar cada tema</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--flash-l);color:var(--flash)">HTML</span>
-    </a>
-  </div>
-</div>
+</main>
 
-<!-- Física -->
-<div class="seccion">
-  <div class="seccion-header">
-    <div class="seccion-dot" style="background:#6d28d9"></div>
-    <span class="seccion-titulo">Física</span>
-  </div>
-  <div class="cards-grid">
-    <a class="card-recurso" href="formulario.html">
-      <div class="recurso-icono" style="background:#ede9fe">📋</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Formulario completo</div>
-        <div class="recurso-desc">10 unidades · KaTeX · todas las fórmulas usadas en los ejercicios</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="fluidos.html">
-      <div class="recurso-icono" style="background:#ede9fe">💧</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Fluidos · ejercicios</div>
-        <div class="recurso-desc">44 ejercicios · 5 temas (densidad, presión, Pascal, Arquímedes, Bernoulli) · respuestas desplegables</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="electricidad.html">
-      <div class="recurso-icono" style="background:#ede9fe">⚡</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Electricidad · ejercicios</div>
-        <div class="recurso-desc">38 ejercicios · 6 temas (Coulomb, campo, potencial, Ohm, resistencias, circuitos) · 5 con diagrama</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="cinematica.html">
-      <div class="recurso-icono" style="background:#ede9fe">🏃</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Cinemática · ejercicios</div>
-        <div class="recurso-desc">32 ejercicios · 5 temas (MRU, MRUA, caída libre, tiro parabólico, MCU) · respuestas desplegables</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="dinamica.html">
-      <div class="recurso-icono" style="background:#ede9fe">🪨</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Dinámica · ejercicios</div>
-        <div class="recurso-desc">31 ejercicios · 6 temas (leyes de Newton, fricción, fuerza centrípeta, plano inclinado y poleas)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="trabajo_energia.html">
-      <div class="recurso-icono" style="background:#ede9fe">⚙️</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Trabajo y energía · ejercicios</div>
-        <div class="recurso-desc">32 ejercicios · 6 temas (trabajo, energía cinética/potencial, conservación, potencia, resortes)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="cantidad_movimiento.html">
-      <div class="recurso-icono" style="background:#ede9fe">💥</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Cantidad de movimiento · ejercicios</div>
-        <div class="recurso-desc">32 ejercicios · 5 temas (momento lineal, impulso, choques, coeficiente de restitución, centro de masa)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="termodinamica.html">
-      <div class="recurso-icono" style="background:#ede9fe">🔥</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Termodinámica · ejercicios</div>
-        <div class="recurso-desc">36 ejercicios · 6 temas (temperatura, calor específico, fases, gases, 1ra ley, Carnot)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="optica.html">
-      <div class="recurso-icono" style="background:#ede9fe">🔍</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Óptica · ejercicios</div>
-        <div class="recurso-desc">30 ejercicios · 5 temas (espejos planos y esféricos, Snell, lentes, naturaleza de la luz)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="ondas.html">
-      <div class="recurso-icono" style="background:#ede9fe">🌊</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Ondas y sonido · ejercicios</div>
-        <div class="recurso-desc">30 ejercicios · 5 temas (MAS, péndulo, ondas mecánicas, sonido, efecto Doppler)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="magnetismo.html">
-      <div class="recurso-icono" style="background:#ede9fe">🧲</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Magnetismo · ejercicios</div>
-        <div class="recurso-desc">30 ejercicios · 5 temas (fuerza de Lorentz, conductores, campos por corrientes, Faraday, transformadores)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-    <a class="card-recurso" href="fisica_moderna.html">
-      <div class="recurso-icono" style="background:#ede9fe">🌌</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Física moderna · ejercicios</div>
-        <div class="recurso-desc">30 ejercicios · 5 temas (modelos atómicos, fotón, dualidad, radiactividad, fisión/fusión)</div>
-      </div>
-      <span class="recurso-badge" style="background:#ede9fe;color:#6d28d9">HTML</span>
-    </a>
-  </div>
-</div>
-
-<!-- Cálculo Diferencial -->
-<div class="seccion">
-  <div class="seccion-header">
-    <div class="seccion-dot" style="background:var(--calc)"></div>
-    <span class="seccion-titulo">Cálculo Diferencial</span>
-  </div>
-  <div class="cards-grid">
-    <a class="card-recurso" href="calculo_diferencial_v3.html">
-      <div class="recurso-icono" style="background:var(--calc-l)">📝</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Ejercicios de práctica</div>
-        <div class="recurso-desc">90 ejercicios · 9 temas · respuestas desplegables</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--calc-l);color:var(--calc)">HTML</span>
-    </a>
-    <a class="card-recurso" href="calculo_diferencial_latex.pdf">
-      <div class="recurso-icono" style="background:var(--calc-l)">📄</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Ejercicios con respuestas</div>
-        <div class="recurso-desc">PDF con hipervínculos · notación LaTeX</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--calc-l);color:var(--calc)">PDF</span>
-    </a>
-  </div>
-</div>
-
-<!-- Geometría Analítica -->
-<div class="seccion">
-  <div class="seccion-header">
-    <div class="seccion-dot" style="background:var(--geo)"></div>
-    <span class="seccion-titulo">Geometría Analítica</span>
-  </div>
-  <div class="cards-grid">
-    <a class="card-recurso" href="geometria_analitica.pdf">
-      <div class="recurso-icono" style="background:var(--geo-l)">📄</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Ejercicios con respuestas</div>
-        <div class="recurso-desc">110 ejercicios · 11 temas · PDF con hipervínculos</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--geo-l);color:var(--geo)">PDF</span>
-    </a>
-  </div>
-</div>
-
-<!-- Trigonometría -->
-<div class="seccion">
-  <div class="seccion-header">
-    <div class="seccion-dot" style="background:var(--trig)"></div>
-    <span class="seccion-titulo">Trigonometría</span>
-  </div>
-  <div class="cards-grid">
-    <a class="card-recurso" href="trigonometria_con_figuras.pdf">
-      <div class="recurso-icono" style="background:var(--trig-l)">📄</div>
-      <div class="recurso-texto">
-        <div class="recurso-nombre">Ejercicios con respuestas</div>
-        <div class="recurso-desc">80 ejercicios · 8 temas · diagramas incluidos</div>
-      </div>
-      <span class="recurso-badge" style="background:var(--trig-l);color:var(--trig)">PDF</span>
-    </a>
-  </div>
-</div>
-
-<div class="footer">giledvz.github.io/clases</div>
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/clases/practicar.html">Practicar por tema</a>
+    <a href="/clases/repaso.html">Notas de repaso</a>
+    <a href="/clases/formulario.html">Formulario</a>
+  </nav>
+</footer>
 
 <script>
-/* ──────────────────────────────────────────────────────────────────
-   Contadores de examen
+/* Carrusel de contadores de examen.
    Para agregar un alumno: { nombre: "...", fecha: "AAAA-MM-DD" }
-   El examen se oculta automáticamente después de la fecha.
-   ────────────────────────────────────────────────────────────────── */
+   El examen se oculta automáticamente después de la fecha. */
 const EXAMENES = [
   { nombre: "Lupita",    fecha: "2026-05-24" },
   { nombre: "Óscar",     fecha: "2026-06-06" },
@@ -557,7 +309,6 @@ const EXAMENES = [
 
   const container = document.getElementById('contadores');
 
-  // Filtrar exámenes vigentes y ordenar por proximidad de fecha
   const vigentes = EXAMENES
     .filter(ex => diasFaltantes(ex.fecha) >= 0)
     .sort((a, b) => diasFaltantes(a.fecha) - diasFaltantes(b.fecha));
@@ -567,9 +318,8 @@ const EXAMENES = [
     return;
   }
 
-  // Pista del carrusel
   const pista = document.createElement('div');
-  pista.className = 'contadores-pista';
+  pista.className = 'exam-countdown__pista';
   container.appendChild(pista);
 
   vigentes.forEach(ex => {
@@ -612,22 +362,19 @@ const EXAMENES = [
   const items = pista.querySelectorAll('.contador-item');
   items[0].classList.add('activo');
 
-  // Ajustar la altura de la pista a la del item más alto
   requestAnimationFrame(() => {
     let maxH = 0;
     items.forEach(it => { maxH = Math.max(maxH, it.offsetHeight); });
     pista.style.height = maxH + 'px';
   });
 
-  // Si solo hay 1, no necesitamos carrusel
   if (items.length === 1) return;
 
-  // Indicador y hint
   const footer = document.createElement('div');
-  footer.className = 'contadores-footer';
+  footer.className = 'exam-countdown__footer';
   footer.innerHTML = `
-    <span class="contadores-pos">1 / ${items.length}</span>
-    <span class="contadores-hint">toca para el siguiente ↓</span>
+    <span class="exam-countdown__pos">1 / ${items.length}</span>
+    <span class="exam-countdown__hint">toca para el siguiente ↓</span>
   `;
   container.appendChild(footer);
 
@@ -640,7 +387,7 @@ const EXAMENES = [
     setTimeout(() => prev.classList.remove('saliendo'), 420);
     items[siguiente].classList.add('activo');
     actual = siguiente;
-    footer.querySelector('.contadores-pos').textContent = `${actual + 1} / ${items.length}`;
+    footer.querySelector('.exam-countdown__pos').textContent = `${actual + 1} / ${items.length}`;
   });
 })();
 </script>
