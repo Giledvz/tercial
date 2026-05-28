@@ -37,10 +37,6 @@ body {
   line-height: var(--line-height-relaxed);
   color: var(--color-text-primary);
   background-color: var(--color-bg-page);
-  background-image:
-    radial-gradient(at 20% 30%, var(--grain-1) 0, transparent 50%),
-    radial-gradient(at 80% 70%, var(--grain-2) 0, transparent 50%);
-  background-attachment: fixed;
   transition:
     background-color var(--motion-slow) var(--motion-ease-emphasized),
     color var(--motion-slow) var(--motion-ease-emphasized);

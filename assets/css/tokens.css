@@ -206,10 +206,6 @@
   --cat-purple: #7a4a6b;   /* polvo */
   --cat-navy:   #2d3955;   /* slate */
 
-  /* Atmósfera (grain) */
-  --grain-1: rgba(140, 117, 86, 0.04);
-  --grain-2: rgba(107, 58, 46, 0.03);
-
   /* Selección */
   --selection-bg: rgba(107, 58, 46, 0.18);
 
@@ -312,10 +308,6 @@
   --cat-teal:   #7eb0b5;
   --cat-purple: #b08299;
   --cat-navy:   #8090b0;
-
-  /* Atmósfera dark — mismos tonos, opacidades ajustadas */
-  --grain-1: rgba(140, 117, 86, 0.05);
-  --grain-2: rgba(199, 154, 130, 0.04);
 
   /* Selección dark */
   --selection-bg: rgba(199, 154, 130, 0.22);
