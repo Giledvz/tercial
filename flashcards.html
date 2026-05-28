@@ -1444,6 +1444,104 @@ const PREGUNTAS = [
     correcta: 1,
     explicacion: "El efecto fotoeléctrico demuestra que la luz se comporta como partículas (fotones) con energía $E = hf$. Junto con su comportamiento ondulatorio, da lugar al concepto de dualidad onda-partícula."
   },
+  // —— Física: magnetismo — fuerza de Lorentz (condición) ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — fuerza de Lorentz (teórica)",
+    pregunta: "¿Sobre cuál de las siguientes situaciones actúa una fuerza magnética?",
+    opciones: [
+      "Una carga eléctrica en reposo dentro de un campo magnético",
+      "Una carga eléctrica que se mueve perpendicular al campo magnético",
+      "Una carga eléctrica que se mueve paralela al campo magnético",
+      "Una carga sin movimiento cerca de un imán"
+    ],
+    correcta: 1,
+    explicacion: "La fuerza magnética sobre una carga es $F = qvB\\sin\\theta$, donde $\\theta$ es el ángulo entre la velocidad y el campo. Solo hay fuerza si la carga se mueve ($v \\neq 0$) y no es paralela al campo ($\\theta \\neq 0$). El máximo ocurre cuando el movimiento es perpendicular al campo ($\\theta = 90°$)."
+  },
+  // —— Física: magnetismo — dirección de la fuerza ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — dirección de la fuerza (teórica)",
+    pregunta: "La fuerza magnética sobre una carga en movimiento siempre es:",
+    opciones: [
+      "Paralela a la velocidad de la carga",
+      "Paralela al campo magnético",
+      "Perpendicular tanto a la velocidad como al campo",
+      "En la misma dirección del campo eléctrico"
+    ],
+    correcta: 2,
+    explicacion: "La fuerza magnética $\\vec{F} = q\\vec{v} \\times \\vec{B}$ resulta de un producto vectorial, por lo que siempre es perpendicular al plano que forman la velocidad y el campo. Esto la distingue de la fuerza eléctrica, que sí es paralela al campo."
+  },
+  // —— Física: magnetismo — trabajo de la fuerza magnética ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — trayectoria de la carga (teórica)",
+    pregunta: "Una carga entra a un campo magnético uniforme. La fuerza magnética:",
+    opciones: [
+      "Acelera la carga aumentando su rapidez",
+      "Frena la carga hasta detenerla",
+      "Cambia la dirección del movimiento pero no la rapidez",
+      "No tiene ningún efecto sobre la carga"
+    ],
+    correcta: 2,
+    explicacion: "Como la fuerza magnética siempre es perpendicular a la velocidad, no realiza trabajo sobre la carga ($W = 0$). Por eso no cambia la rapidez (ni la energía cinética), solo curva la trayectoria."
+  },
+  // —— Física: electromagnetismo — inducción (Faraday) ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — inducción (teórica)",
+    pregunta: "¿Qué se necesita para inducir una corriente en una espira con un imán?",
+    opciones: [
+      "Mantener el imán inmóvil dentro de la espira",
+      "Que el flujo magnético a través de la espira cambie",
+      "Que el imán sea muy potente aunque esté quieto",
+      "Que la espira esté hecha de un material aislante"
+    ],
+    correcta: 1,
+    explicacion: "La ley de Faraday establece que la FEM inducida depende de la rapidez con que cambia el flujo magnético: $\\varepsilon = -N\\dfrac{\\Delta\\Phi}{\\Delta t}$. Un imán quieto, por potente que sea, no produce un cambio de flujo, así que no induce corriente."
+  },
+  // —— Física: electromagnetismo — ley de Lenz ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — ley de Lenz (teórica)",
+    pregunta: "Según la ley de Lenz, la corriente inducida en una espira:",
+    opciones: [
+      "Refuerza el cambio de flujo que la produjo",
+      "Se opone al cambio de flujo que la produjo",
+      "Siempre fluye en sentido horario",
+      "No tiene dirección definida"
+    ],
+    correcta: 1,
+    explicacion: "La ley de Lenz (el signo negativo en $\\varepsilon = -N\\dfrac{\\Delta\\Phi}{\\Delta t}$) indica que la corriente inducida genera un campo magnético que se opone al cambio de flujo que la originó. Es una consecuencia de la conservación de la energía."
+  },
+  // —— Física: magnetismo — solenoide ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — solenoide (teórica)",
+    pregunta: "¿Qué pasa con el campo magnético de un solenoide si aumentamos la corriente que circula por él?",
+    opciones: [
+      "Disminuye",
+      "Aumenta",
+      "Permanece igual",
+      "Se invierte de dirección"
+    ],
+    correcta: 1,
+    explicacion: "El campo dentro de un solenoide es $B = \\mu_0 n I$, proporcional a la corriente $I$. Al aumentar la corriente, aumenta el campo. El sentido solo se invertiría si se invirtiera la dirección de la corriente, no al aumentar su magnitud."
+  },
+  // —— Física: electromagnetismo — generador ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — generador (teórica)",
+    pregunta: "Un generador eléctrico convierte:",
+    opciones: [
+      "Energía eléctrica en energía mecánica",
+      "Energía mecánica en energía eléctrica",
+      "Energía química en energía magnética",
+      "Energía térmica directamente en magnética"
+    ],
+    correcta: 1,
+    explicacion: "Un generador usa inducción electromagnética: al mover un conductor (o rotar una bobina) dentro de un campo magnético, el cambio de flujo induce una corriente. Convierte energía mecánica en eléctrica. El proceso inverso (eléctrica → mecánica) lo hace un motor."
+  },
   // —— Matemáticas: circunferencia — centro (forma general) ——
   {
     materia: "matematicas",
