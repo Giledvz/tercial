@@ -1924,7 +1924,6 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   flex-shrink: 0;
 }
 
-
 /* ============================================================
    4.15 — Flashcards runner
 

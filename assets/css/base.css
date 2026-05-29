@@ -294,8 +294,18 @@ pre {
 }
 
 /* ============================================================
-   A11y helpers
+   Inter-section spacing
+
+   Dos secciones consecutivas en main heredarían sólo el margin-bottom
+   del último child (ej. .topic-list), porque márgenes verticales
+   colapsan a través del padre. Para garantizar respiro entre secciones
+   usamos padding-top en la siguiente (no colapsa con márgenes vecinos).
+   space-9 = 48px adicionales encima del margin del child previo.
    ============================================================ */
+
+main > section + section {
+  padding-top: var(--space-9);
+}
 
 .visually-hidden {
   position: absolute;
