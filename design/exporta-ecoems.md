@@ -1,6 +1,6 @@
 # Exportación de diseño · Tercial → ECOEMS
 
-**Origen**: proyecto `clases` (Tercial), sistema de diseño *Editorial cálido funcional* v1.0
+**Origen**: proyecto `tercial` (antes `clases`), sistema de diseño *Editorial cálido funcional* v1.0
 **Fecha del paquete**: 2026-05-26
 **Para**: ECOEMS — plataforma web de exámenes digitales en aula
 **Destinatario**: IA que asiste el desarrollo de ECOEMS
@@ -310,7 +310,7 @@ Estructura en dos capas: **primitivos** (escalas con nombre por familia: crema, 
   /* Anti-flash: aplica data-theme antes del primer paint para que
      el body no se renderee en light por 1 frame antes de saltar a dark. */
   (function () {
-    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
     var d = p === 'auto'
       ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : p;
@@ -321,7 +321,7 @@ Estructura en dos capas: **primitivos** (escalas con nombre por familia: crema, 
 </script>
 ```
 
-> Para ECOEMS, renombrar la key `clases-theme-pref` a algo como `ecoems-theme-pref` para no colisionar si el alumno abre ambos sitios.
+> Para ECOEMS, renombrar la key `tercial-theme-pref` a algo como `ecoems-theme-pref` para no colisionar si el alumno abre ambos sitios.
 
 ---
 
@@ -1142,16 +1142,16 @@ No genero imágenes. Para que la otra IA tenga referencias visuales, recomiendo:
 
 ### Opción A — capturas de producción
 
-URL: **https://giledvz.github.io/clases/**
+URL: **https://giledvz.github.io/tercial/**
 
 Páginas con patrones análogos a ECOEMS:
 
 | Pantalla ECOEMS | URL análoga en Tercial | Qué captura |
 |---|---|---|
-| Examen activo | `https://giledvz.github.io/clases/examen_unam_area2.html` → arrancar examen | exam-status sticky + exam-question + exam-options + timer SVG |
-| Examen adaptativo (mate) | `https://giledvz.github.io/clases/examen_adaptativo.html` | mismo patrón, dark/light |
+| Examen activo | `https://giledvz.github.io/tercial/examen_unam_area2.html` → arrancar examen | exam-status sticky + exam-question + exam-options + timer SVG |
+| Examen adaptativo (mate) | `https://giledvz.github.io/tercial/examen_adaptativo.html` | mismo patrón, dark/light |
 | Revisión post-envío | Mismo examen, completar y ver resultados | exam-option--correct / --incorrect + breakdown |
-| Card grid (panel) | `https://giledvz.github.io/clases/` | layout de cards en grid responsivo |
+| Card grid (panel) | `https://giledvz.github.io/tercial/` | layout de cards en grid responsivo |
 | Form (similar a "unirse") | No hay análogo directo en producción; usar el comparador del § 11 abajo |
 
 **Capturas recomendadas**:
@@ -1164,16 +1164,16 @@ Capturar a 1440×900 (desktop) y 414×896 (mobile / iPhone Plus).
 
 ### Opción B — dev server local (si tienes el repo)
 
-Si el repo `clases` está clonado:
+Si el repo `tercial` está clonado:
 
 ```bash
-cd /Users/giledvz/clases
-mkdir -p /tmp/clases-serve
-ln -sfn $(pwd) /tmp/clases-serve/clases
-cd /tmp/clases-serve && python3 -m http.server 8765
+cd /Users/giledvz/tercial
+mkdir -p /tmp/tercial-serve
+ln -sfn $(pwd) /tmp/tercial-serve/tercial
+cd /tmp/tercial-serve && python3 -m http.server 8765
 ```
 
-Abre `http://localhost:8765/clases/` y captura las mismas pantallas. Press `D` en el comparador para flip light/dark.
+Abre `http://localhost:8765/tercial/` y captura las mismas pantallas. Press `D` en el comparador para flip light/dark.
 
 ---
 
@@ -1201,7 +1201,7 @@ Recomendación de orden, dependencias hacia adentro:
 
 ## 13. Si necesitas más
 
-El proyecto origen vive en https://github.com/Giledvz/clases. Archivos clave si quieres profundizar:
+El proyecto origen vive en https://github.com/Giledvz/tercial. Archivos clave si quieres profundizar:
 - `assets/css/tokens.css` — fuente de verdad de tokens
 - `assets/css/base.css` — reset
 - `assets/css/components.css` — todos los componentes (~1700 LOC)

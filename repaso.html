@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>repaso · clases</title>
+  <title>repaso · Tercial</title>
 
   <script>
     /* Anti-flash · ver design-system § 11 */
     (function () {
-      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var p = localStorage.getItem('tercial-theme-pref') || 'auto';
       var d = p === 'auto'
         ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
         : p;
@@ -23,13 +23,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
-  <link rel="stylesheet" href="/clases/assets/css/base.css">
-  <link rel="stylesheet" href="/clases/assets/css/components.css">
+  <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+  <link rel="stylesheet" href="/tercial/assets/css/base.css">
+  <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
-  <script defer src="/clases/assets/js/theme.js"></script>
-  <script defer src="/clases/assets/js/site-nav.js"></script>
-  <script defer src="/clases/assets/js/katex-loader.js"></script>
+  <script defer src="/tercial/assets/js/theme.js"></script>
+  <script defer src="/tercial/assets/js/site-nav.js"></script>
+  <script defer src="/tercial/assets/js/katex-loader.js"></script>
 </head>
 <body>
 
@@ -63,7 +63,7 @@
         <p><span class="tag tag--accent">Idea clave</span> En el primer cuadrante: $\sin(0°)=0$, $\sin(30°)=\dfrac{1}{2}$, $\sin(45°)=\dfrac{\sqrt{2}}{2}$, $\sin(60°)=\dfrac{\sqrt{3}}{2}$, $\sin(90°)=1$. Para $\cos$: invierte el orden. Para $\tan = \sin/\cos$.</p>
         <p><span class="tag tag--err">Cuidado</span> Olvidar el signo según el cuadrante. Mnemónico <strong>TODOS-Sin-Tan-Cos</strong>: en cada cuadrante, las funciones positivas son: I (todas), II (sólo sin), III (sólo tan), IV (sólo cos).</p>
         <p><span class="tag tag--ok">Ejemplo</span> $\cos(150°)$ está en el II cuadrante (cos negativo). Ángulo de referencia: $180°-150°=30°$. Entonces $\cos(150°)=-\cos(30°)=-\dfrac{\sqrt{3}}{2}$.</p>
-        <a href="/clases/flashcards.html?tema=trig" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=trig" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -76,7 +76,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Para $Ax^2+Cy^2+Dx+Ey+F=0$, agrupa términos en $x$ y en $y$, factoriza el coeficiente de cada cuadrado y completa el cuadrado en cada grupo. El discriminante $B^2-4AC$ identifica el tipo: $<0$ elipse (o circunferencia si $A=C$), $=0$ parábola, $>0$ hipérbola.</p>
         <p><span class="tag tag--err">Cuidado</span> Cuando el coeficiente del cuadrado no es $1$, el término que sumas se ve afectado: $4(x^2-4x+\boxed{4})$ suma $4 \cdot 4 = 16$ del lado derecho, no sólo $4$.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $x^2+y^2-4x+6y-12=0 \Rightarrow (x^2-4x+4)+(y^2+6y+9)=12+4+9 \Rightarrow (x-2)^2+(y+3)^2=25$. Centro $(2,-3)$, radio $5$.</p>
-        <a href="/clases/flashcards.html?tema=forma+general" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=forma+general" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -89,7 +89,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Suma o resta para eliminar una variable, o sustituye despejando una en la otra. Si las opciones son cuatro pares $(x, y)$, una técnica útil es <strong>descartar</strong>: prueba cada par en ambas ecuaciones y descarta los que no cumplan ambas.</p>
         <p><span class="tag tag--err">Cuidado</span> Errores de signo al despejar o multiplicar. Ojo con distractores que tienen el $x$ correcto pero $y$ con signo opuesto. Siempre verifica el par completo en las dos ecuaciones.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $\begin{cases} 2x+y=7 \\ x-y=2 \end{cases}$. Suma: $3x=9 \Rightarrow x=3$. Sustituye: $3-y=2 \Rightarrow y=1$. Verifica: $2(3)+1=7$ ✓ y $3-1=2$ ✓.</p>
-        <a href="/clases/flashcards.html?tema=sistema" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=sistema" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -102,7 +102,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Si $\displaystyle\lim_{x\to a}\dfrac{f(x)}{g(x)}$ tiene forma indeterminada $\dfrac{0}{0}$ o $\dfrac{\infty}{\infty}$, entonces es igual a $\displaystyle\lim_{x\to a}\dfrac{f'(x)}{g'(x)}$. Puedes aplicarla varias veces si sigue dando indeterminado.</p>
         <p><span class="tag tag--err">Cuidado</span> Aplicarla cuando NO da $0/0$ o $\infty/\infty$ — primero evalúa para verificar la forma. También: olvidar la regla de la cadena al derivar (ej. $\dfrac{d}{dx}\sin(3x) = 3\cos(3x)$, no $\cos(3x)$).</p>
         <p><span class="tag tag--ok">Ejemplo</span> $\displaystyle\lim_{x\to 0}\dfrac{\sin(3x)}{x}$ es $0/0$. L'H: $\dfrac{3\cos(3x)}{1}$. Evalúa en $0$: $\dfrac{3\cos 0}{1} = 3$.</p>
-        <a href="/clases/flashcards.html?tema=L%27H%C3%B4pital" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=L%27H%C3%B4pital" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -115,7 +115,7 @@
         <p><span class="tag tag--accent">Idea clave</span> <strong>Regla de la potencia:</strong> $\dfrac{d}{dx}(x^n) = nx^{n-1}$. <strong>Constante:</strong> $\dfrac{d}{dx}(c) = 0$. <strong>Suma/resta y constantes:</strong> se distribuyen. <strong>Trig/exp/log básicas:</strong> $(\sin x)' = \cos x$; $(\cos x)' = -\sin x$; $(e^x)' = e^x$; $(\ln x)' = \dfrac{1}{x}$. <strong>Orden superior:</strong> derivar $n$ veces ($f''$, $f'''$, ...). <strong>Cinemática:</strong> si $s(t)$ es posición, $v(t) = s'(t)$ y $a(t) = v'(t) = s''(t)$.</p>
         <p><span class="tag tag--err">Cuidado</span> Olvidar que la derivada de una constante es <strong>cero</strong> (no la constante misma). Multiplicar coeficientes pero olvidar bajar el exponente. En cinemática, confundir posición con velocidad: si la pregunta es "velocidad en $t = 2$", primero derivas y <em>luego</em> sustituyes — no al revés.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $s(t) = t^3 - 3t^2 + 2t$ (metros). Velocidad en $t = 2$: $v(t) = 3t^2 - 6t + 2 \Rightarrow v(2) = 12 - 12 + 2 = 2\,\mathrm{m/s}$. Aceleración en $t = 2$: $a(t) = 6t - 6 \Rightarrow a(2) = 6\,\mathrm{m/s^2}$.</p>
-        <a href="/clases/flashcards.html?tema=derivada" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=derivada" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -131,7 +131,7 @@
         <p><span class="tag tag--err">Cuidado</span> Olvidar el $+C$. Olvidar el signo negativo en $\int \sin x\,dx = -\cos x$. En sustitución: olvidar cambiar $dx$ por $du$ (las dos cosas tienen que estar en función de $u$). En partes: elegir mal $u$ — si la nueva integral te complica más, prueba al revés.</p>
         <p><span class="tag tag--ok">Ejemplo (sustitución)</span> $\displaystyle\int 2x \cos(x^2)\,dx$. Sea $u = x^2$, $du = 2x\,dx$. Queda $\int \cos u\,du = \sin u + C = \sin(x^2) + C$.</p>
         <p><span class="tag tag--ok">Ejemplo (partes)</span> $\displaystyle\int x e^x\,dx$. $u=x$, $dv=e^x\,dx$ ⇒ $du=dx$, $v=e^x$. $= xe^x - \int e^x\,dx = xe^x - e^x + C = e^x(x-1)+C$.</p>
-        <a href="/clases/flashcards.html?tema=integral" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=integral" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -144,7 +144,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Si $ax^2+bx+c=0$ factoriza fácil (busca dos números con producto $\dfrac{c}{a}$ y suma $\dfrac{b}{a}$), factoriza. Si no, fórmula general: $x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}$. Discriminante $\Delta = b^2-4ac$: $\Delta>0$ dos raíces reales, $\Delta=0$ raíz doble, $\Delta<0$ sin raíces reales.</p>
         <p><span class="tag tag--err">Cuidado</span> Confundir signos en la fórmula (especialmente $-b$ cuando $b$ ya es negativo). También: cuando $a \neq 1$, factorizar mal.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $x^2+x-12=0$. Buscamos producto $-12$, suma $+1$: son $4$ y $-3$. Entonces $(x+4)(x-3)=0 \Rightarrow x=-4$ o $x=3$.</p>
-        <a href="/clases/flashcards.html?tema=ec.+2do+grado" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=ec.+2do+grado" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -157,7 +157,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Las tres leyes principales: $\log(ab) = \log a + \log b$; $\log\!\left(\dfrac{a}{b}\right) = \log a - \log b$; $\log(a^n) = n\log a$. Para resolver una ecuación: junta los logs en uno solo usando las leyes, luego despeja.</p>
         <p><span class="tag tag--err">Cuidado</span> Verificar SIEMPRE que las soluciones no hagan negativo el argumento de algún logaritmo — esas se descartan (raíces extrañas).</p>
         <p><span class="tag tag--ok">Ejemplo</span> $\log x + \log(x-3) = 1 \Rightarrow \log[x(x-3)] = 1 \Rightarrow x(x-3) = 10 \Rightarrow x^2-3x-10 = 0 \Rightarrow (x-5)(x+2)=0$. Soluciones: $x=5$ o $x=-2$. Se descarta $x=-2$ (haría negativo el argumento). Resultado: $x=5$.</p>
-        <a href="/clases/flashcards.html?tema=logar%C3%ADtmica" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=logar%C3%ADtmica" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -170,7 +170,7 @@
         <p><span class="tag tag--accent">Idea clave</span> <strong>Pendiente:</strong> $m = \dfrac{y_2 - y_1}{x_2 - x_1}$. <strong>Punto medio:</strong> $M = \left(\dfrac{x_1+x_2}{2}, \dfrac{y_1+y_2}{2}\right)$. <strong>Forma punto-pendiente:</strong> $y - y_1 = m(x - x_1)$. <strong>Pendiente-ordenada:</strong> $y = mx + b$. <strong>General:</strong> $Ax + By + C = 0$. <strong>Paralelas:</strong> misma pendiente. <strong>Perpendiculares:</strong> $m_1 \cdot m_2 = -1$, o sea $m_{\perp} = -\dfrac{1}{m}$ (negativo recíproco).</p>
         <p><span class="tag tag--err">Cuidado</span> Olvidar paréntesis al restar coordenadas negativas: $4 - (-1) = 5$, no $3$. Para perpendiculares: $m_{\perp} = -\dfrac{1}{m}$, NO sólo $-m$. Y la recta vertical $x = k$ tiene pendiente <em>indefinida</em>, no $0$ (la horizontal $y = k$ sí tiene pendiente $0$).</p>
         <p><span class="tag tag--ok">Ejemplo</span> Recta perpendicular a $y = 2x + 3$ que pasa por $(1, 4)$: $m_{\perp} = -\dfrac{1}{2}$. $y - 4 = -\dfrac{1}{2}(x - 1) \Rightarrow y = -\dfrac{1}{2}x + \dfrac{9}{2}$.</p>
-        <a href="/clases/flashcards.html?tema=punto+medio%2Cpendiente%2Crecta%2Cparalelismo%2Cconversi%C3%B3n+de+formas" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=punto+medio%2Cpendiente%2Crecta%2Cparalelismo%2Cconversi%C3%B3n+de+formas" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -194,7 +194,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Si la aceleración es constante, las tres fórmulas básicas son: $v_f = v_0 + at$, $x = v_0 t + \dfrac{1}{2}at^2$, $v_f^2 = v_0^2 + 2ax$. En caída libre, $a = g \approx 10\,\mathrm{m/s^2}$ (hacia abajo).</p>
         <p><span class="tag tag--err">Cuidado</span> Usar fórmulas de aceleración constante cuando no lo es. También: en tiro horizontal, recordar que el tiempo de caída <em>no</em> depende de la velocidad horizontal — sólo de la altura.</p>
         <p><span class="tag tag--ok">Ejemplo</span> Objeto cae desde $20\,\mathrm{m}$ con velocidad horizontal de $15\,\mathrm{m/s}$. ¿Tiempo de caída? Sólo importa la vertical: $h = \dfrac{1}{2}gt^2 \Rightarrow t = \sqrt{2h/g} = \sqrt{4} = 2\,\mathrm{s}$.</p>
-        <a href="/clases/flashcards.html?tema=ca%C3%ADda+libre%2CMRUA%2Ctiro+parab%C3%B3lico" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=ca%C3%ADda+libre%2CMRUA%2Ctiro+parab%C3%B3lico" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -207,7 +207,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Sin fricción: $E_{\text{cin}} + E_{\text{pot}}$ se conserva. $\dfrac{1}{2}mv^2 + mgh = \text{constante}$. Iguala estado inicial con estado final.</p>
         <p><span class="tag tag--err">Cuidado</span> En problemas de caída libre, olvidar que la masa <em>se cancela</em> de ambos lados ($mgh = \tfrac{1}{2}mv^2 \Rightarrow v = \sqrt{2gh}$). Otro: incluir fricción cuando el problema dice "sin fricción".</p>
         <p><span class="tag tag--ok">Ejemplo</span> Objeto se deja caer desde $5\,\mathrm{m}$. Velocidad al suelo: $v = \sqrt{2gh} = \sqrt{2(10)(5)} = \sqrt{100} = 10\,\mathrm{m/s}$.</p>
-        <a href="/clases/flashcards.html?tema=energ%C3%ADa" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=energ%C3%ADa" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -220,7 +220,7 @@
         <p><span class="tag tag--accent">Idea clave</span> El nombre del proceso indica qué se mantiene constante: <strong>iso<u>bárico</u></strong> = presión ($P$), <strong>iso<u>térmico</u></strong> = temperatura ($T$), <strong>iso<u>córico</u></strong> (o isovolumétrico) = volumen ($V$), <strong>adiabático</strong> = sin transferencia de calor ($Q=0$).</p>
         <p><span class="tag tag--err">Cuidado</span> Confundir nombres por ser similares. Tip: <em>baros</em> = presión (gr.), <em>termo</em> = temperatura, <em>córo</em> = volumen.</p>
         <p><span class="tag tag--ok">Ejemplo</span> Un gas se expande lentamente a temperatura constante (sumergido en agua tibia). Es un proceso <strong>isotérmico</strong>; en gas ideal, $\Delta U = 0$ y $Q = W$.</p>
-        <a href="/clases/flashcards.html?tema=termodin%C3%A1mica" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=termodin%C3%A1mica" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -233,7 +233,7 @@
         <p><span class="tag tag--accent">Idea clave</span> Ecuación de la lente: $\dfrac{1}{f} = \dfrac{1}{d_o} + \dfrac{1}{d_i}$. Para lente convergente ($f>0$): si $d_o > 2f$ → imagen <em>real, invertida y menor</em>; si $f < d_o < 2f$ → <em>real, invertida y mayor</em>; si $d_o < f$ → <em>virtual, derecha y mayor</em>.</p>
         <p><span class="tag tag--err">Cuidado</span> Olvidar que $f$ es positivo en lentes <strong>convergentes</strong> (biconvexas) y negativo en <strong>divergentes</strong> (bicóncavas). Y olvidar que las imágenes <em>reales</em> son las que se proyectan en una pantalla; las <em>virtuales</em> sólo se ven a través de la lente.</p>
         <p><span class="tag tag--ok">Ejemplo</span> Cámara fotográfica: el objeto está muy lejos ($d_o \gg 2f$), por lo que la imagen es real, invertida y mucho más pequeña — por eso el sensor capta la escena de cabeza.</p>
-        <a href="/clases/flashcards.html?tema=lentes" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=lentes" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -254,11 +254,11 @@
         <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="accordion__body">
-        <p><span class="tag tag--accent">Idea clave</span> Cada Plan/Tratado tiene tres datos clave: <strong>año</strong>, <strong>quién lo proclamó/firmó</strong>, y <strong>qué provoca o reconoce</strong>. Cuadro completo en <a href="/clases/Planes_y_Tratados_Mexico.pdf">el PDF resumen</a>.</p>
+        <p><span class="tag tag--accent">Idea clave</span> Cada Plan/Tratado tiene tres datos clave: <strong>año</strong>, <strong>quién lo proclamó/firmó</strong>, y <strong>qué provoca o reconoce</strong>. Cuadro completo en <a href="/tercial/Planes_y_Tratados_Mexico.pdf">el PDF resumen</a>.</p>
         <p><span class="tag tag--err">Cuidado</span> Confundir <strong>Plan de la Noria (1871)</strong> con <strong>Plan de Tuxtepec (1876)</strong> — ambos de Porfirio Díaz. La Noria <em>fracasó</em>; Tuxtepec sí derrocó a Lerdo de Tejada e inició el Porfiriato.</p>
         <p><span class="tag tag--err">Otro cuidado</span> Confundir <strong>Plan de San Luis</strong> (Madero, 1910, inicia Revolución contra Porfirio) con <strong>Plan de Ayala</strong> (Zapata, 1911, contra Madero exigiendo tierras). Y el <strong>Plan de Guadalupe</strong> (Carranza, 1913, desconoce a Huerta tras matar a Madero).</p>
         <p><span class="tag tag--ok">Ejemplo</span> "¿Quién proclamó el Plan de Iguala?" → Iturbide (1821), consuma la independencia bajo las Tres Garantías: religión, independencia, unión.</p>
-        <a href="/clases/flashcards.html?tema=historia" class="btn btn--secondary">Practicar este tema →</a>
+        <a href="/tercial/flashcards.html?tema=historia" class="btn btn--secondary">Practicar este tema →</a>
       </div>
     </details>
 
@@ -272,8 +272,8 @@
   <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
   <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/clases/">Inicio</a>
-    <a href="/clases/practicar.html">Practicar por tema</a>
+    <a href="/tercial/">Inicio</a>
+    <a href="/tercial/practicar.html">Practicar por tema</a>
   </nav>
 </footer>
 

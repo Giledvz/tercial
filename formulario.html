@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>formulario · clases</title>
+<title>formulario · Tercial</title>
 
 <script>
   /* Anti-flash · ver design-system § 11 */
   (function () {
-    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
     var d = p === 'auto'
       ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : p;
@@ -23,13 +23,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-<link rel="stylesheet" href="/clases/assets/css/tokens.css">
-<link rel="stylesheet" href="/clases/assets/css/base.css">
-<link rel="stylesheet" href="/clases/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
 
-<script defer src="/clases/assets/js/theme.js"></script>
-<script defer src="/clases/assets/js/site-nav.js"></script>
-<script defer src="/clases/assets/js/katex-loader.js"></script>
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/katex-loader.js"></script>
 </head>
 <body>
 
@@ -86,7 +86,7 @@
       <div class="formula-row"><span class="formula-row__eq">$\omega = 2\pi f$, $\;v = \omega r$</span><span class="formula-row__desc">MCU — velocidad angular y tangencial</span><span class="formula-row__unit">[rad/s]</span></div>
     </div>
     <p class="formula-note">Caída libre: $v_0 = 0$, $a = +g$. Tiro vertical hacia arriba: $a = -g$; en $h_{\max}$ la velocidad es cero.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=ca%C3%ADda+libre%2CMRUA%2Ctiro+parab%C3%B3lico">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=ca%C3%ADda+libre%2CMRUA%2Ctiro+parab%C3%B3lico">Practicar este tema →</a>
   </section>
 
   <section id="fuerzas">
@@ -106,7 +106,7 @@
       <div class="formula-row"><span class="formula-row__eq">$F = G\,\dfrac{m_1 m_2}{r^2}$</span><span class="formula-row__desc">Gravitación universal — $G = 6.67\times10^{-11}$</span><span class="formula-row__unit">[N]</span></div>
     </div>
     <p class="formula-note">1ª ley: si $F_{\mathrm{neta}} = 0$ el objeto permanece en reposo o MRU. 3ª ley: acción = reacción. En plano horizontal $N = W$.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=segunda+ley+de+Newton%2CMCU">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=segunda+ley+de+Newton%2CMCU">Practicar este tema →</a>
   </section>
 
   <section id="energia">
@@ -128,7 +128,7 @@
       <div class="formula-row"><span class="formula-row__eq">$m_1 v_1 + m_2 v_2 = (m_1 + m_2) v_f$</span><span class="formula-row__desc">Colisión perfectamente inelástica</span><span class="formula-row__unit">[kg·m/s]</span></div>
     </div>
     <p class="formula-note">Con fricción: $W_{\mathrm{total}} = \Delta E_c + \Delta E_p + W_{\mathrm{rozamiento}}$.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=trabajo+mec%C3%A1nico%2Cenerg%C3%ADa+cin%C3%A9tica%2Cconservaci%C3%B3n+de+energ%C3%ADa%2CHooke">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=trabajo+mec%C3%A1nico%2Cenerg%C3%ADa+cin%C3%A9tica%2Cconservaci%C3%B3n+de+energ%C3%ADa%2CHooke">Practicar este tema →</a>
   </section>
 
   <section id="fluidos">
@@ -149,7 +149,7 @@
       <div class="formula-row"><span class="formula-row__eq">$P + \tfrac{1}{2}\rho v^2 + \rho g h = \mathrm{cte}$</span><span class="formula-row__desc">Ecuación de Bernoulli</span><span class="formula-row__unit">[Pa]</span></div>
     </div>
     <p class="formula-note">Un objeto flota si $\rho_{\mathrm{objeto}} < \rho_{\mathrm{fluido}}$. Pascal: la presión en un fluido cerrado se transmite igual a todos los puntos.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=presi%C3%B3n+hidrost%C3%A1tica%2Cgravitaci%C3%B3n">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=presi%C3%B3n+hidrost%C3%A1tica%2Cgravitaci%C3%B3n">Practicar este tema →</a>
   </section>
 
   <section id="termodinamica">
@@ -178,7 +178,7 @@
       <div class="formula-row"><span class="formula-row__eq">$\eta_{\mathrm{Carnot}} = 1 - \dfrac{T_f}{T_c}$</span><span class="formula-row__desc">Eficiencia máxima de Carnot — $T$ en kelvin</span><span class="formula-row__unit">adimensional</span></div>
     </div>
     <p class="formula-note">¡La temperatura en gases siempre en kelvin! Isotérmico: $\Delta U = 0$ ($Q = W$). Adiabático: $Q = 0$. Isocórico: $W = 0$.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=calor+(operaci%C3%B3n)%2Ctermodin%C3%A1mica">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=calor+(operaci%C3%B3n)%2Ctermodin%C3%A1mica">Practicar este tema →</a>
   </section>
 
   <section id="ondas">
@@ -201,7 +201,7 @@
       <div class="formula-row"><span class="formula-row__eq">$f' = f\,\dfrac{v}{v + v_f}$</span><span class="formula-row__desc">Doppler — fuente alejándose del observador en reposo</span><span class="formula-row__unit">[Hz]</span></div>
     </div>
     <p class="formula-note">El periodo del péndulo no depende ni de la masa ni de la amplitud (oscilaciones chicas). Sonido en aire: $\approx 340\,\mathrm{m/s}$. Rango audible: 20 Hz – 20 000 Hz.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=velocidad+de+una+onda">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=velocidad+de+una+onda">Practicar este tema →</a>
   </section>
 
   <section id="optica">
@@ -223,7 +223,7 @@
       <div class="formula-row"><span class="formula-row__eq">$M = -\dfrac{q}{p}$</span><span class="formula-row__desc">Aumento lateral — $M>0$ derecha, $M<0$ invertida</span><span class="formula-row__unit">adimensional</span></div>
     </div>
     <p class="formula-note">Espejo cóncavo / lente convergente: $f > 0$. Espejo convexo / lente divergente: $f < 0$. Imagen virtual: $q < 0$.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=%C3%B3ptica">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=%C3%B3ptica">Practicar este tema →</a>
   </section>
 
   <section id="electricidad">
@@ -245,7 +245,7 @@
       <div class="formula-row"><span class="formula-row__eq">$C = \dfrac{Q}{V}$</span><span class="formula-row__desc">Capacitancia — carga por voltaje</span><span class="formula-row__unit">[F] = [C/V]</span></div>
     </div>
     <p class="formula-note">En serie: $I$ igual en todos. En paralelo: $V$ igual en todos. Si $r$ se duplica, $F$ de Coulomb se divide entre 4.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=Coulomb%2COhm%2Cresistencias">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=Coulomb%2COhm%2Cresistencias">Practicar este tema →</a>
   </section>
 
   <section id="magnetismo">
@@ -266,7 +266,7 @@
       <div class="formula-row"><span class="formula-row__eq">$\dfrac{V_1}{V_2} = \dfrac{N_1}{N_2} = \dfrac{I_2}{I_1}$</span><span class="formula-row__desc">Transformador ideal</span><span class="formula-row__unit">adimensional</span></div>
     </div>
     <p class="formula-note">La ley de Lenz indica que la corriente inducida se opone al cambio de flujo que la produce. Corrientes paralelas en el mismo sentido se atraen; en sentidos opuestos, se repelen.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=magnetismo,electromagnetismo">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=magnetismo,electromagnetismo">Practicar este tema →</a>
   </section>
 
   <section id="fisica-moderna">
@@ -287,7 +287,7 @@
       <div class="formula-row"><span class="formula-row__eq">$n = \dfrac{t_{\mathrm{total}}}{t_{1/2}}$</span><span class="formula-row__desc">Número de semividas transcurridas</span><span class="formula-row__unit">adimensional</span></div>
     </div>
     <p class="formula-note">Ejemplo: $800\,\mathrm{g}$, $t_{1/2} = 10$ años. Después de 30 años: $n = 3 \Rightarrow 800 \times \left(\tfrac{1}{2}\right)^3 = 100\,\mathrm{g}$.</p>
-    <a class="btn btn--secondary" href="/clases/flashcards.html?tema=fotoel%C3%A9ctrico">Practicar este tema →</a>
+    <a class="btn btn--secondary" href="/tercial/flashcards.html?tema=fotoel%C3%A9ctrico">Practicar este tema →</a>
   </section>
 
 </main>
@@ -296,8 +296,8 @@
   <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
   <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/clases/">Inicio</a>
-    <a href="/clases/index.html#fisica">Más física</a>
+    <a href="/tercial/">Inicio</a>
+    <a href="/tercial/index.html#fisica">Más física</a>
   </nav>
 </footer>
 

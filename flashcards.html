@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>flashcards · clases</title>
+<title>flashcards · Tercial</title>
 
 <script>
   /* Anti-flash · ver design-system § 11 */
   (function () {
-    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
     var d = p === 'auto'
       ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : p;
@@ -23,13 +23,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-<link rel="stylesheet" href="/clases/assets/css/tokens.css">
-<link rel="stylesheet" href="/clases/assets/css/base.css">
-<link rel="stylesheet" href="/clases/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
 
-<script defer src="/clases/assets/js/theme.js"></script>
-<script defer src="/clases/assets/js/site-nav.js"></script>
-<script defer src="/clases/assets/js/katex-loader.js"></script>
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/katex-loader.js"></script>
 </head>
 <body>
 
@@ -44,10 +44,10 @@
       Una pregunta a la vez, opciones barajadas. Voltea la tarjeta para ver la respuesta y la explicación. Sigue con la siguiente cuando estés listo.
     </p>
     <div class="flashcards-modes" role="group" aria-label="Modo de práctica">
-      <a href="/clases/flashcards.html" class="btn btn--ghost" data-mode="normal">Sesión normal</a>
-      <a href="/clases/flashcards.html?modo=estudio" class="btn btn--ghost" data-mode="estudio">Modo estudio</a>
-      <a href="/clases/flashcards.html?modo=revisar" class="btn btn--ghost" data-mode="revisar">Modo revisar</a>
-      <a href="/clases/flashcards.html?modo=estudio&amp;fuente=320_UNAM" class="btn btn--ghost" data-mode="unam320">Banco UNAM 320</a>
+      <a href="/tercial/flashcards.html" class="btn btn--ghost" data-mode="normal">Sesión normal</a>
+      <a href="/tercial/flashcards.html?modo=estudio" class="btn btn--ghost" data-mode="estudio">Modo estudio</a>
+      <a href="/tercial/flashcards.html?modo=revisar" class="btn btn--ghost" data-mode="revisar">Modo revisar</a>
+      <a href="/tercial/flashcards.html?modo=estudio&amp;fuente=320_UNAM" class="btn btn--ghost" data-mode="unam320">Banco UNAM 320</a>
     </div>
   </header>
 
@@ -55,7 +55,7 @@
 
   <div id="filtroBanner" class="filtro-banner hidden">
     Practicando: <strong id="filtroTema"></strong>
-    · <a href="/clases/flashcards.html">ver todas</a>
+    · <a href="/tercial/flashcards.html">ver todas</a>
   </div>
 
   <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
@@ -98,9 +98,9 @@
   <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
   <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/clases/">Inicio</a>
-    <a href="/clases/practicar.html">Practicar por tema</a>
-    <a href="/clases/repaso.html">Repaso por tema</a>
+    <a href="/tercial/">Inicio</a>
+    <a href="/tercial/practicar.html">Practicar por tema</a>
+    <a href="/tercial/repaso.html">Repaso por tema</a>
   </nav>
 </footer>
 

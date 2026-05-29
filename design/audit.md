@@ -1,4 +1,4 @@
-# Auditoría visual y técnica — giledvz.github.io/clases
+# Auditoría visual y técnica — giledvz.github.io/tercial
 
 **Fecha:** 2026-05-22 · **Alcance:** lectura, sin modificaciones.
 
@@ -7,8 +7,8 @@
 ## 1. Estructura del repo
 
 ```
-clases/
-├── README.md                            (vacío, sólo "# clases")
+tercial/
+├── README.md                            (vacío, sólo "# tercial")
 ├── index.html                              557 líneas
 │
 ├── examen_adaptativo.html                1 032 líneas

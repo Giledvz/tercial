@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <!--
-  preview.html — galería del sistema editorial · clases.
+  preview.html — galería del sistema editorial · tercial.
 
-  Para que los hrefs absolutos (/clases/...) de <site-nav> resuelvan,
+  Para que los hrefs absolutos (/tercial/...) de <site-nav> resuelvan,
   sirve este archivo desde la RAÍZ DEL REPOSITORIO (el directorio que
-  contiene clases/), no desde dentro de clases/:
+  contiene tercial/), no desde dentro de tercial/:
 
-      cd $(dirname /path/to/clases)
+      cd $(dirname /path/to/tercial)
       python3 -m http.server 8000
 
-  Luego abre: http://localhost:8000/clases/design/preview.html
+  Luego abre: http://localhost:8000/tercial/design/preview.html
 
-  Si lo sirves desde dentro de clases/, los links de la nav apuntan
-  a /clases/* y 404'an. En producción (giledvz.github.io/clases/) no
+  Si lo sirves desde dentro de tercial/, los links de la nav apuntan
+  a /tercial/* y 404'an. En producción (giledvz.github.io/tercial/) no
   hay ese problema.
 -->
 <html lang="es" data-theme="light">
@@ -20,13 +20,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Sistema de diseño · vista previa — clases</title>
+  <title>Sistema de diseño · vista previa — Tercial</title>
 
   <script>
     /* Anti-flash: aplica el tema antes del primer paint.
        Snippet auto-contenido documentado en design-system § 11. */
     (function () {
-      var p = localStorage.getItem('clases-theme-pref') || 'auto';
+      var p = localStorage.getItem('tercial-theme-pref') || 'auto';
       var d = p === 'auto'
         ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
         : p;
@@ -71,7 +71,7 @@
         <span class="section-header__count">arriba</span>
       </header>
       <p class="preview-section__intro">
-        Sticky en la parte superior. Brand <em>clases</em> en Fraunces italic accent coñac. Links en IBM Plex Sans. Toggle de modo con tres iconos (moon/sun/sun-moon) según la preferencia del usuario. La página actual lleva underline <em>accent</em> de 2px.
+        Sticky en la parte superior. Brand <em>Tercial</em> en Fraunces italic accent coñac. Links en IBM Plex Sans. Toggle de modo con tres iconos (moon/sun/sun-moon) según la preferencia del usuario. La página actual lleva underline <em>accent</em> de 2px.
       </p>
     </section>
 
@@ -379,7 +379,7 @@
         <span class="section-header__count">light → dark → auto</span>
       </header>
       <p class="preview-section__intro">
-        El toggle vive en la barra superior dentro del web component <code>&lt;site-nav&gt;</code>, que internamente llama a <code>ClasesTheme.toggle()</code>. La preferencia persiste en <code>localStorage</code> bajo la clave <code>clases-theme-pref</code>. El modo <em>auto</em> respeta <code>prefers-color-scheme</code> y reacciona a cambios del sistema en vivo. El snippet anti-flash en <code>&lt;head&gt;</code> aplica el tema antes del primer paint (ver § 11 del design-system).
+        El toggle vive en la barra superior dentro del web component <code>&lt;site-nav&gt;</code>, que internamente llama a <code>ClasesTheme.toggle()</code>. La preferencia persiste en <code>localStorage</code> bajo la clave <code>tercial-theme-pref</code>. El modo <em>auto</em> respeta <code>prefers-color-scheme</code> y reacciona a cambios del sistema en vivo. El snippet anti-flash en <code>&lt;head&gt;</code> aplica el tema antes del primer paint (ver § 11 del design-system).
       </p>
     </section>
 
@@ -555,7 +555,7 @@
 
       <header class="hero hero--with-marginalia">
         <div class="hero__main">
-          <p class="eyebrow">clases · curso UNAM</p>
+          <p class="eyebrow">Tercial · curso UNAM</p>
           <h1 class="hero__title">Estudia <em>matemáticas</em> y <em>física</em> con calma.</h1>
           <p class="hero__lede">
             Tarjetas, ejercicios y exámenes adaptativos pensados para repasar día a día sin saturarse.
@@ -730,7 +730,7 @@
   </main>
 
   <footer class="site-footer">
-    <p class="site-footer__brand"><em>clases</em> · preparación examen UNAM</p>
+    <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
     <p class="site-footer__credits">
       Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026
     </p>

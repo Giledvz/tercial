@@ -11,21 +11,21 @@
     <site-nav active="fisica"></site-nav>
 
   Si no se pasa 'active', se infiere de location.pathname. El brand
-  "clases" es clickeable al home en TODOS los breakpoints — única
+  "Tercial" es clickeable al home en TODOS los breakpoints — única
   vía de regreso al index cuando los 6 links están ocultos en mobile
   (<760px). Hamburger menu queda para Fase 2.7.
 */
 (function () {
   'use strict';
 
-  /* Hrefs absolutos a /clases/* para que la nav funcione desde
-     cualquier profundidad (clases/*.html en producción + cualquier
+  /* Hrefs absolutos a /tercial/* para que la nav funcione desde
+     cualquier profundidad (tercial/*.html en producción + cualquier
      página de docs interna como design/preview.html). El path
-     /clases/ es fijo: matches el despliegue en GitHub Pages
-     (giledvz.github.io/clases/) y el dev local cuando se sirve
+     /tercial/ es fijo: matches el despliegue en GitHub Pages
+     (giledvz.github.io/tercial/) y el dev local cuando se sirve
      desde la raíz del repositorio. Si el deploy path cambiara,
      editar SÓLO esta constante. */
-  const HOME = '/clases/';
+  const HOME = '/tercial/';
 
   const NAV_ITEMS = [
     { route: 'inicio',      label: 'Inicio',       href: HOME,

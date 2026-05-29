@@ -332,14 +332,14 @@ Web component que se renderiza (Light DOM — el elemento `<site-nav>` mismo rec
 
 ```html
 <site-nav class="site-nav" role="navigation" aria-label="principal">
-  <a class="site-nav__brand" href="/clases/" aria-label="clases — ir al inicio">clases</a>
+  <a class="site-nav__brand" href="/tercial/" aria-label="Tercial — ir al inicio">Tercial</a>
   <ul class="site-nav__links">
-    <li><a href="/clases/">Inicio</a></li>
-    <li><a href="/clases/index.html#examenes">Exámenes</a></li>
-    <li><a href="/clases/practicar.html">Tarjetas</a></li>
-    <li><a href="/clases/index.html#fisica" aria-current="page">Física</a></li>
-    <li><a href="/clases/index.html#matematicas">Matemáticas</a></li>
-    <li><a href="/clases/repaso.html">Notas</a></li>
+    <li><a href="/tercial/">Inicio</a></li>
+    <li><a href="/tercial/index.html#examenes">Exámenes</a></li>
+    <li><a href="/tercial/practicar.html">Tarjetas</a></li>
+    <li><a href="/tercial/index.html#fisica" aria-current="page">Física</a></li>
+    <li><a href="/tercial/index.html#matematicas">Matemáticas</a></li>
+    <li><a href="/tercial/repaso.html">Notas</a></li>
   </ul>
   <button class="site-nav__theme" type="button" aria-label="Cambiar modo de color">
     <!-- iconos sun/moon/sunmoon, el visible se decide por data-theme-pref -->
@@ -347,11 +347,11 @@ Web component que se renderiza (Light DOM — el elemento `<site-nav>` mismo rec
 </site-nav>
 ```
 
-**Hrefs absolutos a `/clases/`.** Todos los routes apuntan a `/clases/*` (no relativos) para que la nav funcione desde cualquier profundidad — incluyendo páginas de docs internas como `design/preview.html`. La constante `HOME` vive en una sola línea de `site-nav.js`; si el deploy path cambia (improbable), es ahí donde se edita.
+**Hrefs absolutos a `/tercial/`.** Todos los routes apuntan a `/tercial/*` (no relativos) para que la nav funcione desde cualquier profundidad — incluyendo páginas de docs internas como `design/preview.html`. La constante `HOME` vive en una sola línea de `site-nav.js`; si el deploy path cambia (improbable), es ahí donde se edita.
 
-**Brand siempre clickeable al home.** En mobile (<760px) los 6 links se ocultan; sólo quedan brand + theme toggle. El brand `clases` linkea a `/clases/` en todos los breakpoints — es la única vía de regreso al index hasta que se diseñe el menú hamburger en Fase 2.7.
+**Brand siempre clickeable al home.** En mobile (<760px) los 6 links se ocultan; sólo quedan brand + theme toggle. El brand `Tercial` linkea a `/tercial/` en todos los breakpoints — es la única vía de regreso al index hasta que se diseñe el menú hamburger en Fase 2.7.
 
-**Local dev.** Servir desde la raíz del repositorio (el directorio que contiene `clases/`), no desde dentro de `clases/`: `python3 -m http.server 8000` y abrir `http://localhost:8000/clases/...`.
+**Local dev.** Servir desde la raíz del repositorio (el directorio que contiene `tercial/`), no desde dentro de `tercial/`: `python3 -m http.server 8000` y abrir `http://localhost:8000/tercial/...`.
 
 **Tokens.** bg `--color-bg`, border-bottom `1px solid var(--color-border)`, height `--space-10`, padding horizontal `--space-6`. Brand en Fraunces italic accent coñac, links en Plex Sans 14. Current page recibe underline `--accent-conac` `2px`.
 
@@ -542,7 +542,7 @@ Web component que se renderiza (Light DOM — el elemento `<site-nav>` mismo rec
 - Click cicla: `light → dark → auto → light`.
 - `auto` respeta `prefers-color-scheme` del sistema.
 - En modo light se ve el moon (acción = "cambiar a oscuro"). En dark se ve el sun. En auto se ve un icono dual (sun-moon de Lucide) y un dot indicator.
-- Persistencia en `localStorage` (clave `clases-theme-pref`).
+- Persistencia en `localStorage` (clave `tercial-theme-pref`).
 - API JS expuesta — ver § 8.3.
 
 **Estados.** Hover: bg `--crema-300`, color `--ink-900`. Focus-visible: outline accent coñac.
@@ -630,15 +630,15 @@ Web component que se renderiza (Light DOM — el elemento `<site-nav>` mismo rec
 ```html
 <footer class="site-footer">
   <p class="site-footer__brand">
-    <em>clases</em> · preparación examen UNAM
+    <em>Tercial</em> · preparación examen UNAM
   </p>
   <p class="site-footer__credits">
     Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026
   </p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/clases/">Inicio</a>
-    <a href="/clases/practicar.html">Practicar</a>
-    <a href="/clases/repaso.html">Repaso</a>
+    <a href="/tercial/">Inicio</a>
+    <a href="/tercial/practicar.html">Practicar</a>
+    <a href="/tercial/repaso.html">Repaso</a>
   </nav>
 </footer>
 ```
@@ -768,7 +768,7 @@ Razones:
 - *Snippet JS que inyecta nav*: viable pero introduce FOUC y obliga a montar listeners de a11y desde fuera del componente. Menos limpio.
 - *Server-side includes / iframes*: no aplica (GitHub Pages sin build).
 
-**Carga.** `<script type="module" src="/clases/assets/js/site-nav.js"></script>` en el `<head>` con `defer` implícito por ser module.
+**Carga.** `<script type="module" src="/tercial/assets/js/site-nav.js"></script>` en el `<head>` con `defer` implícito por ser module.
 
 ### 8.3 Toggle modo oscuro — API
 
@@ -783,13 +783,13 @@ window.ClasesTheme = {
 };
 ```
 
-**Persistencia.** `localStorage['clases-theme-pref']`. Valores aceptados: `light`, `dark`, `auto`. Cualquier otra cosa se trata como `auto`.
+**Persistencia.** `localStorage['tercial-theme-pref']`. Valores aceptados: `light`, `dark`, `auto`. Cualquier otra cosa se trata como `auto`.
 
 **Efectos al aplicar.** Setea en `<html>`:
 - `data-theme="light"` o `data-theme="dark"` — lo lee toda la paleta del CSS.
 - `data-theme-pref="light|dark|auto"` — lo lee el CSS del toggle para mostrar el ícono correcto (moon / sun / sunmoon).
 
-**Evento.** Cada cambio dispara `window.dispatchEvent(new CustomEvent('clases:themechange', { detail: { applied, pref } }))`. Lo pueden escuchar componentes que necesiten reaccionar al cambio de tema (ej. inputs con SVG inline cuyo color requiere recompute).
+**Evento.** Cada cambio dispara `window.dispatchEvent(new CustomEvent('tercial:themechange', { detail: { applied, pref } }))`. Lo pueden escuchar componentes que necesiten reaccionar al cambio de tema (ej. inputs con SVG inline cuyo color requiere recompute).
 
 **Auto + prefers-color-scheme.** En preferencia `auto`, el módulo se suscribe a `matchMedia('(prefers-color-scheme: dark)').addEventListener('change', …)` para reaplicar cuando el sistema cambia.
 
@@ -807,7 +807,7 @@ Razones:
 
 ```js
 // Las páginas con matemáticas añaden:
-// <script type="module" src="/clases/assets/js/katex-loader.js"></script>
+// <script type="module" src="/tercial/assets/js/katex-loader.js"></script>
 // y el loader inyecta CSS + JS + auto-render con la config estándar del sistema.
 ```
 
@@ -863,9 +863,9 @@ Va en `<head>`, **antes** de cualquier `<link rel="stylesheet">`. Aplica `data-t
 
 ```html
 <script>
-  /* Anti-flash editorial · clases · v2.0 */
+  /* Anti-flash editorial · tercial · v2.0 */
   (function () {
-    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
     var d = p === 'auto'
       ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : p;

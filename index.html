@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>clases · materiales</title>
+<title>Tercial · materiales</title>
 
 <script>
   /* Anti-flash · ver design-system § 11 */
   (function () {
-    var p = localStorage.getItem('clases-theme-pref') || 'auto';
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
     var d = p === 'auto'
       ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
       : p;
@@ -23,12 +23,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
-<link rel="stylesheet" href="/clases/assets/css/tokens.css">
-<link rel="stylesheet" href="/clases/assets/css/base.css">
-<link rel="stylesheet" href="/clases/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
 
-<script defer src="/clases/assets/js/theme.js"></script>
-<script defer src="/clases/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
 </head>
 <body>
 
@@ -39,7 +39,7 @@
   <header class="hero hero--with-aside">
     <div class="hero__main">
       <p class="eyebrow">Nivel superior · ingreso a universidad</p>
-      <h1 class="hero__title">Materiales de <em>clases</em></h1>
+      <h1 class="hero__title">Materiales de <em>Tercial</em></h1>
       <p class="hero__lede">
         Ejercicios resueltos, exámenes adaptativos y tarjetas de práctica para preparar tu examen.
       </p>
@@ -59,7 +59,7 @@
     </header>
 
     <div class="card-grid card-grid--cols-3">
-      <a class="card-link" href="/clases/practicar.html">
+      <a class="card-link" href="/tercial/practicar.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title">Practicar <em>por tema</em></h3>
@@ -74,7 +74,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/flashcards.html">
+      <a class="card-link" href="/tercial/flashcards.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title">Práctica <em>rápida</em></h3>
@@ -89,7 +89,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/repaso.html">
+      <a class="card-link" href="/tercial/repaso.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title">Notas <em>de repaso</em></h3>
@@ -115,7 +115,7 @@
       <span class="section-header__count">12 recursos</span>
     </header>
 
-    <a class="card-link" href="/clases/formulario.html">
+    <a class="card-link" href="/tercial/formulario.html">
       <article class="card card--featured" data-cat="purple">
         <header class="card__header">
           <h3 class="card__title">Formulario <em>completo</em></h3>
@@ -131,17 +131,17 @@
     </a>
 
     <ul class="topic-list">
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/clases/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
     </ul>
   </section>
 
@@ -155,7 +155,7 @@
     </header>
 
     <div class="card-grid">
-      <a class="card-link" href="/clases/calculo_diferencial_v3.html">
+      <a class="card-link" href="/tercial/calculo_diferencial_v3.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title">Cálculo <em>diferencial</em></h3>
@@ -168,7 +168,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/calculo_diferencial_latex.pdf">
+      <a class="card-link" href="/tercial/calculo_diferencial_latex.pdf">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title">Cálculo <em>resumen</em></h3>
@@ -181,7 +181,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/geometria_analitica.pdf">
+      <a class="card-link" href="/tercial/geometria_analitica.pdf">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title"><em>Geometría</em> analítica</h3>
@@ -194,7 +194,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/trigonometria_con_figuras.pdf">
+      <a class="card-link" href="/tercial/trigonometria_con_figuras.pdf">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title"><em>Trigonometría</em></h3>
@@ -220,7 +220,7 @@
 
     <p class="section-intro">Para cuando ya practicaste. Simulan la dificultad del examen real, miden tu nivel y te dicen dónde estás parado.</p>
 
-    <a class="card-link" href="/clases/examen_unam_area2.html">
+    <a class="card-link" href="/tercial/examen_unam_area2.html">
       <article class="card card--featured" data-cat="navy">
         <header class="card__header">
           <h3 class="card__title">UNAM Área 2 — <em>banco especial</em></h3>
@@ -236,7 +236,7 @@
     </a>
 
     <div class="card-grid">
-      <a class="card-link" href="/clases/examen_adaptativo.html">
+      <a class="card-link" href="/tercial/examen_adaptativo.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title"><em>Matemáticas</em></h3>
@@ -249,7 +249,7 @@
         </article>
       </a>
 
-      <a class="card-link" href="/clases/examen_adaptativo_fisica.html">
+      <a class="card-link" href="/tercial/examen_adaptativo_fisica.html">
         <article class="card">
           <header class="card__header">
             <h3 class="card__title"><em>Física</em></h3>
@@ -270,9 +270,9 @@
   <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
   <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/clases/practicar.html">Practicar por tema</a>
-    <a href="/clases/repaso.html">Notas de repaso</a>
-    <a href="/clases/formulario.html">Formulario</a>
+    <a href="/tercial/practicar.html">Practicar por tema</a>
+    <a href="/tercial/repaso.html">Notas de repaso</a>
+    <a href="/tercial/formulario.html">Formulario</a>
   </nav>
 </footer>
 

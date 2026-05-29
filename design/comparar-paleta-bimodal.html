@@ -7,7 +7,7 @@
   <script>
     (function () {
       try {
-        var p = localStorage.getItem('clases-theme-pref') || 'auto';
+        var p = localStorage.getItem('tercial-theme-pref') || 'auto';
         var applied = p === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : p;
         document.documentElement.setAttribute('data-theme', applied);
         document.documentElement.setAttribute('data-theme-pref', p);
@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/clases/assets/css/tokens.css">
-  <link rel="stylesheet" href="/clases/assets/css/base.css">
-  <link rel="stylesheet" href="/clases/assets/css/components.css">
+  <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+  <link rel="stylesheet" href="/tercial/assets/css/base.css">
+  <link rel="stylesheet" href="/tercial/assets/css/components.css">
   <style>
     .topbar {
       max-width: var(--container-wide);
