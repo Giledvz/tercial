@@ -1924,6 +1924,23 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   flex-shrink: 0;
 }
 
+/* Sub-encabezado dentro de una sección (ej. "Álgebra" en
+   practicar-temas.html bajo Matemáticas). Más chico que
+   .section-header__title, italic Fraunces accent coñac. */
+.topic-bucket {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-heading);
+  color: var(--color-accent);
+  margin: var(--space-7) 0 var(--space-3);
+}
+
+.topic-bucket:first-of-type {
+  margin-top: var(--space-2);
+}
+
 /* ============================================================
    4.15 — Flashcards runner
 
