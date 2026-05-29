@@ -335,6 +335,136 @@ const PREGUNTAS = [
     correcta: 2,
     explicacion: "$p = \\rho g h = (1000\\,\\mathrm{kg/m^3})(10\\,\\mathrm{m/s^2})(3\\,\\mathrm{m}) = 30\\,000\\,\\mathrm{Pa}$."
   },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $4\\,\\mathrm{m}$ de profundidad en una alberca con agua dulce ($\\rho = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$), ¿cuál es la presión hidrostática?",
+    opciones: [
+      "$4\\,000\\,\\mathrm{Pa}$",
+      "$40\\,000\\,\\mathrm{Pa}$",
+      "$4\\,000\\,000\\,\\mathrm{Pa}$",
+      "$100\\,\\mathrm{Pa}$"
+    ],
+    correcta: 1,
+    explicacion: "$P = \\rho g h = (1000)(10)(4) = 40\\,000\\,\\mathrm{Pa}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Una prensa hidráulica tiene un pistón pequeño de $0.01\\,\\mathrm{m^2}$ y uno grande de $0.5\\,\\mathrm{m^2}$. Si aplicas una fuerza de $200\\,\\mathrm{N}$ en el pequeño, ¿qué fuerza obtienes en el grande?",
+    opciones: [
+      "$10\\,000\\,\\mathrm{N}$",
+      "$4\\,\\mathrm{N}$",
+      "$200\\,\\mathrm{N}$",
+      "$100\\,000\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "Por el principio de Pascal: $\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2} \\Rightarrow F_2 = F_1 \\cdot \\dfrac{A_2}{A_1} = 200 \\cdot \\dfrac{0.5}{0.01} = 10\\,000\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Un objeto sumergido completamente en agua desplaza $0.002\\,\\mathrm{m^3}$. ¿Cuál es la fuerza de empuje sobre él? ($\\rho_\\text{agua} = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$20\\,\\mathrm{N}$",
+      "$200\\,\\mathrm{N}$",
+      "$0.02\\,\\mathrm{N}$",
+      "$2\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "Por Arquímedes: $E = \\rho_\\text{fluido} \\cdot V_\\text{sumergido} \\cdot g = (1000)(0.002)(10) = 20\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $10\\,\\mathrm{m}$ de profundidad en agua dulce, considerando la presión atmosférica de $101\\,325\\,\\mathrm{Pa}$, ¿cuál es la presión total? ($\\rho = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$100\\,000\\,\\mathrm{Pa}$",
+      "$101\\,325\\,\\mathrm{Pa}$",
+      "$201\\,325\\,\\mathrm{Pa}$",
+      "$201\\,000\\,\\mathrm{Pa}$"
+    ],
+    correcta: 2,
+    explicacion: "$P_\\text{tot} = P_\\text{atm} + \\rho g h = 101\\,325 + (1000)(10)(10) = 101\\,325 + 100\\,000 = 201\\,325\\,\\mathrm{Pa}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $5\\,\\mathrm{m}$ de profundidad en un líquido desconocido, la presión hidrostática es de $65\\,000\\,\\mathrm{Pa}$. ¿Cuál es la densidad del líquido? ($g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$1\\,300\\,\\mathrm{kg/m^3}$",
+      "$13\\,000\\,\\mathrm{kg/m^3}$",
+      "$650\\,\\mathrm{kg/m^3}$",
+      "$130\\,\\mathrm{kg/m^3}$"
+    ],
+    correcta: 0,
+    explicacion: "De $P = \\rho g h$ despejas $\\rho = \\dfrac{P}{gh} = \\dfrac{65\\,000}{(10)(5)} = 1\\,300\\,\\mathrm{kg/m^3}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Un cuerpo flota en agua con el 60% de su volumen sumergido. ¿Cuál es su densidad? ($\\rho_\\text{agua} = 1000\\,\\mathrm{kg/m^3}$).",
+    opciones: [
+      "$400\\,\\mathrm{kg/m^3}$",
+      "$600\\,\\mathrm{kg/m^3}$",
+      "$1000\\,\\mathrm{kg/m^3}$",
+      "$1600\\,\\mathrm{kg/m^3}$"
+    ],
+    correcta: 1,
+    explicacion: "En equilibrio peso = empuje: $\\rho_c V g = \\rho_\\text{agua} V_\\text{sum} g$. La fracción sumergida es $\\rho_c / \\rho_\\text{agua} = 0.6$, entonces $\\rho_c = 600\\,\\mathrm{kg/m^3}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Por un tubo de $0.04\\,\\mathrm{m^2}$ de área transversal fluye agua a $2\\,\\mathrm{m/s}$. ¿Cuánto tarda en llenarse un tinaco de $1\\,200\\,\\mathrm{L}$?",
+    opciones: [
+      "$5\\,\\mathrm{s}$",
+      "$15\\,\\mathrm{s}$",
+      "$60\\,\\mathrm{s}$",
+      "$300\\,\\mathrm{s}$"
+    ],
+    correcta: 1,
+    explicacion: "Caudal $Q = A v = (0.04)(2) = 0.08\\,\\mathrm{m^3/s} = 80\\,\\mathrm{L/s}$. Tiempo $= 1200 / 80 = 15\\,\\mathrm{s}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "La presión atmosférica en la cima de una montaña es menor que al nivel del mar porque:",
+    opciones: [
+      "la temperatura es menor a mayor altitud.",
+      "la columna de aire sobre la cima es más corta.",
+      "la presión hidrostática del mar influye en la altitud.",
+      "la densidad del aire aumenta con la altura."
+    ],
+    correcta: 1,
+    explicacion: "La presión atmosférica en cualquier punto equivale al peso del aire por unidad de área que está arriba. A mayor altitud hay menos aire arriba, por tanto menos peso."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "El principio de Pascal establece que un cambio de presión aplicado a un fluido confinado:",
+    opciones: [
+      "se transmite sin disminuir a todos los puntos del fluido y a las paredes del recipiente.",
+      "sólo afecta el punto donde se aplica la presión.",
+      "se transmite únicamente hacia abajo.",
+      "disminuye con la profundidad."
+    ],
+    correcta: 0,
+    explicacion: "Es el principio detrás de la prensa hidráulica: la presión aplicada en un pistón se transmite íntegra al fluido, multiplicando la fuerza si el segundo pistón tiene mayor área."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "¿Qué mide un barómetro?",
+    opciones: [
+      "La temperatura ambiente.",
+      "La presión atmosférica.",
+      "La densidad del aire.",
+      "La velocidad del viento."
+    ],
+    correcta: 1,
+    explicacion: "Un barómetro mide la presión atmosférica. El más conocido es el de mercurio, donde la altura de la columna ($\\approx 760\\,\\mathrm{mm}$ al nivel del mar) corresponde a la presión atmosférica estándar."
+  },
   // —— Matemáticas: ecuación logarítmica ——
   {
     materia: "matematicas",
