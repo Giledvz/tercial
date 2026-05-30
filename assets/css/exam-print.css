@@ -1,0 +1,381 @@
+/* ============================================================
+   exam-print.css
+   Estilos editoriales para exámenes destinados a impresión / PDF.
+   Sistema "Editorial cálido funcional" v1.0 aplicado a documentos.
+
+   Carga DESPUÉS de tokens.css, base.css y components.css. Hereda
+   tokens; solo agrega el layout y componentes específicos de
+   exámenes en papel.
+
+   Uso:
+     1. <html data-theme="light"> (siempre light, no dark en PDF)
+     2. Estructura .exam-pdf > .exam-pdf__hero, .exam-pdf__instructions,
+        .exam-pdf__exercises, .exam-pdf__total.
+     3. Variante por materia: agregar .exam-pdf--fisica / --mate /
+        --calculo / --geo / --quimica / etc. al wrapper.
+     4. Para generar PDF: abrir en navegador → Cmd+P → "Guardar como PDF".
+        Las reglas @media print ocultan elementos no impresos.
+   ============================================================ */
+
+/* ============================================================
+   @page setup — Letter, margin 0.85in/0.9in/1in/0.9in
+   ============================================================ */
+
+@page {
+  size: letter;
+  margin: 0.85in 0.9in 1in 0.9in;
+
+  /* Footer derecho: numeración de página en estilo Tercial.
+     Soporte completo en Chrome / Firefox; Safari respeta content
+     y font pero ignora algunos selectores. Si en Safari ves el URL
+     y "Página X de Y" del browser, además desactiva "Mostrar
+     encabezados y pies de página" en el cuadro de impresión. */
+  @bottom-right {
+    content: counter(page);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    font-size: 9pt;
+    color: #8c7556;
+    padding-top: 0.2in;
+  }
+
+  /* Bloquear los demás slots para que el navegador no inyecte
+     URL o info ahí. */
+  @top-left     { content: ""; }
+  @top-center   { content: ""; }
+  @top-right    { content: ""; }
+  @bottom-left  { content: ""; }
+  @bottom-center { content: ""; }
+}
+
+/* ============================================================
+   Container principal del examen
+   ============================================================ */
+
+.exam-pdf {
+  max-width: 6.7in;
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--font-family-body);
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--ink-900);
+  background-color: var(--crema-200);
+}
+
+/* ============================================================
+   Hero — encabezado de la primera página
+   Border-top 3px del color de la materia + título grande + meta.
+   ============================================================ */
+
+.exam-pdf__hero {
+  border-top: 3px solid var(--cat-coral);
+  padding-top: 0.4in;
+  margin-bottom: 0.45in;
+}
+
+.exam-pdf--fisica .exam-pdf__hero { border-top-color: var(--cat-coral); }
+.exam-pdf--mate .exam-pdf__hero { border-top-color: var(--cat-purple); }
+.exam-pdf--quimica .exam-pdf__hero { border-top-color: var(--cat-amber); }
+.exam-pdf--calculo .exam-pdf__hero { border-top-color: var(--cat-purple); }
+.exam-pdf--geo .exam-pdf__hero { border-top-color: var(--cat-teal); }
+.exam-pdf--bio .exam-pdf__hero { border-top-color: var(--cat-teal); }
+
+.exam-pdf__eyebrow {
+  font-family: var(--font-family-body);
+  font-size: 10pt;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin: 0 0 var(--space-3);
+}
+
+.exam-pdf__title {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
+  font-size: 36pt;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+  margin: 0 0 var(--space-3);
+  font-variation-settings: "opsz" 96;
+}
+
+.exam-pdf__title em {
+  font-style: italic;
+  color: var(--accent-conac);
+}
+
+.exam-pdf__meta {
+  font-family: var(--font-family-body);
+  font-size: 11pt;
+  color: var(--ink-500);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.exam-pdf__meta strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--ink-700);
+}
+
+/* ============================================================
+   Bloque de instrucciones
+   Border-left coñac, padding-left, eyebrow + texto.
+   ============================================================ */
+
+.exam-pdf__instructions {
+  border-left: 3px solid var(--accent-conac);
+  padding: 2pt 0 2pt var(--space-5);
+  margin: 0 0 0.5in;
+}
+
+.exam-pdf__instructions-label {
+  display: block;
+  font-family: var(--font-family-body);
+  font-size: 9pt;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin: 0 0 var(--space-2);
+}
+
+.exam-pdf__instructions p {
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-size: 10.5pt;
+  color: var(--ink-700);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   Lista de ejercicios — numeración con counter
+   Numero en Fraunces italic accent coñac (no naranja saturado),
+   contenido en Plex Sans alineado.
+   ============================================================ */
+
+.exam-pdf__exercises {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: exercise;
+}
+
+.exam-pdf__exercise {
+  counter-increment: exercise;
+  display: grid;
+  /* minmax(0, 1fr) permite que el contenido se ajuste sin desbordarse
+     cuando hay inline-blocks (KaTeX) que no rompen línea. Sin esto,
+     el grid se expande para acomodar el ancho mínimo del contenido y
+     empuja math y sub-items fuera del flujo. */
+  grid-template-columns: 0.42in minmax(0, 1fr);
+  column-gap: var(--space-4);
+  margin-bottom: var(--space-7);
+  page-break-inside: avoid;
+}
+
+.exam-pdf__exercise::before {
+  content: counter(exercise) ".";
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  font-size: 17pt;
+  color: var(--accent-conac);
+  text-align: right;
+  line-height: 1.1;
+  padding-top: 1pt;
+  font-variant-numeric: lining-nums;
+}
+
+.exam-pdf__body {
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--ink-900);
+}
+
+.exam-pdf__body p { margin: 0 0 var(--space-2); }
+.exam-pdf__body p:last-child { margin-bottom: 0; }
+
+.exam-pdf__points {
+  font-family: var(--font-family-body);
+  font-size: 8.5pt;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin-right: var(--space-1);
+  vertical-align: 1.5pt;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Math display (centrado, fuera del flujo de párrafo)
+   ============================================================ */
+
+.exam-pdf__display {
+  margin: var(--space-3) 0;
+  text-align: center;
+  font-size: 11.5pt;
+}
+
+/* ============================================================
+   Sub-lista (a, b, c) — incisos
+   Plex regular, NO italic (italic está reservado al display).
+   ============================================================ */
+
+.exam-pdf__sublist {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  counter-reset: subitem;
+}
+
+/* Hanging indent: padding-left reserva el espacio para el marker; el
+   ::before va absoluto en ese hueco. Más robusto que grid frente al
+   contenido inline-block de KaTeX, que tendía a desbordar el grid. */
+.exam-pdf__sublist > li {
+  counter-increment: subitem;
+  position: relative;
+  padding-left: 0.4in;
+  margin-bottom: var(--space-1);
+  font-size: 10.5pt;
+  color: var(--ink-700);
+  line-height: 1.5;
+}
+
+.exam-pdf__sublist > li::before {
+  content: counter(subitem, lower-alpha) ")";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.3in;
+  text-align: right;
+  font-family: var(--font-family-body);
+  color: var(--ink-500);
+}
+
+/* ============================================================
+   Opciones múltiples (A, B, C, D)
+   ============================================================ */
+
+.exam-pdf__choices {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-3) 0 0;
+  counter-reset: choice;
+}
+
+.exam-pdf__choices > li {
+  counter-increment: choice;
+  position: relative;
+  padding-left: 0.4in;
+  margin-bottom: 2pt;
+  font-size: 10.5pt;
+  color: var(--ink-700);
+  line-height: 1.5;
+}
+
+.exam-pdf__choices > li::before {
+  content: counter(choice, upper-alpha) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.3in;
+  text-align: right;
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--ink-500);
+}
+
+/* ============================================================
+   Figura inline (gráfica, dibujo) — wrapper centrado
+   ============================================================ */
+
+.exam-pdf__figure {
+  display: block;
+  margin: var(--space-4) auto;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.exam-pdf__figure svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.exam-pdf__figure-caption {
+  font-family: var(--font-family-body);
+  font-size: 9pt;
+  font-weight: var(--font-weight-medium);
+  color: var(--ink-500);
+  margin: var(--space-2) 0 0;
+}
+
+/* ============================================================
+   Total de puntos — al final del examen
+   Eyebrow + numeral grande Fraunces. Sin pill colorida.
+   ============================================================ */
+
+.exam-pdf__total {
+  margin-top: 0.5in;
+  padding-top: var(--space-5);
+  border-top: var(--border-thin) solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  page-break-inside: avoid;
+}
+
+.exam-pdf__total-label {
+  font-family: var(--font-family-body);
+  font-size: 11pt;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-300);
+}
+
+.exam-pdf__total-value {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  font-size: 32pt;
+  color: var(--accent-conac);
+  line-height: 1;
+  font-variation-settings: "opsz" 48;
+  /* Padding-right pequeño para que el overhang itálico del glyph
+     no se recorte en el borde derecho de la página al imprimir. */
+  padding-right: 4pt;
+}
+
+/* ============================================================
+   PRINT — limpieza del fondo, ocultar elementos no impresos,
+   forzar light theme.
+   ============================================================ */
+
+@media print {
+  html, body {
+    background: white !important;
+    background-image: none !important;
+  }
+  .exam-pdf {
+    background: white;
+  }
+  site-nav,
+  .site-footer,
+  .no-print {
+    display: none !important;
+  }
+  /* Cada ejercicio intenta mantenerse en una página */
+  .exam-pdf__exercise,
+  .exam-pdf__figure {
+    page-break-inside: avoid;
+  }
+  /* Reduce el espacio entre ejercicios en impresión */
+  .exam-pdf__exercise {
+    margin-bottom: 0.18in;
+  }
+}

@@ -20,3 +20,6 @@ npm-debug.log*
 .vscode/
 .idea/
 *.swp
+
+# PDFs generados (los HTML son fuente de verdad)
+examenes-pdf/*.pdf

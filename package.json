@@ -1,0 +1,13 @@
+{
+  "name": "tercial",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tercial · materiales y exámenes de preparación UNAM",
+  "scripts": {
+    "exam": "node tools/build-exam-pdf.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.1.0"
+  }
+}
