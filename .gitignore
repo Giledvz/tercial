@@ -23,3 +23,6 @@ npm-debug.log*
 
 # PDFs generados (los HTML son fuente de verdad)
 examenes-pdf/*.pdf
+
+# Symlink local para preview con http.server (rutas /tercial/...)
+tercial

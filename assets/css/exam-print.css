@@ -198,6 +198,18 @@
 .exam-pdf__body p { margin: 0 0 var(--space-2); }
 .exam-pdf__body p:last-child { margin-bottom: 0; }
 
+/* Clave del profesor: subrayar SÓLO el valor final de cada respuesta.
+   Línea coñac al mismo grosor (2px) que el border-left editorial.
+   Se aplica envolviendo el valor con <span class="answer-final">…</span>.
+   Usamos border-bottom (no text-decoration) porque KaTeX renderiza con
+   display: inline-block y text-decoration no atraviesa ese contexto. */
+.exam-pdf__answer-key .answer-final {
+  display: inline-block;
+  border-bottom: 2px solid var(--accent-conac);
+  padding-bottom: 1px;
+  line-height: 1.2;
+}
+
 .exam-pdf__points {
   font-family: var(--font-family-body);
   font-size: 8.5pt;
