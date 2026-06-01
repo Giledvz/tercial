@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Aula ECOEMS · Tercial</title>
+
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+
+  <header class="hero">
+    <p class="eyebrow">Curso · ECOEMS · Profe Gil</p>
+    <h1 class="hero__title">Aula <em>ECOEMS</em></h1>
+    <p class="hero__lede">
+      Exámenes, apuntes y materiales del curso. Todo aquí, sin tener que entrar a Classroom.
+    </p>
+  </header>
+
+  <section id="examenes">
+    <header class="section-header" data-cat="coral">
+      <h2 class="section-header__title">
+        <span class="section-header__num">i.</span>
+        Exámenes
+      </h2>
+      <span class="section-header__count">3 archivos</span>
+    </header>
+
+    <p class="section-intro">
+      Cada fin de semana del curso tiene su propio examen. Abre la versión del alumno para resolverlo; la clave del profesor está marcada por separado.
+    </p>
+
+    <div class="card-grid card-grid--cols-2">
+
+      <a class="card-link" href="/tercial/examenes-pdf/examen-12-mate.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Examen 12 — <em>Matemáticas</em></h3>
+          </header>
+          <p class="card__body">
+            Sábado 30 de mayo de 2026 · 32 ejercicios · 36 pts. Álgebra, geometría, probabilidad y porcentajes.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">alumno · html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/tercial/examenes-pdf/examen-12-fisica.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Examen 12 — <em>Física</em></h3>
+          </header>
+          <p class="card__body">
+            Sábado 30 de mayo de 2026 · 27 ejercicios · 35 pts. Cinemática, dinámica, fluidos, calor y electricidad.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">alumno · html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+      <a class="card-link" href="/tercial/examenes-pdf/examen-1-fisica.html">
+        <article class="card">
+          <header class="card__header">
+            <h3 class="card__title">Examen 1 — <em>Física</em></h3>
+          </header>
+          <p class="card__body">
+            Primer fin de semana del curso. Repaso inicial de mecánica.
+          </p>
+          <footer class="card__footer">
+            <span class="card__meta">alumno · html</span>
+            <span class="card__cta">Abrir →</span>
+          </footer>
+        </article>
+      </a>
+
+    </div>
+
+    <details class="exam-keys">
+      <summary>Claves del profesor (para calificar)</summary>
+      <ul class="topic-list">
+        <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/examen-12-mate-respuestas.html"><span class="topic-list__name">Examen 12 — Matemáticas <span class="topic-list__hint">— con respuestas subrayadas</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+        <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/examen-12-fisica-respuestas.html"><span class="topic-list__name">Examen 12 — Física <span class="topic-list__hint">— con respuestas subrayadas</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="clases">
+    <header class="section-header" data-cat="purple">
+      <h2 class="section-header__title">
+        <span class="section-header__num">ii.</span>
+        Materiales de clase
+      </h2>
+      <span class="section-header__count">por agregar</span>
+    </header>
+
+    <p class="section-intro">
+      Aquí van los apuntes, ejercicios y guías que normalmente subes a Classroom. Si me pasas la lista (o los archivos), los enlazo aquí con el mismo formato.
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · curso ECOEMS</p>
+  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
+  <nav class="site-footer__links" aria-label="enlaces de pie">
+    <a href="/tercial/">Inicio</a>
+    <a href="#examenes">Exámenes</a>
+    <a href="#clases">Materiales</a>
+  </nav>
+</footer>
+
+</body>
+</html>
