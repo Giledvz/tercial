@@ -26,3 +26,6 @@ examenes-pdf/*.pdf
 
 # Symlink local para preview con http.server (rutas /tercial/...)
 tercial
+
+# Workspace de VS Code (preferencias locales)
+*.code-workspace
