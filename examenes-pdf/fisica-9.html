@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Física 9 — Ondas · Tercial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+
+  <script defer src="../assets/js/katex-loader.js"></script>
+</head>
+<body>
+
+<main class="exam-pdf exam-pdf--fisica">
+
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Hoja de trabajo · Física 9</p>
+    <h1 class="exam-pdf__title">Física 9 — <em>Ondas</em></h1>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Ondas mecánicas y sonido · versión alumno</p>
+  </header>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Lee la teoría y resuelve los ejercicios con procedimiento completo, usando $v = \lambda f$ y $T = \dfrac{1}{f}$.</p>
+  </div>
+
+  <section class="exam-pdf__section exam-pdf__section--first">
+    <h2 class="exam-pdf__section-title">Ondas mecánicas</h2>
+    <p class="exam-pdf__section-intro">Un <strong>movimiento ondulatorio</strong> es un proceso por medio del cual se transmite energía de una parte a otra sin que exista transferencia de materia. Las ondas mecánicas requieren un medio material para propagarse.</p>
+  </section>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>Ondas longitudinales:</strong> se presentan cuando las partículas del medio material vibran paralelamente a la dirección de la propagación de la onda.</li>
+    <li><strong>Ondas transversales:</strong> se presentan cuando las partículas del medio material vibran perpendicularmente a la dirección de propagación.</li>
+  </ol>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 380 190" width="380" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Onda transversal arriba (vibración perpendicular, longitud de onda marcada) y onda longitudinal abajo (zonas de compresión y expansión)">
+      <defs>
+        <style>
+          .geo-line  { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
+          .geo-accent { stroke: #6b3a2e; stroke-width: 1.2; fill: none; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 11px; fill: #877b6c; }
+        </style>
+      </defs>
+      <!-- transversal -->
+      <path class="geo-line" d="M 60,40 q 20,-26 40,0 q 20,26 40,0 q 20,-26 40,0 q 20,26 40,0 q 20,-26 40,0 q 20,26 40,0"/>
+      <line class="geo-accent" x1="34" y1="22" x2="34" y2="58"/>
+      <polygon fill="#6b3a2e" points="30,24 34,16 38,24"/>
+      <polygon fill="#6b3a2e" points="30,56 34,64 38,56"/>
+      <!-- lambda bracket entre crestas -->
+      <line class="geo-line" x1="140" y1="14" x2="220" y2="14"/>
+      <line class="geo-line" x1="140" y1="10" x2="140" y2="18"/>
+      <line class="geo-line" x1="220" y1="10" x2="220" y2="18"/>
+      <text class="geo-label" x="180" y="10" text-anchor="middle">λ</text>
+      <text class="geo-label" x="60" y="78" text-anchor="start">Onda transversal — vibración perpendicular</text>
+      <!-- longitudinal -->
+      <g stroke="#4a3f33" stroke-width="1.1">
+        <line x1="60" y1="108" x2="60" y2="140"/><line x1="65" y1="108" x2="65" y2="140"/><line x1="70" y1="108" x2="70" y2="140"/><line x1="75" y1="108" x2="75" y2="140"/>
+        <line x1="90" y1="108" x2="90" y2="140"/><line x1="103" y1="108" x2="103" y2="140"/><line x1="116" y1="108" x2="116" y2="140"/>
+        <line x1="132" y1="108" x2="132" y2="140"/><line x1="137" y1="108" x2="137" y2="140"/><line x1="142" y1="108" x2="142" y2="140"/><line x1="147" y1="108" x2="147" y2="140"/>
+        <line x1="162" y1="108" x2="162" y2="140"/><line x1="175" y1="108" x2="175" y2="140"/><line x1="188" y1="108" x2="188" y2="140"/>
+        <line x1="204" y1="108" x2="204" y2="140"/><line x1="209" y1="108" x2="209" y2="140"/><line x1="214" y1="108" x2="214" y2="140"/><line x1="219" y1="108" x2="219" y2="140"/>
+        <line x1="234" y1="108" x2="234" y2="140"/><line x1="247" y1="108" x2="247" y2="140"/><line x1="260" y1="108" x2="260" y2="140"/>
+        <line x1="276" y1="108" x2="276" y2="140"/><line x1="281" y1="108" x2="281" y2="140"/><line x1="286" y1="108" x2="286" y2="140"/><line x1="291" y1="108" x2="291" y2="140"/>
+        <line x1="306" y1="108" x2="306" y2="140"/><line x1="319" y1="108" x2="319" y2="140"/><line x1="332" y1="108" x2="332" y2="140"/>
+      </g>
+      <line class="geo-accent" x1="18" y1="124" x2="50" y2="124"/>
+      <polygon fill="#6b3a2e" points="20,120 12,124 20,128"/>
+      <polygon fill="#6b3a2e" points="48,120 56,124 48,128"/>
+      <text class="geo-label" x="67" y="156" text-anchor="middle">compresión</text>
+      <text class="geo-label" x="175" y="156" text-anchor="middle">expansión</text>
+      <text class="geo-label" x="60" y="178" text-anchor="start">Onda longitudinal — vibración paralela</text>
+    </svg>
+  </figure>
+
+  <p class="exam-pdf__subsection">Características de las ondas</p>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>Longitud de onda:</strong> distancia entre dos crestas o dos valles consecutivos. Se representa con la letra griega $\lambda$ (lambda) y se mide en $\mathrm{m/ciclo}$.</li>
+    <li><strong>Frecuencia:</strong> número de veces por segundo en el cual se realiza un ciclo completo de una onda. Sus unidades son los hertz: $\mathrm{Hz} = \dfrac{1}{\mathrm{s}}$.</li>
+    <li><strong>Periodo:</strong> tiempo que tarda en realizarse un ciclo de la onda. $T = \dfrac{1}{f}$, donde $T$ = periodo ($\mathrm{s/ciclo}$) y $f$ = frecuencia ($\mathrm{ciclo/s}$).</li>
+    <li><strong>Nodo:</strong> es el punto donde la onda cruza la línea de equilibrio.</li>
+    <li><strong>Elongación:</strong> es la distancia entre cualquier punto de una onda y su posición de equilibrio.</li>
+    <li><strong>Amplitud de onda:</strong> es la máxima elongación o alejamiento de su posición de equilibrio.</li>
+    <li><strong>Rapidez de propagación:</strong> es aquella con la cual se propaga un pulso a través de un medio. $v = \dfrac{\lambda}{T} = \lambda f$, donde $v$ = velocidad de propagación ($\mathrm{m/s}$).</li>
+  </ol>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 380 170" width="380" height="170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomía de una onda: crestas, valles, nodos, amplitud y longitud de onda sobre la línea de equilibrio">
+      <defs>
+        <style>
+          .geo-line  { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
+          .geo-accent { stroke: #6b3a2e; stroke-width: 1.2; fill: none; }
+          .geo-dot   { fill: #6b3a2e; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 11px; fill: #877b6c; }
+        </style>
+      </defs>
+      <!-- línea de equilibrio -->
+      <line class="geo-line" x1="20" y1="90" x2="360" y2="90" stroke-dasharray="4 3"/>
+      <!-- onda: crestas en x≈70 y x≈270, valle en x≈170 -->
+      <path class="geo-accent" d="M 20,90 C 50,30 90,30 120,90 C 150,150 190,150 220,90 C 250,30 290,30 320,90 C 335,120 350,135 360,138"/>
+      <!-- nodos -->
+      <circle class="geo-dot" cx="120" cy="90" r="3.5"/>
+      <circle class="geo-dot" cx="220" cy="90" r="3.5"/>
+      <circle class="geo-dot" cx="320" cy="90" r="3.5"/>
+      <text class="geo-label" x="120" y="108" text-anchor="middle">nodo</text>
+      <text class="geo-label" x="220" y="108" text-anchor="middle">nodo</text>
+      <!-- crestas -->
+      <text class="geo-label" x="70" y="28" text-anchor="middle">cresta</text>
+      <text class="geo-label" x="270" y="28" text-anchor="middle">cresta</text>
+      <!-- valle -->
+      <text class="geo-label" x="170" y="160" text-anchor="middle">valle</text>
+      <!-- amplitud -->
+      <line class="geo-line" x1="270" y1="90" x2="270" y2="45"/>
+      <polygon fill="#4a3f33" points="266,49 270,41 274,49"/>
+      <text class="geo-label" x="278" y="70" text-anchor="start">amplitud</text>
+      <!-- longitud de onda bracket cresta a cresta -->
+      <line class="geo-line" x1="70" y1="14" x2="270" y2="14"/>
+      <line class="geo-line" x1="70" y1="10" x2="70" y2="18"/>
+      <line class="geo-line" x1="270" y1="10" x2="270" y2="18"/>
+      <text class="geo-label" x="170" y="10" text-anchor="middle">longitud de onda (λ)</text>
+    </svg>
+  </figure>
+
+  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes ejercicios.</p>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>La nota musical <strong>la</strong> tiene una frecuencia de $440\,\mathrm{Hz}$. Si en el aire se propaga con una velocidad de $340\,\mathrm{m/s}$ y en el agua a $1\,400\,\mathrm{m/s}$, calcula su longitud de onda en esos medios.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la frecuencia y el periodo de las ondas producidas en una cuerda de guitarra si tienen una rapidez de propagación de $140\,\mathrm{m/s}$ y su longitud de onda es de $0.3\,\mathrm{m/ciclo}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Por una cuerda tensa se propagan ondas con una frecuencia de $200\,\mathrm{Hz}$ y una rapidez de propagación de $130\,\mathrm{m/s}$. ¿Cuál es su longitud de onda?</p>
+    </div></li>
+  </ol>
+
+  <p class="exam-pdf__subsection">Ondas sonoras</p>
+
+  <p class="exam-pdf__section-intro">El sonido es el fenómeno físico que estimula al oído. En los seres humanos el sonido se percibe cuando un cuerpo vibra a una frecuencia entre $15$ y $20\,000\,\mathrm{Hz}$ (espectro audible). Las ondas sonoras son ondas mecánicas longitudinales. Un sonido, por intenso que sea, no se propaga en el vacío porque no existe un material por el cual se transmita la vibración. La <strong>rapidez de propagación</strong> del sonido depende del medio elástico y su temperatura.</p>
+
+  <table class="exam-pdf__table">
+    <thead>
+      <tr><th>Estado</th><th>Medio</th><th>Velocidad del sonido (m/s)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td rowspan="4">Gaseoso</td><td>Aire ($20\,^\circ\mathrm{C}$)</td><td>$340$</td></tr>
+      <tr><td>Hidrógeno ($0\,^\circ\mathrm{C}$)</td><td>$1\,286$</td></tr>
+      <tr><td>Oxígeno ($0\,^\circ\mathrm{C}$)</td><td>$317$</td></tr>
+      <tr><td>Helio ($0\,^\circ\mathrm{C}$)</td><td>$972$</td></tr>
+      <tr><td rowspan="2">Líquido</td><td>Agua ($25\,^\circ\mathrm{C}$)</td><td>$1\,493$</td></tr>
+      <tr><td>Agua de mar ($25\,^\circ\mathrm{C}$)</td><td>$1\,533$</td></tr>
+      <tr><td rowspan="5">Sólido</td><td>Aluminio</td><td>$5\,100$</td></tr>
+      <tr><td>Cobre</td><td>$3\,560$</td></tr>
+      <tr><td>Hierro</td><td>$5\,130$</td></tr>
+      <tr><td>Plomo</td><td>$1\,322$</td></tr>
+      <tr><td>Caucho</td><td>$54$</td></tr>
+      <tr><td>Vacío</td><td>Vacío</td><td>$0$</td></tr>
+    </tbody>
+  </table>
+
+  <p class="exam-pdf__subsection">Cualidades del sonido</p>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>Intensidad:</strong> determina si un sonido es fuerte o débil. Se mide en decibeles (dB).</li>
+    <li><strong>Tono:</strong> depende de la frecuencia. A mayor frecuencia el sonido es más alto y agudo, mientras que a menor frecuencia el sonido es más bajo o más grave.</li>
+    <li><strong>Timbre:</strong> cualidad que posibilita identificar la fuente sonora aunque distintos instrumentos produzcan sonidos con el mismo tono e intensidad.</li>
+  </ol>
+
+  <p class="exam-pdf__section-intro">Existe un fenómeno muy conocido llamado <strong>efecto Doppler</strong>, el cual menciona que la frecuencia percibida puede variar si existe un desplazamiento ya sea de la fuente o del emisor.</p>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.ClasesKatex) window.ClasesKatex.load();
+  });
+</script>
+
+</body>
+</html>
