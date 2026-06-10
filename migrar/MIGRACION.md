@@ -56,9 +56,9 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `matematicas-3` (+respuestas) → `matematicas-3.html` (132 ej)
 - ☑ `matematicas-4` (+respuestas) → `matematicas-4.html` (120 ej)
 
-### ☐ Bloque 7 — Matemáticas 5 y 6 (2-3 archivos)
-- ☐ `matematicas-5` (Ecuaciones) → `matematicas-5.html` (revisar diff COMIPEMS)
-- ☐ `matematicas-6` (Lenguaje algebraico) → `matematicas-6.html`
+### ☑ Bloque 7 — Matemáticas 5 y 6 (2 hojas, solo alumno) — HECHO 2026-06-10
+- ☑ `matematicas-5` (Ecuaciones, usé variante COMIPEMS-1 con fix de typos) → `matematicas-5.html` (82 ej, sin clave en Overleaf)
+- ☑ `matematicas-6` (Lenguaje algebraico) → `matematicas-6.html` (65 ej, sin clave)
 
 ### ☐ Bloque 8 — Matemáticas 7 y 8 (3 archivos)
 - ☐ `matematicas-7` (Estadística y probabilidad) → `matematicas-7.html`
@@ -111,6 +111,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-10 · Bloque 7 (Matemáticas 5 y 6, solo alumno — Overleaf no trae clave, como Física 3/9-11). Generadas con `/tmp/gen_alumno.py` (parsea la versión alumno; modo math2/prose). Mate 5: se usó la variante COMIPEMS-1 (corrige `x^-27x`→`x^2-27x` y agrega intro). Typos del original corregidos: `2++4(x-7)`→`2+4(x-7)` (#15 primer grado), llaves visibles `\{5x-(6+x)\}` (#23), `x^2-11x+10=`→`= 0`; los `\begin{cases}` venían con `$$ \\ $$` mal escrito → limpiado. Se descartó la caja de fórmula espuria (`a^2-b^2=(a-b)(a+b)`) que el original tenía pegada por error en "Sistema de ecuaciones".
 - 2026-06-10 · Bloque 6 (Matemáticas 3 y 4). Listas enormes (132 y 120 ejercicios): generadas con `/tmp/gen_mate.py`, que parsea el `.tex` de **respuestas** (ya trae expresiones limpias + respuestas) y emite la hoja única. El parser toma expresión y respuesta de cada `\item ... \textcolor{purple}{...}`, convierte `\(\)`→`$`, `\frac`→`\dfrac`; las cajas de fórmula e intros se inyectan por config. Conviene reusar ese generador para futuros bancos de pura lista. (Las erratas del alumno —p. ej. `(6a+b)(6a+b)`, `x^3y4^`, `121a^12`— quedaron corregidas porque se tomó la expresión del solucionario.)
 - 2026-06-10 · Bloque 5 (Matemáticas 1 y 2, primeras hojas en formato único). **Erratas corregidas vs original** (revisar Gil): el solucionario de M1 alteró 3 ejercicios de "suma y resta de fracciones" respecto a la hoja del alumno (núms. 3, 7 y 8); se conservaron las expresiones del alumno y se recalcularon sus respuestas (49/48, 1/8 y 1/15). Área del terreno: 45.30×26.45 = 1 198.19 m² (solucionario decía 1 198.35). En M2: rueda ¾ de vuelta cada medio minuto en media hora = 45 vueltas (decía 22.5); taxista 12 km = $104 (decía $129.50); riñones en 90 min = 11 250 mL (decía 18 750). En la regla de 3 inversa la convención del original es inconsistente entre ítems (p. ej. 23 vs 8); se transcribió tal cual.
 - 2026-06-10 · Bloque 4.5 (hoja única alumno/clave, decisión de Gil: opción 1). Los pares de Física 1, 2, 4, 6 y 8 se consolidaron en un solo HTML cada uno; los 5 `-respuestas.html` se eliminaron. Infraestructura: reglas `.clave-only`/`.alumno-only` en exam-print.css, `assets/js/exam-clave.js`, flag `--clave` en build-exam-pdf.mjs, enlaces de claves en aula.html → `?clave=1`. Verificado generando los 10 PDFs (5 alumno + 5 clave). Nota: el PDF del alumno se genera sin las respuestas en el archivo (no es ocultamiento dentro del PDF), así que no hay forma de extraerlas de ahí.
