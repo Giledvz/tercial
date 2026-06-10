@@ -60,10 +60,9 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `matematicas-5` (Ecuaciones, usé variante COMIPEMS-1 con fix de typos) → `matematicas-5.html` (82 ej, sin clave en Overleaf)
 - ☑ `matematicas-6` (Lenguaje algebraico) → `matematicas-6.html` (65 ej, sin clave)
 
-### ☐ Bloque 8 — Matemáticas 7 y 8 (3 archivos)
-- ☐ `matematicas-7` (Estadística y probabilidad) → `matematicas-7.html`
-- ☐ `matematicas-7-respuestas` → `matematicas-7-respuestas.html`
-- ☐ `matematicas-8-comipems` (Repaso 6 clases) → `matematicas-8-repaso.html`
+### ☑ Bloque 8 — Matemáticas 7 y 8 (2 hojas) — HECHO 2026-06-10
+- ☑ `matematicas-7` (+respuestas) → `matematicas-7.html` (hoja única; 2 histogramas → SVG; foto de baraja omitida)
+- ☑ `matematicas-8-comipems` (Repaso 6 clases) → `matematicas-8.html` (86 ej, solo alumno)
 
 ### ☐ Bloque 9 — Conversiones y despejes (3 archivos)
 - ☐ `conversiones` → `conversiones.html`
@@ -111,6 +110,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-10 · Bloque 8 (Matemáticas 7 y 8). Mate 7 (estadística + probabilidad) escrito a mano por estructura mixta (conjuntos de datos, problemas, histogramas, probabilidad anidada): los 2 histogramas TikZ → SVG de barras en paleta Tercial; la foto de la baraja (matematicas1.png) se omitió por decorativa (el problema es autosuficiente). Mate 8 (repaso, solo alumno — sin clave en Overleaf) generado con gen_alumno.py en modo `layout:'auto'`, que decide math2/prose por grupo según si los ítems empiezan con `$` (acomoda las 6 "Clases" con sus sub-bloques mixtos). **Avance: 8/16 bloques — toda Física (1-11) y Matemáticas (1-8) migradas; 19 hojas en el aula.**
 - 2026-06-10 · Bloque 7 (Matemáticas 5 y 6, solo alumno — Overleaf no trae clave, como Física 3/9-11). Generadas con `/tmp/gen_alumno.py` (parsea la versión alumno; modo math2/prose). Mate 5: se usó la variante COMIPEMS-1 (corrige `x^-27x`→`x^2-27x` y agrega intro). Typos del original corregidos: `2++4(x-7)`→`2+4(x-7)` (#15 primer grado), llaves visibles `\{5x-(6+x)\}` (#23), `x^2-11x+10=`→`= 0`; los `\begin{cases}` venían con `$$ \\ $$` mal escrito → limpiado. Se descartó la caja de fórmula espuria (`a^2-b^2=(a-b)(a+b)`) que el original tenía pegada por error en "Sistema de ecuaciones".
 - 2026-06-10 · Bloque 6 (Matemáticas 3 y 4). Listas enormes (132 y 120 ejercicios): generadas con `/tmp/gen_mate.py`, que parsea el `.tex` de **respuestas** (ya trae expresiones limpias + respuestas) y emite la hoja única. El parser toma expresión y respuesta de cada `\item ... \textcolor{purple}{...}`, convierte `\(\)`→`$`, `\frac`→`\dfrac`; las cajas de fórmula e intros se inyectan por config. Conviene reusar ese generador para futuros bancos de pura lista. (Las erratas del alumno —p. ej. `(6a+b)(6a+b)`, `x^3y4^`, `121a^12`— quedaron corregidas porque se tomó la expresión del solucionario.)
 - 2026-06-10 · Bloque 5 (Matemáticas 1 y 2, primeras hojas en formato único). **Erratas corregidas vs original** (revisar Gil): el solucionario de M1 alteró 3 ejercicios de "suma y resta de fracciones" respecto a la hoja del alumno (núms. 3, 7 y 8); se conservaron las expresiones del alumno y se recalcularon sus respuestas (49/48, 1/8 y 1/15). Área del terreno: 45.30×26.45 = 1 198.19 m² (solucionario decía 1 198.35). En M2: rueda ¾ de vuelta cada medio minuto en media hora = 45 vueltas (decía 22.5); taxista 12 km = $104 (decía $129.50); riñones en 90 min = 11 250 mL (decía 18 750). En la regla de 3 inversa la convención del original es inconsistente entre ítems (p. ej. 23 vs 8); se transcribió tal cual.
