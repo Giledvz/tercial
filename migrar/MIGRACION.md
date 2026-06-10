@@ -10,7 +10,7 @@
 - CSS enlazado con rutas relativas (`../assets/css/...`), igual que `examen-12-mate.html` (referencia de oro).
 - Math: KaTeX `$...$`, unidades con `\mathrm{}` y `\,`, miles `4\,000` (ver §5 de exporta-pdf.md).
 - Figuras simples (gráficas, diagramas) → redibujar como SVG inline con paleta Tercial. Fotos/imágenes complejas → copiar PNG a `examenes-pdf/img/` y `<img>` dentro de `.exam-pdf__figure`.
-- Versiones "(Respuestas)" → archivo `-respuestas.html` con `.answer-key` y `.answer-final` subrayando solo el valor final.
+- **Hoja única alumno/clave** (desde Bloque 4.5): un solo HTML por hoja con las respuestas envueltas en `.clave-only` (y variantes de texto en `.alumno-only`). Sin parámetros se ve la versión del alumno; con `?clave=1` el script `assets/js/exam-clave.js` muestra las respuestas (`.answer-final` subraya solo el valor final). PDFs: `node tools/build-exam-pdf.mjs <html>` (alumno) y `... --clave` (profesor). Ya NO se crean archivos `-respuestas.html`.
 - Variantes "(interlineado)"/"(Espaciado)" = mismo contenido con espacio extra para resolver a mano → NO se migran como documento aparte (verificado por diff). Si se necesita espacio en el impreso, se decidirá con una clase CSS, no con otro archivo.
 
 ## Hallazgos del inventario
@@ -114,6 +114,8 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - `matematicas-5-interlineado` (= Matemáticas 5 con espacios)
 
 ## Bitácora
+
+- 2026-06-10 · Bloque 4.5 (hoja única alumno/clave, decisión de Gil: opción 1). Los pares de Física 1, 2, 4, 6 y 8 se consolidaron en un solo HTML cada uno; los 5 `-respuestas.html` se eliminaron. Infraestructura: reglas `.clave-only`/`.alumno-only` en exam-print.css, `assets/js/exam-clave.js`, flag `--clave` en build-exam-pdf.mjs, enlaces de claves en aula.html → `?clave=1`. Verificado generando los 10 PDFs (5 alumno + 5 clave). Nota: el PDF del alumno se genera sin las respuestas en el archivo (no es ocultamiento dentro del PDF), así que no hay forma de extraerlas de ahí.
 
 - 2026-06-09 · Setup: staging descomprimido, inventario completo, plan de bloques creado.
 - 2026-06-10 · Bloque 4 (Física 9, 10 y 11 — sólo versión alumno, no hay claves en Overleaf). Figuras redibujadas en SVG: ondas transversal/longitudinal, anatomía de onda, imán con líneas de campo, presión atmosférica, barco empuje/peso, reflexión, refracción y prisma; velocidad del sonido y espectro electromagnético → tablas hairline. Imágenes descartadas por ser clipart sin información extra: infografía de electrización y caricatura Ohm/Volt/Amp (Física 10), foto Pink Floyd del prisma (Física 11, sustituida por SVG).

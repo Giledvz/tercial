@@ -519,7 +519,30 @@ Envuelve SÓLO el valor final (no toda la línea) con `<span class="answer-final
 
 El `border-bottom` se ve con cualquier contenido (math, texto, bold). NO uses `text-decoration: underline` — se rompe con KaTeX.
 
-### 5.4 Page breaks
+### 5.4 Hoja única alumno/clave (convención del repo Tercial)
+
+En `examenes-pdf/` las hojas de trabajo viven en UN solo HTML con las dos
+versiones. Las respuestas van envueltas en `.clave-only` y los textos que
+sólo aplican al alumno en `.alumno-only`:
+
+- Por defecto la página muestra la versión del alumno (CSS oculta `.clave-only`).
+- Con `?clave=1`, `assets/js/exam-clave.js` agrega `.is-clave` al `<main>` y
+  aparecen las respuestas (cada valor final con `.answer-final`).
+- PDFs: `node tools/build-exam-pdf.mjs <html>` (alumno) y `… --clave` (profesor).
+- El PDF del alumno se genera sin las respuestas en el documento; no es
+  contenido oculto dentro del PDF.
+
+Patrón típico:
+
+```html
+<p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Física 1</span><span class="clave-only">Clave · profesor · Física 1</span></p>
+…
+<li class="exam-pdf__exercise">$5\,\mathrm{km}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$5\,000\,\mathrm{m}$</span></span></li>
+…
+<p class="clave-only">$F = ma = 3\,\mathrm{kg} \times 15\,\mathrm{m/s^2} =$ <span class="answer-final">$45\,\mathrm{N}$</span></p>
+```
+
+### 5.5 Page breaks
 
 - `<li class="exam-pdf__exercise">` ya trae `page-break-inside: avoid` — un ejercicio nunca se corta a la mitad.
 - Para forzar nueva página (ej. antes de la clave del profesor): `style="page-break-before: always;"` o `<section class="exam-pdf__answer-key" style="page-break-before: always;">`.

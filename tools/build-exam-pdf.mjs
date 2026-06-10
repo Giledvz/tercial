@@ -4,8 +4,11 @@
    Genera un PDF a partir de un examen HTML usando Puppeteer.
 
    Uso:
-     node tools/build-exam-pdf.mjs <input.html> [output.pdf]
-     npm run exam -- <input.html> [output.pdf]
+     node tools/build-exam-pdf.mjs <input.html> [output.pdf] [--clave]
+     npm run exam -- <input.html> [output.pdf] [--clave]
+
+   --clave abre el HTML con ?clave=1 (hoja única alumno/clave) para
+   generar la versión del profesor; sin el flag sale la del alumno.
 
    Si omites output.pdf, se genera junto al input cambiando la
    extensión (input.html → input.pdf).
@@ -39,15 +42,22 @@ if (args.length === 0) {
   process.exit(1);
 }
 
-const inputPath = pathResolve(args[0]);
+// --clave: genera la versión del profesor (abre el HTML con ?clave=1,
+// que muestra las respuestas vía exam-clave.js). Sin el flag se genera
+// la versión del alumno.
+const clave = args.includes('--clave');
+const fileArgs = args.filter((a) => a !== '--clave');
+
+const inputPath = pathResolve(fileArgs[0]);
 if (!existsSync(inputPath)) {
   console.error(`No existe: ${inputPath}`);
   process.exit(1);
 }
 
-const outputPath = args[1]
-  ? pathResolve(args[1])
-  : pathResolve(dirname(inputPath), basename(inputPath, extname(inputPath)) + '.pdf');
+const defaultSuffix = clave ? '-respuestas.pdf' : '.pdf';
+const outputPath = fileArgs[1]
+  ? pathResolve(fileArgs[1])
+  : pathResolve(dirname(inputPath), basename(inputPath, extname(inputPath)) + defaultSuffix);
 
 console.log('→ Input:  ' + inputPath);
 console.log('→ Output: ' + outputPath);
@@ -109,7 +119,7 @@ function startServer() {
   const relPath = inputPath.startsWith(REPO_ROOT)
     ? inputPath.slice(REPO_ROOT.length).replace(/\\/g, '/')
     : '/' + basename(inputPath);
-  const url = `http://127.0.0.1:${port}/tercial${relPath}`;
+  const url = `http://127.0.0.1:${port}/tercial${relPath}` + (clave ? '?clave=1' : '');
   console.log('→ URL: ' + url);
 
   const browser = await puppeteer.launch({

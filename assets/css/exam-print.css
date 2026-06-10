@@ -225,6 +225,19 @@
 }
 
 /* ============================================================
+   Hoja única alumno/clave
+   Un mismo HTML sirve las dos versiones: lo marcado con
+   .clave-only sólo aparece cuando <main class="exam-pdf"> lleva
+   .is-clave (la agrega assets/js/exam-clave.js al abrir la página
+   con ?clave=1); lo marcado con .alumno-only desaparece en la
+   clave. Así las preguntas viven en un solo archivo y el PDF del
+   alumno nunca contiene las respuestas.
+   ============================================================ */
+
+.exam-pdf:not(.is-clave) .clave-only { display: none !important; }
+.exam-pdf.is-clave .alumno-only { display: none !important; }
+
+/* ============================================================
    Math display (centrado, fuera del flujo de párrafo)
    ============================================================ */
 

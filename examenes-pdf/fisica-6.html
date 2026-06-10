@@ -16,20 +16,24 @@
   <link rel="stylesheet" href="../assets/css/exam-print.css">
 
   <script defer src="../assets/js/katex-loader.js"></script>
+  <script defer src="../assets/js/exam-clave.js"></script>
 </head>
 <body>
 
+<!-- Hoja única alumno/clave: sin parámetros se ve la versión del alumno;
+     con ?clave=1 aparecen las respuestas (.clave-only). -->
 <main class="exam-pdf exam-pdf--fisica">
 
   <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow">Hoja de trabajo · Física 6</p>
+    <p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Física 6</span><span class="clave-only">Clave · profesor · Física 6</span></p>
     <h1 class="exam-pdf__title">Física 6 — <em>Trabajo mecánico</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Trabajo: fuerza por distancia · versión alumno</p>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Trabajo: fuerza por distancia · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
   </header>
 
   <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label">Instrucciones</span>
-    <p>Resuelve cada problema con procedimiento completo. Cuando la fuerza sea un peso por levantar, calcula primero $F = mg$.</p>
+    <span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span><span class="clave-only">Clave</span></span>
+    <p class="alumno-only">Resuelve cada problema con procedimiento completo. Cuando la fuerza sea un peso por levantar, calcula primero $F = mg$.</p>
+    <p class="clave-only">Cada ejercicio muestra el procedimiento; el valor final aparece subrayado. En esta hoja se usa $g = 9.8\,\mathrm{m/s^2}$.</p>
   </div>
 
   <section class="exam-pdf__section exam-pdf__section--first">
@@ -75,67 +79,91 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Una persona levanta una silla cuyo peso tiene una magnitud de $49\,\mathrm{N}$ hasta una altura de $0.75\,\mathrm{m}$. ¿Qué trabajo realiza?</p>
+      <p class="clave-only">$T = Fd = 49\,\mathrm{N} \times 0.75\,\mathrm{m} =$ <span class="answer-final">$36.75\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>¿Qué magnitud de peso tendrá un cuerpo si al levantarlo a una altura de $1.5\,\mathrm{m}$ se realiza un trabajo de $90\,\mathrm{J}$?</p>
+      <p class="clave-only">$T = Fd \Rightarrow F = \dfrac{T}{d} = \dfrac{90\,\mathrm{J}}{1.5\,\mathrm{m}} =$ <span class="answer-final">$60\,\mathrm{N}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Determinar el trabajo realizado al desplazar un bloque $3\,\mathrm{m}$ sobre una superficie horizontal si la magnitud de la fuerza aplicada es de $25\,\mathrm{N}$.</p>
+      <p class="clave-only">$T = Fd = 25\,\mathrm{N} \times 3\,\mathrm{m} =$ <span class="answer-final">$75\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un ladrillo tiene una masa de $1\,\mathrm{kg}$, ¿a qué distancia se levantó del suelo si se realizó un trabajo de $20\,\mathrm{J}$?</p>
+      <p class="clave-only">Peso del ladrillo: $F = mg = 1\,\mathrm{kg} \times 9.8\,\mathrm{m/s^2} = 9.8\,\mathrm{N}$</p>
+      <p class="clave-only">$T = Fd \Rightarrow d = \dfrac{T}{F} = \dfrac{20\,\mathrm{J}}{9.8\,\mathrm{N}} =$ <span class="answer-final">$2.04\,\mathrm{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un viajero levanta su maleta cuyo peso tiene una magnitud de $196\,\mathrm{N}$ hasta una altura de $0.5\,\mathrm{m}$.</p>
       <ol class="exam-pdf__sublist">
-        <li>¿Qué trabajo realiza?</li>
-        <li>Si se queda parado durante $2$ minutos sosteniendo la petaca a la misma altura, ¿cuánto vale el trabajo realizado?</li>
+        <li>¿Qué trabajo realiza?<span class="clave-only"> $T = Fd = 196\,\mathrm{N} \times 0.5\,\mathrm{m} =$ <span class="answer-final">$98\,\mathrm{J}$</span></span></li>
+        <li>Si se queda parado durante $2$ minutos sosteniendo la petaca a la misma altura, ¿cuánto vale el trabajo realizado?<span class="clave-only"> Como no hay desplazamiento ($d = 0$): $T = F \times 0 =$ <span class="answer-final">$0\,\mathrm{J}$</span></span></li>
       </ol>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>¿Qué trabajo se realiza con una fuerza de $7.7\,\mathrm{N}$ y se hace desplazar un objeto $17\,\mathrm{cm}$?</p>
+      <p class="clave-only">Convertimos: $17\,\mathrm{cm} = 0.17\,\mathrm{m}$. &nbsp;$T = Fd = 7.7\,\mathrm{N} \times 0.17\,\mathrm{m} = 1.309\,\mathrm{J} \approx$ <span class="answer-final">$1.31\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un cuerpo se desplaza $19\,\mathrm{m}$ con un trabajo de $59\,\mathrm{J}$. ¿Con qué fuerza se empuja?</p>
+      <p class="clave-only">$T = Fd \Rightarrow F = \dfrac{T}{d} = \dfrac{59\,\mathrm{J}}{19\,\mathrm{m}} =$ <span class="answer-final">$3.11\,\mathrm{N}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>En una obra de ingeniería una grúa levanta vigas de acero de $900\,\mathrm{kg}$ hasta una altura de $20\,\mathrm{m}$. ¿Qué cantidad de trabajo se realiza en cada operación?</p>
+      <p class="clave-only">Peso de las vigas: $F = mg = 900\,\mathrm{kg} \times 9.8\,\mathrm{m/s^2} = 8\,820\,\mathrm{N}$</p>
+      <p class="clave-only">$T = Fd = 8\,820\,\mathrm{N} \times 20\,\mathrm{m} = 176\,400\,\mathrm{J} =$ <span class="answer-final">$176.4\,\mathrm{kJ}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Al subir una escalera de $6\,\mathrm{m}$ de altura, ¿qué trabajo realiza un hombre de $78\,\mathrm{kg}$?</p>
+      <p class="clave-only">Peso del hombre: $F = mg = 78\,\mathrm{kg} \times 9.8\,\mathrm{m/s^2} = 764.4\,\mathrm{N}$</p>
+      <p class="clave-only">$T = Fd = 764.4\,\mathrm{N} \times 6\,\mathrm{m} = 4\,586.4\,\mathrm{J} \approx$ <span class="answer-final">$4.59\,\mathrm{kJ}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Al arrastrar un trineo con perros, éste se desplaza $650\,\mathrm{m}$. Si la fuerza ejercida en la cuerda es de $250\,\mathrm{N}$, obtenga el trabajo realizado.</p>
+      <p class="clave-only">$T = Fd = 250\,\mathrm{N} \times 650\,\mathrm{m} = 162\,500\,\mathrm{J} =$ <span class="answer-final">$162.5\,\mathrm{kJ}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un niño empuja su patineta con una fuerza de $15\,\mathrm{N}$ a lo largo de $8$ metros. ¿Cuánto trabajo realiza?</p>
+      <p class="clave-only">$T = Fd = 15\,\mathrm{N} \times 8\,\mathrm{m} =$ <span class="answer-final">$120\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Laura ayuda a su papá a mover un mueble aplicando una fuerza horizontal de $35\,\mathrm{N}$. Si realizó un trabajo de $140\,\mathrm{J}$, ¿qué distancia movieron el mueble?</p>
+      <p class="clave-only">$T = Fd \Rightarrow d = \dfrac{T}{F} = \dfrac{140\,\mathrm{J}}{35\,\mathrm{N}} =$ <span class="answer-final">$4\,\mathrm{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Miguel sube su mochila que pesa $18\,\mathrm{N}$ desde el suelo hasta un estante a $1.2\,\mathrm{m}$ de altura. ¿Cuánto trabajo realiza?</p>
+      <p class="clave-only">$T = Fd = 18\,\mathrm{N} \times 1.2\,\mathrm{m} =$ <span class="answer-final">$21.6\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un pequeño robot de juguete ejerce una fuerza de $0.5\,\mathrm{N}$ para mover una pelota. Si la pelota se desplaza $30\,\mathrm{cm}$, ¿cuál es el trabajo realizado por el robot?</p>
+      <p class="clave-only">Convertimos: $30\,\mathrm{cm} = 0.3\,\mathrm{m}$. &nbsp;$T = Fd = 0.5\,\mathrm{N} \times 0.3\,\mathrm{m} =$ <span class="answer-final">$0.15\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Ana levanta una caja de $3\,\mathrm{kg}$ hasta una altura de $1.5\,\mathrm{m}$. ¿Qué trabajo realiza contra la gravedad?</p>
+      <p class="clave-only">Peso de la caja: $F = mg = 3\,\mathrm{kg} \times 9.8\,\mathrm{m/s^2} = 29.4\,\mathrm{N}$</p>
+      <p class="clave-only">$T = Fd = 29.4\,\mathrm{N} \times 1.5\,\mathrm{m} =$ <span class="answer-final">$44.1\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un elevador sube a un grupo de estudiantes con masa total de $250\,\mathrm{kg}$ a una altura de $12\,\mathrm{m}$. ¿Cuánto trabajo realiza el motor del elevador?</p>
+      <p class="clave-only">Peso total: $F = mg = 250\,\mathrm{kg} \times 9.8\,\mathrm{m/s^2} = 2\,450\,\mathrm{N}$</p>
+      <p class="clave-only">$T = Fd = 2\,450\,\mathrm{N} \times 12\,\mathrm{m} = 29\,400\,\mathrm{J} =$ <span class="answer-final">$29.4\,\mathrm{kJ}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Carlos arrastra su maleta con ruedas ejerciendo una fuerza horizontal de $22\,\mathrm{N}$ a lo largo de un pasillo de $15\,\mathrm{m}$. ¿Cuánto trabajo realiza?</p>
+      <p class="clave-only">$T = Fd = 22\,\mathrm{N} \times 15\,\mathrm{m} =$ <span class="answer-final">$330\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Una bicicleta avanza debido a una fuerza de pedaleo de $60\,\mathrm{N}$. Si el ciclista realiza un trabajo de $4\,800\,\mathrm{J}$, ¿qué distancia recorre?</p>
+      <p class="clave-only">$T = Fd \Rightarrow d = \dfrac{T}{F} = \dfrac{4\,800\,\mathrm{J}}{60\,\mathrm{N}} =$ <span class="answer-final">$80\,\mathrm{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Dos amigos empujan juntos un carrito de supermercado con una fuerza total de $28\,\mathrm{N}$. Si lo desplazan $25$ metros, ¿cuánto trabajo realizan en conjunto?</p>
+      <p class="clave-only">$T = Fd = 28\,\mathrm{N} \times 25\,\mathrm{m} =$ <span class="answer-final">$700\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p>Un pequeño barco de juguete es empujado en una piscina con una fuerza de $1.5\,\mathrm{N}$. Si se mueve $40\,\mathrm{cm}$, ¿cuál es el trabajo realizado?</p>
+      <p class="clave-only">Convertimos: $40\,\mathrm{cm} = 0.4\,\mathrm{m}$. &nbsp;$T = Fd = 1.5\,\mathrm{N} \times 0.4\,\mathrm{m} =$ <span class="answer-final">$0.6\,\mathrm{J}$</span></p>
     </div></li>
   </ol>
 
