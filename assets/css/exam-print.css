@@ -427,7 +427,9 @@
   margin: 0 0 var(--space-2);
 }
 
-.exam-pdf__formulas span {
+/* Sólo hijos directos: KaTeX genera <span> anidados que no deben
+   recibir este layout. La etiqueta conserva su propio estilo. */
+.exam-pdf__formulas > span:not(.exam-pdf__formulas-label) {
   display: inline-block;
   margin: 0 var(--space-4);
   font-size: 11.5pt;
