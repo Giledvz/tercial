@@ -47,12 +47,10 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `fisica-10` (Electricidad y magnetismo) → `fisica-10.html`
 - ☑ `fisica-11` (Densidad, presión, óptica) → `fisica-11.html`
 
-### ☐ Bloque 5 — Matemáticas 1 y 2 (4 archivos)
-- ☐ `matematicas-1` (Números) → `matematicas-1.html`
-- ☐ `solucionario-matematicas-1` → `matematicas-1-solucionario.html`
-- ☐ `matematicas-2` (Regla de 3 y porcentajes) → `matematicas-2.html`
-- ☐ `matematicas-2-respuestas` → `matematicas-2-respuestas.html`
-- ☐ decidir: ¿`solucionario-matematicas-2` aparte? → `matematicas-2-solucionario.html`
+### ☑ Bloque 5 — Matemáticas 1 y 2 (2 hojas únicas) — HECHO 2026-06-10
+- ☑ `matematicas-1` + `solucionario-matematicas-1` → `matematicas-1.html` (hoja única)
+- ☑ `matematicas-2` + `matematicas-2-respuestas` → `matematicas-2.html` (hoja única)
+- ☑ `solucionario-matematicas-2` descartado: mismas respuestas que la versión Respuestas, sólo puestas dentro de la fracción
 
 ### ☐ Bloque 6 — Matemáticas 3 y 4 (4 archivos)
 - ☐ `matematicas-3` (Productos notables) → `matematicas-3.html`
@@ -115,6 +113,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-10 · Bloque 5 (Matemáticas 1 y 2, primeras hojas en formato único). **Erratas corregidas vs original** (revisar Gil): el solucionario de M1 alteró 3 ejercicios de "suma y resta de fracciones" respecto a la hoja del alumno (núms. 3, 7 y 8); se conservaron las expresiones del alumno y se recalcularon sus respuestas (49/48, 1/8 y 1/15). Área del terreno: 45.30×26.45 = 1 198.19 m² (solucionario decía 1 198.35). En M2: rueda ¾ de vuelta cada medio minuto en media hora = 45 vueltas (decía 22.5); taxista 12 km = $104 (decía $129.50); riñones en 90 min = 11 250 mL (decía 18 750). En la regla de 3 inversa la convención del original es inconsistente entre ítems (p. ej. 23 vs 8); se transcribió tal cual.
 - 2026-06-10 · Bloque 4.5 (hoja única alumno/clave, decisión de Gil: opción 1). Los pares de Física 1, 2, 4, 6 y 8 se consolidaron en un solo HTML cada uno; los 5 `-respuestas.html` se eliminaron. Infraestructura: reglas `.clave-only`/`.alumno-only` en exam-print.css, `assets/js/exam-clave.js`, flag `--clave` en build-exam-pdf.mjs, enlaces de claves en aula.html → `?clave=1`. Verificado generando los 10 PDFs (5 alumno + 5 clave). Nota: el PDF del alumno se genera sin las respuestas en el archivo (no es ocultamiento dentro del PDF), así que no hay forma de extraerlas de ahí.
 
 - 2026-06-09 · Setup: staging descomprimido, inventario completo, plan de bloques creado.
