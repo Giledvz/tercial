@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Física 8 — Energía · Tercial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+
+  <script defer src="../assets/js/katex-loader.js"></script>
+</head>
+<body>
+
+<main class="exam-pdf exam-pdf--fisica">
+
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Hoja de trabajo · Física 8</p>
+    <h1 class="exam-pdf__title">Física 8 — <em>Energía</em></h1>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Energía, potencia, cantidad de movimiento y calor · versión alumno</p>
+  </header>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Lee la teoría de cada sección y resuelve los problemas con procedimiento completo. Usa la tabla de calores específicos en los ejercicios de calor.</p>
+  </div>
+
+  <section class="exam-pdf__section exam-pdf__section--first">
+    <h2 class="exam-pdf__section-title">La energía y tipos de energía</h2>
+  </section>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>La energía:</strong> se define como la capacidad para efectuar un trabajo.</li>
+    <li><strong>Energía calorífica:</strong> se produce por la combustión de carbón, madera, petróleo, gas natural, gasolina y otros combustibles.</li>
+    <li><strong>Energía eléctrica:</strong> se produce cuando a través de un material conductor se logra un movimiento o flujo de electrones. La corriente eléctrica genera luz, calor y magnetismo.</li>
+    <li><strong>Energía química:</strong> se produce cuando las sustancias reaccionan entre sí alterando su constitución íntima, como es el caso de la energía obtenida en los explosivos o en las pilas eléctricas.</li>
+    <li><strong>Energía hidráulica:</strong> se aprovecha cuando la corriente de agua mueve un molino o la caída de agua de una presa mueve una turbina.</li>
+    <li><strong>Energía eólica:</strong> es la producida por el movimiento del aire y se aprovecha en los molinos de viento o en los aerogeneradores de alta potencia para producir electricidad.</li>
+    <li><strong>Energía nuclear:</strong> es la originada por la energía que mantiene unidas a las partículas en el núcleo de los átomos, misma que se libera en energía calorífica y radiante cuando se produce una reacción de fusión o de fisión.</li>
+    <li><strong>Energía mecánica:</strong> es la que tienen los cuerpos cuando por su posición o su velocidad son capaces de interactuar con el sistema del cual forman parte para realizar un trabajo. Se divide en energía cinética y potencial.</li>
+    <li><strong>Ley de la conservación de la energía:</strong> señala que la energía existente en el universo es una cantidad constante; no se crea ni se destruye, sólo se transforma.</li>
+  </ol>
+
+  <p class="exam-pdf__subsection">La energía mecánica</p>
+
+  <p class="exam-pdf__section-intro"><strong>La energía potencial:</strong> es la que tiene un cuerpo debido a su posición; es capaz de efectuar un trabajo.</p>
+
+  <div class="exam-pdf__formulas">
+    <span>$E_p = \text{masa} \times \text{gravedad} \times \text{altura} = mgh$</span>
+  </div>
+
+  <p class="exam-pdf__section-intro"><strong>La energía cinética:</strong> es la capacidad que poseen los cuerpos en movimiento para realizar un trabajo.</p>
+
+  <div class="exam-pdf__formulas">
+    <span>$E_c = \dfrac{mv^2}{2}$</span>
+  </div>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 360 180" width="360" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rampa en forma de U: energía potencial en los extremos altos y energía cinética en el punto más bajo">
+      <defs>
+        <style>
+          .geo-line  { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
+          .geo-dot   { fill: #6b3a2e; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 12px; fill: #877b6c; }
+        </style>
+      </defs>
+      <path class="geo-line" d="M 40,46 Q 180,226 320,46"/>
+      <circle class="geo-dot" cx="40" cy="46" r="4"/>
+      <circle class="geo-dot" cx="320" cy="46" r="4"/>
+      <circle class="geo-dot" cx="180" cy="136" r="4"/>
+      <text class="geo-label" x="48" y="32" text-anchor="start">Energía potencial</text>
+      <text class="geo-label" x="312" y="32" text-anchor="end">Energía potencial</text>
+      <text class="geo-label" x="180" y="160" text-anchor="middle">Energía cinética</text>
+    </svg>
+  </figure>
+
+  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes problemas de energía.</p>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Determina la energía cinética traslacional de una pelota de béisbol cuya masa es de $100\,\mathrm{g}$ y lleva una velocidad cuya magnitud es de $30\,\mathrm{m/s}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Determine la masa de un cuerpo cuya energía cinética es $400\,\mathrm{J}$ y lleva una velocidad de $20\,\mathrm{m/s}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la magnitud de la velocidad de un cuerpo cuya masa es de $4\,\mathrm{kg}$ y tiene una energía cinética de $100\,\mathrm{J}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la energía cinética que lleva una bala de $8\,\mathrm{g}$ si su velocidad tiene un valor de $400\,\mathrm{m/s}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un corredor que posee una masa de $7\,\mathrm{kg}$ corre a una velocidad de $6\,\mathrm{m/s}$. ¿Cuál es la energía cinética a la que se mueve?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un objeto con una masa de $23.5\,\mathrm{kg}$ se mueve a una velocidad de $12.5\,\mathrm{m/s}$. ¿Qué energía cinética tiene?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la masa de un cuerpo que lleva una velocidad de $10\,\mathrm{m/s}$ y su energía cinética es igual a $1\,000\,\mathrm{J}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Determinar el valor de la velocidad que lleva un cuerpo cuya masa es de $3\,\mathrm{kg}$ si su energía cinética es de $200\,\mathrm{J}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Cuál es la energía cinética de un balón si pesa $4.5\,\mathrm{N}$ y lleva una velocidad de $15\,\mathrm{m/s}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Cuál es la energía potencial de una cubeta con agua de $5\,\mathrm{kg}$ si se encuentra a una altura de $1.30\,\mathrm{m}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la energía potencial de un cuerpo que tiene una masa de $40\,\mathrm{kg}$ si se encuentra a una altura de $6\,\mathrm{m}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Determina a qué altura debe ascender una persona cuya masa es de $75\,\mathrm{kg}$ para que su energía potencial sea de $4\,500\,\mathrm{J}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la energía potencial de una piedra de $2.5\,\mathrm{kg}$ si se eleva a una altura de $2\,\mathrm{m}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿A qué altura se debe encontrar una silla de $5\,\mathrm{kg}$ que tenga una energía potencial de $90\,\mathrm{J}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Una pelota de $480\,\mathrm{g}$ se lanza verticalmente hacia arriba con una velocidad inicial de $45\,\mathrm{m/s}$ y llega hasta una altura de $103\,\mathrm{m}$. Obtener su energía potencial y su energía cinética.</p>
+    </div></li>
+  </ol>
+
+  <p class="exam-pdf__subsection">Ley de la conservación de la energía mecánica</p>
+
+  <p class="exam-pdf__section-intro">La energía no se crea ni se destruye, sólo se transforma.</p>
+
+  <div class="exam-pdf__formulas">
+    <span>$E_m = E_c + E_p$</span>
+  </div>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Una viga de $980\,\mathrm{N}$ se eleva a una altura de $20\,\mathrm{m}$. Calcula:</p>
+      <ol class="exam-pdf__sublist">
+        <li>¿Qué trabajo se realiza para elevar la viga?</li>
+        <li>¿Cuál es la energía potencial gravitacional a los $20\,\mathrm{m}$ de altura?</li>
+        <li>¿Cuál será la energía cinética en el preciso instante antes de chocar contra el suelo si se dejara caer libremente?</li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Se lanza verticalmente hacia arriba una pelota de $0.4\,\mathrm{kg}$ con una velocidad cuya magnitud es de $30\,\mathrm{m/s}$. Calcular:</p>
+      <ol class="exam-pdf__sublist">
+        <li>El valor inicial de la energía cinética y la energía potencial.</li>
+        <li>La energía cinética y la energía potencial a $15\,\mathrm{m}$ de altura.</li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <section class="exam-pdf__section">
+    <h2 class="exam-pdf__section-title">Potencia mecánica</h2>
+    <p class="exam-pdf__section-intro">Es la rapidez con la que se realiza un trabajo. Sus unidades son los watts. También se suele utilizar la medida de los caballos de fuerza (hp).</p>
+  </section>
+
+  <div class="exam-pdf__formulas">
+    <span class="exam-pdf__formulas-label">Fórmulas</span>
+    <span>$P = \dfrac{T}{t}$</span>
+    <span>$P = Fv$</span>
+    <span>$1\,\mathrm{hp} = 746\,\mathrm{W}$</span>
+  </div>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcula la potencia de una máquina que realiza un trabajo de $400\,\mathrm{J}$ en un minuto.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcula el tiempo que tarda un motor de $15\,\mathrm{hp}$ en hacer un trabajo de $40\,\mathrm{J}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcula la potencia de una grúa que es capaz de levantar $30$ bultos de cemento hasta una altura de $10\,\mathrm{m}$ en un tiempo de $2$ segundos, si cada bulto tiene una masa de $50\,\mathrm{kg}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Obtener el tiempo que tarda un motor de un elevador de carga cuya potencia es de $45\,000\,\mathrm{W}$ para elevar una carga de $1\,000\,\mathrm{kg}$ hasta una altura de $40$ metros.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Obtener la potencia de un montacargas que es capaz de levantar $60$ bultos de cemento de $50\,\mathrm{kg}$ cada uno hasta una altura de $5\,\mathrm{m}$ en un tiempo de $4$ segundos.</p>
+    </div></li>
+  </ol>
+
+  <section class="exam-pdf__section">
+    <h2 class="exam-pdf__section-title">Cantidad de movimiento</h2>
+    <p class="exam-pdf__section-intro">Es el producto de la masa de un cuerpo por la velocidad que lleva. Es una cantidad vectorial.</p>
+  </section>
+
+  <div class="exam-pdf__formulas">
+    <span class="exam-pdf__formulas-label">Fórmula</span>
+    <span>$C = m \cdot v$</span>
+  </div>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcular la magnitud de la cantidad de movimiento que tiene un cuerpo cuya masa es de $10\,\mathrm{kg}$ y lleva una velocidad cuya magnitud es de $5\,\mathrm{m/s}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Cuál es la magnitud de la cantidad de movimiento que lleva un cuerpo a una velocidad de $30\,\mathrm{km/h}$ y tiene una masa de $8\,\mathrm{kg}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Cuál es el peso de un cuerpo que lleva una velocidad de $23\,\mathrm{m/s}$ y tiene una magnitud de cantidad de movimiento de $76\,\mathrm{kg \cdot m/s}$?</p>
+    </div></li>
+  </ol>
+
+  <section class="exam-pdf__section">
+    <h2 class="exam-pdf__section-title">Calor</h2>
+  </section>
+
+  <p class="exam-pdf__subsection">Diferencia entre calor y temperatura</p>
+
+  <p class="exam-pdf__section-intro">La <strong>temperatura</strong> es una magnitud física que indica qué tan caliente o fría es una sustancia respecto a un cuerpo que se toma como patrón. Es el valor de la energía cinética media de las moléculas del cuerpo o sistema. Sus unidades son Celsius, Fahrenheit y Kelvin, las cuales se miden con termómetro.</p>
+
+  <p class="exam-pdf__section-intro">El <strong>calor</strong> es energía que se transfiere de los cuerpos que están a mayor temperatura a aquellos que están a menor temperatura, hasta que alcanzan un equilibrio (es decir, la misma temperatura). Sus unidades son joules o calorías.</p>
+
+  <table class="exam-pdf__table">
+    <thead>
+      <tr><th>Escala</th><th>Congelación del agua</th><th>Ebullición del agua</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Celsius</td><td>$0\,^\circ\mathrm{C}$</td><td>$100\,^\circ\mathrm{C}$</td></tr>
+      <tr><td>Fahrenheit</td><td>$32\,^\circ\mathrm{F}$</td><td>$212\,^\circ\mathrm{F}$</td></tr>
+      <tr><td>Kelvin</td><td>$273\,\mathrm{K}$</td><td>$373\,\mathrm{K}$</td></tr>
+    </tbody>
+  </table>
+
+  <p class="exam-pdf__subsection">Formas de propagación del calor</p>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>Conducción:</strong> se da debido al choque entre moléculas a través de un cuerpo sólido. En el vacío no se puede propagar el calor por conducción.</li>
+    <li><strong>Convección:</strong> propagación del calor ocasionada por el movimiento de una sustancia caliente (a través de un fluido, ya sea gas o líquido).</li>
+    <li><strong>Radiación:</strong> propagación del calor por medio de ondas electromagnéticas esparcidas.</li>
+  </ol>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 380 190" width="380" height="190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Olla al fuego: convección dentro del líquido, conducción por el mango y radiación alrededor de la flama">
+      <defs>
+        <style>
+          .geo-line  { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
+          .geo-accent { stroke: #6b3a2e; stroke-width: 1.2; fill: none; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 12px; fill: #877b6c; }
+        </style>
+      </defs>
+      <!-- olla -->
+      <path class="geo-line" d="M 140,70 L 140,130 Q 140,138 148,138 L 232,138 Q 240,138 240,130 L 240,70"/>
+      <line class="geo-line" x1="134" y1="70" x2="246" y2="70"/>
+      <!-- mango -->
+      <line class="geo-line" x1="240" y1="78" x2="292" y2="62"/>
+      <!-- agua: circulación (convección) -->
+      <path class="geo-accent" d="M 160,120 Q 170,95 190,104 Q 210,113 220,92"/>
+      <polygon fill="#6b3a2e" points="218,88 224,96 214,98"/>
+      <!-- flama -->
+      <path class="geo-accent" d="M 184,162 Q 190,148 196,162 Q 190,172 184,162 Z"/>
+      <line class="geo-line" x1="160" y1="172" x2="220" y2="172"/>
+      <!-- radiación: ondas -->
+      <path class="geo-accent" d="M 96,158 q 7,-7 14,0 q 7,7 14,0"/>
+      <path class="geo-accent" d="M 96,170 q 7,-7 14,0 q 7,7 14,0"/>
+      <path class="geo-accent" d="M 256,158 q 7,-7 14,0 q 7,7 14,0"/>
+      <path class="geo-accent" d="M 256,170 q 7,-7 14,0 q 7,7 14,0"/>
+      <!-- etiquetas -->
+      <text class="geo-label" x="118" y="42" text-anchor="start">Convección</text>
+      <line class="geo-line" x1="160" y1="46" x2="180" y2="98" stroke-dasharray="3 3"/>
+      <text class="geo-label" x="300" y="42" text-anchor="end">Conducción</text>
+      <line class="geo-line" x1="282" y1="46" x2="272" y2="62" stroke-dasharray="3 3"/>
+      <text class="geo-label" x="190" y="188" text-anchor="middle">Radiación</text>
+    </svg>
+  </figure>
+
+  <p class="exam-pdf__section-intro">Otro fenómeno interesante es la <strong>dilatación</strong>: los cambios de temperatura afectan el tamaño de los cuerpos, pues la mayoría de ellos se dilatan al calentarse y se contraen si se enfrían.</p>
+
+  <p class="exam-pdf__section-intro">Las unidades para medir el calor son las mismas que se usan para medir el trabajo mecánico y la energía, es decir, el joule. <strong>Caloría:</strong> es la cantidad de calor necesaria para elevar un gramo de agua $1\,^\circ\mathrm{C}$; además, $1\,\mathrm{cal} = 4.18\,\mathrm{J}$.</p>
+
+  <p class="exam-pdf__section-intro"><strong>Capacidad calorífica:</strong> es la relación que existe entre la cantidad de calor que recibe un cuerpo y su correspondiente elevación de temperatura. Mientras más alto sea su valor, mayor cantidad de calor requiere la sustancia para elevar su temperatura. <strong>Calor específico:</strong> cantidad de calor que necesita un gramo de sustancia para elevar su temperatura $1\,^\circ\mathrm{C}$.</p>
+
+  <div class="exam-pdf__formulas">
+    <span class="exam-pdf__formulas-label">Fórmula</span>
+    <span>$Q = m \cdot C_e \cdot (T_f - T_i)$</span>
+  </div>
+
+  <table class="exam-pdf__table">
+    <thead>
+      <tr><th>Sustancia</th><th>$C_e$ [J/(g·°C)]</th><th>$C_e$ [cal/(g·°C)]</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agua</td><td>$4.182$</td><td>$1.0$</td></tr>
+      <tr><td>Aire seco</td><td>$1.009$</td><td>$0.241$</td></tr>
+      <tr><td>Aluminio</td><td>$0.896$</td><td>$0.214$</td></tr>
+      <tr><td>Bronce</td><td>$0.385$</td><td>$0.092$</td></tr>
+      <tr><td>Cobre</td><td>$0.385$</td><td>$0.092$</td></tr>
+      <tr><td>Concreto</td><td>$0.92$</td><td>$0.22$</td></tr>
+      <tr><td>Hielo (a $0\,^\circ\mathrm{C}$)</td><td>$2.09$</td><td>$0.5$</td></tr>
+      <tr><td>Hierro</td><td>$0.46$</td><td>$0.11$</td></tr>
+      <tr><td>Plomo</td><td>$0.13$</td><td>$0.031$</td></tr>
+      <tr><td>Vidrio</td><td>$0.779$</td><td>$0.186$</td></tr>
+      <tr><td>Zinc</td><td>$0.389$</td><td>$0.093$</td></tr>
+    </tbody>
+  </table>
+
+  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes ejercicios.</p>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Calcula qué cantidad de calor se necesita suministrar a $500\,\mathrm{g}$ de sustancia para que eleve su temperatura de $10\,^\circ\mathrm{C}$ a $80\,^\circ\mathrm{C}$ si la sustancia es:</p>
+      <ol class="exam-pdf__sublist">
+        <li>agua</li>
+        <li>plomo</li>
+        <li>aluminio</li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un bloque de cobre de masa $50\,\mathrm{g}$ se expone a una llama y su temperatura se eleva de $20\,^\circ\mathrm{C}$ a $120\,^\circ\mathrm{C}$. Determinar la cantidad de calor que se transfirió al cobre.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Cuál será la masa de un bloque de plomo que se coloca sobre la llama del mechero si absorbió $560\,\mathrm{cal}$ y aumentó su temperatura de $25\,^\circ\mathrm{C}$ a $185\,^\circ\mathrm{C}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Una persona recoge $200\,\mathrm{g}$ de agua de la llave en su casa, con una temperatura de $26\,^\circ\mathrm{C}$. Si la pone a calentar en la estufa hasta alcanzar una temperatura de $54\,^\circ\mathrm{C}$, contestar lo siguiente:</p>
+      <ol class="exam-pdf__sublist">
+        <li>¿Cuál es la cantidad de calor que la llama cedió al agua?</li>
+        <li>Si dicha masa de agua a $54\,^\circ\mathrm{C}$ se deja en un refrigerador para que se enfríe hasta llegar a $0\,^\circ\mathrm{C}$, ¿cuál es la cantidad de calor que liberó el agua?</li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un bloque de hierro de $125\,\mathrm{g}$ a una temperatura de $350\,^\circ\mathrm{C}$ se pone en contacto con $400\,\mathrm{g}$ de agua a una temperatura de $30\,^\circ\mathrm{C}$. Determinar la temperatura de equilibrio que alcanzan después de cierto tiempo.</p>
+    </div></li>
+  </ol>
+
+  <p class="exam-pdf__subsection">Leyes de la termodinámica</p>
+
+  <ol class="exam-pdf__sublist">
+    <li><strong>Ley cero de la termodinámica:</strong> si se ponen en contacto dos sistemas a diferentes temperaturas, éstos intercambiarán calor hasta lograr un equilibrio térmico, es decir, hasta que ambos tengan la misma temperatura.</li>
+  </ol>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 380 130" width="380" height="130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tres sistemas A, B y C: si A está en equilibrio con B y B con C, entonces A y C están en equilibrio térmico">
+      <defs>
+        <style>
+          .geo-fill  { fill: #ede2c5; stroke: #4a3f33; stroke-width: 1.2; }
+          .geo-accent { stroke: #6b3a2e; stroke-width: 1.4; fill: none; }
+          .geo-big   { font-family: 'Fraunces', serif; font-style: italic; font-size: 20px; fill: #1f1a16; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 11px; fill: #877b6c; }
+        </style>
+      </defs>
+      <rect class="geo-fill" x="50" y="34" width="70" height="62" rx="3"/>
+      <rect class="geo-fill" x="155" y="34" width="70" height="62" rx="3"/>
+      <rect class="geo-fill" x="260" y="34" width="70" height="62" rx="3"/>
+      <text class="geo-big" x="85" y="72" text-anchor="middle">A</text>
+      <text class="geo-big" x="190" y="72" text-anchor="middle">B</text>
+      <text class="geo-big" x="295" y="72" text-anchor="middle">C</text>
+      <path class="geo-accent" d="M 124,65 L 151,65"/>
+      <polygon fill="#6b3a2e" points="124,61 118,65 124,69"/>
+      <polygon fill="#6b3a2e" points="151,61 157,65 151,69"/>
+      <path class="geo-accent" d="M 229,65 L 256,65"/>
+      <polygon fill="#6b3a2e" points="229,61 223,65 229,69"/>
+      <polygon fill="#6b3a2e" points="256,61 262,65 256,69"/>
+      <text class="geo-label" x="137" y="22" text-anchor="middle">A en equilibrio con B</text>
+      <text class="geo-label" x="242" y="118" text-anchor="middle">B en equilibrio con C</text>
+    </svg>
+    <figcaption class="exam-pdf__figure-caption">Por lo tanto, A y C están en equilibrio térmico: si se pusieran en contacto, no habría transferencia neta de calor.</figcaption>
+  </figure>
+
+  <ol class="exam-pdf__sublist exam-pdf__sublist--continue" style="counter-reset: subitem 1;">
+    <li><strong>Primera ley de la termodinámica:</strong> la variación de la energía interna de un sistema es igual a la energía transferida a los alrededores en forma de calor o trabajo.</li>
+  </ol>
+
+  <div class="exam-pdf__display">$$\Delta U = Q - W$$</div>
+  <p class="exam-pdf__figure-caption" style="text-align: center;">$\Delta U$: cambio en la energía interna · $Q$: calor añadido al sistema · $W$: trabajo efectuado por el sistema</p>
+
+  <ol class="exam-pdf__sublist" style="counter-reset: subitem 2; margin-top: 12pt;">
+    <li><strong>Segunda ley de la termodinámica:</strong> es imposible construir una máquina térmica que transforme en trabajo todo el calor que se le suministra y viceversa. <strong>No hay máquina térmica 100 % eficiente.</strong></li>
+  </ol>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.ClasesKatex) window.ClasesKatex.load();
+  });
+</script>
+
+</body>
+</html>

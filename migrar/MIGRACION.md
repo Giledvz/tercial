@@ -36,11 +36,11 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `fisica-4-dinamica` → `fisica-4.html`
 - ☑ `fisica-4-dinamica-respuestas` → `fisica-4-respuestas.html`
 
-### ☐ Bloque 3 — Física 6 y 8 (4 archivos)
-- ☐ `fisica-6` (Trabajo mecánico) → `fisica-6.html`
-- ☐ `fisica-6-respuestas` → `fisica-6-respuestas.html`
-- ☐ `fisica-8` (Energía) → `fisica-8.html`
-- ☐ `fisica-8-respuestas` → `fisica-8-respuestas.html`
+### ☑ Bloque 3 — Física 6 y 8 (4 archivos) — HECHO 2026-06-10
+- ☑ `fisica-6` (Trabajo mecánico) → `fisica-6.html`
+- ☑ `fisica-6-respuestas` → `fisica-6-respuestas.html`
+- ☑ `fisica-8` (Energía) → `fisica-8.html`
+- ☑ `fisica-8-respuestas` → `fisica-8-respuestas.html`
 
 ### ☐ Bloque 4 — Física 9, 10 y 11 (3 archivos)
 - ☐ `fisica-9` (Ondas) → `fisica-9.html`
@@ -116,5 +116,6 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 ## Bitácora
 
 - 2026-06-09 · Setup: staging descomprimido, inventario completo, plan de bloques creado.
+- 2026-06-10 · Bloque 3 (Física 6 y 8). Imágenes clipart → SVG en paleta Tercial (cuerpo empujado, half-pipe Ep/Ec, olla conducción/convección/radiación, equilibrio A-B-C); tabla de calores específicos del PNG → tabla hairline (se añadió fila Hierro 0.46/0.11, faltaba en la imagen pero la clave la usa); meme de Bob Esponja sustituido por tabla de escalas de temperatura (avisar a Gil por si lo quiere de vuelta); ΔU=Q−W → KaTeX. **Erratas de física corregidas en la clave** (revisar Gil): "1 cal = 418 J" → 4.18 J; equilibrio térmico hierro+agua daba 18.61 °C (imposible, planteaba Q_h = Q_a sin signo) → corregido a 40.63 °C con Q_cedido = Q_absorbido.
 - 2026-06-10 · Bloque 2 (Física 3 y 4). Fix CSS: `__formulas > span:not(label)` — el selector descendiente roto despedazaba el KaTeX interno. Typos del original corregidos: 2.ª ley decía "inversamente proporcional a su aceleración" → "a su masa"; en Vectores "6F+8G-=" → "6F+8G="; "m/s$^s$" → m/s². Física 3 no tiene versión de respuestas en Overleaf.
 - 2026-06-10 · Bloque 1 (Física 1 y 2 + respuestas). Componentes nuevos en `exam-print.css` reutilizables por los demás bloques: `__section` (+`--first`), `__subsection`, `__table` (+`__table-pair`), `__formulas`, `__exercises--compact` / `--cols2` / `--continue`; `.answer-final` ahora aplica en cualquier `.exam-pdf`. Convenciones fijadas: hojas de trabajo titulan "Física N — <em>Tema</em>", eyebrow "Hoja de trabajo · Física N" (alumno) / "Clave · profesor · Física N" (respuestas); todo HTML termina con el snippet `ClasesKatex.load()` (sin él no renderiza el math). **Erratas corregidas vs original** (revisar Gil): tabla de equivalencias decía "1 m = 100 dm" y "1 m = 10 dam" → se corrigió a "1 m = 10 dm" y "1 m = 100 cm"; despeje 19 versión alumno tenía ΔK con "+" (la versión respuestas usa "−", se tomó "−"). Verificación: 4 PDFs generados con `npm run exam` y revisados página por página.

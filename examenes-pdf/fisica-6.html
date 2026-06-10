@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Física 6 — Trabajo mecánico · Tercial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+
+  <script defer src="../assets/js/katex-loader.js"></script>
+</head>
+<body>
+
+<main class="exam-pdf exam-pdf--fisica">
+
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Hoja de trabajo · Física 6</p>
+    <h1 class="exam-pdf__title">Física 6 — <em>Trabajo mecánico</em></h1>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Trabajo: fuerza por distancia · versión alumno</p>
+  </header>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve cada problema con procedimiento completo. Cuando la fuerza sea un peso por levantar, calcula primero $F = mg$.</p>
+  </div>
+
+  <section class="exam-pdf__section exam-pdf__section--first">
+    <h2 class="exam-pdf__section-title">Trabajo</h2>
+    <p class="exam-pdf__section-intro">Magnitud escalar producida sólo cuando una fuerza mueve un cuerpo en la misma dirección en que se aplica. La unidad con la que se mide el trabajo es $\mathrm{N \cdot m} = \mathrm{J}$ (joules).</p>
+  </section>
+
+  <div class="exam-pdf__formulas">
+    <span class="exam-pdf__formulas-label">Fórmula</span>
+    <span>$T = F\,d = \text{fuerza} \times \text{distancia}$</span>
+  </div>
+
+  <figure class="exam-pdf__figure">
+    <svg viewBox="0 0 360 150" width="360" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Un cuerpo empujado con una fuerza de 100 newtons a lo largo de 5 metros">
+      <defs>
+        <style>
+          .geo-line  { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
+          .geo-accent { stroke: #6b3a2e; stroke-width: 1.4; fill: none; }
+          .geo-fill  { fill: #ede2c5; stroke: #4a3f33; stroke-width: 1.2; }
+          .geo-label { font-family: 'IBM Plex Sans', sans-serif; font-weight: 400; font-size: 12px; fill: #877b6c; }
+          .geo-arrow { fill: #6b3a2e; }
+        </style>
+      </defs>
+      <!-- suelo -->
+      <line class="geo-line" x1="30" y1="104" x2="330" y2="104"/>
+      <!-- cuerpo -->
+      <rect class="geo-fill" x="120" y="64" width="72" height="40" rx="3"/>
+      <text class="geo-label" x="156" y="89" text-anchor="middle">cuerpo</text>
+      <!-- fuerza -->
+      <line class="geo-accent" x1="192" y1="84" x2="272" y2="84"/>
+      <polygon class="geo-arrow" points="272,79 284,84 272,89"/>
+      <text class="geo-label" x="238" y="74" text-anchor="middle">F = 100 N</text>
+      <!-- desplazamiento -->
+      <line class="geo-line" x1="120" y1="126" x2="252" y2="126" stroke-dasharray="4 3"/>
+      <polygon class="geo-arrow" points="252,121 264,126 252,131"/>
+      <text class="geo-label" x="190" y="143" text-anchor="middle">d = 5 m</text>
+    </svg>
+    <figcaption class="exam-pdf__figure-caption">Ejemplo: $T = 100\,\mathrm{N} \times 5\,\mathrm{m} = 500\,\mathrm{N \cdot m} = 500\,\mathrm{J}$</figcaption>
+  </figure>
+
+  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes problemas de trabajo.</p>
+
+  <ol class="exam-pdf__exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Una persona levanta una silla cuyo peso tiene una magnitud de $49\,\mathrm{N}$ hasta una altura de $0.75\,\mathrm{m}$. ¿Qué trabajo realiza?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Qué magnitud de peso tendrá un cuerpo si al levantarlo a una altura de $1.5\,\mathrm{m}$ se realiza un trabajo de $90\,\mathrm{J}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Determinar el trabajo realizado al desplazar un bloque $3\,\mathrm{m}$ sobre una superficie horizontal si la magnitud de la fuerza aplicada es de $25\,\mathrm{N}$.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un ladrillo tiene una masa de $1\,\mathrm{kg}$, ¿a qué distancia se levantó del suelo si se realizó un trabajo de $20\,\mathrm{J}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un viajero levanta su maleta cuyo peso tiene una magnitud de $196\,\mathrm{N}$ hasta una altura de $0.5\,\mathrm{m}$.</p>
+      <ol class="exam-pdf__sublist">
+        <li>¿Qué trabajo realiza?</li>
+        <li>Si se queda parado durante $2$ minutos sosteniendo la petaca a la misma altura, ¿cuánto vale el trabajo realizado?</li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>¿Qué trabajo se realiza con una fuerza de $7.7\,\mathrm{N}$ y se hace desplazar un objeto $17\,\mathrm{cm}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un cuerpo se desplaza $19\,\mathrm{m}$ con un trabajo de $59\,\mathrm{J}$. ¿Con qué fuerza se empuja?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>En una obra de ingeniería una grúa levanta vigas de acero de $900\,\mathrm{kg}$ hasta una altura de $20\,\mathrm{m}$. ¿Qué cantidad de trabajo se realiza en cada operación?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Al subir una escalera de $6\,\mathrm{m}$ de altura, ¿qué trabajo realiza un hombre de $78\,\mathrm{kg}$?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Al arrastrar un trineo con perros, éste se desplaza $650\,\mathrm{m}$. Si la fuerza ejercida en la cuerda es de $250\,\mathrm{N}$, obtenga el trabajo realizado.</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un niño empuja su patineta con una fuerza de $15\,\mathrm{N}$ a lo largo de $8$ metros. ¿Cuánto trabajo realiza?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Laura ayuda a su papá a mover un mueble aplicando una fuerza horizontal de $35\,\mathrm{N}$. Si realizó un trabajo de $140\,\mathrm{J}$, ¿qué distancia movieron el mueble?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Miguel sube su mochila que pesa $18\,\mathrm{N}$ desde el suelo hasta un estante a $1.2\,\mathrm{m}$ de altura. ¿Cuánto trabajo realiza?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un pequeño robot de juguete ejerce una fuerza de $0.5\,\mathrm{N}$ para mover una pelota. Si la pelota se desplaza $30\,\mathrm{cm}$, ¿cuál es el trabajo realizado por el robot?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Ana levanta una caja de $3\,\mathrm{kg}$ hasta una altura de $1.5\,\mathrm{m}$. ¿Qué trabajo realiza contra la gravedad?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un elevador sube a un grupo de estudiantes con masa total de $250\,\mathrm{kg}$ a una altura de $12\,\mathrm{m}$. ¿Cuánto trabajo realiza el motor del elevador?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Carlos arrastra su maleta con ruedas ejerciendo una fuerza horizontal de $22\,\mathrm{N}$ a lo largo de un pasillo de $15\,\mathrm{m}$. ¿Cuánto trabajo realiza?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Una bicicleta avanza debido a una fuerza de pedaleo de $60\,\mathrm{N}$. Si el ciclista realiza un trabajo de $4\,800\,\mathrm{J}$, ¿qué distancia recorre?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Dos amigos empujan juntos un carrito de supermercado con una fuerza total de $28\,\mathrm{N}$. Si lo desplazan $25$ metros, ¿cuánto trabajo realizan en conjunto?</p>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p>Un pequeño barco de juguete es empujado en una piscina con una fuerza de $1.5\,\mathrm{N}$. Si se mueve $40\,\mathrm{cm}$, ¿cuál es el trabajo realizado?</p>
+    </div></li>
+  </ol>
+
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.ClasesKatex) window.ClasesKatex.load();
+  });
+</script>
+
+</body>
+</html>
