@@ -202,8 +202,10 @@
    Línea coñac al mismo grosor (2px) que el border-left editorial.
    Se aplica envolviendo el valor con <span class="answer-final">…</span>.
    Usamos border-bottom (no text-decoration) porque KaTeX renderiza con
-   display: inline-block y text-decoration no atraviesa ese contexto. */
-.exam-pdf__answer-key .answer-final {
+   display: inline-block y text-decoration no atraviesa ese contexto.
+   Aplica dentro de cualquier .exam-pdf: sirve tanto para la sección
+   __answer-key como para hojas de respuestas completas. */
+.exam-pdf .answer-final {
   display: inline-block;
   border-bottom: 2px solid var(--accent-conac);
   padding-bottom: 1px;
@@ -302,6 +304,169 @@
 }
 
 /* ============================================================
+   Sección — hojas de trabajo y exámenes con varias partes
+   (MRU / MRUA / Caída libre, Matemáticas / Física, etc.)
+   Hairline superior + título Fraunces mediano. La identidad no
+   cambia: el énfasis sigue siendo tipográfico.
+   ============================================================ */
+
+.exam-pdf__section {
+  margin: 0.45in 0 var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--ink-300);
+  page-break-inside: avoid;
+}
+
+/* Primera sección pegada al bloque de instrucciones: sin hairline */
+.exam-pdf__section--first {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.exam-pdf__section-title {
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-medium);
+  font-size: 20pt;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink-900);
+  margin: 0;
+  font-variation-settings: "opsz" 48;
+}
+
+.exam-pdf__section-title em {
+  font-style: italic;
+  color: var(--accent-conac);
+}
+
+.exam-pdf__section-intro {
+  margin: var(--space-2) 0 0;
+  font-size: 10.5pt;
+  color: var(--ink-700);
+  line-height: 1.55;
+}
+
+/* Subsección — marcador de nivel o subtema dentro de una sección
+   ("Nivel principiante", "Porcentajes"). Estilo eyebrow. */
+.exam-pdf__subsection {
+  font-family: var(--font-family-body);
+  font-size: 9.5pt;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+/* ============================================================
+   Tabla hairline — equivalencias, datos de apoyo
+   Sin bordes verticales ni fondos: header con hairline ink,
+   filas separadas por hairline crema.
+   ============================================================ */
+
+.exam-pdf__table {
+  margin: var(--space-4) auto;
+  border-collapse: collapse;
+  font-size: 10pt;
+  font-variant-numeric: tabular-nums;
+  page-break-inside: avoid;
+}
+
+.exam-pdf__table th {
+  font-family: var(--font-family-body);
+  font-size: 8.5pt;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-300);
+  text-align: left;
+  padding: 0 var(--space-5) var(--space-2) 0;
+  border-bottom: 1px solid var(--ink-300);
+}
+
+.exam-pdf__table td {
+  padding: 2.5pt var(--space-5) 2.5pt 0;
+  border-bottom: 1px solid var(--crema-300);
+  color: var(--ink-700);
+}
+
+.exam-pdf__table th:last-child,
+.exam-pdf__table td:last-child { padding-right: 0; }
+
+/* Dos tablas lado a lado (tablas largas que no caben en una columna) */
+.exam-pdf__table-pair {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5in;
+  margin: var(--space-4) 0;
+  page-break-inside: avoid;
+}
+
+.exam-pdf__table-pair .exam-pdf__table { margin: 0; }
+
+/* ============================================================
+   Fórmulas de apoyo — centradas, sin caja ni fondo
+   ============================================================ */
+
+.exam-pdf__formulas {
+  margin: var(--space-4) 0;
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.exam-pdf__formulas-label {
+  display: block;
+  font-family: var(--font-family-body);
+  font-size: 8.5pt;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin: 0 0 var(--space-2);
+}
+
+.exam-pdf__formulas span {
+  display: inline-block;
+  margin: 0 var(--space-4);
+  font-size: 11.5pt;
+}
+
+/* ============================================================
+   Lista compacta — ítems cortos en serie (conversiones, despejes).
+   Numeral más discreto y hanging indent en lugar de grid; con
+   --cols2 fluye en dos columnas.
+   ============================================================ */
+
+.exam-pdf__exercises--compact .exam-pdf__exercise {
+  display: block;
+  position: relative;
+  padding-left: 0.42in;
+  margin-bottom: var(--space-2);
+  break-inside: avoid;
+}
+
+.exam-pdf__exercises--compact .exam-pdf__exercise::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.3in;
+  text-align: right;
+  font-size: 12pt;
+  padding-top: 0;
+}
+
+.exam-pdf__exercises--cols2 {
+  columns: 2;
+  column-gap: 0.45in;
+}
+
+/* Continuar la numeración entre listas separadas de la misma serie
+   (p. ej. subsecciones por nivel de una sola lista de ejercicios) */
+.exam-pdf__exercises--continue { counter-reset: none; }
+
+/* ============================================================
    Figura inline (gráfica, dibujo) — wrapper centrado
    ============================================================ */
 
@@ -389,5 +554,9 @@
   /* Reduce el espacio entre ejercicios en impresión */
   .exam-pdf__exercise {
     margin-bottom: 0.18in;
+  }
+  /* Las listas compactas conservan su ritmo corto */
+  .exam-pdf__exercises--compact .exam-pdf__exercise {
+    margin-bottom: var(--space-2);
   }
 }

@@ -25,11 +25,11 @@
 
 Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
-### ☐ Bloque 1 — Física 1 y 2 (4 archivos)
-- ☐ `fisica-1` (Preliminares) → `examenes-pdf/fisica-1.html`
-- ☐ `fisica-1-respuestas` → `examenes-pdf/fisica-1-respuestas.html`
-- ☐ `fisica-2` (MRU y MRUA) → `examenes-pdf/fisica-2.html`
-- ☐ `fisica-2-respuestas` → `examenes-pdf/fisica-2-respuestas.html`
+### ☑ Bloque 1 — Física 1 y 2 (4 archivos) — HECHO 2026-06-10
+- ☑ `fisica-1` (Preliminares) → `examenes-pdf/fisica-1.html`
+- ☑ `fisica-1-respuestas` → `examenes-pdf/fisica-1-respuestas.html`
+- ☑ `fisica-2` (MRU y MRUA) → `examenes-pdf/fisica-2.html`
+- ☑ `fisica-2-respuestas` → `examenes-pdf/fisica-2-respuestas.html`
 
 ### ☐ Bloque 2 — Física 3 y 4 (3 archivos)
 - ☐ `fisica-3` (Vectores) → `fisica-3.html`
@@ -116,3 +116,4 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 ## Bitácora
 
 - 2026-06-09 · Setup: staging descomprimido, inventario completo, plan de bloques creado.
+- 2026-06-10 · Bloque 1 (Física 1 y 2 + respuestas). Componentes nuevos en `exam-print.css` reutilizables por los demás bloques: `__section` (+`--first`), `__subsection`, `__table` (+`__table-pair`), `__formulas`, `__exercises--compact` / `--cols2` / `--continue`; `.answer-final` ahora aplica en cualquier `.exam-pdf`. Convenciones fijadas: hojas de trabajo titulan "Física N — <em>Tema</em>", eyebrow "Hoja de trabajo · Física N" (alumno) / "Clave · profesor · Física N" (respuestas); todo HTML termina con el snippet `ClasesKatex.load()` (sin él no renderiza el math). **Erratas corregidas vs original** (revisar Gil): tabla de equivalencias decía "1 m = 100 dm" y "1 m = 10 dam" → se corrigió a "1 m = 10 dm" y "1 m = 100 cm"; despeje 19 versión alumno tenía ΔK con "+" (la versión respuestas usa "−", se tomó "−"). Verificación: 4 PDFs generados con `npm run exam` y revisados página por página.
