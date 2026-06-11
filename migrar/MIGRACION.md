@@ -73,10 +73,10 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `sucesiones-respuestas` → `sucesiones.html` (60 ej, hoja única con clave)
 - ⚠ `solucionario-interpretacion-de-graficas` era un STUB (casi todas las respuestas eran `11` de placeholder; la sección de velocidad sin respuestas). No se migró clave. Gil puede agregar respuestas inline con `.clave-only` cuando quiera.
 
-### ☐ Bloque 11 — Exámenes combinados I (3 archivos)
-- ☐ `examen1` (título interno "Examen 2") → `examen-02.html`
-- ☐ `examen3` → `examen-03.html`
-- ☐ `examen4` → `examen-04.html`
+### ☑ Bloque 11 — Exámenes combinados I (3 archivos) — HECHO 2026-06-11
+- ☑ `examen1` (título interno "Examen 2") → `examen-02.html`
+- ☑ `examen3` → `examen-03.html`
+- ☑ `examen4` → `examen-04.html`
 
 ### ☐ Bloque 12 — Exámenes combinados II (4 archivos)
 - ☐ `examen5` → `examen-05.html`
@@ -109,6 +109,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-11 · Bloque 11 (Exámenes combinados 2, 3, 4). Exámenes de fin de semana con dos secciones (Matemáticas + Física con `page-break-before`), formato `\question[N]` → `.exam-pdf__points`, gráfica posición-tiempo de física → SVG, `.exam-pdf__total`. Solo alumno (sin clave en el original). Generador `/tmp/gen_examenes.py` (reutiliza chart() de gráficas). Se enlazan en la sección "Exámenes" del aula como lista "Exámenes por fin de semana".
 - 2026-06-11 · Bloque 10 (Gráficas y sucesiones). `interpretacion-graficas.html`: 12 gráficas TikZ posición/velocidad–tiempo → SVG de línea con grid en paleta Tercial (generador `/tmp/gen_graficas.py`); las tablas de datos → tabla hairline. **Solo alumno**: el solucionario de Overleaf estaba a medias (respuestas `11` de placeholder y sección de velocidad vacía), no había clave real que migrar. `sucesiones.html`: 60 sucesiones en 6 secciones, hoja única con clave (las imágenes fisica1-3.png del folder son sobras de plantilla, ignoradas). Nota: varias "respuestas" de sucesiones del original simplemente repiten un término ya dado (p. ej. 4.º término de una sucesión de 4 dados); se transcribieron fieles.
 - 2026-06-11 · Bloque 9 (Conversiones y despejes → 1 hoja única). El bloque de conversiones duplica exactamente las de Física 1; reusé sus respuestas verificadas (el `solucionario-conversiones-y-despejes` tenía un set distinto de ejercicios, no empataba). Los despejes SÍ son nuevos: 20 despejes de fórmulas físicas (v=v₀+at, Coulomb, Snell, péndulos…), clave tomada del solucionario.
 - 2026-06-10 · Bloque 8 (Matemáticas 7 y 8). Mate 7 (estadística + probabilidad) escrito a mano por estructura mixta (conjuntos de datos, problemas, histogramas, probabilidad anidada): los 2 histogramas TikZ → SVG de barras en paleta Tercial; la foto de la baraja (matematicas1.png) se omitió por decorativa (el problema es autosuficiente). Mate 8 (repaso, solo alumno — sin clave en Overleaf) generado con gen_alumno.py en modo `layout:'auto'`, que decide math2/prose por grupo según si los ítems empiezan con `$` (acomoda las 6 "Clases" con sus sub-bloques mixtos). **Avance: 8/16 bloques — toda Física (1-11) y Matemáticas (1-8) migradas; 19 hojas en el aula.**
