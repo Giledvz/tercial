@@ -320,7 +320,8 @@
 
 .pase {
   position: sticky;
-  top: var(--space-6);
+  /* La site-nav sticky mide ~60px: sin este offset, tapa el pase. */
+  top: calc(var(--space-6) + 3.75rem);
   background-color: var(--color-bg-raised);
   border: var(--border-thin) solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -639,6 +640,13 @@
 .anden {
   border-top: var(--border-thin) solid var(--color-border);
   padding-block: var(--space-8);
+}
+
+/* Las anclas (#examenes, #fisica, #matematicas) no deben aterrizar
+   debajo de la nav sticky. */
+.anden,
+.via {
+  scroll-margin-top: 5rem;
 }
 
 .anden__cabecera {

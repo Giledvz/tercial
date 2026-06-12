@@ -68,6 +68,11 @@
     try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* modo incógnito */ }
   }
 
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
   var EXAMENES = window.EXAMENES || [];
   var vigentes = EXAMENES.filter(function (e) { return diasFaltantes(e.fecha) >= 0; })
     .sort(function (a, b) { return diasFaltantes(a.fecha) - diasFaltantes(b.fecha); });
@@ -97,7 +102,12 @@
      1 · MARQUESINA
      ============================================================ */
 
+  var hoyInicial = claveHoy();
+
   function pintaReloj() {
+    /* Si la pestaña cruzó la medianoche, los contadores ya mienten:
+       recargar recalcula tablero, pase y pregunta del día. */
+    if (claveHoy() !== hoyInicial) { location.reload(); return; }
     var el = document.getElementById('marquee-reloj');
     if (!el) return;
     var h = new Date();
@@ -114,7 +124,7 @@
         var d = diasFaltantes(g.fecha);
         var cuando = d === 0 ? '¡HOY!' : d === 1 ? 'FALTA 1 DÍA' : 'FALTAN ' + d + ' DÍAS';
         prox.innerHTML = 'Próxima salida · <strong>' + fechaCorta(g.fecha) + '</strong> · ' +
-          g.nombres.join(', ') + ' · ' + cuando;
+          esc(g.nombres.join(', ')) + ' · ' + cuando;
       } else {
         prox.textContent = 'Sin salidas programadas — el tablero descansa.';
       }
@@ -174,7 +184,7 @@
 
       var nombres = g.nombres.map(function (n) {
         var cls = 'tablero__nombre' + (n === pasajero ? ' es-tu' : '');
-        return '<button type="button" class="' + cls + '" data-nombre="' + n + '">' + n + '</button>';
+        return '<button type="button" class="' + cls + '" data-nombre="' + esc(n) + '">' + esc(n) + '</button>';
       }).join('');
 
       fila.innerHTML =
@@ -196,11 +206,13 @@
     pie.textContent = 'Toca tu nombre y el tablero te dará tu pase de abordar.';
     cont.appendChild(pie);
 
-    cont.addEventListener('click', function (ev) {
+    /* onclick (no addEventListener): montaTablero se re-ejecuta al adoptar
+       pasajero y los listeners se duplicarían en cada cambio. */
+    cont.onclick = function (ev) {
       var btn = ev.target.closest('.tablero__nombre');
       if (!btn) return;
       adopta(btn.getAttribute('data-nombre'));
-    });
+    };
   }
 
   /* ============================================================
@@ -262,13 +274,13 @@
     if (!ex || expirado) {
       /* Estado por defecto digno: el pase invita, no bloquea. */
       var pills = vigentes.map(function (e) {
-        return '<button type="button" class="pase__pill" data-nombre="' + e.nombre + '">' + e.nombre + '</button>';
+        return '<button type="button" class="pase__pill" data-nombre="' + esc(e.nombre) + '">' + esc(e.nombre) + '</button>';
       }).join('');
       cuerpo.innerHTML =
         '<p class="pase__eyebrow"><span>Pase de abordar</span><span>Tercial</span></p>' +
         '<p class="pase__pregunta">¿Quién viaja hoy?</p>' +
         (expirado
-          ? '<p class="pase__destino">Tu examen ya pasó, ' + pasajero + ' — esperamos que hayas despegado con todo. 🎓</p>'
+          ? '<p class="pase__destino">Tu examen ya pasó, ' + esc(pasajero) + ' — esperamos que hayas despegado con todo. 🎓</p>'
           : '') +
         (pills ? '<div class="pase__roster">' + pills + '</div>' : '') +
         '<p class="pase__visitante">o sigue como visitante — todo el material es libre</p>';
@@ -283,7 +295,7 @@
       /* Modo día de examen: sin tarea pesada, sólo calma. */
       cuerpo.innerHTML =
         '<p class="pase__eyebrow"><span>Pase de abordar</span><span>¡Hoy!</span></p>' +
-        '<p class="pase__nombre">' + ex.nombre + '</p>' +
+        '<p class="pase__nombre">' + esc(ex.nombre) + '</p>' +
         '<p class="pase__destino">COMIPEMS · ' + fechaLarga(ex.fecha) + '</p>' +
         '<p class="pase__bendicion">Respira. Ya hiciste el trabajo; hoy sólo vas a demostrarlo.</p>';
       talon.innerHTML =
@@ -298,7 +310,7 @@
     } else {
       cuerpo.innerHTML =
         '<p class="pase__eyebrow"><span>Pase de abordar</span><span>' + fechaCorta(ex.fecha) + '</span></p>' +
-        '<p class="pase__nombre">' + ex.nombre + '</p>' +
+        '<p class="pase__nombre">' + esc(ex.nombre) + '</p>' +
         '<p class="pase__destino">COMIPEMS · ' + fechaLarga(ex.fecha) + '</p>' +
         '<div class="pase__dias-wrap">' +
           '<span class="pase__dias" id="pase-dias">' + dias + '</span>' +
@@ -309,6 +321,7 @@
 
       /* Flip diario: si el número bajó desde la última visita, lo VES caer. */
       var ultimo = lsGet('tercial:ultimoDias', {});
+      if (!ultimo || typeof ultimo !== 'object' || Array.isArray(ultimo)) ultimo = {};
       if (typeof ultimo[ex.nombre] === 'number' && ultimo[ex.nombre] > dias) {
         var el = document.getElementById('pase-dias');
         el.textContent = ultimo[ex.nombre];
@@ -381,6 +394,7 @@
     var respuesta = lsGet('tercial:pregunta', null);
     var yaRespondida = respuesta && respuesta.fecha === hoy;
     var racha = lsGet('tercial:rachaDias', []);
+    if (!Array.isArray(racha)) racha = [];
 
     function rachaActual() {
       /* Días consecutivos hasta hoy con pregunta contestada. */
@@ -466,7 +480,7 @@
     if (!pasados.length) { cont.hidden = true; return; }
     var html = '<span class="despegaron__label">Despegaron</span>';
     pasados.forEach(function (e) {
-      html += '<span class="despegaron__alumno">' + e.nombre +
+      html += '<span class="despegaron__alumno">' + esc(e.nombre) +
         ' <small>· ' + fechaCorta(e.fecha).toLowerCase() + ' ✈</small></span>';
     });
     cont.innerHTML = html;
