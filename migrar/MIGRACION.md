@@ -84,11 +84,11 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 - ☑ `examen7` → `examen-07.html` ⚠ título interno del original era "Examen 8"; se nombró "Examen 7" por orden secuencial del zip (Gil: confirmar si la numeración real es 7 u 8)
 - ☑ `examen8` → `examen-08.html` (interno también "Examen 8")
 
-### ☐ Bloque 13 — Exámenes combinados III (4 archivos)
-- ☐ `examen-1-f` → nombre por definir (colisión con `examen-1-fisica.html` existente)
-- ☐ `examen-1-m` → `examen-1m.html` (por definir)
-- ☐ `examen-2-m` → `examen-2m.html` (por definir)
-- ☐ `examen12` (título interno "Examen 13") → `examen-13.html`
+### ☑ Bloque 13 — Exámenes 1F, 1M, 2M y 13 (4 archivos) — HECHO 2026-06-12
+- ☑ `examen-1-f` → `examen-01-fisica.html` (Gil: conservar ambos; el viejo `examen-1-fisica.html` queda intacto)
+- ☑ `examen-1-m` → `examen-01-mate.html`
+- ☑ `examen-2-m` → `examen-02-mate.html`
+- ☑ `examen12` (título interno "Examen 13") → `examen-13.html` (Gil confirmó: Examen 13)
 
 ### ☐ Bloque 14 — Química (1 archivo grande)
 - ☐ `quimica` (8 secciones, 23 imágenes) → `quimica-materia.html`
@@ -109,6 +109,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-12 · Bloque 13 (Exámenes 1 Física, 1 Mate, 2 Mate, 13). Decisiones de Gil: conservar el `examen-1-fisica.html` viejo y guardar el nuevo como `examen-01-fisica.html`; numeración Examen 13; per-materia con sufijo `-mate`. Incluye opción múltiple (`.exam-pdf__choices`) y muchas figuras redibujadas en SVG: gráfica de pastel (intención de voto), escalera de cubos isométrica (serie_cubos), prisma trapezoidal (lingote), rectas paralelas con transversal + ángulos (×3, parametrizado), cuadrado inscrito, triángulo rectángulo. **Bug corregido**: las etiquetas de ángulo iban como `$...$` y KaTeX las rompía dentro del SVG → ahora van como texto plano. Generador `/tmp/gen_bloque13.py`. Las 3 imágenes PNG del banco (intencion_voto, serie_cubos, lingote_prisma) se redibujaron, no se copiaron.
 - 2026-06-11 · Bloque 12 (Exámenes 5, 6, 7, 8). Más largos: incluyen sistemas de ecuaciones (`cases`), conjuntos de datos de estadística y preguntas teóricas. Gráficas xmax 24 (e5/e6) y 16 (e7/e8) con sub-incisos propios. Total de puntos calculado automáticamente. **Numeración**: examen7 y examen8 ambos tenían título interno "Examen 8" en Overleaf (copy-paste de Gil); se nombraron 7 y 8 por orden del zip — confirmar con Gil.
 - 2026-06-11 · Bloque 11 (Exámenes combinados 2, 3, 4). Exámenes de fin de semana con dos secciones (Matemáticas + Física con `page-break-before`), formato `\question[N]` → `.exam-pdf__points`, gráfica posición-tiempo de física → SVG, `.exam-pdf__total`. Solo alumno (sin clave en el original). Generador `/tmp/gen_examenes.py` (reutiliza chart() de gráficas). Se enlazan en la sección "Exámenes" del aula como lista "Exámenes por fin de semana".
 - 2026-06-11 · Bloque 10 (Gráficas y sucesiones). `interpretacion-graficas.html`: 12 gráficas TikZ posición/velocidad–tiempo → SVG de línea con grid en paleta Tercial (generador `/tmp/gen_graficas.py`); las tablas de datos → tabla hairline. **Solo alumno**: el solucionario de Overleaf estaba a medias (respuestas `11` de placeholder y sección de velocidad vacía), no había clave real que migrar. `sucesiones.html`: 60 sucesiones en 6 secciones, hoja única con clave (las imágenes fisica1-3.png del folder son sobras de plantilla, ignoradas). Nota: varias "respuestas" de sucesiones del original simplemente repiten un término ya dado (p. ej. 4.º término de una sucesión de 4 dados); se transcribieron fieles.
