@@ -2,7 +2,7 @@
 
 Guía para terminar los **bloques 14, 15 y 16** exactamente con el mismo método que se usó en los bloques 1–13. Pensada para retomar en la laptop (con o sin IA). Si usas una IA, pásale este archivo + `design/exporta-pdf.md` + `migrar/MIGRACION.md`.
 
-> Estado al 2026-06-12: **13 de 16 bloques hechos** (Física 1–11, Matemáticas 1–8, conversiones/despejes, gráficas, sucesiones, exámenes 1–8 y 13). Todo pusheado a `main`. Faltan: **14 (Química), 15 (Simulaciones 2024), 16 (Especiales)**.
+> Estado al 2026-06-12 (tarde): **14 de 16 bloques hechos** (Física 1–11, Matemáticas 1–8, conversiones/despejes, gráficas, sucesiones, exámenes 1–8 y 13, simulacros 2024). Faltan: **14 (Química — su .tex sólo está en el staging del Mac mini, la laptop tiene la exportación vieja de 40 zips)** y **16 (Especiales, decidir con Gil)**.
 
 ---
 

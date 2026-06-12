@@ -95,9 +95,9 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 ### ☐ Bloque 14 — Química (1 archivo grande)
 - ☐ `quimica` (8 secciones, 23 imágenes) → `quimica-materia.html`
 
-### ☐ Bloque 15 — Simulaciones 2024 (2 archivos muy grandes)
-- ☐ `simulacion-de-examen-2024-v1` (~1 380 líneas) → `simulacion-2024-v1.html`
-- ☐ `simulacion-de-examen-2024-v2` (~1 100 líneas) → `simulacion-2024-v2.html`
+### ☑ Bloque 15 — Simulaciones 2024 (2 archivos muy grandes) — HECHO 2026-06-12
+- ☑ `simulacion-de-examen-2024-v1` → `simulacion-2024-v1.html` (108 reactivos · 10 materias · 18 págs)
+- ☑ `simulacion-de-examen-2024-v2` → `simulacion-2024-v2.html` (103 reactivos · 9 materias · 17 págs)
 
 ### ☐ Bloque 16 — Especiales (decidir con Gil)
 - ☐ `plantilla-simulacion` — es plantilla, ¿se migra o se archiva?
@@ -111,6 +111,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-12 · Bloque 15 (Simulacros 2024 v1 y v2, solo alumno — los .tex no traen clave; hecho en la laptop). Generador nuevo `migrar/generadores/gen_simulacion.py`: parsea la estructura regular (materias en `flushleft`, reactivos `\textbf{\item}`, opciones en `enumerate`) y reusa `chart()` de gen_examenes para la gráfica posición-tiempo (idéntica en ambas versiones). Numeración corrida entre materias con `--continue`, layout `--compact --cols2`. Las 5 fotos de la serie de figuras + "letra C" se copiaron a `examenes-pdf/img/simulacion-2024/`. Math partido del original (`$$ \\ $$` dentro de `cases`) reparado. **Omitidos (revisar Gil)**: un reactivo de Matemáticas v2 perdió su enunciado en el original (opciones −9 450 / −163 / 0 / 9 550 — ¿recuperar la pregunta?); duplicados exactos del original eliminados (v1: "sucesión 2n+1"; v2: "120 libros" y "cuádruple del cuadrado"); v2 traía una sección "Historia II" de puro andamiaje vacío (6 reactivos en blanco) y v1 un reactivo vacío en Química — no se emiten. Posible errata de contenido transcrita tal cual: "En la fórmula H₂O existen: 1 __ de carbono y 2 __ de oxígeno" (¿carbono → hidrógeno?).
 - 2026-06-12 · Pausa: 13/16 bloques hechos y pusheados. Generadores guardados en `migrar/generadores/` y guía de continuación en `migrar/COMO-CONTINUAR.md` para terminar Química (14), Simulaciones (15) y Especiales (16) en la laptop con el mismo método.
 - 2026-06-12 · Bloque 13 (Exámenes 1 Física, 1 Mate, 2 Mate, 13). Decisiones de Gil: conservar el `examen-1-fisica.html` viejo y guardar el nuevo como `examen-01-fisica.html`; numeración Examen 13; per-materia con sufijo `-mate`. Incluye opción múltiple (`.exam-pdf__choices`) y muchas figuras redibujadas en SVG: gráfica de pastel (intención de voto), escalera de cubos isométrica (serie_cubos), prisma trapezoidal (lingote), rectas paralelas con transversal + ángulos (×3, parametrizado), cuadrado inscrito, triángulo rectángulo. **Bug corregido**: las etiquetas de ángulo iban como `$...$` y KaTeX las rompía dentro del SVG → ahora van como texto plano. Generador `/tmp/gen_bloque13.py`. Las 3 imágenes PNG del banco (intencion_voto, serie_cubos, lingote_prisma) se redibujaron, no se copiaron.
 - 2026-06-11 · Bloque 12 (Exámenes 5, 6, 7, 8). Más largos: incluyen sistemas de ecuaciones (`cases`), conjuntos de datos de estadística y preguntas teóricas. Gráficas xmax 24 (e5/e6) y 16 (e7/e8) con sub-incisos propios. Total de puntos calculado automáticamente. **Numeración**: examen7 y examen8 ambos tenían título interno "Examen 8" en Overleaf (copy-paste de Gil); se nombraron 7 y 8 por orden del zip — confirmar con Gil.
