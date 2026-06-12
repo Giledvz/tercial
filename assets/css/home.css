@@ -1,0 +1,943 @@
+/* ============================================================
+   home.css — Sala de Abordaje (index rediseñado)
+   Rama rediseno · iteración 1 · junio 2026
+
+   El index como estación: marquesina con la hora, tablero de
+   salidas con los alumnos, pase de abordar personal, y las
+   acciones del aula como andenes. Consume SOLO tokens del
+   sistema "Editorial cálido funcional" — dark mode gratis.
+
+   Carga después de tokens/base/components. Solo la usa index.html.
+   ============================================================ */
+
+/* ============================================================
+   Retícula de la estación — por fin se usa --container-full.
+   El main sale del túnel de 760px; el nav y footer ya estaban ahí.
+   ============================================================ */
+
+.estacion {
+  width: 100%;
+  max-width: var(--container-full);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+@media (min-width: 760px) {
+  .estacion { padding-inline: var(--space-7); }
+}
+
+/* El ritmo entre andenes lo dan sus propios border-top + padding;
+   sin esto se sumaría el padding-top global de base.css. */
+.estacion > section + section { padding-top: 0; }
+
+/* ============================================================
+   MARQUESINA — la sensación de "hoy" en los primeros 44px.
+   Franja full-bleed con hairlines; tres celdas en desktop.
+   ============================================================ */
+
+.marquee {
+  border-top: var(--border-thin) solid var(--color-border-subtle);
+  border-bottom: var(--border-thin) solid var(--color-border-subtle);
+  background-color: var(--color-bg-raised);
+}
+
+.marquee__inner {
+  max-width: var(--container-full);
+  margin-inline: auto;
+  padding: var(--space-2) var(--space-5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+@media (min-width: 760px) {
+  .marquee__inner { padding-inline: var(--space-7); }
+}
+
+.marquee__sala { font-weight: var(--font-weight-medium); }
+
+.marquee__proxima {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--color-text-meta);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.marquee__proxima strong {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+}
+
+.marquee__reloj {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-meta);
+  white-space: nowrap;
+}
+
+@media (max-width: 759px) {
+  .marquee__sala { display: none; }
+  .marquee__reloj { margin-left: 0; }
+}
+
+/* ============================================================
+   ABORDAJE — hero de dos columnas: tablero + pase.
+   ============================================================ */
+
+.abordaje { padding-block: var(--space-8) var(--space-9); }
+
+.abordaje__header { margin-bottom: var(--space-6); }
+
+.abordaje__title {
+  font-size: clamp(var(--font-size-32), 4.5vw, var(--font-size-48));
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 144;
+}
+
+.abordaje__lede {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-16);
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+}
+
+.abordaje__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+@media (min-width: 1080px) {
+  .abordaje__grid { grid-template-columns: minmax(0, 1fr) 26rem; }
+}
+
+/* En pantallas chicas el pase va primero: es lo tuyo. */
+@media (max-width: 1079px) {
+  .abordaje__pase-col { order: -1; }
+}
+
+/* ============================================================
+   TABLERO DE SALIDAS — agrupado por fecha (4 filas, no 14).
+   Tabla editorial: hairlines, Plex Mono tabular, cero sombras.
+   ============================================================ */
+
+.tablero__cabecera {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) 9.5rem;
+  gap: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-medium) solid var(--color-border-strong);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+.tablero__cabecera span:last-child { text-align: right; }
+
+.tablero__grupo {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr) 9.5rem;
+  gap: var(--space-1) var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-bottom: var(--border-thin) solid var(--color-border-subtle);
+}
+
+.tablero__salida {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-meta);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.tablero__salida small {
+  display: block;
+  font-size: var(--font-size-11);
+  color: var(--color-text-meta);
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+}
+
+.tablero__pasajeros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+  min-width: 0;
+}
+
+/* Cada nombre es una puerta: tocas el tuyo y el sitio es tuyo. */
+.tablero__nombre {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: color var(--motion-fast) var(--motion-ease-standard),
+              background-color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.tablero__nombre:hover {
+  color: var(--color-accent);
+  background-color: var(--color-bg-hover);
+}
+
+.tablero__nombre + .tablero__nombre::before {
+  content: "· ";
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-border-strong);
+  margin-right: var(--space-1);
+}
+
+.tablero__nombre.es-tu {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.tablero__nombre.es-tu::after {
+  content: " — tú";
+  font-family: var(--font-family-mono);
+  font-style: normal;
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-meta);
+  color: var(--color-text-meta);
+}
+
+.tablero__faltan {
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tablero__dias {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.tablero__dias-sufijo {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+}
+
+/* Chips de estado por urgencia — tokens de estado existentes. */
+.tablero__estado {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  padding: 2px var(--space-3);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-meta);
+}
+
+.tablero__estado--abordando {
+  border-color: transparent;
+  background-color: var(--color-state-warn-bg);
+  color: var(--color-state-warn);
+}
+
+.tablero__estado--ultima {
+  border-color: transparent;
+  background-color: var(--color-state-err-bg);
+  color: var(--color-state-err);
+}
+
+.tablero__estado--hoy {
+  border-color: transparent;
+  background-color: var(--color-accent-strong);
+  color: var(--color-text-on-dark);
+}
+
+/* Punto de última llamada — ÚNICA animación continua de la página. */
+.tablero__pulso {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-state-err);
+  animation: pulso-llamada 2s var(--motion-ease-standard) infinite;
+}
+
+.tablero__estado--hoy .tablero__pulso { background-color: var(--color-text-on-dark); }
+
+@keyframes pulso-llamada {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Pie del tablero */
+.tablero__pie {
+  padding-top: var(--space-3);
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+}
+
+@media (max-width: 759px) {
+  .tablero__cabecera { display: none; }
+  .tablero__grupo {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .tablero__salida { grid-column: 1; }
+  .tablero__faltan { grid-column: 2; grid-row: 1; }
+  .tablero__pasajeros { grid-column: 1 / -1; }
+  .tablero__nombre { font-size: var(--font-size-16); }
+}
+
+/* ============================================================
+   PASE DE ABORDAR — card-boleto sticky con talón perforado.
+   El único objeto: muescas laterales + perforación dashed.
+   ============================================================ */
+
+.pase-col { position: relative; }
+
+.pase {
+  position: sticky;
+  top: var(--space-6);
+  background-color: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 1079px) {
+  .pase { position: static; }
+}
+
+.pase__cuerpo { padding: var(--space-6); }
+
+.pase__eyebrow {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-display-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.pase__nombre {
+  margin-top: var(--space-3);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+  color: var(--color-accent);
+  line-height: var(--line-height-snug);
+}
+
+.pase__destino {
+  margin-top: var(--space-1);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  color: var(--color-text-secondary);
+}
+
+/* El número que duele: días restantes en cifra grande. */
+.pase__dias-wrap {
+  margin-top: var(--space-4);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.pase__dias {
+  font-family: var(--font-family-mono);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-tighter);
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.pase--urgente .pase__dias { color: var(--color-accent-strong); }
+
+.pase__dias-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+  max-width: 8ch;
+  line-height: var(--line-height-heading);
+}
+
+/* Flip al ver caer un día — 280ms, una sola vez. */
+.pase__dias.es-flip { animation: pase-flip var(--motion-slow) var(--motion-ease-emphasized); }
+
+@keyframes pase-flip {
+  0%   { transform: rotateX(0); }
+  49%  { transform: rotateX(88deg); opacity: 0.4; }
+  51%  { transform: rotateX(-88deg); opacity: 0.4; }
+  100% { transform: rotateX(0); opacity: 1; }
+}
+
+/* Selector de pasajero (estado sin adoptar) */
+.pase__pregunta {
+  margin-top: var(--space-3);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-medium);
+}
+
+.pase__roster {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.pase__pill {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-13);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-secondary);
+  transition: border-color var(--motion-fast) var(--motion-ease-standard),
+              color var(--motion-fast) var(--motion-ease-standard),
+              background-color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.pase__pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-bg-hover);
+}
+
+.pase__visitante {
+  margin-top: var(--space-4);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+}
+
+.pase__visitante a { color: var(--color-text-meta); text-decoration: underline; }
+.pase__visitante a:hover { color: var(--color-accent); }
+
+/* Talón: perforación + muescas de boleto */
+.pase__talon {
+  position: relative;
+  border-top: var(--border-thin) dashed var(--color-border-strong);
+  padding: var(--space-5) var(--space-6) var(--space-6);
+}
+
+.pase__talon::before,
+.pase__talon::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-page);
+  border: var(--border-thin) solid var(--color-border);
+}
+
+.pase__talon::before { left: -9px; clip-path: inset(0 0 0 50%); border-left: none; }
+.pase__talon::after  { right: -9px; clip-path: inset(0 50% 0 0); border-right: none; }
+
+.pase__siguiente-label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+  margin-bottom: var(--space-3);
+}
+
+.pase__cta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-thin) solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-15);
+  transition: color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.pase__cta:last-of-type { border-bottom: none; }
+
+.pase__cta:hover { color: var(--color-accent); text-decoration: none; }
+
+.pase__cta em {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.pase__cta--primaria { font-weight: var(--font-weight-semibold); }
+
+.pase__cta .meta { white-space: nowrap; }
+
+.pase__cambiar {
+  margin-top: var(--space-4);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pase__cambiar:hover { color: var(--color-accent); }
+
+/* Modo día de examen */
+.pase__bendicion {
+  margin-top: var(--space-4);
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--font-size-20);
+  color: var(--color-accent);
+  line-height: var(--line-height-heading);
+}
+
+.pase__checklist {
+  margin-top: var(--space-4);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  color: var(--color-text-secondary);
+}
+
+.pase__checklist li { padding-block: var(--space-1); }
+
+/* ============================================================
+   LA PREGUNTA DE HOY — ritual diario compartido, teclas 1–4.
+   ============================================================ */
+
+.pregunta {
+  margin-top: var(--space-6);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  background-color: var(--color-bg-page);
+}
+
+.pregunta__eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+.pregunta__racha { color: var(--color-accent-strong); }
+
+.pregunta__texto {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-16);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-base);
+}
+
+.pregunta__opciones {
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-2);
+}
+
+.pregunta__opcion {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  width: 100%;
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  transition: border-color var(--motion-fast) var(--motion-ease-standard),
+              background-color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.pregunta__opcion:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-hover);
+}
+
+.pregunta__opcion:active:not(:disabled) { transform: scale(0.98); }
+
+.pregunta__tecla {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Estados de respuesta — instantáneos, icono+color+borde (WCAG 1.4.1) */
+.pregunta__opcion--correcta {
+  border-color: var(--color-state-ok);
+  background-color: var(--color-state-ok-bg);
+  color: var(--color-state-ok);
+  font-weight: var(--font-weight-medium);
+}
+
+.pregunta__opcion--incorrecta {
+  border-color: var(--color-state-err);
+  background-color: var(--color-state-err-bg);
+  color: var(--color-state-err);
+}
+
+.pregunta__opcion:disabled { cursor: default; }
+
+.pregunta__porque {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-13);
+  color: var(--color-text-secondary);
+  border-left: var(--border-thick) solid var(--color-accent);
+  padding-left: var(--space-3);
+}
+
+.pregunta__manana {
+  margin-top: var(--space-3);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+}
+
+/* ============================================================
+   ANDENES — las acciones del aula como bandas de estación.
+   Número de andén fantasma en Fraunces gigante: textura, no ruido.
+   ============================================================ */
+
+.anden {
+  border-top: var(--border-thin) solid var(--color-border);
+  padding-block: var(--space-8);
+}
+
+.anden__cabecera {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.anden__numero {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-text-placeholder);
+  font-variant-numeric: lining-nums;
+  flex-shrink: 0;
+}
+
+.anden__titulo {
+  font-size: var(--font-size-32);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "opsz" 64;
+}
+
+.anden__meta {
+  margin-left: auto;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: var(--color-text-meta);
+  white-space: nowrap;
+}
+
+@media (max-width: 759px) {
+  .anden__meta { display: none; }
+}
+
+/* Puertas: cards de acción en retícula que llena 1280px */
+.anden__puertas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--space-5);
+}
+
+/* Specs en mono dentro de las cards de examen */
+.puerta__specs {
+  margin-top: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+  letter-spacing: var(--tracking-meta);
+}
+
+.anden__pie {
+  margin-top: var(--space-5);
+  font-size: var(--font-size-14);
+  color: var(--color-text-secondary);
+}
+
+.anden__pie a { white-space: nowrap; }
+
+/* ============================================================
+   VÍAS — Física y Matemáticas lado a lado, listas con dot
+   leaders (la densidad tipográfica que mata los 11 renglones).
+   ============================================================ */
+
+.anden__vias {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+}
+
+@media (min-width: 1080px) {
+  .anden__vias { grid-template-columns: 1fr 1fr; }
+}
+
+.via {
+  border-top: var(--border-thick) solid var(--color-border);
+  padding-top: var(--space-4);
+}
+
+.via--fisica { border-top-color: var(--cat-blue); }
+.via--mate   { border-top-color: var(--cat-purple); }
+
+.via__titulo {
+  font-size: var(--font-size-24);
+  font-variation-settings: "opsz" 32;
+}
+
+.via__meta {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+}
+
+/* Lista agate: numerada en mono, dot leaders, 2 columnas ≥760px */
+.agate {
+  margin-top: var(--space-4);
+  columns: 1;
+  column-gap: var(--space-7);
+}
+
+@media (min-width: 760px) {
+  .agate { columns: 2; }
+}
+
+.agate__item { break-inside: avoid; }
+
+.agate__link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-14);
+  transition: color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.agate__link:hover { color: var(--color-accent); text-decoration: none; }
+
+.agate__num {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta-large);
+  flex-shrink: 0;
+}
+
+.agate__nombre { flex-shrink: 0; color: var(--color-text-primary); }
+
+.agate__link:hover .agate__nombre { color: var(--color-accent); }
+
+.agate__leader {
+  flex: 1 1 auto;
+  min-width: var(--space-4);
+  border-bottom: var(--border-thin) dotted var(--color-border);
+  transform: translateY(-4px);
+}
+
+.agate__hint {
+  font-size: var(--font-size-12);
+  color: var(--color-text-meta);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 12rem;
+}
+
+.via__extra {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: var(--border-thin) solid var(--color-border-subtle);
+  font-size: var(--font-size-14);
+  color: var(--color-text-secondary);
+}
+
+.via__extra a + a::before {
+  content: "· ";
+  color: var(--color-border-strong);
+  margin-inline: var(--space-2);
+}
+
+/* ============================================================
+   MOSTRADOR DE IMPRESIÓN — el aula ECOEMS por fin enlazada.
+   ============================================================ */
+
+.mostrador {
+  background-color: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border);
+  border-top: var(--border-thick) solid var(--cat-amber);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4) var(--space-7);
+  color: inherit;
+  transition: border-color var(--motion-fast) var(--motion-ease-standard);
+}
+
+.mostrador:hover {
+  border-color: var(--color-border-strong);
+  border-top-color: var(--cat-amber);
+  text-decoration: none;
+}
+
+.mostrador:hover .mostrador__cta { color: var(--color-text-primary); }
+
+.mostrador__titulo {
+  font-size: var(--font-size-24);
+  font-variation-settings: "opsz" 32;
+}
+
+.mostrador__conteos {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  color: var(--color-text-meta);
+  letter-spacing: var(--tracking-meta);
+}
+
+.mostrador__cta {
+  margin-left: auto;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.mostrador__cta:hover { color: var(--color-text-primary); }
+
+@media (max-width: 759px) {
+  .mostrador__cta { margin-left: 0; }
+}
+
+/* ============================================================
+   DESPEGARON — los que ya presentaron gradúan, no desaparecen.
+   ============================================================ */
+
+.despegaron {
+  border-top: var(--border-thin) solid var(--color-border);
+  padding-block: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-5);
+}
+
+.despegaron__label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+.despegaron__alumno {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--font-size-16);
+  color: var(--color-text-meta);
+}
+
+.despegaron__alumno small {
+  font-family: var(--font-family-mono);
+  font-style: normal;
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-meta);
+}
+
+/* ============================================================
+   ÚLTIMA LLAMADA — marquesina espejo sobre el footer.
+   ============================================================ */
+
+.ultima-llamada {
+  border-top: var(--border-thin) solid var(--color-border-subtle);
+  background-color: var(--color-bg-raised);
+}
+
+.ultima-llamada__inner {
+  max-width: var(--container-full);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-meta-large);
+}
+
+.ultima-llamada__inner em {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-14);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-accent);
+}
+
+@media (min-width: 760px) {
+  .ultima-llamada__inner { padding-inline: var(--space-7); }
+}
+
+/* ============================================================
+   Footer móvil: los 6 destinos canónicos (la nav los oculta <760px)
+   ============================================================ */
+
+.footer-destinos {
+  display: none;
+}
+
+@media (max-width: 759px) {
+  .footer-destinos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-4) var(--space-5) 0;
+    max-width: var(--container-full);
+    margin-inline: auto;
+    font-size: var(--font-size-13);
+  }
+}

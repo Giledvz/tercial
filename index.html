@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Tercial · materiales</title>
+<meta name="description" content="Tercial — sala de abordaje: contadores de examen, práctica, simulacros y materiales del curso de ingreso.">
+<title>Tercial · sala de abordaje</title>
 
 <script>
   /* Anti-flash · ver design-system § 11 */
@@ -26,261 +27,256 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/home.css">
 
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/home.js"></script>
 </head>
 <body>
 
 <site-nav active="inicio"></site-nav>
 
-<main class="container container--base">
+<!-- Marquesina: la sensación de "hoy" en los primeros 44 píxeles -->
+<header class="marquee" aria-label="marquesina de la estación">
+  <div class="marquee__inner">
+    <span class="marquee__sala">Sala de abordaje</span>
+    <span class="marquee__proxima" id="marquee-proxima">Próxima salida —</span>
+    <span class="marquee__reloj" id="marquee-reloj"></span>
+  </div>
+</header>
 
-  <header class="hero hero--with-aside">
-    <div class="hero__main">
-      <p class="eyebrow">Nivel superior · ingreso a universidad</p>
-      <h1 class="hero__title">Materiales de <em>clase</em></h1>
-      <p class="hero__lede">
-        Ejercicios resueltos, exámenes adaptativos y tarjetas de práctica para preparar tu examen.
-      </p>
-    </div>
-    <aside id="contadores" class="hero__aside exam-countdown" aria-label="contadores de examen">
-      <!-- contenido inyectado por el JS del carrusel -->
-    </aside>
-  </header>
+<main class="estacion">
 
-  <section id="tarjetas">
-    <header class="section-header" data-cat="coral">
-      <h2 class="section-header__title">
-        <span class="section-header__num">i.</span>
-        Tarjetas y notas
-      </h2>
-      <span class="section-header__count">3 recursos</span>
+  <!-- ====================================================
+       ABORDAJE — tablero de salidas + pase de abordar
+       ==================================================== -->
+  <section id="salidas" class="abordaje">
+    <header class="abordaje__header">
+      <p class="eyebrow">Tercial · curso de ingreso · COMIPEMS &amp; UNAM</p>
+      <h1 class="abordaje__title" id="abordaje-title">Salidas de <em>junio</em></h1>
+      <p class="abordaje__lede" id="abordaje-lede"></p>
     </header>
 
-    <div class="card-grid card-grid--cols-3">
-      <a class="card-link" href="/tercial/practicar.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Practicar <em>por tema</em></h3>
-          </header>
-          <p class="card__body">
-            Elige un tema y entra directo a sus flashcards. El orden cambia cada sesión, así que repetir un tema nunca es repetir las respuestas.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
+    <div class="abordaje__grid">
 
+      <div class="abordaje__tablero-col">
+        <div class="tablero" aria-label="tablero de salidas de exámenes">
+          <div class="tablero__cabecera" aria-hidden="true">
+            <span>Salida</span>
+            <span>Pasajeros</span>
+            <span>Faltan</span>
+          </div>
+          <div id="tablero-grupos"></div>
+        </div>
+      </div>
+
+      <div class="abordaje__pase-col pase-col">
+        <article class="pase" id="pase" aria-label="pase de abordar">
+          <div class="pase__cuerpo"></div>
+          <div class="pase__talon"></div>
+        </article>
+
+        <div class="pregunta" id="pregunta" aria-label="la pregunta de hoy"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+       ANDÉN 01 · Practica
+       ==================================================== -->
+  <section class="anden" id="practica">
+    <header class="anden__cabecera">
+      <span class="anden__numero" aria-hidden="true">01</span>
+      <h2 class="anden__titulo">Andén — <em>Practica</em></h2>
+      <span class="anden__meta">tarjetas con vuelta · ~350 reactivos</span>
+    </header>
+
+    <div class="anden__puertas">
       <a class="card-link" href="/tercial/flashcards.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Práctica <em>rápida</em></h3>
-          </header>
-          <p class="card__body">
-            30 preguntas al azar de todas las materias. Para soltar la mente, calentar o cerrar una sesión de estudio en 15 minutos.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+        <article class="card card--cat-teal">
+          <header class="card__header"><h3 class="card__title">Sesión <em>completa</em></h3></header>
+          <p class="card__body">30 al azar de todas las materias. La tarjeta gira; tú decides antes de que lo haga.</p>
+          <footer class="card__footer"><span class="card__meta">15 min</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
-
-      <a class="card-link" href="/tercial/repaso.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Notas <em>de repaso</em></h3>
-          </header>
-          <p class="card__body">
-            La idea clave de cada tema, los errores que más caen y un par de ejemplos. Pensado para repasar la noche antes.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+      <a class="card-link" href="/tercial/flashcards.html?modo=estudio">
+        <article class="card card--cat-teal">
+          <header class="card__header"><h3 class="card__title">Modo <em>estudio</em></h3></header>
+          <p class="card__body">Recorre las tarjetas viendo la respuesta. Para aprender antes de competir.</p>
+          <footer class="card__footer"><span class="card__meta">sin calificar</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
-    </div>
-  </section>
-
-  <section id="fisica">
-    <header class="section-header" data-cat="purple">
-      <h2 class="section-header__title">
-        <span class="section-header__num">ii.</span>
-        Física
-      </h2>
-      <span class="section-header__count">12 recursos</span>
-    </header>
-
-    <a class="card-link" href="/tercial/formulario.html">
-      <article class="card card--featured" data-cat="purple">
-        <header class="card__header">
-          <h3 class="card__title">Formulario <em>completo</em></h3>
-        </header>
-        <p class="card__body">
-          Diez unidades, más de cien fórmulas para consultar mientras resuelves. Tenlo abierto al lado.
-        </p>
-        <footer class="card__footer">
-          <span class="card__meta">html</span>
-          <span class="card__cta">Abrir →</span>
-        </footer>
-      </article>
-    </a>
-
-    <ul class="topic-list">
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-    </ul>
-  </section>
-
-  <section id="matematicas">
-    <header class="section-header" data-cat="blue">
-      <h2 class="section-header__title">
-        <span class="section-header__num">iii.</span>
-        Matemáticas
-      </h2>
-      <span class="section-header__count">4 recursos</span>
-    </header>
-
-    <div class="card-grid">
-      <a class="card-link" href="/tercial/calculo_diferencial_v3.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Cálculo <em>diferencial</em></h3>
-          </header>
-          <p class="card__body">Límites, derivadas, optimización con problemas resueltos.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+      <a class="card-link" href="/tercial/flashcards.html?modo=revisar">
+        <article class="card card--cat-teal">
+          <header class="card__header"><h3 class="card__title">Modo <em>revisar</em></h3></header>
+          <p class="card__body">Repaso veloz de preguntas y respuestas. Ideal para cerrar el día.</p>
+          <footer class="card__footer"><span class="card__meta">rápido</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
-
-      <a class="card-link" href="/tercial/calculo_diferencial_latex.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Cálculo <em>resumen</em></h3>
-          </header>
-          <p class="card__body">Resumen LaTeX con teoría y fórmulas para imprimir.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/geometria_analitica.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Geometría</em> analítica</h3>
-          </header>
-          <p class="card__body">Rectas, circunferencias, parábolas y elipses, con ejercicios.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/trigonometria_con_figuras.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Trigonometría</em></h3>
-          </header>
-          <p class="card__body">Identidades, ecuaciones, ley de senos y cosenos con figuras.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+      <a class="card-link" href="/tercial/flashcards.html?modo=estudio&amp;fuente=320_UNAM">
+        <article class="card card--cat-teal">
+          <header class="card__header"><h3 class="card__title">Banco <em>UNAM 320</em></h3></header>
+          <p class="card__body">El banco especial de 320 preguntas para quien va por la universidad.</p>
+          <footer class="card__footer"><span class="card__meta">nivel UNAM</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
     </div>
+
+    <p class="anden__pie">
+      ¿Buscas algo exacto? <a href="/tercial/practicar.html">16 mazos por área →</a>
+      &nbsp;·&nbsp; <a href="/tercial/practicar-temas.html">los 52 temas, uno por uno →</a>
+    </p>
   </section>
 
-  <section id="examenes">
-    <header class="section-header" data-cat="navy">
-      <h2 class="section-header__title">
-        <span class="section-header__num">iv.</span>
-        Exámenes adaptativos
-      </h2>
-      <span class="section-header__count">3 simulares</span>
+  <!-- ====================================================
+       ANDÉN 02 · Examínate   (id="examenes" — anclado por la nav)
+       ==================================================== -->
+  <section class="anden" id="examenes">
+    <header class="anden__cabecera">
+      <span class="anden__numero" aria-hidden="true">02</span>
+      <h2 class="anden__titulo">Andén — <em>Examínate</em></h2>
+      <span class="anden__meta">la dificultad sube si vas bien</span>
     </header>
 
-    <p class="section-intro">Para cuando ya practicaste. Simulan la dificultad del examen real, miden tu nivel y te dicen dónde estás parado.</p>
-
-    <a class="card-link" href="/tercial/examen_unam_area2.html">
-      <article class="card card--featured" data-cat="navy">
-        <header class="card__header">
-          <h3 class="card__title">UNAM Área 2 — <em>banco especial</em></h3>
-        </header>
-        <p class="card__body">
-          120 preguntas curadas del banco UNAM, en el formato exacto del examen oficial.
-        </p>
-        <footer class="card__footer">
-          <span class="card__meta">html</span>
-          <span class="card__cta">Abrir →</span>
-        </footer>
-      </article>
-    </a>
-
-    <div class="card-grid">
+    <div class="anden__puertas">
       <a class="card-link" href="/tercial/examen_adaptativo.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Matemáticas</em></h3>
-          </header>
-          <p class="card__body">Adaptativo. La dificultad sube si vas bien, baja si te trabas.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+        <article class="card card--cat-coral">
+          <header class="card__header"><h3 class="card__title"><em>Matemáticas</em> adaptativo</h3></header>
+          <p class="card__body">Mide tu nivel real: sube cuando aciertas, te sostiene cuando te trabas.</p>
+          <p class="puerta__specs">50 reactivos · timer · teclas 1–4 / Enter</p>
+          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
-
       <a class="card-link" href="/tercial/examen_adaptativo_fisica.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Física</em></h3>
-          </header>
-          <p class="card__body">Adaptativo. Cubre las 10 unidades del curso.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
+        <article class="card card--cat-coral">
+          <header class="card__header"><h3 class="card__title"><em>Física</em> adaptativo</h3></header>
+          <p class="card__body">Las 10 unidades del curso en un solo examen que se ajusta a ti.</p>
+          <p class="puerta__specs">10 unidades · dificultad viva</p>
+          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abordar →</span></footer>
+        </article>
+      </a>
+      <a class="card-link" href="/tercial/examen_unam_area2.html">
+        <article class="card card--cat-coral">
+          <header class="card__header"><h3 class="card__title">UNAM <em>Área 2</em></h3></header>
+          <p class="card__body">120 preguntas curadas del banco UNAM, en el formato exacto del oficial.</p>
+          <p class="puerta__specs">120 reactivos · formato oficial</p>
+          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abordar →</span></footer>
         </article>
       </a>
     </div>
+
+    <p class="anden__pie">
+      ¿Simulacro COMIPEMS completo, en papel y con hoja de respuestas?
+      <a href="#imprimir">Está en el andén 04 ↓</a>
+    </p>
   </section>
+
+  <!-- ====================================================
+       ANDÉN 03 · Repasa   (vías física y matemáticas — ids anclados)
+       ==================================================== -->
+  <section class="anden" id="repasa">
+    <header class="anden__cabecera">
+      <span class="anden__numero" aria-hidden="true">03</span>
+      <h2 class="anden__titulo">Andén — <em>Repasa</em></h2>
+      <span class="anden__meta">teoría, ejercicios resueltos y fórmulas</span>
+    </header>
+
+    <div class="anden__vias">
+
+      <div class="via via--fisica" id="fisica">
+        <h3 class="via__titulo">Vía <em>Física</em></h3>
+        <p class="via__meta">11 unidades con ejercicios resueltos</p>
+        <ul class="agate">
+          <li class="agate__item"><a class="agate__link" href="/tercial/cinematica.html"><span class="agate__num">01</span><span class="agate__nombre">Cinemática</span><span class="agate__leader"></span><span class="agate__hint">MRU · MRUA · caída libre</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/dinamica.html"><span class="agate__num">02</span><span class="agate__nombre">Dinámica</span><span class="agate__leader"></span><span class="agate__hint">leyes de Newton</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/trabajo_energia.html"><span class="agate__num">03</span><span class="agate__nombre">Trabajo y energía</span><span class="agate__leader"></span><span class="agate__hint">conservación</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/cantidad_movimiento.html"><span class="agate__num">04</span><span class="agate__nombre">Cantidad de movimiento</span><span class="agate__leader"></span><span class="agate__hint">choques</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/fluidos.html"><span class="agate__num">05</span><span class="agate__nombre">Fluidos</span><span class="agate__leader"></span><span class="agate__hint">Arquímedes</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/termodinamica.html"><span class="agate__num">06</span><span class="agate__nombre">Termodinámica</span><span class="agate__leader"></span><span class="agate__hint">calor · gases</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/optica.html"><span class="agate__num">07</span><span class="agate__nombre">Óptica</span><span class="agate__leader"></span><span class="agate__hint">reflexión · lentes</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/ondas.html"><span class="agate__num">08</span><span class="agate__nombre">Ondas y sonido</span><span class="agate__leader"></span><span class="agate__hint">frecuencia · MAS</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/electricidad.html"><span class="agate__num">09</span><span class="agate__nombre">Electricidad</span><span class="agate__leader"></span><span class="agate__hint">Coulomb · Ohm</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/magnetismo.html"><span class="agate__num">10</span><span class="agate__nombre">Magnetismo</span><span class="agate__leader"></span><span class="agate__hint">campo · Lorentz</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/fisica_moderna.html"><span class="agate__num">11</span><span class="agate__nombre">Física moderna</span><span class="agate__leader"></span><span class="agate__hint">átomo · cuántica</span></a></li>
+        </ul>
+        <p class="via__extra">
+          <a href="/tercial/formulario.html"><strong>Formulario completo</strong> — 100+ fórmulas para tener al lado →</a>
+        </p>
+      </div>
+
+      <div class="via via--mate" id="matematicas">
+        <h3 class="via__titulo">Vía <em>Matemáticas</em></h3>
+        <p class="via__meta">cálculo, geometría y trigonometría</p>
+        <ul class="agate">
+          <li class="agate__item"><a class="agate__link" href="/tercial/calculo_diferencial_v3.html"><span class="agate__num">01</span><span class="agate__nombre">Cálculo diferencial</span><span class="agate__leader"></span><span class="agate__hint">límites · derivadas</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/calculo_diferencial_latex.pdf"><span class="agate__num">02</span><span class="agate__nombre">Cálculo, resumen</span><span class="agate__leader"></span><span class="agate__hint">pdf imprimible</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/geometria_analitica.pdf"><span class="agate__num">03</span><span class="agate__nombre">Geometría analítica</span><span class="agate__leader"></span><span class="agate__hint">rectas · cónicas</span></a></li>
+          <li class="agate__item"><a class="agate__link" href="/tercial/trigonometria_con_figuras.pdf"><span class="agate__num">04</span><span class="agate__nombre">Trigonometría</span><span class="agate__leader"></span><span class="agate__hint">senos · cosenos</span></a></li>
+        </ul>
+        <p class="via__extra">
+          <a href="/tercial/repaso.html"><strong>Notas de repaso</strong> — la idea clave de cada tema →</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+       ANDÉN 04 · Imprime — el aula ECOEMS, por fin enlazada
+       ==================================================== -->
+  <section class="anden" id="imprimir">
+    <header class="anden__cabecera">
+      <span class="anden__numero" aria-hidden="true">04</span>
+      <h2 class="anden__titulo">Andén — <em>Imprime</em></h2>
+      <span class="anden__meta">el aula en papel</span>
+    </header>
+
+    <a class="mostrador" href="/tercial/aula.html">
+      <span>
+        <span class="mostrador__titulo">Aula <em>ECOEMS</em></span>
+      </span>
+      <span class="mostrador__conteos">16 exámenes · 20 hojas de trabajo · 2 simulacros COMIPEMS de 100+ reactivos</span>
+      <span class="mostrador__cta">Abrir el aula →</span>
+    </a>
+  </section>
+
+  <!-- Despegaron: los que ya presentaron gradúan, no desaparecen -->
+  <div class="despegaron" id="despegaron" hidden></div>
 
 </main>
 
+<!-- Marquesina espejo -->
+<div class="ultima-llamada">
+  <p class="ultima-llamada__inner">Última llamada — <em>veinte minutos hoy valen más que tres horas mañana.</em></p>
+</div>
+
 <footer class="site-footer">
-  <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
+  <nav class="footer-destinos" aria-label="destinos">
+    <a href="/tercial/">Inicio</a>
+    <a href="/tercial/index.html#examenes">Exámenes</a>
+    <a href="/tercial/practicar.html">Tarjetas</a>
+    <a href="/tercial/index.html#fisica">Física</a>
+    <a href="/tercial/index.html#matematicas">Matemáticas</a>
+    <a href="/tercial/repaso.html">Notas</a>
+  </nav>
+  <p class="site-footer__brand"><em>Tercial</em> · sala de abordaje</p>
   <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
   <nav class="site-footer__links" aria-label="enlaces de pie">
     <a href="/tercial/practicar.html">Practicar por tema</a>
     <a href="/tercial/repaso.html">Notas de repaso</a>
     <a href="/tercial/formulario.html">Formulario</a>
+    <a href="/tercial/aula.html">Aula ECOEMS</a>
   </nav>
 </footer>
 
 <script>
-/* Carrusel de contadores de examen.
+/* Tablero de salidas — datos.
    Para agregar un alumno: { nombre: "...", fecha: "AAAA-MM-DD" }
-   El examen se oculta automáticamente después de la fecha. */
-const EXAMENES = [
+   Pasada la fecha, el alumno se muda solo a la tira "Despegaron".
+   (window.EXAMENES: home.js lo lee desde otro archivo.) */
+window.EXAMENES = [
   { nombre: "Conchita",  fecha: "2026-06-20" },
   { nombre: "Sofía",     fecha: "2026-06-20" },
   { nombre: "Yuli",      fecha: "2026-06-20" },
@@ -296,108 +292,6 @@ const EXAMENES = [
   { nombre: "Rafaela",   fecha: "2026-06-27" },
   { nombre: "Citlaly",   fecha: "2026-06-28" },
 ];
-
-(function() {
-  const DIAS_SEMANA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-
-  function diasFaltantes(fechaStr) {
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-    const [y, m, d] = fechaStr.split('-').map(Number);
-    const examen = new Date(y, m - 1, d);
-    return Math.round((examen - hoy) / (1000 * 60 * 60 * 24));
-  }
-
-  function formatearFecha(fechaStr) {
-    const [y, m, d] = fechaStr.split('-').map(Number);
-    const fecha = new Date(y, m - 1, d);
-    return `${DIAS_SEMANA[fecha.getDay()]} ${d} de ${MESES[m-1]}`;
-  }
-
-  const container = document.getElementById('contadores');
-
-  const vigentes = EXAMENES
-    .filter(ex => diasFaltantes(ex.fecha) >= 0)
-    .sort((a, b) => diasFaltantes(a.fecha) - diasFaltantes(b.fecha));
-
-  if (vigentes.length === 0) {
-    container.style.display = 'none';
-    return;
-  }
-
-  const pista = document.createElement('div');
-  pista.className = 'exam-countdown__pista';
-  container.appendChild(pista);
-
-  vigentes.forEach(ex => {
-    const dias = diasFaltantes(ex.fecha);
-
-    let numClass = 'contador-numero';
-    if (dias <= 7) numClass += ' urgente';
-
-    let numContent, sufijo, titulo;
-    if (dias === 0) {
-      numContent = '¡Hoy!';
-      sufijo = '';
-      numClass += ' pequeno';
-      titulo = `¡Hoy es el examen de ${ex.nombre}!`;
-    } else if (dias === 1) {
-      numContent = '1';
-      sufijo = 'día';
-      titulo = `Falta 1 día para el examen de ${ex.nombre}`;
-    } else {
-      numContent = String(dias);
-      sufijo = 'días';
-      titulo = `Faltan ${dias} días para el examen de ${ex.nombre}`;
-    }
-
-    const item = document.createElement('div');
-    item.className = 'contador-item';
-    item.innerHTML = `
-      <div class="contador-tiempo">
-        <div class="${numClass}">${numContent}</div>
-        ${sufijo ? `<div class="contador-sufijo">${sufijo}</div>` : ''}
-      </div>
-      <div class="contador-texto">
-        <div class="contador-titulo">${titulo}</div>
-        <div class="contador-fecha">${formatearFecha(ex.fecha)}</div>
-      </div>
-    `;
-    pista.appendChild(item);
-  });
-
-  const items = pista.querySelectorAll('.contador-item');
-  items[0].classList.add('activo');
-
-  requestAnimationFrame(() => {
-    let maxH = 0;
-    items.forEach(it => { maxH = Math.max(maxH, it.offsetHeight); });
-    pista.style.height = maxH + 'px';
-  });
-
-  if (items.length === 1) return;
-
-  const footer = document.createElement('div');
-  footer.className = 'exam-countdown__footer';
-  footer.innerHTML = `
-    <span class="exam-countdown__pos">1 / ${items.length}</span>
-    <span class="exam-countdown__hint">toca para el siguiente ↓</span>
-  `;
-  container.appendChild(footer);
-
-  let actual = 0;
-  pista.addEventListener('click', () => {
-    const siguiente = (actual + 1) % items.length;
-    const prev = items[actual];
-    prev.classList.remove('activo');
-    prev.classList.add('saliendo');
-    setTimeout(() => prev.classList.remove('saliendo'), 420);
-    items[siguiente].classList.add('activo');
-    actual = siguiente;
-    footer.querySelector('.exam-countdown__pos').textContent = `${actual + 1} / ${items.length}`;
-  });
-})();
 </script>
 
 </body>
