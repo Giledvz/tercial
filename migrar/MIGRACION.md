@@ -21,6 +21,8 @@
 - `Matemáticas 5 (COMIPEMS)` ≈ `Matemáticas 5` (8 líneas de diff) — revisar en su bloque si aporta algo.
 - `Solucionario Matemáticas 2` ≠ `Matemáticas 2 (Respuestas)` (documentos distintos: solucionario desarrollado vs hoja con respuestas).
 
+> **¿Retomando?** Lee primero `migrar/COMO-CONTINUAR.md`: tiene el método paso a paso, las convenciones, los generadores reutilizables (`migrar/generadores/`) y las instrucciones detalladas de los bloques 14–16 que faltan.
+
 ## Bloques
 
 Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
@@ -109,6 +111,7 @@ Estado: ☐ pendiente · ◐ en curso · ☑ hecho (commit)
 
 ## Bitácora
 
+- 2026-06-12 · Pausa: 13/16 bloques hechos y pusheados. Generadores guardados en `migrar/generadores/` y guía de continuación en `migrar/COMO-CONTINUAR.md` para terminar Química (14), Simulaciones (15) y Especiales (16) en la laptop con el mismo método.
 - 2026-06-12 · Bloque 13 (Exámenes 1 Física, 1 Mate, 2 Mate, 13). Decisiones de Gil: conservar el `examen-1-fisica.html` viejo y guardar el nuevo como `examen-01-fisica.html`; numeración Examen 13; per-materia con sufijo `-mate`. Incluye opción múltiple (`.exam-pdf__choices`) y muchas figuras redibujadas en SVG: gráfica de pastel (intención de voto), escalera de cubos isométrica (serie_cubos), prisma trapezoidal (lingote), rectas paralelas con transversal + ángulos (×3, parametrizado), cuadrado inscrito, triángulo rectángulo. **Bug corregido**: las etiquetas de ángulo iban como `$...$` y KaTeX las rompía dentro del SVG → ahora van como texto plano. Generador `/tmp/gen_bloque13.py`. Las 3 imágenes PNG del banco (intencion_voto, serie_cubos, lingote_prisma) se redibujaron, no se copiaron.
 - 2026-06-11 · Bloque 12 (Exámenes 5, 6, 7, 8). Más largos: incluyen sistemas de ecuaciones (`cases`), conjuntos de datos de estadística y preguntas teóricas. Gráficas xmax 24 (e5/e6) y 16 (e7/e8) con sub-incisos propios. Total de puntos calculado automáticamente. **Numeración**: examen7 y examen8 ambos tenían título interno "Examen 8" en Overleaf (copy-paste de Gil); se nombraron 7 y 8 por orden del zip — confirmar con Gil.
 - 2026-06-11 · Bloque 11 (Exámenes combinados 2, 3, 4). Exámenes de fin de semana con dos secciones (Matemáticas + Física con `page-break-before`), formato `\question[N]` → `.exam-pdf__points`, gráfica posición-tiempo de física → SVG, `.exam-pdf__total`. Solo alumno (sin clave en el original). Generador `/tmp/gen_examenes.py` (reutiliza chart() de gráficas). Se enlazan en la sección "Exámenes" del aula como lista "Exámenes por fin de semana".
