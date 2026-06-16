@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/exam-print.css">
 
   <script defer src="../assets/js/katex-loader.js"></script>
+  <script defer src="../assets/js/exam-clave.js"></script>
 </head>
 <body>
 
@@ -24,7 +25,7 @@
   <header class="exam-pdf__hero">
     <p class="exam-pdf__eyebrow">Evaluación · ECOEMS</p>
     <h1 class="exam-pdf__title">Examen 4 — <em>Matemáticas y Física</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Cuarto fin de semana del curso · versión alumno</p>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Cuarto fin de semana del curso · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
   </header>
 
   <div class="exam-pdf__instructions">
@@ -39,30 +40,48 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$+15+11-23-21+6 =$</p>
+    
+      <p class="clave-only">$+15+11-23-21+6 =$ <span class="answer-final">$-12$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Obtén el mínimo común múltiplo de $36$ y $48$.</p>
+    
+      <p class="clave-only">$36=2^2\cdot3^2$, $48=2^4\cdot3 \Rightarrow$ m.c.m. $=2^4\cdot3^2 =$ <span class="answer-final">$144$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$\dfrac{3}{12}-\dfrac{6}{24}+\dfrac{5}{40} =$</p>
+    
+      <p class="clave-only">$\dfrac{1}{4}-\dfrac{1}{4}+\dfrac{1}{8} =$ <span class="answer-final">$\dfrac{1}{8}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $8m^2+2m-15 =$</p>
+    
+      <p class="clave-only">Producto $-120$, suma $+2$: $8m^2+12m-10m-15 =$ <span class="answer-final">$(4m-5)(2m+3)$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Un coche tarda $45$ minutos en recorrer $72\,\mathrm{km}$. ¿Qué distancia recorrerá en $3$ horas si va a la misma velocidad?</p>
+    
+      <p class="clave-only">$v=\dfrac{72}{0.75}=96\,\mathrm{km/h}$; en $3\,\mathrm{h}$: $96\times3 =$ <span class="answer-final">$288\,\mathrm{km}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(2x^2+11)^2 =$</p>
+    
+      <p class="clave-only">$(2x^2+11)^2 =$ <span class="answer-final">$4x^4+44x^2+121$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Una máquina que fabrica tornillos produce un $3\,\%$ de piezas defectuosas. Si hoy se descubrieron $51$ tornillos defectuosos, ¿cuántas piezas fabricó la máquina?</p>
+    
+      <p class="clave-only">$\dfrac{51}{0.03} =$ <span class="answer-final">$1\,700\,\text{tornillos}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(x+8)(x+12) =$</p>
+    
+      <p class="clave-only">$(x+8)(x+12) =$ <span class="answer-final">$x^2+20x+96$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $16x^2y^6-9b^8 =$</p>
+    
+      <p class="clave-only">Diferencia de cuadrados: $\sqrt{16x^2y^6}=4xy^3$, $\sqrt{9b^8}=3b^4 \Rightarrow$ <span class="answer-final">$(4xy^3-3b^4)(4xy^3+3b^4)$</span></p>
     </div></li>
   </ol>
 
@@ -73,9 +92,13 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Despeja $t$ en la ecuación $v_f = v_0 + at$.</p>
+    
+      <p class="clave-only">$v_f=v_0+at \Rightarrow$ <span class="answer-final">$t=\dfrac{v_f-v_0}{a}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Convierte $108\,\mathrm{km/h}$ a $\mathrm{m/s}$.</p>
+    
+      <p class="clave-only">$108\div3.6 =$ <span class="answer-final">$30\,\mathrm{m/s}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">5 pts</span>De acuerdo con la gráfica mostrada, calcula:</p>
@@ -138,12 +161,24 @@
         <circle class="dot" cx="328.0" cy="146.5" r="2.2"/>
         </svg>
       </figure>
+    
+      <ol class="exam-pdf__sublist clave-only">
+        <li>Distancia total $= 150+100+150+50+0+200+250+0 =$ <span class="answer-final">$900\,\mathrm{m}$</span></li>
+        <li>Desplazamiento $= -100-100 =$ <span class="answer-final">$-200\,\mathrm{m}$</span></li>
+        <li>$v_{[6,9]} = \dfrac{0-(-150)}{3} =$ <span class="answer-final">$+50\,\mathrm{m/s}$</span></li>
+        <li>$v_{[0,3]} = \dfrac{-50-100}{3} =$ <span class="answer-final">$-50\,\mathrm{m/s}$</span></li>
+        <li>$v_{[15,18]} = \dfrac{150-(-50)}{3} = \dfrac{200}{3} \approx$ <span class="answer-final">$66.7\,\mathrm{m/s}$</span></li>
+      </ol>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Se produce un disparo a $0.66\,\mathrm{km}$ de donde se encuentra un policía. ¿Cuánto tarda el policía en oírlo si la velocidad del sonido en el aire es de $330\,\mathrm{m/s}$?</p>
+    
+      <p class="clave-only">$0.66\,\mathrm{km}=660\,\mathrm{m}$; $t=\dfrac{660}{330} =$ <span class="answer-final">$2\,\mathrm{s}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Un cuerpo posee una velocidad inicial de $12\,\mathrm{m/s}$ y una aceleración de $2\,\mathrm{m/s^2}$. ¿Cuánto tiempo tardará en adquirir una velocidad de $144\,\mathrm{km/h}$?</p>
+    
+      <p class="clave-only">$144\,\mathrm{km/h}=40\,\mathrm{m/s}$; $t=\dfrac{40-12}{2} =$ <span class="answer-final">$14\,\mathrm{s}$</span></p>
     </div></li>
   </ol>
 
