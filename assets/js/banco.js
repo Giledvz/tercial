@@ -1,0 +1,5728 @@
+/* ============================================================
+   banco.js — Banco compartido de preguntas para las modalidades
+   de estudio (descarta, a-ojo, relampago, etc.).
+
+   Copiado del array PREGUNTAS de flashcards.html (618 preguntas,
+   9 materias). Estructura por item:
+     { materia, tema, pregunta, opciones[4], correcta (0-3), explicacion }
+   Texto con LaTeX en $...$ (renderizar con ClasesKatex).
+
+   NOTA: flashcards.html conserva su propia copia inline; si se
+   editan preguntas, mantener ambos o migrar flashcards a este módulo.
+   ============================================================ */
+window.BANCO = [
+  // —— Física: caída libre (velocidad) ——
+  {
+    materia: "fisica",
+    tema: "caída libre (velocidad)",
+    pregunta: "Un objeto se deja caer desde el reposo. Usando $g = 10\\,\\mathrm{m/s^2}$, ¿qué velocidad tiene a los $3\\,\\mathrm{s}$?",
+    opciones: [
+      "$15\\,\\mathrm{m/s}$",
+      "$30\\,\\mathrm{m/s}$",
+      "$10\\,\\mathrm{m/s}$",
+      "$45\\,\\mathrm{m/s}$"
+    ],
+    correcta: 1,
+    explicacion: "En caída libre partiendo del reposo: $v = g \\cdot t = (10\\,\\mathrm{m/s^2})(3\\,\\mathrm{s}) = 30\\,\\mathrm{m/s}$."
+  },
+  // —— Matemáticas: factorización ——
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "¿Cuál es la forma factorizada de $x^2 - 9$?",
+    opciones: [
+      "$(x-3)^2$",
+      "$(x+3)^2$",
+      "$(x-3)(x+3)$",
+      "$x(x-9)$"
+    ],
+    correcta: 2,
+    explicacion: "Es una diferencia de cuadrados: $a^2 - b^2 = (a-b)(a+b)$, con $a=x$ y $b=3$."
+  },
+  // —— Física: MRUA (frenando) ——
+  {
+    materia: "fisica",
+    tema: "MRUA (frenando)",
+    pregunta: "Un auto viaja a $20\\,\\mathrm{m/s}$ y frena con aceleración constante de $-4\\,\\mathrm{m/s^2}$. ¿Cuánto tiempo tarda en detenerse?",
+    opciones: [
+      "$4\\,\\mathrm{s}$",
+      "$5\\,\\mathrm{s}$",
+      "$6\\,\\mathrm{s}$",
+      "$10\\,\\mathrm{s}$"
+    ],
+    correcta: 1,
+    explicacion: "Usando $v_f = v_0 + at$: $0 = 20\\,\\mathrm{m/s} + (-4\\,\\mathrm{m/s^2})\\cdot t$, de donde $t = \\dfrac{20\\,\\mathrm{m/s}}{4\\,\\mathrm{m/s^2}} = 5\\,\\mathrm{s}$."
+  },
+  // —— Matemáticas: trigonometría (valor notable) ——
+  {
+    materia: "matematicas",
+    tema: "trigonometría (valor notable)",
+    pregunta: "¿Cuál es el valor de $\\sin(30^{\\circ})$?",
+    opciones: [
+      "$\\dfrac{\\sqrt{3}}{2}$",
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{\\sqrt{2}}{2}$",
+      "$1$"
+    ],
+    correcta: 1,
+    explicacion: "$\\sin(30^{\\circ}) = \\dfrac{1}{2}$ es uno de los valores notables que conviene memorizar."
+  },
+  // —— Física: gravitación universal ——
+  {
+    materia: "fisica",
+    tema: "gravitación universal",
+    pregunta: "Dos masas de $2\\,\\mathrm{kg}$ y $3\\,\\mathrm{kg}$ están separadas $1\\,\\mathrm{m}$. Usando $G = 6.6 \\times 10^{-11}\\,\\mathrm{N\\cdot m^2/kg^2}$, ¿cuál es la fuerza gravitacional entre ellas?",
+    opciones: [
+      "$3.96 \\times 10^{-10}\\,\\mathrm{N}$",
+      "$6.6 \\times 10^{-11}\\,\\mathrm{N}$",
+      "$1.32 \\times 10^{-10}\\,\\mathrm{N}$",
+      "$9.9 \\times 10^{-11}\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "Por la ley de gravitación universal: $F = G\\dfrac{m_1 m_2}{r^2} = (6.6\\times 10^{-11}\\,\\mathrm{N\\cdot m^2/kg^2})\\dfrac{(2\\,\\mathrm{kg})(3\\,\\mathrm{kg})}{(1\\,\\mathrm{m})^2} = 3.96\\times 10^{-10}\\,\\mathrm{N}$."
+  },
+  // —— Física: MRUA (ciclista acelerando) ——
+  {
+    materia: "fisica",
+    tema: "MRUA (ciclista acelerando)",
+    pregunta: "Un ciclista parte del reposo y acelera uniformemente a razón de $3\\,\\mathrm{m/s^2}$. ¿Qué velocidad alcanza a los $4\\,\\mathrm{s}$?",
+    opciones: [
+      "$7\\,\\mathrm{m/s}$",
+      "$12\\,\\mathrm{m/s}$",
+      "$24\\,\\mathrm{m/s}$",
+      "$0.75\\,\\mathrm{m/s}$"
+    ],
+    correcta: 1,
+    explicacion: "$v = v_0 + at = 0 + (3\\,\\mathrm{m/s^2})(4\\,\\mathrm{s}) = 12\\,\\mathrm{m/s}$."
+  },
+  // —— Matemáticas: operaciones con enteros y potencias ——
+  {
+    materia: "matematicas",
+    tema: "operaciones con enteros y potencias",
+    pregunta: "Simplifica la siguiente expresión: $(-2)^3 + 3(4-7)$",
+    opciones: [
+      "$1$",
+      "$-17$",
+      "$-1$",
+      "$17$"
+    ],
+    correcta: 1,
+    explicacion: "$(-2)^3=-8$ y $4-7=-3$. Entonces $-8+3(-3)=-8-9=-17$."
+  },
+  // —— Física: caída libre (distancia) ——
+  {
+    materia: "fisica",
+    tema: "caída libre (distancia)",
+    pregunta: "Un objeto se deja caer desde el reposo. ¿Qué distancia recorre durante los primeros $2\\,\\mathrm{s}$? (Usa $g=10\\,\\mathrm{m/s^2}$.)",
+    opciones: [
+      "$10\\,\\mathrm{m}$",
+      "$20\\,\\mathrm{m}$",
+      "$40\\,\\mathrm{m}$",
+      "$5\\,\\mathrm{m}$"
+    ],
+    correcta: 1,
+    explicacion: "$h = \\dfrac{1}{2}gt^2 = \\dfrac{1}{2}(10\\,\\mathrm{m/s^2})(2\\,\\mathrm{s})^2 = \\dfrac{1}{2}(10\\,\\mathrm{m/s^2})(4\\,\\mathrm{s^2}) = 20\\,\\mathrm{m}$."
+  },
+  // —— Matemáticas: producto notable (binomio al cuadrado) ——
+  {
+    materia: "matematicas",
+    tema: "producto notable (binomio al cuadrado)",
+    pregunta: "Al desarrollar $(3x+2)^2$ se obtiene",
+    opciones: [
+      "$9x^2 + 4$",
+      "$9x^2 + 6x + 4$",
+      "$9x^2 + 12x + 4$",
+      "$6x^2 + 12x + 4$"
+    ],
+    correcta: 2,
+    explicacion: "$(a+b)^2 = a^2+2ab+b^2$ con $a=3x$, $b=2$: $9x^2+12x+4$."
+  },
+  // —— Física: segunda ley de Newton ——
+  {
+    materia: "fisica",
+    tema: "segunda ley de Newton",
+    pregunta: "Una fuerza neta de $15\\,\\mathrm{N}$ actúa sobre un cuerpo de $3\\,\\mathrm{kg}$. La aceleración que adquiere es",
+    opciones: [
+      "$5\\,\\mathrm{m/s^2}$",
+      "$45\\,\\mathrm{m/s^2}$",
+      "$0.2\\,\\mathrm{m/s^2}$",
+      "$18\\,\\mathrm{m/s^2}$"
+    ],
+    correcta: 0,
+    explicacion: "$F = ma \\Rightarrow a = \\dfrac{F}{m} = \\dfrac{15\\,\\mathrm{N}}{3\\,\\mathrm{kg}} = 5\\,\\mathrm{m/s^2}$."
+  },
+  // —— Matemáticas: ecuación lineal ——
+  {
+    materia: "matematicas",
+    tema: "ecuación lineal",
+    pregunta: "Resuelve la ecuación $4(x+1) = 2x - 6$",
+    opciones: [
+      "$x = 5$",
+      "$x = -5$",
+      "$x = -1$",
+      "$x = 2$"
+    ],
+    correcta: 1, 
+    explicacion: "$4x+4 = 2x-6 \\Rightarrow 2x = -10 \\Rightarrow x = -5$."
+  },
+  // —— Física: trabajo mecánico (fuerza horizontal) ——
+  {
+    materia: "fisica",
+    tema: "trabajo mecánico (fuerza horizontal)",
+    pregunta: "Se empuja una caja horizontalmente con una fuerza de $25\\,\\mathrm{N}$ a lo largo de $8\\,\\mathrm{m}$. El trabajo realizado es",
+    opciones: [
+      "$33\\,\\mathrm{J}$",
+      "$3.1\\,\\mathrm{J}$",
+      "$17\\,\\mathrm{J}$",
+      "$200\\,\\mathrm{J}$"
+    ],
+    correcta: 3,
+    explicacion: "Como la fuerza es paralela al desplazamiento: $W = Fd = (25\\,\\mathrm{N})(8\\,\\mathrm{m}) = 200\\,\\mathrm{J}$."
+  },
+  // —— Matemáticas: sistema de ecuaciones ——
+  {
+    materia: "matematicas",
+    tema: "sistema de ecuaciones",
+    pregunta: "Resuelve el sistema $$\\begin{cases} x + y = 10 \\\\ x - y = 4 \\end{cases}$$",
+    opciones: [
+      "$x = 5,\\ y = 5$",
+      "$x = 7,\\ y = 3$",
+      "$x = 3,\\ y = 7$",
+      "$x = 7,\\ y = -3$"
+    ],
+    correcta: 1,
+    explicacion: "Sumando ambas ecuaciones: $2x = 14 \\Rightarrow x = 7$. Sustituyendo: $y = 10 - 7 = 3$."
+  },
+  // —— Física: energía cinética ——
+  {
+    materia: "fisica",
+    tema: "energía cinética",
+    pregunta: "Un cuerpo de $4\\,\\mathrm{kg}$ se mueve con rapidez $3\\,\\mathrm{m/s}$. Su energía cinética es",
+    opciones: [
+      "$12\\,\\mathrm{J}$",
+      "$36\\,\\mathrm{J}$",
+      "$18\\,\\mathrm{J}$",
+      "$6\\,\\mathrm{J}$"
+    ],
+    correcta: 2,
+    explicacion: "$E_c = \\dfrac{1}{2}mv^2 = \\dfrac{1}{2}(4\\,\\mathrm{kg})(3\\,\\mathrm{m/s})^2 = \\dfrac{1}{2}(4\\,\\mathrm{kg})(9\\,\\mathrm{m^2/s^2}) = 18\\,\\mathrm{J}$."
+  },
+  // —— Matemáticas: conversión radianes → grados ——
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "El ángulo $\\dfrac{3\\pi}{4}$ radianes equivale a",
+    opciones: [
+      "$120^{\\circ}$",
+      "$135^{\\circ}$",
+      "$150^{\\circ}$",
+      "$60^{\\circ}$"
+    ],
+    correcta: 1,
+    explicacion: "$\\pi\\,\\mathrm{rad} = 180^{\\circ}$, entonces $\\dfrac{3\\pi}{4} \\cdot \\dfrac{180^{\\circ}}{\\pi} = 3 \\cdot 45^{\\circ} = 135^{\\circ}$."
+  },
+  // —— Física: presión hidrostática ——
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Calcula la presión hidrostática a $3\\,\\mathrm{m}$ de profundidad en agua ($\\rho = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$3\\,000\\,\\mathrm{Pa}$",
+      "$300\\,\\mathrm{Pa}$",
+      "$30\\,000\\,\\mathrm{Pa}$",
+      "$3\\times 10^5\\,\\mathrm{Pa}$"
+    ],
+    correcta: 2,
+    explicacion: "$p = \\rho g h = (1000\\,\\mathrm{kg/m^3})(10\\,\\mathrm{m/s^2})(3\\,\\mathrm{m}) = 30\\,000\\,\\mathrm{Pa}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $4\\,\\mathrm{m}$ de profundidad en una alberca con agua dulce ($\\rho = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$), ¿cuál es la presión hidrostática?",
+    opciones: [
+      "$4\\,000\\,\\mathrm{Pa}$",
+      "$40\\,000\\,\\mathrm{Pa}$",
+      "$4\\,000\\,000\\,\\mathrm{Pa}$",
+      "$100\\,\\mathrm{Pa}$"
+    ],
+    correcta: 1,
+    explicacion: "$P = \\rho g h = (1000)(10)(4) = 40\\,000\\,\\mathrm{Pa}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Una prensa hidráulica tiene un pistón pequeño de $0.01\\,\\mathrm{m^2}$ y uno grande de $0.5\\,\\mathrm{m^2}$. Si aplicas una fuerza de $200\\,\\mathrm{N}$ en el pequeño, ¿qué fuerza obtienes en el grande?",
+    opciones: [
+      "$10\\,000\\,\\mathrm{N}$",
+      "$4\\,\\mathrm{N}$",
+      "$200\\,\\mathrm{N}$",
+      "$100\\,000\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "Por el principio de Pascal: $\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2} \\Rightarrow F_2 = F_1 \\cdot \\dfrac{A_2}{A_1} = 200 \\cdot \\dfrac{0.5}{0.01} = 10\\,000\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Un objeto sumergido completamente en agua desplaza $0.002\\,\\mathrm{m^3}$. ¿Cuál es la fuerza de empuje sobre él? ($\\rho_\\text{agua} = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$20\\,\\mathrm{N}$",
+      "$200\\,\\mathrm{N}$",
+      "$0.02\\,\\mathrm{N}$",
+      "$2\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "Por Arquímedes: $E = \\rho_\\text{fluido} \\cdot V_\\text{sumergido} \\cdot g = (1000)(0.002)(10) = 20\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $10\\,\\mathrm{m}$ de profundidad en agua dulce, considerando la presión atmosférica de $101\\,325\\,\\mathrm{Pa}$, ¿cuál es la presión total? ($\\rho = 1000\\,\\mathrm{kg/m^3}$, $g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$100\\,000\\,\\mathrm{Pa}$",
+      "$101\\,325\\,\\mathrm{Pa}$",
+      "$201\\,325\\,\\mathrm{Pa}$",
+      "$201\\,000\\,\\mathrm{Pa}$"
+    ],
+    correcta: 2,
+    explicacion: "$P_\\text{tot} = P_\\text{atm} + \\rho g h = 101\\,325 + (1000)(10)(10) = 101\\,325 + 100\\,000 = 201\\,325\\,\\mathrm{Pa}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "A $5\\,\\mathrm{m}$ de profundidad en un líquido desconocido, la presión hidrostática es de $65\\,000\\,\\mathrm{Pa}$. ¿Cuál es la densidad del líquido? ($g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$1\\,300\\,\\mathrm{kg/m^3}$",
+      "$13\\,000\\,\\mathrm{kg/m^3}$",
+      "$650\\,\\mathrm{kg/m^3}$",
+      "$130\\,\\mathrm{kg/m^3}$"
+    ],
+    correcta: 0,
+    explicacion: "De $P = \\rho g h$ despejas $\\rho = \\dfrac{P}{gh} = \\dfrac{65\\,000}{(10)(5)} = 1\\,300\\,\\mathrm{kg/m^3}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Un cuerpo flota en agua con el 60% de su volumen sumergido. ¿Cuál es su densidad? ($\\rho_\\text{agua} = 1000\\,\\mathrm{kg/m^3}$).",
+    opciones: [
+      "$400\\,\\mathrm{kg/m^3}$",
+      "$600\\,\\mathrm{kg/m^3}$",
+      "$1000\\,\\mathrm{kg/m^3}$",
+      "$1600\\,\\mathrm{kg/m^3}$"
+    ],
+    correcta: 1,
+    explicacion: "En equilibrio peso = empuje: $\\rho_c V g = \\rho_\\text{agua} V_\\text{sum} g$. La fracción sumergida es $\\rho_c / \\rho_\\text{agua} = 0.6$, entonces $\\rho_c = 600\\,\\mathrm{kg/m^3}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "Por un tubo de $0.04\\,\\mathrm{m^2}$ de área transversal fluye agua a $2\\,\\mathrm{m/s}$. ¿Cuánto tarda en llenarse un tinaco de $1\\,200\\,\\mathrm{L}$?",
+    opciones: [
+      "$5\\,\\mathrm{s}$",
+      "$15\\,\\mathrm{s}$",
+      "$60\\,\\mathrm{s}$",
+      "$300\\,\\mathrm{s}$"
+    ],
+    correcta: 1,
+    explicacion: "Caudal $Q = A v = (0.04)(2) = 0.08\\,\\mathrm{m^3/s} = 80\\,\\mathrm{L/s}$. Tiempo $= 1200 / 80 = 15\\,\\mathrm{s}$."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "La presión atmosférica en la cima de una montaña es menor que al nivel del mar porque:",
+    opciones: [
+      "la temperatura es menor a mayor altitud.",
+      "la columna de aire sobre la cima es más corta.",
+      "la presión hidrostática del mar influye en la altitud.",
+      "la densidad del aire aumenta con la altura."
+    ],
+    correcta: 1,
+    explicacion: "La presión atmosférica en cualquier punto equivale al peso del aire por unidad de área que está arriba. A mayor altitud hay menos aire arriba, por tanto menos peso."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "El principio de Pascal establece que un cambio de presión aplicado a un fluido confinado:",
+    opciones: [
+      "se transmite sin disminuir a todos los puntos del fluido y a las paredes del recipiente.",
+      "sólo afecta el punto donde se aplica la presión.",
+      "se transmite únicamente hacia abajo.",
+      "disminuye con la profundidad."
+    ],
+    correcta: 0,
+    explicacion: "Es el principio detrás de la prensa hidráulica: la presión aplicada en un pistón se transmite íntegra al fluido, multiplicando la fuerza si el segundo pistón tiene mayor área."
+  },
+  {
+    materia: "fisica",
+    tema: "presión hidrostática",
+    pregunta: "¿Qué mide un barómetro?",
+    opciones: [
+      "La temperatura ambiente.",
+      "La presión atmosférica.",
+      "La densidad del aire.",
+      "La velocidad del viento."
+    ],
+    correcta: 1,
+    explicacion: "Un barómetro mide la presión atmosférica. El más conocido es el de mercurio, donde la altura de la columna ($\\approx 760\\,\\mathrm{mm}$ al nivel del mar) corresponde a la presión atmosférica estándar."
+  },
+  // —— Matemáticas: ecuación logarítmica ——
+  {
+    materia: "matematicas",
+    tema: "ecuación logarítmica",
+    pregunta: "Resuelve la ecuación $\\log x + \\log(x - 3) = 1$.",
+    opciones: [
+      "$x = 5$",
+      "$x = 5$ y $x = -2$",
+      "$x = 4$",
+      "$x = 10$"
+    ],
+    correcta: 0,
+    explicacion: "Por la ley $\\log a + \\log b = \\log(ab)$: $\\log[x(x-3)] = 1 \\Rightarrow x(x-3) = 10 \\Rightarrow x^2 - 3x - 10 = 0$. Factorizando: $(x-5)(x+2) = 0$, así que $x = 5$ o $x = -2$. Se descarta $x = -2$ porque haría negativo el argumento del logaritmo."
+  },
+  // —— Física: Ley de Ohm ——
+  {
+    materia: "fisica",
+    tema: "Ley de Ohm",
+    pregunta: "Una resistencia de $6\\,\\Omega$ se conecta a una diferencia de potencial de $18\\,\\mathrm{V}$. La corriente que la atraviesa es",
+    opciones: [
+      "$108\\,\\mathrm{A}$",
+      "$0.33\\,\\mathrm{A}$",
+      "$24\\,\\mathrm{A}$",
+      "$3\\,\\mathrm{A}$"
+    ],
+    correcta: 3,
+    explicacion: "$V = IR \\Rightarrow I = \\dfrac{V}{R} = \\dfrac{18\\,\\mathrm{V}}{6\\,\\Omega} = 3\\,\\mathrm{A}$."
+  },
+  // —— Matemáticas: pendiente entre dos puntos ——
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "La pendiente de la recta que pasa por los puntos $(-1, 4)$ y $(3, -4)$ es",
+    opciones: [
+      "$2$",
+      "$-\\dfrac{1}{2}$",
+      "$-2$",
+      "$\\dfrac{1}{2}$"
+    ],
+    correcta: 2,
+    explicacion: "$m = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-4 - 4}{3 - (-1)} = \\dfrac{-8}{4} = -2$."
+  },
+  // —— Física: velocidad de una onda ——
+  {
+    materia: "fisica",
+    tema: "velocidad de una onda",
+    pregunta: "Una onda tiene frecuencia $20\\,\\mathrm{Hz}$ y longitud de onda $5\\,\\mathrm{m}$. Recuerda que $1\\,\\mathrm{Hz} = 1/\\mathrm{s}$. Su velocidad de propagación es",
+    opciones: [
+      "$25\\,\\mathrm{m/s}$",
+      "$100\\,\\mathrm{m/s}$",
+      "$4\\,\\mathrm{m/s}$",
+      "$0.25\\,\\mathrm{m/s}$"
+    ],
+    correcta: 1,
+    explicacion: "$v = f\\lambda = (20\\,\\mathrm{Hz})(5\\,\\mathrm{m}) = 100\\,\\mathrm{m/s}$."
+  },
+  // —— Matemáticas: derivada de polinomio ——
+  {
+    materia: "matematicas",
+    tema: "derivada de polinomio",
+    pregunta: "Si $f(x) = 2x^3 - 4x + 5$, entonces $f'(x)$ es",
+    opciones: [
+      "$6x^2 - 4$",
+      "$6x^2 - 4 + 5$",
+      "$2x^2 - 4$",
+      "$6x^2 - 4x$"
+    ],
+    correcta: 0,
+    explicacion: "Aplicando la regla de potencia $\\tfrac{d}{dx}(x^n) = nx^{n-1}$ término a término: $6x^2 - 4 + 0 = 6x^2 - 4$ (la derivada de una constante es cero)."
+  },
+  // —— Física: Ley de Hooke (con conversión de unidades) ——
+  {
+    materia: "fisica",
+    tema: "Ley de Hooke (con conversión de unidades)",
+    pregunta: "Un resorte con constante elástica $k = 150\\,\\mathrm{N/m}$ se estira $20\\,\\mathrm{cm}$. La fuerza ejercida por el resorte es",
+    opciones: [
+      "$3\\,000\\,\\mathrm{N}$",
+      "$30\\,\\mathrm{N}$",
+      "$7.5\\,\\mathrm{N}$",
+      "$170\\,\\mathrm{N}$"
+    ],
+    correcta: 1,
+    explicacion: "Primero convertimos: $x = 20\\,\\mathrm{cm} = 0.20\\,\\mathrm{m}$. Luego $F = kx = (150\\,\\mathrm{N/m})(0.20\\,\\mathrm{m}) = 30\\,\\mathrm{N}$. (El error típico $3\\,000\\,\\mathrm{N}$ viene de olvidar pasar cm a m.)"
+  },
+  // —— Matemáticas: límite forma 0/0 ——
+  {
+    materia: "matematicas",
+    tema: "límite forma 0/0",
+    pregunta: "El valor del límite $\\displaystyle\\lim_{x\\to 3}\\dfrac{x^2 - 9}{x - 3}$ es",
+    opciones: [
+      "$6$",
+      "$0$",
+      "$3$",
+      "no existe"
+    ],
+    correcta: 0,
+    explicacion: "Al sustituir queda $0/0$. Factorizando: $\\dfrac{(x-3)(x+3)}{x-3} = x+3$. Entonces el límite es $3+3 = 6$."
+  },
+  // —— Física: trabajo mecánico con ángulo ——
+  {
+    materia: "fisica",
+    tema: "trabajo mecánico con ángulo",
+    pregunta: "Una fuerza de $20\\,\\mathrm{N}$ se aplica sobre un objeto formando un ángulo de $60^{\\circ}$ con el desplazamiento de $10\\,\\mathrm{m}$. El trabajo realizado es (usa $\\cos 60^{\\circ} = \\tfrac{1}{2}$)",
+    opciones: [
+      "$200\\,\\mathrm{J}$",
+      "$50\\,\\mathrm{J}$",
+      "$100\\,\\mathrm{J}$",
+      "$100\\sqrt{3}\\,\\mathrm{J}$"
+    ],
+    correcta: 2,
+    explicacion: "$W = F\\,d\\cos\\theta = (20\\,\\mathrm{N})(10\\,\\mathrm{m})\\cos 60^{\\circ} = (20\\,\\mathrm{N})(10\\,\\mathrm{m})(0.5) = 100\\,\\mathrm{J}$."
+  },
+  // —— Matemáticas: mínimo de parábola ——
+  {
+    materia: "matematicas",
+    tema: "mínimo de parábola",
+    pregunta: "El valor mínimo de la función $f(x) = x^2 - 4x + 7$ es",
+    opciones: [
+      "$2$",
+      "$3$",
+      "$7$",
+      "$-3$"
+    ],
+    correcta: 1,
+    explicacion: "$f'(x) = 2x - 4 = 0 \\Rightarrow x = 2$. Sustituyendo: $f(2) = 4 - 8 + 7 = 3$. El mínimo es el valor de $f$, no el de $x$."
+  },
+  // —— Historia: Plan de Iguala ——
+  {
+    materia: "historia",
+    tema: "Plan de Iguala",
+    pregunta: "¿Quién proclamó el Plan de Iguala (1821)?",
+    opciones: [
+      "Agustín de Iturbide",
+      "Antonio López de Santa Anna",
+      "Juan O'Donojú",
+      "Vicente Guerrero"
+    ],
+    correcta: 0,
+    explicacion: "El Plan de Iguala fue proclamado por Agustín de Iturbide en 1821 y consuma la independencia de México bajo las «Tres Garantías»: religión católica, independencia y unión entre españoles y mexicanos."
+  },
+  // —— Historia: Tratados de Córdoba ——
+  {
+    materia: "historia",
+    tema: "Tratados de Córdoba",
+    pregunta: "¿Quiénes firmaron los Tratados de Córdoba (1821)?",
+    opciones: [
+      "Iturbide y Vicente Guerrero",
+      "Iturbide y el virrey Juan O'Donojú",
+      "Santa Anna y Guadalupe Victoria",
+      "Guadalupe Victoria y el virrey Juan O'Donojú"
+    ],
+    correcta: 1,
+    explicacion: "Los Tratados de Córdoba fueron firmados en 1821 por Agustín de Iturbide y el virrey Juan O'Donojú. Con ellos España reconoce la independencia de México y ratifica el Plan de Iguala."
+  },
+  // —— Historia: Plan de Casa Mata ——
+  {
+    materia: "historia",
+    tema: "Plan de Casa Mata",
+    pregunta: "¿Qué efecto principal tuvo el Plan de Casa Mata (1823)?",
+    opciones: [
+      "Consumó la independencia de México",
+      "Provocó la caída del Imperio de Iturbide y convocó a un nuevo congreso constituyente",
+      "Inició la Reforma liberal",
+      "Restableció el orden constitucional tras el gobierno de Huerta"
+    ],
+    correcta: 1,
+    explicacion: "El Plan de Casa Mata, proclamado por Antonio López de Santa Anna y Guadalupe Victoria en 1823, provocó la caída del Imperio de Iturbide y la transformación de México en república."
+  },
+  // —— Historia: Tratados de Guadalupe Hidalgo ——
+  {
+    materia: "historia",
+    tema: "Tratados de Guadalupe Hidalgo",
+    pregunta: "¿Cuál fue el resultado principal de los Tratados de Guadalupe Hidalgo (1848)?",
+    opciones: [
+      "México cede más de la mitad de su territorio a Estados Unidos a cambio de 15 millones de pesos",
+      "España reconoce la independencia de México",
+      "Estados Unidos devuelve Texas a México",
+      "México reconoce la independencia de Texas sin pago alguno"
+    ],
+    correcta: 0,
+    explicacion: "Al final de la guerra México–Estados Unidos, los Tratados de Guadalupe Hidalgo (1848) fijaron la cesión de Texas, Nuevo México, California y otros territorios a cambio de 15 millones de pesos."
+  },
+  // —— Historia: Plan de Ayutla ——
+  {
+    materia: "historia",
+    tema: "Plan de Ayutla",
+    pregunta: "¿A quién desconoce el Plan de Ayutla (1854)?",
+    opciones: [
+      "Antonio López de Santa Anna",
+      "Benito Juárez",
+      "Porfirio Díaz",
+      "Sebastián Lerdo de Tejada"
+    ],
+    correcta: 0,
+    explicacion: "El Plan de Ayutla, proclamado por Juan Álvarez e Ignacio Comonfort en 1854, desconoce a Santa Anna y convoca a un congreso constituyente, dando inicio a la Reforma liberal."
+  },
+  // —— Historia: Plan de Tacubaya ——
+  {
+    materia: "historia",
+    tema: "Plan de Tacubaya",
+    pregunta: "¿Qué desconoce el Plan de Tacubaya (1857) y qué desencadena?",
+    opciones: [
+      "Desconoce a Maximiliano y desencadena la Intervención Francesa",
+      "Desconoce la Constitución de 1857 y detona la Guerra de Reforma",
+      "Desconoce a Porfirio Díaz e inicia la Revolución Mexicana",
+      "Desconoce a Iturbide y provoca la caída de su Imperio"
+    ],
+    correcta: 1,
+    explicacion: "El Plan de Tacubaya, proclamado por Félix Zuloaga en 1857 (apoyado por Comonfort), desconoce la Constitución de 1857 y detona la Guerra de Reforma entre liberales y conservadores."
+  },
+  // —— Historia: Plan de la Noria ——
+  {
+    materia: "historia",
+    tema: "Plan de la Noria",
+    pregunta: "¿Quién proclamó el Plan de la Noria (1871) y qué buscaba?",
+    opciones: [
+      "Porfirio Díaz; desconocer la reelección de Benito Juárez bajo el lema «No reelección»",
+      "Benito Juárez; defender su gobierno frente a Lerdo de Tejada",
+      "Sebastián Lerdo de Tejada; derrocar a Porfirio Díaz",
+      "Francisco I. Madero; desconocer a Porfirio Díaz"
+    ],
+    correcta: 0,
+    explicacion: "El Plan de la Noria fue proclamado por Porfirio Díaz en 1871 contra la reelección de Benito Juárez, bajo el lema «No reelección». Fracasó."
+  },
+  // —— Historia: Plan de Tuxtepec ——
+  {
+    materia: "historia",
+    tema: "Plan de Tuxtepec",
+    pregunta: "¿A quién derrocó el Plan de Tuxtepec (1876) y bajo qué lema?",
+    opciones: [
+      "A Benito Juárez, bajo el lema «No reelección»",
+      "A Sebastián Lerdo de Tejada, bajo el lema «Sufragio efectivo, no reelección»",
+      "A Porfirio Díaz, bajo el lema «Tierra y Libertad»",
+      "A Maximiliano, bajo el lema «Religión y fueros»"
+    ],
+    correcta: 1,
+    explicacion: "El Plan de Tuxtepec, proclamado por Porfirio Díaz en 1876, derroca a Sebastián Lerdo de Tejada bajo el lema «Sufragio efectivo, no reelección» e inicia el Porfiriato."
+  },
+  // —— Historia: Plan de San Luis ——
+  {
+    materia: "historia",
+    tema: "Plan de San Luis",
+    pregunta: "¿Quién proclamó el Plan de San Luis (1910) y a qué dio inicio?",
+    opciones: [
+      "Emiliano Zapata; dio inicio al reparto agrario",
+      "Francisco I. Madero; dio inicio a la Revolución Mexicana",
+      "Venustiano Carranza; restableció el orden constitucional",
+      "Porfirio Díaz; consolidó el Porfiriato"
+    ],
+    correcta: 1,
+    explicacion: "El Plan de San Luis fue proclamado por Francisco I. Madero en 1910; desconoce a Porfirio Díaz y convoca a las armas el 20 de noviembre, dando inicio a la Revolución Mexicana."
+  },
+  // —— Historia: Plan de Ayala ——
+  {
+    materia: "historia",
+    tema: "Plan de Ayala",
+    pregunta: "El Plan de Ayala (1911), proclamado por Emiliano Zapata, principalmente",
+    opciones: [
+      "Reconoce a Madero como presidente y respalda su gobierno",
+      "Desconoce a Madero y exige la devolución de tierras a los campesinos bajo el lema «Tierra y Libertad»",
+      "Desconoce a Victoriano Huerta y restablece el orden constitucional",
+      "Desconoce a Porfirio Díaz y convoca a las armas"
+    ],
+    correcta: 1,
+    explicacion: "El Plan de Ayala, proclamado por Emiliano Zapata en 1911, desconoce a Madero como presidente y exige la devolución de tierras a los campesinos. Su lema es «Tierra y Libertad»."
+  },
+  // —— Historia: Plan de Guadalupe ——
+  {
+    materia: "historia",
+    tema: "Plan de Guadalupe",
+    pregunta: "¿A qué gobierno desconoce el Plan de Guadalupe (1913)?",
+    opciones: [
+      "Al gobierno de Porfirio Díaz",
+      "Al gobierno de Francisco I. Madero",
+      "Al gobierno de Victoriano Huerta",
+      "Al gobierno de Álvaro Obregón"
+    ],
+    correcta: 2,
+    explicacion: "El Plan de Guadalupe, proclamado por Venustiano Carranza en 1913, desconoce al gobierno de Victoriano Huerta (instaurado tras el asesinato de Madero) y busca restablecer el orden constitucional."
+  },
+  // —— Historia: Plan de Agua Prieta ——
+  {
+    materia: "historia",
+    tema: "Plan de Agua Prieta",
+    pregunta: "El Plan de Agua Prieta (1920), proclamado por Obregón, Calles y De la Huerta,",
+    opciones: [
+      "Desconoce a Porfirio Díaz e inicia la Revolución Mexicana",
+      "Desconoce a Victoriano Huerta y restablece el orden constitucional",
+      "Desconoce a Venustiano Carranza como presidente e inicia el llamado «Grupo Sonora» en el poder",
+      "Desconoce a Madero y exige la devolución de tierras"
+    ],
+    correcta: 2,
+    explicacion: "El Plan de Agua Prieta, proclamado por Álvaro Obregón, Plutarco Elías Calles y Adolfo de la Huerta en 1920, desconoce a Carranza como presidente y da paso al llamado «Grupo Sonora» en el poder."
+  },
+  // —— Historia: Tratados de Bucareli ——
+  {
+    materia: "historia",
+    tema: "Tratados de Bucareli",
+    pregunta: "¿Cuál fue el contenido principal de los Tratados de Bucareli (1923)?",
+    opciones: [
+      "México cede territorio a Estados Unidos a cambio de 15 millones de pesos",
+      "Estados Unidos reconoce al gobierno de Obregón a cambio de no aplicar de manera retroactiva el artículo 27 sobre petróleo y propiedad de extranjeros",
+      "España reconoce la independencia de México",
+      "México obtiene la devolución de Texas y California"
+    ],
+    correcta: 1,
+    explicacion: "Los Tratados de Bucareli (1923), firmados entre Álvaro Obregón y Estados Unidos, establecen el reconocimiento estadounidense al gobierno de Obregón a cambio de no aplicar retroactivamente el artículo 27 constitucional sobre petróleo y propiedad de extranjeros."
+  },
+  // —— Matemáticas: trig — sin(0°) ——
+  {
+    materia: "matematicas",
+    tema: "trig — sin(0°)",
+    pregunta: "¿Cuánto vale $\\sin(0^{\\circ})$?",
+    opciones: ["$0$", "$1$", "$\\dfrac{1}{2}$", "$\\dfrac{\\sqrt{2}}{2}$"],
+    correcta: 0,
+    explicacion: "$\\sin(0^{\\circ}) = 0$. El seno se anula en $0^{\\circ}$ y en $180^{\\circ}$."
+  },
+  // —— Matemáticas: trig — cos(π/6) ——
+  {
+    materia: "matematicas",
+    tema: "trig — cos(π/6)",
+    pregunta: "$\\cos\\left(\\dfrac{\\pi}{6}\\right)$ es igual a",
+    opciones: ["$\\dfrac{1}{2}$", "$\\dfrac{\\sqrt{3}}{2}$", "$\\dfrac{\\sqrt{2}}{2}$", "$1$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{\\pi}{6}\\,\\mathrm{rad} = 30^{\\circ}$, y $\\cos(30^{\\circ}) = \\dfrac{\\sqrt{3}}{2}$."
+  },
+  // —— Matemáticas: trig — tan(45°) ——
+  {
+    materia: "matematicas",
+    tema: "trig — tan(45°)",
+    pregunta: "$\\tan(45^{\\circ})$ es igual a",
+    opciones: ["$0$", "$\\dfrac{\\sqrt{2}}{2}$", "$1$", "$\\sqrt{3}$"],
+    correcta: 2,
+    explicacion: "$\\tan(45^{\\circ}) = \\dfrac{\\sin 45^{\\circ}}{\\cos 45^{\\circ}} = \\dfrac{\\sqrt{2}/2}{\\sqrt{2}/2} = 1$."
+  },
+  // —— Matemáticas: trig — sin(π/2) ——
+  {
+    materia: "matematicas",
+    tema: "trig — sin(π/2)",
+    pregunta: "$\\sin\\left(\\dfrac{\\pi}{2}\\right)$ es igual a",
+    opciones: ["$0$", "$\\dfrac{\\sqrt{3}}{2}$", "$1$", "$-1$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{\\pi}{2}\\,\\mathrm{rad} = 90^{\\circ}$, y $\\sin(90^{\\circ}) = 1$ (es el máximo del seno)."
+  },
+  // —— Matemáticas: trig — tan(π/2) ——
+  {
+    materia: "matematicas",
+    tema: "trig — tan(π/2)",
+    pregunta: "$\\tan\\left(\\dfrac{\\pi}{2}\\right)$",
+    opciones: ["$0$", "$1$", "$\\sqrt{3}$", "no existe"],
+    correcta: 3,
+    explicacion: "En $\\dfrac{\\pi}{2}$, $\\cos = 0$ y $\\tan = \\dfrac{\\sin}{\\cos}$ no está definida (asíntota vertical)."
+  },
+  // —— Matemáticas: trig — sin(2π/3) ——
+  {
+    materia: "matematicas",
+    tema: "trig — sin(2π/3)",
+    pregunta: "$\\sin\\left(\\dfrac{2\\pi}{3}\\right)$ vale",
+    opciones: ["$\\dfrac{1}{2}$", "$\\dfrac{\\sqrt{3}}{2}$", "$-\\dfrac{\\sqrt{3}}{2}$", "$-\\dfrac{1}{2}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{2\\pi}{3}\\,\\mathrm{rad} = 120^{\\circ}$ (II cuadrante). $\\sin(120^{\\circ}) = \\sin(180^{\\circ}-60^{\\circ}) = \\sin(60^{\\circ}) = \\dfrac{\\sqrt{3}}{2}$."
+  },
+  // —— Matemáticas: trig — cos(120°) ——
+  {
+    materia: "matematicas",
+    tema: "trig — cos(120°)",
+    pregunta: "$\\cos(120^{\\circ})$ es",
+    opciones: ["$\\dfrac{1}{2}$", "$-\\dfrac{1}{2}$", "$-\\dfrac{\\sqrt{3}}{2}$", "$-\\dfrac{\\sqrt{2}}{2}$"],
+    correcta: 1,
+    explicacion: "En el II cuadrante el coseno es negativo. $\\cos(120^{\\circ}) = -\\cos(60^{\\circ}) = -\\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: trig — tan(3π/4) ——
+  {
+    materia: "matematicas",
+    tema: "trig — tan(3π/4)",
+    pregunta: "$\\tan\\left(\\dfrac{3\\pi}{4}\\right)$ es igual a",
+    opciones: ["$1$", "$-1$", "$-\\dfrac{\\sqrt{2}}{2}$", "$\\dfrac{\\sqrt{2}}{2}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{3\\pi}{4}\\,\\mathrm{rad} = 135^{\\circ}$ (II cuadrante). $\\tan(135^{\\circ}) = -\\tan(45^{\\circ}) = -1$."
+  },
+  // —— Matemáticas: trig — cos(180°) ——
+  {
+    materia: "matematicas",
+    tema: "trig — cos(180°)",
+    pregunta: "$\\cos(180^{\\circ})$ es",
+    opciones: ["$1$", "$0$", "$-1$", "$\\pi$"],
+    correcta: 2,
+    explicacion: "En $180^{\\circ}$ estamos en el eje negativo de las $x$. $\\cos(180^{\\circ}) = -1$ (es el mínimo del coseno)."
+  },
+  // —— Matemáticas: trig — sin(7π/6) ——
+  {
+    materia: "matematicas",
+    tema: "trig — sin(7π/6)",
+    pregunta: "$\\sin\\left(\\dfrac{7\\pi}{6}\\right)$ es igual a",
+    opciones: ["$\\dfrac{1}{2}$", "$-\\dfrac{1}{2}$", "$-\\dfrac{\\sqrt{3}}{2}$", "$-\\dfrac{\\sqrt{2}}{2}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{7\\pi}{6}\\,\\mathrm{rad} = 210^{\\circ}$ (III cuadrante). $\\sin(210^{\\circ}) = -\\sin(30^{\\circ}) = -\\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: trig — tan(5π/4) ——
+  {
+    materia: "matematicas",
+    tema: "trig — tan(5π/4)",
+    pregunta: "$\\tan\\left(\\dfrac{5\\pi}{4}\\right)$ vale",
+    opciones: ["$1$", "$-1$", "$\\sqrt{3}$", "$-\\dfrac{\\sqrt{3}}{3}$"],
+    correcta: 0,
+    explicacion: "$\\dfrac{5\\pi}{4}\\,\\mathrm{rad} = 225^{\\circ}$ (III cuadrante). $\\tan(225^{\\circ}) = \\tan(45^{\\circ}) = 1$ (seno y coseno negativos: cociente positivo)."
+  },
+  // —— Matemáticas: trig — cos(4π/3) ——
+  {
+    materia: "matematicas",
+    tema: "trig — cos(4π/3)",
+    pregunta: "$\\cos\\left(\\dfrac{4\\pi}{3}\\right)$",
+    opciones: ["$\\dfrac{1}{2}$", "$-\\dfrac{1}{2}$", "$-\\dfrac{\\sqrt{3}}{2}$", "$-\\dfrac{\\sqrt{2}}{2}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{4\\pi}{3}\\,\\mathrm{rad} = 240^{\\circ}$ (III cuadrante). $\\cos(240^{\\circ}) = -\\cos(60^{\\circ}) = -\\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: trig — sin(3π/2) ——
+  {
+    materia: "matematicas",
+    tema: "trig — sin(3π/2)",
+    pregunta: "$\\sin\\left(\\dfrac{3\\pi}{2}\\right)$ es",
+    opciones: ["$0$", "$1$", "$-1$", "no existe"],
+    correcta: 2,
+    explicacion: "$\\dfrac{3\\pi}{2}\\,\\mathrm{rad} = 270^{\\circ}$, y $\\sin(270^{\\circ}) = -1$ (es el mínimo del seno)."
+  },
+  // —— Matemáticas: trig — cos(11π/6) ——
+  {
+    materia: "matematicas",
+    tema: "trig — cos(11π/6)",
+    pregunta: "$\\cos\\left(\\dfrac{11\\pi}{6}\\right)$ es igual a",
+    opciones: ["$-\\dfrac{\\sqrt{3}}{2}$", "$\\dfrac{\\sqrt{3}}{2}$", "$\\dfrac{1}{2}$", "$-\\dfrac{1}{2}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{11\\pi}{6}\\,\\mathrm{rad} = 330^{\\circ}$ (IV cuadrante). $\\cos(330^{\\circ}) = \\cos(30^{\\circ}) = \\dfrac{\\sqrt{3}}{2}$."
+  },
+  // —— Matemáticas: trig — tan(330°) ——
+  {
+    materia: "matematicas",
+    tema: "trig — tan(330°)",
+    pregunta: "$\\tan(330^{\\circ})$ vale",
+    opciones: ["$\\dfrac{\\sqrt{3}}{3}$", "$-\\dfrac{\\sqrt{3}}{3}$", "$-\\sqrt{3}$", "$\\sqrt{3}$"],
+    correcta: 1,
+    explicacion: "$\\tan(330^{\\circ}) = -\\tan(30^{\\circ}) = -\\dfrac{\\sqrt{3}}{3}$ (IV cuadrante)."
+  },
+  // —— Matemáticas: sistema 2x2 (a) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (a)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} 2x + y = 7 \\\\ x - y = 2 \\end{cases}$$",
+    opciones: ["$x = 3,\\ y = 1$", "$x = 2,\\ y = 3$", "$x = 3,\\ y = -1$", "$x = 4,\\ y = -1$"],
+    correcta: 0,
+    explicacion: "Sumando ambas ecuaciones: $3x = 9 \\Rightarrow x = 3$. Sustituyendo en la segunda: $3 - y = 2 \\Rightarrow y = 1$."
+  },
+  // —— Matemáticas: sistema 2x2 (b) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (b)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} x + 3y = 11 \\\\ 2x - y = 1 \\end{cases}$$",
+    opciones: ["$x = 5,\\ y = 2$", "$x = 2,\\ y = 3$", "$x = 2,\\ y = -3$", "$x = 4,\\ y = 7$"],
+    correcta: 1,
+    explicacion: "De la 2ª: $y = 2x - 1$. Sustituyendo: $x + 3(2x - 1) = 11 \\Rightarrow 7x = 14 \\Rightarrow x = 2$, $y = 3$."
+  },
+  // —— Matemáticas: sistema 2x2 (c) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (c)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} 3x + 2y = 16 \\\\ x + y = 7 \\end{cases}$$",
+    opciones: ["$x = 4,\\ y = 3$", "$x = 2,\\ y = 5$", "$x = 3,\\ y = 4$", "$x = 2,\\ y = -5$"],
+    correcta: 1,
+    explicacion: "De la 2ª: $y = 7 - x$. En la 1ª: $3x + 2(7 - x) = 16 \\Rightarrow x + 14 = 16 \\Rightarrow x = 2$, $y = 5$."
+  },
+  // —— Matemáticas: sistema 2x2 (d) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (d)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} 4x - 3y = 6 \\\\ 2x + y = 8 \\end{cases}$$",
+    opciones: ["$x = 2,\\ y = 4$", "$x = 3,\\ y = 2$", "$x = 4,\\ y = 0$", "$x = 3,\\ y = -2$"],
+    correcta: 1,
+    explicacion: "De la 2ª: $y = 8 - 2x$. Sustituyendo: $4x - 3(8 - 2x) = 6 \\Rightarrow 10x = 30 \\Rightarrow x = 3$, $y = 2$."
+  },
+  // —— Matemáticas: sistema 2x2 (e) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (e)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} 5x + 2y = 19 \\\\ 3x - y = 7 \\end{cases}$$",
+    opciones: ["$x = 3,\\ y = 2$", "$x = 2,\\ y = -1$", "$x = 3,\\ y = -2$", "$x = 1,\\ y = 7$"],
+    correcta: 0,
+    explicacion: "De la 2ª: $y = 3x - 7$. En la 1ª: $5x + 2(3x - 7) = 19 \\Rightarrow 11x = 33 \\Rightarrow x = 3$, $y = 2$."
+  },
+  // —— Matemáticas: sistema 2x2 (f) ——
+  {
+    materia: "matematicas",
+    tema: "sistema 2x2 (f)",
+    pregunta: "Resuelve el sistema $$\\begin{cases} x - 4y = -7 \\\\ 2x + 3y = 8 \\end{cases}$$",
+    opciones: ["$x = 1,\\ y = 2$", "$x = -7,\\ y = 0$", "$x = 4,\\ y = 0$", "$x = 1,\\ y = -2$"],
+    correcta: 0,
+    explicacion: "De la 1ª: $x = 4y - 7$. En la 2ª: $2(4y - 7) + 3y = 8 \\Rightarrow 11y = 22 \\Rightarrow y = 2$, $x = 1$."
+  },
+  // —— Matemáticas: límite por factorización (a) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización (a)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 2}\\dfrac{x^2 - 4}{x - 2}$",
+    opciones: ["$4$", "$2$", "$0$", "no existe"],
+    correcta: 0,
+    explicacion: "Forma $0/0$. Factorizando: $\\dfrac{(x-2)(x+2)}{x-2} = x+2$. El límite es $2 + 2 = 4$."
+  },
+  // —— Matemáticas: límite por factorización (b) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización (b)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 3}\\dfrac{x^2 - x - 6}{x - 3}$",
+    opciones: ["$6$", "$5$", "$3$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Factorizando: $\\dfrac{(x-3)(x+2)}{x-3} = x+2$. El límite es $3 + 2 = 5$."
+  },
+  // —— Matemáticas: límite por factorización (c) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización (c)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 1}\\dfrac{x^3 - 1}{x - 1}$",
+    opciones: ["$1$", "$0$", "$3$", "no existe"],
+    correcta: 2,
+    explicacion: "Forma $0/0$. Factorizando: $\\dfrac{(x-1)(x^2+x+1)}{x-1} = x^2+x+1$. El límite es $1+1+1 = 3$."
+  },
+  // —— Matemáticas: límite por factorización (d) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización (d)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to -2}\\dfrac{x^2 + 5x + 6}{x + 2}$",
+    opciones: ["$1$", "$0$", "$-1$", "no existe"],
+    correcta: 0,
+    explicacion: "Forma $0/0$. Factorizando: $\\dfrac{(x+2)(x+3)}{x+2} = x+3$. El límite es $-2 + 3 = 1$."
+  },
+  // —— Matemáticas: límite por factorización (e) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización (e)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 4}\\dfrac{x^2 - 16}{x - 4}$",
+    opciones: ["$4$", "$8$", "$16$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Diferencia de cuadrados: $\\dfrac{(x-4)(x+4)}{x-4} = x+4$. El límite es $4 + 4 = 8$."
+  },
+  // —— Matemáticas: L'Hôpital trig (a) ——
+  {
+    materia: "matematicas",
+    tema: "L'Hôpital trig (a)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{\\sin x}{x}$",
+    opciones: ["$0$", "$1$", "$\\infty$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{d}{dx}\\sin x = \\cos x$, $\\dfrac{d}{dx} x = 1$. El límite es $\\dfrac{\\cos 0}{1} = 1$."
+  },
+  // —— Matemáticas: L'Hôpital trig (b) ——
+  {
+    materia: "matematicas",
+    tema: "L'Hôpital trig (b)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{1 - \\cos x}{x}$",
+    opciones: ["$0$", "$1$", "$-1$", "no existe"],
+    correcta: 0,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{d}{dx}(1 - \\cos x) = \\sin x$, $\\dfrac{d}{dx} x = 1$. El límite es $\\sin 0 = 0$."
+  },
+  // —— Matemáticas: L'Hôpital trig (c) ——
+  {
+    materia: "matematicas",
+    tema: "L'Hôpital trig (c)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{\\sin(3x)}{x}$",
+    opciones: ["$1$", "$3$", "$\\dfrac{1}{3}$", "$0$"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital (regla de la cadena): $\\dfrac{d}{dx}\\sin(3x) = 3\\cos(3x)$. El límite es $\\dfrac{3\\cos 0}{1} = 3$."
+  },
+  // —— Matemáticas: L'Hôpital trig (d) ——
+  {
+    materia: "matematicas",
+    tema: "L'Hôpital trig (d)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{\\tan x}{x}$",
+    opciones: ["$0$", "$1$", "$\\infty$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{d}{dx}\\tan x = \\sec^2 x$. El límite es $\\dfrac{\\sec^2 0}{1} = 1$."
+  },
+  // —— Matemáticas: L'Hôpital trig (e) ——
+  {
+    materia: "matematicas",
+    tema: "L'Hôpital trig (e)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{\\sin(2x)}{\\sin(5x)}$",
+    opciones: ["$1$", "$\\dfrac{2}{5}$", "$\\dfrac{5}{2}$", "$0$"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{2\\cos(2x)}{5\\cos(5x)}$. El límite es $\\dfrac{2\\cos 0}{5\\cos 0} = \\dfrac{2}{5}$."
+  },
+  // —— Matemáticas: ec. 2do grado (a) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (a)",
+    pregunta: "Las soluciones de $x^2 - 5x + 6 = 0$ son",
+    opciones: ["$x = 2,\\ x = 3$", "$x = -2,\\ x = -3$", "$x = 1,\\ x = 6$", "$x = -1,\\ x = -6$"],
+    correcta: 0,
+    explicacion: "Factorizando: $(x-2)(x-3) = 0 \\Rightarrow x = 2$ o $x = 3$ (dos números que multiplicados den $6$ y sumados den $5$)."
+  },
+  // —— Matemáticas: ec. 2do grado (b) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (b)",
+    pregunta: "Las soluciones de $x^2 + x - 12 = 0$ son",
+    opciones: ["$x = 3,\\ x = 4$", "$x = 3,\\ x = -4$", "$x = -3,\\ x = 4$", "$x = -3,\\ x = -4$"],
+    correcta: 1,
+    explicacion: "Factorizando: $(x+4)(x-3) = 0 \\Rightarrow x = 3$ o $x = -4$ (dos números cuyo producto sea $-12$ y cuya suma sea $+1$)."
+  },
+  // —— Matemáticas: ec. 2do grado (c) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (c)",
+    pregunta: "Las soluciones de $2x^2 - 7x + 3 = 0$ son",
+    opciones: ["$x = 3,\\ x = \\dfrac{1}{2}$", "$x = -3,\\ x = -\\dfrac{1}{2}$", "$x = 3,\\ x = -\\dfrac{1}{2}$", "$x = 1,\\ x = \\dfrac{3}{2}$"],
+    correcta: 0,
+    explicacion: "Por la fórmula general: $x = \\dfrac{7 \\pm \\sqrt{49 - 24}}{4} = \\dfrac{7 \\pm 5}{4} \\Rightarrow x = 3$ o $x = \\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: ec. 2do grado (d) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (d)",
+    pregunta: "Las soluciones de $x^2 - 9 = 0$ son",
+    opciones: ["$x = 3$ (única)", "$x = \\pm 3$", "$x = \\pm 9$", "$x = 9$ (única)"],
+    correcta: 1,
+    explicacion: "$x^2 = 9 \\Rightarrow x = \\pm\\sqrt{9} = \\pm 3$. Es una diferencia de cuadrados: $(x-3)(x+3) = 0$."
+  },
+  // —— Matemáticas: ec. 2do grado (e) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (e)",
+    pregunta: "Las soluciones de $x^2 + 4x + 4 = 0$ son",
+    opciones: ["$x = 2$ (raíz doble)", "$x = -2$ (raíz doble)", "$x = 2,\\ x = -2$", "$x = -4$ (raíz doble)"],
+    correcta: 1,
+    explicacion: "Trinomio cuadrado perfecto: $(x+2)^2 = 0 \\Rightarrow x = -2$ con multiplicidad dos. El discriminante es $16 - 16 = 0$."
+  },
+  // —— Matemáticas: ec. 2do grado (f) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado (f)",
+    pregunta: "Las soluciones de $x^2 - 2x - 8 = 0$ son",
+    opciones: ["$x = 4,\\ x = -2$", "$x = -4,\\ x = 2$", "$x = 4,\\ x = 2$", "$x = 8,\\ x = -1$"],
+    correcta: 0,
+    explicacion: "Factorizando: $(x-4)(x+2) = 0 \\Rightarrow x = 4$ o $x = -2$ (dos números cuyo producto sea $-8$ y suma $-2$)."
+  },
+  // —— Matemáticas: cónica por discriminante (a) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (a)",
+    pregunta: "La cónica representada por $x^2 + y^2 - 16 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 0,
+    explicacion: "$A=1$, $B=0$, $C=1$. $B^2 - 4AC = -4 < 0$ (tipo elíptico). Como además $A = C$ y $B = 0$, es una circunferencia (de radio $4$)."
+  },
+  // —— Matemáticas: cónica por discriminante (b) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (b)",
+    pregunta: "La cónica representada por $9x^2 + 16y^2 - 144 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=9$, $B=0$, $C=16$. $B^2 - 4AC = -576 < 0$ (tipo elíptico). Como $A \\neq C$, es una elipse (no circunferencia)."
+  },
+  // —— Matemáticas: cónica por discriminante (c) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (c)",
+    pregunta: "La cónica representada por $x^2 - 4y^2 - 4 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=0$, $C=-4$. $B^2 - 4AC = 0 - 4(1)(-4) = 16 > 0 \\Rightarrow$ hipérbola."
+  },
+  // —— Matemáticas: cónica por discriminante (d) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (d)",
+    pregunta: "La cónica representada por $y^2 - 12x = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=0$, $B=0$, $C=1$. $B^2 - 4AC = 0 \\Rightarrow$ parábola. Sólo una variable está al cuadrado."
+  },
+  // —— Matemáticas: cónica por discriminante (e) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (e)",
+    pregunta: "La cónica representada por $4x^2 - y^2 + 16 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=4$, $B=0$, $C=-1$. $B^2 - 4AC = 0 - 4(4)(-1) = 16 > 0 \\Rightarrow$ hipérbola."
+  },
+  // —— Matemáticas: cónica por discriminante (f) ——
+  {
+    materia: "matematicas",
+    tema: "cónica por discriminante (f)",
+    pregunta: "La cónica representada por $x^2 + 6x - y + 11 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=1$, $B=0$, $C=0$. $B^2 - 4AC = 0 \\Rightarrow$ parábola. Sólo $x$ está al cuadrado."
+  },
+  // —— Matemáticas: cónica forma general con xy (01) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (01)",
+    pregunta: "La cónica representada por $x^2 - 2xy + y^2 - 2x - 2y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=1$, $B=-2$, $C=1$. $B^2 - 4AC = 4 - 4 = 0 \\Rightarrow$ parábola (rotada por la presencia del término $xy$)."
+  },
+  // —— Matemáticas: cónica forma general con xy (02) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (02)",
+    pregunta: "La cónica representada por $13x^2 + 2\\sqrt{3}\\,xy + 15y^2 - 48 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=13$, $B=2\\sqrt{3}$, $C=15$. $B^2 - 4AC = 12 - 780 = -768 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (03) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (03)",
+    pregunta: "La cónica representada por $x^2 - 2\\sqrt{3}\\,xy - y^2 - 8 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=-2\\sqrt{3}$, $C=-1$. $B^2 - 4AC = 12 - 4(1)(-1) = 16 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (04) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (04)",
+    pregunta: "La cónica representada por $3x^2 + 2\\sqrt{3}\\,xy + y^2 - 2x + 2\\sqrt{3}\\,y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=3$, $B=2\\sqrt{3}$, $C=1$. $B^2 - 4AC = 12 - 12 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (05) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (05)",
+    pregunta: "La cónica representada por $3x^2 + 2xy + 3y^2 - 8\\sqrt{2}\\,x - 6 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=3$, $B=2$, $C=3$. $B^2 - 4AC = 4 - 36 = -32 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (06) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (06)",
+    pregunta: "La cónica representada por $3x^2 - 6xy + 3y^2 - 8\\sqrt{2}\\,x - 8\\sqrt{2}\\,y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=3$, $B=-6$, $C=3$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (07) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (07)",
+    pregunta: "La cónica representada por $13x^2 - 10xy + 13y^2 + 16x + 16y - 56 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=13$, $B=-10$, $C=13$. $B^2 - 4AC = 100 - 676 = -576 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (08) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (08)",
+    pregunta: "La cónica representada por $5x^2 + 4xy + 2y^2 - 20x + 10y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=5$, $B=4$, $C=2$. $B^2 - 4AC = 16 - 40 = -24 < 0 \\Rightarrow$ elipse (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (09) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (09)",
+    pregunta: "La cónica representada por $2x^2 - 4xy + 2y^2 - 40x + 20y = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=2$, $B=-4$, $C=2$. $B^2 - 4AC = 16 - 16 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (10) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (10)",
+    pregunta: "La cónica representada por $x^2 + 4xy + y^2 - 24x - 24y + 104 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=4$, $C=1$. $B^2 - 4AC = 16 - 4 = 12 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (11) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (11)",
+    pregunta: "La cónica representada por $4x^2 + 8xy + y^2 - 6x + 2y - 10 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=4$, $B=8$, $C=1$. $B^2 - 4AC = 64 - 16 = 48 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (12) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (12)",
+    pregunta: "La cónica representada por $2x^2 + 6xy - y^2 + 4x - 8 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=2$, $B=6$, $C=-1$. $B^2 - 4AC = 36 - 4(2)(-1) = 36 + 8 = 44 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (13) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (13)",
+    pregunta: "La cónica representada por $9x^2 + 6xy + y^2 - 18x - 6y + 4 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=9$, $B=6$, $C=1$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (14) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (14)",
+    pregunta: "La cónica representada por $x^2 - 6xy + 9y^2 + 5x - 15y - 7 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=1$, $B=-6$, $C=9$. $B^2 - 4AC = 36 - 36 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (15) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (15)",
+    pregunta: "La cónica representada por $7x^2 + 4xy + 4y^2 - 14x - 16y + 7 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=7$, $B=4$, $C=4$. $B^2 - 4AC = 16 - 112 = -96 < 0 \\Rightarrow$ elipse (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (16) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (16)",
+    pregunta: "La cónica representada por $3x^2 - 8xy + 3y^2 + 12x - 4y - 5 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=3$, $B=-8$, $C=3$. $B^2 - 4AC = 64 - 36 = 28 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (17) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (17)",
+    pregunta: "La cónica representada por $5x^2 - 2xy + 5y^2 - 12x + 4y + 4 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=5$, $B=-2$, $C=5$. $B^2 - 4AC = 4 - 100 = -96 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: cónica forma general con xy (18) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (18)",
+    pregunta: "La cónica representada por $x^2 + 24xy + 6y^2 - 4x - 2 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 3,
+    explicacion: "$A=1$, $B=24$, $C=6$. $B^2 - 4AC = 576 - 24 = 552 > 0 \\Rightarrow$ hipérbola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (19) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (19)",
+    pregunta: "La cónica representada por $4x^2 - 4xy + y^2 + 10x - 5y + 1 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 2,
+    explicacion: "$A=4$, $B=-4$, $C=1$. $B^2 - 4AC = 16 - 16 = 0 \\Rightarrow$ parábola (rotada)."
+  },
+  // —— Matemáticas: cónica forma general con xy (20) ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma general con xy (20)",
+    pregunta: "La cónica representada por $6x^2 + 4xy + 9y^2 - 12x + 18y - 11 = 0$ es",
+    opciones: ["una circunferencia", "una elipse", "una parábola", "una hipérbola"],
+    correcta: 1,
+    explicacion: "$A=6$, $B=4$, $C=9$. $B^2 - 4AC = 16 - 216 = -200 < 0 \\Rightarrow$ elipse (rotada). No es circunferencia porque $B \\neq 0$."
+  },
+  // —— Matemáticas: integral inmediata (potencia) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (potencia)",
+    pregunta: "$\\displaystyle\\int x^3\\,dx$ es igual a",
+    opciones: ["$\\dfrac{x^4}{4} + C$", "$3x^2 + C$", "$\\dfrac{x^4}{3} + C$", "$x^4 + C$"],
+    correcta: 0,
+    explicacion: "Regla de la potencia: $\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1} + C$. Con $n = 3$: $\\dfrac{x^4}{4} + C$."
+  },
+  // —— Matemáticas: integral inmediata (1/x) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (1/x)",
+    pregunta: "$\\displaystyle\\int \\dfrac{1}{x}\\,dx$ es",
+    opciones: ["$\\ln|x| + C$", "$\\dfrac{1}{2x^2} + C$", "$-\\dfrac{1}{x^2} + C$", "$x \\ln x + C$"],
+    correcta: 0,
+    explicacion: "Caso especial de la regla de la potencia (no aplica con $n=-1$). La antiderivada de $\\dfrac{1}{x}$ es $\\ln|x| + C$."
+  },
+  // —— Matemáticas: integral inmediata (exponencial) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (exponencial)",
+    pregunta: "$\\displaystyle\\int e^x\\,dx$ es igual a",
+    opciones: ["$\\dfrac{e^x}{x} + C$", "$e^x + C$", "$x e^x + C$", "$e^{x+1} + C$"],
+    correcta: 1,
+    explicacion: "La función $e^x$ es su propia derivada y antiderivada: $\\int e^x\\,dx = e^x + C$."
+  },
+  // —— Matemáticas: integral inmediata (sen) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (sen)",
+    pregunta: "$\\displaystyle\\int \\sin x\\,dx$ es",
+    opciones: ["$\\cos x + C$", "$-\\cos x + C$", "$-\\sin x + C$", "$\\dfrac{\\sin^2 x}{2} + C$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{d}{dx}(-\\cos x) = \\sin x$, por lo tanto $\\int \\sin x\\,dx = -\\cos x + C$ (cuidado con el signo)."
+  },
+  // —— Matemáticas: integral inmediata (cos) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (cos)",
+    pregunta: "$\\displaystyle\\int \\cos x\\,dx$ es",
+    opciones: ["$-\\sin x + C$", "$\\sin x + C$", "$-\\cos x + C$", "$\\tan x + C$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{d}{dx}(\\sin x) = \\cos x$, por lo tanto $\\int \\cos x\\,dx = \\sin x + C$."
+  },
+  // —— Matemáticas: integral inmediata (sec²) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (sec²)",
+    pregunta: "$\\displaystyle\\int \\sec^2 x\\,dx$ es",
+    opciones: ["$\\sec x \\tan x + C$", "$\\tan x + C$", "$\\dfrac{\\sec^3 x}{3} + C$", "$\\ln|\\sec x| + C$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{d}{dx}(\\tan x) = \\sec^2 x$, así que $\\int \\sec^2 x\\,dx = \\tan x + C$."
+  },
+  // —— Matemáticas: integral inmediata (polinomio) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (polinomio)",
+    pregunta: "$\\displaystyle\\int (3x^2 + 2x)\\,dx$ es igual a",
+    opciones: ["$x^3 + x^2 + C$", "$x^3 + 2x^2 + C$", "$6x + 2 + C$", "$3x^3 + 2x^2 + C$"],
+    correcta: 0,
+    explicacion: "Por linealidad: $\\int 3x^2\\,dx + \\int 2x\\,dx = x^3 + x^2 + C$ (las constantes se mantienen y se aplica la regla de la potencia término a término)."
+  },
+  // —— Matemáticas: integral inmediata (raíz cuadrada) ——
+  {
+    materia: "matematicas",
+    tema: "integral inmediata (raíz cuadrada)",
+    pregunta: "$\\displaystyle\\int \\sqrt{x}\\,dx$ es",
+    opciones: ["$\\dfrac{2}{3}x^{3/2} + C$", "$\\dfrac{x^{3/2}}{3} + C$", "$2\\sqrt{x} + C$", "$\\dfrac{1}{2\\sqrt{x}} + C$"],
+    correcta: 0,
+    explicacion: "$\\sqrt{x} = x^{1/2}$. Por la regla de la potencia: $\\int x^{1/2}\\,dx = \\dfrac{x^{3/2}}{3/2} + C = \\dfrac{2}{3}x^{3/2} + C$."
+  },
+  // —— Matemáticas: integral por sustitución (a) ——
+  {
+    materia: "matematicas",
+    tema: "integral por sustitución (a)",
+    pregunta: "$\\displaystyle\\int 2x \\cos(x^2)\\,dx$",
+    opciones: ["$\\sin(x^2) + C$", "$2\\sin(x^2) + C$", "$-\\sin(x^2) + C$", "$x^2 \\sin(x^2) + C$"],
+    correcta: 0,
+    explicacion: "Sustitución $u = x^2$, $du = 2x\\,dx$. La integral queda $\\int \\cos u\\,du = \\sin u + C = \\sin(x^2) + C$."
+  },
+  // —— Matemáticas: integral por sustitución (b) ——
+  {
+    materia: "matematicas",
+    tema: "integral por sustitución (b)",
+    pregunta: "$\\displaystyle\\int 3x^2 e^{x^3}\\,dx$",
+    opciones: ["$e^{x^3} + C$", "$3 e^{x^3} + C$", "$\\dfrac{e^{x^3}}{3} + C$", "$x^3 e^{x^3} + C$"],
+    correcta: 0,
+    explicacion: "Sustitución $u = x^3$, $du = 3x^2\\,dx$. La integral queda $\\int e^u\\,du = e^u + C = e^{x^3} + C$."
+  },
+  // —— Matemáticas: integral por sustitución (c) ——
+  {
+    materia: "matematicas",
+    tema: "integral por sustitución (c)",
+    pregunta: "$\\displaystyle\\int \\dfrac{x}{1+x^2}\\,dx$",
+    opciones: ["$\\ln(1+x^2) + C$", "$\\dfrac{1}{2}\\ln(1+x^2) + C$", "$\\arctan x + C$", "$\\dfrac{x^2}{2(1+x^2)} + C$"],
+    correcta: 1,
+    explicacion: "Sustitución $u = 1 + x^2$, $du = 2x\\,dx \\Rightarrow x\\,dx = \\dfrac{du}{2}$. La integral queda $\\dfrac{1}{2}\\int \\dfrac{du}{u} = \\dfrac{1}{2}\\ln|u| + C = \\dfrac{1}{2}\\ln(1+x^2) + C$."
+  },
+  // —— Matemáticas: integral por partes (a) ——
+  {
+    materia: "matematicas",
+    tema: "integral por partes (a)",
+    pregunta: "$\\displaystyle\\int x e^x\\,dx$",
+    opciones: ["$\\dfrac{x^2 e^x}{2} + C$", "$e^x(x - 1) + C$", "$e^x(x + 1) + C$", "$x e^x + C$"],
+    correcta: 1,
+    explicacion: "Por partes con $u = x$, $dv = e^x\\,dx$ ⇒ $du = dx$, $v = e^x$. Aplicando $\\int u\\,dv = uv - \\int v\\,du$: $x e^x - \\int e^x\\,dx = x e^x - e^x + C = e^x(x - 1) + C$."
+  },
+  // —— Matemáticas: integral por partes (b) ——
+  {
+    materia: "matematicas",
+    tema: "integral por partes (b)",
+    pregunta: "$\\displaystyle\\int x \\sin x\\,dx$",
+    opciones: ["$x \\cos x + \\sin x + C$", "$-x \\cos x + \\sin x + C$", "$-x \\cos x - \\sin x + C$", "$\\dfrac{x^2}{2}\\sin x + C$"],
+    correcta: 1,
+    explicacion: "Por partes con $u = x$, $dv = \\sin x\\,dx$ ⇒ $du = dx$, $v = -\\cos x$. Resultado: $-x \\cos x + \\int \\cos x\\,dx = -x \\cos x + \\sin x + C$."
+  },
+  // —— Matemáticas: integral por partes (c) ——
+  {
+    materia: "matematicas",
+    tema: "integral por partes (c)",
+    pregunta: "$\\displaystyle\\int \\ln x\\,dx$",
+    opciones: ["$\\dfrac{1}{x} + C$", "$x \\ln x - x + C$", "$x \\ln x + C$", "$\\dfrac{(\\ln x)^2}{2} + C$"],
+    correcta: 1,
+    explicacion: "Por partes con $u = \\ln x$, $dv = dx$ ⇒ $du = \\dfrac{dx}{x}$, $v = x$. Resultado: $x \\ln x - \\int x \\cdot \\dfrac{1}{x}\\,dx = x \\ln x - x + C$."
+  },
+  // —— Física: cantidad de movimiento (operación) ——
+  {
+    materia: "fisica",
+    tema: "cantidad de movimiento (operación)",
+    pregunta: "Un balón de $0.5\\,\\mathrm{kg}$ viaja a $12\\,\\mathrm{m/s}$. Su cantidad de movimiento es",
+    opciones: ["$6\\,\\mathrm{kg\\cdot m/s}$", "$24\\,\\mathrm{kg\\cdot m/s}$", "$0.5\\,\\mathrm{kg\\cdot m/s}$", "$12\\,\\mathrm{kg\\cdot m/s}$"],
+    correcta: 0,
+    explicacion: "$p = mv = (0.5\\,\\mathrm{kg})(12\\,\\mathrm{m/s}) = 6\\,\\mathrm{kg\\cdot m/s}$."
+  },
+  // —— Física: choque inelástico (operación) ——
+  {
+    materia: "fisica",
+    tema: "choque inelástico (operación)",
+    pregunta: "Un objeto de $3\\,\\mathrm{kg}$ con velocidad $4\\,\\mathrm{m/s}$ choca contra otro de $1\\,\\mathrm{kg}$ en reposo y quedan unidos. La velocidad final del conjunto es",
+    opciones: ["$4\\,\\mathrm{m/s}$", "$3\\,\\mathrm{m/s}$", "$1\\,\\mathrm{m/s}$", "$12\\,\\mathrm{m/s}$"],
+    correcta: 1,
+    explicacion: "Conservación de la cantidad de movimiento: $m_A v_A = (m_A + m_B) v_f$. Entonces $(3)(4) = (4) v_f \\Rightarrow v_f = 3\\,\\mathrm{m/s}$."
+  },
+  // —— Física: conservación de energía (operación) ——
+  {
+    materia: "fisica",
+    tema: "conservación de energía (operación)",
+    pregunta: "Un objeto de $2\\,\\mathrm{kg}$ se deja caer desde $5\\,\\mathrm{m}$ de altura. Sin fricción, ¿con qué rapidez llega al suelo? (Usa $g = 10\\,\\mathrm{m/s^2}$.)",
+    opciones: ["$5\\,\\mathrm{m/s}$", "$10\\,\\mathrm{m/s}$", "$50\\,\\mathrm{m/s}$", "$100\\,\\mathrm{m/s}$"],
+    correcta: 1,
+    explicacion: "Conservación de la energía: $mgh = \\dfrac{1}{2}mv^2 \\Rightarrow v = \\sqrt{2gh} = \\sqrt{(2)(10)(5)} = \\sqrt{100} = 10\\,\\mathrm{m/s}$. La masa se cancela."
+  },
+  // —— Física: MCU — fuerza centrípeta (operación) ——
+  {
+    materia: "fisica",
+    tema: "MCU — fuerza centrípeta (operación)",
+    pregunta: "Un cuerpo de $2\\,\\mathrm{kg}$ gira en una trayectoria circular de radio $0.5\\,\\mathrm{m}$ con rapidez $4\\,\\mathrm{m/s}$. La fuerza centrípeta es",
+    opciones: ["$16\\,\\mathrm{N}$", "$32\\,\\mathrm{N}$", "$64\\,\\mathrm{N}$", "$4\\,\\mathrm{N}$"],
+    correcta: 2,
+    explicacion: "$F_c = \\dfrac{mv^2}{r} = \\dfrac{(2)(4)^2}{0.5} = \\dfrac{32}{0.5} = 64\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Segunda ley de Newton — F = ma",
+    pregunta: "Una caja de $8\\,\\mathrm{kg}$ sufre una aceleración de $3\\,\\mathrm{m/s^2}$. ¿Cuál es la fuerza neta aplicada?",
+    opciones: [
+      "$24\\,\\mathrm{N}$",
+      "$2.67\\,\\mathrm{N}$",
+      "$11\\,\\mathrm{N}$",
+      "$5\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "$F = ma = (8)(3) = 24\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Leyes de Newton — suma de fuerzas",
+    pregunta: "Tres caballos jalan una carreta en la misma dirección. Cada uno ejerce una fuerza de $1\\,500\\,\\mathrm{N}$. ¿Cuál es la fuerza total sobre la carreta?",
+    opciones: [
+      "$3\\,\\mathrm{N}$",
+      "$500\\,\\mathrm{N}$",
+      "$1\\,500\\,\\mathrm{N}$",
+      "$4\\,500\\,\\mathrm{N}$"
+    ],
+    correcta: 3,
+    explicacion: "Como las fuerzas apuntan en la misma dirección, se suman: $F = 3 \\cdot 1500 = 4500\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Segunda ley de Newton — fuerza neta",
+    pregunta: "Sobre un objeto de $50\\,\\mathrm{kg}$ se aplican dos fuerzas horizontales en sentidos opuestos: una de $15\\,\\mathrm{N}$ y otra de $30\\,\\mathrm{N}$. ¿Cuál es la magnitud de la aceleración?",
+    opciones: [
+      "$0.3\\,\\mathrm{m/s^2}$",
+      "$0.9\\,\\mathrm{m/s^2}$",
+      "$0.5\\,\\mathrm{m/s^2}$",
+      "$0.1\\,\\mathrm{m/s^2}$"
+    ],
+    correcta: 0,
+    explicacion: "Fuerza neta $F = 30 - 15 = 15\\,\\mathrm{N}$; $a = F/m = 15/50 = 0.3\\,\\mathrm{m/s^2}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Peso (segunda ley de Newton aplicada)",
+    pregunta: "¿Cuál es el peso de un objeto cuya masa es $25\\,\\mathrm{kg}$? ($g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$25\\,\\mathrm{N}$",
+      "$250\\,\\mathrm{N}$",
+      "$2.5\\,\\mathrm{N}$",
+      "$35\\,\\mathrm{N}$"
+    ],
+    correcta: 1,
+    explicacion: "El peso es la fuerza gravitacional: $W = mg = (25)(10) = 250\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "MCU — fuerza centrípeta",
+    pregunta: "Una pelota de $0.5\\,\\mathrm{kg}$ gira en círculo de $2\\,\\mathrm{m}$ de radio a una rapidez constante de $4\\,\\mathrm{m/s}$. ¿Cuál es la fuerza centrípeta?",
+    opciones: [
+      "$1\\,\\mathrm{N}$",
+      "$4\\,\\mathrm{N}$",
+      "$8\\,\\mathrm{N}$",
+      "$16\\,\\mathrm{N}$"
+    ],
+    correcta: 1,
+    explicacion: "$F_c = \\dfrac{mv^2}{r} = \\dfrac{(0.5)(4)^2}{2} = \\dfrac{8}{2} = 4\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "MCU — frecuencia y período",
+    pregunta: "Una rueda da $20$ vueltas en $5\\,\\mathrm{s}$. ¿Cuál es su frecuencia?",
+    opciones: [
+      "$0.25\\,\\mathrm{Hz}$",
+      "$4\\,\\mathrm{Hz}$",
+      "$25\\,\\mathrm{Hz}$",
+      "$100\\,\\mathrm{Hz}$"
+    ],
+    correcta: 1,
+    explicacion: "$f = N/t = 20/5 = 4\\,\\mathrm{Hz}$ (4 vueltas por segundo)."
+  },
+  {
+    materia: "fisica",
+    tema: "Leyes de Newton — plano inclinado",
+    pregunta: "Un bloque de $10\\,\\mathrm{kg}$ descansa sobre un plano inclinado a $30^\\circ$. ¿Cuál es la componente del peso paralela al plano? ($g = 10\\,\\mathrm{m/s^2}$).",
+    opciones: [
+      "$25\\,\\mathrm{N}$",
+      "$50\\,\\mathrm{N}$",
+      "$87\\,\\mathrm{N}$",
+      "$100\\,\\mathrm{N}$"
+    ],
+    correcta: 1,
+    explicacion: "$W = mg = 100\\,\\mathrm{N}$; componente paralela $= W \\sin 30^\\circ = 100 \\cdot 0.5 = 50\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Primera ley de Newton (teórica)",
+    pregunta: "La primera ley de Newton establece que:",
+    opciones: [
+      "la aceleración de un objeto es proporcional a la fuerza neta aplicada e inversamente proporcional a su masa.",
+      "un objeto permanece en reposo o se mueve con velocidad constante a menos que actúe sobre él una fuerza neta.",
+      "por cada acción existe una reacción de igual magnitud y sentido opuesto.",
+      "la fuerza gravitacional entre dos masas es proporcional al producto de sus masas."
+    ],
+    correcta: 1,
+    explicacion: "Es la ley de inercia: sin fuerza neta no hay cambio en el estado de movimiento. Las otras opciones describen la segunda ley (A), tercera ley (C) y ley de gravitación universal (D)."
+  },
+  {
+    materia: "fisica",
+    tema: "Tercera ley de Newton — acción y reacción (teórica)",
+    pregunta: "Cuando empujas una pared con tus manos:",
+    opciones: [
+      "la pared no ejerce ninguna fuerza sobre ti porque está quieta.",
+      "la pared te empuja con la misma magnitud y en sentido opuesto.",
+      "la pared te empuja con menor fuerza por ser más rígida.",
+      "la pared te empuja sólo si la pared se mueve."
+    ],
+    correcta: 1,
+    explicacion: "Por la tercera ley, toda fuerza que un cuerpo ejerce sobre otro produce una fuerza igual y opuesta sobre el primero. Estás aplicando fuerza a la pared; la pared aplica una fuerza idéntica de regreso a tus manos."
+  },
+  {
+    materia: "fisica",
+    tema: "Leyes de Newton — equilibrio (teórica)",
+    pregunta: "¿Bajo qué condición está un cuerpo extendido en equilibrio?",
+    opciones: [
+      "Cuando su peso es igual a la fuerza normal del piso.",
+      "Cuando se mueve a velocidad constante en línea recta.",
+      "Cuando la suma de fuerzas y la suma de torques sobre él son cero.",
+      "Cuando todas las fuerzas que actúan sobre él tienen la misma magnitud."
+    ],
+    correcta: 2,
+    explicacion: "Para un cuerpo extendido se requieren dos condiciones simultáneas: equilibrio traslacional ($\\sum F = 0$) y equilibrio rotacional ($\\sum \\tau = 0$). Si sólo se cumple una, el cuerpo puede rotar o trasladarse."
+  },
+  // —— Física: tiro parabólico (operación) ——
+  {
+    materia: "fisica",
+    tema: "tiro parabólico (operación)",
+    pregunta: "Un proyectil se lanza horizontalmente desde una altura de $20\\,\\mathrm{m}$ con velocidad de $15\\,\\mathrm{m/s}$. ¿Cuánto tarda en caer? (Usa $g = 10\\,\\mathrm{m/s^2}$.)",
+    opciones: ["$1.5\\,\\mathrm{s}$", "$2\\,\\mathrm{s}$", "$3\\,\\mathrm{s}$", "$4\\,\\mathrm{s}$"],
+    correcta: 1,
+    explicacion: "El tiempo de caída sólo depende de la altura: $h = \\dfrac{1}{2}gt^2 \\Rightarrow t = \\sqrt{\\dfrac{2h}{g}} = \\sqrt{\\dfrac{40}{10}} = 2\\,\\mathrm{s}$. La velocidad horizontal no afecta el tiempo de caída."
+  },
+  // —— Física: calor (operación) ——
+  {
+    materia: "fisica",
+    tema: "calor (operación)",
+    pregunta: "¿Cuánto calor se necesita para elevar la temperatura de $200\\,\\mathrm{g}$ de agua de $20^{\\circ}\\mathrm{C}$ a $80^{\\circ}\\mathrm{C}$? (Calor específico del agua: $c = 1\\,\\dfrac{\\mathrm{cal}}{\\mathrm{g}\\cdot{}^{\\circ}\\mathrm{C}}$.)",
+    opciones: ["$200\\,\\mathrm{cal}$", "$1\\,200\\,\\mathrm{cal}$", "$12\\,000\\,\\mathrm{cal}$", "$16\\,000\\,\\mathrm{cal}$"],
+    correcta: 2,
+    explicacion: "$Q = mc\\Delta T = (200\\,\\mathrm{g})\\left(1\\,\\dfrac{\\mathrm{cal}}{\\mathrm{g}\\cdot{}^{\\circ}\\mathrm{C}}\\right)(60\\,{}^{\\circ}\\mathrm{C}) = 12\\,000\\,\\mathrm{cal}$."
+  },
+  // —— Física: Coulomb (operación) ——
+  {
+    materia: "fisica",
+    tema: "Coulomb (operación)",
+    pregunta: "Dos cargas de $2\\,\\mu\\mathrm{C}$ y $3\\,\\mu\\mathrm{C}$ están separadas $1\\,\\mathrm{m}$. La fuerza eléctrica entre ellas es (usa $k = 9\\times 10^9\\,\\mathrm{N\\cdot m^2/C^2}$).",
+    opciones: ["$5.4\\times 10^{-3}\\,\\mathrm{N}$", "$5.4\\times 10^{-2}\\,\\mathrm{N}$", "$5.4\\times 10^{-1}\\,\\mathrm{N}$", "$6\\times 10^{-6}\\,\\mathrm{N}$"],
+    correcta: 1,
+    explicacion: "$F = k\\dfrac{q_1 q_2}{r^2} = (9\\times 10^9)\\dfrac{(2\\times 10^{-6})(3\\times 10^{-6})}{1^2} = 54\\times 10^{-3} = 5.4\\times 10^{-2}\\,\\mathrm{N}$."
+  },
+  // —— Física: resistencias en paralelo (operación) ——
+  {
+    materia: "fisica",
+    tema: "resistencias en paralelo (operación)",
+    pregunta: "Dos resistencias de $6\\,\\Omega$ y $3\\,\\Omega$ se conectan en paralelo. La resistencia equivalente es",
+    opciones: ["$9\\,\\Omega$", "$4.5\\,\\Omega$", "$2\\,\\Omega$", "$18\\,\\Omega$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{1}{R_{eq}} = \\dfrac{1}{6} + \\dfrac{1}{3} = \\dfrac{1}{6} + \\dfrac{2}{6} = \\dfrac{3}{6} = \\dfrac{1}{2} \\Rightarrow R_{eq} = 2\\,\\Omega$. (En paralelo la $R_{eq}$ siempre es menor que la menor.)"
+  },
+  {
+    materia: "fisica",
+    tema: "Ley de Coulomb — fuerza entre cargas",
+    pregunta: "Dos cargas de $+2\\,\\mu\\mathrm{C}$ y $+5\\,\\mu\\mathrm{C}$ están separadas $0.3\\,\\mathrm{m}$ en el vacío. ¿Cuál es la magnitud de la fuerza entre ellas? ($k = 9\\times 10^9\\,\\mathrm{N\\cdot m^2/C^2}$).",
+    opciones: [
+      "$1\\,\\mathrm{N}$",
+      "$0.1\\,\\mathrm{N}$",
+      "$10\\,\\mathrm{N}$",
+      "$0.01\\,\\mathrm{N}$"
+    ],
+    correcta: 0,
+    explicacion: "$F = k\\dfrac{|q_1 q_2|}{r^2} = (9\\times 10^9)\\dfrac{(2\\times 10^{-6})(5\\times 10^{-6})}{(0.3)^2} = \\dfrac{0.09}{0.09} = 1\\,\\mathrm{N}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Ley de Ohm — voltaje",
+    pregunta: "Por una resistencia de $50\\,\\Omega$ circula una corriente de $0.4\\,\\mathrm{A}$. ¿Cuál es el voltaje en sus extremos?",
+    opciones: [
+      "$20\\,\\mathrm{V}$",
+      "$12.5\\,\\mathrm{V}$",
+      "$125\\,\\mathrm{V}$",
+      "$200\\,\\mathrm{V}$"
+    ],
+    correcta: 0,
+    explicacion: "$V = IR = (0.4)(50) = 20\\,\\mathrm{V}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Ley de Ohm — corriente con resistores en serie",
+    pregunta: "Un circuito consta de una pila de $12\\,\\mathrm{V}$ y 4 resistores de $3\\,\\Omega$ cada uno conectados en serie. ¿Cuál es la corriente que circula?",
+    opciones: [
+      "$1\\,\\mathrm{A}$",
+      "$4\\,\\mathrm{A}$",
+      "$12\\,\\mathrm{A}$",
+      "$48\\,\\mathrm{A}$"
+    ],
+    correcta: 0,
+    explicacion: "Resistencia total en serie: $R = 4 \\cdot 3 = 12\\,\\Omega$. Por Ohm: $I = V/R = 12/12 = 1\\,\\mathrm{A}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Resistencias en serie",
+    pregunta: "Tres resistencias de $4\\,\\Omega$, $6\\,\\Omega$ y $10\\,\\Omega$ están conectadas en serie. ¿Cuál es la resistencia equivalente?",
+    opciones: [
+      "$20\\,\\Omega$",
+      "$6.7\\,\\Omega$",
+      "$1.85\\,\\Omega$",
+      "$240\\,\\Omega$"
+    ],
+    correcta: 0,
+    explicacion: "En serie las resistencias suman: $R_{eq} = 4 + 6 + 10 = 20\\,\\Omega$."
+  },
+  {
+    materia: "fisica",
+    tema: "Resistencias en paralelo",
+    pregunta: "Dos resistencias de $12\\,\\Omega$ y $4\\,\\Omega$ están conectadas en paralelo. ¿Cuál es la resistencia equivalente?",
+    opciones: [
+      "$16\\,\\Omega$",
+      "$8\\,\\Omega$",
+      "$3\\,\\Omega$",
+      "$0.33\\,\\Omega$"
+    ],
+    correcta: 2,
+    explicacion: "$\\dfrac{1}{R} = \\dfrac{1}{12} + \\dfrac{1}{4} = \\dfrac{1}{12} + \\dfrac{3}{12} = \\dfrac{4}{12} = \\dfrac{1}{3} \\Rightarrow R = 3\\,\\Omega$."
+  },
+  {
+    materia: "fisica",
+    tema: "Potencia eléctrica en resistencias",
+    pregunta: "Una resistencia de $25\\,\\Omega$ disipa $400\\,\\mathrm{J}$ de energía cada segundo. ¿Cuál es el voltaje en sus extremos?",
+    opciones: [
+      "$100\\,\\mathrm{V}$",
+      "$10\\,000\\,\\mathrm{V}$",
+      "$50\\,\\mathrm{V}$",
+      "$25\\,\\mathrm{V}$"
+    ],
+    correcta: 0,
+    explicacion: "$P = V^2/R \\Rightarrow V = \\sqrt{PR} = \\sqrt{(400)(25)} = \\sqrt{10\\,000} = 100\\,\\mathrm{V}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Resistividad y resistencias",
+    pregunta: "Un alambre tiene una resistencia $R$. ¿Cuál es la resistencia de otro alambre del mismo material pero con el doble de longitud y la mitad del área transversal?",
+    opciones: [
+      "$R/4$",
+      "$R/2$",
+      "$2R$",
+      "$4R$"
+    ],
+    correcta: 3,
+    explicacion: "$R = \\rho L/A \\Rightarrow R' = \\rho \\cdot \\dfrac{2L}{A/2} = 4 \\cdot \\dfrac{\\rho L}{A} = 4R$."
+  },
+  {
+    materia: "fisica",
+    tema: "Ley de Coulomb — conservación de carga",
+    pregunta: "Dos esferas conductoras idénticas con cargas de $+8\\,\\mu\\mathrm{C}$ y $-2\\,\\mu\\mathrm{C}$ se ponen en contacto y luego se separan. ¿Cuál es la carga final en cada esfera?",
+    opciones: [
+      "$+8\\,\\mu\\mathrm{C}$ y $-2\\,\\mu\\mathrm{C}$",
+      "$+3\\,\\mu\\mathrm{C}$ en cada una",
+      "$+5\\,\\mu\\mathrm{C}$ en cada una",
+      "$0\\,\\mu\\mathrm{C}$ en cada una"
+    ],
+    correcta: 1,
+    explicacion: "Al ser esferas idénticas la carga se distribuye por igual; la carga total se conserva: $(+8) + (-2) = +6\\,\\mu\\mathrm{C}$. Cada esfera queda con $+6/2 = +3\\,\\mu\\mathrm{C}$."
+  },
+  {
+    materia: "fisica",
+    tema: "Resistencias en serie vs paralelo (teórica)",
+    pregunta: "¿Cuál de las siguientes afirmaciones es correcta sobre circuitos resistivos?",
+    opciones: [
+      "En un circuito en serie, la corriente es la misma en todos los resistores.",
+      "En un circuito en paralelo, el voltaje es diferente en cada resistor.",
+      "En serie, la resistencia equivalente es menor que la menor resistencia individual.",
+      "En paralelo, la corriente total es menor que la que pasa por cada resistor."
+    ],
+    correcta: 0,
+    explicacion: "En serie no hay otro camino para la carga, así que la misma corriente atraviesa cada componente; en paralelo todos los resistores comparten el mismo voltaje pero la corriente se reparte."
+  },
+  {
+    materia: "fisica",
+    tema: "Ley de Ohm — definición de corriente eléctrica (teórica)",
+    pregunta: "¿Qué representa físicamente la corriente eléctrica?",
+    opciones: [
+      "La diferencia de potencial entre dos puntos del circuito.",
+      "La oposición al flujo de carga eléctrica.",
+      "La cantidad de carga que pasa por una sección del conductor por unidad de tiempo.",
+      "La energía que disipa el circuito por unidad de tiempo."
+    ],
+    correcta: 2,
+    explicacion: "Por definición, $I = \\Delta Q/\\Delta t$ (carga por unidad de tiempo). El voltaje es la diferencia de potencial (A), la resistencia es la oposición al flujo (B), y la potencia es energía por tiempo (D)."
+  },
+  // —— Física: termodinámica (teórica) ——
+  {
+    materia: "fisica",
+    tema: "termodinámica (teórica)",
+    pregunta: "¿En qué proceso termodinámico la presión permanece constante?",
+    opciones: ["Isotérmico", "Isobárico", "Adiabático", "Isocórico"],
+    correcta: 1,
+    explicacion: "Isobárico: presión constante (del griego *isos* = igual, *baros* = presión). Los demás: isotérmico = temperatura constante; adiabático = sin transferencia de calor; isocórico = volumen constante."
+  },
+  // —— Física: óptica — ley de Snell (teórica) ——
+  {
+    materia: "fisica",
+    tema: "óptica — ley de Snell (teórica)",
+    pregunta: "Cuando un rayo de luz pasa de un medio menos denso a uno más denso (por ejemplo, de aire a agua):",
+    opciones: ["No se desvía", "Se aleja de la normal", "Se acerca a la normal", "Se refleja totalmente"],
+    correcta: 2,
+    explicacion: "Por la ley de Snell, $n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2$. Si $n_2 > n_1$, entonces $\\sin\\theta_2 < \\sin\\theta_1$, así que el rayo se acerca a la normal (la luz viaja más lento en el medio más denso)."
+  },
+  // —— Física: óptica — lentes (teórica) ——
+  {
+    materia: "fisica",
+    tema: "óptica — lentes (teórica)",
+    pregunta: "Si un objeto se coloca más allá del doble de la distancia focal ($d > 2f$) de una lente convergente, la imagen formada es",
+    opciones: ["Virtual, derecha y mayor", "Real, invertida y menor", "Real, invertida y mayor", "Virtual, derecha y menor"],
+    correcta: 1,
+    explicacion: "Para $d > 2f$ en una lente convergente, la imagen es real (se forma del lado opuesto), invertida y menor que el objeto. Es el principio de la cámara fotográfica."
+  },
+  // —— Física: efecto fotoeléctrico (teórica) ——
+  {
+    materia: "fisica",
+    tema: "efecto fotoeléctrico (teórica)",
+    pregunta: "El efecto fotoeléctrico, explicado por Einstein en 1905, es la prueba experimental de que",
+    opciones: ["La luz se comporta exclusivamente como onda", "La luz tiene naturaleza corpuscular (cuántica)", "Los electrones poseen masa", "La luz viaja a velocidad constante en el vacío"],
+    correcta: 1,
+    explicacion: "El efecto fotoeléctrico demuestra que la luz se comporta como partículas (fotones) con energía $E = hf$. Junto con su comportamiento ondulatorio, da lugar al concepto de dualidad onda-partícula."
+  },
+  // —— Física: magnetismo — fuerza de Lorentz (condición) ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — fuerza de Lorentz (teórica)",
+    pregunta: "¿Sobre cuál de las siguientes situaciones actúa una fuerza magnética?",
+    opciones: [
+      "Una carga eléctrica en reposo dentro de un campo magnético",
+      "Una carga eléctrica que se mueve perpendicular al campo magnético",
+      "Una carga eléctrica que se mueve paralela al campo magnético",
+      "Una carga sin movimiento cerca de un imán"
+    ],
+    correcta: 1,
+    explicacion: "La fuerza magnética sobre una carga es $F = qvB\\sin\\theta$, donde $\\theta$ es el ángulo entre la velocidad y el campo. Solo hay fuerza si la carga se mueve ($v \\neq 0$) y no es paralela al campo ($\\theta \\neq 0$). El máximo ocurre cuando el movimiento es perpendicular al campo ($\\theta = 90°$)."
+  },
+  // —— Física: magnetismo — dirección de la fuerza ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — dirección de la fuerza (teórica)",
+    pregunta: "La fuerza magnética sobre una carga en movimiento siempre es:",
+    opciones: [
+      "Paralela a la velocidad de la carga",
+      "Paralela al campo magnético",
+      "Perpendicular tanto a la velocidad como al campo",
+      "En la misma dirección del campo eléctrico"
+    ],
+    correcta: 2,
+    explicacion: "La fuerza magnética $\\vec{F} = q\\vec{v} \\times \\vec{B}$ resulta de un producto vectorial, por lo que siempre es perpendicular al plano que forman la velocidad y el campo. Esto la distingue de la fuerza eléctrica, que sí es paralela al campo."
+  },
+  // —— Física: magnetismo — trabajo de la fuerza magnética ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — trayectoria de la carga (teórica)",
+    pregunta: "Una carga entra a un campo magnético uniforme. La fuerza magnética:",
+    opciones: [
+      "Acelera la carga aumentando su rapidez",
+      "Frena la carga hasta detenerla",
+      "Cambia la dirección del movimiento pero no la rapidez",
+      "No tiene ningún efecto sobre la carga"
+    ],
+    correcta: 2,
+    explicacion: "Como la fuerza magnética siempre es perpendicular a la velocidad, no realiza trabajo sobre la carga ($W = 0$). Por eso no cambia la rapidez (ni la energía cinética), solo curva la trayectoria."
+  },
+  // —— Física: electromagnetismo — inducción (Faraday) ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — inducción (teórica)",
+    pregunta: "¿Qué se necesita para inducir una corriente en una espira con un imán?",
+    opciones: [
+      "Mantener el imán inmóvil dentro de la espira",
+      "Que el flujo magnético a través de la espira cambie",
+      "Que el imán sea muy potente aunque esté quieto",
+      "Que la espira esté hecha de un material aislante"
+    ],
+    correcta: 1,
+    explicacion: "La ley de Faraday establece que la FEM inducida depende de la rapidez con que cambia el flujo magnético: $\\varepsilon = -N\\dfrac{\\Delta\\Phi}{\\Delta t}$. Un imán quieto, por potente que sea, no produce un cambio de flujo, así que no induce corriente."
+  },
+  // —— Física: electromagnetismo — ley de Lenz ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — ley de Lenz (teórica)",
+    pregunta: "Según la ley de Lenz, la corriente inducida en una espira:",
+    opciones: [
+      "Refuerza el cambio de flujo que la produjo",
+      "Se opone al cambio de flujo que la produjo",
+      "Siempre fluye en sentido horario",
+      "No tiene dirección definida"
+    ],
+    correcta: 1,
+    explicacion: "La ley de Lenz (el signo negativo en $\\varepsilon = -N\\dfrac{\\Delta\\Phi}{\\Delta t}$) indica que la corriente inducida genera un campo magnético que se opone al cambio de flujo que la originó. Es una consecuencia de la conservación de la energía."
+  },
+  // —— Física: magnetismo — solenoide ——
+  {
+    materia: "fisica",
+    tema: "magnetismo — solenoide (teórica)",
+    pregunta: "¿Qué pasa con el campo magnético de un solenoide si aumentamos la corriente que circula por él?",
+    opciones: [
+      "Disminuye",
+      "Aumenta",
+      "Permanece igual",
+      "Se invierte de dirección"
+    ],
+    correcta: 1,
+    explicacion: "El campo dentro de un solenoide es $B = \\mu_0 n I$, proporcional a la corriente $I$. Al aumentar la corriente, aumenta el campo. El sentido solo se invertiría si se invirtiera la dirección de la corriente, no al aumentar su magnitud."
+  },
+  // —— Física: electromagnetismo — generador ——
+  {
+    materia: "fisica",
+    tema: "electromagnetismo — generador (teórica)",
+    pregunta: "Un generador eléctrico convierte:",
+    opciones: [
+      "Energía eléctrica en energía mecánica",
+      "Energía mecánica en energía eléctrica",
+      "Energía química en energía magnética",
+      "Energía térmica directamente en magnética"
+    ],
+    correcta: 1,
+    explicacion: "Un generador usa inducción electromagnética: al mover un conductor (o rotar una bobina) dentro de un campo magnético, el cambio de flujo induce una corriente. Convierte energía mecánica en eléctrica. El proceso inverso (eléctrica → mecánica) lo hace un motor."
+  },
+  // —— Matemáticas: circunferencia — centro (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "circunferencia — centro (forma general)",
+    pregunta: "El centro de la circunferencia $x^2 + y^2 - 4x + 6y - 12 = 0$ es",
+    opciones: ["$(2, -3)$", "$(-2, 3)$", "$(2, 3)$", "$(4, -6)$"],
+    correcta: 0,
+    explicacion: "Completando el cuadrado: $(x^2 - 4x + 4) + (y^2 + 6y + 9) = 12 + 4 + 9$, es decir $(x-2)^2 + (y+3)^2 = 25$. El centro es $(2, -3)$ y el radio es $5$."
+  },
+  // —— Matemáticas: circunferencia — radio (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "circunferencia — radio (forma general)",
+    pregunta: "El radio de la circunferencia $x^2 + y^2 + 8x - 6y + 9 = 0$ es",
+    opciones: ["$3$", "$4$", "$5$", "$16$"],
+    correcta: 1,
+    explicacion: "Completando el cuadrado: $(x^2 + 8x + 16) + (y^2 - 6y + 9) = -9 + 16 + 9$, es decir $(x+4)^2 + (y-3)^2 = 16$. El radio es $r = \\sqrt{16} = 4$ (centro en $(-4, 3)$)."
+  },
+  // —— Matemáticas: parábola — vértice (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "parábola — vértice (forma general)",
+    pregunta: "El vértice de la parábola $y^2 - 4y - 8x + 28 = 0$ es",
+    opciones: ["$(3, 2)$", "$(-3, 2)$", "$(3, -2)$", "$(-3, -2)$"],
+    correcta: 0,
+    explicacion: "Completando el cuadrado en $y$: $y^2 - 4y + 4 = 8x - 28 + 4 \\Rightarrow (y-2)^2 = 8(x-3)$. La forma estándar $(y-k)^2 = 4p(x-h)$ revela el vértice $(h, k) = (3, 2)$."
+  },
+  // —— Matemáticas: parábola — parámetro p (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "parábola — parámetro p (forma general)",
+    pregunta: "Para la parábola $x^2 + 6x - 12y + 33 = 0$, el valor del parámetro $p$ es",
+    opciones: ["$3$", "$6$", "$12$", "$4$"],
+    correcta: 0,
+    explicacion: "Completando el cuadrado en $x$: $x^2 + 6x + 9 = 12y - 33 + 9 \\Rightarrow (x+3)^2 = 12(y-2)$. Comparando con $(x-h)^2 = 4p(y-k)$: $4p = 12 \\Rightarrow p = 3$. (Vértice en $(-3, 2)$, foco en $(-3, 5)$.)"
+  },
+  // —— Matemáticas: elipse — centro (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "elipse — centro (forma general)",
+    pregunta: "El centro de la elipse $4x^2 + 9y^2 - 16x + 18y - 11 = 0$ es",
+    opciones: ["$(-2, 1)$", "$(2, -1)$", "$(2, 1)$", "$(-4, 2)$"],
+    correcta: 1,
+    explicacion: "Agrupando y factorizando: $4(x^2 - 4x + 4) + 9(y^2 + 2y + 1) = 11 + 16 + 9 = 36 \\Rightarrow \\dfrac{(x-2)^2}{9} + \\dfrac{(y+1)^2}{4} = 1$. El centro es $(2, -1)$, con semiejes $a = 3$ y $b = 2$."
+  },
+  // —— Matemáticas: hipérbola — centro (forma general) ——
+  {
+    materia: "matematicas",
+    tema: "hipérbola — centro (forma general)",
+    pregunta: "El centro de la hipérbola $x^2 - 4y^2 + 6x + 16y - 11 = 0$ es",
+    opciones: ["$(3, -2)$", "$(-3, 2)$", "$(3, 2)$", "$(-3, -2)$"],
+    correcta: 1,
+    explicacion: "Agrupando: $(x^2 + 6x + 9) - 4(y^2 - 4y + 4) = 11 + 9 - 16 = 4 \\Rightarrow \\dfrac{(x+3)^2}{4} - \\dfrac{(y-2)^2}{1} = 1$. El centro es $(-3, 2)$, con $a = 2$ y $b = 1$."
+  },
+  // —— Matemáticas: ec. 2do grado (g) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado",
+    pregunta: "Las soluciones de $x^2 - 7x + 10 = 0$ son",
+    opciones: ["$x = 2,\\ x = 5$", "$x = -2,\\ x = -5$", "$x = 1,\\ x = 10$", "$x = 7,\\ x = -10$"],
+    correcta: 0,
+    explicacion: "Factorizando: $(x-2)(x-5) = 0 \\Rightarrow x = 2$ o $x = 5$ (dos números cuyo producto es $10$ y suma $7$)."
+  },
+  // —— Matemáticas: ec. 2do grado (h) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado",
+    pregunta: "Las soluciones de $x^2 - x - 6 = 0$ son",
+    opciones: ["$x = 3,\\ x = -2$", "$x = -3,\\ x = 2$", "$x = 6,\\ x = -1$", "$x = 3,\\ x = 2$"],
+    correcta: 0,
+    explicacion: "Factorizando: $(x-3)(x+2) = 0 \\Rightarrow x = 3$ o $x = -2$ (producto $-6$, suma $-1$)."
+  },
+  // —— Matemáticas: ec. 2do grado (i) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado",
+    pregunta: "Las soluciones de $3x^2 + 5x - 2 = 0$ son",
+    opciones: ["$x = -2,\\ x = \\dfrac{1}{3}$", "$x = 2,\\ x = -\\dfrac{1}{3}$", "$x = -2,\\ x = -\\dfrac{1}{3}$", "$x = 1,\\ x = -\\dfrac{2}{3}$"],
+    correcta: 0,
+    explicacion: "Por la fórmula general: $x = \\dfrac{-5 \\pm \\sqrt{25 + 24}}{6} = \\dfrac{-5 \\pm 7}{6}$. Entonces $x = \\dfrac{1}{3}$ o $x = -2$."
+  },
+  // —— Matemáticas: ec. 2do grado (j) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado",
+    pregunta: "Las soluciones de $x^2 + 6x + 9 = 0$ son",
+    opciones: ["$x = -3$ (raíz doble)", "$x = 3$ (raíz doble)", "$x = -3,\\ x = 3$", "$x = -6$ (raíz doble)"],
+    correcta: 0,
+    explicacion: "Trinomio cuadrado perfecto: $(x+3)^2 = 0 \\Rightarrow x = -3$ con multiplicidad dos. El discriminante es $36 - 36 = 0$."
+  },
+  // —— Matemáticas: ec. 2do grado (k) ——
+  {
+    materia: "matematicas",
+    tema: "ec. 2do grado",
+    pregunta: "Las soluciones de $x^2 + 3x - 10 = 0$ son",
+    opciones: ["$x = 2,\\ x = -5$", "$x = -2,\\ x = 5$", "$x = 5,\\ x = 2$", "$x = -5,\\ x = -2$"],
+    correcta: 0,
+    explicacion: "Factorizando: $(x+5)(x-2) = 0 \\Rightarrow x = 2$ o $x = -5$ (producto $-10$, suma $+3$)."
+  },
+  // —— Matemáticas: límite (e^x - 1)/x ——
+  {
+    materia: "matematicas",
+    tema: "límite (L'Hôpital)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{e^x - 1}{x}$",
+    opciones: ["$0$", "$1$", "$e$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{d}{dx}(e^x - 1) = e^x$, $\\dfrac{d}{dx}(x) = 1$. Entonces el límite es $\\dfrac{e^0}{1} = 1$."
+  },
+  // —— Matemáticas: límite (1-cos x)/x² ——
+  {
+    materia: "matematicas",
+    tema: "límite (L'Hôpital)",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 0}\\dfrac{1 - \\cos x}{x^2}$",
+    opciones: ["$0$", "$\\dfrac{1}{2}$", "$1$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Por L'Hôpital: $\\dfrac{\\sin x}{2x}$ (sigue siendo $0/0$). Por L'Hôpital otra vez: $\\dfrac{\\cos x}{2}$. El límite es $\\dfrac{\\cos 0}{2} = \\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: límite al infinito ——
+  {
+    materia: "matematicas",
+    tema: "límite al infinito",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to \\infty}\\dfrac{3x^2 + 1}{x^2 - 2}$",
+    opciones: ["$0$", "$1$", "$3$", "$\\infty$"],
+    correcta: 2,
+    explicacion: "Como numerador y denominador tienen el mismo grado, el límite es el cociente de los coeficientes principales: $\\dfrac{3}{1} = 3$. (Equivalentemente, divide ambos entre $x^2$.)"
+  },
+  // —— Matemáticas: límite por racionalización ——
+  {
+    materia: "matematicas",
+    tema: "límite por racionalización",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 1}\\dfrac{\\sqrt{x} - 1}{x - 1}$",
+    opciones: ["$0$", "$\\dfrac{1}{2}$", "$1$", "no existe"],
+    correcta: 1,
+    explicacion: "Forma $0/0$. Multiplica y divide por el conjugado $\\sqrt{x} + 1$: $\\dfrac{(\\sqrt{x}-1)(\\sqrt{x}+1)}{(x-1)(\\sqrt{x}+1)} = \\dfrac{x-1}{(x-1)(\\sqrt{x}+1)} = \\dfrac{1}{\\sqrt{x}+1}$. El límite es $\\dfrac{1}{1+1} = \\dfrac{1}{2}$."
+  },
+  // —— Matemáticas: límite por factorización (denom. no trivial) ——
+  {
+    materia: "matematicas",
+    tema: "límite por factorización",
+    pregunta: "Calcula $\\displaystyle\\lim_{x\\to 2}\\dfrac{x^2 - x - 2}{x^2 - 4}$",
+    opciones: ["$\\dfrac{3}{4}$", "$\\dfrac{1}{2}$", "$1$", "no existe"],
+    correcta: 0,
+    explicacion: "Forma $0/0$. Factorizando: $\\dfrac{(x-2)(x+1)}{(x-2)(x+2)} = \\dfrac{x+1}{x+2}$. El límite es $\\dfrac{2+1}{2+2} = \\dfrac{3}{4}$."
+  },
+  // —— Matemáticas: ecuación trigonométrica (a) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $2\\sin x = 1$ en el intervalo $[0, \\pi/2]$.",
+    opciones: ["$x = \\dfrac{\\pi}{6}$", "$x = \\dfrac{\\pi}{4}$", "$x = \\dfrac{\\pi}{3}$", "$x = \\dfrac{\\pi}{2}$"],
+    correcta: 0,
+    explicacion: "$2\\sin x = 1 \\Rightarrow \\sin x = \\dfrac{1}{2}$. En el intervalo $[0, \\pi/2]$, esto ocurre cuando $x = \\dfrac{\\pi}{6}$ (que es $30^{\\circ}$)."
+  },
+  // —— Matemáticas: ecuación trigonométrica (b) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $\\cos x = -\\dfrac{1}{2}$ en el intervalo $[0, \\pi]$.",
+    opciones: ["$x = \\dfrac{\\pi}{3}$", "$x = \\dfrac{\\pi}{2}$", "$x = \\dfrac{2\\pi}{3}$", "$x = \\dfrac{5\\pi}{6}$"],
+    correcta: 2,
+    explicacion: "$\\cos x = -\\dfrac{1}{2}$ en el II cuadrante. El ángulo de referencia es $\\dfrac{\\pi}{3}$ ($60^{\\circ}$), entonces $x = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}$ ($120^{\\circ}$)."
+  },
+  // —— Matemáticas: ecuación trigonométrica (c) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $\\sin x = \\cos x$ en el intervalo $[0, \\pi/2]$.",
+    opciones: ["$x = 0$", "$x = \\dfrac{\\pi}{6}$", "$x = \\dfrac{\\pi}{4}$", "$x = \\dfrac{\\pi}{3}$"],
+    correcta: 2,
+    explicacion: "Dividiendo entre $\\cos x$: $\\tan x = 1$. En $[0, \\pi/2]$ esto da $x = \\dfrac{\\pi}{4}$ ($45^{\\circ}$), donde $\\sin = \\cos = \\dfrac{\\sqrt{2}}{2}$."
+  },
+  // —— Matemáticas: triángulo rectángulo — Pitágoras ——
+  {
+    materia: "matematicas",
+    tema: "triángulo rectángulo",
+    pregunta: "En un triángulo rectángulo los catetos miden $3\\,\\mathrm{cm}$ y $4\\,\\mathrm{cm}$. ¿Cuánto mide la hipotenusa?",
+    opciones: ["$5\\,\\mathrm{cm}$", "$7\\,\\mathrm{cm}$", "$\\sqrt{7}\\,\\mathrm{cm}$", "$25\\,\\mathrm{cm}$"],
+    correcta: 0,
+    explicacion: "Por el teorema de Pitágoras: $h^2 = a^2 + b^2 = 9 + 16 = 25 \\Rightarrow h = 5\\,\\mathrm{cm}$."
+  },
+  // —— Matemáticas: triángulo rectángulo — cateto faltante ——
+  {
+    materia: "matematicas",
+    tema: "triángulo rectángulo",
+    pregunta: "En un triángulo rectángulo la hipotenusa mide $13$ y un cateto mide $5$. ¿Cuánto mide el otro cateto?",
+    opciones: ["$8$", "$12$", "$\\sqrt{13}$", "$18$"],
+    correcta: 1,
+    explicacion: "Por Pitágoras: $a^2 + 5^2 = 13^2 \\Rightarrow a^2 = 169 - 25 = 144 \\Rightarrow a = 12$. (Es el clásico triple pitagórico $5\\text{-}12\\text{-}13$.)"
+  },
+  // —— Matemáticas: triángulo rectángulo — razón trigonométrica ——
+  {
+    materia: "matematicas",
+    tema: "triángulo rectángulo",
+    pregunta: "En un triángulo rectángulo, uno de los ángulos agudos mide $30^{\\circ}$ y la hipotenusa $10\\,\\mathrm{m}$. ¿Cuánto mide el cateto opuesto a ese ángulo?",
+    opciones: ["$5\\,\\mathrm{m}$", "$5\\sqrt{3}\\,\\mathrm{m}$", "$10\\sqrt{3}\\,\\mathrm{m}$", "$\\dfrac{10}{\\sqrt{3}}\\,\\mathrm{m}$"],
+    correcta: 0,
+    explicacion: "$\\sin 30^{\\circ} = \\dfrac{\\text{cateto opuesto}}{\\text{hipotenusa}} \\Rightarrow \\dfrac{1}{2} = \\dfrac{\\text{op}}{10} \\Rightarrow \\text{op} = 5\\,\\mathrm{m}$."
+  },
+  // —— Matemáticas: triángulo oblicuángulo — ley de cosenos ——
+  {
+    materia: "matematicas",
+    tema: "ley de cosenos",
+    pregunta: "En un triángulo, $a = 3$, $b = 5$ y el ángulo $C$ entre ellos mide $120^{\\circ}$. ¿Cuánto mide el lado $c$?",
+    opciones: ["$\\sqrt{34}$", "$7$", "$\\sqrt{19}$", "$8$"],
+    correcta: 1,
+    explicacion: "Por la ley de cosenos: $c^2 = a^2 + b^2 - 2ab\\cos C = 9 + 25 - 2(3)(5)\\cos 120^{\\circ} = 34 - 30(-\\tfrac{1}{2}) = 34 + 15 = 49 \\Rightarrow c = 7$."
+  },
+  // —— Matemáticas: triángulo oblicuángulo — ley de senos ——
+  {
+    materia: "matematicas",
+    tema: "ley de senos",
+    pregunta: "En un triángulo, $A = 30^{\\circ}$, $B = 45^{\\circ}$ y $a = 10$. ¿Cuánto mide el lado $b$?",
+    opciones: ["$10\\sqrt{2}$", "$5\\sqrt{2}$", "$10$", "$15$"],
+    correcta: 0,
+    explicacion: "Ley de senos: $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} \\Rightarrow b = \\dfrac{a\\sin B}{\\sin A} = \\dfrac{10 \\cdot \\sqrt{2}/2}{1/2} = 10\\sqrt{2}$."
+  },
+  // —— Matemáticas: gráfica trig (sen) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿Cuál función pasa por el origen, oscila entre $-1$ y $1$, y tiene período $2\\pi$?",
+    opciones: ["$\\sin x$", "$\\cos x$", "$\\tan x$", "$-\\cos x$"],
+    correcta: 0,
+    explicacion: "$\\sin 0 = 0$ (pasa por el origen), su rango es $[-1, 1]$ y se repite cada $2\\pi$. $\\cos x$ no pasa por el origen ($\\cos 0 = 1$); $\\tan x$ no está acotada y tiene asíntotas."
+  },
+  // —— Matemáticas: gráfica trig (cos) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿Cuál función tiene su valor máximo $(1)$ en $x = 0$, su valor mínimo $(-1)$ en $x = \\pi$, y oscila entre $-1$ y $1$?",
+    opciones: ["$\\sin x$", "$\\cos x$", "$\\tan x$", "$-\\sin x$"],
+    correcta: 1,
+    explicacion: "$\\cos 0 = 1$ (máximo) y $\\cos \\pi = -1$ (mínimo). Es par y simétrica respecto al eje $y$."
+  },
+  // —— Matemáticas: gráfica trig (tan) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿Cuál función tiene asíntotas verticales en $x = \\dfrac{\\pi}{2} + n\\pi$, pasa por el origen y no está acotada?",
+    opciones: ["$\\sin x$", "$\\cos x$", "$\\tan x$", "$\\sec x$"],
+    correcta: 2,
+    explicacion: "$\\tan x = \\dfrac{\\sin x}{\\cos x}$ no está definida cuando $\\cos x = 0$, es decir en $x = \\dfrac{\\pi}{2} + n\\pi$ (asíntotas). Pasa por el origen y crece sin cota dentro de cada rama."
+  },
+  // —— Matemáticas: punto medio (a) ——
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que va de $(2, 4)$ a $(8, 10)$?",
+    opciones: ["$(5, 7)$", "$(10, 14)$", "$(3, 3)$", "$(4, 5)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{x_1+x_2}{2}, \\dfrac{y_1+y_2}{2}\\right) = \\left(\\dfrac{2+8}{2}, \\dfrac{4+10}{2}\\right) = (5, 7)$."
+  },
+  // —— Matemáticas: punto medio (b) ——
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que va de $(-3, 6)$ a $(5, -2)$?",
+    opciones: ["$(1, 2)$", "$(-1, -2)$", "$(4, 4)$", "$(2, 4)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{-3+5}{2}, \\dfrac{6+(-2)}{2}\\right) = \\left(\\dfrac{2}{2}, \\dfrac{4}{2}\\right) = (1, 2)$."
+  },
+  // —— Matemáticas: punto medio (c) ——
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que va de $(-4, -7)$ a $(6, 1)$?",
+    opciones: ["$(1, -3)$", "$(-1, 3)$", "$(2, -6)$", "$(10, 8)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{-4+6}{2}, \\dfrac{-7+1}{2}\\right) = \\left(\\dfrac{2}{2}, \\dfrac{-6}{2}\\right) = (1, -3)$."
+  },
+  // —— Matemáticas: punto medio (extremo faltante) ——
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "Si $M(3, 5)$ es el punto medio del segmento $\\overline{AB}$ y $A(1, 2)$, ¿cuáles son las coordenadas de $B$?",
+    opciones: ["$(5, 8)$", "$(2, 3)$", "$(4, 7)$", "$(-1, -1)$"],
+    correcta: 0,
+    explicacion: "Despejando de la fórmula del punto medio: $B = (2M_x - A_x,\\ 2M_y - A_y) = (2(3) - 1,\\ 2(5) - 2) = (5, 8)$."
+  },
+  // —— Matemáticas: pendiente (a) ——
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "La pendiente de la recta que pasa por $(2, 5)$ y $(6, 13)$ es",
+    opciones: ["$2$", "$-2$", "$4$", "$\\dfrac{1}{2}$"],
+    correcta: 0,
+    explicacion: "$m = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{13 - 5}{6 - 2} = \\dfrac{8}{4} = 2$."
+  },
+  // —— Matemáticas: pendiente (b) ——
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "La pendiente de la recta que pasa por $(-1, 3)$ y $(4, -7)$ es",
+    opciones: ["$-2$", "$2$", "$-\\dfrac{10}{3}$", "$-\\dfrac{1}{2}$"],
+    correcta: 0,
+    explicacion: "$m = \\dfrac{-7 - 3}{4 - (-1)} = \\dfrac{-10}{5} = -2$. Cuidado con los paréntesis al restar el $-1$."
+  },
+  // —— Matemáticas: pendiente (recta vertical) ——
+  {
+    materia: "matematicas",
+    tema: "pendiente",
+    pregunta: "¿Cuál es la pendiente de la recta $x = 5$?",
+    opciones: ["$0$", "$5$", "$1$", "indefinida (no existe)"],
+    correcta: 3,
+    explicacion: "$x = 5$ es una recta vertical. La pendiente $m = \\dfrac{\\Delta y}{\\Delta x}$ involucra $\\Delta x = 0$, lo que da una división entre cero: la pendiente no está definida."
+  },
+
+  // ════════════════════════════════════════════════════════════════════
+  // GEOMETRÍA ANALÍTICA (distancia, punto medio, pendiente) — 2026-05-27
+  // ════════════════════════════════════════════════════════════════════
+
+  // —— Distancia entre dos puntos (10) ——
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(1, 2)$ y $(4, 6)$?",
+    opciones: ["$5$", "$7$", "$\\sqrt{7}$", "$25$"],
+    correcta: 0,
+    explicacion: "$d = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(-3, 1)$ y $(5, -5)$?",
+    opciones: ["$14$", "$2$", "$10$", "$\\sqrt{14}$"],
+    correcta: 2,
+    explicacion: "$d = \\sqrt{(5-(-3))^2 + (-5-1)^2} = \\sqrt{8^2 + (-6)^2} = \\sqrt{64+36} = \\sqrt{100} = 10$."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(0, 0)$ y $(3, 4)$?",
+    opciones: ["$7$", "$5$", "$\\sqrt{7}$", "$12$"],
+    correcta: 1,
+    explicacion: "$d = \\sqrt{3^2 + 4^2} = \\sqrt{9+16} = \\sqrt{25} = 5$. Es el triángulo rectángulo notable 3-4-5."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(2, -1)$ y $(6, 2)$?",
+    opciones: ["$3$", "$4$", "$5$", "$\\sqrt{7}$"],
+    correcta: 2,
+    explicacion: "$d = \\sqrt{(6-2)^2 + (2-(-1))^2} = \\sqrt{16+9} = \\sqrt{25} = 5$."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(-2, -3)$ y $(3, 9)$?",
+    opciones: ["$17$", "$15$", "$13$", "$\\sqrt{144}$"],
+    correcta: 2,
+    explicacion: "$d = \\sqrt{(3-(-2))^2 + (9-(-3))^2} = \\sqrt{5^2 + 12^2} = \\sqrt{25+144} = \\sqrt{169} = 13$. Triángulo rectángulo 5-12-13."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(-1, 4)$ y $(5, 4)$?",
+    opciones: ["$6$", "$8$", "$4$", "$0$"],
+    correcta: 0,
+    explicacion: "Como tienen la misma coordenada $y$, la distancia es horizontal: $|5 - (-1)| = 6$. (Formalmente: $\\sqrt{6^2 + 0^2} = 6$.)"
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(3, 2)$ y $(3, 9)$?",
+    opciones: ["$11$", "$7$", "$\\sqrt{11}$", "$3$"],
+    correcta: 1,
+    explicacion: "Como tienen la misma coordenada $x$, la distancia es vertical: $|9 - 2| = 7$. (Formalmente: $\\sqrt{0^2 + 7^2} = 7$.)"
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(1, 2)$ y $(3, 5)$?",
+    opciones: ["$5$", "$13$", "$\\sqrt{13}$", "$\\sqrt{5}$"],
+    correcta: 2,
+    explicacion: "$d = \\sqrt{(3-1)^2 + (5-2)^2} = \\sqrt{4+9} = \\sqrt{13}$. No simplifica más, la respuesta queda con la raíz."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(-4, -2)$ y $(4, 4)$?",
+    opciones: ["$8$", "$10$", "$14$", "$6$"],
+    correcta: 1,
+    explicacion: "$d = \\sqrt{(4-(-4))^2 + (4-(-2))^2} = \\sqrt{8^2 + 6^2} = \\sqrt{64+36} = \\sqrt{100} = 10$."
+  },
+  {
+    materia: "matematicas",
+    tema: "distancia entre dos puntos",
+    pregunta: "¿Cuál es la distancia entre los puntos $(0, 5)$ y $(12, 0)$?",
+    opciones: ["$17$", "$7$", "$\\sqrt{17}$", "$13$"],
+    correcta: 3,
+    explicacion: "$d = \\sqrt{12^2 + 5^2} = \\sqrt{144+25} = \\sqrt{169} = 13$. Triángulo rectángulo 5-12-13."
+  },
+
+  // —— Punto medio (6 nuevas) ——
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que une $(2, 4)$ y $(8, 10)$?",
+    opciones: ["$(5, 7)$", "$(10, 14)$", "$(3, 3)$", "$(6, 6)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{2+8}{2}, \\dfrac{4+10}{2}\\right) = \\left(\\dfrac{10}{2}, \\dfrac{14}{2}\\right) = (5, 7)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que une $(-3, 5)$ y $(5, -1)$?",
+    opciones: ["$(2, 4)$", "$(1, 2)$", "$(-1, 3)$", "$(4, 2)$"],
+    correcta: 1,
+    explicacion: "$M = \\left(\\dfrac{-3+5}{2}, \\dfrac{5+(-1)}{2}\\right) = \\left(\\dfrac{2}{2}, \\dfrac{4}{2}\\right) = (1, 2)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que une $(-2, -4)$ y $(-8, -6)$?",
+    opciones: ["$(-5, -5)$", "$(5, 5)$", "$(-10, -10)$", "$(-3, -1)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{-2+(-8)}{2}, \\dfrac{-4+(-6)}{2}\\right) = \\left(\\dfrac{-10}{2}, \\dfrac{-10}{2}\\right) = (-5, -5)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que une $(-1, 7)$ y $(5, 1)$?",
+    opciones: ["$(3, 4)$", "$(2, 4)$", "$(4, 3)$", "$(2, 3)$"],
+    correcta: 1,
+    explicacion: "$M = \\left(\\dfrac{-1+5}{2}, \\dfrac{7+1}{2}\\right) = (2, 4)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "¿Cuál es el punto medio del segmento que une $(-4, 2)$ y $(6, -8)$?",
+    opciones: ["$(1, -3)$", "$(-1, 3)$", "$(2, -6)$", "$(10, -10)$"],
+    correcta: 0,
+    explicacion: "$M = \\left(\\dfrac{-4+6}{2}, \\dfrac{2+(-8)}{2}\\right) = \\left(\\dfrac{2}{2}, \\dfrac{-6}{2}\\right) = (1, -3)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "punto medio",
+    pregunta: "Si el punto medio de un segmento es $(5, 7)$ y uno de sus extremos es $(2, 3)$, ¿cuál es el otro extremo?",
+    opciones: ["$(3, 4)$", "$(7, 10)$", "$(8, 11)$", "$(-1, -1)$"],
+    correcta: 2,
+    explicacion: "Si $M = \\dfrac{P_1 + P_2}{2}$, entonces $P_2 = 2M - P_1 = 2(5, 7) - (2, 3) = (10-2, 14-3) = (8, 11)$."
+  },
+
+  // —— Pendiente entre dos puntos (6 nuevas) ——
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(2, 3)$ y $(6, 7)$?",
+    opciones: ["$2$", "$1$", "$\\dfrac{1}{2}$", "$4$"],
+    correcta: 1,
+    explicacion: "$m = \\dfrac{7-3}{6-2} = \\dfrac{4}{4} = 1$."
+  },
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(-1, 4)$ y $(3, -4)$?",
+    opciones: ["$2$", "$-\\dfrac{1}{2}$", "$-2$", "$\\dfrac{8}{4}$"],
+    correcta: 2,
+    explicacion: "$m = \\dfrac{-4-4}{3-(-1)} = \\dfrac{-8}{4} = -2$. La recta baja al avanzar a la derecha."
+  },
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(5, 2)$ y $(1, 8)$?",
+    opciones: ["$\\dfrac{3}{2}$", "$-\\dfrac{3}{2}$", "$-\\dfrac{2}{3}$", "$6$"],
+    correcta: 1,
+    explicacion: "$m = \\dfrac{8-2}{1-5} = \\dfrac{6}{-4} = -\\dfrac{3}{2}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(3, 7)$ y $(-1, 7)$?",
+    opciones: ["$0$", "indefinida", "$1$", "$-1$"],
+    correcta: 0,
+    explicacion: "Los dos puntos tienen la misma $y = 7$: la recta es horizontal y su pendiente es $0$. $m = \\dfrac{7-7}{-1-3} = \\dfrac{0}{-4} = 0$."
+  },
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(4, 1)$ y $(4, -3)$?",
+    opciones: ["$0$", "$1$", "$-1$", "indefinida"],
+    correcta: 3,
+    explicacion: "Los dos puntos tienen la misma $x = 4$: la recta es vertical. $m = \\dfrac{-3-1}{4-4} = \\dfrac{-4}{0}$, división entre cero — pendiente indefinida."
+  },
+  {
+    materia: "matematicas",
+    tema: "pendiente entre dos puntos",
+    pregunta: "¿Cuál es la pendiente de la recta que pasa por $(-2, -5)$ y $(4, 7)$?",
+    opciones: ["$2$", "$-2$", "$\\dfrac{1}{2}$", "$12$"],
+    correcta: 0,
+    explicacion: "$m = \\dfrac{7-(-5)}{4-(-2)} = \\dfrac{12}{6} = 2$."
+  },
+
+  // ════════════════════════════════════════════════════════════════════
+  // CONVERSIÓN ÁNGULOS (grados ↔ radianes, notables) — 2026-05-27
+  // ════════════════════════════════════════════════════════════════════
+
+  // —— Grados → radianes (8) ——
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$30^{\\circ}$ equivalen en radianes a",
+    opciones: ["$\\dfrac{\\pi}{4}$", "$\\dfrac{\\pi}{6}$", "$\\dfrac{\\pi}{3}$", "$\\dfrac{\\pi}{2}$"],
+    correcta: 1,
+    explicacion: "$30^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{30\\pi}{180} = \\dfrac{\\pi}{6}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$60^{\\circ}$ equivalen en radianes a",
+    opciones: ["$\\dfrac{\\pi}{3}$", "$\\dfrac{\\pi}{6}$", "$\\dfrac{2\\pi}{3}$", "$\\dfrac{\\pi}{4}$"],
+    correcta: 0,
+    explicacion: "$60^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{60\\pi}{180} = \\dfrac{\\pi}{3}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$45^{\\circ}$ equivalen en radianes a",
+    opciones: ["$\\dfrac{\\pi}{6}$", "$\\dfrac{\\pi}{3}$", "$\\dfrac{\\pi}{4}$", "$\\dfrac{\\pi}{2}$"],
+    correcta: 2,
+    explicacion: "$45^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{45\\pi}{180} = \\dfrac{\\pi}{4}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$90^{\\circ}$ equivalen en radianes a",
+    opciones: ["$\\pi$", "$\\dfrac{\\pi}{2}$", "$\\dfrac{\\pi}{4}$", "$2\\pi$"],
+    correcta: 1,
+    explicacion: "$90^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{90\\pi}{180} = \\dfrac{\\pi}{2}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$120^{\\circ}$ equivalen en radianes a (segundo cuadrante)",
+    opciones: ["$\\dfrac{2\\pi}{3}$", "$\\dfrac{3\\pi}{4}$", "$\\dfrac{5\\pi}{6}$", "$\\dfrac{\\pi}{3}$"],
+    correcta: 0,
+    explicacion: "$120^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{120\\pi}{180} = \\dfrac{2\\pi}{3}$. Está en el segundo cuadrante."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$225^{\\circ}$ equivalen en radianes a (tercer cuadrante)",
+    opciones: ["$\\dfrac{5\\pi}{4}$", "$\\dfrac{7\\pi}{6}$", "$\\dfrac{4\\pi}{3}$", "$\\dfrac{3\\pi}{4}$"],
+    correcta: 0,
+    explicacion: "$225^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{225\\pi}{180} = \\dfrac{5\\pi}{4}$. Está en el tercer cuadrante."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$270^{\\circ}$ equivalen en radianes a",
+    opciones: ["$\\dfrac{\\pi}{2}$", "$\\pi$", "$\\dfrac{3\\pi}{2}$", "$\\dfrac{2\\pi}{3}$"],
+    correcta: 2,
+    explicacion: "$270^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{270\\pi}{180} = \\dfrac{3\\pi}{2}$. Es el eje $y$ negativo."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión grados → radianes",
+    pregunta: "$330^{\\circ}$ equivalen en radianes a (cuarto cuadrante)",
+    opciones: ["$\\dfrac{11\\pi}{6}$", "$\\dfrac{7\\pi}{4}$", "$\\dfrac{5\\pi}{3}$", "$\\dfrac{11\\pi}{12}$"],
+    correcta: 0,
+    explicacion: "$330^{\\circ} \\cdot \\dfrac{\\pi}{180^{\\circ}} = \\dfrac{330\\pi}{180} = \\dfrac{11\\pi}{6}$. Está en el cuarto cuadrante."
+  },
+
+  // —— Radianes → grados (8) ——
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{\\pi}{6}$ radianes equivalen en grados a",
+    opciones: ["$45^{\\circ}$", "$60^{\\circ}$", "$30^{\\circ}$", "$15^{\\circ}$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{\\pi}{6} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{180^{\\circ}}{6} = 30^{\\circ}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{\\pi}{4}$ radianes equivalen en grados a",
+    opciones: ["$30^{\\circ}$", "$45^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"],
+    correcta: 1,
+    explicacion: "$\\dfrac{\\pi}{4} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{180^{\\circ}}{4} = 45^{\\circ}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{\\pi}{3}$ radianes equivalen en grados a",
+    opciones: ["$60^{\\circ}$", "$30^{\\circ}$", "$45^{\\circ}$", "$120^{\\circ}$"],
+    correcta: 0,
+    explicacion: "$\\dfrac{\\pi}{3} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{180^{\\circ}}{3} = 60^{\\circ}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{2\\pi}{3}$ radianes equivalen en grados a (segundo cuadrante)",
+    opciones: ["$60^{\\circ}$", "$135^{\\circ}$", "$120^{\\circ}$", "$150^{\\circ}$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{2\\pi}{3} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{2 \\cdot 180^{\\circ}}{3} = \\dfrac{360^{\\circ}}{3} = 120^{\\circ}$. Segundo cuadrante."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{5\\pi}{6}$ radianes equivalen en grados a (segundo cuadrante)",
+    opciones: ["$150^{\\circ}$", "$120^{\\circ}$", "$135^{\\circ}$", "$165^{\\circ}$"],
+    correcta: 0,
+    explicacion: "$\\dfrac{5\\pi}{6} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{5 \\cdot 180^{\\circ}}{6} = \\dfrac{900^{\\circ}}{6} = 150^{\\circ}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{7\\pi}{6}$ radianes equivalen en grados a (tercer cuadrante)",
+    opciones: ["$240^{\\circ}$", "$225^{\\circ}$", "$210^{\\circ}$", "$200^{\\circ}$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{7\\pi}{6} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{7 \\cdot 180^{\\circ}}{6} = \\dfrac{1260^{\\circ}}{6} = 210^{\\circ}$. Tercer cuadrante."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{5\\pi}{4}$ radianes equivalen en grados a (tercer cuadrante)",
+    opciones: ["$210^{\\circ}$", "$240^{\\circ}$", "$225^{\\circ}$", "$300^{\\circ}$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{5\\pi}{4} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{5 \\cdot 180^{\\circ}}{4} = \\dfrac{900^{\\circ}}{4} = 225^{\\circ}$."
+  },
+  {
+    materia: "matematicas",
+    tema: "conversión radianes → grados",
+    pregunta: "$\\dfrac{11\\pi}{6}$ radianes equivalen en grados a (cuarto cuadrante)",
+    opciones: ["$300^{\\circ}$", "$315^{\\circ}$", "$330^{\\circ}$", "$360^{\\circ}$"],
+    correcta: 2,
+    explicacion: "$\\dfrac{11\\pi}{6} \\cdot \\dfrac{180^{\\circ}}{\\pi} = \\dfrac{11 \\cdot 180^{\\circ}}{6} = \\dfrac{1980^{\\circ}}{6} = 330^{\\circ}$. Cuarto cuadrante."
+  },
+  // —— Matemáticas: ec. de la recta — 2 puntos (canónica) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — dos puntos",
+    pregunta: "La ecuación de la recta que pasa por $(1, 3)$ y $(3, 7)$, en forma pendiente-ordenada $y = mx + b$, es",
+    opciones: ["$y = 2x + 1$", "$y = 2x + 3$", "$y = -2x + 5$", "$y = x + 2$"],
+    correcta: 0,
+    explicacion: "Pendiente: $m = \\dfrac{7-3}{3-1} = 2$. Usando $(1, 3)$: $y - 3 = 2(x - 1) \\Rightarrow y = 2x + 1$."
+  },
+  // —— Matemáticas: ec. de la recta — 2 puntos (general) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — dos puntos",
+    pregunta: "La ecuación de la recta que pasa por $(-2, 4)$ y $(1, -2)$, en forma general $Ax + By + C = 0$, es",
+    opciones: ["$2x + y = 0$", "$2x - y = 0$", "$x + 2y = 0$", "$2x + y - 4 = 0$"],
+    correcta: 0,
+    explicacion: "Pendiente: $m = \\dfrac{-2-4}{1-(-2)} = \\dfrac{-6}{3} = -2$. Usando $(-2, 4)$: $y - 4 = -2(x + 2) \\Rightarrow y = -2x \\Rightarrow 2x + y = 0$."
+  },
+  // —— Matemáticas: ec. de la recta — 2 puntos (canónica) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — dos puntos",
+    pregunta: "La ecuación de la recta que pasa por $(0, -3)$ y $(4, 5)$, en forma pendiente-ordenada, es",
+    opciones: ["$y = 2x - 3$", "$y = 2x + 3$", "$y = -2x - 3$", "$y = \\dfrac{1}{2}x - 3$"],
+    correcta: 0,
+    explicacion: "Pendiente: $m = \\dfrac{5 - (-3)}{4 - 0} = \\dfrac{8}{4} = 2$. Como pasa por $(0, -3)$, la ordenada al origen es $b = -3$. Por lo tanto $y = 2x - 3$."
+  },
+  // —— Matemáticas: ec. recta — punto y pendiente (canónica) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — punto y pendiente",
+    pregunta: "La ecuación de la recta con pendiente $m = 3$ que pasa por $(2, -1)$, en forma pendiente-ordenada, es",
+    opciones: ["$y = 3x - 7$", "$y = 3x + 7$", "$y = 3x - 5$", "$y = 3x + 5$"],
+    correcta: 0,
+    explicacion: "Forma punto-pendiente: $y - (-1) = 3(x - 2) \\Rightarrow y + 1 = 3x - 6 \\Rightarrow y = 3x - 7$."
+  },
+  // —— Matemáticas: ec. recta — punto y pendiente (general) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — punto y pendiente",
+    pregunta: "La ecuación de la recta con pendiente $m = -\\dfrac{1}{2}$ que pasa por $(4, 3)$, en forma general, es",
+    opciones: ["$x + 2y - 10 = 0$", "$x - 2y - 10 = 0$", "$x + 2y + 10 = 0$", "$x + 2y - 2 = 0$"],
+    correcta: 0,
+    explicacion: "$y - 3 = -\\dfrac{1}{2}(x - 4)$. Multiplicando por $2$: $2y - 6 = -(x - 4) = -x + 4 \\Rightarrow x + 2y - 10 = 0$."
+  },
+  // —— Matemáticas: ec. recta — punto y pendiente (sencilla) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación de la recta — punto y pendiente",
+    pregunta: "La ecuación de la recta con pendiente $m = 2$ que pasa por $(0, 5)$, en forma pendiente-ordenada, es",
+    opciones: ["$y = 2x + 5$", "$y = 2x - 5$", "$y = 5x + 2$", "$y = \\dfrac{1}{2}x + 5$"],
+    correcta: 0,
+    explicacion: "Como pasa por el eje $y$ en $(0, 5)$, la ordenada al origen es $b = 5$. Con $m = 2$: $y = 2x + 5$."
+  },
+  // —— Matemáticas: paralelismo (pendiente) ——
+  {
+    materia: "matematicas",
+    tema: "paralelismo y perpendicularidad",
+    pregunta: "¿Cuál es la pendiente de cualquier recta paralela a $3x + y - 5 = 0$?",
+    opciones: ["$-3$", "$3$", "$\\dfrac{1}{3}$", "$-\\dfrac{1}{3}$"],
+    correcta: 0,
+    explicacion: "Despejando: $y = -3x + 5$, así que la recta dada tiene pendiente $-3$. Las rectas paralelas tienen la misma pendiente: $m = -3$."
+  },
+  // —— Matemáticas: perpendicularidad (pendiente) ——
+  {
+    materia: "matematicas",
+    tema: "paralelismo y perpendicularidad",
+    pregunta: "¿Cuál es la pendiente de cualquier recta perpendicular a $2x - 4y + 1 = 0$?",
+    opciones: ["$-2$", "$2$", "$\\dfrac{1}{2}$", "$-\\dfrac{1}{2}$"],
+    correcta: 0,
+    explicacion: "Despejando: $y = \\dfrac{1}{2}x + \\dfrac{1}{4}$, pendiente $\\dfrac{1}{2}$. Para perpendiculares: $m_1 \\cdot m_2 = -1 \\Rightarrow m_2 = -\\dfrac{1}{1/2} = -2$ (negativo recíproco)."
+  },
+  // —— Matemáticas: perpendicular por un punto ——
+  {
+    materia: "matematicas",
+    tema: "paralelismo y perpendicularidad",
+    pregunta: "La ecuación de la recta perpendicular a $y = 3x + 2$ que pasa por $(6, 1)$ es",
+    opciones: ["$y = -\\dfrac{1}{3}x + 3$", "$y = 3x + 3$", "$y = -\\dfrac{1}{3}x - 3$", "$y = \\dfrac{1}{3}x + 3$"],
+    correcta: 0,
+    explicacion: "La pendiente de $y=3x+2$ es $3$, por lo que la perpendicular tiene pendiente $-\\dfrac{1}{3}$. Usando el punto $(6, 1)$: $y - 1 = -\\dfrac{1}{3}(x - 6) \\Rightarrow y = -\\dfrac{1}{3}x + 2 + 1 = -\\dfrac{1}{3}x + 3$."
+  },
+  // —— Matemáticas: paralela por un punto ——
+  {
+    materia: "matematicas",
+    tema: "paralelismo y perpendicularidad",
+    pregunta: "La ecuación de la recta paralela a $2x + y - 3 = 0$ que pasa por $(1, 4)$ es",
+    opciones: ["$y = -2x + 6$", "$y = 2x + 6$", "$y = -2x - 6$", "$y = \\dfrac{1}{2}x + 6$"],
+    correcta: 0,
+    explicacion: "Despejando $2x + y - 3 = 0$: $y = -2x + 3$, pendiente $-2$. La paralela tiene la misma pendiente. Usando $(1, 4)$: $y - 4 = -2(x - 1) \\Rightarrow y = -2x + 6$."
+  },
+  // —— Matemáticas: conversión recta (general → canónica) ——
+  {
+    materia: "matematicas",
+    tema: "conversión de formas de la recta",
+    pregunta: "La forma pendiente-ordenada de la recta $3x + 2y - 6 = 0$ es",
+    opciones: ["$y = -\\dfrac{3}{2}x + 3$", "$y = \\dfrac{3}{2}x + 3$", "$y = -\\dfrac{3}{2}x - 3$", "$y = 3x + 6$"],
+    correcta: 0,
+    explicacion: "Despejando $y$: $2y = -3x + 6 \\Rightarrow y = -\\dfrac{3}{2}x + 3$. La pendiente es $-\\dfrac{3}{2}$ y la ordenada al origen es $3$."
+  },
+  // —— Matemáticas: conversión recta (canónica → general) ——
+  {
+    materia: "matematicas",
+    tema: "conversión de formas de la recta",
+    pregunta: "La forma general (con $A$ entero positivo) de la recta $y = \\dfrac{1}{2}x - 4$ es",
+    opciones: ["$x - 2y - 8 = 0$", "$x + 2y - 8 = 0$", "$x - 2y + 8 = 0$", "$-x + 2y + 8 = 0$"],
+    correcta: 0,
+    explicacion: "Multiplicando por $2$: $2y = x - 8 \\Rightarrow x - 2y - 8 = 0$. (El coeficiente de $x$ queda positivo como se pide.)"
+  },
+  // —— Matemáticas: derivada de polinomio (a) ——
+  {
+    materia: "matematicas",
+    tema: "derivada de polinomio",
+    pregunta: "Si $f(x) = x^4 + 3x^2 - 2x + 5$, entonces $f'(x)$ es",
+    opciones: ["$4x^3 + 6x - 2$", "$4x^3 + 6x - 2 + 5$", "$4x^4 + 6x^2 - 2x$", "$\\dfrac{x^5}{5} + x^3 - x^2 + 5x$"],
+    correcta: 0,
+    explicacion: "Aplicando la regla de la potencia término a término: $\\dfrac{d}{dx}(x^4)=4x^3$, $\\dfrac{d}{dx}(3x^2)=6x$, $\\dfrac{d}{dx}(-2x)=-2$, $\\dfrac{d}{dx}(5)=0$. Resultado: $4x^3+6x-2$."
+  },
+  // —— Matemáticas: derivada de polinomio (b) ——
+  {
+    materia: "matematicas",
+    tema: "derivada de polinomio",
+    pregunta: "Si $f(x) = 2x^5 - x^3 + 7$, entonces $f'(x)$ es",
+    opciones: ["$10x^4 - 3x^2$", "$10x^4 - 3x^2 + 7$", "$2x^4 - x^2$", "$5x^4 - 3x^2$"],
+    correcta: 0,
+    explicacion: "$\\dfrac{d}{dx}(2x^5) = 10x^4$, $\\dfrac{d}{dx}(-x^3) = -3x^2$, $\\dfrac{d}{dx}(7) = 0$. Por lo tanto $f'(x) = 10x^4 - 3x^2$."
+  },
+  // —— Matemáticas: derivada evaluada en un punto ——
+  {
+    materia: "matematicas",
+    tema: "derivada de polinomio",
+    pregunta: "Si $f(x) = x^3 - 4x^2 + 7x - 1$, ¿cuánto vale $f'(2)$?",
+    opciones: ["$3$", "$-1$", "$5$", "$7$"],
+    correcta: 0,
+    explicacion: "Primero deriva: $f'(x) = 3x^2 - 8x + 7$. Luego evalúa: $f'(2) = 3(4) - 8(2) + 7 = 12 - 16 + 7 = 3$."
+  },
+  // —— Matemáticas: segunda derivada ——
+  {
+    materia: "matematicas",
+    tema: "derivada de orden superior",
+    pregunta: "Si $f(x) = x^4 - 2x^3$, ¿cuánto vale $f''(x)$?",
+    opciones: ["$12x^2 - 12x$", "$4x^3 - 6x^2$", "$12x^2 - 6x$", "$24x - 12$"],
+    correcta: 0,
+    explicacion: "Primera: $f'(x) = 4x^3 - 6x^2$. Segunda: $f''(x) = 12x^2 - 12x$ (derivar otra vez la primera)."
+  },
+  // —— Matemáticas: tercera derivada ——
+  {
+    materia: "matematicas",
+    tema: "derivada de orden superior",
+    pregunta: "Si $f(x) = x^5 + x^2$, ¿cuánto vale $f'''(x)$?",
+    opciones: ["$60x^2$", "$60x^3$", "$20x^2 + 2$", "$5x^4 + 2x$"],
+    correcta: 0,
+    explicacion: "$f'(x) = 5x^4 + 2x$. $f''(x) = 20x^3 + 2$. $f'''(x) = 60x^2$ (la derivada de $2$ es cero)."
+  },
+  // —— Matemáticas: posición → velocidad (a) ——
+  {
+    materia: "matematicas",
+    tema: "derivada — posición y velocidad",
+    pregunta: "La posición de una partícula está dada por $s(t) = t^3 - 3t^2 + 2t$ (en metros, $t$ en segundos). ¿Cuál es su velocidad en $t = 2\\,\\mathrm{s}$?",
+    opciones: ["$2\\,\\mathrm{m/s}$", "$0\\,\\mathrm{m/s}$", "$6\\,\\mathrm{m/s}$", "$-2\\,\\mathrm{m/s}$"],
+    correcta: 0,
+    explicacion: "$v(t) = s'(t) = 3t^2 - 6t + 2$. Sustituyendo $t = 2$: $v(2) = 3(4) - 6(2) + 2 = 12 - 12 + 2 = 2\\,\\mathrm{m/s}$."
+  },
+  // —— Matemáticas: posición → aceleración ——
+  {
+    materia: "matematicas",
+    tema: "derivada — posición y velocidad",
+    pregunta: "Si la posición de una partícula es $s(t) = 2t^2 + 5t - 3$ (en metros), ¿cuál es su aceleración en $t = 1\\,\\mathrm{s}$?",
+    opciones: ["$4\\,\\mathrm{m/s^2}$", "$9\\,\\mathrm{m/s^2}$", "$5\\,\\mathrm{m/s^2}$", "$13\\,\\mathrm{m/s^2}$"],
+    correcta: 0,
+    explicacion: "Hay que derivar dos veces: $v(t) = s'(t) = 4t + 5$, y luego $a(t) = v'(t) = 4$. La aceleración es constante: $a(1) = 4\\,\\mathrm{m/s^2}$ (no depende de $t$)."
+  },
+  // —— Matemáticas: posición → velocidad (b) ——
+  {
+    materia: "matematicas",
+    tema: "derivada — posición y velocidad",
+    pregunta: "La posición de un objeto es $s(t) = t^3 - 6t^2 + 9t$ (metros). ¿En qué instante la velocidad es cero por primera vez?",
+    opciones: ["$t = 1\\,\\mathrm{s}$", "$t = 0\\,\\mathrm{s}$", "$t = 3\\,\\mathrm{s}$", "$t = 2\\,\\mathrm{s}$"],
+    correcta: 0,
+    explicacion: "$v(t) = s'(t) = 3t^2 - 12t + 9 = 3(t^2 - 4t + 3) = 3(t-1)(t-3)$. $v = 0$ cuando $t = 1$ o $t = 3$. La primera vez es $t = 1\\,\\mathrm{s}$."
+  },
+
+  // ===================== BIOLOGÍA (preguntas tipo examen UNAM) =====================
+  {
+    materia: "biologia",
+    tema: "ATP — hidrólisis",
+    fuente: "320_UNAM",
+    pregunta: "Cuando se hidroliza una molécula de ATP, ¿qué se obtiene principalmente?",
+    opciones: ["AMP + 2 fosfatos", "ADP + fosfato inorgánico", "GTP + fosfato", "ADN + energía"],
+    correcta: 1,
+    explicacion: "La hidrólisis del ATP rompe un enlace fosfato y libera energía: ATP → ADP + Pi."
+  },
+  {
+    materia: "biologia",
+    tema: "célula vegetal",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la estructura exclusiva de la célula vegetal compuesta principalmente de celulosa?",
+    opciones: ["Membrana plasmática", "Cloroplasto", "Pared celular", "Vacuola"],
+    correcta: 2,
+    explicacion: "La pared celular rígida formada por celulosa es exclusiva de las células vegetales (también la tienen hongos —de quitina— y bacterias —de peptidoglicano—, con composición distinta)."
+  },
+  {
+    materia: "biologia",
+    tema: "reinos — Monera",
+    fuente: "320_UNAM",
+    pregunta: "¿A qué reino pertenecen las bacterias y las cianobacterias?",
+    opciones: ["Protista", "Fungi", "Monera", "Plantae"],
+    correcta: 2,
+    explicacion: "El reino Monera agrupa a los organismos procariontes (sin núcleo definido): bacterias y cianobacterias."
+  },
+  {
+    materia: "biologia",
+    tema: "enfermedades ligadas al sexo",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son ejemplos clásicos de enfermedades ligadas al cromosoma X que afectan predominantemente a varones?",
+    opciones: ["Diabetes y obesidad", "Hemofilia y daltonismo", "Asma y alergias", "Tuberculosis y cólera"],
+    correcta: 1,
+    explicacion: "La hemofilia y el daltonismo son rasgos recesivos ligados al cromosoma X; los varones (XY) los expresan al heredar un solo alelo afectado."
+  },
+  {
+    materia: "biologia",
+    tema: "enzimas",
+    fuente: "320_UNAM",
+    pregunta: "Las enzimas son ___ que actúan como ___ biológicos.",
+    opciones: ["lípidos / hormonas", "proteínas / catalizadores", "carbohidratos / sustratos", "ácidos nucleicos / mensajeros"],
+    correcta: 1,
+    explicacion: "Las enzimas son proteínas que aceleran reacciones químicas (catalizadores biológicos) sin consumirse."
+  },
+  {
+    materia: "biologia",
+    tema: "niveles de organización ecológica",
+    fuente: "320_UNAM",
+    pregunta: "Un grupo de garzas blancas que habitan en un mismo pantano se considera, ecológicamente, una:",
+    opciones: ["especie", "comunidad", "población", "ecosistema"],
+    correcta: 2,
+    explicacion: "Una población es un conjunto de individuos de la misma especie que viven en un mismo lugar y tiempo. Si hubiera varias especies sería una comunidad."
+  },
+  {
+    materia: "biologia",
+    tema: "tipos de alimentación",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se llama a los organismos que se alimentan tanto de animales como de plantas?",
+    opciones: ["Herbívoros", "Carnívoros", "Omnívoros", "Detritívoros"],
+    correcta: 2,
+    explicacion: "Los omnívoros consumen materia vegetal y animal (ej. humano, oso, cerdo)."
+  },
+  {
+    materia: "biologia",
+    tema: "respiración celular",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es el proceso por el cual la célula obtiene energía a partir de moléculas orgánicas?",
+    opciones: ["Fotosíntesis", "Respiración celular", "Transpiración", "Excreción"],
+    correcta: 1,
+    explicacion: "La respiración celular oxida moléculas como la glucosa para producir ATP, que es la moneda energética de la célula."
+  },
+  {
+    materia: "biologia",
+    tema: "biotecnología — ADN recombinante",
+    fuente: "320_UNAM",
+    pregunta: "Para producir insulina humana se introduce ADN humano en bacterias como Escherichia coli. ¿Cómo se llama esta técnica?",
+    opciones: ["Clonación reproductiva", "ADN recombinante", "Reacción en cadena de la polimerasa (PCR)", "Mutagénesis aleatoria"],
+    correcta: 1,
+    explicacion: "La técnica del ADN recombinante combina fragmentos de ADN de distintos organismos en un mismo vector para que se exprese el gen deseado."
+  },
+  {
+    materia: "biologia",
+    tema: "evolución — variación",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se les conoce a los cambios al azar en el material genético que generan variabilidad en una población?",
+    opciones: ["Selección natural", "Mutaciones", "Adaptaciones", "Migraciones"],
+    correcta: 1,
+    explicacion: "Las mutaciones son cambios aleatorios en la secuencia del ADN. Son la fuente primaria de variación sobre la que actúa la selección natural."
+  },
+  {
+    materia: "biologia",
+    tema: "mitosis — anafase",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué fase de la mitosis las cromátidas hermanas se separan y son llevadas hacia los polos opuestos de la célula?",
+    opciones: ["Profase", "Metafase", "Anafase", "Telofase"],
+    correcta: 2,
+    explicacion: "En anafase los centrómeros se dividen y las cromátidas hermanas son arrastradas a polos opuestos por las fibras del huso mitótico."
+  },
+  {
+    materia: "biologia",
+    tema: "reinos — características",
+    fuente: "320_UNAM",
+    pregunta: "Relaciona cada reino con su caracterización celular y nutricional: I. Fungi, II. Monera, III. Plantae.",
+    opciones: [
+      "I. Procarionte heterótrofo — II. Eucarionte autótrofo — III. Eucarionte heterótrofo",
+      "I. Eucarionte heterótrofo — II. Procarionte autótrofo/heterótrofo — III. Eucarionte autótrofo",
+      "I. Eucarionte autótrofo — II. Eucarionte heterótrofo — III. Procarionte autótrofo",
+      "I. Procarionte autótrofo — II. Eucarionte heterótrofo — III. Procarionte autótrofo"
+    ],
+    correcta: 1,
+    explicacion: "Fungi: eucariontes heterótrofos (absorción). Monera: procariontes, pueden ser autótrofos o heterótrofos. Plantae: eucariontes autótrofos (fotosíntesis)."
+  },
+  {
+    materia: "biologia",
+    tema: "reinos multicelulares heterótrofos",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué reinos están formados por organismos multicelulares y heterótrofos?",
+    opciones: ["Plantae y Fungi", "Fungi y Animalia", "Monera y Protista", "Plantae y Animalia"],
+    correcta: 1,
+    explicacion: "Tanto Animalia como Fungi son multicelulares (con excepciones en Fungi) y heterótrofos. Plantae es autótrofo y Monera es procarionte."
+  },
+  {
+    materia: "biologia",
+    tema: "hemoglobina",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué elemento metálico contiene la molécula de hemoglobina y le permite transportar oxígeno?",
+    opciones: ["Calcio", "Magnesio", "Hierro", "Zinc"],
+    correcta: 2,
+    explicacion: "El grupo hemo contiene un átomo de hierro (Fe²⁺) que es el sitio de unión reversible al oxígeno."
+  },
+  {
+    materia: "biologia",
+    tema: "reproducción sexual",
+    fuente: "320_UNAM",
+    pregunta: "En la reproducción ___, las células llamadas gametos transfieren información genética dando como resultado descendencia con gran variabilidad.",
+    opciones: ["asexual", "sexual", "vegetativa", "por gemación"],
+    correcta: 1,
+    explicacion: "La reproducción sexual implica la fusión de gametos haploides (óvulo y espermatozoide), generando combinaciones genéticas nuevas."
+  },
+  {
+    materia: "biologia",
+    tema: "cadena alimenticia — descomponedores",
+    fuente: "320_UNAM",
+    pregunta: "¿Quiénes son los encargados de degradar la materia orgánica muerta y devolver nutrientes al ecosistema?",
+    opciones: ["Productores", "Consumidores primarios", "Consumidores secundarios", "Descomponedores"],
+    correcta: 3,
+    explicacion: "Los descomponedores (hongos y bacterias) reciclan la materia orgánica de cadáveres y desechos, liberando nutrientes inorgánicos al suelo."
+  },
+  {
+    materia: "biologia",
+    tema: "enlace peptídico",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se llama el enlace que une el grupo amino de un aminoácido con el grupo carboxilo de otro?",
+    opciones: ["Enlace glucosídico", "Enlace peptídico", "Puente de hidrógeno", "Enlace fosfodiéster"],
+    correcta: 1,
+    explicacion: "El enlace peptídico (–CO–NH–) se forma entre el grupo carboxilo (–COOH) de un aminoácido y el grupo amino (–NH₂) del siguiente, liberando agua."
+  },
+  {
+    materia: "biologia",
+    tema: "origen de la vida",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se conoce a la teoría que proponía que la vida podía surgir espontáneamente a partir de materia inerte?",
+    opciones: ["Panspermia", "Generación espontánea", "Quimiosíntesis", "Selección natural"],
+    correcta: 1,
+    explicacion: "La teoría de la generación espontánea (refutada por Pasteur en el siglo XIX) afirmaba que organismos vivos podían originarse de materia no viva."
+  },
+  {
+    materia: "biologia",
+    tema: "taxonomía",
+    fuente: "320_UNAM",
+    pregunta: "Rama de la biología que se encarga de clasificar y ordenar a los organismos en grupos según sus semejanzas:",
+    opciones: ["Ecología", "Genética", "Taxonomía", "Fisiología"],
+    correcta: 2,
+    explicacion: "La taxonomía clasifica a los seres vivos en una jerarquía: dominio, reino, filo, clase, orden, familia, género y especie."
+  },
+  {
+    materia: "biologia",
+    tema: "relaciones interespecíficas",
+    fuente: "320_UNAM",
+    pregunta: "Interacción entre dos especies en la que ambas obtienen un beneficio mutuo:",
+    opciones: ["Comensalismo", "Parasitismo", "Mutualismo", "Depredación"],
+    correcta: 2,
+    explicacion: "En el mutualismo ambas especies se benefician (ej. abejas y flores). En el comensalismo solo una se beneficia y la otra no se afecta."
+  },
+  {
+    materia: "biologia",
+    tema: "componentes mínimos de una célula",
+    fuente: "320_UNAM",
+    pregunta: "Como unidad anatómica, toda célula está integrada al menos por:",
+    opciones: ["pared celular, mitocondria y cloroplasto", "membrana celular, citoplasma y material genético", "núcleo, retículo endoplásmico y aparato de Golgi", "centriolos, lisosomas y vacuolas"],
+    correcta: 1,
+    explicacion: "Toda célula posee al menos membrana plasmática (que la delimita), citoplasma (donde ocurren las reacciones) y material genético (ADN). Los procariontes no tienen núcleo definido."
+  },
+  {
+    materia: "biologia",
+    tema: "genética — Mendel",
+    fuente: "320_UNAM",
+    pregunta: "¿Quién planteó los principios de la herencia en los que se basa la genética moderna?",
+    opciones: ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "James Watson"],
+    correcta: 1,
+    explicacion: "Gregor Mendel, en 1866, formuló las leyes de la herencia trabajando con plantas de chícharo (Pisum sativum)."
+  },
+  {
+    materia: "biologia",
+    tema: "evolución — Darwin y Wallace",
+    fuente: "320_UNAM",
+    pregunta: "Para Darwin y Wallace, ¿cuál es el mecanismo evolutivo de mayor impacto?",
+    opciones: ["Mutación al azar", "Selección natural", "Herencia de caracteres adquiridos", "Deriva génica"],
+    correcta: 1,
+    explicacion: "La selección natural —los individuos mejor adaptados sobreviven y se reproducen más— es la propuesta central de Darwin y Wallace para explicar la evolución."
+  },
+  {
+    materia: "biologia",
+    tema: "mitosis — secuencia",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la secuencia correcta de las fases de la mitosis?",
+    opciones: ["Profase, Anafase, Metafase, Telofase", "Metafase, Profase, Telofase, Anafase", "Profase, Metafase, Anafase, Telofase", "Anafase, Profase, Metafase, Telofase"],
+    correcta: 2,
+    explicacion: "Mnemotecnia: PRO-ME-ANA-TELO (PROfase, METafase, ANAfase, TELOfase)."
+  },
+  {
+    materia: "biologia",
+    tema: "ciclo celular — fase M",
+    fuente: "320_UNAM",
+    pregunta: "Etapa del ciclo celular en la que ocurren la cariocinesis (división del núcleo) y la citocinesis (división del citoplasma):",
+    opciones: ["Fase G1", "Fase S", "Fase G2", "Fase M"],
+    correcta: 3,
+    explicacion: "La fase M (mitótica) incluye la cariocinesis y la citocinesis. Las fases G1, S y G2 forman la interfase."
+  },
+  {
+    materia: "biologia",
+    tema: "ciclo celular — fase S",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué fase del ciclo celular ocurre la duplicación del material genético, previo a la división celular?",
+    opciones: ["G1", "S", "G2", "M"],
+    correcta: 1,
+    explicacion: "En la fase S (síntesis) se replica el ADN, de modo que cada cromosoma queda formado por dos cromátidas hermanas idénticas."
+  },
+  {
+    materia: "biologia",
+    tema: "haploidía",
+    fuente: "320_UNAM",
+    pregunta: "Si una célula humana haploide (n) se divide, ¿con cuántos cromosomas queda cada célula hija?",
+    opciones: ["46", "23", "22", "92"],
+    correcta: 1,
+    explicacion: "El número haploide humano es n = 23. Una célula haploide al dividirse por mitosis genera células hijas también con 23 cromosomas."
+  },
+  {
+    materia: "biologia",
+    tema: "estructuras celulares",
+    fuente: "320_UNAM",
+    pregunta: "Estructura ubicada dentro del núcleo donde se sintetizan los componentes de los ribosomas:",
+    opciones: ["Centríolo", "Nucléolo", "Aparato de Golgi", "Mitocondria"],
+    correcta: 1,
+    explicacion: "El nucléolo, dentro del núcleo, ensambla las subunidades ribosomales a partir de ARN ribosomal y proteínas."
+  },
+  {
+    materia: "biologia",
+    tema: "metabolismo — catabolismo",
+    fuente: "320_UNAM",
+    pregunta: "El proceso de oxidación de los azúcares hasta formar moléculas de CO₂ se conoce como:",
+    opciones: ["Anabolismo", "Catabolismo", "Fotosíntesis", "Quimiosíntesis"],
+    correcta: 1,
+    explicacion: "El catabolismo degrada moléculas complejas en moléculas simples liberando energía. El anabolismo es lo contrario: construye moléculas grandes."
+  },
+  {
+    materia: "biologia",
+    tema: "glucólisis",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son los productos de la glucólisis (por molécula de glucosa)?",
+    opciones: ["2 lactato + 2 H₂O", "2 ácido pirúvico + 2 NADH + 2 ATP (neto)", "CO₂ + H₂O + 36 ATP", "Acetil-CoA + NADH"],
+    correcta: 1,
+    explicacion: "La glucólisis convierte una glucosa (6C) en dos moléculas de ácido pirúvico (3C), generando 2 NADH y un saldo neto de 2 ATP."
+  },
+  {
+    materia: "biologia",
+    tema: "ecosistemas — fuente de energía",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la fuente primaria de energía para la mayoría de los ecosistemas?",
+    opciones: ["El viento", "El Sol", "El calor geotérmico", "Los productores"],
+    correcta: 1,
+    explicacion: "El Sol provee la energía que los productores (plantas, algas, cianobacterias) capturan vía fotosíntesis y la introducen al ecosistema."
+  },
+  {
+    materia: "biologia",
+    tema: "niveles de organización — ecosistema",
+    fuente: "320_UNAM",
+    pregunta: "Conjunto de poblaciones de distintas especies que comparten un espacio físico e interactúan entre sí y con su ambiente:",
+    opciones: ["Población", "Comunidad", "Ecosistema", "Bioma"],
+    correcta: 2,
+    explicacion: "El ecosistema incluye a la comunidad biológica (factores bióticos) más el medio físico-químico que la sostiene (factores abióticos)."
+  },
+  {
+    materia: "biologia",
+    tema: "mitosis — número cromosómico",
+    fuente: "320_UNAM",
+    pregunta: "Las células somáticas humanas tienen 46 cromosomas. Tras una división por mitosis, ¿cuántos cromosomas tiene cada célula hija?",
+    opciones: ["23", "46", "92", "Depende de la fase"],
+    correcta: 1,
+    explicacion: "La mitosis es una división conservativa: las células hijas son genéticamente idénticas a la madre. Por eso conservan los 46 cromosomas. Quien reduce a 23 es la meiosis."
+  },
+  {
+    materia: "biologia",
+    tema: "ARN — composición",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son las cuatro bases nitrogenadas que componen el ARN?",
+    opciones: ["Adenina, Guanina, Citosina, Timina", "Adenina, Guanina, Citosina, Uracilo", "Adenina, Timina, Citosina, Uracilo", "Guanina, Citosina, Timina, Uracilo"],
+    correcta: 1,
+    explicacion: "El ARN contiene A, G, C y Uracilo (U). En el ADN, en cambio, el uracilo es reemplazado por timina (T)."
+  },
+  {
+    materia: "biologia",
+    tema: "alteraciones cromosómicas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se le llama a la alteración resultante de una segregación incorrecta de los cromosomas durante la división celular?",
+    opciones: ["Poliploidía", "Aneuploidía", "Mutación puntual", "Duplicación génica"],
+    correcta: 1,
+    explicacion: "La aneuploidía es la presencia de un número anormal de cromosomas (no múltiplo del número haploide). Ejemplos: trisomía 21 (Down), monosomía X (Turner)."
+  },
+
+  // ===================== QUÍMICA (preguntas tipo examen UNAM) =====================
+  {
+    materia: "quimica",
+    tema: "óxidos ácidos",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de los siguientes compuestos se clasifica como óxido ácido (anhídrido)?",
+    opciones: ["$\\mathrm{Na_2O}$", "$\\mathrm{CaO}$", "$\\mathrm{SO_3}$", "$\\mathrm{KCl}$"],
+    correcta: 2,
+    explicacion: "Un óxido ácido se forma con un no metal y oxígeno. $\\mathrm{SO_3}$ + $\\mathrm{H_2O}$ → $\\mathrm{H_2SO_4}$ (ácido sulfúrico). $\\mathrm{Na_2O}$ y $\\mathrm{CaO}$ son óxidos básicos."
+  },
+  {
+    materia: "quimica",
+    tema: "número másico",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se le llama a la suma del número de protones y neutrones de un átomo?",
+    opciones: ["Número atómico", "Número másico", "Masa molar", "Valencia"],
+    correcta: 1,
+    explicacion: "Número másico (A) = protones + neutrones. El número atómico (Z) es solo la cantidad de protones."
+  },
+  {
+    materia: "quimica",
+    tema: "masa molar — ácido acético",
+    fuente: "320_UNAM",
+    pregunta: "El vinagre es una solución acuosa de ácido acético ($\\mathrm{CH_3COOH}$). ¿Cuál es su masa molar? (C=12, H=1, O=16)",
+    opciones: ["$46\\,\\mathrm{g/mol}$", "$60\\,\\mathrm{g/mol}$", "$74\\,\\mathrm{g/mol}$", "$58\\,\\mathrm{g/mol}$"],
+    correcta: 1,
+    explicacion: "$\\mathrm{C_2H_4O_2}$: $2(12) + 4(1) + 2(16) = 24 + 4 + 32 = 60\\,\\mathrm{g/mol}$."
+  },
+  {
+    materia: "quimica",
+    tema: "pH — escala",
+    fuente: "320_UNAM",
+    pregunta: "Si al medir el pH de una sustancia se obtiene un valor de 2, dicha sustancia es:",
+    opciones: ["Neutra", "Básica", "Ácida", "Anfótera"],
+    correcta: 2,
+    explicacion: "La escala de pH va de 0 a 14: pH < 7 es ácido, pH = 7 es neutro y pH > 7 es básico. Un pH de 2 indica una sustancia bastante ácida."
+  },
+  {
+    materia: "quimica",
+    tema: "lluvia ácida",
+    fuente: "320_UNAM",
+    pregunta: "La lluvia ácida (ácido sulfúrico) ataca al mármol (carbonato de calcio). ¿Cuál ecuación representa la reacción?",
+    opciones: [
+      "$\\mathrm{H_2SO_4 + CaCO_3 \\rightarrow CaSO_4 + H_2CO_3}$",
+      "$\\mathrm{H_2SO_3 + CaCO_3 \\rightarrow CaSO_3 + H_2O}$",
+      "$\\mathrm{HCl + CaCO_3 \\rightarrow CaCl_2 + CO_2}$",
+      "$\\mathrm{HNO_3 + CaCO_3 \\rightarrow Ca(NO_3)_2 + H_2O}$"
+    ],
+    correcta: 0,
+    explicacion: "El $\\mathrm{H_2SO_4}$ desplaza al ácido carbónico produciendo sulfato de calcio (yeso) y $\\mathrm{H_2CO_3}$, que se descompone en agua y CO₂."
+  },
+  {
+    materia: "quimica",
+    tema: "puentes de hidrógeno",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de los siguientes compuestos forma puentes de hidrógeno entre sus moléculas?",
+    opciones: ["$\\mathrm{CH_4}$", "$\\mathrm{CO_2}$", "$\\mathrm{H_2O}$", "$\\mathrm{NaCl}$"],
+    correcta: 2,
+    explicacion: "Los puentes de hidrógeno se forman cuando un H está unido a un átomo muy electronegativo (F, O, N) e interactúa con otro átomo electronegativo. El agua es el ejemplo clásico."
+  },
+  {
+    materia: "quimica",
+    tema: "termoquímica — endotérmica",
+    fuente: "320_UNAM",
+    pregunta: "Una reacción endotérmica tiene una variación de entalpía ___ y ___ energía del entorno.",
+    opciones: ["$\\Delta H < 0$ / libera", "$\\Delta H > 0$ / absorbe", "$\\Delta H = 0$ / mantiene", "$\\Delta H > 0$ / libera"],
+    correcta: 1,
+    explicacion: "En una reacción endotérmica el sistema absorbe energía del entorno: $\\Delta H > 0$ (positiva). Lo contrario es la exotérmica ($\\Delta H < 0$, libera energía)."
+  },
+  {
+    materia: "quimica",
+    tema: "termoquímica — clasificación",
+    fuente: "320_UNAM",
+    pregunta: "Si la reacción R tiene una entalpía positiva y la reacción Q tiene entalpía negativa, ¿cómo se clasifican respectivamente?",
+    opciones: ["Exotérmica — Endotérmica", "Endotérmica — Exotérmica", "Ambas exotérmicas", "Ambas endotérmicas"],
+    correcta: 1,
+    explicacion: "Mnemotecnia: Endo = positiva = absorbe; Exo = negativa = libera. R con $\\Delta H > 0$ es endotérmica; Q con $\\Delta H < 0$ es exotérmica."
+  },
+  {
+    materia: "quimica",
+    tema: "ácidos débiles",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se clasifica al ácido acético en términos de su disociación en agua?",
+    opciones: ["Ácido fuerte", "Ácido débil", "Base débil", "Sustancia neutra"],
+    correcta: 1,
+    explicacion: "El ácido acético se disocia parcialmente en agua, por lo que es un ácido débil. Los ácidos fuertes (HCl, H₂SO₄, HNO₃) se ionizan completamente."
+  },
+  {
+    materia: "quimica",
+    tema: "ácidos fuertes",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de los siguientes ácidos se ioniza completamente en agua?",
+    opciones: ["$\\mathrm{CH_3COOH}$", "$\\mathrm{H_2CO_3}$", "$\\mathrm{HCl}$", "$\\mathrm{HF}$"],
+    correcta: 2,
+    explicacion: "El HCl es un ácido fuerte: en solución acuosa se disocia totalmente en H⁺ y Cl⁻. Los demás son ácidos débiles."
+  },
+  {
+    materia: "quimica",
+    tema: "masa molecular — bicarbonato de calcio",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la masa molecular del bicarbonato de calcio $\\mathrm{Ca(HCO_3)_2}$? (Ca=40, H=1, C=12, O=16)",
+    opciones: ["$101\\,\\mathrm{g/mol}$", "$162\\,\\mathrm{g/mol}$", "$122\\,\\mathrm{g/mol}$", "$144\\,\\mathrm{g/mol}$"],
+    correcta: 1,
+    explicacion: "$\\mathrm{Ca(HCO_3)_2}$: $40 + 2(1 + 12 + 3\\cdot 16) = 40 + 2(61) = 40 + 122 = 162\\,\\mathrm{g/mol}$."
+  },
+  {
+    materia: "quimica",
+    tema: "masa molar — bicarbonato de sodio",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la masa molar del bicarbonato de sodio $\\mathrm{NaHCO_3}$? (Na=23, H=1, C=12, O=16)",
+    opciones: ["$84\\,\\mathrm{g/mol}$", "$74\\,\\mathrm{g/mol}$", "$106\\,\\mathrm{g/mol}$", "$60\\,\\mathrm{g/mol}$"],
+    correcta: 0,
+    explicacion: "$\\mathrm{NaHCO_3}$: $23 + 1 + 12 + 3(16) = 23 + 1 + 12 + 48 = 84\\,\\mathrm{g/mol}$."
+  },
+  {
+    materia: "quimica",
+    tema: "ácidos y bases — propiedades",
+    fuente: "320_UNAM",
+    pregunta: "Una sustancia que pinta el papel tornasol de azul y se siente jabonosa al tacto es:",
+    opciones: ["Un ácido", "Una sal", "Una base", "Un compuesto neutro"],
+    correcta: 2,
+    explicacion: "Las bases tornan el papel tornasol azul, son jabonosas al tacto y tienen sabor amargo. Los ácidos tornan el tornasol rojo y son agrios."
+  },
+  {
+    materia: "quimica",
+    tema: "bioquímica — glucólisis",
+    fuente: "320_UNAM",
+    pregunta: "Molécula orgánica de 3 carbonos que se obtiene como producto de la degradación (glucólisis) de la glucosa ($\\mathrm{C_6H_{12}O_6}$):",
+    opciones: ["Lactato", "Etanol", "Piruvato", "Acetil-CoA"],
+    correcta: 2,
+    explicacion: "La glucólisis rompe la glucosa (6C) en dos moléculas de piruvato (3C cada una), generando además 2 ATP y 2 NADH."
+  },
+  {
+    materia: "quimica",
+    tema: "química ambiental — capa de ozono",
+    fuente: "320_UNAM",
+    pregunta: "Los clorofluorocarbonos (CFC) han provocado el agotamiento y destrucción de la capa de:",
+    opciones: ["Dióxido de carbono ($\\mathrm{CO_2}$)", "Ozono ($\\mathrm{O_3}$)", "Nitrógeno ($\\mathrm{N_2}$)", "Vapor de agua"],
+    correcta: 1,
+    explicacion: "Los CFC liberan átomos de cloro en la estratósfera que destruyen el ozono ($\\mathrm{O_3}$), debilitando la capa que nos protege de la radiación UV."
+  },
+  {
+    materia: "quimica",
+    tema: "química orgánica — derivados halogenados",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un ejemplo de un derivado halogenado de un hidrocarburo?",
+    opciones: ["$\\mathrm{CH_3-CH_2-OH}$", "$\\mathrm{CH_3-CH_2-Br}$", "$\\mathrm{CH_3-CH_3}$", "$\\mathrm{CH_3-COOH}$"],
+    correcta: 1,
+    explicacion: "Los derivados halogenados tienen un átomo de halógeno (F, Cl, Br, I) sustituyendo a un H. $\\mathrm{CH_3-CH_2-Br}$ (bromoetano) es un haloalcano."
+  },
+  {
+    materia: "quimica",
+    tema: "transferencia de calor",
+    fuente: "320_UNAM",
+    pregunta: "Para que ocurra una transferencia de calor entre dos cuerpos, debe existir entre ellos una diferencia de:",
+    opciones: ["Masa", "Volumen", "Temperatura", "Densidad"],
+    correcta: 2,
+    explicacion: "El calor fluye espontáneamente desde el cuerpo de mayor temperatura hacia el de menor temperatura hasta alcanzar el equilibrio térmico."
+  },
+  {
+    materia: "quimica",
+    tema: "combustión",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la ecuación balanceada de la combustión completa del metano?",
+    opciones: [
+      "$\\mathrm{CH_4 + O_2 \\rightarrow CO_2 + H_2O}$",
+      "$\\mathrm{CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O}$",
+      "$\\mathrm{2CH_4 + O_2 \\rightarrow 2CO + 2H_2O}$",
+      "$\\mathrm{CH_4 + 3O_2 \\rightarrow CO_2 + 2H_2O}$"
+    ],
+    correcta: 1,
+    explicacion: "Combustión completa del metano: $\\mathrm{CH_4 + 2O_2 \\rightarrow CO_2 + 2H_2O}$. El balance verifica 1 C, 4 H y 4 O en cada lado."
+  },
+  {
+    materia: "quimica",
+    tema: "mezclas — homogéneas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de las siguientes es un ejemplo clásico de mezcla homogénea?",
+    opciones: ["Agua con aceite", "Aire", "Granito", "Ensalada"],
+    correcta: 1,
+    explicacion: "El aire es una mezcla homogénea (gases mezclados uniformemente: ~78% N₂, ~21% O₂, etc). En las homogéneas no se distinguen los componentes."
+  },
+  {
+    materia: "quimica",
+    tema: "enlaces intermoleculares — agua",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué tipo de fuerza une a las moléculas de agua entre sí?",
+    opciones: ["Enlace iónico", "Enlace covalente", "Puente de hidrógeno", "Fuerza de London"],
+    correcta: 2,
+    explicacion: "Entre moléculas de agua hay puentes de hidrógeno: el H (parcialmente positivo) de una molécula es atraído por el O (parcialmente negativo) de otra."
+  },
+  {
+    materia: "quimica",
+    tema: "enlaces intramoleculares — agua",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué tipo de enlace une al hidrógeno con el oxígeno dentro de una molécula de agua?",
+    opciones: ["Iónico", "Covalente polar", "Covalente no polar", "Metálico"],
+    correcta: 1,
+    explicacion: "El enlace H–O es covalente polar: los átomos comparten electrones, pero el O (más electronegativo) atrae más densidad electrónica, generando dipolos parciales."
+  },
+  {
+    materia: "quimica",
+    tema: "mol — número de Avogadro",
+    fuente: "320_UNAM",
+    pregunta: "La fórmula del dióxido de azufre es $\\mathrm{SO_2}$. ¿Qué cantidad en gramos se necesita para tener $6.022\\times 10^{23}$ moléculas? (S=32, O=16)",
+    opciones: ["$32\\,\\mathrm{g}$", "$48\\,\\mathrm{g}$", "$64\\,\\mathrm{g}$", "$80\\,\\mathrm{g}$"],
+    correcta: 2,
+    explicacion: "$6.022\\times 10^{23}$ moléculas = 1 mol. La masa molar de $\\mathrm{SO_2}$ es $32 + 2(16) = 64\\,\\mathrm{g/mol}$, así que 1 mol pesa 64 g."
+  },
+  {
+    materia: "quimica",
+    tema: "compuestos vs elementos",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de las siguientes sustancias es un compuesto químico?",
+    opciones: ["Oxígeno ($\\mathrm{O_2}$)", "Hierro (Fe)", "Metano ($\\mathrm{CH_4}$)", "Helio (He)"],
+    correcta: 2,
+    explicacion: "Un compuesto está formado por dos o más elementos químicamente unidos. El metano contiene C e H. Los demás son elementos puros."
+  },
+  {
+    materia: "quimica",
+    tema: "clasificación de la materia — mezclas",
+    fuente: "320_UNAM",
+    pregunta: "De la siguiente lista, ¿cuáles son mezclas? (a) Aire, (b) Yodo, (c) Gasolina, (d) Bromo, (e) Petróleo, (f) Agua.",
+    opciones: ["a, b, c", "a, c, e", "b, d, f", "c, d, e"],
+    correcta: 1,
+    explicacion: "Aire (gases mezclados), gasolina (mezcla de hidrocarburos) y petróleo (mezcla de hidrocarburos) son mezclas. Yodo y bromo son elementos; el agua es un compuesto."
+  },
+  {
+    materia: "quimica",
+    tema: "definición — disolución",
+    fuente: "320_UNAM",
+    pregunta: "Una disolución se define como:",
+    opciones: ["Una mezcla heterogénea", "Una mezcla homogénea de dos o más sustancias", "Un compuesto químico", "Una reacción reversible"],
+    correcta: 1,
+    explicacion: "Una disolución es una mezcla homogénea formada por un disolvente (mayor cantidad) y uno o más solutos (menor cantidad)."
+  },
+  {
+    materia: "quimica",
+    tema: "solubilidad — solución saturada",
+    fuente: "320_UNAM",
+    pregunta: "Si la solubilidad de una sal a 70 °C es $50\\,\\mathrm{g}$ por cada $100\\,\\mathrm{cm^3}$ de agua, y se intentan disolver $75\\,\\mathrm{g}$ en $100\\,\\mathrm{cm^3}$ de agua a esa temperatura, la solución resulta:",
+    opciones: ["Insaturada (todo se disuelve)", "Saturada con $25\\,\\mathrm{g}$ sin disolver", "Sobresaturada estable", "Diluida"],
+    correcta: 1,
+    explicacion: "El máximo que el agua puede disolver a esa T es 50 g; los 25 g excedentes quedan como sólido sin disolver. La parte líquida está saturada."
+  },
+  {
+    materia: "quimica",
+    tema: "radiactividad — historia",
+    fuente: "320_UNAM",
+    pregunta: "Científico que obtuvo el Premio Nobel (1903) por sus estudios con sales de uranio que llevaron al descubrimiento de la radiactividad:",
+    opciones: ["Marie Curie", "Henri Becquerel", "Ernest Rutherford", "Albert Einstein"],
+    correcta: 1,
+    explicacion: "Henri Becquerel descubrió la radiactividad en 1896 al estudiar sales de uranio. Compartió el Nobel de Física de 1903 con Marie y Pierre Curie."
+  },
+
+  // ===================== HISTORIA UNIVERSAL (preguntas tipo examen UNAM) =====================
+  {
+    materia: "historia_universal",
+    tema: "padre de la historia",
+    fuente: "320_UNAM",
+    pregunta: "¿Quién es considerado el \"padre de la historia\" por su obra <i>Los nueve libros de la Historia</i>?",
+    opciones: ["Tucídides", "Heródoto", "Polibio", "Tácito"],
+    correcta: 1,
+    explicacion: "Heródoto (siglo V a.C.) fue el primero en investigar y narrar las guerras médicas con un método sistemático, por lo que recibió el título de \"padre de la historia\"."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Segunda Revolución Industrial",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál fue la principal aportación energética de la Segunda Revolución Industrial?",
+    opciones: ["Carbón y máquina de vapor", "Petróleo y electricidad", "Energía nuclear y atómica", "Eólica y solar"],
+    correcta: 1,
+    explicacion: "La 1ª Revolución Industrial dependió del carbón y la máquina de vapor. La 2ª (finales del s. XIX) introdujo el petróleo (motor de combustión) y la electricidad como nuevas fuentes de energía."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Primera Guerra Mundial — origen",
+    fuente: "320_UNAM",
+    pregunta: "La Primera Guerra Mundial (la \"Gran Guerra\") inició a partir de un detonante en la región de:",
+    opciones: ["El Rin", "Alsacia y Lorena", "Los Balcanes", "Mesopotamia"],
+    correcta: 2,
+    explicacion: "El asesinato del archiduque Francisco Fernando en Sarajevo (1914), en los Balcanes, fue el detonante. La región era llamada \"el polvorín de Europa\" por sus tensiones étnicas."
+  },
+  {
+    materia: "historia_universal",
+    tema: "caída del bloque socialista",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué reformas impulsadas por Mijaíl Gorbachov contribuyeron a la caída del bloque socialista?",
+    opciones: ["New Deal y Plan Marshall", "Glasnost y Perestroika", "Doctrina Truman y Doctrina Brezhnev", "Plan Quinquenal y NEP"],
+    correcta: 1,
+    explicacion: "Glasnost (apertura, transparencia política) y Perestroika (reestructuración económica), iniciadas en 1985, debilitaron el control soviético y precipitaron el colapso del bloque del Este (1989-1991)."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Ilustración — obra cumbre",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la obra colectiva más representativa de la Ilustración, dirigida por Diderot y D'Alembert?",
+    opciones: ["El espíritu de las leyes", "El contrato social", "La Enciclopedia", "El Capital"],
+    correcta: 2,
+    explicacion: "La <i>Encyclopédie</i> (1751-1772) reunió el saber de la época y difundió las ideas ilustradas. Las otras opciones son obras importantes de la Ilustración (Montesquieu, Rousseau) o posteriores (Marx)."
+  },
+  {
+    materia: "historia_universal",
+    tema: "desintegración de Yugoslavia",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles países se formaron tras la desintegración de Yugoslavia en los años 90?",
+    opciones: ["Polonia, Hungría y Checoslovaquia", "Croacia, Serbia, Eslovenia, Bosnia, Macedonia y Montenegro", "Estonia, Letonia y Lituania", "República Checa y Eslovaquia"],
+    correcta: 1,
+    explicacion: "De Yugoslavia surgieron Croacia, Serbia, Eslovenia, Bosnia-Herzegovina, Macedonia (Norte) y Montenegro (después también Kosovo). Las otras opciones son la URSS y Checoslovaquia."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Segunda Guerra Mundial — Pearl Harbor",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué hecho marcó el inicio de la segunda etapa de la Segunda Guerra Mundial?",
+    opciones: ["La invasión a Polonia por Alemania", "La caída de Francia", "El ataque japonés a Pearl Harbor y la entrada de E.U.A.", "El desembarco en Normandía"],
+    correcta: 2,
+    explicacion: "El ataque japonés a Pearl Harbor (7 dic. 1941) provocó la entrada de Estados Unidos a la guerra, ampliando el conflicto a una escala global y marcando una nueva etapa."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Rusia — Chechenia",
+    fuente: "320_UNAM",
+    pregunta: "Región del Cáucaso que ha buscado independizarse de Rusia mediante guerras y conflictos armados:",
+    opciones: ["Crimea", "Chechenia", "Georgia", "Ucrania"],
+    correcta: 1,
+    explicacion: "Chechenia, en el Cáucaso Norte, libró dos guerras contra Rusia (1994-1996 y 1999-2009) por su independencia, sin lograrla."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Ilustración — sistema político",
+    fuente: "320_UNAM",
+    pregunta: "En el ámbito político, la Ilustración influyó en el establecimiento de un sistema denominado:",
+    opciones: ["Absolutismo monárquico", "Despotismo ilustrado", "Feudalismo", "Teocracia"],
+    correcta: 1,
+    explicacion: "El despotismo ilustrado (\"Todo para el pueblo, pero sin el pueblo\") combinaba un monarca absoluto con reformas inspiradas en la Ilustración. Carlos III, Federico II y Catalina la Grande son ejemplos."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Revolución Rusa — Lenin",
+    fuente: "320_UNAM",
+    pregunta: "Líder de los bolcheviques, autor de las <i>Tesis de Abril</i> (1917):",
+    opciones: ["León Trotsky", "Vladimir Lenin", "Iósif Stalin", "Karl Marx"],
+    correcta: 1,
+    explicacion: "Lenin publicó las <i>Tesis de Abril</i> al volver del exilio en 1917; en ellas propuso \"todo el poder a los soviets\" y el rechazo al gobierno provisional, sentando las bases de la Revolución de Octubre."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Ilustración — definición",
+    fuente: "320_UNAM",
+    pregunta: "Movimiento intelectual del siglo XVIII que consideraba a la razón humana como la principal guía para el conocimiento y el progreso:",
+    opciones: ["El Renacimiento", "El Romanticismo", "La Ilustración", "El Positivismo"],
+    correcta: 2,
+    explicacion: "La Ilustración, también llamada \"Siglo de las Luces\", exaltó la razón frente a la tradición y la fe, e impulsó las revoluciones políticas de fines del XVIII."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Guerra Fría — bloques",
+    fuente: "320_UNAM",
+    pregunta: "Durante la Guerra Fría, ¿qué bloque encabezaba el Pacto de Varsovia y cuál el Plan Marshall y la OTAN?",
+    opciones: [
+      "Capitalista — Socialista",
+      "Socialista — Capitalista",
+      "Neutral — Capitalista",
+      "Socialista — Neutral"
+    ],
+    correcta: 1,
+    explicacion: "El Pacto de Varsovia agrupaba al bloque socialista (URSS y satélites). La OTAN y el Plan Marshall fueron iniciativas del bloque capitalista (E.U.A. y aliados de Europa Occidental)."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Tratado de Versalles",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál tratado tuvo como finalidad la desmilitarización de Alemania tras la Primera Guerra Mundial?",
+    opciones: ["Tratado de Trianón", "Tratado de Versalles", "Tratado de Brest-Litovsk", "Tratado de Saint-Germain"],
+    correcta: 1,
+    explicacion: "El Tratado de Versalles (1919) impuso a Alemania la desmilitarización, fuertes reparaciones de guerra y la pérdida de territorios y colonias."
+  },
+  {
+    materia: "historia_universal",
+    tema: "estados totalitarios",
+    fuente: "320_UNAM",
+    pregunta: "La concentración de poder en un solo partido, la discriminación y la xenofobia son consecuencias propias de los estados:",
+    opciones: ["Democráticos", "Federales", "Totalitarios", "Republicanos"],
+    correcta: 2,
+    explicacion: "Los regímenes totalitarios (fascismo italiano, nazismo, estalinismo) controlan todos los aspectos de la vida social, eliminan la oposición y promueven ideologías excluyentes."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Guerra Fría — hechos",
+    fuente: "320_UNAM",
+    pregunta: "El COMECON, el Plan Marshall y el Pacto de Varsovia son hechos característicos de:",
+    opciones: ["La Primera Guerra Mundial", "El periodo entreguerras", "La Guerra Fría", "La Segunda Guerra Mundial"],
+    correcta: 2,
+    explicacion: "Los tres son instrumentos económicos o militares del enfrentamiento entre los bloques capitalista (Plan Marshall) y socialista (COMECON, Pacto de Varsovia) durante la Guerra Fría."
+  },
+  {
+    materia: "historia_universal",
+    tema: "consecuencias 2da Guerra Mundial",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles fueron consecuencias directas de la Segunda Guerra Mundial?",
+    opciones: [
+      "Creación de la Sociedad de Naciones y Tratado de Versalles",
+      "Ocupación de los países vencidos, creación de la ONU y división de Alemania en 4 zonas",
+      "Caída del Imperio Romano y migraciones germánicas",
+      "Disolución del Imperio Austro-Húngaro"
+    ],
+    correcta: 1,
+    explicacion: "La 2ª GM dejó la ocupación de Alemania, Austria y Japón; la creación de la ONU (1945) en sustitución de la fallida Sociedad de Naciones; y el inicio de la Guerra Fría."
+  },
+  {
+    materia: "historia_universal",
+    tema: "URSS — independencias",
+    fuente: "320_UNAM",
+    pregunta: "Tras la disolución de la URSS (1991), ¿qué países bálticos recuperaron su independencia?",
+    opciones: ["Bielorrusia, Ucrania y Moldavia", "Estonia, Letonia y Lituania", "Kazajistán, Uzbekistán y Turkmenistán", "Polonia, Hungría y Rumania"],
+    correcta: 1,
+    explicacion: "Estonia, Letonia y Lituania —los tres países bálticos— recuperaron su independencia en 1991. Las otras opciones también fueron repúblicas soviéticas o satélites, pero no son los bálticos."
+  },
+  {
+    materia: "historia_universal",
+    tema: "ludismo",
+    fuente: "320_UNAM",
+    pregunta: "Movimiento obrero surgido en Gran Bretaña a finales del siglo XVIII que consistía en el ataque y destrucción de máquinas:",
+    opciones: ["Cartismo", "Ludismo", "Sindicalismo", "Anarquismo"],
+    correcta: 1,
+    explicacion: "Los luditas, seguidores del legendario Ned Ludd, destruían máquinas textiles a las que culpaban del desempleo y del empeoramiento de las condiciones laborales."
+  },
+  {
+    materia: "historia_universal",
+    tema: "consecuencias 1ra Guerra Mundial",
+    fuente: "320_UNAM",
+    pregunta: "La creación de Checoslovaquia y la Sociedad de Naciones fueron consecuencias directas de:",
+    opciones: ["La Revolución Francesa", "La Primera Guerra Mundial", "La Guerra Fría", "La Segunda Guerra Mundial"],
+    correcta: 1,
+    explicacion: "El fin de la 1ª GM y el desmembramiento del Imperio Austro-Húngaro dieron origen a Checoslovaquia (1918). La Sociedad de Naciones se fundó en 1920 para preservar la paz."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Revoluciones de 1848",
+    fuente: "320_UNAM",
+    pregunta: "Las revoluciones de 1848 (\"Primavera de los pueblos\") se caracterizaron por:",
+    opciones: [
+      "Restauración del absolutismo monárquico",
+      "Lucha de obreros y burgueses por derechos políticos universales",
+      "Independencia de las colonias americanas",
+      "La unificación de Alemania e Italia"
+    ],
+    correcta: 1,
+    explicacion: "Las revoluciones de 1848 demandaron sufragio universal, libertades civiles y mejores condiciones laborales. Aunque fueron sofocadas, sentaron las bases del liberalismo y socialismo modernos."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Tratado de Lisboa",
+    fuente: "320_UNAM",
+    pregunta: "¿Con qué tratado se reformó y consolidó la Unión Europea, entrando en vigor en 2009?",
+    opciones: ["Tratado de Roma", "Tratado de Maastricht", "Tratado de Lisboa", "Tratado de Niza"],
+    correcta: 2,
+    explicacion: "El Tratado de Lisboa (firmado 2007, en vigor 2009) reformó las instituciones de la UE. Maastricht (1992) creó la UE; Roma (1957) creó la CEE; Niza (2003) preparó la ampliación al este."
+  },
+  {
+    materia: "historia_universal",
+    tema: "hegemonía — pos 2da GM",
+    fuente: "320_UNAM",
+    pregunta: "País que demostró su hegemonía militar y económica al término de la Segunda Guerra Mundial:",
+    opciones: ["Reino Unido", "Estados Unidos", "Francia", "Alemania"],
+    correcta: 1,
+    explicacion: "E.U.A. salió de la guerra como la principal potencia industrial y militar del mundo, con la única posesión inicial de la bomba atómica y con su economía intacta a diferencia de Europa."
+  },
+  {
+    materia: "historia_universal",
+    tema: "OTAN",
+    fuente: "320_UNAM",
+    pregunta: "Organización militar fundada en 1949 con el objetivo principal de defender al bloque capitalista occidental durante la Guerra Fría:",
+    opciones: ["ONU", "OTAN (Organización del Tratado del Atlántico Norte)", "Pacto de Varsovia", "Liga de las Naciones"],
+    correcta: 1,
+    explicacion: "La OTAN agrupó a E.U.A., Canadá y países de Europa Occidental bajo el principio de defensa colectiva (un ataque a uno se considera ataque a todos)."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Simón Bolívar",
+    fuente: "320_UNAM",
+    pregunta: "Personaje conocido como \"El Libertador de América\" por liderar las independencias de varios países sudamericanos:",
+    opciones: ["José de San Martín", "Simón Bolívar", "Miguel Hidalgo", "Toussaint Louverture"],
+    correcta: 1,
+    explicacion: "Simón Bolívar fue clave en la independencia de Venezuela, Colombia, Ecuador, Perú y Bolivia (que lleva su nombre). San Martín liberó Argentina, Chile y Perú."
+  },
+  {
+    materia: "historia_universal",
+    tema: "unificación alemana — Bismarck",
+    fuente: "320_UNAM",
+    pregunta: "Personaje que, tras la guerra de 1866 contra Austria, logró la unificación de Alemania:",
+    opciones: ["Guillermo I", "Otto von Bismarck", "Guillermo II", "Paul von Hindenburg"],
+    correcta: 1,
+    explicacion: "Otto von Bismarck, el \"Canciller de Hierro\", unificó Alemania mediante tres guerras: contra Dinamarca (1864), Austria (1866) y Francia (1870-71). El imperio alemán se proclamó en 1871."
+  },
+  {
+    materia: "historia_universal",
+    tema: "Guerra Fría — acontecimientos",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles de los siguientes son acontecimientos característicos de la Guerra Fría?",
+    opciones: [
+      "Revolución Francesa, independencia de E.U.A. y Revolución Industrial",
+      "Revolución Cubana, independencia del Congo y carrera espacial",
+      "Caída de Roma, Cruzadas y Reforma Protestante",
+      "Caída del Muro de Berlín, atentados del 11-S y crisis de 2008"
+    ],
+    correcta: 1,
+    explicacion: "Durante la Guerra Fría se enmarcan la Revolución Cubana (1959), las independencias africanas (incluyendo Congo en 1960) y la carrera espacial entre E.U.A. y la URSS."
+  },
+
+  // ===================== GEOGRAFÍA (preguntas tipo examen UNAM) =====================
+  {
+    materia: "geografia",
+    tema: "ciclo hidrológico",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es la fase del ciclo hidrológico mediante la cual el agua dulce vuelve a los continentes?",
+    opciones: ["Evaporación", "Precipitación", "Condensación", "Escurrimiento"],
+    correcta: 1,
+    explicacion: "La precipitación (lluvia, nieve, granizo) devuelve a los continentes el agua dulce que se evaporó de océanos y cuerpos de agua. Es la fase clave para el abastecimiento terrestre."
+  },
+  {
+    materia: "geografia",
+    tema: "México — café",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es el principal estado mexicano productor de café (incluido el orgánico)?",
+    opciones: ["Veracruz", "Oaxaca", "Chiapas", "Puebla"],
+    correcta: 2,
+    explicacion: "Chiapas es el primer productor de café en México (~40% nacional), favorecido por su altitud, humedad y suelos volcánicos. Veracruz es el segundo."
+  },
+  {
+    materia: "geografia",
+    tema: "ríos de Asia",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son los dos ríos más importantes de China (y de los más relevantes de Asia)?",
+    opciones: ["Ganges y Brahmaputra", "Tigris y Éufrates", "Yangtsé (Río Azul) y Huang He (Río Amarillo)", "Mekong e Irawadi"],
+    correcta: 2,
+    explicacion: "El Yangtsé (Río Azul) es el más largo de Asia; el Huang He (Río Amarillo) fue cuna de la civilización china. Ambos cruzan China de oeste a este."
+  },
+  {
+    materia: "geografia",
+    tema: "México — minería",
+    fuente: "320_UNAM",
+    pregunta: "En México, los principales yacimientos de oro, plata y plomo se ubican en los estados de:",
+    opciones: ["Yucatán, Tabasco y Veracruz", "Sonora, Coahuila y Chihuahua", "Chiapas, Oaxaca y Guerrero", "Jalisco, Colima y Nayarit"],
+    correcta: 1,
+    explicacion: "Los estados del norte —Sonora (oro), Coahuila (plata, plomo) y Chihuahua (los tres)— concentran la mayor parte de la minería metálica del país."
+  },
+  {
+    materia: "geografia",
+    tema: "MERCOSUR",
+    fuente: "320_UNAM",
+    pregunta: "¿A qué bloque económico pertenecen Uruguay, Paraguay, Brasil y Argentina?",
+    opciones: ["Comunidad Andina", "MERCOSUR", "ALBA", "TLCAN/T-MEC"],
+    correcta: 1,
+    explicacion: "El MERCOSUR (Mercado Común del Sur), creado en 1991, está formado por Argentina, Brasil, Paraguay y Uruguay (y posteriormente Venezuela, suspendida)."
+  },
+  {
+    materia: "geografia",
+    tema: "mesetas — características",
+    fuente: "320_UNAM",
+    pregunta: "Las características económicas y demográficas típicas de las mesetas son:",
+    opciones: ["Pesca intensiva y alta densidad poblacional", "Ganadería extensiva y densidad de población media", "Agricultura de subsistencia y población dispersa", "Industria pesada y población urbana muy alta"],
+    correcta: 1,
+    explicacion: "Las mesetas, por su altitud y suelos a menudo poco profundos, favorecen la ganadería extensiva (mucho terreno, poco ganado por hectárea). La población suele ser intermedia."
+  },
+  {
+    materia: "geografia",
+    tema: "México — plata",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es el estado mexicano históricamente reconocido como mayor productor de plata?",
+    opciones: ["Guanajuato", "Zacatecas", "Hidalgo", "Estado de México"],
+    correcta: 1,
+    explicacion: "Zacatecas ha sido durante siglos el principal productor de plata en México (y México es el primer productor mundial). Le siguen Chihuahua y Durango."
+  },
+  {
+    materia: "geografia",
+    tema: "climas — tropical",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué tipo de clima se caracteriza por presentar lluvias prácticamente durante todo el año?",
+    opciones: ["Desértico", "Tropical (selva)", "Templado", "Polar"],
+    correcta: 1,
+    explicacion: "El clima tropical lluvioso (Af de Köppen, propio de las selvas ecuatoriales como el Amazonas) tiene precipitaciones todo el año y temperaturas altas constantes."
+  },
+  {
+    materia: "geografia",
+    tema: "remesas",
+    fuente: "320_UNAM",
+    pregunta: "Importante fuente de ingreso económico para los países emisores de migrantes:",
+    opciones: ["Aranceles", "Remesas", "Inversión extranjera directa", "Petróleo"],
+    correcta: 1,
+    explicacion: "Las remesas son los envíos de dinero que los migrantes hacen a sus países de origen. Para México son una de las principales fuentes de divisas, junto con el petróleo y el turismo."
+  },
+  {
+    materia: "geografia",
+    tema: "países desarrollados",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son rasgos típicos de los países desarrollados?",
+    opciones: [
+      "Alta población infantil y predominio del sector primario",
+      "Baja población infantil y predominio del sector terciario (servicios)",
+      "Alta mortalidad infantil y economía agrícola",
+      "Población joven y dependencia de exportación de materias primas"
+    ],
+    correcta: 1,
+    explicacion: "Los países desarrollados muestran transición demográfica avanzada (baja natalidad y baja mortalidad infantil) y una economía dominada por servicios (sector terciario)."
+  },
+  {
+    materia: "geografia",
+    tema: "geografía — definición",
+    fuente: "320_UNAM",
+    pregunta: "Disciplina cuyo objeto de estudio es la interacción entre elementos físicos, biológicos y humanos en un espacio determinado:",
+    opciones: ["Historia", "Geografía", "Biología", "Sociología"],
+    correcta: 1,
+    explicacion: "La geografía estudia las interrelaciones entre los componentes naturales (físicos y biológicos) y humanos en un territorio, a distintas escalas."
+  },
+  {
+    materia: "geografia",
+    tema: "tectónica — Himalaya",
+    fuente: "320_UNAM",
+    pregunta: "Los fósiles marinos hallados en el Himalaya se explican porque su formación se debió a:",
+    opciones: ["Una glaciación masiva", "La colisión de las placas Euroasiática e Indostánica", "Un impacto meteorítico", "Erosión fluvial milenaria"],
+    correcta: 1,
+    explicacion: "El choque de la placa Indostánica contra la Euroasiática (hace ~50 millones de años) levantó el lecho marino formando el Himalaya, lo que explica los fósiles marinos en altura."
+  },
+  {
+    materia: "geografia",
+    tema: "tectónica — convergentes",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué relieve se forma típicamente cuando las placas tectónicas tienen movimientos convergentes (chocan entre sí)?",
+    opciones: ["Dorsales oceánicas", "Cordilleras y montañas", "Fosas abisales planas", "Llanuras"],
+    correcta: 1,
+    explicacion: "Los movimientos convergentes generan cordilleras (continente-continente) o subducción y arcos volcánicos (océano-continente). Los divergentes forman dorsales."
+  },
+  {
+    materia: "geografia",
+    tema: "cartografía — escalas",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué escala representa con mayor detalle la información de una carta topográfica?",
+    opciones: ["1:1 000 000", "1:250 000", "1:50 000", "1:10 000 000"],
+    correcta: 2,
+    explicacion: "A menor denominador, mayor detalle. Una escala 1:50 000 muestra mucho más detalle que 1:1 000 000. (1:50 000 significa que 1 cm en el mapa = 500 m en la realidad.)"
+  },
+  {
+    materia: "geografia",
+    tema: "sureste asiático — monzones",
+    fuente: "320_UNAM",
+    pregunta: "Los grandes asentamientos humanos del sureste asiático se concentran en regiones de ___ que favorecen el cultivo de ___.",
+    opciones: ["clima desértico / dátiles", "lluvias monzónicas / arroz", "estepa / trigo", "altiplano / quinua"],
+    correcta: 1,
+    explicacion: "Los monzones aportan abundante agua estacional al sureste asiático, ideal para el cultivo de arroz, alimento básico de la región y soporte de su alta densidad demográfica."
+  },
+  {
+    materia: "geografia",
+    tema: "Japón — pesca",
+    fuente: "320_UNAM",
+    pregunta: "Las corrientes marinas frente a las costas de Japón (cálida Kuroshio y fría Oyashio) favorecen principalmente:",
+    opciones: ["La agricultura de subsistencia", "La actividad pesquera", "La explotación petrolera", "La minería submarina"],
+    correcta: 1,
+    explicacion: "El choque entre Kuroshio (cálida) y Oyashio (fría) crea zonas ricas en plancton y por tanto en peces, lo que explica la enorme tradición y producción pesquera japonesa."
+  },
+  {
+    materia: "geografia",
+    tema: "niveles de organización ecológica",
+    fuente: "320_UNAM",
+    pregunta: "Conjunto de poblaciones de distintas especies que interactúan entre sí en un mismo lugar:",
+    opciones: ["Hábitat", "Población", "Comunidad", "Bioma"],
+    correcta: 2,
+    explicacion: "Una comunidad biológica reúne a varias poblaciones que conviven e interactúan. Si añadimos el medio físico, hablamos de ecosistema."
+  },
+  {
+    materia: "geografia",
+    tema: "husos horarios",
+    fuente: "320_UNAM",
+    pregunta: "Si en el meridiano de Greenwich (0°) son las 20:00, ¿qué hora es en Tijuana, México (120° W)?",
+    opciones: ["04:00 del día siguiente", "12:00", "16:00", "08:00"],
+    correcta: 1,
+    explicacion: "Cada 15° de longitud equivale a 1 hora. 120° / 15° = 8 horas de diferencia. Como Tijuana está al oeste, se restan: 20:00 − 8 = 12:00."
+  },
+  {
+    materia: "geografia",
+    tema: "corrientes marinas",
+    fuente: "320_UNAM",
+    pregunta: "Las corrientes marinas regulan la ___ de las aguas oceánicas y trasladan ___ que sirve de alimento a otras especies.",
+    opciones: ["salinidad / arena", "temperatura / fitoplancton", "presión / coral", "densidad / petróleo"],
+    correcta: 1,
+    explicacion: "Las corrientes redistribuyen el calor (regulando la temperatura del océano y de los climas costeros) y transportan fitoplancton, base de las cadenas alimenticias marinas."
+  },
+  {
+    materia: "geografia",
+    tema: "Cuenca del Pacífico",
+    fuente: "320_UNAM",
+    pregunta: "País asiático que lidera económicamente la Cuenca del Pacífico:",
+    opciones: ["China", "Japón", "Corea del Sur", "Tailandia"],
+    correcta: 1,
+    explicacion: "Históricamente Japón ha sido el líder económico de la Cuenca del Pacífico, aunque China lo ha desafiado fuertemente en las últimas décadas."
+  },
+  {
+    materia: "geografia",
+    tema: "México — petróleo",
+    fuente: "320_UNAM",
+    pregunta: "¿Por qué México es un gran productor de petróleo?",
+    opciones: [
+      "Por sus yacimientos en el océano Pacífico, frente a Sinaloa",
+      "Por los yacimientos del Golfo de México, especialmente en la Sonda de Campeche",
+      "Por sus reservas en el desierto de Sonora",
+      "Por su producción en la Península de Yucatán continental"
+    ],
+    correcta: 1,
+    explicacion: "Las principales reservas mexicanas están en el Golfo de México (no en el Pacífico). La Sonda de Campeche, con campos como Cantarell y Ku-Maloob-Zaap, ha sido el corazón de la producción."
+  },
+  {
+    materia: "geografia",
+    tema: "Unión Europea",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de los siguientes grupos contiene únicamente países miembros de la Unión Europea?",
+    opciones: ["Alemania, Grecia y Portugal", "Suiza, Noruega y Reino Unido", "Rusia, Ucrania y Turquía", "Serbia, Bosnia y Albania"],
+    correcta: 0,
+    explicacion: "Alemania, Grecia y Portugal pertenecen a la UE. Suiza y Noruega nunca se adhirieron; el Reino Unido salió en 2020 (Brexit); los balcánicos del último grupo son candidatos pero no miembros."
+  },
+  {
+    materia: "geografia",
+    tema: "norte de África",
+    fuente: "320_UNAM",
+    pregunta: "País ubicado al norte de África, atravesado por el río Nilo:",
+    opciones: ["Sudán", "Egipto", "Etiopía", "Libia"],
+    correcta: 1,
+    explicacion: "Egipto se ubica al noreste de África, sobre el Mediterráneo, y es atravesado de sur a norte por el río Nilo, que ha sido el eje de su civilización por milenios."
+  },
+  {
+    materia: "geografia",
+    tema: "línea internacional del cambio de fecha",
+    fuente: "320_UNAM",
+    pregunta: "Si un barco viaja de Sídney (Australia) a San Francisco (California) cruzando hacia el este la línea internacional del cambio de fecha, ¿qué ajuste debe hacerse?",
+    opciones: ["Adelantar un día la fecha", "Retrasar un día la fecha", "Adelantar 12 horas", "No se hace ningún cambio"],
+    correcta: 1,
+    explicacion: "Al cruzar la línea internacional del cambio de fecha (≈180°) hacia el este, se resta un día (se retrasa la fecha). Hacia el oeste, se suma."
+  },
+  {
+    materia: "geografia",
+    tema: "efecto invernadero",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es el principal gas responsable del incremento del efecto invernadero por actividad humana?",
+    opciones: ["O₂", "N₂", "CO₂", "Ar"],
+    correcta: 2,
+    explicacion: "El dióxido de carbono (CO₂), liberado al quemar combustibles fósiles, es el principal gas de efecto invernadero antropogénico. Otros relevantes son el metano (CH₄) y el óxido nitroso."
+  },
+  {
+    materia: "geografia",
+    tema: "Yugoslavia y los Balcanes",
+    fuente: "320_UNAM",
+    pregunta: "Los países de la península balcánica con conflictos religiosos y étnicos como Croacia, Serbia y Bosnia, formaron parte de:",
+    opciones: ["La Unión Soviética", "Yugoslavia", "El Imperio Otomano", "La Confederación Germánica"],
+    correcta: 1,
+    explicacion: "Yugoslavia agrupó a estos países desde 1918 hasta su desintegración violenta en los años 90, marcada por guerras de independencia y limpieza étnica."
+  },
+  {
+    materia: "geografia",
+    tema: "ciclo del oxígeno — algas",
+    fuente: "320_UNAM",
+    pregunta: "La renovación del oxígeno atmosférico se ve afectada por la contaminación marina porque ésta provoca la mortalidad masiva de:",
+    opciones: ["Corales", "Algas y fitoplancton", "Peces grandes", "Crustáceos"],
+    correcta: 1,
+    explicacion: "Las algas y el fitoplancton oceánicos producen aproximadamente la mitad del oxígeno atmosférico vía fotosíntesis. Su muerte por contaminación reduce ese aporte vital."
+  },
+
+  // ===================== HISTORIA DE MÉXICO (preguntas tipo examen UNAM) =====================
+  {
+    materia: "historia",
+    tema: "Maximato — presidentes",
+    fuente: "320_UNAM",
+    pregunta: "¿Quiénes fueron los presidentes durante el periodo conocido como Maximato (1928-1934)?",
+    opciones: [
+      "Álvaro Obregón, Plutarco E. Calles y Lázaro Cárdenas",
+      "Emilio Portes Gil, Pascual Ortiz Rubio y Abelardo L. Rodríguez",
+      "Adolfo de la Huerta, Álvaro Obregón y Plutarco E. Calles",
+      "Lázaro Cárdenas, Manuel Ávila Camacho y Miguel Alemán"
+    ],
+    correcta: 1,
+    explicacion: "El Maximato fue el periodo en que tres presidentes (Portes Gil, Ortiz Rubio y Abelardo Rodríguez) gobernaron bajo la influencia de Calles, el \"Jefe Máximo\". Mnemotecnia: E-P-A."
+  },
+  {
+    materia: "historia",
+    tema: "Maximato — Jefe Máximo",
+    fuente: "320_UNAM",
+    pregunta: "¿Quién fue conocido como el \"Jefe Máximo\" durante el Maximato, ejerciendo el poder real detrás de tres presidentes?",
+    opciones: ["Álvaro Obregón", "Plutarco Elías Calles", "Lázaro Cárdenas", "Venustiano Carranza"],
+    correcta: 1,
+    explicacion: "Plutarco Elías Calles, tras su presidencia (1924-1928), siguió ejerciendo el poder real entre 1928 y 1934, hasta que Cárdenas lo expulsó del país."
+  },
+  {
+    materia: "historia",
+    tema: "consumación de la Independencia",
+    fuente: "320_UNAM",
+    pregunta: "¿Quién consumó la Independencia de México al entrar al frente del Ejército Trigarante a la Ciudad de México en 1821?",
+    opciones: ["Miguel Hidalgo", "José María Morelos", "Agustín de Iturbide", "Vicente Guerrero"],
+    correcta: 2,
+    explicacion: "Agustín de Iturbide, tras pactar con Vicente Guerrero el Plan de Iguala, encabezó la entrada triunfal del Ejército Trigarante a la capital el 27 de septiembre de 1821."
+  },
+  {
+    materia: "historia",
+    tema: "Nueva España — autoridad",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál era la máxima autoridad política en la Nueva España, representante directo del rey de España?",
+    opciones: ["Capitán General", "Virrey", "Corregidor", "Encomendero"],
+    correcta: 1,
+    explicacion: "El Virrey era la máxima autoridad colonial: nombrado por el rey, ejercía funciones ejecutivas, militares y judiciales. La Nueva España tuvo 62 virreyes en sus 300 años."
+  },
+  {
+    materia: "historia",
+    tema: "Independencia — causas externas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles fueron las principales causas externas de la Independencia de México?",
+    opciones: [
+      "La Ilustración, la Independencia de las 13 Colonias y la invasión napoleónica a España",
+      "La Revolución Industrial, la Guerra de Secesión y la unificación alemana",
+      "La Guerra Fría, la Doctrina Monroe y el Plan Marshall",
+      "La Revolución Rusa, la Primera Guerra Mundial y la Gran Depresión"
+    ],
+    correcta: 0,
+    explicacion: "Las ideas ilustradas, el ejemplo de la independencia estadounidense (1776) y la crisis política provocada por la invasión napoleónica a España (1808) son las tres causas externas clásicas."
+  },
+  {
+    materia: "historia",
+    tema: "Reformas Borbónicas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál fue el principal objetivo de las Reformas Borbónicas en la Nueva España?",
+    opciones: [
+      "Independizar políticamente a las colonias",
+      "Aumentar la recaudación, recuperar el control político y reducir el poder de los grupos locales",
+      "Otorgar derechos civiles a indígenas y mestizos",
+      "Trasladar la capital del virreinato a Veracruz"
+    ],
+    correcta: 1,
+    explicacion: "Las Reformas Borbónicas (s. XVIII) buscaron centralizar el poder, modernizar la administración y aumentar los ingresos fiscales para la corona, debilitando a élites locales y a la Iglesia."
+  },
+  {
+    materia: "historia",
+    tema: "antecedentes de las independencias",
+    fuente: "320_UNAM",
+    pregunta: "La Ilustración, las Reformas Borbónicas y las guerras napoleónicas fueron antecedentes directos de:",
+    opciones: ["La caída del Imperio Romano", "La independencia de Hispanoamérica", "La Revolución Industrial", "La Guerra Civil de Estados Unidos"],
+    correcta: 1,
+    explicacion: "Estos tres procesos (s. XVIII–inicios del XIX) erosionaron la legitimidad colonial española y abrieron la puerta a los movimientos de independencia hispanoamericanos."
+  },
+  {
+    materia: "historia",
+    tema: "periódico Regeneración",
+    fuente: "320_UNAM",
+    pregunta: "Periódico fundado por los hermanos Flores Magón, opositor a la dictadura de Porfirio Díaz:",
+    opciones: ["El Imparcial", "Regeneración", "El Hijo del Ahuizote", "El Universal"],
+    correcta: 1,
+    explicacion: "Regeneración (1900) fue el medio principal del magonismo. Su crítica al porfiriato lo convirtió en preludio ideológico de la Revolución Mexicana."
+  },
+  {
+    materia: "historia",
+    tema: "entrevista Díaz-Creelman",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué evento de 1908 motivó indirectamente la creación de partidos políticos opositores en México?",
+    opciones: [
+      "La entrevista Díaz-Creelman",
+      "La huelga de Cananea",
+      "El Plan de San Luis",
+      "La Decena Trágica"
+    ],
+    correcta: 0,
+    explicacion: "En la entrevista al periodista James Creelman, Porfirio Díaz declaró que México estaba listo para la democracia y no buscaría la reelección. Esto alentó la formación de partidos como el Antirreeleccionista de Madero."
+  },
+  {
+    materia: "historia",
+    tema: "Revolución Mexicana — causas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles fueron causas principales de la Revolución Mexicana?",
+    opciones: [
+      "La invasión estadounidense y la pérdida de territorio",
+      "El periodismo de oposición, el dominio de capitales extranjeros y los movimientos obreros y campesinos",
+      "La Reforma agraria de Cárdenas y la nacionalización del petróleo",
+      "El Maximato y la guerra cristera"
+    ],
+    correcta: 1,
+    explicacion: "El régimen porfirista enfrentaba una creciente prensa opositora, la concentración de tierras y recursos en manos de extranjeros, y el descontento obrero (Cananea, Río Blanco) y campesino."
+  },
+  {
+    materia: "historia",
+    tema: "Revolución Mexicana — etapas",
+    fuente: "320_UNAM",
+    pregunta: "Relaciona cada etapa de la Revolución Mexicana con su rasgo característico: I. Maderista, II. Constitucionalista, III. Reconstrucción nacional.",
+    opciones: [
+      "I. Constitución de 1917 — II. Decena Trágica — III. Plan de Ayala",
+      "I. Movimiento zapatista y Decena Trágica — II. Constitución de 1917 — III. Rebelión de Agua Prieta y gobierno de Obregón",
+      "I. Plan de San Luis — II. Maximato — III. Cardenismo",
+      "I. Plan de Ayala — II. Plan de Guadalupe — III. Revolución de Tuxtepec"
+    ],
+    correcta: 1,
+    explicacion: "Maderista: convocatoria armada, zapatismo y Decena Trágica. Constitucionalista: lucha de Carranza y promulgación de la Constitución de 1917. Reconstrucción: Agua Prieta y gobierno de Obregón."
+  },
+  {
+    materia: "historia",
+    tema: "caudillismo — características",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son rasgos característicos del caudillismo mexicano posrevolucionario?",
+    opciones: [
+      "Líder electo por partido político mediante voto ciudadano formal",
+      "Líder carismático con apoyo militar y de masas, surgido informalmente del propio movimiento",
+      "Sucesión hereditaria estilo monarquía",
+      "Gobierno colegiado de tres ministros con rotación"
+    ],
+    correcta: 1,
+    explicacion: "El caudillo se legitima por su carisma personal, su trayectoria militar y el apoyo popular, no por procedimientos institucionales. Es típico de Latinoamérica del siglo XIX e inicios del XX."
+  },
+  {
+    materia: "historia",
+    tema: "presidencialismo",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se diferencia el presidencialismo del caudillismo en el México posrevolucionario?",
+    opciones: [
+      "El presidente es electo por un partido político y el poder se divide en tres ramas",
+      "El presidente es nombrado por el ejército",
+      "Es lo mismo, son sinónimos",
+      "El presidencialismo no admite reelección, el caudillismo sí"
+    ],
+    correcta: 0,
+    explicacion: "El presidencialismo institucionaliza el poder: candidato de partido, voto popular y división de poderes (ejecutivo, legislativo, judicial). El caudillismo se sostiene en la figura personal del líder."
+  },
+  {
+    materia: "historia",
+    tema: "Porfiriato — filosofía",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál fue la base ideológica del régimen de Porfirio Díaz?",
+    opciones: ["Liberalismo radical", "Positivismo", "Marxismo", "Anarquismo"],
+    correcta: 1,
+    explicacion: "El positivismo de Auguste Comte (\"orden y progreso\") fue adoptado por el grupo de los \"Científicos\" del porfiriato como base para modernizar el país."
+  },
+  {
+    materia: "historia",
+    tema: "Porfiriato — modernización",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué gobierno se construyó el Palacio de Bellas Artes, se fundó la Universidad Nacional y se expandieron las vías férreas?",
+    opciones: ["Benito Juárez", "Porfirio Díaz", "Lázaro Cárdenas", "Adolfo López Mateos"],
+    correcta: 1,
+    explicacion: "El Porfiriato (1876-1911) se caracterizó por una intensa modernización material: ferrocarriles, telégrafos, edificios emblemáticos como Bellas Artes (iniciado en 1904) y la refundación de la Universidad Nacional (1910)."
+  },
+  {
+    materia: "historia",
+    tema: "Lázaro Cárdenas",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué acciones caracterizaron al gobierno de Lázaro Cárdenas (1934-1940)?",
+    opciones: [
+      "Privatización de empresas estatales y apertura comercial",
+      "Creación de la CTM, reparto agrario y nacionalización del petróleo",
+      "Devolución del Chamizal y libros de texto gratuitos",
+      "Programa Bracero y fundación del IMSS"
+    ],
+    correcta: 1,
+    explicacion: "Cárdenas fundó la Confederación de Trabajadores de México (CTM, 1936), repartió ~18 millones de hectáreas a campesinos y nacionalizó el petróleo (1938)."
+  },
+  {
+    materia: "historia",
+    tema: "Plan Sexenal",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué consolidó la implementación del Plan Sexenal durante el gobierno de Lázaro Cárdenas?",
+    opciones: [
+      "El federalismo radical",
+      "El presidencialismo como sistema de gobierno en México",
+      "El parlamentarismo",
+      "La descentralización del poder"
+    ],
+    correcta: 1,
+    explicacion: "El Plan Sexenal (planeación a 6 años) institucionalizó la primacía del Ejecutivo sobre los demás poderes y partidos, consolidando el presidencialismo mexicano del siglo XX."
+  },
+  {
+    materia: "historia",
+    tema: "Ávila Camacho — declaración de guerra",
+    fuente: "320_UNAM",
+    pregunta: "Tras el hundimiento de los buques petroleros mexicanos <i>Potrero del Llano</i> y <i>Faja de Oro</i> por submarinos alemanes, ¿qué decisión tomó el presidente Manuel Ávila Camacho en 1942?",
+    opciones: [
+      "Decretó la neutralidad estricta",
+      "Le declaró la guerra a las potencias del Eje",
+      "Solicitó intervención de E.U.A.",
+      "Rompió relaciones únicamente con Alemania"
+    ],
+    correcta: 1,
+    explicacion: "México declaró la guerra a Alemania, Italia y Japón el 22 de mayo de 1942. Posteriormente envió al Escuadrón 201 a combatir en el Pacífico."
+  },
+  {
+    materia: "historia",
+    tema: "Ávila Camacho — IMSS y Bracero",
+    fuente: "320_UNAM",
+    pregunta: "¿Durante qué presidencia se fundó el Instituto Mexicano del Seguro Social (IMSS) y se inició el Programa Bracero con E.U.A.?",
+    opciones: ["Lázaro Cárdenas", "Manuel Ávila Camacho", "Miguel Alemán", "Adolfo López Mateos"],
+    correcta: 1,
+    explicacion: "Bajo Ávila Camacho (1940-1946) se creó el IMSS (1943) y se firmó el acuerdo migratorio (Programa Bracero, 1942) que permitió a trabajadores mexicanos laborar legalmente en E.U.A."
+  },
+  {
+    materia: "historia",
+    tema: "Desarrollo estabilizador",
+    fuente: "320_UNAM",
+    pregunta: "¿Cómo se le conoce al periodo (~1954-1970) en que México registró un crecimiento económico anual sostenido cercano al 6-7% con baja inflación?",
+    opciones: [
+      "Porfiriato económico",
+      "Desarrollo estabilizador o \"Milagro Mexicano\"",
+      "Neoliberalismo",
+      "Sustitución de importaciones agrícolas"
+    ],
+    correcta: 1,
+    explicacion: "El \"Milagro Mexicano\" o Desarrollo Estabilizador combinó crecimiento del PIB cercano al 6%, peso estable y baja inflación, sustentado en la sustitución de importaciones."
+  },
+  {
+    materia: "historia",
+    tema: "López Mateos — Chamizal",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué presidencia se logró la devolución de El Chamizal por parte de Estados Unidos a México?",
+    opciones: ["Adolfo Ruiz Cortines", "Adolfo López Mateos", "Gustavo Díaz Ordaz", "Luis Echeverría"],
+    correcta: 1,
+    explicacion: "López Mateos (1958-1964) negoció con J. F. Kennedy y Lyndon B. Johnson la devolución de El Chamizal, territorio fronterizo en disputa cerca de Ciudad Juárez (resuelto en 1963-1967)."
+  },
+  {
+    materia: "historia",
+    tema: "López Mateos — política social",
+    fuente: "320_UNAM",
+    pregunta: "¿Durante qué gobierno se nacionalizó la industria eléctrica y se introdujeron los libros de texto gratuitos?",
+    opciones: ["Lázaro Cárdenas", "Adolfo López Mateos", "Luis Echeverría", "José López Portillo"],
+    correcta: 1,
+    explicacion: "Adolfo López Mateos (1958-1964) nacionalizó la industria eléctrica en 1960 y creó la Comisión Nacional de los Libros de Texto Gratuitos (CONALITEG) en 1959."
+  },
+  {
+    materia: "historia",
+    tema: "Díaz Ordaz — 1968",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué presidencia ocurrió el movimiento estudiantil de 1968 y la masacre de Tlatelolco?",
+    opciones: ["Adolfo López Mateos", "Gustavo Díaz Ordaz", "Luis Echeverría", "José López Portillo"],
+    correcta: 1,
+    explicacion: "El 2 de octubre de 1968, días antes de los Juegos Olímpicos, fuerzas militares y paramilitares dispararon contra estudiantes en la Plaza de las Tres Culturas, durante el sexenio de Díaz Ordaz."
+  },
+  {
+    materia: "historia",
+    tema: "Echeverría — CONACYT",
+    fuente: "320_UNAM",
+    pregunta: "¿En qué sexenio se fundó el Consejo Nacional de Ciencia y Tecnología (CONACYT) y se establecieron relaciones con la República Popular China?",
+    opciones: ["Gustavo Díaz Ordaz", "Luis Echeverría Álvarez", "José López Portillo", "Miguel de la Madrid"],
+    correcta: 1,
+    explicacion: "Bajo Luis Echeverría (1970-1976) se creó CONACYT (1970) y se restablecieron relaciones diplomáticas con China continental (1972), siguiendo la apertura iniciada por E.U.A."
+  },
+  {
+    materia: "historia",
+    tema: "neoliberalismo en México",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué características definieron al modelo neoliberal en México (a partir de los años 80)?",
+    opciones: [
+      "Reparto agrario y nacionalización de industrias estratégicas",
+      "Privatización de empresas paraestatales y apertura al libre mercado",
+      "Sustitución de importaciones y proteccionismo arancelario",
+      "Estado de bienestar con expansión del gasto social"
+    ],
+    correcta: 1,
+    explicacion: "El neoliberalismo (Miguel de la Madrid, Salinas, Zedillo) se caracterizó por reducir el papel del Estado: privatización de paraestatales (Telmex, banca, etc.) y apertura comercial (TLCAN, 1994)."
+  },
+  {
+    materia: "historia",
+    tema: "caudillismo posrevolucionario",
+    fuente: "320_UNAM",
+    pregunta: "Uno de los rasgos distintivos del fenómeno del caudillismo en el México posrevolucionario fue que:",
+    opciones: [
+      "El poder político fue ejercido por el clero",
+      "Los jefes militares de la Revolución detentaron el poder político",
+      "Los presidentes eran nombrados por la Suprema Corte",
+      "El poder se concentró en manos del Congreso"
+    ],
+    correcta: 1,
+    explicacion: "Tras la Revolución, los principales caudillos militares (Obregón, Calles) ocuparon la presidencia. La institucionalización del poder solo se consolidó con el Maximato y, sobre todo, con Cárdenas."
+  },
+
+  // ===================== ESPAÑOL (preguntas tipo examen UNAM) =====================
+  {
+    materia: "espanol",
+    tema: "predicado",
+    fuente: "320_UNAM",
+    pregunta: "En la oración \"Las costumbres sociales han cambiado notablemente\", ¿cuál es el predicado?",
+    opciones: ["Las costumbres sociales", "han cambiado notablemente", "notablemente", "Las costumbres"],
+    correcta: 1,
+    explicacion: "El predicado es lo que se dice del sujeto. Sujeto: \"Las costumbres sociales\". Predicado: \"han cambiado notablemente\" (verbo + complementos)."
+  },
+  {
+    materia: "espanol",
+    tema: "acentuación — diacrítica",
+    fuente: "320_UNAM",
+    pregunta: "En el siguiente texto, ¿qué grupo de palabras lleva acentuación correcta? <br><i>\"___ ahijada se ___ hace dos años y se ___ a vivir a Alemania, no ___ si regresará, ___ a visitarla y me ___ mucho gusto verla feliz.\"</i>",
+    opciones: [
+      "Tú — caso — fué — sé — fuí — dió",
+      "Tu — casó — fue — sé — fui — dio",
+      "Tu — caso — fue — se — fui — dio",
+      "Tú — casó — fué — se — fuí — dió"
+    ],
+    correcta: 1,
+    explicacion: "Tu (sin tilde, posesivo); casó (verbo, agudo terminado en vocal); fue, fui, dio (monosílabos sin tilde); sé (con tilde diacrítica del verbo saber). \"Fué\" y \"dió\" llevaban tilde antes de 1959, ya no."
+  },
+  {
+    materia: "espanol",
+    tema: "signos de puntuación — guiones largos",
+    fuente: "320_UNAM",
+    pregunta: "Los enunciados que aparecen entre guiones largos —como este— también pueden escribirse entre:",
+    opciones: ["Comillas o asteriscos", "Comas o paréntesis", "Puntos suspensivos", "Corchetes únicamente"],
+    correcta: 1,
+    explicacion: "Los guiones largos (rayas) introducen incisos o aclaraciones. Las mismas funciones las cumplen las comas (incisos breves) o los paréntesis (incisos más independientes)."
+  },
+  {
+    materia: "espanol",
+    tema: "ortografía — b/v",
+    fuente: "320_UNAM",
+    pregunta: "Completa con b o v: <i>\"No de__es de re__elarte sin una __erdadera y su__lime razón.\"</i>",
+    opciones: ["v-v-b-v", "b-b-v-b", "b-v-v-b", "v-b-b-v"],
+    correcta: 1,
+    explicacion: "<b>deb</b>es (haber, con b), <b>reb</b>elarte (oponerse, con b; \"revelar\" con v es \"descubrir\"), <b>v</b>erdadera (con v), <b>sub</b>lime (prefijo sub-, con b)."
+  },
+  {
+    materia: "espanol",
+    tema: "ortografía — c/s/z",
+    fuente: "320_UNAM",
+    pregunta: "Completa correctamente: <i>\"Es ne__e__ario que los di__ípulos perspica__es recono__can los mati__es del interesante ca__o.\"</i>",
+    opciones: ["s-s-c-s-s-c-z", "c-s-sc-c-z-c-s", "s-c-c-s-z-s-z", "c-c-s-c-c-s-s"],
+    correcta: 1,
+    explicacion: "ne<b>c</b>e<b>s</b>ario, di<b>sc</b>ípulos, perspica<b>c</b>es, recono<b>z</b>can, mati<b>c</b>es, ca<b>s</b>o."
+  },
+  {
+    materia: "espanol",
+    tema: "homófonas",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de las siguientes oraciones contiene palabras homófonas?",
+    opciones: [
+      "El perro ladra de noche",
+      "Me habría visto si abría la puerta",
+      "Hoy llovió todo el día",
+      "Estudiaron mucho para el examen"
+    ],
+    correcta: 1,
+    explicacion: "Homófonas: suenan igual pero significan distinto. \"Habría\" (verbo haber) y \"abría\" (verbo abrir) suenan igual pero su escritura y significado son diferentes."
+  },
+  {
+    materia: "espanol",
+    tema: "sinónimos — engendrar",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un sinónimo de ENGENDRAR?",
+    opciones: ["Destruir", "Gestar", "Repetir", "Heredar"],
+    correcta: 1,
+    explicacion: "Engendrar = procrear, dar origen. Gestar tiene el mismo sentido (crear o desarrollar algo)."
+  },
+  {
+    materia: "espanol",
+    tema: "formas de discurso — descriptivo",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué forma de discurso predomina en el siguiente fragmento? <br><i>\"La enfermería se encontraba en el tercer piso. Blanca, limpia, con olor a desinfectante. Ahí, entre la hilera de camas, sólo había un muchacho delgado, pálido y ojeroso.\"</i>",
+    opciones: ["Narrativo", "Argumentativo", "Descriptivo", "Expositivo"],
+    correcta: 2,
+    explicacion: "El texto describe lugares y personas con adjetivos sensoriales (blanca, limpia, delgado, pálido), sin avanzar acciones. Es un discurso descriptivo."
+  },
+  {
+    materia: "espanol",
+    tema: "analogías — parte/todo",
+    fuente: "320_UNAM",
+    pregunta: "Completa la analogía: Suela es a Zapato como Casa es a:",
+    opciones: ["Techo", "Cimiento", "Ventana", "Habitación"],
+    correcta: 1,
+    explicacion: "Suela : Zapato indica la base que sostiene la estructura. La parte equivalente en una casa son los cimientos."
+  },
+  {
+    materia: "espanol",
+    tema: "formas de discurso — narrativo",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué forma de discurso predomina en el siguiente fragmento? <br><i>\"En un momento llegó al final del nicho, y tropezando con la roca, se paró estúpidamente absorto…\"</i>",
+    opciones: ["Descriptivo", "Narrativo", "Argumentativo", "Dialogado"],
+    correcta: 1,
+    explicacion: "El fragmento avanza una secuencia de acciones (llegó, tropezó, se paró) en el tiempo. Es discurso narrativo."
+  },
+  {
+    materia: "espanol",
+    tema: "sinónimos — proliferación",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un sinónimo de PROLIFERACIÓN?",
+    opciones: ["Disminución", "Acrecentamiento", "Estancamiento", "Concentración"],
+    correcta: 1,
+    explicacion: "Proliferación significa multiplicación o aumento rápido. Acrecentamiento (de \"acrecentar\", aumentar) es su sinónimo más cercano."
+  },
+  {
+    materia: "espanol",
+    tema: "sinónimos — recóndito",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un sinónimo de RECÓNDITO?",
+    opciones: ["Visible", "Profundo", "Sencillo", "Cotidiano"],
+    correcta: 1,
+    explicacion: "Recóndito: oculto, escondido, muy interior. Profundo es sinónimo en sentido figurado (lo que está en lo más íntimo o hondo)."
+  },
+  {
+    materia: "espanol",
+    tema: "núcleo del predicado",
+    fuente: "320_UNAM",
+    pregunta: "Identifica el núcleo del predicado en la oración: <i>\"La decodificación del genoma humano permitirá resolver preguntas fundamentales para la biología y la sociedad.\"</i>",
+    opciones: ["La decodificación", "permitirá resolver", "preguntas fundamentales", "para la biología y la sociedad"],
+    correcta: 1,
+    explicacion: "El núcleo del predicado es el verbo conjugado (con su perífrasis si la hay). \"Permitirá resolver\" es la perífrasis verbal que funciona como núcleo."
+  },
+  {
+    materia: "espanol",
+    tema: "géneros periodísticos — editorial",
+    fuente: "320_UNAM",
+    pregunta: "El editorial de un periódico se clasifica como:",
+    opciones: ["Nota informativa", "Crónica", "Artículo de opinión", "Entrevista"],
+    correcta: 2,
+    explicacion: "El editorial expresa la postura del medio frente a un tema, por lo que pertenece a los géneros de opinión, no a los informativos."
+  },
+  {
+    materia: "espanol",
+    tema: "complemento circunstancial — modo",
+    fuente: "320_UNAM",
+    pregunta: "En la oración \"El padre cerró <b>con cuidado</b> la portezuela\", ¿qué tipo de complemento es la frase resaltada?",
+    opciones: ["De lugar", "De tiempo", "De modo", "De compañía"],
+    correcta: 2,
+    explicacion: "\"Con cuidado\" responde a la pregunta ¿cómo cerró?, así que es un complemento circunstancial de modo."
+  },
+  {
+    materia: "espanol",
+    tema: "analogías — sinónimos",
+    fuente: "320_UNAM",
+    pregunta: "Completa la analogía: Debate es a discusión como explicación es a:",
+    opciones: ["Confusión", "Solución", "Pregunta", "Conclusión"],
+    correcta: 1,
+    explicacion: "Debate y discusión son sinónimos (intercambio de ideas para llegar a una conclusión). Explicación se relaciona con solución por la misma lógica: aclarar lleva a resolver."
+  },
+  {
+    materia: "espanol",
+    tema: "antónimos — interino",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un antónimo de INTERINO?",
+    opciones: ["Provisional", "Definitivo", "Reciente", "Sustituto"],
+    correcta: 1,
+    explicacion: "Interino: que ocupa un cargo temporalmente. Su antónimo es definitivo (o permanente). \"Provisional\" y \"sustituto\" son sinónimos."
+  },
+  {
+    materia: "espanol",
+    tema: "sinónimos — interino",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un sinónimo de INTERINO?",
+    opciones: ["Permanente", "Pasajero", "Vitalicio", "Heredado"],
+    correcta: 1,
+    explicacion: "Interino significa transitorio o pasajero (que dura solo un tiempo). \"Permanente\" y \"vitalicio\" son antónimos."
+  },
+  {
+    materia: "espanol",
+    tema: "antónimos — indulgencia",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un antónimo de INDULGENCIA?",
+    opciones: ["Perdón", "Tolerancia", "Dureza", "Misericordia"],
+    correcta: 2,
+    explicacion: "Indulgencia: facilidad para perdonar o disculpar faltas. Su antónimo es dureza (o severidad, rigor). Las otras opciones son sinónimos."
+  },
+  {
+    materia: "espanol",
+    tema: "antónimos — pugna",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un antónimo de PUGNA?",
+    opciones: ["Pelea", "Acuerdo", "Disputa", "Conflicto"],
+    correcta: 1,
+    explicacion: "Pugna significa enfrentamiento, lucha. Su antónimo es acuerdo (o concordia, paz). Las otras opciones son sinónimos."
+  },
+  {
+    materia: "espanol",
+    tema: "sinónimos — pugna",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es un sinónimo de PUGNA?",
+    opciones: ["Acuerdo", "Riña", "Tregua", "Calma"],
+    correcta: 1,
+    explicacion: "Pugna y riña significan ambas pelea o enfrentamiento. Las otras opciones son antónimos."
+  },
+  {
+    materia: "espanol",
+    tema: "analogías — productor/producto",
+    fuente: "320_UNAM",
+    pregunta: "Completa la analogía: Músico es a orquesta como actor es a:",
+    opciones: ["Película", "Compañía teatral", "Escenario", "Director"],
+    correcta: 1,
+    explicacion: "Un músico forma parte de una orquesta. Un actor forma parte de una compañía teatral (la agrupación profesional equivalente)."
+  },
+  {
+    materia: "espanol",
+    tema: "sujeto",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es el sujeto en la oración: <i>\"Un enorme triunfo tuvo ayer el candidato del Partido Demócrata sin problema\"</i>?",
+    opciones: ["Un enorme triunfo", "el candidato del Partido Demócrata", "ayer", "sin problema"],
+    correcta: 1,
+    explicacion: "El sujeto es quien realiza la acción. Reordenando: \"El candidato del Partido Demócrata tuvo un enorme triunfo ayer sin problema.\" El sujeto es \"el candidato del Partido Demócrata\"."
+  },
+  {
+    materia: "espanol",
+    tema: "elementos de la comunicación",
+    fuente: "320_UNAM",
+    pregunta: "Los elementos indispensables del proceso de comunicación son:",
+    opciones: [
+      "Lenguaje, gramática y ortografía",
+      "Interlocutores (emisor y receptor), mensaje y canal",
+      "Sujeto, verbo y predicado",
+      "Voz, gesto y mirada"
+    ],
+    correcta: 1,
+    explicacion: "Para que haya comunicación se requieren al menos: emisor y receptor (interlocutores), un mensaje y un canal por el que viaja. Suelen añadirse código y contexto."
+  },
+  {
+    materia: "espanol",
+    tema: "función gramatical — núcleo del sujeto",
+    fuente: "320_UNAM",
+    pregunta: "En la oración <i>\"La pobre <u>princesa</u> recorre el mundo sin destino\"</i>, ¿qué función cumple la palabra subrayada (<i>princesa</i>)?",
+    opciones: ["Núcleo del predicado", "Núcleo del sujeto", "Complemento directo", "Modificador indirecto"],
+    correcta: 1,
+    explicacion: "El sujeto es \"La pobre princesa\". El núcleo del sujeto es el sustantivo principal: <i>princesa</i> (los demás —La, pobre— son sus modificadores)."
+  },
+
+  // ===================== LITERATURA (preguntas tipo examen UNAM) =====================
+  {
+    materia: "literatura",
+    tema: "épica vs lírica",
+    fuente: "320_UNAM",
+    pregunta: "La poesía épica se considera ___ y trata sobre ___; la poesía lírica se considera ___ y trata sobre ___.",
+    opciones: [
+      "Subjetiva / hazañas heroicas — Objetiva / emociones íntimas",
+      "Objetiva / hazañas heroicas — Subjetiva / emociones íntimas",
+      "Objetiva / emociones íntimas — Subjetiva / hazañas heroicas",
+      "Subjetiva / acontecimientos históricos — Objetiva / paisajes"
+    ],
+    correcta: 1,
+    explicacion: "La épica narra hechos heroicos en tono objetivo (la <i>Ilíada</i>, el <i>Cantar de Mío Cid</i>). La lírica expresa el mundo interior subjetivo del poeta (Bécquer, Sor Juana)."
+  },
+  {
+    materia: "literatura",
+    tema: "figuras retóricas — símil",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de las siguientes expresiones es un ejemplo de SÍMIL (comparación)?",
+    opciones: [
+      "Sus dientes son perlas",
+      "Se fue tal cual pájaro desjaulado",
+      "El tiempo es oro",
+      "La luna sonríe en el cielo"
+    ],
+    correcta: 1,
+    explicacion: "El símil compara dos elementos usando un nexo (como, cual, tal). \"Tal cual\" es el nexo. Las otras son metáfora, metáfora y prosopopeya respectivamente."
+  },
+  {
+    materia: "literatura",
+    tema: "fichas — hemerográfica",
+    fuente: "320_UNAM",
+    pregunta: "Una ficha que cita una fuente como <i>\"Dresser, Denise. 'Cuando éramos huérfanos', Proceso, núm. 60, México, 2015\"</i> es de tipo:",
+    opciones: ["Bibliográfica", "Hemerográfica", "Audiovisual", "De resumen"],
+    correcta: 1,
+    explicacion: "Una ficha hemerográfica registra fuentes publicadas en hemerotecas: revistas, periódicos. La bibliográfica es para libros."
+  },
+  {
+    materia: "literatura",
+    tema: "subgéneros narrativos — cuento",
+    fuente: "320_UNAM",
+    pregunta: "Subgénero narrativo en prosa, breve, con pocos personajes y unidad temática:",
+    opciones: ["Novela", "Cuento", "Ensayo", "Crónica"],
+    correcta: 1,
+    explicacion: "El cuento se caracteriza por su brevedad, escasos personajes y una sola línea argumental con tensión que crece hasta un clímax."
+  },
+  {
+    materia: "literatura",
+    tema: "subgéneros narrativos — novela",
+    fuente: "320_UNAM",
+    pregunta: "Subgénero narrativo en prosa, extenso, con varios personajes y un macrocosmos:",
+    opciones: ["Cuento", "Fábula", "Novela", "Mito"],
+    correcta: 2,
+    explicacion: "La novela construye un mundo amplio (macrocosmos), con tramas múltiples, varios personajes y desarrollo psicológico, a diferencia del cuento que es focal y breve."
+  },
+  {
+    materia: "literatura",
+    tema: "género dramático",
+    fuente: "320_UNAM",
+    pregunta: "El género dramático se caracteriza porque:",
+    opciones: [
+      "Está escrito en versos rimados con musicalidad",
+      "Se representa, utiliza el diálogo y contiene acotaciones",
+      "Es exclusivamente narrativo y descriptivo",
+      "No admite la presencia de personajes"
+    ],
+    correcta: 1,
+    explicacion: "El género dramático está hecho para ser <b>representado</b>, avanza por <b>diálogo</b> entre personajes y usa <b>acotaciones</b> (instrucciones del autor entre paréntesis o cursivas)."
+  },
+  {
+    materia: "literatura",
+    tema: "cita textual",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué es una cita textual?",
+    opciones: [
+      "Un resumen con tus propias palabras",
+      "La reproducción exacta de las palabras de un autor",
+      "Una reseña crítica del texto",
+      "Una paráfrasis ampliada"
+    ],
+    correcta: 1,
+    explicacion: "La cita textual reproduce literalmente lo escrito por otra persona, entre comillas y con la referencia. La paráfrasis, en cambio, lo reescribe con palabras propias."
+  },
+  {
+    materia: "literatura",
+    tema: "literatura mexicana contemporánea",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué autores mexicanos son representantes de la literatura contemporánea?",
+    opciones: [
+      "Sor Juana Inés de la Cruz y Amado Nervo",
+      "Juan Rulfo y Juan José Arreola",
+      "Mariano Azuela y Martín Luis Guzmán",
+      "Octavio Paz y Carlos Pellicer"
+    ],
+    correcta: 1,
+    explicacion: "Juan Rulfo (<i>Pedro Páramo</i>, <i>El Llano en llamas</i>) y Juan José Arreola (<i>Confabulario</i>) son los referentes de la narrativa mexicana contemporánea de mediados del siglo XX."
+  },
+  {
+    materia: "literatura",
+    tema: "Realismo — autores",
+    fuente: "320_UNAM",
+    pregunta: "¿Qué grupo de autores pertenece al Realismo del siglo XIX?",
+    opciones: [
+      "Rubén Darío, Amado Nervo y José Martí",
+      "Benito Pérez Galdós, León Tolstói y Emilia Pardo Bazán",
+      "Pablo Neruda, Federico García Lorca y Juan Ramón Jiménez",
+      "Gabriel García Márquez, Mario Vargas Llosa y Julio Cortázar"
+    ],
+    correcta: 1,
+    explicacion: "Pérez Galdós (España), Tolstói (Rusia) y Pardo Bazán (España, además impulsora del Naturalismo) son figuras del Realismo decimonónico."
+  },
+  {
+    materia: "literatura",
+    tema: "Boom latinoamericano",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de los siguientes autores forma parte del llamado \"Boom\" latinoamericano?",
+    opciones: ["Rubén Darío", "Mario Vargas Llosa", "Pablo Neruda", "Octavio Paz"],
+    correcta: 1,
+    explicacion: "El Boom latinoamericano (años 60-70) reúne a García Márquez, Vargas Llosa, Cortázar y Carlos Fuentes, con obras como <i>Cien años de soledad</i> y <i>La ciudad y los perros</i>."
+  },
+  {
+    materia: "literatura",
+    tema: "ciencia ficción — Asimov",
+    fuente: "320_UNAM",
+    pregunta: "Autor estadounidense de ciencia ficción contemporánea, conocido por <i>Yo, robot</i>, la saga <i>Fundación</i> y <i>El hombre bicentenario</i>:",
+    opciones: ["Ray Bradbury", "Isaac Asimov", "Arthur C. Clarke", "Philip K. Dick"],
+    correcta: 1,
+    explicacion: "Isaac Asimov (1920-1992), nacido en Rusia pero estadounidense de adopción, formuló las célebres tres leyes de la robótica."
+  },
+  {
+    materia: "literatura",
+    tema: "figuras retóricas — paradoja",
+    fuente: "320_UNAM",
+    pregunta: "La frase <i>\"muero porque no muero\"</i> de Santa Teresa de Jesús es un ejemplo de:",
+    opciones: ["Hipérbole", "Paradoja", "Metáfora", "Antítesis"],
+    correcta: 1,
+    explicacion: "La paradoja une dos ideas aparentemente contradictorias que sin embargo encierran una verdad (el alma desea morir al mundo para vivir en Dios)."
+  },
+  {
+    materia: "literatura",
+    tema: "Modernismo — Rubén Darío",
+    fuente: "320_UNAM",
+    pregunta: "Autor nicaragüense de la obra <i>Azul</i> (1888) y máximo representante del Modernismo hispanoamericano:",
+    opciones: ["José Martí", "Rubén Darío", "Amado Nervo", "Leopoldo Lugones"],
+    correcta: 1,
+    explicacion: "Rubén Darío inauguró el Modernismo con <i>Azul</i>, marcando la renovación de la poesía en lengua española a finales del siglo XIX."
+  },
+  {
+    materia: "literatura",
+    tema: "Realismo — características",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál es una característica esencial del Realismo literario?",
+    opciones: [
+      "Exalta la fantasía y los mundos imaginarios",
+      "Representa la vida cotidiana de manera objetiva, prescindiendo de la fantasía",
+      "Privilegia el verso y la métrica clásica",
+      "Recurre al simbolismo y la sinestesia"
+    ],
+    correcta: 1,
+    explicacion: "El Realismo (s. XIX) buscó retratar la sociedad y la vida cotidiana tal cual era, con observación rigurosa, en oposición al Romanticismo idealizante."
+  },
+  {
+    materia: "literatura",
+    tema: "Modernismo — características",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuáles son rasgos característicos del Modernismo?",
+    opciones: [
+      "Realismo social y crítica política directa",
+      "Influencia del parnasianismo y el simbolismo, con Rubén Darío como máximo representante",
+      "Métrica popular y temas indigenistas",
+      "Compromiso con la Revolución Mexicana"
+    ],
+    correcta: 1,
+    explicacion: "El Modernismo absorbió el parnasianismo francés (perfección formal) y el simbolismo (sugerencia, musicalidad). Rubén Darío fue su líder indiscutible."
+  },
+  {
+    materia: "literatura",
+    tema: "estructura narrativa — clímax",
+    fuente: "320_UNAM",
+    pregunta: "En la estructura clásica de una narración, ¿qué momento precede inmediatamente al desenlace?",
+    opciones: ["Planteamiento", "Nudo", "Clímax", "Epílogo"],
+    correcta: 2,
+    explicacion: "El clímax es el punto de máxima tensión, justo antes del desenlace (resolución). Estructura: planteamiento → nudo → clímax → desenlace."
+  },
+  {
+    materia: "literatura",
+    tema: "género literario — épico",
+    fuente: "320_UNAM",
+    pregunta: "Género literario que aborda asuntos heroicos, con personajes inspirados en figuras históricas o míticas:",
+    opciones: ["Lírico", "Dramático", "Épico", "Didáctico"],
+    correcta: 2,
+    explicacion: "El género épico narra grandes hazañas: la <i>Ilíada</i>, la <i>Eneida</i>, el <i>Cantar de Mío Cid</i>, el <i>Popol Vuh</i>. Suele estar en verso largo y tono solemne."
+  },
+  {
+    materia: "literatura",
+    tema: "género narrativo",
+    fuente: "320_UNAM",
+    pregunta: "¿A qué género literario pertenecen el cuento, la leyenda y la novela?",
+    opciones: ["Lírico", "Dramático", "Narrativo", "Didáctico"],
+    correcta: 2,
+    explicacion: "Los tres son subgéneros del género narrativo: cuentan una historia con narrador, personajes, espacio y tiempo. La diferencia entre ellos es de extensión y origen."
+  },
+  {
+    materia: "literatura",
+    tema: "Pablo Neruda",
+    fuente: "320_UNAM",
+    pregunta: "Poeta chileno galardonado con el Premio Nobel de Literatura en 1971, autor de <i>Veinte poemas de amor y una canción desesperada</i>:",
+    opciones: ["Gabriela Mistral", "Pablo Neruda", "Vicente Huidobro", "Nicanor Parra"],
+    correcta: 1,
+    explicacion: "Pablo Neruda recibió el Nobel en 1971. Su compatriota Gabriela Mistral lo había recibido antes (1945), siendo la primera mujer latinoamericana en lograrlo."
+  },
+  {
+    materia: "literatura",
+    tema: "tragedia",
+    fuente: "320_UNAM",
+    pregunta: "Forma dramática en la que el protagonista, al rebelarse contra su destino, termina muriendo física o moralmente:",
+    opciones: ["Comedia", "Tragedia", "Melodrama", "Farsa"],
+    correcta: 1,
+    explicacion: "La tragedia (Sófocles, Esquilo, Shakespeare) presenta al héroe enfrentado a fuerzas superiores (destino, dioses, sociedad) que lo conducen a su caída."
+  },
+  {
+    materia: "literatura",
+    tema: "Realismo — Flaubert",
+    fuente: "320_UNAM",
+    pregunta: "¿A qué corriente literaria pertenece el escritor francés Gustave Flaubert, autor de <i>Madame Bovary</i>?",
+    opciones: ["Romanticismo", "Realismo", "Naturalismo", "Simbolismo"],
+    correcta: 1,
+    explicacion: "Flaubert es uno de los máximos exponentes del Realismo francés. <i>Madame Bovary</i> (1857) retrata con detalle la insatisfacción de una mujer en la provincia."
+  },
+  {
+    materia: "literatura",
+    tema: "ficha bibliográfica",
+    fuente: "320_UNAM",
+    pregunta: "¿Cuál de las siguientes es una ficha bibliográfica correctamente elaborada?",
+    opciones: [
+      "Octavio Paz, poeta mexicano, Nobel 1990",
+      "Paz, Octavio. <i>Versiones y diversiones</i>, Barcelona, Galaxia Gutenberg, 2000, 715 pp.",
+      "https://www.octaviopaz.org",
+      "Paz, O. \"Piedra de sol\", Revista Mexicana, junio 1957"
+    ],
+    correcta: 1,
+    explicacion: "Una ficha bibliográfica de libro lleva: Apellido, Nombre. <i>Título</i>, ciudad, editorial, año, páginas. La opción 4 sería una ficha hemerográfica (revista)."
+  },
+  {
+    materia: "literatura",
+    tema: "Octavio Paz — Nobel",
+    fuente: "320_UNAM",
+    pregunta: "Escritor mexicano galardonado con el Premio Nobel de Literatura en 1990:",
+    opciones: ["Carlos Fuentes", "Octavio Paz", "Juan Rulfo", "Alfonso Reyes"],
+    correcta: 1,
+    explicacion: "Octavio Paz (1914-1998) recibió el Nobel de Literatura en 1990, único mexicano en obtenerlo. Su obra ensayística (<i>El laberinto de la soledad</i>) y poética es referencia mundial."
+  },
+  // —— Matemáticas: cónica forma ordinaria — circunferencia centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — circunferencia",
+    pregunta: "El centro y el radio de la circunferencia $(x-3)^2 + (y+2)^2 = 25$ son",
+    opciones: [
+      "Centro $(3, -2)$, radio $5$",
+      "Centro $(-3, 2)$, radio $5$",
+      "Centro $(3, -2)$, radio $25$",
+      "Centro $(-3, 2)$, radio $25$"
+    ],
+    correcta: 0,
+    explicacion: "Forma ordinaria $(x-h)^2 + (y-k)^2 = r^2$. Aquí $h=3$, $k=-2$ (porque $y+2 = y-(-2)$), y $r^2 = 25 \\Rightarrow r = 5$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — circunferencia centro 2 ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — circunferencia",
+    pregunta: "El centro de la circunferencia $(x+5)^2 + (y-1)^2 = 16$ es",
+    opciones: ["$(-5, 1)$", "$(5, -1)$", "$(-5, -1)$", "$(5, 1)$"],
+    correcta: 0,
+    explicacion: "$(x+5)^2 = (x-(-5))^2$ y $(y-1)^2$. Entonces $h=-5$, $k=1$. Centro $(-5, 1)$. (El radio sería $r=\\sqrt{16}=4$.)"
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola vértice ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "El vértice de la parábola $(y-2)^2 = 8(x-3)$ es",
+    opciones: ["$(3, 2)$", "$(-3, -2)$", "$(2, 3)$", "$(-3, 2)$"],
+    correcta: 0,
+    explicacion: "Forma $(y-k)^2 = 4p(x-h)$ tiene vértice en $(h,k)$. Aquí $h=3$, $k=2 \\Rightarrow V(3, 2)$. La parábola abre hacia la derecha."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola foco ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "El foco de la parábola $(y-2)^2 = 8(x-3)$ es",
+    opciones: ["$(5, 2)$", "$(3, 4)$", "$(1, 2)$", "$(3, 0)$"],
+    correcta: 0,
+    explicacion: "$4p = 8 \\Rightarrow p = 2$. Como abre hacia la derecha, el foco está a $p$ unidades a la derecha del vértice $(3,2)$: $F(3+2, 2) = (5, 2)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola parámetro p ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "Para la parábola $(x+1)^2 = 12(y-4)$, el valor del parámetro $p$ es",
+    opciones: ["$3$", "$6$", "$12$", "$2$"],
+    correcta: 0,
+    explicacion: "Forma $(x-h)^2 = 4p(y-k)$ con $4p = 12 \\Rightarrow p = 3$. La parábola abre hacia arriba (eje vertical). Vértice en $(-1, 4)$, foco en $(-1, 7)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola dirección ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "¿Hacia dónde abre la parábola $(y+3)^2 = -16(x-2)$?",
+    opciones: ["A la izquierda", "A la derecha", "Hacia arriba", "Hacia abajo"],
+    correcta: 0,
+    explicacion: "Forma $(y-k)^2 = 4p(x-h)$: eje horizontal. Como $4p = -16 \\Rightarrow p = -4 < 0$, abre a la izquierda. Vértice en $(2, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — parábola lado recto ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — parábola",
+    pregunta: "La longitud del lado recto de la parábola $(x-4)^2 = 6(y+1)$ es",
+    opciones: ["$6$", "$3$", "$12$", "$1.5$"],
+    correcta: 0,
+    explicacion: "El lado recto de una parábola es $|4p|$. Como $4p = 6$, el lado recto vale $6$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "El centro de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ es",
+    opciones: ["$(2, -1)$", "$(-2, 1)$", "$(2, 1)$", "$(5, 3)$"],
+    correcta: 0,
+    explicacion: "Forma ordinaria $\\dfrac{(x-h)^2}{a^2} + \\dfrac{(y-k)^2}{b^2} = 1$. Aquí $h=2$, $k=-1$ ⇒ centro $(2, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse vértices ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los vértices de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ son",
+    opciones: [
+      "$(-3, -1)$ y $(7, -1)$",
+      "$(2, -6)$ y $(2, 4)$",
+      "$(-3, 2)$ y $(7, 2)$",
+      "$(-2, 1)$ y $(2, 1)$"
+    ],
+    correcta: 0,
+    explicacion: "Como $a^2 = 25 > b^2 = 9$ y está en el término de $x$, el eje focal es horizontal. $a = 5$. Vértices en $(h \\pm a, k) = (2 \\pm 5, -1)$, es decir $(-3, -1)$ y $(7, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse focos ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los focos de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ son",
+    opciones: [
+      "$(-2, -1)$ y $(6, -1)$",
+      "$(2, -5)$ y $(2, 3)$",
+      "$(-2, 1)$ y $(6, 1)$",
+      "$(-3, -1)$ y $(7, -1)$"
+    ],
+    correcta: 0,
+    explicacion: "En la elipse, $c^2 = a^2 - b^2 = 25 - 9 = 16 \\Rightarrow c = 4$. Eje focal horizontal, focos en $(h \\pm c, k) = (2 \\pm 4, -1)$: $(-2, -1)$ y $(6, -1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse excentricidad ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "La excentricidad de la elipse $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$ es",
+    opciones: ["$\\dfrac{4}{5}$", "$\\dfrac{3}{5}$", "$\\dfrac{5}{4}$", "$\\dfrac{9}{25}$"],
+    correcta: 0,
+    explicacion: "$e = \\dfrac{c}{a}$ con $c = \\sqrt{a^2 - b^2} = \\sqrt{16} = 4$ y $a = 5$. Entonces $e = \\dfrac{4}{5}$. (Para una elipse siempre $0 < e < 1$.)"
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse vertical ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "Los vértices de la elipse $\\dfrac{(x+3)^2}{16} + \\dfrac{(y-2)^2}{25} = 1$ son",
+    opciones: [
+      "$(-3, 7)$ y $(-3, -3)$",
+      "$(-3, 6)$ y $(-3, -2)$",
+      "$(1, 2)$ y $(-7, 2)$",
+      "$(-7, 2)$ y $(1, 2)$"
+    ],
+    correcta: 0,
+    explicacion: "Como $a^2 = 25 > 16$ y está en el término de $y$, el eje focal es vertical. $a = 5$. Vértices en $(h, k \\pm a) = (-3, 2 \\pm 5)$: $(-3, 7)$ y $(-3, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — elipse lado recto ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — elipse",
+    pregunta: "La longitud del lado recto de la elipse $\\dfrac{(x-1)^2}{9} + \\dfrac{(y+2)^2}{4} = 1$ es",
+    opciones: ["$\\dfrac{8}{3}$", "$\\dfrac{4}{3}$", "$\\dfrac{9}{2}$", "$\\dfrac{16}{3}$"],
+    correcta: 0,
+    explicacion: "Lado recto de una elipse: $LR = \\dfrac{2b^2}{a}$ donde $a$ es el semieje mayor. Aquí $a^2 = 9$ ($a=3$), $b^2 = 4$. $LR = \\dfrac{2(4)}{3} = \\dfrac{8}{3}$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola centro ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "El centro de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ es",
+    opciones: ["$(1, -3)$", "$(-1, 3)$", "$(1, 3)$", "$(4, -3)$"],
+    correcta: 0,
+    explicacion: "Forma ordinaria $\\dfrac{(x-h)^2}{a^2} - \\dfrac{(y-k)^2}{b^2} = 1$. Aquí $h=1$, $k=-3$ ⇒ centro $(1, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola vértices ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Los vértices de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$(-3, -3)$ y $(5, -3)$",
+      "$(1, -7)$ y $(1, 1)$",
+      "$(-4, -3)$ y $(6, -3)$",
+      "$(1, 0)$ y $(1, -6)$"
+    ],
+    correcta: 0,
+    explicacion: "El término positivo está en $x$, así que el eje transverso es horizontal. $a^2 = 16 \\Rightarrow a = 4$. Vértices en $(h \\pm a, k) = (1 \\pm 4, -3)$: $(-3, -3)$ y $(5, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola focos ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Los focos de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$(-4, -3)$ y $(6, -3)$",
+      "$(-3, -3)$ y $(5, -3)$",
+      "$(1, -8)$ y $(1, 2)$",
+      "$(1, 2)$ y $(1, -8)$"
+    ],
+    correcta: 0,
+    explicacion: "En la hipérbola, $c^2 = a^2 + b^2 = 16 + 9 = 25 \\Rightarrow c = 5$ (¡suma, no resta!). Eje transverso horizontal: focos en $(h \\pm c, k) = (1 \\pm 5, -3)$: $(-4, -3)$ y $(6, -3)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola asíntotas ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "Las ecuaciones de las asíntotas de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ son",
+    opciones: [
+      "$y + 3 = \\pm \\dfrac{3}{4}(x - 1)$",
+      "$y - 3 = \\pm \\dfrac{4}{3}(x + 1)$",
+      "$y + 3 = \\pm \\dfrac{4}{3}(x - 1)$",
+      "$y + 3 = \\pm \\dfrac{9}{16}(x - 1)$"
+    ],
+    correcta: 0,
+    explicacion: "Para una hipérbola horizontal con centro $(h, k)$, las asíntotas son $y - k = \\pm \\dfrac{b}{a}(x - h)$. Aquí $a = 4$, $b = 3$, centro $(1, -3)$: $y + 3 = \\pm \\dfrac{3}{4}(x - 1)$."
+  },
+  // —— Matemáticas: cónica forma ordinaria — hipérbola excentricidad ——
+  {
+    materia: "matematicas",
+    tema: "cónica forma ordinaria — hipérbola",
+    pregunta: "La excentricidad de la hipérbola $\\dfrac{(x-1)^2}{16} - \\dfrac{(y+3)^2}{9} = 1$ es",
+    opciones: ["$\\dfrac{5}{4}$", "$\\dfrac{4}{5}$", "$\\dfrac{3}{4}$", "$\\dfrac{4}{3}$"],
+    correcta: 0,
+    explicacion: "$e = \\dfrac{c}{a}$ con $c = \\sqrt{a^2 + b^2} = \\sqrt{25} = 5$ y $a = 4$. Entonces $e = \\dfrac{5}{4}$. (Para una hipérbola siempre $e > 1$.)"
+  },
+  // —— Matemáticas: logaritmo básico (a) ——
+  {
+    materia: "matematicas",
+    tema: "logaritmo básico",
+    pregunta: "¿Cuánto vale $\\log_2(16)$?",
+    opciones: ["$2$", "$3$", "$4$", "$8$"],
+    correcta: 2,
+    explicacion: "$2^4 = 16$, entonces $\\log_2(16) = 4$."
+  },
+  // —— Matemáticas: logaritmo básico (b) ——
+  {
+    materia: "matematicas",
+    tema: "logaritmo básico",
+    pregunta: "¿Cuánto vale $\\log_{10}(1000)$?",
+    opciones: ["$1$", "$3$", "$100$", "$1000$"],
+    correcta: 1,
+    explicacion: "$10^3 = 1000$, entonces $\\log_{10}(1000) = 3$."
+  },
+  // —— Matemáticas: logaritmo básico (c) ——
+  {
+    materia: "matematicas",
+    tema: "logaritmo básico",
+    pregunta: "¿Cuánto vale $\\log_3(81)$?",
+    opciones: ["$3$", "$4$", "$9$", "$27$"],
+    correcta: 1,
+    explicacion: "$3^4 = 81$, entonces $\\log_3(81) = 4$."
+  },
+  // —— Matemáticas: logaritmo básico (d) — leyes ——
+  {
+    materia: "matematicas",
+    tema: "logaritmo básico",
+    pregunta: "Calcula $\\log(50) + \\log(2)$.",
+    opciones: ["$1$", "$2$", "$\\log(52)$", "$\\log(25)$"],
+    correcta: 1,
+    explicacion: "Por la ley $\\log a + \\log b = \\log(ab)$: $\\log(50) + \\log(2) = \\log(100) = 2$."
+  },
+  // —— Matemáticas: logaritmo básico (e) — natural ——
+  {
+    materia: "matematicas",
+    tema: "logaritmo básico",
+    pregunta: "Calcula $\\ln(e^5)$.",
+    opciones: ["$5$", "$e^5$", "$5e$", "$1$"],
+    correcta: 0,
+    explicacion: "Propiedad inversa: $\\ln(e^x) = x$, así que $\\ln(e^5) = 5$."
+  },
+  // —— Matemáticas: ecuación logarítmica (a) — diferencia ——
+  {
+    materia: "matematicas",
+    tema: "ecuación logarítmica",
+    pregunta: "Resuelve $\\log_2(x+6) - \\log_2(x) = 1$.",
+    opciones: ["$x = 6$", "$x = 3$", "$x = 2$", "$x = -3$"],
+    correcta: 0,
+    explicacion: "$\\log_2\\dfrac{x+6}{x} = 1 \\Rightarrow \\dfrac{x+6}{x} = 2 \\Rightarrow x+6 = 2x \\Rightarrow x = 6$."
+  },
+  // —— Matemáticas: ecuación logarítmica (b) — suma ——
+  {
+    materia: "matematicas",
+    tema: "ecuación logarítmica",
+    pregunta: "Resuelve $\\log_3(x) + \\log_3(x-2) = 1$.",
+    opciones: ["$x = 3$", "$x = -1$", "$x = 3$ y $x = -1$", "$x = 1$"],
+    correcta: 0,
+    explicacion: "$\\log_3[x(x-2)] = 1 \\Rightarrow x^2 - 2x = 3 \\Rightarrow (x-3)(x+1) = 0$. Se descarta $x = -1$ porque haría negativo el argumento del logaritmo."
+  },
+  // —— Matemáticas: ecuación logarítmica (c) — exponencial ——
+  {
+    materia: "matematicas",
+    tema: "ecuación logarítmica",
+    pregunta: "Resuelve $\\log_5(2x+3) = 2$.",
+    opciones: ["$x = 11$", "$x = 22$", "$x = 2.5$", "$x = 5$"],
+    correcta: 0,
+    explicacion: "Por definición de log: $2x+3 = 5^2 = 25 \\Rightarrow x = 11$."
+  },
+  // —— Matemáticas: ecuación logarítmica (d) — potencia ——
+  {
+    materia: "matematicas",
+    tema: "ecuación logarítmica",
+    pregunta: "Resuelve $2\\log(x) = \\log(2x+3)$.",
+    opciones: ["$x = 3$", "$x = -1$", "$x = 3$ y $x = -1$", "$x = 5$"],
+    correcta: 0,
+    explicacion: "$\\log(x^2) = \\log(2x+3) \\Rightarrow x^2 = 2x+3 \\Rightarrow (x-3)(x+1) = 0$. Se descarta $x = -1$ (log no definido)."
+  },
+  // —— Matemáticas: ec. trigonométrica (d) — sin(2x) ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $\\sin(2x) = 0$ en $[0, \\pi]$.",
+    opciones: ["$\\{0, \\pi\\}$", "$\\{0, \\pi/2, \\pi\\}$", "$\\{\\pi/2\\}$", "$\\{0, \\pi/4\\}$"],
+    correcta: 1,
+    explicacion: "$\\sin(2x) = 0$ cuando $2x = 0, \\pi, 2\\pi$, es decir $x = 0, \\pi/2, \\pi$. Tres soluciones en el intervalo dado."
+  },
+  // —— Matemáticas: ec. trigonométrica (e) — sin² ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $2\\sin^2(x) - 1 = 0$ en $[0, \\pi/2]$.",
+    opciones: ["$\\pi/3$", "$\\pi/4$", "$\\pi/6$", "$\\pi/2$"],
+    correcta: 1,
+    explicacion: "$\\sin^2(x) = \\dfrac{1}{2} \\Rightarrow \\sin(x) = \\dfrac{\\sqrt{2}}{2}$ (positivo en este intervalo). Entonces $x = \\pi/4$."
+  },
+  // —— Matemáticas: ec. trigonométrica (f) — tan negativa ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $\\tan(x) = -1$ en $[0, \\pi]$.",
+    opciones: ["$\\pi/4$", "$3\\pi/4$", "$\\pi/2$", "$5\\pi/4$"],
+    correcta: 1,
+    explicacion: "$\\tan(x) = -1$ ocurre en el II cuadrante (tan negativa) con ángulo de referencia $\\pi/4$: $x = \\pi - \\pi/4 = 3\\pi/4$."
+  },
+  // —— Matemáticas: ec. trigonométrica (g) — sin² 3/4 ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $4\\sin^2(x) - 3 = 0$ en $[0, \\pi/2]$.",
+    opciones: ["$\\pi/6$", "$\\pi/4$", "$\\pi/3$", "$\\pi/2$"],
+    correcta: 2,
+    explicacion: "$\\sin^2(x) = \\dfrac{3}{4} \\Rightarrow \\sin(x) = \\dfrac{\\sqrt{3}}{2} \\Rightarrow x = \\pi/3$ en el intervalo dado."
+  },
+  // —— Matemáticas: ec. trigonométrica (h) — cos² 1 ——
+  {
+    materia: "matematicas",
+    tema: "ecuación trigonométrica",
+    pregunta: "Resuelve $\\cos^2(x) = 1$ en $[0, 2\\pi]$.",
+    opciones: ["$\\{0, 2\\pi\\}$", "$\\{0, \\pi/2, \\pi\\}$", "$\\{0, \\pi, 2\\pi\\}$", "$\\{\\pi/2, 3\\pi/2\\}$"],
+    correcta: 2,
+    explicacion: "$\\cos(x) = \\pm 1$. En el intervalo $[0, 2\\pi]$: $\\cos(0) = \\cos(2\\pi) = 1$ y $\\cos(\\pi) = -1$. Soluciones: $\\{0, \\pi, 2\\pi\\}$."
+  },
+  // —— Matemáticas: gráfica trig (paridad) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿Cuál de las siguientes funciones es par (simétrica respecto al eje $y$)?",
+    opciones: ["$\\sin x$", "$\\cos x$", "$\\tan x$", "$\\cot x$"],
+    correcta: 1,
+    explicacion: "$\\cos(-x) = \\cos(x)$, así que $\\cos$ es par. $\\sin$, $\\tan$ y $\\cot$ son impares (cumplen $f(-x) = -f(x)$)."
+  },
+  // —— Matemáticas: gráfica trig (período) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿Cuál función trigonométrica tiene período $\\pi$ (en lugar de $2\\pi$)?",
+    opciones: ["$\\sin x$", "$\\cos x$", "$\\tan x$", "$\\sec x$"],
+    correcta: 2,
+    explicacion: "$\\tan(x + \\pi) = \\tan(x)$. La tangente y cotangente tienen período $\\pi$; el resto tienen período $2\\pi$."
+  },
+  // —— Matemáticas: gráfica trig (signo de sin) ——
+  {
+    materia: "matematicas",
+    tema: "gráfica de funciones trigonométricas",
+    pregunta: "¿En qué intervalo del primer ciclo $[0, 2\\pi]$ es positiva la función $\\sin(x)$?",
+    opciones: ["$(0, \\pi)$", "$(\\pi, 2\\pi)$", "$(0, \\pi/2)$", "$(\\pi/2, 3\\pi/2)$"],
+    correcta: 0,
+    explicacion: "$\\sin(x) > 0$ en los cuadrantes I y II, es decir cuando $0 < x < \\pi$."
+  },
+  // —— Matemáticas: producto notable (binomio diferencia) ——
+  {
+    materia: "matematicas",
+    tema: "producto notable",
+    pregunta: "Desarrolla $(2x - 5)^2$.",
+    opciones: ["$4x^2 - 25$", "$4x^2 + 25$", "$4x^2 - 20x + 25$", "$4x^2 - 10x + 25$"],
+    correcta: 2,
+    explicacion: "$(a-b)^2 = a^2 - 2ab + b^2$. Con $a = 2x$, $b = 5$: $4x^2 - 20x + 25$."
+  },
+  // —— Matemáticas: producto notable (suma por diferencia) ——
+  {
+    materia: "matematicas",
+    tema: "producto notable",
+    pregunta: "Desarrolla $(x + 4)(x - 4)$.",
+    opciones: ["$x^2 + 8x - 16$", "$x^2 - 16$", "$x^2 + 16$", "$x^2 - 8x + 16$"],
+    correcta: 1,
+    explicacion: "Suma por diferencia: $(a+b)(a-b) = a^2 - b^2$. Resultado: $x^2 - 16$."
+  },
+  // —— Matemáticas: factorización (diferencia de cuadrados) ——
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $9x^2 - 1$.",
+    opciones: ["$(3x - 1)^2$", "$(3x + 1)^2$", "$(3x - 1)(3x + 1)$", "$(9x - 1)(x + 1)$"],
+    correcta: 2,
+    explicacion: "Diferencia de cuadrados: $9x^2 - 1 = (3x)^2 - 1^2 = (3x-1)(3x+1)$."
+  },
+  // —— Matemáticas: producto notable (cubo de binomio) ——
+  {
+    materia: "matematicas",
+    tema: "producto notable",
+    pregunta: "Desarrolla $(x + 2)^3$.",
+    opciones: ["$x^3 + 6x^2 + 12x + 8$", "$x^3 + 8$", "$x^3 + 2x^2 + 4x + 8$", "$x^3 + 6x^2 + 8x + 8$"],
+    correcta: 0,
+    explicacion: "$(a+b)^3 = a^3 + 3a^2 b + 3ab^2 + b^3$. Con $a = x$, $b = 2$: $x^3 + 6x^2 + 12x + 8$."
+  },
+  // —— Matemáticas: factorización (trinomio cuadrado perfecto) ——
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 - 6x + 9$.",
+    opciones: ["$(x - 3)^2$", "$(x + 3)^2$", "$(x - 3)(x + 3)$", "$(x - 6)(x - 1)$"],
+    correcta: 0,
+    explicacion: "Trinomio cuadrado perfecto: $9 = 3^2$ y $6 = 2(3)$. Por lo tanto $x^2 - 6x + 9 = (x - 3)^2$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $6x^2 + 9x$ extrayendo el factor común.",
+    opciones: ["$3x(2x + 3)$", "$3(2x^2 + 3x)$", "$6x(x + 3)$", "$x(6x + 9)$"],
+    correcta: 0,
+    explicacion: "El máximo común divisor de $6x^2$ y $9x$ es $3x$. Factorizando: $6x^2 + 9x = 3x(2x + 3)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 - 16$.",
+    opciones: ["$(x - 4)(x + 4)$", "$(x - 4)^2$", "$(x + 4)^2$", "$(x - 8)(x + 2)$"],
+    correcta: 0,
+    explicacion: "Diferencia de cuadrados: $a^2 - b^2 = (a - b)(a + b)$ con $a = x$ y $b = 4$. Entonces $x^2 - 16 = (x - 4)(x + 4)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 + 6x + 9$.",
+    opciones: ["$(x - 3)^2$", "$(x + 3)^2$", "$(x + 6)(x + 3)$", "$(x + 9)(x + 1)$"],
+    correcta: 1,
+    explicacion: "Trinomio cuadrado perfecto: $9 = 3^2$ y $6 = 2(3)$. Entonces $x^2 + 6x + 9 = (x + 3)^2$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 + 5x + 6$.",
+    opciones: ["$(x + 2)(x + 3)$", "$(x + 1)(x + 6)$", "$(x - 2)(x - 3)$", "$(x + 6)(x - 1)$"],
+    correcta: 0,
+    explicacion: "Buscamos dos números cuyo producto sea $6$ y cuya suma sea $5$: son $2$ y $3$. Entonces $x^2 + 5x + 6 = (x + 2)(x + 3)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 - x - 12$.",
+    opciones: ["$(x - 4)(x + 3)$", "$(x + 4)(x - 3)$", "$(x - 6)(x + 2)$", "$(x + 12)(x - 1)$"],
+    correcta: 0,
+    explicacion: "Buscamos dos números cuyo producto sea $-12$ y cuya suma sea $-1$: son $-4$ y $+3$. Entonces $x^2 - x - 12 = (x - 4)(x + 3)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $2x^2 + 7x + 3$.",
+    opciones: ["$(2x + 1)(x + 3)$", "$(2x + 3)(x + 1)$", "$(2x - 1)(x - 3)$", "$(x + 2)(2x + 3)$"],
+    correcta: 0,
+    explicacion: "Para $ax^2 + bx + c$ con $a \\neq 1$ se busca un par cuyo producto sea $ac = 6$ y suma $b = 7$: son $1$ y $6$. Descomponiendo: $2x^2 + x + 6x + 3 = x(2x + 1) + 3(2x + 1) = (2x + 1)(x + 3)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^3 - 8$.",
+    opciones: ["$(x - 2)(x^2 + 2x + 4)$", "$(x - 2)^3$", "$(x - 2)(x^2 - 2x + 4)$", "$(x + 2)(x^2 - 2x + 4)$"],
+    correcta: 0,
+    explicacion: "Diferencia de cubos: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$ con $a = x$ y $b = 2$. Entonces $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "¿Cuál de las siguientes expresiones es una diferencia de cuadrados?",
+    opciones: ["$x^2 + 9$", "$x^2 - 9$", "$x^2 + 6x + 9$", "$x^3 - 27$"],
+    correcta: 1,
+    explicacion: "Una diferencia de cuadrados tiene la forma $a^2 - b^2$ (dos términos al cuadrado restándose). $x^2 - 9 = x^2 - 3^2$ encaja. $x^2 + 9$ es suma (no factorizable en reales), $x^2 + 6x + 9$ es trinomio cuadrado perfecto y $x^3 - 27$ es diferencia de cubos."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "¿Cuál es el máximo factor común de $12x^3 + 8x^2$?",
+    opciones: ["$x$", "$4$", "$4x$", "$4x^2$"],
+    correcta: 3,
+    explicacion: "El máximo factor común de los coeficientes $12$ y $8$ es $4$, y la menor potencia de $x$ entre $x^3$ y $x^2$ es $x^2$. Entonces el factor común es $4x^2$. Comprobación: $4x^2(3x + 2) = 12x^3 + 8x^2$."
+  },
+  {
+    materia: "matematicas",
+    tema: "factorización algebraica",
+    pregunta: "Factoriza $x^2 y + 3xy$ extrayendo el factor común.",
+    opciones: ["$xy(x + 3)$", "$x(xy + 3y)$", "$y(x^2 + 3x)$", "$3xy(x + 1)$"],
+    correcta: 0,
+    explicacion: "El máximo común divisor de $x^2 y$ y $3xy$ es $xy$. Factorizando: $x^2 y + 3xy = xy(x + 3)$."
+  },
+  // —— Matemáticas: función — evaluación ——
+  {
+    materia: "matematicas",
+    tema: "función — evaluación",
+    pregunta: "Si $f(x) = 3x - 5$, calcula $f(2)$.",
+    opciones: ["$1$", "$-1$", "$11$", "$6$"],
+    correcta: 0,
+    explicacion: "Sustituyendo $x = 2$: $f(2) = 3(2) - 5 = 6 - 5 = 1$."
+  },
+  // —— Matemáticas: función — composición ——
+  {
+    materia: "matematicas",
+    tema: "función — composición",
+    pregunta: "Si $f(x) = x^2 + 1$ y $g(x) = 2x - 3$, calcula $(f \\circ g)(1)$.",
+    opciones: ["$0$", "$2$", "$5$", "$-1$"],
+    correcta: 1,
+    explicacion: "$(f \\circ g)(1) = f(g(1))$. Primero $g(1) = 2(1) - 3 = -1$. Luego $f(-1) = (-1)^2 + 1 = 2$."
+  },
+  // —— Matemáticas: función — dominio ——
+  {
+    materia: "matematicas",
+    tema: "función — dominio",
+    pregunta: "Encuentra el dominio de $f(x) = \\sqrt{x - 3}$.",
+    opciones: ["$[3, \\infty)$", "$(-\\infty, 3]$", "$\\mathbb{R} - \\{3\\}$", "$(3, \\infty)$"],
+    correcta: 0,
+    explicacion: "El radicando debe ser $\\geq 0$: $x - 3 \\geq 0 \\Rightarrow x \\geq 3$. Dominio: $[3, \\infty)$."
+  },
+  // —— Matemáticas: inecuación lineal ——
+  {
+    materia: "matematicas",
+    tema: "inecuación",
+    pregunta: "Resuelve la inecuación $2x - 5 < 7$.",
+    opciones: ["$x < 1$", "$x < 6$", "$x > 6$", "$x < 12$"],
+    correcta: 1,
+    explicacion: "$2x - 5 < 7 \\Rightarrow 2x < 12 \\Rightarrow x < 6$."
+  },
+  // —— Matemáticas: inecuación cuadrática ——
+  {
+    materia: "matematicas",
+    tema: "inecuación",
+    pregunta: "Resuelve la inecuación $x^2 - 4 \\leq 0$.",
+    opciones: [
+      "$x \\leq -2$ o $x \\geq 2$",
+      "$-2 \\leq x \\leq 2$",
+      "$x \\leq 2$",
+      "$x \\geq -2$"
+    ],
+    correcta: 1,
+    explicacion: "$x^2 \\leq 4 \\Rightarrow |x| \\leq 2 \\Rightarrow -2 \\leq x \\leq 2$. Equivalente: $(x-2)(x+2) \\leq 0$."
+  },
+  // —— Matemáticas: inecuación fraccional ——
+  {
+    materia: "matematicas",
+    tema: "inecuación",
+    pregunta: "Resuelve la inecuación $\\dfrac{x - 1}{x + 2} > 0$.",
+    opciones: [
+      "$x > 1$",
+      "$-2 < x < 1$",
+      "$x < -2$ o $x > 1$",
+      "$x \\neq -2$"
+    ],
+    correcta: 2,
+    explicacion: "El cociente es positivo cuando numerador y denominador tienen el mismo signo. Ambos $> 0$: $x > 1$. Ambos $< 0$: $x < -2$. Solución: $x < -2$ o $x > 1$ (con $x \\neq -2$)."
+  },
+  // —— Matemáticas: máximo/mínimo (a) — máximo de parábola ——
+  {
+    materia: "matematicas",
+    tema: "máximo o mínimo de función",
+    pregunta: "¿Cuál es el valor máximo de $f(x) = -x^2 + 6x - 5$?",
+    opciones: ["$3$", "$4$", "$5$", "$-5$"],
+    correcta: 1,
+    explicacion: "$f'(x) = -2x + 6 = 0 \\Rightarrow x = 3$. Como $a = -1 < 0$, es un máximo. Sustituyendo: $f(3) = -9 + 18 - 5 = 4$."
+  },
+  // —— Matemáticas: máximo/mínimo (b) — mínimo de parábola ——
+  {
+    materia: "matematicas",
+    tema: "máximo o mínimo de función",
+    pregunta: "¿Cuál es el valor mínimo de $f(x) = x^2 - 8x + 20$?",
+    opciones: ["$4$", "$-4$", "$20$", "$-16$"],
+    correcta: 0,
+    explicacion: "$f'(x) = 2x - 8 = 0 \\Rightarrow x = 4$. Como $a = 1 > 0$, es mínimo. Sustituyendo: $f(4) = 16 - 32 + 20 = 4$."
+  },
+  // —— Matemáticas: máximo/mínimo (c) — problema clásico ——
+  {
+    materia: "matematicas",
+    tema: "máximo o mínimo de función",
+    pregunta: "La suma de dos números positivos es 12. ¿Cuál es el producto máximo posible?",
+    opciones: ["$36$", "$24$", "$48$", "$144$"],
+    correcta: 0,
+    explicacion: "Sea $P = x(12 - x) = 12x - x^2$. $P'(x) = 12 - 2x = 0 \\Rightarrow x = 6$. Producto máximo: $6 \\cdot 6 = 36$."
+  },
+
+  // ========================================================================
+  // RELLENO DE TEMAS DE MATEMÁTICAS (para alcanzar mín. 10 por tema)
+  // ========================================================================
+
+  // —— Conversión radianes ↔ grados (9 nuevas) ——
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $30°$ a radianes.",
+    opciones:["$\\dfrac{\\pi}{6}$","$\\dfrac{\\pi}{4}$","$\\dfrac{\\pi}{3}$","$\\dfrac{\\pi}{2}$"],
+    correcta:0,
+    explicacion:"$30° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{\\pi}{6}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $45°$ a radianes.",
+    opciones:["$\\dfrac{\\pi}{6}$","$\\dfrac{\\pi}{4}$","$\\dfrac{\\pi}{3}$","$\\dfrac{\\pi}{2}$"],
+    correcta:1,
+    explicacion:"$45° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{\\pi}{4}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $60°$ a radianes.",
+    opciones:["$\\dfrac{\\pi}{6}$","$\\dfrac{\\pi}{4}$","$\\dfrac{\\pi}{3}$","$\\dfrac{\\pi}{2}$"],
+    correcta:2,
+    explicacion:"$60° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{\\pi}{3}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $90°$ a radianes.",
+    opciones:["$\\dfrac{\\pi}{2}$","$\\dfrac{\\pi}{3}$","$\\dfrac{2\\pi}{3}$","$\\pi$"],
+    correcta:0,
+    explicacion:"$90° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{\\pi}{2}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $120°$ a radianes.",
+    opciones:["$\\dfrac{\\pi}{3}$","$\\dfrac{2\\pi}{3}$","$\\dfrac{\\pi}{2}$","$\\dfrac{3\\pi}{4}$"],
+    correcta:1,
+    explicacion:"$120° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{120\\pi}{180} = \\dfrac{2\\pi}{3}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $150°$ a radianes.",
+    opciones:["$\\dfrac{2\\pi}{3}$","$\\dfrac{5\\pi}{6}$","$\\dfrac{3\\pi}{4}$","$\\dfrac{7\\pi}{6}$"],
+    correcta:1,
+    explicacion:"$150° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{5\\pi}{6}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $180°$ a radianes.",
+    opciones:["$\\pi$","$\\dfrac{\\pi}{2}$","$2\\pi$","$\\dfrac{3\\pi}{2}$"],
+    correcta:0,
+    explicacion:"$180° \\cdot \\dfrac{\\pi}{180°} = \\pi$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $270°$ a radianes.",
+    opciones:["$\\pi$","$\\dfrac{3\\pi}{2}$","$\\dfrac{5\\pi}{4}$","$2\\pi$"],
+    correcta:1,
+    explicacion:"$270° \\cdot \\dfrac{\\pi}{180°} = \\dfrac{270\\pi}{180} = \\dfrac{3\\pi}{2}$." },
+  { materia:"matematicas", tema:"conversión radianes → grados",
+    pregunta:"Convierte $360°$ a radianes.",
+    opciones:["$\\pi$","$\\dfrac{3\\pi}{2}$","$2\\pi$","$\\dfrac{5\\pi}{2}$"],
+    correcta:2,
+    explicacion:"$360° \\cdot \\dfrac{\\pi}{180°} = 2\\pi$." },
+
+  // —— Ecuaciones lineales (9 nuevas) ——
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $3x - 7 = 11$.",
+    opciones:["$x = 6$","$x = 4$","$x = 18$","$x = -6$"],
+    correcta:0,
+    explicacion:"$3x = 18 \\Rightarrow x = 6$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $5(x - 2) = 15$.",
+    opciones:["$x = 1$","$x = 3$","$x = 5$","$x = 13$"],
+    correcta:2,
+    explicacion:"$5x - 10 = 15 \\Rightarrow 5x = 25 \\Rightarrow x = 5$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $2x + 4 = 4x - 6$.",
+    opciones:["$x = 1$","$x = 5$","$x = -5$","$x = -1$"],
+    correcta:1,
+    explicacion:"$4 + 6 = 4x - 2x \\Rightarrow 10 = 2x \\Rightarrow x = 5$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $\\dfrac{x+3}{2} = 5$.",
+    opciones:["$x = 4$","$x = 7$","$x = 13$","$x = 1$"],
+    correcta:1,
+    explicacion:"$x + 3 = 10 \\Rightarrow x = 7$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $7 - 2x = 3x + 22$.",
+    opciones:["$x = -3$","$x = 3$","$x = -5$","$x = 5$"],
+    correcta:0,
+    explicacion:"$7 - 22 = 3x + 2x \\Rightarrow -15 = 5x \\Rightarrow x = -3$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $0.4x + 0.2 = 1$.",
+    opciones:["$x = 0.5$","$x = 2$","$x = 5$","$x = 0.2$"],
+    correcta:1,
+    explicacion:"$0.4x = 0.8 \\Rightarrow x = 2$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $\\dfrac{x}{3} + \\dfrac{x}{2} = 10$.",
+    opciones:["$x = 12$","$x = 6$","$x = 15$","$x = 20$"],
+    correcta:0,
+    explicacion:"Multiplica por 6: $2x + 3x = 60 \\Rightarrow 5x = 60 \\Rightarrow x = 12$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $3(x - 4) - 2(x + 1) = 5$.",
+    opciones:["$x = 19$","$x = 7$","$x = -19$","$x = 14$"],
+    correcta:0,
+    explicacion:"$3x - 12 - 2x - 2 = 5 \\Rightarrow x - 14 = 5 \\Rightarrow x = 19$." },
+  { materia:"matematicas", tema:"ecuación lineal",
+    pregunta:"Resuelve $\\dfrac{x-1}{2} + \\dfrac{x+3}{4} = 4$.",
+    opciones:["$x = 5$","$x = 4$","$x = 7$","$x = 3$"],
+    correcta:0,
+    explicacion:"Multiplica por 4: $2(x-1) + (x+3) = 16 \\Rightarrow 2x - 2 + x + 3 = 16 \\Rightarrow 3x + 1 = 16 \\Rightarrow 3x = 15 \\Rightarrow x = 5$." },
+
+  // —— Triángulos rectángulos (7 nuevas) ——
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"Los catetos de un triángulo rectángulo miden $6\\,\\mathrm{cm}$ y $8\\,\\mathrm{cm}$. ¿Cuánto mide la hipotenusa?",
+    opciones:["$10\\,\\mathrm{cm}$","$12\\,\\mathrm{cm}$","$14\\,\\mathrm{cm}$","$48\\,\\mathrm{cm}$"],
+    correcta:0,
+    explicacion:"$h = \\sqrt{6^2 + 8^2} = \\sqrt{36+64} = \\sqrt{100} = 10\\,\\mathrm{cm}$." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"En un triángulo rectángulo la hipotenusa mide $13$ y un cateto $12$. El otro cateto es",
+    opciones:["$5$","$7$","$1$","$\\sqrt{313}$"],
+    correcta:0,
+    explicacion:"$c = \\sqrt{13^2 - 12^2} = \\sqrt{169-144} = \\sqrt{25} = 5$." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"En un triángulo rectángulo un ángulo agudo mide $30°$ y la hipotenusa $10\\,\\mathrm{m}$. ¿Cuánto mide el cateto opuesto a $30°$?",
+    opciones:["$5\\,\\mathrm{m}$","$5\\sqrt{3}\\,\\mathrm{m}$","$10\\sqrt{3}\\,\\mathrm{m}$","$5\\sqrt{2}\\,\\mathrm{m}$"],
+    correcta:0,
+    explicacion:"Cateto opuesto $= h \\sin(30°) = 10 \\cdot \\dfrac{1}{2} = 5\\,\\mathrm{m}$." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"Si $\\tan\\theta = \\dfrac{3}{4}$ y $\\theta$ es agudo, ¿cuánto vale $\\sin\\theta$?",
+    opciones:["$\\dfrac{3}{5}$","$\\dfrac{4}{5}$","$\\dfrac{3}{4}$","$\\dfrac{5}{3}$"],
+    correcta:0,
+    explicacion:"Triángulo $3$-$4$-$5$. $\\sin\\theta = \\dfrac{\\mathrm{opuesto}}{\\mathrm{hipotenusa}} = \\dfrac{3}{5}$." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"Una escalera de $10\\,\\mathrm{m}$ se apoya contra una pared formando $60°$ con el suelo. ¿A qué altura toca la pared?",
+    opciones:["$5\\,\\mathrm{m}$","$5\\sqrt{3}\\,\\mathrm{m}$","$5\\sqrt{2}\\,\\mathrm{m}$","$10\\sqrt{3}\\,\\mathrm{m}$"],
+    correcta:1,
+    explicacion:"Altura $= 10 \\cdot \\sin(60°) = 10 \\cdot \\dfrac{\\sqrt{3}}{2} = 5\\sqrt{3} \\approx 8.66\\,\\mathrm{m}$." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"En un triángulo rectángulo el cateto opuesto a un ángulo es $7$ y el adyacente $24$. ¿Cuál es la hipotenusa?",
+    opciones:["$25$","$23$","$17$","$\\sqrt{527}$"],
+    correcta:0,
+    explicacion:"$h = \\sqrt{7^2 + 24^2} = \\sqrt{49+576} = \\sqrt{625} = 25$ (triángulo pitagórico $7$-$24$-$25$)." },
+  { materia:"matematicas", tema:"triángulo rectángulo",
+    pregunta:"Si $\\cos\\theta = \\dfrac{5}{13}$ y $\\theta$ es agudo, ¿cuánto vale $\\sin\\theta$?",
+    opciones:["$\\dfrac{12}{13}$","$\\dfrac{5}{12}$","$\\dfrac{12}{5}$","$\\dfrac{13}{12}$"],
+    correcta:0,
+    explicacion:"Triángulo $5$-$12$-$13$. $\\sin\\theta = \\dfrac{12}{13}$ (cateto opuesto sobre hipotenusa)." },
+
+  // —— Triángulos oblicuángulos (4 nuevas) ——
+  { materia:"matematicas", tema:"ley de senos y cosenos",
+    pregunta:"En un triángulo, $a = 8$, $A = 30°$ y $B = 45°$. Encuentra $b$ usando ley de senos. (Usa $\\sin 30° = 0.5$, $\\sin 45° \\approx 0.707$.)",
+    opciones:["$b \\approx 11.3$","$b \\approx 5.7$","$b \\approx 8\\sqrt{3}$","$b = 4$"],
+    correcta:0,
+    explicacion:"$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} \\Rightarrow \\dfrac{8}{0.5} = \\dfrac{b}{0.707} \\Rightarrow b = 16 \\cdot 0.707 \\approx 11.3$." },
+  { materia:"matematicas", tema:"ley de senos y cosenos",
+    pregunta:"En un triángulo con lados $a = 5$, $b = 7$ y ángulo $C = 60°$ entre ellos, ¿cuánto mide el lado $c$? (Usa $\\cos 60° = 0.5$.)",
+    opciones:["$c = \\sqrt{39}$","$c = 12$","$c = \\sqrt{49}$","$c = \\sqrt{74}$"],
+    correcta:0,
+    explicacion:"Ley de cosenos: $c^2 = 25 + 49 - 2(5)(7)(0.5) = 74 - 35 = 39 \\Rightarrow c = \\sqrt{39}$." },
+  { materia:"matematicas", tema:"ley de senos y cosenos",
+    pregunta:"Un triángulo tiene lados $a = 6$, $b = 10$ y ángulo opuesto a $a$ es $A = 30°$. ¿Cuánto vale $\\sin B$?",
+    opciones:["$\\dfrac{5}{6}$","$\\dfrac{1}{2}$","$\\dfrac{\\sqrt{3}}{2}$","$\\dfrac{6}{10}$"],
+    correcta:0,
+    explicacion:"Ley de senos: $\\dfrac{6}{\\sin 30°} = \\dfrac{10}{\\sin B} \\Rightarrow \\sin B = \\dfrac{10 \\cdot 0.5}{6} = \\dfrac{5}{6}$." },
+  { materia:"matematicas", tema:"ley de senos y cosenos",
+    pregunta:"En un triángulo con lados $3$, $4$ y $5$, ¿cuánto mide el ángulo opuesto al lado $5$? (Usa ley de cosenos.)",
+    opciones:["$90°$","$60°$","$45°$","$120°$"],
+    correcta:0,
+    explicacion:"$5^2 = 3^2 + 4^2 - 2(3)(4)\\cos C \\Rightarrow 25 = 25 - 24\\cos C \\Rightarrow \\cos C = 0 \\Rightarrow C = 90°$." },
+
+  // —— Cónicas por discriminante (4 nuevas, sin xy) ——
+  { materia:"matematicas", tema:"cónica por discriminante",
+    pregunta:"La cónica representada por $4x^2 + 9y^2 - 36 = 0$ es",
+    opciones:["una circunferencia","una elipse","una parábola","una hipérbola"],
+    correcta:1,
+    explicacion:"$A = 4$, $C = 9$. Mismo signo y distintos $\\Rightarrow$ elipse." },
+  { materia:"matematicas", tema:"cónica por discriminante",
+    pregunta:"La cónica representada por $x^2 - y^2 = 1$ es",
+    opciones:["una circunferencia","una elipse","una parábola","una hipérbola"],
+    correcta:3,
+    explicacion:"$A$ y $C$ con signos opuestos $\\Rightarrow$ hipérbola." },
+  { materia:"matematicas", tema:"cónica por discriminante",
+    pregunta:"La cónica representada por $y^2 = 4x$ es",
+    opciones:["una circunferencia","una elipse","una parábola","una hipérbola"],
+    correcta:2,
+    explicacion:"Solo una variable al cuadrado ($A = 0$) $\\Rightarrow$ parábola." },
+  { materia:"matematicas", tema:"cónica por discriminante",
+    pregunta:"La cónica representada por $2x^2 + 2y^2 - 8x + 4y - 6 = 0$ es",
+    opciones:["una circunferencia","una elipse","una parábola","una hipérbola"],
+    correcta:0,
+    explicacion:"$A = C = 2$ y $B = 0$ $\\Rightarrow$ circunferencia." },
+
+  // —— Recta — ecuación dados puntos o pendiente (4 nuevas) ——
+  { materia:"matematicas", tema:"ecuación de la recta",
+    pregunta:"Encuentra la ecuación de la recta con pendiente $3$ que pasa por $(0, 2)$.",
+    opciones:["$y = 3x + 2$","$y = 3x - 2$","$y = 2x + 3$","$y = -3x + 2$"],
+    correcta:0,
+    explicacion:"Forma pendiente-ordenada: $y = mx + b$ con $m = 3$, $b = 2$." },
+  { materia:"matematicas", tema:"ecuación de la recta",
+    pregunta:"Encuentra la ecuación de la recta que pasa por los puntos $(1, -2)$ y $(3, 4)$.",
+    opciones:["$y = 3x - 5$","$y = 3x + 5$","$y = 2x - 4$","$y = -3x - 5$"],
+    correcta:0,
+    explicacion:"Pendiente: $m = \\dfrac{4-(-2)}{3-1} = 3$. Sustituyendo en $(1,-2)$: $-2 = 3(1) + b \\Rightarrow b = -5$. Recta: $y = 3x - 5$." },
+  { materia:"matematicas", tema:"ecuación de la recta",
+    pregunta:"Encuentra la ecuación de la recta con pendiente $-1/2$ y ordenada al origen $-3$.",
+    opciones:["$y = -\\dfrac{1}{2}x - 3$","$y = \\dfrac{1}{2}x - 3$","$y = -\\dfrac{1}{2}x + 3$","$y = 2x - 3$"],
+    correcta:0,
+    explicacion:"$y = mx + b$ con $m = -\\dfrac{1}{2}$, $b = -3$." },
+  { materia:"matematicas", tema:"ecuación de la recta",
+    pregunta:"Encuentra la ecuación de la recta que pasa por $(2, 0)$ y $(0, -4)$.",
+    opciones:["$y = 2x - 4$","$y = 2x + 4$","$y = -2x - 4$","$y = \\dfrac{1}{2}x - 4$"],
+    correcta:0,
+    explicacion:"Pendiente: $m = \\dfrac{-4-0}{0-2} = 2$. Pasa por $(0,-4)$: $b = -4$. Recta: $y = 2x - 4$." },
+
+  // —— Recta — paralelismo y perpendicularidad (6 nuevas) ——
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"Encuentra la recta paralela a $y = 2x + 1$ que pasa por $(0, 5)$.",
+    opciones:["$y = 2x + 5$","$y = -2x + 5$","$y = \\dfrac{1}{2}x + 5$","$y = -\\dfrac{1}{2}x + 5$"],
+    correcta:0,
+    explicacion:"Paralelas tienen igual pendiente. $m = 2$ y pasa por $(0,5) \\Rightarrow y = 2x + 5$." },
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"Encuentra la recta perpendicular a $y = 3x + 2$ que pasa por el origen.",
+    opciones:["$y = -\\dfrac{1}{3}x$","$y = 3x$","$y = -3x$","$y = \\dfrac{1}{3}x$"],
+    correcta:0,
+    explicacion:"Perpendiculares: $m_1 \\cdot m_2 = -1 \\Rightarrow m_2 = -\\dfrac{1}{3}$. Pasa por $(0,0)$: $y = -\\dfrac{1}{3}x$." },
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"¿Cuál es la pendiente de la recta paralela a $4x - 2y = 7$?",
+    opciones:["$2$","$-2$","$\\dfrac{1}{2}$","$-\\dfrac{1}{2}$"],
+    correcta:0,
+    explicacion:"Despeja $y$: $y = 2x - \\dfrac{7}{2}$. Pendiente $= 2$. Las paralelas tienen la misma." },
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"¿Cuál es la pendiente de la recta perpendicular a $y = -\\dfrac{1}{2}x + 4$?",
+    opciones:["$2$","$-2$","$\\dfrac{1}{2}$","$-\\dfrac{1}{2}$"],
+    correcta:0,
+    explicacion:"$m_1 = -\\dfrac{1}{2}$. Perpendicular: $m_2 = -\\dfrac{1}{m_1} = 2$." },
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"Las rectas $2x + 3y = 6$ y $4x + 6y = 12$ son",
+    opciones:["paralelas","perpendiculares","coincidentes","secantes (no perpendiculares)"],
+    correcta:2,
+    explicacion:"La segunda es exactamente el doble de la primera: misma recta. Son coincidentes." },
+  { materia:"matematicas", tema:"paralelismo y perpendicularidad",
+    pregunta:"Las rectas $y = 2x + 1$ y $y = -\\dfrac{1}{2}x + 3$ son",
+    opciones:["paralelas","perpendiculares","coincidentes","oblicuas no perpendiculares"],
+    correcta:1,
+    explicacion:"Producto de pendientes: $2 \\cdot (-\\dfrac{1}{2}) = -1 \\Rightarrow$ perpendiculares." },
+
+  // —— Recta — conversión entre formas (8 nuevas) ——
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $y = 2x + 3$ en la forma general $Ax + By + C = 0$.",
+    opciones:["$2x - y + 3 = 0$","$2x + y + 3 = 0$","$-2x - y + 3 = 0$","$2x - y - 3 = 0$"],
+    correcta:0,
+    explicacion:"$y = 2x + 3 \\Rightarrow 2x - y + 3 = 0$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $4x + 3y - 12 = 0$ en la forma pendiente-ordenada.",
+    opciones:["$y = -\\dfrac{4}{3}x + 4$","$y = \\dfrac{4}{3}x + 4$","$y = -\\dfrac{4}{3}x - 4$","$y = \\dfrac{3}{4}x + 4$"],
+    correcta:0,
+    explicacion:"Despeja $y$: $3y = -4x + 12 \\Rightarrow y = -\\dfrac{4}{3}x + 4$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $y - 2 = 3(x - 1)$ en la forma general.",
+    opciones:["$3x - y - 1 = 0$","$3x + y - 1 = 0$","$3x - y + 1 = 0$","$-3x + y - 1 = 0$"],
+    correcta:0,
+    explicacion:"$y - 2 = 3x - 3 \\Rightarrow 3x - y - 1 = 0$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $\\dfrac{x}{4} + \\dfrac{y}{3} = 1$ (forma simétrica) en la forma general.",
+    opciones:["$3x + 4y - 12 = 0$","$4x + 3y - 12 = 0$","$3x - 4y + 12 = 0$","$3x + 4y + 12 = 0$"],
+    correcta:0,
+    explicacion:"Multiplica por 12: $3x + 4y = 12 \\Rightarrow 3x + 4y - 12 = 0$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $y = -x + 5$ en la forma simétrica (segmentaria).",
+    opciones:["$\\dfrac{x}{5} + \\dfrac{y}{5} = 1$","$\\dfrac{x}{5} - \\dfrac{y}{5} = 1$","$\\dfrac{x}{-5} + \\dfrac{y}{5} = 1$","$\\dfrac{x}{5} + \\dfrac{y}{-5} = 1$"],
+    correcta:0,
+    explicacion:"$x + y = 5 \\Rightarrow \\dfrac{x}{5} + \\dfrac{y}{5} = 1$ (cortes en $a = 5$, $b = 5$)." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa $6x + 2y = 8$ en la forma pendiente-ordenada.",
+    opciones:["$y = -3x + 4$","$y = 3x + 4$","$y = -3x - 4$","$y = \\dfrac{1}{3}x + 4$"],
+    correcta:0,
+    explicacion:"$2y = -6x + 8 \\Rightarrow y = -3x + 4$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"La recta con pendiente $-2$ que pasa por $(1, 3)$, en forma punto-pendiente, es",
+    opciones:["$y - 3 = -2(x - 1)$","$y + 3 = -2(x + 1)$","$y - 3 = 2(x - 1)$","$y - 1 = -2(x - 3)$"],
+    correcta:0,
+    explicacion:"Forma punto-pendiente: $y - y_1 = m(x - x_1)$ con $m = -2$, $(x_1, y_1) = (1, 3)$." },
+  { materia:"matematicas", tema:"conversión de formas de la recta",
+    pregunta:"Expresa la recta horizontal $y = 2$ en la forma general.",
+    opciones:["$y - 2 = 0$","$x - 2 = 0$","$y + 2 = 0$","$0x + 0y - 2 = 0$"],
+    correcta:0,
+    explicacion:"$y = 2 \\Rightarrow 0x + y - 2 = 0$, comúnmente escrito $y - 2 = 0$." },
+
+  // —— Límites por factorización (4 nuevas) ——
+  { materia:"matematicas", tema:"límite por factorización",
+    pregunta:"$\\displaystyle\\lim_{x\\to 2}\\dfrac{x^2-4}{x-2}$ es igual a",
+    opciones:["$4$","$0$","$2$","$\\infty$"],
+    correcta:0,
+    explicacion:"Factoriza el numerador: $\\dfrac{(x-2)(x+2)}{x-2} = x + 2$. Evalúa en $x = 2$: $4$." },
+  { materia:"matematicas", tema:"límite por factorización",
+    pregunta:"$\\displaystyle\\lim_{x\\to 3}\\dfrac{x^2-9}{x^2-3x}$ es igual a",
+    opciones:["$2$","$0$","$3$","$1$"],
+    correcta:0,
+    explicacion:"$\\dfrac{(x-3)(x+3)}{x(x-3)} = \\dfrac{x+3}{x}$. Evalúa en $3$: $\\dfrac{6}{3} = 2$." },
+  { materia:"matematicas", tema:"límite por factorización",
+    pregunta:"$\\displaystyle\\lim_{x\\to 1}\\dfrac{x^3-1}{x-1}$ es igual a",
+    opciones:["$3$","$1$","$0$","$\\infty$"],
+    correcta:0,
+    explicacion:"$x^3 - 1 = (x-1)(x^2+x+1)$. Simplifica y evalúa en $1$: $1+1+1 = 3$." },
+  { materia:"matematicas", tema:"límite por factorización",
+    pregunta:"$\\displaystyle\\lim_{x\\to -2}\\dfrac{x^2+5x+6}{x+2}$ es igual a",
+    opciones:["$1$","$-1$","$5$","$0$"],
+    correcta:0,
+    explicacion:"$x^2+5x+6 = (x+2)(x+3)$. Simplifica: $x + 3$. Evalúa en $-2$: $1$." },
+
+  // —— Límites L'Hôpital trig (3 nuevas) ——
+  { materia:"matematicas", tema:"L'Hôpital trig",
+    pregunta:"$\\displaystyle\\lim_{x\\to 0}\\dfrac{\\sin(3x)}{x}$ es igual a",
+    opciones:["$3$","$1$","$0$","$\\dfrac{1}{3}$"],
+    correcta:0,
+    explicacion:"Usa $\\lim_{u\\to 0}\\dfrac{\\sin u}{u} = 1$: $\\dfrac{\\sin(3x)}{x} = 3 \\cdot \\dfrac{\\sin(3x)}{3x} \\to 3$." },
+  { materia:"matematicas", tema:"L'Hôpital trig",
+    pregunta:"$\\displaystyle\\lim_{x\\to 0}\\dfrac{1-\\cos x}{x^2}$ es igual a",
+    opciones:["$\\dfrac{1}{2}$","$0$","$1$","$2$"],
+    correcta:0,
+    explicacion:"Por L'Hôpital dos veces (o usando $1-\\cos x \\approx x^2/2$): el límite es $\\dfrac{1}{2}$." },
+  { materia:"matematicas", tema:"L'Hôpital trig",
+    pregunta:"$\\displaystyle\\lim_{x\\to 0}\\dfrac{\\tan(2x)}{x}$ es igual a",
+    opciones:["$2$","$1$","$0$","$\\dfrac{1}{2}$"],
+    correcta:0,
+    explicacion:"$\\dfrac{\\tan(2x)}{x} = 2 \\cdot \\dfrac{\\tan(2x)}{2x} \\to 2 \\cdot 1 = 2$." },
+
+  // —— Otros límites (∞, racionalización) (7 nuevas) ——
+  { materia:"matematicas", tema:"límite al infinito",
+    pregunta:"$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{1}{x}$ es igual a",
+    opciones:["$0$","$1$","$\\infty$","no existe"],
+    correcta:0,
+    explicacion:"Cuando $x$ crece sin límite, $\\dfrac{1}{x}$ tiende a $0$." },
+  { materia:"matematicas", tema:"límite al infinito",
+    pregunta:"$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{2x^2+1}{x^2-x}$ es igual a",
+    opciones:["$2$","$0$","$1$","$\\infty$"],
+    correcta:0,
+    explicacion:"Mismo grado en numerador y denominador: cociente de coeficientes líder $\\dfrac{2}{1} = 2$." },
+  { materia:"matematicas", tema:"límite al infinito",
+    pregunta:"$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{x^2}{x+1}$ es igual a",
+    opciones:["$\\infty$","$1$","$0$","$x$"],
+    correcta:0,
+    explicacion:"Grado mayor en el numerador $\\Rightarrow \\infty$." },
+  { materia:"matematicas", tema:"límite al infinito",
+    pregunta:"$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{3x}{x^2+1}$ es igual a",
+    opciones:["$0$","$3$","$\\infty$","$1$"],
+    correcta:0,
+    explicacion:"Grado mayor en el denominador $\\Rightarrow 0$." },
+  { materia:"matematicas", tema:"límite por racionalización",
+    pregunta:"$\\displaystyle\\lim_{x\\to 0}\\dfrac{\\sqrt{x+4}-2}{x}$ es igual a",
+    opciones:["$\\dfrac{1}{4}$","$\\dfrac{1}{2}$","$0$","$2$"],
+    correcta:0,
+    explicacion:"Multiplica por el conjugado: $\\dfrac{(\\sqrt{x+4}-2)(\\sqrt{x+4}+2)}{x(\\sqrt{x+4}+2)} = \\dfrac{x}{x(\\sqrt{x+4}+2)} = \\dfrac{1}{\\sqrt{x+4}+2}$. En $x=0$: $\\dfrac{1}{4}$." },
+  { materia:"matematicas", tema:"límite por racionalización",
+    pregunta:"$\\displaystyle\\lim_{x\\to 4}\\dfrac{\\sqrt{x}-2}{x-4}$ es igual a",
+    opciones:["$\\dfrac{1}{4}$","$\\dfrac{1}{2}$","$0$","$2$"],
+    correcta:0,
+    explicacion:"Multiplica por conjugado o nota que $x-4 = (\\sqrt{x}-2)(\\sqrt{x}+2)$. Simplifica: $\\dfrac{1}{\\sqrt{x}+2}$. En $x=4$: $\\dfrac{1}{4}$." },
+  { materia:"matematicas", tema:"límite al infinito",
+    pregunta:"$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{5x-3}{2x+1}$ es igual a",
+    opciones:["$\\dfrac{5}{2}$","$5$","$0$","$\\infty$"],
+    correcta:0,
+    explicacion:"Mismo grado: cociente de coeficientes líder $\\dfrac{5}{2}$." },
+
+  // —— Derivadas (1 nueva) ——
+  { materia:"matematicas", tema:"derivada de polinomio",
+    pregunta:"Si $f(x) = x^5 + 3x^2$, entonces $f'(x)$ es",
+    opciones:["$5x^4 + 6x$","$5x^4 + 3x$","$x^4 + 6x$","$5x^5 + 6x^2$"],
+    correcta:0,
+    explicacion:"Aplica $\\dfrac{d}{dx}x^n = nx^{n-1}$: $f'(x) = 5x^4 + 6x$." },
+
+  // —— Integrales inmediatas (2 nuevas) ——
+  { materia:"matematicas", tema:"integral inmediata (polinomio)",
+    pregunta:"$\\displaystyle\\int 6x^2\\,dx$ es igual a",
+    opciones:["$2x^3 + C$","$6x^3 + C$","$\\dfrac{6x^3}{3} + C$","$3x^2 + C$"],
+    correcta:0,
+    explicacion:"$\\int 6x^2\\,dx = 6 \\cdot \\dfrac{x^3}{3} + C = 2x^3 + C$." },
+  { materia:"matematicas", tema:"integral inmediata (constante)",
+    pregunta:"$\\displaystyle\\int 5\\,dx$ es igual a",
+    opciones:["$5x + C$","$5 + C$","$\\dfrac{5x^2}{2} + C$","$0$"],
+    correcta:0,
+    explicacion:"$\\int k\\,dx = kx + C$, con $k = 5$." },
+
+  // —— Integrales por sustitución (7 nuevas) ——
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int 2x(x^2+1)^3\\,dx$ es igual a",
+    opciones:["$\\dfrac{(x^2+1)^4}{4} + C$","$\\dfrac{(x^2+1)^3}{3} + C$","$(x^2+1)^4 + C$","$\\dfrac{(x^2+1)^4}{2} + C$"],
+    correcta:0,
+    explicacion:"Sea $u = x^2+1$, $du = 2x\\,dx$. La integral es $\\int u^3\\,du = \\dfrac{u^4}{4} + C$." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int \\cos(3x)\\,dx$ es igual a",
+    opciones:["$\\dfrac{\\sin(3x)}{3} + C$","$3\\sin(3x) + C$","$\\sin(3x) + C$","$-\\dfrac{\\sin(3x)}{3} + C$"],
+    correcta:0,
+    explicacion:"Sea $u = 3x$, $du = 3\\,dx$: $\\dfrac{1}{3}\\int \\cos u\\,du = \\dfrac{\\sin u}{3} + C = \\dfrac{\\sin(3x)}{3} + C$." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int e^{2x}\\,dx$ es igual a",
+    opciones:["$\\dfrac{e^{2x}}{2} + C$","$2e^{2x} + C$","$e^{2x} + C$","$e^{x^2} + C$"],
+    correcta:0,
+    explicacion:"Sea $u = 2x$, $du = 2\\,dx$: $\\dfrac{1}{2}\\int e^u\\,du = \\dfrac{e^{2x}}{2} + C$." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int \\dfrac{x}{x^2+1}\\,dx$ es igual a",
+    opciones:["$\\dfrac{1}{2}\\ln|x^2+1| + C$","$\\ln|x^2+1| + C$","$\\dfrac{x^2}{x^2+1} + C$","$\\arctan x + C$"],
+    correcta:0,
+    explicacion:"$u = x^2+1$, $du = 2x\\,dx$: $\\dfrac{1}{2}\\int \\dfrac{du}{u} = \\dfrac{1}{2}\\ln|u| + C$." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int \\sin x\\cos x\\,dx$ es igual a",
+    opciones:["$\\dfrac{\\sin^2 x}{2} + C$","$-\\dfrac{\\cos^2 x}{2} + C$","$\\sin x \\cos x + C$","ambas (a) y (b) son válidas"],
+    correcta:3,
+    explicacion:"Con $u = \\sin x$ da $\\dfrac{\\sin^2 x}{2} + C$. Con $u = \\cos x$ da $-\\dfrac{\\cos^2 x}{2} + C$. Difieren en una constante: equivalentes." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int \\dfrac{2x+1}{x^2+x+1}\\,dx$ es igual a",
+    opciones:["$\\ln|x^2+x+1| + C$","$\\dfrac{1}{2}\\ln|x^2+x+1| + C$","$(x^2+x+1)^2 + C$","$\\arctan(x^2+x+1) + C$"],
+    correcta:0,
+    explicacion:"Nota que $\\dfrac{d}{dx}(x^2+x+1) = 2x+1$. Sea $u = x^2+x+1$: $\\int \\dfrac{du}{u} = \\ln|u| + C$." },
+  { materia:"matematicas", tema:"integral por sustitución",
+    pregunta:"$\\displaystyle\\int 5(x-1)^4\\,dx$ es igual a",
+    opciones:["$(x-1)^5 + C$","$5(x-1)^5 + C$","$\\dfrac{(x-1)^5}{5} + C$","$4(x-1)^3 + C$"],
+    correcta:0,
+    explicacion:"Sea $u = x-1$, $du = dx$: $5\\int u^4\\,du = u^5 + C = (x-1)^5 + C$." },
+
+  // —— Integrales por partes (7 nuevas) ——
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int x\\,e^{x}\\,dx$ es igual a",
+    opciones:["$(x-1)e^x + C$","$(x+1)e^x + C$","$xe^x + C$","$\\dfrac{x^2}{2}e^x + C$"],
+    correcta:0,
+    explicacion:"$u = x$, $dv = e^x\\,dx \\Rightarrow du = dx$, $v = e^x$. $\\int u\\,dv = xe^x - \\int e^x\\,dx = xe^x - e^x + C = (x-1)e^x + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int x\\sin x\\,dx$ es igual a",
+    opciones:["$\\sin x - x\\cos x + C$","$-x\\cos x + C$","$-\\cos x + x\\sin x + C$","$x\\cos x - \\sin x + C$"],
+    correcta:0,
+    explicacion:"$u = x$, $dv = \\sin x\\,dx \\Rightarrow du = dx$, $v = -\\cos x$. Resultado: $-x\\cos x + \\sin x + C = \\sin x - x\\cos x + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int \\ln x\\,dx$ es igual a",
+    opciones:["$x\\ln x - x + C$","$\\dfrac{1}{x} + C$","$\\ln x \\cdot x + C$","$\\dfrac{(\\ln x)^2}{2} + C$"],
+    correcta:0,
+    explicacion:"$u = \\ln x$, $dv = dx \\Rightarrow du = \\dfrac{1}{x}dx$, $v = x$. $\\int \\ln x\\,dx = x\\ln x - \\int 1\\,dx = x\\ln x - x + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int x\\cos x\\,dx$ es igual a",
+    opciones:["$x\\sin x + \\cos x + C$","$-x\\sin x + \\cos x + C$","$x\\sin x - \\cos x + C$","$\\sin x + x\\cos x + C$"],
+    correcta:0,
+    explicacion:"$u = x$, $dv = \\cos x\\,dx \\Rightarrow du = dx$, $v = \\sin x$. Resultado: $x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int x^2 e^x\\,dx$ es igual a",
+    opciones:["$(x^2 - 2x + 2)e^x + C$","$(x^2 + 2x + 2)e^x + C$","$x^2 e^x + C$","$\\dfrac{x^3 e^x}{3} + C$"],
+    correcta:0,
+    explicacion:"Aplicando partes dos veces: primero $u = x^2$, $dv = e^x\\,dx$, luego de nuevo en $\\int 2xe^x\\,dx$. Resultado: $(x^2 - 2x + 2)e^x + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int x\\ln x\\,dx$ es igual a",
+    opciones:["$\\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4} + C$","$\\dfrac{x^2}{2}\\ln x + \\dfrac{x^2}{4} + C$","$x\\ln x - x + C$","$\\ln x \\cdot \\dfrac{x^2}{2} + C$"],
+    correcta:0,
+    explicacion:"$u = \\ln x$, $dv = x\\,dx \\Rightarrow du = \\dfrac{1}{x}dx$, $v = \\dfrac{x^2}{2}$. $\\int x\\ln x\\,dx = \\dfrac{x^2 \\ln x}{2} - \\dfrac{1}{2}\\int x\\,dx = \\dfrac{x^2}{2}\\ln x - \\dfrac{x^2}{4} + C$." },
+  { materia:"matematicas", tema:"integral por partes",
+    pregunta:"$\\displaystyle\\int xe^{-x}\\,dx$ es igual a",
+    opciones:["$-(x+1)e^{-x} + C$","$(x+1)e^{-x} + C$","$-xe^{-x} + C$","$-e^{-x} - x + C$"],
+    correcta:0,
+    explicacion:"$u = x$, $dv = e^{-x}\\,dx \\Rightarrow du = dx$, $v = -e^{-x}$. Resultado: $-xe^{-x} + \\int e^{-x}\\,dx = -xe^{-x} - e^{-x} + C = -(x+1)e^{-x} + C$." },
+
+  // —— Funciones (3 nuevas) ——
+  { materia:"matematicas", tema:"función — evaluación",
+    pregunta:"Si $f(x) = 2x + 1$, ¿cuánto vale $f(3)$?",
+    opciones:["$7$","$5$","$6$","$8$"],
+    correcta:0,
+    explicacion:"$f(3) = 2(3) + 1 = 7$." },
+  { materia:"matematicas", tema:"función — composición",
+    pregunta:"Si $f(x) = x^2$ y $g(x) = x + 1$, ¿cuánto vale $(f\\circ g)(2)$?",
+    opciones:["$9$","$5$","$3$","$7$"],
+    correcta:0,
+    explicacion:"$(f\\circ g)(2) = f(g(2)) = f(3) = 3^2 = 9$." },
+  { materia:"matematicas", tema:"función — dominio",
+    pregunta:"¿Cuál es el dominio de $f(x) = \\sqrt{x - 4}$?",
+    opciones:["$x \\geq 4$","$x > 4$","$x \\geq 0$","$\\mathbb{R}$"],
+    correcta:0,
+    explicacion:"Para que la raíz cuadrada esté definida en $\\mathbb{R}$: $x - 4 \\geq 0 \\Rightarrow x \\geq 4$." },
+
+  // —— Inecuaciones (7 nuevas) ——
+  { materia:"matematicas", tema:"inecuación lineal",
+    pregunta:"Resuelve $3x - 7 > 5$.",
+    opciones:["$x > 4$","$x < 4$","$x > -4$","$x > \\dfrac{12}{3}$"],
+    correcta:0,
+    explicacion:"$3x > 12 \\Rightarrow x > 4$." },
+  { materia:"matematicas", tema:"inecuación lineal",
+    pregunta:"Resuelve $2x + 1 \\leq 9$.",
+    opciones:["$x \\leq 4$","$x \\geq 4$","$x \\leq 5$","$x < 4$"],
+    correcta:0,
+    explicacion:"$2x \\leq 8 \\Rightarrow x \\leq 4$." },
+  { materia:"matematicas", tema:"inecuación lineal",
+    pregunta:"Resuelve $-x + 3 > 0$.",
+    opciones:["$x < 3$","$x > 3$","$x < -3$","$x > -3$"],
+    correcta:0,
+    explicacion:"$-x > -3 \\Rightarrow x < 3$ (al multiplicar por $-1$ se invierte la desigualdad)." },
+  { materia:"matematicas", tema:"inecuación cuadrática",
+    pregunta:"Resuelve $x^2 - 4 < 0$.",
+    opciones:["$-2 < x < 2$","$x < -2$ o $x > 2$","$x > 2$","$x < 2$"],
+    correcta:0,
+    explicacion:"$(x-2)(x+2) < 0 \\Rightarrow$ se cumple cuando $-2 < x < 2$ (parábola por debajo del eje)." },
+  { materia:"matematicas", tema:"inecuación cuadrática",
+    pregunta:"Resuelve $x^2 - 9 \\geq 0$.",
+    opciones:["$x \\leq -3$ o $x \\geq 3$","$-3 \\leq x \\leq 3$","$x \\geq 3$","$x \\leq 3$"],
+    correcta:0,
+    explicacion:"$(x-3)(x+3) \\geq 0$: la parábola está sobre o tocando el eje cuando $x \\leq -3$ o $x \\geq 3$." },
+  { materia:"matematicas", tema:"inecuación cuadrática",
+    pregunta:"Resuelve $x^2 - 5x + 6 < 0$.",
+    opciones:["$2 < x < 3$","$x < 2$ o $x > 3$","$x < 2$","$x > 3$"],
+    correcta:0,
+    explicacion:"$(x-2)(x-3) < 0$: parábola por debajo del eje entre raíces $\\Rightarrow 2 < x < 3$." },
+  { materia:"matematicas", tema:"inecuación fraccional",
+    pregunta:"Resuelve $\\dfrac{x-1}{x+2} > 0$.",
+    opciones:["$x < -2$ o $x > 1$","$-2 < x < 1$","$x > 1$","$x < -2$"],
+    correcta:0,
+    explicacion:"Fracción positiva cuando numerador y denominador tienen el mismo signo: $x < -2$ (ambos negativos) o $x > 1$ (ambos positivos)." },
+
+  // —— Máximos y mínimos (6 nuevas) ——
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"¿Cuál es el valor mínimo de $f(x) = x^2 - 6x + 10$?",
+    opciones:["$1$","$10$","$-1$","$3$"],
+    correcta:0,
+    explicacion:"Vértice de parábola con $a > 0$: $x = -\\dfrac{b}{2a} = 3$. $f(3) = 9 - 18 + 10 = 1$." },
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"¿Cuál es el valor máximo de $f(x) = -2x^2 + 8x - 3$?",
+    opciones:["$5$","$-3$","$3$","$8$"],
+    correcta:0,
+    explicacion:"Como $a < 0$ es máximo. $x = -\\dfrac{8}{2(-2)} = 2$. $f(2) = -8 + 16 - 3 = 5$." },
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"¿Cuál es el valor mínimo de $f(x) = x^2 + 4x$?",
+    opciones:["$-4$","$0$","$4$","$-2$"],
+    correcta:0,
+    explicacion:"$f'(x) = 2x + 4 = 0 \\Rightarrow x = -2$. $f(-2) = 4 - 8 = -4$." },
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"¿Cuál es el valor máximo de $f(x) = 9 - x^2$?",
+    opciones:["$9$","$0$","$3$","$-9$"],
+    correcta:0,
+    explicacion:"Máximo en $x = 0$ (vértice). $f(0) = 9$." },
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"La función $f(x) = x^2 - 2x + 5$ alcanza su mínimo en $x =$",
+    opciones:["$1$","$-1$","$2$","$5$"],
+    correcta:0,
+    explicacion:"$x = -\\dfrac{b}{2a} = -\\dfrac{-2}{2} = 1$." },
+  { materia:"matematicas", tema:"máximo o mínimo de función",
+    pregunta:"La función $f(x) = x^3 - 3x$ tiene un máximo local en $x =$",
+    opciones:["$-1$","$1$","$0$","$3$"],
+    correcta:0,
+    explicacion:"$f'(x) = 3x^2 - 3 = 0 \\Rightarrow x = \\pm 1$. $f''(x) = 6x$: $f''(-1) = -6 < 0$ $\\Rightarrow$ máximo local en $x = -1$." },
+
+  // —— Trigonometría — ecuaciones (2 nuevas) ——
+  { materia:"matematicas", tema:"ecuación trigonométrica",
+    pregunta:"Resuelve $\\sin x = 1$ en $[0, 2\\pi)$.",
+    opciones:["$x = \\dfrac{\\pi}{2}$","$x = 0$","$x = \\pi$","$x = \\dfrac{3\\pi}{2}$"],
+    correcta:0,
+    explicacion:"$\\sin x = 1$ solo en $x = \\dfrac{\\pi}{2}$ dentro del intervalo $[0, 2\\pi)$." },
+  { materia:"matematicas", tema:"ecuación trigonométrica",
+    pregunta:"Resuelve $2\\cos x = 1$ en $[0, 2\\pi)$.",
+    opciones:["$\\dfrac{\\pi}{3}$ y $\\dfrac{5\\pi}{3}$","$\\dfrac{\\pi}{6}$ y $\\dfrac{11\\pi}{6}$","$\\dfrac{\\pi}{4}$ y $\\dfrac{7\\pi}{4}$","$\\dfrac{\\pi}{3}$ y $\\dfrac{2\\pi}{3}$"],
+    correcta:0,
+    explicacion:"$\\cos x = \\dfrac{1}{2} \\Rightarrow x = \\dfrac{\\pi}{3}$ o $x = 2\\pi - \\dfrac{\\pi}{3} = \\dfrac{5\\pi}{3}$." },
+
+  // —— Cónicas — forma ordinaria, VERTICALES (12 nuevas, balance vs horizontales) ——
+
+  // Parábola vertical: (x-2)² = -8(y+1), abre hacia abajo, p = -2
+  { materia:"matematicas", tema:"cónica forma ordinaria — parábola",
+    pregunta:"El vértice de la parábola $(x-2)^2 = -8(y+1)$ es",
+    opciones:["$(2,-1)$","$(-2,1)$","$(2,1)$","$(-2,-1)$"],
+    correcta:0,
+    explicacion:"Forma $(x-h)^2 = 4p(y-k)$: el vértice es $(h,k) = (2,-1)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — parábola",
+    pregunta:"El foco de la parábola $(x-2)^2 = -8(y+1)$ es",
+    opciones:["$(2,-3)$","$(2,1)$","$(0,-1)$","$(2,-2)$"],
+    correcta:0,
+    explicacion:"$4p = -8 \\Rightarrow p = -2$. Como la variable cuadrática es $x$, la parábola es vertical y el foco está en $(h, k+p) = (2, -1-2) = (2,-3)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — parábola",
+    pregunta:"¿Hacia dónde abre la parábola $(x-2)^2 = -8(y+1)$?",
+    opciones:["Hacia abajo","Hacia arriba","Hacia la derecha","Hacia la izquierda"],
+    correcta:0,
+    explicacion:"La variable cuadrática es $x$, así que es vertical. Como $4p = -8 < 0$ abre hacia abajo." },
+
+  // Elipse vertical: (x+1)²/9 + (y-2)²/25 = 1
+  // a² = 25 (en y) → a = 5, b = 3, c² = 25-9 = 16 → c = 4
+  { materia:"matematicas", tema:"cónica forma ordinaria — elipse vertical",
+    pregunta:"El centro de la elipse $\\dfrac{(x+1)^2}{9} + \\dfrac{(y-2)^2}{25} = 1$ es",
+    opciones:["$(-1,2)$","$(1,-2)$","$(-1,-2)$","$(1,2)$"],
+    correcta:0,
+    explicacion:"Forma estándar: el centro es $(h,k) = (-1, 2)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — elipse vertical",
+    pregunta:"Los focos de la elipse $\\dfrac{(x+1)^2}{9} + \\dfrac{(y-2)^2}{25} = 1$ son",
+    opciones:["$(-1,6)$ y $(-1,-2)$","$(3,2)$ y $(-5,2)$","$(-1,7)$ y $(-1,-3)$","$(-5,2)$ y $(3,2)$"],
+    correcta:0,
+    explicacion:"$a^2 = 25$ está bajo $y$ $\\Rightarrow$ eje mayor vertical. $c^2 = a^2 - b^2 = 25 - 9 = 16 \\Rightarrow c = 4$. Focos: $(h, k\\pm c) = (-1, 2\\pm 4)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — elipse vertical",
+    pregunta:"La excentricidad de la elipse $\\dfrac{(x+1)^2}{9} + \\dfrac{(y-2)^2}{25} = 1$ es",
+    opciones:["$\\dfrac{4}{5}$","$\\dfrac{3}{5}$","$\\dfrac{5}{4}$","$\\dfrac{4}{3}$"],
+    correcta:0,
+    explicacion:"$e = \\dfrac{c}{a} = \\dfrac{4}{5}$ con $a = 5$ y $c = 4$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — elipse vertical",
+    pregunta:"La longitud del lado recto de la elipse $\\dfrac{(x+1)^2}{9} + \\dfrac{(y-2)^2}{25} = 1$ es",
+    opciones:["$\\dfrac{18}{5}$","$\\dfrac{50}{3}$","$\\dfrac{9}{5}$","$\\dfrac{6}{5}$"],
+    correcta:0,
+    explicacion:"Lado recto $= \\dfrac{2b^2}{a} = \\dfrac{2(9)}{5} = \\dfrac{18}{5}$." },
+
+  // Hipérbola vertical: (y-2)²/9 - (x+1)²/16 = 1
+  // a² = 9 (en y) → a = 3, b² = 16 → b = 4, c² = 9+16 = 25 → c = 5
+  { materia:"matematicas", tema:"cónica forma ordinaria — hipérbola vertical",
+    pregunta:"El centro de la hipérbola $\\dfrac{(y-2)^2}{9} - \\dfrac{(x+1)^2}{16} = 1$ es",
+    opciones:["$(-1,2)$","$(1,-2)$","$(-1,-2)$","$(2,-1)$"],
+    correcta:0,
+    explicacion:"Forma estándar: el centro es $(h, k) = (-1, 2)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — hipérbola vertical",
+    pregunta:"Los vértices de la hipérbola $\\dfrac{(y-2)^2}{9} - \\dfrac{(x+1)^2}{16} = 1$ son",
+    opciones:["$(-1,5)$ y $(-1,-1)$","$(3,2)$ y $(-5,2)$","$(-1,7)$ y $(-1,-3)$","$(2,5)$ y $(2,-1)$"],
+    correcta:0,
+    explicacion:"El término positivo está en $y$ $\\Rightarrow$ eje transverso vertical. $a^2 = 9 \\Rightarrow a = 3$. Vértices: $(h, k\\pm a) = (-1, 2\\pm 3)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — hipérbola vertical",
+    pregunta:"Los focos de la hipérbola $\\dfrac{(y-2)^2}{9} - \\dfrac{(x+1)^2}{16} = 1$ son",
+    opciones:["$(-1,7)$ y $(-1,-3)$","$(-1,5)$ y $(-1,-1)$","$(4,2)$ y $(-6,2)$","$(-1,8)$ y $(-1,-4)$"],
+    correcta:0,
+    explicacion:"$c^2 = a^2 + b^2 = 9 + 16 = 25 \\Rightarrow c = 5$. Focos: $(h, k\\pm c) = (-1, 2\\pm 5)$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — hipérbola vertical",
+    pregunta:"Las ecuaciones de las asíntotas de la hipérbola $\\dfrac{(y-2)^2}{9} - \\dfrac{(x+1)^2}{16} = 1$ son",
+    opciones:[
+      "$y - 2 = \\pm \\dfrac{3}{4}(x + 1)$",
+      "$y - 2 = \\pm \\dfrac{4}{3}(x + 1)$",
+      "$y + 2 = \\pm \\dfrac{3}{4}(x - 1)$",
+      "$y - 2 = \\pm (x + 1)$"
+    ],
+    correcta:0,
+    explicacion:"Para hipérbola vertical, asíntotas: $y - k = \\pm \\dfrac{a}{b}(x - h) = \\pm \\dfrac{3}{4}(x + 1)$, con $a = 3$ y $b = 4$." },
+  { materia:"matematicas", tema:"cónica forma ordinaria — hipérbola vertical",
+    pregunta:"La excentricidad de la hipérbola $\\dfrac{(y-2)^2}{9} - \\dfrac{(x+1)^2}{16} = 1$ es",
+    opciones:["$\\dfrac{5}{3}$","$\\dfrac{3}{5}$","$\\dfrac{4}{3}$","$\\dfrac{5}{4}$"],
+    correcta:0,
+    explicacion:"$e = \\dfrac{c}{a} = \\dfrac{5}{3}$ con $a = 3$ y $c = 5$. (Toda hipérbola tiene $e > 1$.)" },
+
+  // —— Trigonometría — gráficas (2 nuevas) ——
+  { materia:"matematicas", tema:"gráfica trigonométrica",
+    pregunta:"¿Cuál es el periodo de $f(x) = \\sin(2x)$?",
+    opciones:["$\\pi$","$2\\pi$","$\\dfrac{\\pi}{2}$","$4\\pi$"],
+    correcta:0,
+    explicacion:"El periodo de $\\sin(bx)$ es $\\dfrac{2\\pi}{b}$. Con $b = 2$: $T = \\pi$." },
+  { materia:"matematicas", tema:"gráfica trigonométrica",
+    pregunta:"¿Cuál es la amplitud de $f(x) = 3\\cos x$?",
+    opciones:["$3$","$1$","$\\dfrac{1}{3}$","$2\\pi$"],
+    correcta:0,
+    explicacion:"La amplitud de $A\\cos(bx)$ es $|A| = 3$." }
+];
