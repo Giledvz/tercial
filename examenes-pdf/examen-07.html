@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/exam-print.css">
 
   <script defer src="../assets/js/katex-loader.js"></script>
+  <script defer src="../assets/js/exam-clave.js"></script>
 </head>
 <body>
 
@@ -24,7 +25,7 @@
   <header class="exam-pdf__hero">
     <p class="exam-pdf__eyebrow">Evaluación · ECOEMS</p>
     <h1 class="exam-pdf__title">Examen 7 — <em>Matemáticas y Física</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Séptimo fin de semana del curso · versión alumno</p>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Séptimo fin de semana del curso · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
   </header>
 
   <div class="exam-pdf__instructions">
@@ -39,45 +40,73 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">2 pts</span>Encuentra el valor de $x$ y $y$: $\begin{cases}x - 3y &= 13\\5x + 4y &= 27\end{cases}$</p>
+    
+      <p class="clave-only">Eliminación: $x=13+3y$ en $5x+4y=27 \Rightarrow 19y=-38 \Rightarrow$ <span class="answer-final">$x=7,\ y=-2$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>En una panadería, con $80$ kilos de harina hacen $120$ kilos de pan. ¿Cuántos kilos de harina serían necesarios para hacer $99$ kilos de pan?</p>
+    
+      <p class="clave-only">Directa: $\dfrac{80}{120}=\dfrac{x}{99} \Rightarrow x=\dfrac{80\times99}{120} =$ <span class="answer-final">$66\,\mathrm{kg}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$\dfrac{16}{20}+\dfrac{12}{36}-\dfrac{8}{32} =$</p>
+    
+      <p class="clave-only">$\dfrac{4}{5}+\dfrac{1}{3}-\dfrac{1}{4} = \dfrac{48+20-15}{60} =$ <span class="answer-final">$\dfrac{53}{60}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Encuentra el valor de $x$: $3x+(-7x+11)=-5x+8$</p>
+    
+      <p class="clave-only">$-4x+11=-5x+8 \Rightarrow$ <span class="answer-final">$x=-3$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $x^2-4x-96 =$</p>
+    
+      <p class="clave-only">$x^2-4x-96 =$ <span class="answer-final">$(x-12)(x+8)$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$\dfrac{(4)(-12)(3)(1)(3)(-4)(-1)}{16} =$</p>
+    
+      <p class="clave-only">Numerador $=-1\,728 \Rightarrow \dfrac{-1\,728}{16} =$ <span class="answer-final">$-108$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(5m^3-6n)^2 =$</p>
+    
+      <p class="clave-only">$(5m^3-6n)^2 =$ <span class="answer-final">$25m^6-60m^3n+36n^2$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Obtén el mínimo común múltiplo de $14$ y $42$.</p>
+    
+      <p class="clave-only">$42=14\times3 \Rightarrow$ m.c.m. $=$ <span class="answer-final">$42$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Una piscina portátil tardó en llenarse seis horas usando cuatro grifos iguales. ¿Cuántos grifos iguales serían necesarios para llenarla en $3$ horas?</p>
+    
+      <p class="clave-only">Inversa: $4\times6=24 \Rightarrow 24\div3 =$ <span class="answer-final">$8\,\text{grifos}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(x+5)(x-15) =$</p>
+    
+      <p class="clave-only">$(x+5)(x-15) =$ <span class="answer-final">$x^2-10x-75$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Una finca rectangular cuyo largo es cinco veces su ancho tiene un perímetro de $480\,\mathrm{m}$. Halla su área.</p>
+    
+      <p class="clave-only">$6a=240 \Rightarrow a=40,\ L=200$; área $=200\times40 =$ <span class="answer-final">$8\,000\,\mathrm{m^2}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $81x^2-100y^4 =$</p>
+    
+      <p class="clave-only">$81x^2-100y^4 =$ <span class="answer-final">$(9x-10y^2)(9x+10y^2)$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">2 pts</span>Encuentra los dos valores de $x$: $2x^2+x=21$</p>
+    
+      <p class="clave-only">$2x^2+x-21=0$, $\Delta=169 \Rightarrow$ <span class="answer-final">$x=3,\ x=-\dfrac{7}{2}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">3 pts</span>Halla la media, moda y mediana del conjunto: $\{2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 7\}$.</p>
+    
+      <p class="clave-only">Suma $=52$, $n=13$: media $=\dfrac{52}{13}=$ <span class="answer-final">$4$</span>; moda <span class="answer-final">$2$ y $3$</span>; mediana <span class="answer-final">$4$</span></p>
     </div></li>
   </ol>
 
@@ -88,9 +117,13 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Despeja $t$ en la ecuación $P=\dfrac{T}{t}$.</p>
+    
+      <p class="clave-only">$P=\dfrac{T}{t} \Rightarrow$ <span class="answer-final">$t=\dfrac{T}{P}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Convierte $458.45\,\mathrm{km}$ a $\mathrm{dam}$.</p>
+    
+      <p class="clave-only">$1\,\mathrm{km}=100\,\mathrm{dam}$; $458.45\times100 =$ <span class="answer-final">$45\,845\,\mathrm{dam}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">5 pts</span>De acuerdo con la gráfica mostrada, calcula:</p>
@@ -153,30 +186,54 @@
         <circle class="dot" cx="328.0" cy="103.0" r="2.2"/>
         </svg>
       </figure>
+    
+      <ol class="exam-pdf__sublist clave-only">
+        <li>Distancia total $= 100+150+150+200+250+100 =$ <span class="answer-final">$950\,\mathrm{m}$</span></li>
+        <li>Desplazamiento $= 0-150 =$ <span class="answer-final">$-150\,\mathrm{m}$</span></li>
+        <li>$v_{[6,8]} = \dfrac{-150-50}{2} =$ <span class="answer-final">$-100\,\mathrm{m/s}$</span></li>
+        <li>$v_{[0,2]} = \dfrac{50-150}{2} =$ <span class="answer-final">$-50\,\mathrm{m/s}$</span></li>
+        <li>$v_{[12,14]} = \dfrac{100-(-150)}{2} =$ <span class="answer-final">$+125\,\mathrm{m/s}$</span></li>
+      </ol>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>¿Qué distancia recorrerá en línea recta un avión que se desplaza a $600\,\mathrm{km/h}$, durante un tiempo de $1$ hora $15$ minutos?</p>
+    
+      <p class="clave-only">$1.25\,\mathrm{h}$; $d=600\times1.25 =$ <span class="answer-final">$750\,\mathrm{km}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Un cuerpo cae libremente tardando $10$ segundos en llegar al suelo. ¿Desde qué altura se dejó caer?</p>
+    
+      <p class="clave-only">$h=\dfrac{1}{2}gt^2=\dfrac{1}{2}(9.8)(10)^2 =$ <span class="answer-final">$490\,\mathrm{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Determina la magnitud de la aceleración de un objeto de masa $120\,\mathrm{kg}$ que recibe una fuerza de $720\,\mathrm{N}$.</p>
+    
+      <p class="clave-only">$a=\dfrac{F}{m}=\dfrac{720}{120} =$ <span class="answer-final">$6\,\mathrm{m/s^2}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Un coche circula a $72\,\mathrm{km/h}$ y tiene una masa de $500\,\mathrm{kg}$. ¿Cuánta energía cinética posee?</p>
+    
+      <p class="clave-only">$v=20\,\mathrm{m/s}$; $E_c=\dfrac{1}{2}(500)(20)^2 =$ <span class="answer-final">$100\,000\,\mathrm{J}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Determina el valor de la velocidad que lleva un cuerpo de masa $4\,\mathrm{kg}$ si su energía cinética es de $200\,\mathrm{J}$.</p>
+    
+      <p class="clave-only">$v=\sqrt{\dfrac{2E_c}{m}}=\sqrt{\dfrac{400}{4}} =$ <span class="answer-final">$10\,\mathrm{m/s}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>¿Qué dice la primera ley de Newton?</p>
+    
+      <p class="clave-only"><span class="answer-final">Todo cuerpo permanece en reposo o en movimiento rectilíneo uniforme mientras no actúe sobre él una fuerza neta</span> (ley de la inercia).</p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Calcula la potencia de una máquina que realiza un trabajo de $540\,\mathrm{J}$ en un minuto y medio.</p>
+    
+      <p class="clave-only">$P=\dfrac{W}{t}=\dfrac{540}{90} =$ <span class="answer-final">$6\,\mathrm{W}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">3 pts</span>Nombra las $3$ formas de propagación del calor.</p>
+    
+      <p class="clave-only"><span class="answer-final">Conducción, convección y radiación</span>.</p>
     </div></li>
   </ol>
 
