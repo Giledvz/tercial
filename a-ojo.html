@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="A ojo — estima el tamaño del resultado antes de calcular y descarta lo imposible. Tercial, preparación COMIPEMS.">
+<title>A ojo · Tercial</title>
+
+<script>
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/study.css">
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/katex-loader.js"></script>
+<script defer src="/tercial/assets/js/banco.js"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="study">
+  <header class="study__hero">
+    <p class="study__eyebrow">Modo de estudio · estimación</p>
+    <h1 class="study__title">A <em>ojo</em></h1>
+    <p class="study__lede">Antes de calcular exacto, estima el <strong>tamaño</strong> del resultado. Acertar de qué lado cae ya tira dos opciones a la basura — sentido numérico puro, sin lápiz.</p>
+  </header>
+
+  <div class="study__marcador" aria-live="polite">
+    <span>Buen ojo: <strong id="m-bien">0</strong> / <span id="m-total">0</span></span>
+    <span id="m-racha"></span>
+  </div>
+
+  <section class="study__card" id="card" aria-live="polite"></section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  function ready(fn){ document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+
+  ready(function () {
+    var card = document.getElementById('card');
+
+    /* Parser numérico conservador: solo entran preguntas cuyas 4 opciones
+       son números limpios y distintos. */
+    function parseNum(raw) {
+      if (raw == null) return null;
+      var s = String(raw);
+      var m = s.match(/\\d?frac\{(-?[0-9.,\s]+)\}\{(-?[0-9.,\s]+)\}/);
+      if (m) { var a = parseNum(m[1]), b = parseNum(m[2]); return (a != null && b) ? a / b : null; }
+      s = s.replace(/\\[a-zA-Z]+\{[^}]*\}/g, ' ')
+           .replace(/\\[a-zA-Z]+/g, ' ')
+           .replace(/[$\\{}]/g, ' ')
+           .replace(/[a-zA-Z°²³\/%·×()=]+/g, ' ')
+           .replace(/(\d)\s*,\s*(\d{3})/g, '$1$2')
+           .trim();
+      var f = s.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);
+      if (f) return parseFloat(f[1]) / parseFloat(f[2]);
+      s = s.replace(/\s+/g, '');
+      if (/^-?\d+(\.\d+)?$/.test(s)) return parseFloat(s);
+      return null;
+    }
+
+    function fmt(n) {
+      if (Number.isInteger(n)) return String(n);
+      var r = Math.round(n * 100) / 100;
+      return String(r);
+    }
+
+    var BANCO = (window.BANCO || []).filter(function (q) {
+      if (!q.opciones || q.opciones.length !== 4 || typeof q.correcta !== 'number') return false;
+      var vals = q.opciones.map(parseNum);
+      if (vals.some(function (v) { return v == null || !isFinite(v); })) return false;
+      return new Set(vals).size === 4;
+    }).map(function (q) {
+      return { q: q, vals: q.opciones.map(parseNum) };
+    });
+
+    if (!BANCO.length) { card.innerHTML = '<p class="study__pregunta">No hay preguntas numéricas disponibles.</p>'; return; }
+
+    if (window.ClasesKatex) window.ClasesKatex.load();
+    function renderMath(el, tries) {
+      tries = tries || 0;
+      if (window.renderMathInElement) {
+        try { window.renderMathInElement(el, { delimiters: [
+          { left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }
+        ], throwOnError: false }); } catch (e) {}
+      } else if (tries < 40) { setTimeout(function () { renderMath(el, tries + 1); }, 120); }
+    }
+    function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+
+    var orden = shuffle(BANCO.map(function (_, i) { return i; }));
+    var pos = 0, bien = 0, total = 0, racha = 0;
+    var mejor = +(localStorage.getItem('aojo.mejorRacha') || 0);
+    var pivote, ladoCorrecta;
+
+    function pintaMarcador() {
+      document.getElementById('m-bien').textContent = bien;
+      document.getElementById('m-total').textContent = total;
+      var r = document.getElementById('m-racha');
+      if (racha >= 2) r.innerHTML = '<span class="racha-viva">racha · ' + racha + '</span>';
+      else if (mejor >= 2) r.textContent = 'mejor racha · ' + mejor;
+      else r.textContent = '';
+    }
+
+    function nueva() {
+      var item = BANCO[orden[pos % orden.length]];
+      var q = item.q, vals = item.vals;
+      var sorted = vals.slice().sort(function (a, b) { return a - b; });
+      pivote = (sorted[1] + sorted[2]) / 2;
+      ladoCorrecta = vals[q.correcta] < pivote ? 'menor' : 'mayor';
+
+      card.innerHTML =
+        '<p class="study__tema">' + (q.materia || '') + (q.tema ? ' · ' + q.tema : '') + '</p>' +
+        '<p class="study__instruccion">Sin calcular: ¿de qué tamaño te huele?</p>' +
+        '<p class="study__pregunta">' + q.pregunta + '</p>' +
+        '<div class="aojo__estima">' +
+          '<button type="button" class="aojo__lado" data-lado="menor"><span class="study__tecla">1</span> menor que <strong>' + fmt(pivote) + '</strong></button>' +
+          '<button type="button" class="aojo__lado" data-lado="mayor"><span class="study__tecla">2</span> mayor que <strong>' + fmt(pivote) + '</strong></button>' +
+        '</div>' +
+        '<div id="feedback"></div>';
+      renderMath(card);
+      card.querySelectorAll('.aojo__lado').forEach(function (b) {
+        b.addEventListener('click', function () { estimar(b.getAttribute('data-lado')); });
+      });
+    }
+
+    function estimar(lado) {
+      var item = BANCO[orden[pos % orden.length]];
+      var q = item.q, vals = item.vals;
+      var acierto = lado === ladoCorrecta;
+      total++;
+      if (acierto) { bien++; racha++; if (racha > mejor) { mejor = racha; localStorage.setItem('aojo.mejorRacha', mejor); } }
+      else racha = 0;
+      pintaMarcador();
+
+      card.querySelectorAll('.aojo__lado').forEach(function (b) {
+        b.disabled = true;
+        b.classList.toggle('es-elegido', b.getAttribute('data-lado') === lado);
+      });
+
+      // mostrar las 4 opciones con estado
+      var letras = ['A','B','C','D'];
+      var ops = vals.map(function (v, i) {
+        var enZonaDescartada = (lado === 'menor') ? (v > pivote) : (v < pivote);
+        var cls = 'study__opcion';
+        var marca = '';
+        if (i === q.correcta) { cls += enZonaDescartada ? ' es-error' : ' es-correcta'; marca = enZonaDescartada ? '✗ aquí estaba' : '✓ correcta'; }
+        else if (enZonaDescartada) { cls += ' es-tachada'; }
+        return '<div class="' + cls + '"><span class="study__tecla">' + letras[i] + '</span>' +
+          '<span class="study__opcion-txt">' + q.opciones[i] + '</span>' +
+          '<span class="study__marca">' + marca + '</span></div>';
+      }).join('');
+
+      var ver = acierto
+        ? '<p class="study__veredicto es-bien">Buen <em>ojo</em>. El resultado cae del lado que dijiste — dos opciones fuera, sin una sola cuenta.</p>'
+        : '<p class="study__veredicto es-mal">Caía del otro lado. Aquí el tamaño te engañó.</p>';
+
+      var fb = document.getElementById('feedback');
+      fb.innerHTML =
+        '<div class="study__opciones aojo__reveladas">' + ops + '</div>' +
+        ver +
+        (q.explicacion ? '<p class="study__explica">' + q.explicacion + '</p>' : '') +
+        '<div class="study__acciones"><button type="button" class="study__btn" id="btn-sig">Siguiente →</button></div>';
+      renderMath(fb);
+      document.getElementById('btn-sig').addEventListener('click', function () { pos++; nueva(); });
+    }
+
+    document.addEventListener('keydown', function (ev) {
+      var tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      var sig = document.getElementById('btn-sig');
+      if (sig) { if (ev.key === 'Enter') { ev.preventDefault(); sig.click(); } return; }
+      if (ev.key === '1') { var a = card.querySelector('.aojo__lado[data-lado="menor"]'); if (a && !a.disabled) a.click(); }
+      else if (ev.key === '2') { var b = card.querySelector('.aojo__lado[data-lado="mayor"]'); if (b && !b.disabled) b.click(); }
+    });
+
+    pintaMarcador();
+    nueva();
+  });
+})();
+</script>
+
+</body>
+</html>
