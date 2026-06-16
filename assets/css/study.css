@@ -259,6 +259,67 @@
   margin-top: var(--space-3);
 }
 
+/* ============================================================
+   Relámpago — cronómetro + combo
+   ============================================================ */
+.relampago__inicio { text-align: center; padding-block: var(--space-8); }
+.relampago__reloj-xl {
+  font-family: var(--font-family-mono);
+  font-size: 5rem;
+  font-weight: var(--font-weight-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.relampago__sub {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--font-size-20);
+  color: var(--color-text-primary);
+  margin-top: var(--space-3);
+}
+
+.relampago__top {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg-page);
+  padding-block: var(--space-3);
+  margin-bottom: var(--space-4);
+  z-index: var(--z-raised);
+}
+.relampago__barra {
+  height: 4px;
+  background-color: var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.relampago__barra-fill {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+.relampago__hud {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-variant-numeric: tabular-nums;
+}
+.relampago__hud > span:first-child { font-size: var(--font-size-24); color: var(--color-text-primary); }
+.relampago__hud > span:nth-child(2) { font-size: var(--font-size-20); color: var(--color-accent-strong); font-weight: var(--font-weight-medium); }
+.relampago__hud > span:last-child { font-size: var(--font-size-18); color: var(--color-text-meta); }
+
+.relampago__rev { margin-top: var(--space-6); text-align: left; }
+.relampago__rev-item {
+  padding-block: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+.relampago__rev-q { font-size: var(--font-size-15); color: var(--color-text-primary); margin-bottom: var(--space-2); }
+.relampago__rev-meta { font-size: var(--font-size-13); color: var(--color-text-meta); margin-bottom: var(--space-2); }
+.relampago__rev-meta strong { color: var(--color-state-ok); }
+
 @media (prefers-reduced-motion: reduce) {
   .study__opcion { transition: none; }
 }

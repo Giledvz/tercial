@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Relámpago — 60 segundos de preguntas rápidas. Entrena tu velocidad para el COMIPEMS. Tercial.">
+<title>Relámpago · Tercial</title>
+
+<script>
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/study.css">
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/katex-loader.js"></script>
+<script defer src="/tercial/assets/js/banco.js"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="study">
+  <header class="study__hero">
+    <p class="study__eyebrow">Modo de estudio · velocidad</p>
+    <h1 class="study__title"><em>Relámpago</em></h1>
+    <p class="study__lede">Sesenta segundos. Lo básico, a toda velocidad. Encadena aciertos para subir el combo — fallar no quita tiempo, pero rompe la racha.</p>
+  </header>
+
+  <div class="relampago" id="zona"></div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  function ready(fn){ document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+
+  ready(function () {
+    var zona = document.getElementById('zona');
+
+    function plano(s){ return String(s).replace(/\$[^$]*\$/g, '##').replace(/\\[a-zA-Z]+/g,''); }
+    var BANCO = (window.BANCO || []).filter(function (q) {
+      return q.opciones && q.opciones.length === 4 && typeof q.correcta === 'number' &&
+             q.pregunta.indexOf('$$') === -1 && plano(q.pregunta).length < 95;
+    });
+    if (!BANCO.length) { zona.innerHTML = '<p class="study__pregunta">No se pudo cargar el banco.</p>'; return; }
+
+    if (window.ClasesKatex) window.ClasesKatex.load();
+    function renderMath(el, tries) {
+      tries = tries || 0;
+      if (window.renderMathInElement) {
+        try { window.renderMathInElement(el, { delimiters: [
+          { left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }
+        ], throwOnError: false }); } catch (e) {}
+      } else if (tries < 40) { setTimeout(function () { renderMath(el, tries + 1); }, 120); }
+    }
+    function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+
+    var DUR = 60;
+    var nombre = '';
+    try { nombre = JSON.parse(localStorage.getItem('tercial:pasajero') || 'null') || ''; } catch (e) {}
+    var mejor = +(localStorage.getItem('relampago.mejorMarca') || 0);
+
+    function fechaClave(){ var h=new Date(); return h.getFullYear()+'-'+(h.getMonth()+1)+'-'+h.getDate(); }
+
+    function pantallaInicio() {
+      zona.innerHTML =
+        '<section class="study__card relampago__inicio">' +
+          '<p class="relampago__reloj-xl">60</p>' +
+          '<p class="relampago__sub">' + (nombre ? '¿Listo, ' + nombre + '?' : '¿Listo?') + ' Lo básico, contra el reloj.</p>' +
+          (mejor ? '<p class="study__hint">Tu mejor marca: ' + mejor + '</p>' : '') +
+          '<div class="study__acciones"><button type="button" class="study__btn" id="btn-go">Empezar</button></div>' +
+        '</section>';
+      document.getElementById('btn-go').addEventListener('click', iniciar);
+    }
+
+    var orden, idx, aciertos, combo, mejorCombo, restante, t0, rafId, fallos, fase;
+
+    function iniciar() {
+      orden = shuffle(BANCO.map(function (_, i) { return i; }));
+      idx = 0; aciertos = 0; combo = 0; mejorCombo = 0; fallos = []; fase = 'play';
+      restante = DUR; t0 = null;
+      zona.innerHTML =
+        '<div class="relampago__top">' +
+          '<div class="relampago__barra"><div class="relampago__barra-fill" id="barra"></div></div>' +
+          '<div class="relampago__hud"><span id="reloj">60</span><span id="combo"></span><span id="puntos">0</span></div>' +
+        '</div>' +
+        '<section class="study__card" id="qcard" aria-live="polite"></section>';
+      pinta();
+      tick();
+    }
+
+    function tick() {
+      function frame(ts) {
+        if (t0 === null) t0 = ts;
+        var transcurrido = (ts - t0) / 1000;
+        restante = Math.max(0, DUR - transcurrido);
+        var b = document.getElementById('barra'); if (b) b.style.width = (restante / DUR * 100) + '%';
+        var r = document.getElementById('reloj'); if (r) r.textContent = Math.ceil(restante);
+        if (restante <= 0) { fin(); return; }
+        rafId = requestAnimationFrame(frame);
+      }
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function pinta() {
+      var q = BANCO[orden[idx % orden.length]];
+      var ops = q.opciones.map(function (op, i) {
+        return '<button type="button" class="study__opcion" data-i="' + i + '">' +
+          '<span class="study__tecla">' + (i + 1) + '</span><span class="study__opcion-txt">' + op + '</span></button>';
+      }).join('');
+      var card = document.getElementById('qcard');
+      card.innerHTML = '<p class="study__pregunta">' + q.pregunta + '</p><div class="study__opciones">' + ops + '</div>';
+      renderMath(card);
+      card.querySelectorAll('.study__opcion').forEach(function (b) {
+        b.addEventListener('click', function () { responder(+b.getAttribute('data-i'), b); });
+      });
+      document.getElementById('puntos').textContent = aciertos;
+      var c = document.getElementById('combo');
+      c.textContent = combo >= 2 ? 'x' + combo : '';
+    }
+
+    function responder(i, btn) {
+      if (fase !== 'play' || restante <= 0) return;
+      var q = BANCO[orden[idx % orden.length]];
+      if (i === q.correcta) {
+        aciertos++; combo++; if (combo > mejorCombo) mejorCombo = combo;
+        btn.classList.add('es-correcta');
+      } else {
+        combo = 0;
+        btn.classList.add('es-error');
+        fallos.push({ q: q, eleg: i });
+      }
+      // bloquear más toques en esta pregunta
+      document.querySelectorAll('.study__opcion').forEach(function (b) { b.disabled = true; });
+      idx++;
+      setTimeout(function () { if (restante > 0) pinta(); }, 200);
+    }
+
+    function fin() {
+      fase = 'fin';
+      cancelAnimationFrame(rafId);
+      var nuevoRecord = aciertos > mejor;
+      if (nuevoRecord) { mejor = aciertos; localStorage.setItem('relampago.mejorMarca', mejor); }
+      // racha de días jugados
+      try {
+        var dias = JSON.parse(localStorage.getItem('relampago.dias') || '[]');
+        var hoy = fechaClave();
+        if (dias.indexOf(hoy) === -1) { dias.push(hoy); localStorage.setItem('relampago.dias', JSON.stringify(dias.slice(-60))); }
+      } catch (e) {}
+
+      var fallosHtml = fallos.length
+        ? '<button type="button" class="study__btn study__btn--ghost" id="btn-rev">Ver las que fallé (' + fallos.length + ')</button>'
+        : '<p class="study__hint">Sin errores. Impecable.</p>';
+
+      zona.innerHTML =
+        '<section class="study__card study__cierre">' +
+          '<p class="study__cierre-num">' + aciertos + '</p>' +
+          '<p class="study__cierre-frase">' + (nuevoRecord ? '¡Nueva marca personal!' : 'Acertaste ' + aciertos) + '</p>' +
+          '<p class="study__hint">Mejor combo: x' + mejorCombo + (mejor ? ' · tu mejor marca: ' + mejor : '') + '</p>' +
+          '<div class="study__acciones" style="justify-content:center;margin-top:var(--space-6);">' +
+            '<button type="button" class="study__btn" id="btn-otra">Otra vez</button>' + fallosHtml +
+          '</div>' +
+          '<div id="revision"></div>' +
+        '</section>';
+      document.getElementById('btn-otra').addEventListener('click', iniciar);
+      var rev = document.getElementById('btn-rev');
+      if (rev) rev.addEventListener('click', function () {
+        var html = fallos.map(function (f) {
+          var letras = ['A','B','C','D'];
+          return '<div class="relampago__rev-item">' +
+            '<p class="relampago__rev-q">' + f.q.pregunta + '</p>' +
+            '<p class="relampago__rev-meta">Tú: ' + letras[f.eleg] + ' · Correcta: <strong>' + letras[f.q.correcta] + '. ' + f.q.opciones[f.q.correcta] + '</strong></p>' +
+            (f.q.explicacion ? '<p class="study__explica">' + f.q.explicacion + '</p>' : '') + '</div>';
+        }).join('');
+        document.getElementById('revision').innerHTML = '<div class="relampago__rev">' + html + '</div>';
+        renderMath(document.getElementById('revision'));
+        rev.disabled = true;
+      });
+    }
+
+    document.addEventListener('keydown', function (ev) {
+      if (fase !== 'play') return;
+      var tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (/^[1-4]$/.test(ev.key)) {
+        var b = document.querySelector('.study__opcion[data-i="' + (+ev.key - 1) + '"]:not([disabled])');
+        if (b) { ev.preventDefault(); b.click(); }
+      }
+    });
+
+    pantallaInicio();
+  });
+})();
+</script>
+
+</body>
+</html>
