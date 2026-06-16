@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/exam-print.css">
 
   <script defer src="../assets/js/katex-loader.js"></script>
+  <script defer src="../assets/js/exam-clave.js"></script>
 </head>
 <body>
 
@@ -24,7 +25,7 @@
   <header class="exam-pdf__hero">
     <p class="exam-pdf__eyebrow">Evaluación · ECOEMS</p>
     <h1 class="exam-pdf__title">Examen 6 — <em>Matemáticas y Física</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Sexto fin de semana del curso · versión alumno</p>
+    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Sexto fin de semana del curso · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
   </header>
 
   <div class="exam-pdf__instructions">
@@ -39,42 +40,68 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">2 pts</span>Encuentra el valor de $x$ y $y$: $\begin{cases}3x - 4y &= 6\\5x + 6y &= -28\end{cases}$</p>
+    
+      <p class="clave-only">Eliminación: $9x-12y=18$, $10x+12y=-56 \Rightarrow 19x=-38 \Rightarrow$ <span class="answer-final">$x=-2,\ y=-3$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>En $5$ días, $3$ alumnos vendieron $930$ paletas. ¿Cuántos días tienen que dedicar para vender $2\,790$ paletas?</p>
+    
+      <p class="clave-only">$\dfrac{2\,790}{930}=3$ (directa) $\Rightarrow 5\times3 =$ <span class="answer-final">$15\,\text{días}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$\dfrac{1}{4}+\dfrac{6}{60}+\dfrac{12}{18} =$</p>
+    
+      <p class="clave-only">$\dfrac{15+6+40}{60} =$ <span class="answer-final">$\dfrac{61}{60}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Encuentra el valor de $x$: $16-2x-15=3x+21$</p>
+    
+      <p class="clave-only">$1-2x=3x+21 \Rightarrow -20=5x \Rightarrow$ <span class="answer-final">$x=-4$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $10m^2-9m-9 =$</p>
+    
+      <p class="clave-only">$10m^2-9m-9 =$ <span class="answer-final">$(2m-3)(5m+3)$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$-28+31-35+27-40 =$</p>
+    
+      <p class="clave-only">$-28+31-35+27-40 =$ <span class="answer-final">$-45$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(2x+6)^2 =$</p>
+    
+      <p class="clave-only">$(2x+6)^2 =$ <span class="answer-final">$4x^2+24x+36$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Obtén el mínimo común múltiplo de $18$ y $42$.</p>
+    
+      <p class="clave-only">$18=2\cdot3^2$, $42=2\cdot3\cdot7 \Rightarrow$ m.c.m. $=2\cdot3^2\cdot7 =$ <span class="answer-final">$126$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Nueve trabajadores cargan un camión en $2$ horas. ¿Cuánto tardan seis trabajadores?</p>
+    
+      <p class="clave-only">Inversa: $9\times2=18 \Rightarrow 18\div6 =$ <span class="answer-final">$3\,\text{horas}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>$(x+12)(x+8) =$</p>
+    
+      <p class="clave-only">$(x+12)(x+8) =$ <span class="answer-final">$x^2+20x+96$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Halla el número tal que, si sumamos su mitad con su doble y su triple, obtenemos $55$.</p>
+    
+      <p class="clave-only">$\dfrac{x}{2}+2x+3x=55 \Rightarrow \dfrac{11x}{2}=55 \Rightarrow$ <span class="answer-final">$x=10$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Factoriza $49x^2-16y^4 =$</p>
+    
+      <p class="clave-only">$49x^2-16y^4 =$ <span class="answer-final">$(7x-4y^2)(7x+4y^2)$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">2 pts</span>Encuentra los dos valores de $x$: $x^2+10=2x+90$</p>
+    
+      <p class="clave-only">$x^2-2x-80=0 \Rightarrow (x-10)(x+8)=0 \Rightarrow$ <span class="answer-final">$x=10,\ x=-8$</span></p>
     </div></li>
   </ol>
 
@@ -85,9 +112,13 @@
   <ol class="exam-pdf__exercises">
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Despeja $a$ en la ecuación $\dfrac{F}{a}=m$.</p>
+    
+      <p class="clave-only">$\dfrac{F}{a}=m \Rightarrow$ <span class="answer-final">$a=\dfrac{F}{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Convierte $514.46\,\mathrm{dm}$ a $\mathrm{hm}$.</p>
+    
+      <p class="clave-only">$1\,\mathrm{hm}=1\,000\,\mathrm{dm}$; $514.46\div1\,000 =$ <span class="answer-final">$0.51446\,\mathrm{hm}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">5 pts</span>De acuerdo con la gráfica mostrada, calcula:</p>
@@ -150,18 +181,34 @@
         <circle class="dot" cx="328.0" cy="81.2" r="2.2"/>
         </svg>
       </figure>
+    
+      <ol class="exam-pdf__sublist clave-only">
+        <li>Distancia total $= 50+100+150+200+50+150+250+50 =$ <span class="answer-final">$1\,000\,\mathrm{m}$</span></li>
+        <li>Desplazamiento $= 50-(-50) =$ <span class="answer-final">$+100\,\mathrm{m}$</span></li>
+        <li>$v_{[6,9]} = \dfrac{150-0}{3} =$ <span class="answer-final">$+50\,\mathrm{m/s}$</span></li>
+        <li>$v_{[0,3]} = \dfrac{-100-(-50)}{3} \approx$ <span class="answer-final">$-16.7\,\mathrm{m/s}$</span></li>
+        <li>$v_{[15,18]} = \dfrac{-150-0}{3} =$ <span class="answer-final">$-50\,\mathrm{m/s}$</span></li>
+      </ol>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>La velocidad del sonido en el aire es $340\,\mathrm{m/s}$. Desde que se produjo el relámpago hasta que se oyó el trueno transcurrieron $8\,\mathrm{s}$. ¿A qué distancia se produjo la descarga eléctrica?</p>
+    
+      <p class="clave-only">$d=vt=340\times8 =$ <span class="answer-final">$2\,720\,\mathrm{m}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Lanzamos verticalmente hacia arriba un cuerpo a $20\,\mathrm{m/s}$. Calcula cuánto tiempo le cuesta llegar al punto más alto.</p>
+    
+      <p class="clave-only">Punto más alto $v=0$: $t=\dfrac{v_0}{g}=\dfrac{20}{9.8} \approx$ <span class="answer-final">$2.04\,\mathrm{s}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>¿Cuánto pesa un hombre que tiene una masa de $70\,\mathrm{kg}$?</p>
+    
+      <p class="clave-only">$P=mg=70\times9.8 =$ <span class="answer-final">$686\,\mathrm{N}$</span></p>
     </div></li>
     <li class="exam-pdf__exercise"><div class="exam-pdf__body">
       <p><span class="exam-pdf__points">1 pt</span>Un cuerpo se desplaza $62\,\mathrm{m}$ con un trabajo de $310\,\mathrm{J}$. ¿Con qué fuerza se empuja?</p>
+    
+      <p class="clave-only">$F=\dfrac{W}{d}=\dfrac{310}{62} =$ <span class="answer-final">$5\,\mathrm{N}$</span></p>
     </div></li>
   </ol>
 
