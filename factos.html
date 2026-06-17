@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Factos — datos duros que van sí o sí: conceptos, fechas y clasificaciones para memorizar al 100 %. Tercial, preparación COMIPEMS.">
+<title>Factos · Tercial</title>
+
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/study.css">
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/katex-loader.js"></script>
+<script defer src="/tercial/assets/js/factos.js"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="study">
+  <header class="study__hero">
+    <p class="study__eyebrow">Modo de estudio · memoria</p>
+    <h1 class="study__title"><em>Factos</em></h1>
+    <p class="study__lede">Datos que van <strong>sí o sí</strong>: conceptos, fechas, clasificaciones. Pasa la tarjeta, dilo con tus palabras y marca lo que ya domines. Sin opciones, sin trampa — pura memoria.</p>
+  </header>
+
+  <div class="factos__filtros" id="filtros" role="group" aria-label="Filtrar por materia"></div>
+
+  <div class="study__marcador" aria-live="polite">
+    <span>Carta <strong id="m-pos">0</strong> / <span id="m-total">0</span></span>
+    <span id="m-dom"></span>
+  </div>
+
+  <section class="study__card" id="card" aria-live="polite"></section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  function ready(fn){ document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', fn) : fn(); }
+
+  /* Etiquetas legibles por materia. Si agregas una materia nueva en
+     factos.js, añádela aquí para que salga bonita en la tarjeta. */
+  var LABELS = {
+    fisica: 'Física', quimica: 'Química', biologia: 'Biología',
+    historia: 'Historia', geografia: 'Geografía', civismo: 'Civismo',
+    matematicas: 'Matemáticas', espanol: 'Español'
+  };
+  function labelMateria(m) {
+    return LABELS[m] || (m ? m.charAt(0).toUpperCase() + m.slice(1) : '');
+  }
+
+  /* id estable por texto (djb2) — sobrevive si reordenas o agregas factos */
+  function hashId(s) {
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) { h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; }
+    return h.toString(36);
+  }
+
+  ready(function () {
+    var card = document.getElementById('card');
+    var FACTOS = (window.FACTOS || []).filter(function (f) { return f && f.afirmacion; });
+
+    if (!FACTOS.length) {
+      card.innerHTML = '<p class="study__pregunta">No se pudo cargar el banco de afirmaciones.</p>';
+      return;
+    }
+    FACTOS.forEach(function (f) { f._id = hashId((f.afirmacion || '').trim().toLowerCase()); });
+
+    /* KaTeX por si una afirmación trae $...$ (la mayoría es prosa con Unicode). */
+    if (window.ClasesKatex) window.ClasesKatex.load();
+    function renderMath(el, tries) {
+      tries = tries || 0;
+      if (window.renderMathInElement) {
+        try { window.renderMathInElement(el, { delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false }
+        ], throwOnError: false }); } catch (e) {}
+      } else if (tries < 40) {
+        setTimeout(function () { renderMath(el, tries + 1); }, 120);
+      }
+    }
+    function shuffle(a) {
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    }
+
+    /* "Ya me la sé": persistido por id estable. */
+    var DKEY = 'factos.dominadas';
+    var dominadas = {};
+    try { dominadas = JSON.parse(localStorage.getItem(DKEY) || '{}') || {}; } catch (e) { dominadas = {}; }
+    function esDominada(f) { return !!dominadas[f._id]; }
+    function setDominada(f, v) {
+      if (v) dominadas[f._id] = 1; else delete dominadas[f._id];
+      try { localStorage.setItem(DKEY, JSON.stringify(dominadas)); } catch (e) {}
+    }
+
+    /* Materias presentes, en orden de aparición. */
+    var materias = [];
+    (function () {
+      var seen = {};
+      FACTOS.forEach(function (f) { if (f.materia && !seen[f.materia]) { seen[f.materia] = 1; materias.push(f.materia); } });
+    })();
+
+    var filtro = 'todas';   // 'todas' | <materia> | 'faltan'
+    var deck = [];          // índices dentro de FACTOS, barajados
+    var pos = 0;
+
+    function construyeDeck() {
+      var arr = FACTOS.map(function (_, i) { return i; });
+      if (filtro === 'faltan') {
+        arr = arr.filter(function (i) { return !esDominada(FACTOS[i]); });
+      } else if (filtro !== 'todas') {
+        arr = arr.filter(function (i) { return FACTOS[i].materia === filtro; });
+      }
+      return shuffle(arr);
+    }
+
+    function nuevaTanda(f) {
+      if (f) filtro = f;
+      deck = construyeDeck();
+      pos = 0;
+      pintaChips();
+      if (!deck.length) { cierreVacio(); return; }
+      pinta();
+    }
+
+    function chip(val, txt, n) {
+      var act = (filtro === val) ? ' es-activo' : '';
+      return '<button type="button" class="factos__chip' + act + '" data-f="' + val + '">' +
+        txt + ' <span class="factos__chip-n">' + n + '</span></button>';
+    }
+    function pintaChips() {
+      var cont = document.getElementById('filtros');
+      var chips = [chip('todas', 'Todas', FACTOS.length)];
+      materias.forEach(function (m) {
+        var n = FACTOS.filter(function (f) { return f.materia === m; }).length;
+        chips.push(chip(m, labelMateria(m), n));
+      });
+      cont.innerHTML = chips.join('');
+      cont.querySelectorAll('.factos__chip').forEach(function (b) {
+        b.addEventListener('click', function () { nuevaTanda(b.getAttribute('data-f')); });
+      });
+    }
+
+    function dominadasEnDeck() {
+      return deck.filter(function (i) { return esDominada(FACTOS[i]); }).length;
+    }
+    function pintaMarcador() {
+      document.getElementById('m-pos').textContent = deck.length ? (pos + 1) : 0;
+      document.getElementById('m-total').textContent = deck.length;
+      var d = dominadasEnDeck();
+      document.getElementById('m-dom').innerHTML = d ? 'dominadas · <strong>' + d + '</strong>' : '';
+    }
+
+    function pinta() {
+      var f = FACTOS[deck[pos]];
+      var dom = esDominada(f);
+      card.innerHTML =
+        '<p class="study__tema">' + labelMateria(f.materia) + (f.tema ? ' · ' + f.tema : '') +
+          (dom ? ' <span class="factos__dom-tag">· dominada</span>' : '') + '</p>' +
+        '<p class="factos__afirmacion">' + f.afirmacion + '</p>' +
+        (f.nota ? '<p class="factos__nota">' + f.nota + '</p>' : '') +
+        '<div class="study__acciones factos__nav">' +
+          '<button type="button" class="study__btn study__btn--ghost" id="btn-prev"' + (pos === 0 ? ' disabled' : '') + '>← Anterior</button>' +
+          '<button type="button" class="factos__sabe' + (dom ? ' es-dom' : '') + '" id="btn-sabe">' +
+            (dom ? '✓ Ya me la sé' : 'Me la sé') + '</button>' +
+          '<button type="button" class="study__btn" id="btn-next">' +
+            (pos === deck.length - 1 ? 'Terminar →' : 'Siguiente →') + '</button>' +
+        '</div>' +
+        '<p class="study__hint">← → para navegar · S para marcar que ya la dominas</p>';
+      renderMath(card);
+      pintaMarcador();
+      document.getElementById('btn-prev').addEventListener('click', prev);
+      document.getElementById('btn-next').addEventListener('click', next);
+      document.getElementById('btn-sabe').addEventListener('click', toggleSabe);
+    }
+
+    function prev() { if (pos > 0) { pos--; pinta(); } }
+    function next() { if (pos < deck.length - 1) { pos++; pinta(); } else { cierre(); } }
+    function toggleSabe() { var f = FACTOS[deck[pos]]; setDominada(f, !esDominada(f)); pinta(); }
+
+    function cierre() {
+      var d = dominadasEnDeck();
+      var faltan = deck.length - d;
+      card.innerHTML =
+        '<div class="study__cierre">' +
+          '<p class="study__cierre-num">' + deck.length + '</p>' +
+          '<p class="study__cierre-frase">Viste toda la tanda. ' +
+            (d ? 'Marcaste <em>' + d + '</em> como dominadas.' : '¿Cuántas te sabes ya?') + '</p>' +
+          '<div class="study__acciones" style="justify-content:center; flex-wrap:wrap;">' +
+            (faltan > 0 ? '<button type="button" class="study__btn" id="c-faltan">Repasar las ' + faltan + ' que faltan</button>' : '') +
+            '<button type="button" class="study__btn study__btn--ghost" id="c-otra">Volver a empezar</button>' +
+          '</div>' +
+        '</div>';
+      pintaMarcador();
+      var cf = document.getElementById('c-faltan');
+      if (cf) cf.addEventListener('click', function () { nuevaTanda('faltan'); });
+      document.getElementById('c-otra').addEventListener('click', function () {
+        nuevaTanda(filtro === 'faltan' ? 'todas' : filtro);
+      });
+    }
+
+    function cierreVacio() {
+      card.innerHTML =
+        '<div class="study__cierre">' +
+          '<p class="study__cierre-frase">Aquí no quedan factos por repasar. <em>¡Te los sabes todos!</em></p>' +
+          '<div class="study__acciones" style="justify-content:center;">' +
+            '<button type="button" class="study__btn" id="c-todas">Ver todas otra vez</button>' +
+          '</div>' +
+        '</div>';
+      pintaMarcador();
+      document.getElementById('c-todas').addEventListener('click', function () { nuevaTanda('todas'); });
+    }
+
+    /* Teclado: ← → navega, Enter/Espacio avanza, S marca "me la sé". */
+    document.addEventListener('keydown', function (ev) {
+      var tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+      if (ev.key === 'ArrowRight' || ev.key === 'Enter' || ev.key === ' ') {
+        var n = document.getElementById('btn-next'); if (n) { ev.preventDefault(); n.click(); }
+      } else if (ev.key === 'ArrowLeft') {
+        var p = document.getElementById('btn-prev'); if (p && !p.disabled) { ev.preventDefault(); p.click(); }
+      } else if (ev.key === 's' || ev.key === 'S' || ev.key === 'ArrowUp') {
+        var s = document.getElementById('btn-sabe'); if (s) { ev.preventDefault(); s.click(); }
+      }
+    });
+
+    nuevaTanda('todas');
+  });
+})();
+</script>
+
+</body>
+</html>

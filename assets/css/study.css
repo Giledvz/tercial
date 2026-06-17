@@ -351,6 +351,84 @@
 .aojo__lado:disabled { cursor: default; }
 .aojo__reveladas { margin-bottom: var(--space-5); }
 
+/* ============================================================
+   Factos — afirmaciones para memorizar (carrusel)
+   ============================================================ */
+
+/* Chips de filtro por materia */
+.factos__filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+.factos__chip {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-meta);
+  color: var(--color-text-meta);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-page);
+  transition: border-color var(--motion-fast) var(--motion-ease-standard),
+              color var(--motion-fast) var(--motion-ease-standard),
+              background-color var(--motion-fast) var(--motion-ease-standard);
+}
+.factos__chip:hover { border-color: var(--color-border-strong); color: var(--color-text-secondary); }
+.factos__chip.es-activo {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-bg-hover);
+}
+.factos__chip-n { opacity: 0.55; font-variant-numeric: tabular-nums; }
+
+/* La afirmación: el centro de la tarjeta */
+.factos__afirmacion {
+  font-size: clamp(var(--font-size-20), 3.5vw, var(--font-size-24));
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  margin-block: var(--space-2) var(--space-4);
+  min-height: 4.5rem;
+}
+
+/* Nota / mnemotecnia opcional */
+.factos__nota {
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+  border-left: var(--border-thick) solid var(--color-accent);
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+/* Etiqueta "dominada" junto al tema */
+.factos__dom-tag { color: var(--color-state-ok); font-weight: var(--font-weight-medium); }
+
+/* Fila de navegación: anterior · me la sé · siguiente */
+.factos__nav { flex-wrap: wrap; }
+
+.factos__sabe {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: var(--border-thin) solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  transition: border-color var(--motion-fast) var(--motion-ease-standard),
+              color var(--motion-fast) var(--motion-ease-standard),
+              background-color var(--motion-fast) var(--motion-ease-standard);
+}
+.factos__sabe:hover { border-color: var(--color-state-ok); color: var(--color-state-ok); }
+.factos__sabe:active { transform: scale(0.98); }
+.factos__sabe.es-dom {
+  border-color: var(--color-state-ok);
+  background-color: var(--color-state-ok-bg);
+  color: var(--color-state-ok);
+  font-weight: var(--font-weight-medium);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .study__opcion, .aojo__lado { transition: none; }
+  .study__opcion, .aojo__lado, .factos__chip, .factos__sabe { transition: none; }
 }
