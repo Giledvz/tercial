@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>tu mapa · Tercial</title>
+
+  <script>
+    /* Anti-flash · ver design-system § 11 */
+    (function () {
+      var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+  <link rel="stylesheet" href="/tercial/assets/css/base.css">
+  <link rel="stylesheet" href="/tercial/assets/css/components.css">
+  <link rel="stylesheet" href="/tercial/assets/css/mapa.css">
+
+  <script defer src="/tercial/assets/js/theme.js"></script>
+  <script defer src="/tercial/assets/js/site-nav.js"></script>
+  <script defer src="/tercial/assets/js/mapa.js"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--wide mapa">
+
+  <header class="hero">
+    <p class="eyebrow">Tu progreso · una pantalla a la vez</p>
+    <h1 class="hero__title">Tu <em>mapa</em></h1>
+    <p class="hero__lede">
+      Dónde estás parado y qué hacer hoy, de un vistazo. <strong>Materias</strong> (el tamaño es cuánto territorio abarca cada una); al tocar una, entras a su mapa de <strong>temas</strong> (el tamaño es cuánto pesa en el examen). El número grande siempre es tu % de dominio.
+    </p>
+  </header>
+
+  <!-- ════════ NIVEL 1 · MATERIAS ════════ -->
+  <section id="nivel-1" class="mapa-panel">
+    <div class="mapa-panel__head">
+      <div>
+        <p class="mapa-panel__eyebrow" id="mapa-eyebrow">Examen</p>
+        <h2 class="mapa-panel__title">Tu examen completo</h2>
+      </div>
+      <div class="mapa-panel__score">
+        <div class="mapa-panel__score-pct" id="mapa-global">—</div>
+        <div class="mapa-panel__score-label">dominio global</div>
+      </div>
+    </div>
+    <div class="mapa-legend">
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--domina"></span>Dominas</span>
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--proceso"></span>En proceso</span>
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--reforzar"></span>A reforzar</span>
+      <span class="mapa-legend__note">tamaño = nº de subtemas</span>
+    </div>
+    <div class="bento" id="bento-materias"></div>
+  </section>
+
+  <!-- ════════ NIVEL 2 · TEMAS DE UNA MATERIA ════════ -->
+  <section id="nivel-2" class="mapa-panel" hidden>
+    <button class="mapa-back" id="mapa-back" type="button">← Examen</button>
+    <div class="mapa-panel__head">
+      <div>
+        <p class="mapa-panel__eyebrow" id="mapa2-eyebrow">Materia</p>
+        <h2 class="mapa-panel__title">Dónde poner tu energía</h2>
+        <p class="mapa-panel__proj" id="mapa2-proj"></p>
+      </div>
+      <div class="mapa-panel__score">
+        <div class="mapa-panel__score-pct" id="mapa2-global">—</div>
+        <div class="mapa-panel__score-label">dominio</div>
+      </div>
+    </div>
+    <div class="mapa-legend">
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--domina"></span>Dominas</span>
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--proceso"></span>En proceso</span>
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--reforzar"></span>A reforzar</span>
+      <span class="mapa-legend__item"><span class="mapa-legend__dot mapa-legend__dot--sin"></span>Sin empezar</span>
+      <span class="mapa-legend__note">tamaño = peso en examen</span>
+    </div>
+    <div class="bento" id="bento-temas"></div>
+  </section>
+
+</main>
+
+</body>
+</html>

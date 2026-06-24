@@ -1,0 +1,165 @@
+/* ============================================================
+   mapa.css — "Tu mapa": bento de dominio (FASE 1)
+   Colores de azulejo = dashboard "apagado + señales"
+   (ver repo-diseno/IMPLEMENTAR-mapa-bento.md §2). Light/dark
+   conmutado por [data-theme]. Sin librerías; grid CSS puro.
+   ============================================================ */
+
+.mapa { max-width: var(--container-wide); }
+
+/* ── Panel contenedor (card raised) ───────────────────────── */
+.mapa-panel {
+  background: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-7);
+}
+.mapa-panel[hidden] { display: none; }
+
+.mapa-panel__head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: var(--space-4);
+}
+.mapa-panel__eyebrow {
+  font: var(--font-weight-medium) var(--font-size-11)/1.3 var(--font-family-body);
+  letter-spacing: var(--tracking-display-eyebrow); text-transform: uppercase;
+  color: var(--color-text-meta-large); margin: 0 0 var(--space-2);
+}
+.mapa-panel__title {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-24); letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary); margin: 0;
+}
+.mapa-panel__proj {
+  font: var(--font-weight-regular) var(--font-size-13)/1.5 var(--font-family-body);
+  color: var(--color-text-secondary); margin: var(--space-2) 0 0;
+}
+.mapa-panel__proj strong { font-weight: var(--font-weight-semibold); color: var(--color-state-err); }
+.mapa-panel__score { text-align: right; flex: none; }
+.mapa-panel__score-pct {
+  font-family: var(--font-family-display); font-style: italic;
+  font-weight: var(--font-weight-medium); font-size: var(--font-size-32);
+  color: var(--color-state-ok); line-height: 1;
+}
+.mapa-panel__score-label {
+  font: var(--font-weight-regular) var(--font-size-12)/1 var(--font-family-body);
+  color: var(--color-text-meta); margin-top: 2px;
+}
+
+/* ── Volver al nivel 1 ────────────────────────────────────── */
+.mapa-back {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  background: none; border: none; cursor: pointer; padding: 0;
+  margin: 0 0 var(--space-4);
+  font: var(--font-weight-medium) var(--font-size-13)/1 var(--font-family-body);
+  color: var(--color-accent);
+}
+.mapa-back:hover { color: var(--color-text-primary); }
+.mapa-back:focus-visible { outline: var(--border-medium) solid var(--color-accent); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+/* ── Leyenda ──────────────────────────────────────────────── */
+.mapa-legend {
+  display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;
+  margin: var(--space-3) 0 var(--space-5);
+}
+.mapa-legend__item {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font: var(--font-weight-regular) var(--font-size-12)/1 var(--font-family-body);
+  color: var(--color-text-secondary);
+}
+.mapa-legend__dot { width: 11px; height: 11px; border-radius: var(--radius-sm); }
+.mapa-legend__dot--domina   { background: #4a6b3f; }
+.mapa-legend__dot--proceso  { background: #e6a829; }
+.mapa-legend__dot--reforzar { background: #9c3525; }
+.mapa-legend__dot--sin      { background: #e6dcc4; }
+[data-theme="dark"] .mapa-legend__dot--domina   { background: #45663a; }
+[data-theme="dark"] .mapa-legend__dot--proceso  { background: #d4a04a; }
+[data-theme="dark"] .mapa-legend__dot--reforzar { background: #c25a44; }
+[data-theme="dark"] .mapa-legend__dot--sin      { background: #3a3229; }
+.mapa-legend__note {
+  margin-left: auto;
+  font: var(--font-weight-regular) var(--font-size-12)/1 var(--font-family-mono);
+  color: var(--color-text-meta);
+}
+
+/* ── Bento grid ───────────────────────────────────────────── */
+.bento {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 82px; gap: 9px; grid-auto-flow: dense;
+  margin-top: var(--space-2);
+}
+
+.tile {
+  border-radius: 9px; padding: 11px 13px; overflow: hidden; position: relative;
+  display: flex; flex-direction: column; justify-content: space-between;
+  width: 100%; text-align: left; border: none; font-family: var(--font-family-body);
+  background: var(--tile-bg); color: var(--tile-fg);
+}
+.tile .pct {
+  font-family: var(--font-family-mono); font-variant-numeric: tabular-nums;
+  line-height: 1; font-weight: var(--font-weight-medium);
+}
+.tile__nm { line-height: 1.12; font-weight: var(--font-weight-medium); }
+.tile__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+.tile__corner { font-family: var(--font-family-mono); font-size: 9px; color: var(--tile-soft); }
+.tile__meta { color: var(--tile-soft); }
+.tile__more { display: block; font-size: 10px; font-weight: var(--font-weight-medium); margin-top: 7px; }
+.tile__foot--block { display: block; }
+.tile__foot--block .tile__meta { display: block; font-size: 9px; margin-top: 3px; }
+
+/* Spans por clase (móvil los puede aplanar sin !important) */
+.tile--c2 { grid-column: span 2; }
+.tile--r2 { grid-row: span 2; }
+
+/* Tiers de tamaño */
+.tile--sm .tile__nm { font-size: var(--font-size-11); }
+.tile--sm .tile__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 6px; }
+.tile--sm .pct { font-size: 16px; }
+
+.tile--md .tile__nm { font-size: var(--font-size-11); }
+.tile--md .pct { font-size: 20px; }
+.tile--md .tile__foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 6px; }
+.tile--md .tile__meta { font-size: 9px; }
+
+.tile--lg .tile__nm { font-family: var(--font-family-display); font-size: var(--font-size-20); }
+.tile--lg .pct { font-size: 40px; }
+.tile--lg .tile__meta { display: block; font-size: 11px; margin-top: 5px; }
+
+/* Afordancia de drill-down */
+.tile--drill { outline: 1.5px solid var(--tile-outline); outline-offset: -1.5px; cursor: pointer; }
+.tile--drill:focus-visible { outline-width: var(--border-medium); }
+
+/* Azulejo prioritario (señales 3.1 / 3.2) */
+.tile__badge {
+  font: var(--font-weight-medium) 8.5px var(--font-family-body);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--tile-fg);
+  background: var(--tile-badge-bg); padding: 3px 8px; border-radius: 4px;
+}
+.tile__nm--tema { font-family: var(--font-family-display); font-size: 19px; margin-top: 4px; }
+.tile__cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--tile-badge-bg); border-radius: 6px; padding: 7px 12px;
+  font: var(--font-weight-medium) 11px var(--font-family-body);
+  color: var(--tile-fg); text-decoration: none; margin-top: 9px;
+}
+.tile__cta:hover { filter: brightness(1.08); }
+
+/* ── Estados de color (apagado + señales) ─────────────────── */
+.tile { --tile-outline: #1f1a16; }
+.tile--domina   { --tile-bg: #4a6b3f; --tile-fg: #fff;    --tile-soft: #cdddbf; --tile-badge-bg: rgba(255,255,255,.16); }
+.tile--proceso  { --tile-bg: #e6a829; --tile-fg: #3a2c08; --tile-soft: #5a4410; --tile-badge-bg: rgba(0,0,0,.10); }
+.tile--reforzar { --tile-bg: #9c3525; --tile-fg: #fff;    --tile-soft: #f1d3ca; --tile-badge-bg: rgba(255,255,255,.16); }
+.tile--sin      { --tile-bg: #e6dcc4; --tile-fg: #8c7556; --tile-soft: #a89880; --tile-badge-bg: rgba(0,0,0,.06); }
+
+[data-theme="dark"] .tile { --tile-outline: #efe4cf; }
+[data-theme="dark"] .tile--domina   { --tile-bg: #45663a; --tile-fg: #fff;    --tile-soft: #bccfae; --tile-badge-bg: rgba(0,0,0,.18); }
+[data-theme="dark"] .tile--proceso  { --tile-bg: #d4a04a; --tile-fg: #241b06; --tile-soft: #4a3608; --tile-badge-bg: rgba(0,0,0,.14); }
+[data-theme="dark"] .tile--reforzar { --tile-bg: #c25a44; --tile-fg: #fff;    --tile-soft: #f1d9cf; --tile-badge-bg: rgba(0,0,0,.18); }
+[data-theme="dark"] .tile--sin      { --tile-bg: #3a3229; --tile-fg: #a89880; --tile-soft: #8a7861; --tile-badge-bg: rgba(0,0,0,.14); }
+
+/* ── Móvil: 2 columnas, aplanar azulejos altos ───────────── */
+@media (max-width: 520px) {
+  .bento { grid-template-columns: repeat(2, 1fr); }
+  .tile--r2 { grid-row: span 1; }
+  .mapa-panel { padding: var(--space-5) var(--space-4); }
+}
