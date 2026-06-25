@@ -1,0 +1,142 @@
+/* ============================================================
+   niveles.css — separación Medio superior / Superior
+   Acento por nivel vía [data-nivel] reusando --cat-coral / --cat-teal
+   (ver repo-diseno/IMPLEMENTAR-niveles.md §2.1). Experimental aquí;
+   si se aprueba, los tokens --accent-nivel* se promueven a tokens.css.
+   ============================================================ */
+
+/* ── Acento por nivel (el resto de componentes lee --accent-nivel) ── */
+[data-nivel="medio"] {
+  --accent-nivel: var(--cat-coral);
+  --accent-nivel-badge-bg: #f3e3da;
+  --accent-nivel-btn-bg: #6b3a2e; --accent-nivel-btn-fg: #f8f3e8;
+}
+[data-nivel="superior"] {
+  --accent-nivel: var(--cat-teal);
+  --accent-nivel-badge-bg: #dbe8e9;
+  --accent-nivel-btn-bg: #2d5c63; --accent-nivel-btn-fg: #f4f9f9;
+}
+[data-theme="dark"][data-nivel="medio"] {
+  --accent-nivel-badge-bg: #3a2622;
+  --accent-nivel-btn-bg: #c79a82; --accent-nivel-btn-fg: #1a1614;
+}
+[data-theme="dark"][data-nivel="superior"] {
+  --accent-nivel-badge-bg: #20302e;
+  --accent-nivel-btn-bg: #7eb0b5; --accent-nivel-btn-fg: #15201f;
+}
+
+/* Badge de nivel + botón de acento (compartidos) */
+.nivel-badge {
+  font: var(--font-weight-medium) 9.5px var(--font-family-body);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent-nivel);
+  background: var(--accent-nivel-badge-bg); padding: 4px 10px; border-radius: 5px;
+}
+.nivel-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-nivel-btn-bg); color: var(--accent-nivel-btn-fg);
+  font: var(--font-weight-medium) var(--font-size-13) var(--font-family-body);
+  padding: 10px 18px; border-radius: var(--radius-lg); border: none;
+  cursor: pointer; text-decoration: none;
+}
+.nivel-btn:hover { filter: brightness(1.06); }
+.nivel-btn:focus-visible { outline: var(--border-medium) solid var(--accent-nivel); outline-offset: 3px; }
+
+/* ════════ 1 · Pantalla de bifurcación (elige.html) ════════ */
+.elige { max-width: var(--container-base); }
+.elige__card {
+  background: var(--color-bg-raised); border: var(--border-thin) solid var(--color-border);
+  border-radius: 12px; padding: var(--space-9) var(--space-9);
+}
+.elige__head { text-align: center; margin-bottom: var(--space-7); }
+.elige__brand {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-20); color: var(--cat-coral); margin-bottom: var(--space-1);
+}
+.elige__title {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-32); letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary); margin: 0 0 var(--space-2);
+}
+.elige__sub { font: var(--font-weight-regular) var(--font-size-13)/1.5 var(--font-family-body); color: var(--color-text-secondary); margin: 0; }
+.elige__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+.elige__foot { text-align: center; font: var(--font-weight-regular) var(--font-size-12)/1.4 var(--font-family-body); color: var(--color-text-meta); margin: var(--space-5) 0 0; }
+
+.elige-card {
+  background: var(--crema-50); border: var(--border-thin) solid var(--color-border);
+  border-top: var(--border-thick) solid var(--accent-nivel);
+  border-radius: var(--radius-lg); padding: var(--space-6) var(--space-6) var(--space-5);
+  text-align: left; cursor: pointer; width: 100%; font-family: var(--font-family-body);
+  transition: border-color var(--motion-base) var(--motion-ease-standard);
+}
+.elige-card:hover { border-color: var(--accent-nivel); }
+.elige-card:focus-visible { outline: var(--border-medium) solid var(--accent-nivel); outline-offset: 3px; }
+.elige-card--medio    { --accent-nivel: var(--cat-coral); --accent-nivel-badge-bg: #f3e3da; --accent-nivel-btn-bg: #6b3a2e; --accent-nivel-btn-fg: #f8f3e8; }
+.elige-card--superior { --accent-nivel: var(--cat-teal);  --accent-nivel-badge-bg: #dbe8e9; --accent-nivel-btn-bg: #2d5c63; --accent-nivel-btn-fg: #f4f9f9; }
+[data-theme="dark"] .elige-card--medio    { --accent-nivel-badge-bg: #3a2622; --accent-nivel-btn-bg: #c79a82; --accent-nivel-btn-fg: #1a1614; }
+[data-theme="dark"] .elige-card--superior { --accent-nivel-badge-bg: #20302e; --accent-nivel-btn-bg: #7eb0b5; --accent-nivel-btn-fg: #15201f; }
+
+.elige-card__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5); }
+.elige-card__age { font: var(--font-weight-regular) var(--font-size-11) var(--font-family-mono); color: var(--color-text-meta); }
+.elige-card__title {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-20); line-height: 1.15; color: var(--color-text-primary); margin: 0 0 var(--space-2);
+}
+.elige-card__title em { font-style: italic; color: var(--accent-nivel); }
+.elige-card__desc { font: var(--font-weight-regular) 12.5px/1.5 var(--font-family-body); color: var(--color-text-secondary); margin: 0 0 var(--space-5); }
+
+/* ════════ 2 · Home por nivel (home-nivel.html) ════════ */
+.nivel-home {
+  background: var(--color-bg-raised); border: var(--border-thin) solid var(--color-border);
+  border-radius: 12px; overflow: hidden;
+}
+.nivel-home__nav {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-6); border-bottom: var(--border-thin) solid var(--color-border);
+  background: var(--crema-100);
+}
+.nivel-home__brand { font-family: var(--font-family-display); font-weight: var(--font-weight-medium); font-size: var(--font-size-16); color: var(--color-text-primary); }
+.nivel-home__nav-links { flex: 1; text-align: right; font: var(--font-weight-regular) 11.5px var(--font-family-body); color: var(--color-text-secondary); }
+
+.nivel-home__hero { padding: var(--space-7) var(--space-7) var(--space-6); border-bottom: var(--border-thin) solid var(--color-border); }
+.nivel-home__eyebrow {
+  font: var(--font-weight-medium) var(--font-size-11) var(--font-family-body);
+  letter-spacing: var(--tracking-display-eyebrow); text-transform: uppercase;
+  color: var(--accent-nivel); margin: 0 0 var(--space-3);
+}
+.nivel-home__title {
+  font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-32); line-height: 1.06; letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary); margin: 0 0 var(--space-3);
+}
+.nivel-home__title em { font-style: italic; color: var(--accent-nivel); }
+.nivel-home__lede { font: var(--font-weight-regular) var(--font-size-13)/1.5 var(--font-family-body); color: var(--color-text-secondary); max-width: 360px; margin: 0 0 var(--space-4); }
+
+.nivel-home__materias { padding: var(--space-5) var(--space-7) var(--space-7); }
+.nivel-home__materias-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3); }
+.nivel-home__materias-label {
+  font: var(--font-weight-medium) var(--font-size-11) var(--font-family-body);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-meta-large); margin: 0;
+}
+.nivel-home__area-action { font: var(--font-weight-medium) var(--font-size-11) var(--font-family-body); color: var(--accent-nivel); }
+.nv-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.nv-chip {
+  font: var(--font-weight-medium) 11.5px var(--font-family-body); color: var(--color-text-secondary);
+  background: var(--crema-50); border: var(--border-thin) solid var(--color-border-subtle);
+  padding: 6px 12px; border-radius: var(--radius-md);
+}
+
+/* Switch de demostración (mientras no hay perfil/login) */
+.nivel-demo { display: flex; align-items: center; gap: var(--space-3); margin: 0 0 var(--space-5); flex-wrap: wrap; }
+.nivel-demo__label { font: var(--font-weight-regular) var(--font-size-12) var(--font-family-body); color: var(--color-text-meta); }
+.nivel-demo__btn {
+  font: var(--font-weight-medium) var(--font-size-13) var(--font-family-body);
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill);
+  border: var(--border-thin) solid var(--color-border); background: transparent;
+  color: var(--color-text-secondary); cursor: pointer;
+}
+.nivel-demo__btn[aria-pressed="true"] { border-color: var(--accent-nivel); color: var(--accent-nivel); }
+.nivel-demo__btn:focus-visible { outline: var(--border-medium) solid var(--accent-nivel); outline-offset: 2px; }
+
+@media (max-width: 520px) {
+  .elige__grid { grid-template-columns: 1fr; }
+}

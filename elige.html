@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>elige tu nivel · Tercial</title>
+
+  <script>
+    /* Anti-flash · tema + nivel (antes del primer paint) */
+    (function () {
+      var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+      var nv = localStorage.getItem('tercial-nivel');
+      r.setAttribute('data-nivel', (nv === 'medio' || nv === 'superior') ? nv : 'superior');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+  <link rel="stylesheet" href="/tercial/assets/css/base.css">
+  <link rel="stylesheet" href="/tercial/assets/css/components.css">
+  <link rel="stylesheet" href="/tercial/assets/css/niveles.css">
+
+  <script defer src="/tercial/assets/js/theme.js"></script>
+  <script defer src="/tercial/assets/js/niveles.js"></script>
+</head>
+<body>
+
+<main class="container container--base elige" style="padding-top: var(--space-10)">
+  <section class="elige__card">
+    <div class="elige__head">
+      <div class="elige__brand">Tercial</div>
+      <h1 class="elige__title">¿Qué examen vas a presentar?</h1>
+      <p class="elige__sub">Elige tu nivel y te preparamos justo para ese examen.</p>
+    </div>
+
+    <div class="elige__grid">
+      <button class="elige-card elige-card--medio" data-elige="medio" type="button">
+        <div class="elige-card__top">
+          <span class="nivel-badge">Medio superior</span>
+          <span class="elige-card__age">14–15 años</span>
+        </div>
+        <h2 class="elige-card__title">Ingreso a la<br><em>preparatoria</em></h2>
+        <p class="elige-card__desc">Para el examen COMIPEMS / ECOEMS. Sales de la secundaria.</p>
+        <span class="nivel-btn">Es mi examen →</span>
+      </button>
+
+      <button class="elige-card elige-card--superior" data-elige="superior" type="button">
+        <div class="elige-card__top">
+          <span class="nivel-badge">Superior</span>
+          <span class="elige-card__age">17–18 años</span>
+        </div>
+        <h2 class="elige-card__title">Ingreso a la<br><em>universidad</em></h2>
+        <p class="elige-card__desc">Para el examen UNAM / IPN. Eliges área de conocimiento.</p>
+        <span class="nivel-btn">Es mi examen →</span>
+      </button>
+    </div>
+
+    <p class="elige__foot">Puedes cambiar de nivel cuando quieras desde tu perfil.</p>
+  </section>
+</main>
+
+</body>
+</html>

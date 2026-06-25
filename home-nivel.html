@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>home por nivel · Tercial</title>
+
+  <script>
+    /* Anti-flash · tema + nivel (antes del primer paint) */
+    (function () {
+      var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      var d = p === 'auto'
+        ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : p;
+      var r = document.documentElement;
+      r.setAttribute('data-theme', d);
+      r.setAttribute('data-theme-pref', p);
+      var nv = localStorage.getItem('tercial-nivel');
+      r.setAttribute('data-nivel', (nv === 'medio' || nv === 'superior') ? nv : 'superior');
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+  <link rel="stylesheet" href="/tercial/assets/css/base.css">
+  <link rel="stylesheet" href="/tercial/assets/css/components.css">
+  <link rel="stylesheet" href="/tercial/assets/css/niveles.css">
+
+  <script defer src="/tercial/assets/js/theme.js"></script>
+  <script defer src="/tercial/assets/js/niveles.js"></script>
+</head>
+<body>
+
+<main class="container container--base" style="padding-top: var(--space-9)">
+
+  <header class="hero">
+    <p class="eyebrow">Vista previa · home por nivel</p>
+    <h1 class="hero__title">El home <em>según tu nivel</em></h1>
+    <p class="hero__lede">
+      Mismo Tercial, distinto acento, examen, copy y materias según el nivel elegido en la pantalla de bifurcación. Aún sin perfil/login: usa el cambiador para ver cómo adapta.
+    </p>
+  </header>
+
+  <div class="nivel-demo">
+    <span class="nivel-demo__label">Cambiar nivel (demo):</span>
+    <button class="nivel-demo__btn" data-set-nivel="medio" type="button">Prepa</button>
+    <button class="nivel-demo__btn" data-set-nivel="superior" type="button">Universidad</button>
+  </div>
+
+  <div class="nivel-home">
+    <div class="nivel-home__nav">
+      <span class="nivel-home__brand">Tercial</span>
+      <span class="nivel-badge" id="nv-badge">Universidad</span>
+      <span class="nivel-home__nav-links">Inicio · Exámenes · Tarjetas</span>
+    </div>
+
+    <div class="nivel-home__hero">
+      <p class="nivel-home__eyebrow" id="nv-eyebrow"></p>
+      <h2 class="nivel-home__title" id="nv-title"></h2>
+      <p class="nivel-home__lede" id="nv-lede"></p>
+      <span class="nivel-btn">Empezar →</span>
+    </div>
+
+    <div class="nivel-home__materias">
+      <div class="nivel-home__materias-head">
+        <p class="nivel-home__materias-label" id="nv-materias-label"></p>
+        <span class="nivel-home__area-action" id="nv-area-action">cambiar área</span>
+      </div>
+      <div class="nv-chips" id="nv-materias"></div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
