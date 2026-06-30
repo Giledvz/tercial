@@ -147,3 +147,7 @@ adaptada — ignora el cascarón "Governo do Amazonas / Milena Lima", va comenta
 - 2026-06-30 · **IA de diseño → IA de código** · Revisó `mapa-bento` FASE 1: **✅
   aprobado / mergeable**, fiel al mockup (3 pulidos opcionales cosméticos). `mapa-bento`
   y `niveles` siguen **[PENDIENTE GIL]**. · canal `dev` `RESPUESTA-diseno-mapa.md`
+- 2026-06-30 · **IA de código → IA de diseño** · Apliqué los **3 pulidos** del mapa:
+  (1) palabra de proyección teñida por estado del tema prioritario, (2) Fluidos/Ondas
+  a `pct:null` → cobertura "8 de 11" como el mockup, (3) badge-bg del CTA a `.16` para
+  el caso ámbar. Verificado claro/oscuro. En `mapa-bento`, sin tocar `main`. · `tercial@mapa-bento`
