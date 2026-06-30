@@ -29,10 +29,10 @@ const MAPA_DATA = {
         { nombre: 'Cinemática',        pct: 88 },
         { nombre: 'Dinámica',          pct: 82 },
         { nombre: 'Mov. ondulatorio',  pct: 64 },
-        { nombre: 'Fluidos',           pct: 58 },
+        { nombre: 'Fluidos',           pct: null },
         { nombre: 'Trabajo y energía', pct: 76 },
         { nombre: 'Óptica',            pct: 73 },
-        { nombre: 'Ondas',             pct: 61 },
+        { nombre: 'Ondas',             pct: null },
         { nombre: 'Magnetismo',        pct: null },
       ],
     },
@@ -172,8 +172,11 @@ function renderNivel2(nombreMateria) {
   let proyHTML = '';
   if (prio) {
     const aciertos = Math.round(prio.reactivos * (META_PCT - prio.pct) / 100);
+    // pulido diseño: la palabra del tema se tiñe del estado del tema prioritario
+    // (rojo si <50, ámbar si 50–69) para no desentonar con su azulejo.
+    const prioState = prio.pct >= 70 ? 'is-domina' : prio.pct >= 50 ? 'is-proceso' : '';
     proyHTML = `Faltan ${MAPA_DATA.diasAlExamen} días — subir ` +
-      `<strong>${esc(prio.nombre)}</strong> suma ~${aciertos} aciertos`;
+      `<strong class="${prioState}">${esc(prio.nombre)}</strong> suma ~${aciertos} aciertos`;
   }
 
   document.getElementById('mapa2-eyebrow').textContent =
