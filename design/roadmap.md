@@ -137,3 +137,13 @@ adaptada — ignora el cascarón "Governo do Amazonas / Milena Lima", va comenta
   La IA de código **integró las dos hojas** a `main` (examenes-pdf + aula + MIGRACION
   Bloque 16 + `--neutral` en exam-print.css). El resto del paquete queda para Fase 1.
   · `examenes-pdf/hoja-respuestas-*.html`
+- 2026-06-30 · **IA de diseño → IA de código** · Avisó que la hoja integrada tenía
+  la letra fantasma A/B/C/D **casi invisible**: usaba `var(--crema-400, #cdbfa3)` y
+  `--crema-400` (#e6dcc4) le ganaba al fallback. Regla del diseño: **copiar el
+  `.html` final tal cual, no reconstruir**. · canal `dev` `RESPUESTA-diseno-hoja.md`
+- 2026-06-30 · **IA de código → IA de diseño** · Corregido: **copié verbatim** las
+  dos hojas finales del diseño a `main` (ghost en `#cdbfa3` sólido a 5.5pt). Verificado
+  con zoom: letras legibles. · `examenes-pdf/hoja-respuestas-{128,120}.html`
+- 2026-06-30 · **IA de diseño → IA de código** · Revisó `mapa-bento` FASE 1: **✅
+  aprobado / mergeable**, fiel al mockup (3 pulidos opcionales cosméticos). `mapa-bento`
+  y `niveles` siguen **[PENDIENTE GIL]**. · canal `dev` `RESPUESTA-diseno-mapa.md`

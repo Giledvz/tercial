@@ -14,8 +14,8 @@
 <style>
   /* ===== Hoja de respuestas (OMR) · componente local =====
      Las clases hr-* viven aquí porque son específicas de esta hoja
-     (lectura óptica). Todo lo cromático sale de tokens.css.
-     El modificador .exam-pdf--neutral está registrado en exam-print.css. */
+     (lectura óptica). Todo lo cromático sale de tokens.css. */
+  .exam-pdf--neutral .exam-pdf__hero { border-top-color: var(--accent-conac); }
 
   .hr-sheet { position: relative; }
   /* Marcas de registro para alinear al calificar con cámara/escáner */
@@ -78,7 +78,7 @@
             color: var(--ink-500); text-align: right; font-variant-numeric: tabular-nums; }
   .hr-oval { justify-self: center; width: 11pt; height: 11pt; border: 0.75pt solid var(--ink-300);
              border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; }
-  .hr-ghost { font-family: var(--font-family-body); font-size: 5.5pt; color: var(--crema-400, #cdbfa3); }
+  .hr-ghost { font-family: var(--font-family-body); font-size: 5.5pt; color: #cdbfa3; }
 
   @media print {
     html, body { background: #fff !important; background-image: none !important; }
