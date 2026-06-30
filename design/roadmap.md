@@ -49,8 +49,12 @@ Factos ya trae **114 afirmaciones** (8 materias).
 | `mapa-bento` | *"Tu mapa"* — dominio por materias/temas (bento) | armada | **[PENDIENTE GIL]** |
 | `niveles` | Bifurcación prepa/universidad (elige + home por nivel) | experimental | **[PENDIENTE GIL]** |
 
-## Encargo activo · IA de diseño — Hoja de respuestas (128)
+## Encargo · IA de diseño — Hoja de respuestas (128) ✓ RESUELTO
 
+> **✅ Cerrado 2026-06-30.** La IA de diseño entregó **dos** hojas (128 prepa +
+> 120 uni) en lenguaje Tercial; la IA de código las integró y subió a `main`.
+> Detalle en la bitácora. Lo de abajo queda como registro del encargo original.
+>
 > **De Gil (29 jun):** "pásensela a la página de diseño a ver qué puede hacer."
 > Es un layout puro (tarjeta de burbujas), tu cancha. La IA de código ya mapeó
 > la fuente y las convenciones; empezó un componente CSS pero **lo revirtió a
@@ -92,8 +96,8 @@ adaptada — ignora el cascarón "Governo do Amazonas / Milena Lima", va comenta
 
 ## Backlog Fase 1 (sin login)
 
-- [ ] **Hoja de respuestas (128)** — encargo a la IA de diseño (ver §Encargo
-      activo arriba). Es el **Bloque 16** de la migración Overleaf.
+- [x] **Hoja de respuestas (128 prepa + 120 uni)** — ✅ entregada por diseño e
+      integrada a `main` (2026-06-30). Bloque 16 de la migración Overleaf.
 - [ ] **Veredicto del rediseño** y de `mapa-bento` / `niveles`: ¿mergear a
       `main`, seguir iterando, o descartar? — **[PENDIENTE GIL]**
 - [ ] **Página de resultados** — al parecer planeada por la IA de diseño
@@ -127,3 +131,9 @@ adaptada — ignora el cascarón "Governo do Amazonas / Milena Lima", va comenta
   (Bloque 16) en lenguaje Tercial — ver §Encargo activo. Fuente descrita ahí (el
   `.tex` es local, fuera de git). Empecé un componente CSS de burbujas y lo
   revertí para no condicionar el diseño. **Tu turno, diseño.** · pendiente en `examenes-pdf/`
+- 2026-06-30 · **IA de diseño → IA de código** · Entregó el paquete completo (zip
+  "Portada para página de resultados"): hojas de respuesta **128 (prepa)** y **120
+  (uni)** + guías para dashboard, mapa, niveles, portada/preguntas PDF y Telegram.
+  La IA de código **integró las dos hojas** a `main` (examenes-pdf + aula + MIGRACION
+  Bloque 16 + `--neutral` en exam-print.css). El resto del paquete queda para Fase 1.
+  · `examenes-pdf/hoja-respuestas-*.html`

@@ -80,6 +80,8 @@
 .exam-pdf--calculo .exam-pdf__hero { border-top-color: var(--cat-purple); }
 .exam-pdf--geo .exam-pdf__hero { border-top-color: var(--cat-teal); }
 .exam-pdf--bio .exam-pdf__hero { border-top-color: var(--cat-teal); }
+/* Neutro: documentos multi-materia (p. ej. hojas de respuesta OMR) */
+.exam-pdf--neutral .exam-pdf__hero { border-top-color: var(--accent-conac); }
 
 .exam-pdf__eyebrow {
   font-family: var(--font-family-body);
