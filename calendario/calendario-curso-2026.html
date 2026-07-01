@@ -21,8 +21,8 @@
     --cal-desk: #cdc3b0;
     --st-class-bg: #8c4a3a; --st-class-fg: #f8f3e8;
     --st-ext-bg: #c98a2b;   --st-ext-fg: #3a2c08;
-    --st-ases-border: #cdbfa3; --st-ases-fg: #a89880;
-    --st-sus-bg: #eccdba; --st-sus-fg: #a06e57; --st-sus-border: #ddb69f;
+    --st-ases-bg: #f2e9db; --st-ases-fg: #8c7556;
+    --st-sus-fg: #b0755f; --st-sus-border: #d6a98f;
     --st-sim-bg: #4a6b3f; --st-sim-fg: #eef3e2;
     --st-out-fg: #ccbfa6; --st-none-fg: #5a4a38;
   }
@@ -32,8 +32,8 @@
     --cal-desk: #15110f;
     --st-class-bg: #c7836b; --st-class-fg: #1a1614;
     --st-ext-bg: #d4a04a;   --st-ext-fg: #241b06;
-    --st-ases-border: #4a4038; --st-ases-fg: #8a7861;
-    --st-sus-bg: #3a2622; --st-sus-fg: #c99a82; --st-sus-border: #5a3e34;
+    --st-ases-bg: #2e2823; --st-ases-fg: #a89880;
+    --st-sus-fg: #c99a82; --st-sus-border: #6a473b;
     --st-sim-bg: #45663a; --st-sim-fg: #ffffff;
     --st-out-fg: #4a4038; --st-none-fg: #d9cbb0;
   }
@@ -50,8 +50,8 @@
   .cal__cell small { font: 500 6px 'IBM Plex Sans'; letter-spacing: .03em; text-transform: uppercase; margin-top: 1px; opacity: .9; }
   .cal__cell--class { background: var(--st-class-bg); color: var(--st-class-fg); }
   .cal__cell--ext   { background: var(--st-ext-bg); color: var(--st-ext-fg); }
-  .cal__cell--ases  { background: transparent; color: var(--st-ases-fg); border: 1px dashed var(--st-ases-border); }
-  .cal__cell--sus   { background: var(--st-sus-bg); color: var(--st-sus-fg); border: 1px solid var(--st-sus-border); }
+  .cal__cell--ases  { background: var(--st-ases-bg); color: var(--st-ases-fg); }
+  .cal__cell--sus   { background: transparent; color: var(--st-sus-fg); border: 1px dashed var(--st-sus-border); }
   .cal__cell--sim   { background: var(--st-sim-bg); color: var(--st-sim-fg); }
   .cal__cell--none  { color: var(--st-none-fg); }
   .cal__cell--out   { color: var(--st-out-fg); }
@@ -73,9 +73,9 @@
     <div class="cal__grid" id="grid"></div>
     <div class="cal__legend">
       <span class="cal__leg"><span class="cal__sw" style="background:var(--st-class-bg)"></span>Clase</span>
-      <span class="cal__leg"><span class="cal__sw" style="background:transparent;border:1px dashed var(--st-ases-border)"></span>Asesoría</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-ases-bg)"></span>Asesoría</span>
       <span class="cal__leg"><span class="cal__sw" style="background:var(--st-ext-bg)"></span>Asesoría extendida</span>
-      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-sus-bg);border:1px solid var(--st-sus-border)"></span>Suspensión de clases</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:transparent;border:1px dashed var(--st-sus-border)"></span>Suspensión de clases</span>
       <span class="cal__leg"><span class="cal__sw" style="background:var(--st-sim-bg)"></span>Simulación de examen</span>
     </div>
     <div class="cal__toggle"><button id="theme">Cambiar modo claro / oscuro</button></div>
