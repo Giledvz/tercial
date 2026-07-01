@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendario del curso · Tercial · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  /* ── Calendario del curso ECOEMS · Tercial ──────────────────────
+     Tokens de estado abajo. Cambia data-theme="dark" en <html> para
+     el modo oscuro (o togglea con el botón). Si integran a la página,
+     pueden reemplazar estos hex por los tokens equivalentes de tokens.css
+     (--accent-conac, --cat-teal, --level-* etc.) — se dejan literales
+     para que el archivo abra solo. */
+  * { margin: 0; box-sizing: border-box; }
+  :root {
+    --cal-card: #fdfbf6; --cal-border: #d9ccae; --cal-accent: #8c4a3a;
+    --cal-ink: #1f1a16; --cal-muted: #a89880; --cal-navbg: #f5efe4; --cal-line: #e6dcc4;
+    --cal-desk: #cdc3b0;
+    --st-class-bg: #8c4a3a; --st-class-fg: #f8f3e8;
+    --st-ext-bg: #c98a2b;   --st-ext-fg: #3a2c08;
+    --st-ases-border: #cdbfa3; --st-ases-fg: #a89880;
+    --st-sus-bg: #eccdba; --st-sus-fg: #a06e57; --st-sus-border: #ddb69f;
+    --st-sim-bg: #4a6b3f; --st-sim-fg: #eef3e2;
+    --st-out-fg: #ccbfa6; --st-none-fg: #5a4a38;
+  }
+  html[data-theme="dark"] {
+    --cal-card: #221d1a; --cal-border: #3a3229; --cal-accent: #c7836b;
+    --cal-ink: #efe4cf; --cal-muted: #8a7861; --cal-navbg: #2e2823; --cal-line: #3a3229;
+    --cal-desk: #15110f;
+    --st-class-bg: #c7836b; --st-class-fg: #1a1614;
+    --st-ext-bg: #d4a04a;   --st-ext-fg: #241b06;
+    --st-ases-border: #4a4038; --st-ases-fg: #8a7861;
+    --st-sus-bg: #3a2622; --st-sus-fg: #c99a82; --st-sus-border: #5a3e34;
+    --st-sim-bg: #45663a; --st-sim-fg: #ffffff;
+    --st-out-fg: #4a4038; --st-none-fg: #d9cbb0;
+  }
+  body { font-family: 'IBM Plex Sans', sans-serif; background: var(--cal-desk); padding: 40px; display: flex; justify-content: center; }
+  .cal { width: 440px; background: var(--cal-card); border: 1px solid var(--cal-border); border-top: 3px solid var(--cal-accent); border-radius: 12px; box-shadow: 0 2px 14px rgba(74,63,51,.12); padding: 26px 28px; }
+  .cal__nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .cal__btn { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--cal-line); background: var(--cal-navbg); color: var(--cal-accent); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; }
+  .cal__month { text-align: center; }
+  .cal__month h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; color: var(--cal-ink); line-height: 1; }
+  .cal__year { font: 400 10px 'IBM Plex Mono', monospace; letter-spacing: .1em; color: var(--cal-muted); margin-top: 3px; }
+  .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+  .cal__dow { text-align: center; font: 600 8.5px 'IBM Plex Sans'; letter-spacing: .04em; text-transform: uppercase; color: var(--cal-muted); padding-bottom: 5px; }
+  .cal__cell { aspect-ratio: 1; border-radius: 7px; display: flex; flex-direction: column; align-items: center; justify-content: center; font: 500 13px 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  .cal__cell small { font: 500 6px 'IBM Plex Sans'; letter-spacing: .03em; text-transform: uppercase; margin-top: 1px; opacity: .9; }
+  .cal__cell--class { background: var(--st-class-bg); color: var(--st-class-fg); }
+  .cal__cell--ext   { background: var(--st-ext-bg); color: var(--st-ext-fg); }
+  .cal__cell--ases  { background: transparent; color: var(--st-ases-fg); border: 1px dashed var(--st-ases-border); }
+  .cal__cell--sus   { background: var(--st-sus-bg); color: var(--st-sus-fg); border: 1px solid var(--st-sus-border); }
+  .cal__cell--sim   { background: var(--st-sim-bg); color: var(--st-sim-fg); }
+  .cal__cell--none  { color: var(--st-none-fg); }
+  .cal__cell--out   { color: var(--st-out-fg); }
+  .cal__cell--empty { }
+  .cal__legend { display: flex; flex-wrap: wrap; gap: 11px 15px; padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--cal-line); }
+  .cal__leg { display: inline-flex; align-items: center; gap: 6px; font: 400 10.5px 'IBM Plex Sans'; color: var(--cal-muted); }
+  .cal__sw { width: 12px; height: 12px; border-radius: 4px; display: inline-block; }
+  .cal__toggle { margin-top: 14px; text-align: center; }
+  .cal__toggle button { font: 500 11px 'IBM Plex Sans'; color: var(--cal-muted); background: none; border: none; cursor: pointer; text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="cal" id="cal">
+    <div class="cal__nav">
+      <button class="cal__btn" id="prev" aria-label="Mes anterior">&lsaquo;</button>
+      <div class="cal__month"><h2 id="monthName">Marzo</h2><div class="cal__year" id="year">2026</div></div>
+      <button class="cal__btn" id="next" aria-label="Mes siguiente">&rsaquo;</button>
+    </div>
+    <div class="cal__grid" id="grid"></div>
+    <div class="cal__legend">
+      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-class-bg)"></span>Clase</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:transparent;border:1px dashed var(--st-ases-border)"></span>Asesoría</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-ext-bg)"></span>Asesoría extendida</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-sus-bg);border:1px solid var(--st-sus-border)"></span>Suspensión de clases</span>
+      <span class="cal__leg"><span class="cal__sw" style="background:var(--st-sim-bg)"></span>Simulación de examen</span>
+    </div>
+    <div class="cal__toggle"><button id="theme">Cambiar modo claro / oscuro</button></div>
+  </div>
+
+<script>
+(function () {
+  // ── Configuración del ciclo (editar aquí cada año) ──────────────
+  var YEAR = 2026;
+  var START = { m: 3, d: 7 };   // inicio del curso: 7 de marzo
+  var END   = { m: 6, d: 28 };  // cierre estimado: 28 de junio
+
+  // Suspensión de clases (Semana Santa): jue 2 – dom 5 de abril
+  var SUS = new Set(['4-2','4-3','4-4','4-5']);
+  // Asesorías con horario extendido: entre semana, 3 semanas previas al cierre
+  var EXT = new Set(['6-8','6-9','6-10','6-11','6-12','6-15','6-16','6-17','6-18','6-19','6-22','6-23','6-24','6-25','6-26']);
+  // Simulacros de examen: domingos desde el 1º de mayo hasta el cierre
+  var SIM = new Set(['5-3','5-10','5-17','5-24','5-31','6-7','6-14','6-21','6-28']);
+
+  var MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var DOW = ['D','L','M','M','J','V','S'];
+  var TAG = { class:'', ext:'Ases.+', ases:'', sus:'', sim:'Simul.' };
+
+  var month = START.m; // arranca en el mes de inicio
+
+  function inRange(m, d) {
+    var t = m * 100 + d, a = START.m * 100 + START.d, b = END.m * 100 + END.d;
+    return t >= a && t <= b;
+  }
+  function stateOf(m, d) {
+    var key = m + '-' + d;
+    if (!inRange(m, d)) return 'out';
+    if (SUS.has(key)) return 'sus';
+    var dow = new Date(YEAR, m - 1, d).getDay();
+    var weekend = dow === 0 || dow === 6;
+    if (weekend) return SIM.has(key) ? 'sim' : 'class';
+    return EXT.has(key) ? 'ext' : 'ases';
+  }
+  function render() {
+    document.getElementById('monthName').textContent = MONTHS[month - 1];
+    document.getElementById('year').textContent = YEAR;
+    var grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    DOW.forEach(function (d) {
+      var el = document.createElement('div'); el.className = 'cal__dow'; el.textContent = d; grid.appendChild(el);
+    });
+    var first = new Date(YEAR, month - 1, 1).getDay();
+    var days = new Date(YEAR, month, 0).getDate();
+    for (var i = 0; i < first; i++) {
+      var e = document.createElement('div'); e.className = 'cal__cell cal__cell--empty'; grid.appendChild(e);
+    }
+    for (var day = 1; day <= days; day++) {
+      var st = stateOf(month, day);
+      var cell = document.createElement('div');
+      cell.className = 'cal__cell cal__cell--' + st;
+      cell.textContent = day;
+      if (TAG[st]) { var s = document.createElement('small'); s.textContent = TAG[st]; cell.appendChild(s); }
+      grid.appendChild(cell);
+    }
+  }
+  document.getElementById('prev').onclick = function () { month = month === 1 ? 12 : month - 1; render(); };
+  document.getElementById('next').onclick = function () { month = month === 12 ? 1 : month + 1; render(); };
+  document.getElementById('theme').onclick = function () {
+    var h = document.documentElement;
+    h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  };
+  render();
+})();
+</script>
+</body>
+</html>
