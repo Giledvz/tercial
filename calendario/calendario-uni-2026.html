@@ -88,7 +88,7 @@
   //  · Clases: miércoles y jueves, de agosto a diciembre (días libres de oficina).
   //  · Fines de semana: suspensión (dentro del semestre ago–dic).
   //  · Receso: 18 de diciembre – 5 de enero.
-  var YEAR = 2026;
+  var year = 2026;                                // avanza/retrocede al cruzar diciembre↔enero
   var CLASE_DOW = { 3: 1, 4: 1 };                 // miércoles(3) y jueves(4)
   var CLASE_MESES = { 8: 1, 9: 1, 10: 1, 11: 1, 12: 1 }; // agosto–diciembre
 
@@ -102,21 +102,21 @@
   function stateOf(m, d) {
     if (enReceso(m, d)) return 'sus';        // receso de fin de año
     if (!CLASE_MESES[m]) return 'none';      // fuera del semestre ago–dic: sin actividad
-    var dow = new Date(YEAR, m - 1, d).getDay();
+    var dow = new Date(year, m - 1, d).getDay();
     if (dow === 0 || dow === 6) return 'sus'; // fines de semana del semestre: suspensión
     if (CLASE_DOW[dow]) return 'class';       // miércoles y jueves: clase
     return 'none';                            // lun/mar/vie: sin actividad
   }
   function render() {
     document.getElementById('monthName').textContent = MONTHS[month - 1];
-    document.getElementById('year').textContent = YEAR;
+    document.getElementById('year').textContent = year;
     var grid = document.getElementById('grid');
     grid.innerHTML = '';
     DOW.forEach(function (d) {
       var el = document.createElement('div'); el.className = 'cal__dow'; el.textContent = d; grid.appendChild(el);
     });
-    var first = new Date(YEAR, month - 1, 1).getDay();
-    var days = new Date(YEAR, month, 0).getDate();
+    var first = new Date(year, month - 1, 1).getDay();
+    var days = new Date(year, month, 0).getDate();
     for (var i = 0; i < first; i++) {
       var e = document.createElement('div'); e.className = 'cal__cell cal__cell--empty'; grid.appendChild(e);
     }
@@ -129,8 +129,8 @@
       grid.appendChild(cell);
     }
   }
-  document.getElementById('prev').onclick = function () { month = month === 1 ? 12 : month - 1; render(); };
-  document.getElementById('next').onclick = function () { month = month === 12 ? 1 : month + 1; render(); };
+  document.getElementById('prev').onclick = function () { if (month === 1) { month = 12; year--; } else { month--; } render(); };
+  document.getElementById('next').onclick = function () { if (month === 12) { month = 1; year++; } else { month++; } render(); };
   document.getElementById('theme').onclick = function () {
     var h = document.documentElement;
     h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
