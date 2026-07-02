@@ -99,7 +99,7 @@
         <p class="eyebrow">Esta semana</p>
         <ul class="cal-week">
           <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sim"></span><span><strong>Dom 14</strong> · Simulacro</span></li>
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ext"></span><span><strong>Lun–vie</strong> · Nivelación extendida</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span><strong>Lun–vie</strong> · Asesoría</span></li>
           <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span><strong>Sáb 13</strong> · Clase</span></li>
         </ul>
         <a class="cal-week__link" href="/tercial/calendario/calendario-curso-2026.html">Ver calendario completo →</a>
@@ -578,6 +578,12 @@ const EXAMENES = [
           if (prev) prev.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
           if (next) next.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
           if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          // respaldo definitivo: el ResizeObserver / los clics no re-disparaban
+          // fit() de forma fiable al cambiar de mes en algunos navegadores, y un
+          // mes de 6 filas (mayo) quedaba recortado con barras de scroll. Esta
+          // sincronización periódica (barata, solo cambia el alto si difiere)
+          // garantiza que el iframe siempre calce el mes visible.
+          setInterval(function () { try { var d = frame.contentDocument; if (d) fit(d); } catch (e) {} }, 200);
           hooked = true;
         }
       } catch (e) {}
