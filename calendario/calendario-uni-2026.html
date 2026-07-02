@@ -86,6 +86,7 @@
   // ── Configuración (Universidad · editar aquí cada año) ──────────
   // La universidad NO es un curso acotado: opera todo el año.
   //  · Clases: miércoles y jueves, de agosto a diciembre (días libres de oficina).
+  //  · Entre semana (lun/mar/vie) de ago–dic: asesoría.
   //  · Fines de semana: suspensión (dentro del semestre ago–dic).
   //  · Receso: 18 de diciembre – 5 de enero.
   var year = 2026;                                // avanza/retrocede al cruzar diciembre↔enero
@@ -105,7 +106,7 @@
     var dow = new Date(year, m - 1, d).getDay();
     if (dow === 0 || dow === 6) return 'sus'; // fines de semana del semestre: suspensión
     if (CLASE_DOW[dow]) return 'class';       // miércoles y jueves: clase
-    return 'none';                            // lun/mar/vie: sin actividad
+    return 'ases';                            // lun/mar/vie (no clase): asesoría
   }
   function render() {
     document.getElementById('monthName').textContent = MONTHS[month - 1];
