@@ -544,6 +544,17 @@ const EXAMENES = [
   (function () {
     var frame = document.getElementById('calFrame');
     if (!frame) return;
+    var hooked = false, ro = null;
+    function fit(doc) {
+      // altura real del contenido: el mes más alto (6 filas) no debe recortarse
+      var cal = doc.querySelector('.cal');
+      var h = Math.max(
+        doc.body ? doc.body.scrollHeight : 0,
+        doc.documentElement ? doc.documentElement.scrollHeight : 0,
+        cal ? cal.offsetHeight : 0
+      );
+      frame.style.height = ((h || 430) + 2) + 'px'; // +2 evita el scrollbar por redondeo
+    }
     function sync() {
       try {
         var doc = frame.contentDocument;
@@ -563,7 +574,20 @@ const EXAMENES = [
         // leyenda única: se queda solo la del panel "Esta semana"
         var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
         // ajustar la altura del iframe al contenido real (evita hueco blanco)
-        frame.style.height = ((doc.body ? doc.body.scrollHeight : 0) || 430) + 'px';
+        fit(doc);
+        // re-ajustar cuando cambie el mes dentro del iframe (nav ‹ ›): un mes de
+        // 6 filas es más alto que uno de 5. El ResizeObserver (retenido en `ro`
+        // para que no lo recoja el GC) sigue el alto real de .cal; los clics en
+        // ‹ › son el respaldo. Se engancha una sola vez.
+        if (!hooked) {
+          var W = frame.contentWindow;
+          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
+          var prev = doc.getElementById('prev'), next = doc.getElementById('next');
+          if (prev) prev.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
+          if (next) next.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
+          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          hooked = true;
+        }
       } catch (e) {}
     }
     frame.addEventListener('load', sync);
