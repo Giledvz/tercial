@@ -2476,21 +2476,24 @@ section > .card-link + .card-link {
   min-height: 140px;
   display: flex;
   flex-direction: column;
+  /* centra verticalmente el bloque (contenido + pie) dentro de la caja fija */
+  justify-content: center;
   gap: var(--space-3);
 }
 
 .exam-countdown__pista {
   position: relative;
-  flex: 1;
   cursor: pointer;
+  /* apila los items en una sola celda: la pista mide el item más alto
+     (constante, no crece por item) en vez de usar position:absolute */
+  display: grid;
 }
 
 .contador-item {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
   opacity: 0;
   transform: translateY(-115%);
   transition:

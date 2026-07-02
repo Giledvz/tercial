@@ -546,13 +546,12 @@ const EXAMENES = [
     if (!frame) return;
     var hooked = false, ro = null;
     function fit(doc) {
-      // altura real del contenido: el mes más alto (6 filas) no debe recortarse
+      // medir SOLO el alto del calendario (.cal). Antes se usaba
+      // body/documentElement.scrollHeight, pero esos quedan "enganchados" al alto
+      // del propio iframe (efecto trinquete) y nunca bajaban → sobraba espacio.
+      // .cal mide su contenido real (el mes) sin importar el alto del iframe.
       var cal = doc.querySelector('.cal');
-      var h = Math.max(
-        doc.body ? doc.body.scrollHeight : 0,
-        doc.documentElement ? doc.documentElement.scrollHeight : 0,
-        cal ? cal.offsetHeight : 0
-      );
+      var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
       frame.style.height = ((h || 430) + 2) + 'px'; // +2 evita el scrollbar por redondeo
     }
     function sync() {
