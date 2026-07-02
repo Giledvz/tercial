@@ -2394,7 +2394,9 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
 
 @media (min-width: 760px) {
   .hero--with-aside {
-    grid-template-columns: 1.4fr 1fr;
+    /* riel un poco más ancho para que la fecha del contador (p. ej.
+       "lunes 14 de septiembre") quepa en una línea sin desbordarse */
+    grid-template-columns: 1.25fr 1fr;
     gap: var(--space-8);
   }
 }
