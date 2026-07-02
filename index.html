@@ -28,18 +28,23 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
-  /* Sección "Calendario del curso" (propuesta diseño IMPLEMENTAR-home-calendario).
+  /* Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario.
      Preview en rama; si se adopta, mover a components.css. */
-  #calendario { margin-top: var(--space-9); }
-  /* UNA sola caja: mes (izq) + "Esta semana" (der), separadas por hairline.
-     Acento del nivel = verde-pizarra (universidad). */
-  #calendario { --nivel: #2d5c63; }
+  .home-grid { }                               /* móvil/tablet: una columna (flujo normal) */
+  @media (min-width: 1024px) {
+    .home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-7); align-items: start; }
+    .home-grid__rail { position: sticky; top: var(--space-5); }
+  }
+  /* Calendario en el riel: acento del nivel = verde-pizarra (universidad). */
+  #calendario { --nivel: #2d5c63; margin-top: 0; }
   [data-theme="dark"] #calendario { --nivel: #7eb0b5; }
-  .cal-embed { display: grid; grid-template-columns: 1fr 232px; gap: var(--space-6); align-items: stretch;
+  .cal-rail .section-header { margin-bottom: var(--space-4); }
+  /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
+  .cal-embed { display: grid; grid-template-columns: 1fr; gap: var(--space-4);
     background: var(--color-bg-raised); border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); }
-  .cal-embed__frame { width: 100%; height: 430px; border: 0; background: transparent; }
-  .cal-embed__side { border-left: 1px solid var(--color-border); padding-left: var(--space-5); }
+    border-radius: var(--radius-lg); padding: var(--space-5); }
+  .cal-embed__frame { width: 100%; height: 320px; border: 0; background: transparent; }
+  .cal-embed__side { border-top: 1px solid var(--color-border); padding-top: var(--space-4); }
   .cal-embed__side .eyebrow { display: block; margin-bottom: var(--space-3); }
   /* "Esta semana": una línea compacta por evento */
   .cal-week { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
@@ -59,7 +64,6 @@
   .cal-week__legend { display: flex; flex-direction: column; gap: 6px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); font-size: var(--font-size-12); color: var(--color-text-meta); }
   .cal-week__legend span { display: inline-flex; align-items: center; gap: 6px; }
   .cal-week__link { display: inline-block; margin-top: var(--space-4); font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--nivel); }
-  @media (max-width: 640px) { .cal-embed { grid-template-columns: 1fr; } .cal-embed__side { border-left: 0; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: var(--space-4); } }
 </style>
 
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -69,7 +73,11 @@
 
 <site-nav active="inicio"></site-nav>
 
-<main class="container container--base">
+<main class="container container--wide">
+
+  <!-- Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario -->
+  <div class="home-grid">
+  <div class="home-grid__main">
 
   <header class="hero hero--with-aside">
     <div class="hero__main">
@@ -83,29 +91,6 @@
       <!-- contenido inyectado por el JS del carrusel -->
     </aside>
   </header>
-
-  <!-- Calendario del curso · propuesta diseño (IMPLEMENTAR-home-calendario) -->
-  <section id="calendario">
-    <header class="section-header" data-cat="teal">
-      <h2 class="section-header__title">
-        <span class="section-header__num">i.</span>
-        Calendario universidad
-      </h2>
-    </header>
-    <div class="cal-embed">
-      <iframe id="calFrame" class="cal-embed__frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario del curso" loading="lazy"></iframe>
-      <aside class="cal-embed__side">
-        <p class="eyebrow">En este mes</p>
-        <!-- se llena dinámicamente según el mes visible (ver script al final).
-             Contenido inicial = estados de agosto (mes de arranque en uni). -->
-        <ul class="cal-week" id="calWeek">
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
-        </ul>
-        <a class="cal-week__link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
-      </aside>
-    </div>
-  </section>
 
   <section id="aula">
     <header class="section-header" data-cat="amber">
@@ -392,6 +377,35 @@
       </a>
     </div>
   </section>
+
+  </div><!-- /home-grid__main -->
+
+  <!-- Riel derecho: calendario del mes + panel "En este mes" (apilados) -->
+  <aside class="home-grid__rail">
+    <section id="calendario" class="cal-rail">
+      <header class="section-header" data-cat="teal">
+        <h2 class="section-header__title">
+          <span class="section-header__num">i.</span>
+          Calendario universidad
+        </h2>
+      </header>
+      <div class="cal-embed">
+        <iframe id="calFrame" class="cal-embed__frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario universidad" loading="lazy"></iframe>
+        <div class="cal-embed__side">
+          <p class="eyebrow">En este mes</p>
+          <!-- se llena dinámicamente según el mes visible (ver script al final).
+               Contenido inicial = estados de agosto (mes de arranque en uni). -->
+          <ul class="cal-week" id="calWeek">
+            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
+            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
+          </ul>
+          <a class="cal-week__link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
+        </div>
+      </div>
+    </section>
+  </aside>
+
+  </div><!-- /home-grid -->
 
 </main>
 
