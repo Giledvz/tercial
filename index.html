@@ -96,11 +96,12 @@
     <div class="cal-embed">
       <iframe id="calFrame" class="cal-embed__frame" src="/tercial/calendario/calendario-curso-2026.html" title="Calendario del curso" loading="lazy"></iframe>
       <aside class="cal-embed__side">
-        <p class="eyebrow">Esta semana</p>
-        <ul class="cal-week">
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sim"></span><span><strong>Dom 14</strong> · Simulacro</span></li>
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span><strong>Lun–vie</strong> · Asesoría</span></li>
-          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span><strong>Sáb 13</strong> · Clase</span></li>
+        <p class="eyebrow">En este mes</p>
+        <!-- se llena dinámicamente según el mes visible (ver script al final).
+             Contenido inicial = estados de marzo (mes de arranque). -->
+        <ul class="cal-week" id="calWeek">
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span>Asesoría</span></li>
         </ul>
         <a class="cal-week__link" href="/tercial/calendario/calendario-curso-2026.html">Ver calendario completo →</a>
       </aside>
@@ -547,6 +548,29 @@ const EXAMENES = [
       var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
       frame.style.height = ((h || 430) + 2) + 'px'; // +2 evita el scrollbar por redondeo
     }
+    // Panel "En este mes": refleja los estados que sí ocurren en el mes visible
+    // (leídos de las celdas del iframe), para no contradecir al calendario.
+    var ORDEN = [['class', 'Clase'], ['ases', 'Asesoría'], ['ext', 'Nivelación extendida'], ['sim', 'Simulacro de examen'], ['sus', 'Suspensión de clases']];
+    var ultimoPanel = null;
+    function updatePanel(doc) {
+      var ul = document.getElementById('calWeek');
+      if (!ul) return;
+      var cells = doc.querySelectorAll('.cal__grid .cal__cell');
+      var hay = {};
+      for (var i = 0; i < cells.length; i++) {
+        var cl = cells[i].classList;
+        for (var j = 0; j < ORDEN.length; j++) { if (cl.contains('cal__cell--' + ORDEN[j][0])) hay[ORDEN[j][0]] = 1; }
+      }
+      var presentes = ORDEN.filter(function (o) { return hay[o[0]]; });
+      var firma = presentes.map(function (o) { return o[0]; }).join(',');
+      if (firma === ultimoPanel) return;      // sin cambios: no re-render
+      ultimoPanel = firma;
+      ul.innerHTML = presentes.length
+        ? presentes.map(function (o) {
+            return '<li class="cal-week__item"><span class="cal-week__dot cal-week__dot--' + o[0] + '"></span><span>' + o[1] + '</span></li>';
+          }).join('')
+        : '<li class="cal-week__item" style="color:var(--color-text-meta)">Sin sesiones del curso</li>';
+    }
     function sync() {
       try {
         var doc = frame.contentDocument;
@@ -555,6 +579,11 @@ const EXAMENES = [
         doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
         // fondo del iframe = mismo que el card del home (evita el lienzo blanco)
         doc.documentElement.style.background = dark ? '#221d1a' : '#f8f3e8';
+        // nunca mostrar barras DENTRO del iframe: rompe la cascada de scrollbars
+        // (barra vertical → quita ancho → celdas cuadradas se recalculan → barra
+        // horizontal → y se retroalimenta). El fit() dimensiona el alto al contenido.
+        doc.documentElement.style.overflow = 'hidden';
+        if (doc.body) doc.body.style.overflow = 'hidden';
         // "Clase" = acento del nivel (universidad = verde-pizarra), no coñac
         doc.documentElement.style.setProperty('--st-class-bg', dark ? '#7eb0b5' : '#2d5c63');
         doc.documentElement.style.setProperty('--st-class-fg', dark ? '#15201f' : '#f4f9f9');
@@ -567,6 +596,7 @@ const EXAMENES = [
         var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
         // ajustar la altura del iframe al contenido real (evita hueco blanco)
         fit(doc);
+        updatePanel(doc); // panel "En este mes" según el mes visible
         // re-ajustar cuando cambie el mes dentro del iframe (nav ‹ ›): un mes de
         // 6 filas es más alto que uno de 5. El ResizeObserver (retenido en `ro`
         // para que no lo recoja el GC) sigue el alto real de .cal; los clics en
@@ -583,7 +613,7 @@ const EXAMENES = [
           // mes de 6 filas (mayo) quedaba recortado con barras de scroll. Esta
           // sincronización periódica (barata, solo cambia el alto si difiere)
           // garantiza que el iframe siempre calce el mes visible.
-          setInterval(function () { try { var d = frame.contentDocument; if (d) fit(d); } catch (e) {} }, 200);
+          setInterval(function () { try { var d = frame.contentDocument; if (d) { fit(d); updatePanel(d); } } catch (e) {} }, 200);
           hooked = true;
         }
       } catch (e) {}
