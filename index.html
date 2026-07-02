@@ -33,12 +33,14 @@
   .home-grid { }                               /* móvil/tablet: una columna (flujo normal) */
   @media (min-width: 1024px) {
     .home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-7); align-items: start; }
-    .home-grid__rail { position: sticky; top: var(--space-5); }
+    /* el riel arranca a la altura del título del hero "Materiales de clase" (no pegado arriba) */
+    .home-grid__rail { margin-top: 106px; position: sticky; top: var(--space-5); }
   }
   /* Calendario en el riel: acento del nivel = verde-pizarra (universidad). */
   #calendario { --nivel: #2d5c63; margin-top: 0; }
   [data-theme="dark"] #calendario { --nivel: #7eb0b5; }
-  .cal-rail .section-header { margin-bottom: var(--space-4); }
+  /* riel: sin barra de acento, y alineado con el título del hero (no pegado arriba) */
+  .cal-rail .section-header { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: var(--space-4); }
   /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
   .cal-embed { display: grid; grid-template-columns: 1fr; gap: var(--space-4);
     background: var(--color-bg-raised); border: 1px solid var(--color-border);
