@@ -27,6 +27,41 @@
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
+<style>
+  /* Sección "Calendario del curso" (propuesta diseño IMPLEMENTAR-home-calendario).
+     Preview en rama; si se adopta, mover a components.css. */
+  #calendario { margin-top: var(--space-9); }
+  /* UNA sola caja: mes (izq) + "Esta semana" (der), separadas por hairline.
+     Acento del nivel = verde-pizarra (universidad). */
+  #calendario { --nivel: #2d5c63; }
+  [data-theme="dark"] #calendario { --nivel: #7eb0b5; }
+  .cal-embed { display: grid; grid-template-columns: 1fr 232px; gap: var(--space-6); align-items: stretch;
+    background: var(--color-bg-raised); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6); }
+  .cal-embed__frame { width: 100%; height: 430px; border: 0; background: transparent; }
+  .cal-embed__side { border-left: 1px solid var(--color-border); padding-left: var(--space-5); }
+  .cal-embed__side .eyebrow { display: block; margin-bottom: var(--space-3); }
+  /* "Esta semana": una línea compacta por evento */
+  .cal-week { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+  .cal-week__item { display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-13); color: var(--color-text-secondary); }
+  .cal-week__item strong { font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .cal-week__dot { width: 11px; height: 11px; border-radius: 4px; flex: none; display: inline-block; }
+  /* Estados por forma: Asesoría = relleno sin borde · Suspensión = solo punteado */
+  .cal-week__dot--class { background: var(--nivel); }
+  .cal-week__dot--ases  { background: #f2e9db; }
+  .cal-week__dot--ext   { background: #c98a2b; }
+  .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
+  .cal-week__dot--sim   { background: #4a6b3f; }
+  [data-theme="dark"] .cal-week__dot--ases  { background: #2e2823; }
+  [data-theme="dark"] .cal-week__dot--ext   { background: #d4a04a; }
+  [data-theme="dark"] .cal-week__dot--sus   { border-color: #6a473b; }
+  [data-theme="dark"] .cal-week__dot--sim   { background: #45663a; }
+  .cal-week__legend { display: flex; flex-direction: column; gap: 6px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .cal-week__legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .cal-week__link { display: inline-block; margin-top: var(--space-4); font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--nivel); }
+  @media (max-width: 640px) { .cal-embed { grid-template-columns: 1fr; } .cal-embed__side { border-left: 0; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: var(--space-4); } }
+</style>
+
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
 </head>
@@ -49,10 +84,40 @@
     </aside>
   </header>
 
+  <!-- Calendario del curso · propuesta diseño (IMPLEMENTAR-home-calendario) -->
+  <section id="calendario">
+    <header class="section-header" data-cat="teal">
+      <h2 class="section-header__title">
+        <span class="section-header__num">i.</span>
+        Calendario del curso
+      </h2>
+      <span class="section-header__count">ciclo 2026</span>
+    </header>
+    <div class="cal-embed">
+      <iframe id="calFrame" class="cal-embed__frame" src="/tercial/calendario/calendario-curso-2026.html" title="Calendario del curso" loading="lazy"></iframe>
+      <aside class="cal-embed__side">
+        <p class="eyebrow">Esta semana</p>
+        <ul class="cal-week">
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sim"></span><span><strong>Dom 14</strong> · Simulacro</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ext"></span><span><strong>Lun–vie</strong> · Nivelación extendida</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span><strong>Sáb 13</strong> · Clase</span></li>
+        </ul>
+        <div class="cal-week__legend">
+          <span><span class="cal-week__dot cal-week__dot--class"></span>Clase</span>
+          <span><span class="cal-week__dot cal-week__dot--ases"></span>Asesoría</span>
+          <span><span class="cal-week__dot cal-week__dot--ext"></span>Nivelación extendida</span>
+          <span><span class="cal-week__dot cal-week__dot--sim"></span>Simulacro de examen</span>
+          <span><span class="cal-week__dot cal-week__dot--sus"></span>Suspensión de clases</span>
+        </div>
+        <a class="cal-week__link" href="/tercial/calendario/calendario-curso-2026.html">Ver calendario completo →</a>
+      </aside>
+    </div>
+  </section>
+
   <section id="aula">
     <header class="section-header" data-cat="amber">
       <h2 class="section-header__title">
-        <span class="section-header__num">i.</span>
+        <span class="section-header__num">ii.</span>
         Aula del curso
       </h2>
       <span class="section-header__count">curso presencial</span>
@@ -77,7 +142,7 @@
   <section id="tarjetas">
     <header class="section-header" data-cat="coral">
       <h2 class="section-header__title">
-        <span class="section-header__num">ii.</span>
+        <span class="section-header__num">iii.</span>
         Tarjetas y notas
       </h2>
       <span class="section-header__count">3 recursos</span>
@@ -134,7 +199,7 @@
   <section id="practica-activa">
     <header class="section-header" data-cat="teal">
       <h2 class="section-header__title">
-        <span class="section-header__num">iii.</span>
+        <span class="section-header__num">iv.</span>
         Practica de otra forma
       </h2>
       <span class="section-header__count">4 modos · nuevo</span>
@@ -180,7 +245,7 @@
   <section id="fisica">
     <header class="section-header" data-cat="purple">
       <h2 class="section-header__title">
-        <span class="section-header__num">iv.</span>
+        <span class="section-header__num">v.</span>
         Física
       </h2>
       <span class="section-header__count">12 recursos</span>
@@ -219,7 +284,7 @@
   <section id="matematicas">
     <header class="section-header" data-cat="blue">
       <h2 class="section-header__title">
-        <span class="section-header__num">v.</span>
+        <span class="section-header__num">vi.</span>
         Matemáticas
       </h2>
       <span class="section-header__count">4 recursos</span>
@@ -283,7 +348,7 @@
   <section id="examenes">
     <header class="section-header" data-cat="navy">
       <h2 class="section-header__title">
-        <span class="section-header__num">vi.</span>
+        <span class="section-header__num">vii.</span>
         Exámenes adaptativos
       </h2>
       <span class="section-header__count">3 simulares</span>
@@ -352,20 +417,14 @@
    Para agregar un alumno: { nombre: "...", fecha: "AAAA-MM-DD" }
    El examen se oculta automáticamente después de la fecha. */
 const EXAMENES = [
-  { nombre: "Conchita",  fecha: "2026-06-20" },
-  { nombre: "Sofía",     fecha: "2026-06-20" },
-  { nombre: "Yuli",      fecha: "2026-06-20" },
-  { nombre: "Regina",    fecha: "2026-06-21" },
-  { nombre: "Kevin",     fecha: "2026-06-21" },
-  { nombre: "Julio",     fecha: "2026-06-21" },
-  { nombre: "Ari",       fecha: "2026-06-27" },
-  { nombre: "Axel",      fecha: "2026-06-27" },
-  { nombre: "Marley",    fecha: "2026-06-27" },
-  { nombre: "Alexander", fecha: "2026-06-27" },
-  { nombre: "Roxanna",   fecha: "2026-06-27" },
-  { nombre: "Ximena",    fecha: "2026-06-27" },
-  { nombre: "Rafaela",   fecha: "2026-06-27" },
-  { nombre: "Citlaly",   fecha: "2026-06-28" },
+  // DEMO · fechas FICTICIAS: los exámenes reales (jun 2026) ya pasaron y el
+  // carrusel quedaba vacío. Sustituir por las fechas reales del próximo ciclo.
+  { nombre: "Renata",  fecha: "2026-07-04" },
+  { nombre: "Mateo",   fecha: "2026-07-13" },
+  { nombre: "Valeria", fecha: "2026-07-27" },
+  { nombre: "Diego",   fecha: "2026-08-15" },
+  { nombre: "Camila",  fecha: "2026-09-14" },
+  { nombre: "Emiliano",fecha: "2026-10-24" },
 ];
 
 (function() {
@@ -384,6 +443,15 @@ const EXAMENES = [
     const [y, m, d] = fechaStr.split('-').map(Number);
     const fecha = new Date(y, m - 1, d);
     return `${DIAS_SEMANA[fecha.getDay()]} ${d} de ${MESES[m-1]}`;
+  }
+
+  // Regla de formato (pedida por diseño): >31 días → meses; si no, días.
+  function formatoRestante(dias) {
+    if (dias > 31) {
+      const meses = Math.round(dias / 30.44);
+      return { num: String(meses), sufijo: meses === 1 ? 'mes' : 'meses' };
+    }
+    return { num: String(dias), sufijo: dias === 1 ? 'día' : 'días' };
   }
 
   const container = document.getElementById('contadores');
@@ -413,14 +481,12 @@ const EXAMENES = [
       sufijo = '';
       numClass += ' pequeno';
       titulo = `¡Hoy es el examen de ${ex.nombre}!`;
-    } else if (dias === 1) {
-      numContent = '1';
-      sufijo = 'día';
-      titulo = `Falta 1 día para el examen de ${ex.nombre}`;
     } else {
-      numContent = String(dias);
-      sufijo = 'días';
-      titulo = `Faltan ${dias} días para el examen de ${ex.nombre}`;
+      const f = formatoRestante(dias);
+      numContent = f.num;
+      sufijo = f.sufijo;
+      const prefijo = f.num === '1' ? 'Falta' : 'Faltan';
+      titulo = `${prefijo} ${f.num} ${f.sufijo} para el examen de ${ex.nombre}`;
     }
 
     const item = document.createElement('div');
@@ -469,6 +535,65 @@ const EXAMENES = [
     footer.querySelector('.exam-countdown__pos').textContent = `${actual + 1} / ${items.length}`;
   });
 })();
+</script>
+
+<script>
+  /* Preview: sincroniza el tema del calendario embebido (iframe) con el del
+     sitio y limpia su marco — quita el fondo "desk", el padding y el botón de
+     demo, para que se vea integrado. Mismo origen (/tercial/), acceso permitido. */
+  (function () {
+    var frame = document.getElementById('calFrame');
+    if (!frame) return;
+    var hooked = false, ro = null;
+    function fit(doc) {
+      // altura real del contenido: el mes más alto (6 filas) no debe recortarse
+      var cal = doc.querySelector('.cal');
+      var h = Math.max(
+        doc.body ? doc.body.scrollHeight : 0,
+        doc.documentElement ? doc.documentElement.scrollHeight : 0,
+        cal ? cal.offsetHeight : 0
+      );
+      frame.style.height = ((h || 430) + 2) + 'px'; // +2 evita el scrollbar por redondeo
+    }
+    function sync() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.documentElement) return;
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        // fondo del iframe = mismo que el card del home (evita el lienzo blanco)
+        doc.documentElement.style.background = dark ? '#221d1a' : '#f8f3e8';
+        // "Clase" = acento del nivel (universidad = verde-pizarra), no coñac
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#7eb0b5' : '#2d5c63');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#15201f' : '#f4f9f9');
+        if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
+        var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
+        // una sola caja: quitar el card interno del calendario (lo envuelve el card del home)
+        var cal = doc.querySelector('.cal');
+        if (cal) { cal.style.margin = '0'; cal.style.width = '100%'; cal.style.maxWidth = 'none'; cal.style.border = 'none'; cal.style.background = 'transparent'; cal.style.boxShadow = 'none'; cal.style.padding = '0'; cal.style.borderRadius = '0'; }
+        // leyenda única: se queda solo la del panel "Esta semana"
+        var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
+        // ajustar la altura del iframe al contenido real (evita hueco blanco)
+        fit(doc);
+        // re-ajustar cuando cambie el mes dentro del iframe (nav ‹ ›): un mes de
+        // 6 filas es más alto que uno de 5. El ResizeObserver (retenido en `ro`
+        // para que no lo recoja el GC) sigue el alto real de .cal; los clics en
+        // ‹ › son el respaldo. Se engancha una sola vez.
+        if (!hooked) {
+          var W = frame.contentWindow;
+          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
+          var prev = doc.getElementById('prev'), next = doc.getElementById('next');
+          if (prev) prev.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
+          if (next) next.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
+          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          hooked = true;
+        }
+      } catch (e) {}
+    }
+    frame.addEventListener('load', sync);
+    window.addEventListener('tercial:themechange', sync);
+    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
 </script>
 
 </body>
