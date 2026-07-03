@@ -44,8 +44,15 @@
   .nivel-card { display: flex; flex-direction: column; gap: var(--space-2); text-align: left; text-decoration: none;
     background: var(--color-bg-raised); border: 1px solid var(--color-border); border-top: 3px solid var(--nivel);
     border-radius: var(--radius-lg); padding: var(--space-6);
-    transition: transform var(--motion-base) var(--motion-ease-standard), box-shadow var(--motion-base) ease; }
-  .nivel-card:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgba(74,63,51,.14); }
+    transition: transform var(--motion-base) var(--motion-ease-standard),
+                box-shadow var(--motion-base) ease, border-color var(--motion-base) ease; }
+  .nivel-card:hover, .nivel-card:focus-visible {
+    transform: translateY(-4px); box-shadow: 0 10px 30px rgba(74,63,51,.16);
+    border-color: var(--nivel); text-decoration: none; outline: none; }
+  /* la flecha se desliza a la derecha: señal de "entrar" */
+  .nivel-card__arrow { display: inline-block; transition: transform var(--motion-base) var(--motion-ease-standard); }
+  .nivel-card:hover .nivel-card__arrow,
+  .nivel-card:focus-visible .nivel-card__arrow { transform: translateX(5px); }
   .nivel-card--prepa { --nivel: #c2410c; }
   .nivel-card--uni   { --nivel: #8c4a3a; }
   [data-theme="dark"] .nivel-card--prepa { --nivel: #dd8055; }
@@ -75,14 +82,14 @@
       <p class="nivel-card__eyebrow">Nivel medio superior</p>
       <h2 class="nivel-card__title">Ingreso a <em>prepa</em></h2>
       <p class="nivel-card__desc">Preparación para el examen de ingreso (ECOEMS / COMIPEMS). Curso de marzo a junio.</p>
-      <span class="nivel-card__cta">Entrar →</span>
+      <span class="nivel-card__cta">Entrar <span class="nivel-card__arrow">→</span></span>
     </a>
 
     <a class="nivel-card nivel-card--uni" href="/tercial/uni.html">
       <p class="nivel-card__eyebrow">Nivel superior</p>
       <h2 class="nivel-card__title">Ingreso a <em>universidad</em></h2>
       <p class="nivel-card__desc">Preparación para tu examen de admisión. Clases durante todo el año.</p>
-      <span class="nivel-card__cta">Entrar →</span>
+      <span class="nivel-card__cta">Entrar <span class="nivel-card__arrow">→</span></span>
     </a>
   </div>
 </main>
