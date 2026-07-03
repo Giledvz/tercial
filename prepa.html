@@ -28,7 +28,9 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
-  /* Prepa = acento COÑAC (el global por defecto en tokens.css), no se sobreescribe. */
+  /* Prepa = acento TERRACOTA (cálido/enérgico, para los ~15). Reemplaza el coñac global:
+     hero em, contador, ems de card, enlaces. */
+  body { --color-accent: var(--accent-terracota); --color-accent-soft: var(--accent-terracota-soft); }
 
   /* Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario.
      Preview en rama; si se adopta, mover a components.css. */
@@ -38,9 +40,8 @@
     /* el riel arranca a la altura del eyebrow del hero ("NIVEL SUPERIOR…") */
     .home-grid__rail { margin-top: 80px; position: sticky; top: var(--space-5); }
   }
-  /* Calendario en el riel: acento del nivel = coñac (prepa). */
-  #calendario { --nivel: #8c4a3a; margin-top: 0; }
-  [data-theme="dark"] #calendario { --nivel: #c7836b; }
+  /* Calendario en el riel: acento del nivel = terracota (prepa). */
+  #calendario { --nivel: var(--accent-terracota); margin-top: 0; }
   /* riel: sin barra de acento, y alineado con el título del hero (no pegado arriba) */
   .cal-rail .section-header { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: var(--space-4); }
   /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
@@ -600,10 +601,9 @@ const EXAMENES = [
         // horizontal → y se retroalimenta). El fit() dimensiona el alto al contenido.
         doc.documentElement.style.overflow = 'hidden';
         if (doc.body) doc.body.style.overflow = 'hidden';
-        // "Clase" = acento del nivel (prepa = coñac); el calendario ya trae coñac,
-        // pero lo fijamos explícito por si acaso.
-        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#c7836b' : '#8c4a3a');
-        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1614' : '#f8f3e8');
+        // "Clase" = acento del nivel (prepa = terracota)
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#dd8055' : '#c2410c');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#2a140c' : '#fdf0ea');
         if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
         var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
         // una sola caja: quitar el card interno del calendario (lo envuelve el card del home)
