@@ -28,6 +28,11 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
+  /* Universidad = acento VIOLETA (paraguas de uni · IMPLEMENTAR-colores-universidad).
+     Reemplaza el coñac global en esta vista: hero em, contador, ems de card, enlaces. */
+  body { --color-accent: #5b4b9e; --color-accent-soft: #7a6bbf; }
+  [data-theme="dark"] body { --color-accent: #9a8cd0; --color-accent-soft: #b0a3dd; }
+
   /* Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario.
      Preview en rama; si se adopta, mover a components.css. */
   .home-grid { }                               /* móvil/tablet: una columna (flujo normal) */
@@ -36,9 +41,9 @@
     /* el riel arranca a la altura del eyebrow del hero ("NIVEL SUPERIOR…") */
     .home-grid__rail { margin-top: 80px; position: sticky; top: var(--space-5); }
   }
-  /* Calendario en el riel: acento del nivel = verde-pizarra (universidad). */
-  #calendario { --nivel: #2d5c63; margin-top: 0; }
-  [data-theme="dark"] #calendario { --nivel: #7eb0b5; }
+  /* Calendario en el riel: acento del nivel = violeta (universidad general). */
+  #calendario { --nivel: #5b4b9e; margin-top: 0; }
+  [data-theme="dark"] #calendario { --nivel: #9a8cd0; }
   /* riel: sin barra de acento, y alineado con el título del hero (no pegado arriba) */
   .cal-rail .section-header { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: var(--space-4); }
   /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
@@ -58,11 +63,11 @@
   .cal-week__dot--ases  { background: #f2e9db; }
   .cal-week__dot--ext   { background: #c98a2b; }
   .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
-  .cal-week__dot--sim   { background: #4a6b3f; }
+  .cal-week__dot--sim   { background: #1f8ca0; }
   [data-theme="dark"] .cal-week__dot--ases  { background: #2e2823; }
   [data-theme="dark"] .cal-week__dot--ext   { background: #d4a04a; }
   [data-theme="dark"] .cal-week__dot--sus   { border-color: #6a473b; }
-  [data-theme="dark"] .cal-week__dot--sim   { background: #45663a; }
+  [data-theme="dark"] .cal-week__dot--sim   { background: #5fc0d2; }
   .cal-week__legend { display: flex; flex-direction: column; gap: 6px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); font-size: var(--font-size-12); color: var(--color-text-meta); }
   .cal-week__legend span { display: inline-flex; align-items: center; gap: 6px; }
   .cal-week__link { display: inline-block; margin-top: var(--space-4); font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--nivel); }
@@ -599,9 +604,9 @@ const EXAMENES = [
         // horizontal → y se retroalimenta). El fit() dimensiona el alto al contenido.
         doc.documentElement.style.overflow = 'hidden';
         if (doc.body) doc.body.style.overflow = 'hidden';
-        // "Clase" = acento del nivel (universidad = verde-pizarra), no coñac
-        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#7eb0b5' : '#2d5c63');
-        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#15201f' : '#f4f9f9');
+        // "Clase" = acento del nivel (universidad = violeta), no coñac
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#9a8cd0' : '#5b4b9e');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1626' : '#f4f2fb');
         if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
         var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
         // una sola caja: quitar el card interno del calendario (lo envuelve el card del home)
