@@ -28,10 +28,9 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
-  /* Universidad = acento VIOLETA (paraguas de uni · IMPLEMENTAR-colores-universidad).
+  /* Universidad = acento TERRACOTA (cálido, del sistema; distinto del coñac de prepa).
      Reemplaza el coñac global en esta vista: hero em, contador, ems de card, enlaces. */
-  body { --color-accent: #5b4b9e; --color-accent-soft: #7a6bbf; }
-  [data-theme="dark"] body { --color-accent: #9a8cd0; --color-accent-soft: #b0a3dd; }
+  body { --color-accent: var(--accent-terracota); --color-accent-soft: var(--accent-terracota-soft); }
 
   /* Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario.
      Preview en rama; si se adopta, mover a components.css. */
@@ -41,9 +40,8 @@
     /* el riel arranca a la altura del eyebrow del hero ("NIVEL SUPERIOR…") */
     .home-grid__rail { margin-top: 80px; position: sticky; top: var(--space-5); }
   }
-  /* Calendario en el riel: acento del nivel = violeta (universidad general). */
-  #calendario { --nivel: #5b4b9e; margin-top: 0; }
-  [data-theme="dark"] #calendario { --nivel: #9a8cd0; }
+  /* Calendario en el riel: acento del nivel = terracota (universidad). */
+  #calendario { --nivel: var(--accent-terracota); margin-top: 0; }
   /* riel: sin barra de acento, y alineado con el título del hero (no pegado arriba) */
   .cal-rail .section-header { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: var(--space-4); }
   /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
@@ -604,9 +602,9 @@ const EXAMENES = [
         // horizontal → y se retroalimenta). El fit() dimensiona el alto al contenido.
         doc.documentElement.style.overflow = 'hidden';
         if (doc.body) doc.body.style.overflow = 'hidden';
-        // "Clase" = acento del nivel (universidad = violeta), no coñac
-        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#9a8cd0' : '#5b4b9e');
-        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1626' : '#f4f2fb');
+        // "Clase" = acento del nivel (universidad = terracota), no coñac
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#dd8055' : '#c2410c');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#2a140c' : '#fdf0ea');
         if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
         var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
         // una sola caja: quitar el card interno del calendario (lo envuelve el card del home)
