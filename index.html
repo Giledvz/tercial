@@ -46,16 +46,10 @@
     border-radius: var(--radius-lg); padding: var(--space-6);
     transition: transform var(--motion-base) var(--motion-ease-standard),
                 box-shadow var(--motion-base) ease, border-color var(--motion-base) ease; }
-  /* hover: BORDE ILUMINADO en el color del nivel + elevación + flecha (sin subrayado).
-     Sombra neutra como respaldo (Safari viejo sin color-mix). */
+  /* hover: BORDE ILUMINADO en el color del nivel + elevación + flecha (sin subrayado). */
   .nivel-card:hover, .nivel-card:focus-visible {
     transform: translateY(-4px); border-color: var(--nivel);
     box-shadow: 0 10px 30px rgba(74,63,51,.16); text-decoration: none; outline: none; }
-  /* GLOW: la sombra toma el color del nivel (halo) donde exista color-mix */
-  @supports (box-shadow: 0 0 0 color-mix(in srgb, red 50%, transparent)) {
-    .nivel-card:hover, .nivel-card:focus-visible {
-      box-shadow: 0 14px 34px -8px color-mix(in srgb, var(--nivel) 55%, transparent); }
-  }
   /* la flecha se desliza a la derecha: señal de "entrar" */
   .nivel-card__arrow { display: inline-block; transition: transform var(--motion-base) var(--motion-ease-standard); }
   .nivel-card:hover .nivel-card__arrow,
