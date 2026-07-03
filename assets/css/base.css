@@ -318,3 +318,14 @@ main > section + section {
   white-space: nowrap;
   border: 0;
 }
+
+/* Transición temporal del tema: theme.js añade .theme-anim al <html> solo
+   durante la corrección de tema al volver del bfcache, para que el cambio se
+   suavice (fade) en vez de un corte brusco. Se quita a los ~320ms. No afecta
+   la interacción normal porque solo está activa en ese instante. */
+html.theme-anim, html.theme-anim * , html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .3s ease, color .3s ease, border-color .3s ease, box-shadow .3s ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: none !important; }
+}
