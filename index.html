@@ -45,16 +45,16 @@
     background: var(--color-bg-raised); border: 1px solid var(--color-border); border-top: 3px solid var(--nivel);
     border-radius: var(--radius-lg); padding: var(--space-6);
     transition: transform var(--motion-base) var(--motion-ease-standard),
-                box-shadow var(--motion-base) ease, background var(--motion-base) ease, border-color var(--motion-base) ease; }
-  /* hover: se eleva + flecha; respaldo = borde encendido (Safari viejo sin color-mix) */
+                box-shadow var(--motion-base) ease, border-color var(--motion-base) ease; }
+  /* hover: BORDE ILUMINADO en el color del nivel + elevación + flecha (sin subrayado).
+     Sombra neutra como respaldo (Safari viejo sin color-mix). */
   .nivel-card:hover, .nivel-card:focus-visible {
-    transform: translateY(-4px); box-shadow: 0 10px 30px rgba(74,63,51,.16);
-    border-color: var(--nivel); text-decoration: none; outline: none; }
-  /* variante final: TINTE sutil del color del nivel (borde neutro) */
-  @supports (background: color-mix(in srgb, red 5%, white)) {
+    transform: translateY(-4px); border-color: var(--nivel);
+    box-shadow: 0 10px 30px rgba(74,63,51,.16); text-decoration: none; outline: none; }
+  /* GLOW: la sombra toma el color del nivel (halo) donde exista color-mix */
+  @supports (box-shadow: 0 0 0 color-mix(in srgb, red 50%, transparent)) {
     .nivel-card:hover, .nivel-card:focus-visible {
-      border-color: var(--color-border);
-      background: color-mix(in srgb, var(--nivel) 7%, var(--color-bg-raised)); }
+      box-shadow: 0 14px 34px -8px color-mix(in srgb, var(--nivel) 55%, transparent); }
   }
   /* la flecha se desliza a la derecha: señal de "entrar" */
   .nivel-card__arrow { display: inline-block; transition: transform var(--motion-base) var(--motion-ease-standard); }
