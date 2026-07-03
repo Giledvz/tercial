@@ -58,15 +58,11 @@
 
   /* Al restaurar desde el bfcache (botón atrás/adelante, sobre todo en Safari),
      el DOM vuelve con el data-theme viejo y los scripts no re-corren. Reaplicar
-     el tema según la preferencia actual. Solo si cambió, y con un fade breve
-     (.theme-anim) para que la corrección no sea un corte brusco a los ojos. */
+     el tema según la preferencia actual (instantáneo; solo si realmente cambió). */
   window.addEventListener('pageshow', (e) => {
     if (!e.persisted) return;
     const root = document.documentElement;
-    if (root.getAttribute('data-theme') === resolve(ClasesTheme.get())) return; // ya está bien
-    root.classList.add('theme-anim');
-    apply();
-    setTimeout(() => root.classList.remove('theme-anim'), 320);
+    if (root.getAttribute('data-theme') !== resolve(ClasesTheme.get())) apply();
   });
 
   apply();
