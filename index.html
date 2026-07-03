@@ -25,8 +25,11 @@
 
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
+  /* botón de tema flotante (mismo sistema que las páginas de nivel) */
+  .theme-toggle { position: fixed; top: var(--space-4); right: var(--space-4); z-index: 10; }
   .elige { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: var(--space-8); padding: var(--space-7) var(--space-5); text-align: center; }
   .elige__head { max-width: 34rem; display: flex; flex-direction: column; gap: var(--space-2); }
@@ -71,6 +74,12 @@
 </head>
 <body>
 
+<button class="theme-toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+  <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+</button>
+
 <main class="elige">
   <div class="elige__head">
     <p class="elige__brand">Tercial</p>
@@ -94,6 +103,13 @@
     </a>
   </div>
 </main>
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script>
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    if (window.ClasesTheme) window.ClasesTheme.toggle();
+  });
+</script>
 
 </body>
 </html>
