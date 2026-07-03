@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Tercial · materiales</title>
+<title>Tercial · elige tu nivel</title>
 
 <script>
   /* Anti-flash · ver design-system § 11 */
@@ -25,622 +25,67 @@
 
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
-<link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
-  /* Universidad = acento COÑAC (más sobrio/maduro, para los ~18). Es el global por
-     defecto de tokens.css, así que no se sobreescribe --color-accent aquí. */
+  .elige { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: var(--space-8); padding: var(--space-7) var(--space-5); text-align: center; }
+  .elige__head { max-width: 34rem; display: flex; flex-direction: column; gap: var(--space-2); }
+  .elige__brand { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-18); color: var(--color-text-primary); margin: 0; }
+  .elige__eyebrow { font-size: var(--font-size-11); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+    color: var(--color-text-meta); font-weight: var(--font-weight-medium); margin: var(--space-2) 0 0; }
+  .elige__title { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-32); line-height: var(--line-height-tight); color: var(--color-text-primary); margin: 0; }
+  .elige__title em { font-style: italic; color: var(--color-accent); }
 
-  /* Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario.
-     Preview en rama; si se adopta, mover a components.css. */
-  .home-grid { }                               /* móvil/tablet: una columna (flujo normal) */
-  @media (min-width: 1024px) {
-    .home-grid { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-7); align-items: start; }
-    /* el riel arranca a la altura del eyebrow del hero ("NIVEL SUPERIOR…") */
-    .home-grid__rail { margin-top: 80px; position: sticky; top: var(--space-5); }
-  }
-  /* Calendario en el riel: acento del nivel = coñac (universidad). */
-  #calendario { --nivel: #8c4a3a; margin-top: 0; }
-  [data-theme="dark"] #calendario { --nivel: #c7836b; }
-  /* riel: sin barra de acento, y alineado con el título del hero (no pegado arriba) */
-  .cal-rail .section-header { border-top: none; padding-top: 0; margin-top: 0; margin-bottom: var(--space-4); }
-  /* En el riel el calendario y el panel se APILAN (mes arriba, "En este mes" abajo). */
-  .cal-embed { display: grid; grid-template-columns: 1fr; gap: var(--space-4);
-    background: var(--color-bg-raised); border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg); padding: var(--space-5); }
-  .cal-embed__frame { width: 100%; height: 320px; border: 0; background: transparent; }
-  .cal-embed__side { border-top: 1px solid var(--color-border); padding-top: var(--space-4); }
-  .cal-embed__side .eyebrow { display: block; margin-bottom: var(--space-3); }
-  /* "Esta semana": una línea compacta por evento */
-  .cal-week { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
-  .cal-week__item { display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-13); color: var(--color-text-secondary); }
-  .cal-week__item strong { font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
-  .cal-week__dot { width: 11px; height: 11px; border-radius: 4px; flex: none; display: inline-block; }
-  /* Estados por forma: Asesoría = relleno sin borde · Suspensión = solo punteado */
-  .cal-week__dot--class { background: var(--nivel); }
-  .cal-week__dot--ases  { background: #f2e9db; }
-  .cal-week__dot--ext   { background: #c98a2b; }
-  .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
-  .cal-week__dot--sim   { background: #1f8ca0; }
-  [data-theme="dark"] .cal-week__dot--ases  { background: #2e2823; }
-  [data-theme="dark"] .cal-week__dot--ext   { background: #d4a04a; }
-  [data-theme="dark"] .cal-week__dot--sus   { border-color: #6a473b; }
-  [data-theme="dark"] .cal-week__dot--sim   { background: #5fc0d2; }
-  .cal-week__legend { display: flex; flex-direction: column; gap: 6px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); font-size: var(--font-size-12); color: var(--color-text-meta); }
-  .cal-week__legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .cal-week__link { display: inline-block; margin-top: var(--space-4); font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--nivel); }
+  .elige__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-5); width: min(44rem, 100%); }
+  @media (min-width: 620px) { .elige__grid { grid-template-columns: 1fr 1fr; } }
+
+  .nivel-card { display: flex; flex-direction: column; gap: var(--space-2); text-align: left; text-decoration: none;
+    background: var(--color-bg-raised); border: 1px solid var(--color-border); border-top: 3px solid var(--nivel);
+    border-radius: var(--radius-lg); padding: var(--space-6);
+    transition: transform var(--motion-base) var(--motion-ease-standard), box-shadow var(--motion-base) ease; }
+  .nivel-card:hover { transform: translateY(-3px); box-shadow: 0 8px 26px rgba(74,63,51,.14); }
+  .nivel-card--prepa { --nivel: #c2410c; }
+  .nivel-card--uni   { --nivel: #8c4a3a; }
+  [data-theme="dark"] .nivel-card--prepa { --nivel: #dd8055; }
+  [data-theme="dark"] .nivel-card--uni   { --nivel: #c7836b; }
+
+  .nivel-card__eyebrow { font-size: var(--font-size-11); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+    color: var(--nivel); font-weight: var(--font-weight-semibold); margin: 0; }
+  .nivel-card__title { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-24); line-height: var(--line-height-snug); color: var(--color-text-primary); margin: 0; }
+  .nivel-card__title em { font-style: italic; color: var(--nivel); }
+  .nivel-card__desc { font-size: var(--font-size-14); line-height: var(--line-height-normal);
+    color: var(--color-text-secondary); margin: var(--space-1) 0 var(--space-3); }
+  .nivel-card__cta { margin-top: auto; font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--nivel); }
 </style>
-
-<script defer src="/tercial/assets/js/theme.js"></script>
-<script defer src="/tercial/assets/js/site-nav.js"></script>
 </head>
 <body>
 
-<site-nav active="inicio"></site-nav>
+<main class="elige">
+  <div class="elige__head">
+    <p class="elige__brand">Tercial</p>
+    <p class="elige__eyebrow">Materiales de preparación</p>
+    <h1 class="elige__title">Elige tu <em>nivel</em></h1>
+  </div>
 
-<main class="container container--full">
-
-  <!-- Home a 2 columnas (IMPLEMENTAR-home-riel): principal + riel con el calendario -->
-  <div class="home-grid">
-  <div class="home-grid__main">
-
-  <header class="hero hero--with-aside">
-    <div class="hero__main">
-      <p class="eyebrow">Nivel superior · ingreso a universidad</p>
-      <h1 class="hero__title">Materiales de <em>clase</em></h1>
-      <p class="hero__lede">
-        Ejercicios resueltos, exámenes adaptativos y tarjetas de práctica para preparar tu examen.
-      </p>
-    </div>
-    <aside id="contadores" class="hero__aside exam-countdown" aria-label="contadores de examen">
-      <!-- contenido inyectado por el JS del carrusel -->
-    </aside>
-  </header>
-
-  <section id="aula">
-    <header class="section-header" data-cat="amber">
-      <h2 class="section-header__title">
-        <span class="section-header__num">i.</span>
-        Aula del curso
-      </h2>
-      <span class="section-header__count">curso presencial</span>
-    </header>
-
-    <a class="card-link" href="/tercial/aula.html">
-      <article class="card card--featured" data-cat="amber">
-        <header class="card__header">
-          <h3 class="card__title">Aula <em>ECOEMS</em></h3>
-        </header>
-        <p class="card__body">
-          El curso en papel: exámenes semanales, hojas de trabajo y simulacros COMIPEMS para imprimir y resolver. Todo en un solo lugar, sin entrar a Classroom.
-        </p>
-        <footer class="card__footer">
-          <span class="card__meta">16 exámenes · 20 hojas · 2 simulacros</span>
-          <span class="card__cta">Abrir el aula →</span>
-        </footer>
-      </article>
-    </a>
-  </section>
-
-  <section id="tarjetas">
-    <header class="section-header" data-cat="coral">
-      <h2 class="section-header__title">
-        <span class="section-header__num">ii.</span>
-        Tarjetas y notas
-      </h2>
-      <span class="section-header__count">3 recursos</span>
-    </header>
-
-    <div class="card-grid card-grid--cols-3">
-      <a class="card-link" href="/tercial/practicar.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Practicar <em>por tema</em></h3>
-          </header>
-          <p class="card__body">
-            Elige un tema y entra directo a sus flashcards. El orden cambia cada sesión, así que repetir un tema nunca es repetir las respuestas.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/flashcards.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Práctica <em>rápida</em></h3>
-          </header>
-          <p class="card__body">
-            30 preguntas al azar de todas las materias. Para soltar la mente, calentar o cerrar una sesión de estudio en 15 minutos.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/repaso.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Notas <em>de repaso</em></h3>
-          </header>
-          <p class="card__body">
-            La idea clave de cada tema, los errores que más caen y un par de ejemplos. Pensado para repasar la noche antes.
-          </p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-    </div>
-  </section>
-
-  <section id="practica-activa">
-    <header class="section-header" data-cat="teal">
-      <h2 class="section-header__title">
-        <span class="section-header__num">iii.</span>
-        Practica de otra forma
-      </h2>
-      <span class="section-header__count">4 modos · nuevo</span>
-    </header>
-
-    <p class="section-intro">Estudiar sin aburrirte. Cada modo entrena una jugada distinta del examen: descartar, correr contra el reloj, estimar a ojo o fijar los datos de memoria.</p>
-
-    <div class="card-grid card-grid--cols-3">
-      <a class="card-link" href="/tercial/descarta.html">
-        <article class="card card--cat-teal">
-          <header class="card__header"><h3 class="card__title">Descarta <em>los dos</em></h3></header>
-          <p class="card__body">No elijas la correcta: tacha las dos opciones imposibles. Aprende a eliminar distractores y subir tu probabilidad de 25&nbsp;% a 50&nbsp;%.</p>
-          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abrir →</span></footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/relampago.html">
-        <article class="card card--cat-teal">
-          <header class="card__header"><h3 class="card__title"><em>Relámpago</em></h3></header>
-          <p class="card__body">Sesenta segundos, preguntas que saltan solas, combo por racha. Velocidad en lo básico, contra el reloj.</p>
-          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abrir →</span></footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/a-ojo.html">
-        <article class="card card--cat-teal">
-          <header class="card__header"><h3 class="card__title">A <em>ojo</em></h3></header>
-          <p class="card__body">Estima el tamaño del resultado antes de calcular y descarta lo imposible. Sentido numérico, sin lápiz.</p>
-          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abrir →</span></footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/factos.html">
-        <article class="card card--cat-teal">
-          <header class="card__header"><h3 class="card__title"><em>Factos</em></h3></header>
-          <p class="card__body">Datos que van sí o sí: conceptos, fechas y clasificaciones. Pásalos como tarjetas y dilos con tus palabras. Pura memoria, sin opciones.</p>
-          <footer class="card__footer"><span class="card__meta">html</span><span class="card__cta">Abrir →</span></footer>
-        </article>
-      </a>
-    </div>
-  </section>
-
-  <section id="fisica">
-    <header class="section-header" data-cat="purple">
-      <h2 class="section-header__title">
-        <span class="section-header__num">iv.</span>
-        Física
-      </h2>
-      <span class="section-header__count">12 recursos</span>
-    </header>
-
-    <a class="card-link" href="/tercial/formulario.html">
-      <article class="card card--featured" data-cat="purple">
-        <header class="card__header">
-          <h3 class="card__title">Formulario <em>completo</em></h3>
-        </header>
-        <p class="card__body">
-          Diez unidades, más de cien fórmulas para consultar mientras resuelves. Tenlo abierto al lado.
-        </p>
-        <footer class="card__footer">
-          <span class="card__meta">html</span>
-          <span class="card__cta">Abrir →</span>
-        </footer>
-      </article>
+  <div class="elige__grid">
+    <a class="nivel-card nivel-card--prepa" href="/tercial/prepa.html">
+      <p class="nivel-card__eyebrow">Nivel medio superior</p>
+      <h2 class="nivel-card__title">Ingreso a <em>prepa</em></h2>
+      <p class="nivel-card__desc">Preparación para el examen de ingreso (ECOEMS / COMIPEMS). Curso de marzo a junio.</p>
+      <span class="nivel-card__cta">Entrar →</span>
     </a>
 
-    <ul class="topic-list">
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
-    </ul>
-  </section>
-
-  <section id="matematicas">
-    <header class="section-header" data-cat="blue">
-      <h2 class="section-header__title">
-        <span class="section-header__num">v.</span>
-        Matemáticas
-      </h2>
-      <span class="section-header__count">4 recursos</span>
-    </header>
-
-    <div class="card-grid">
-      <a class="card-link" href="/tercial/calculo_diferencial_v3.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Cálculo <em>diferencial</em></h3>
-          </header>
-          <p class="card__body">Límites, derivadas, optimización con problemas resueltos.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/calculo_diferencial_latex.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Cálculo <em>resumen</em></h3>
-          </header>
-          <p class="card__body">Resumen LaTeX con teoría y fórmulas para imprimir.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/geometria_analitica.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Geometría</em> analítica</h3>
-          </header>
-          <p class="card__body">Rectas, circunferencias, parábolas y elipses, con ejercicios.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/trigonometria_con_figuras.pdf">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Trigonometría</em></h3>
-          </header>
-          <p class="card__body">Identidades, ecuaciones, ley de senos y cosenos con figuras.</p>
-          <footer class="card__footer">
-            <span class="card__meta">pdf</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-    </div>
-  </section>
-
-  <section id="examenes">
-    <header class="section-header" data-cat="navy">
-      <h2 class="section-header__title">
-        <span class="section-header__num">vi.</span>
-        Exámenes adaptativos
-      </h2>
-      <span class="section-header__count">3 simulares</span>
-    </header>
-
-    <p class="section-intro">Para cuando ya practicaste. Simulan la dificultad del examen real, miden tu nivel y te dicen dónde estás parado.</p>
-
-    <a class="card-link" href="/tercial/examen_unam_area2.html">
-      <article class="card card--featured" data-cat="navy">
-        <header class="card__header">
-          <h3 class="card__title">UNAM Área 2 — <em>banco especial</em></h3>
-        </header>
-        <p class="card__body">
-          120 preguntas curadas del banco UNAM, en el formato exacto del examen oficial.
-        </p>
-        <footer class="card__footer">
-          <span class="card__meta">html</span>
-          <span class="card__cta">Abrir →</span>
-        </footer>
-      </article>
+    <a class="nivel-card nivel-card--uni" href="/tercial/uni.html">
+      <p class="nivel-card__eyebrow">Nivel superior</p>
+      <h2 class="nivel-card__title">Ingreso a <em>universidad</em></h2>
+      <p class="nivel-card__desc">Preparación para tu examen de admisión. Clases durante todo el año.</p>
+      <span class="nivel-card__cta">Entrar →</span>
     </a>
-
-    <div class="card-grid">
-      <a class="card-link" href="/tercial/examen_adaptativo.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Matemáticas</em></h3>
-          </header>
-          <p class="card__body">Adaptativo. La dificultad sube si vas bien, baja si te trabas.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-
-      <a class="card-link" href="/tercial/examen_adaptativo_fisica.html">
-        <article class="card">
-          <header class="card__header">
-            <h3 class="card__title"><em>Física</em></h3>
-          </header>
-          <p class="card__body">Adaptativo. Cubre las 10 unidades del curso.</p>
-          <footer class="card__footer">
-            <span class="card__meta">html</span>
-            <span class="card__cta">Abrir →</span>
-          </footer>
-        </article>
-      </a>
-    </div>
-  </section>
-
-  </div><!-- /home-grid__main -->
-
-  <!-- Riel derecho: calendario del mes + panel "En este mes" (apilados) -->
-  <aside class="home-grid__rail">
-    <section id="calendario" class="cal-rail">
-      <header class="section-header" data-cat="teal">
-        <h2 class="section-header__title">
-          Calendario universidad
-        </h2>
-      </header>
-      <div class="cal-embed">
-        <iframe id="calFrame" class="cal-embed__frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario universidad" loading="lazy"></iframe>
-        <div class="cal-embed__side">
-          <p class="eyebrow">En este mes</p>
-          <!-- se llena dinámicamente según el mes visible (ver script al final).
-               Contenido inicial = estados de agosto (mes de arranque en uni). -->
-          <ul class="cal-week" id="calWeek">
-            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
-            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span>Asesoría</span></li>
-            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
-          </ul>
-          <a class="cal-week__link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
-        </div>
-      </div>
-    </section>
-  </aside>
-
-  </div><!-- /home-grid -->
-
+  </div>
 </main>
-
-<footer class="site-footer">
-  <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
-  <p class="site-footer__credits">Compuesto en <em>Fraunces</em> e IBM Plex Sans · 2026</p>
-  <nav class="site-footer__links" aria-label="enlaces de pie">
-    <a href="/tercial/practicar.html">Practicar por tema</a>
-    <a href="/tercial/repaso.html">Notas de repaso</a>
-    <a href="/tercial/formulario.html">Formulario</a>
-  </nav>
-</footer>
-
-<script>
-/* Carrusel de contadores de examen.
-   Para agregar un alumno: { nombre: "...", fecha: "AAAA-MM-DD" }
-   El examen se oculta automáticamente después de la fecha. */
-const EXAMENES = [
-  // DEMO · fechas FICTICIAS: los exámenes reales (jun 2026) ya pasaron y el
-  // carrusel quedaba vacío. Sustituir por las fechas reales del próximo ciclo.
-  { nombre: "Renata",  fecha: "2026-07-04" },
-  { nombre: "Mateo",   fecha: "2026-07-13" },
-  { nombre: "Valeria", fecha: "2026-07-27" },
-  { nombre: "Diego",   fecha: "2026-08-15" },
-  { nombre: "Camila",  fecha: "2026-09-14" },
-  { nombre: "Emiliano",fecha: "2026-10-24" },
-];
-
-(function() {
-  const DIAS_SEMANA = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
-  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-
-  function diasFaltantes(fechaStr) {
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
-    const [y, m, d] = fechaStr.split('-').map(Number);
-    const examen = new Date(y, m - 1, d);
-    return Math.round((examen - hoy) / (1000 * 60 * 60 * 24));
-  }
-
-  function formatearFecha(fechaStr) {
-    const [y, m, d] = fechaStr.split('-').map(Number);
-    const fecha = new Date(y, m - 1, d);
-    return `${DIAS_SEMANA[fecha.getDay()]} ${d} de ${MESES[m-1]}`;
-  }
-
-  // Regla de formato (pedida por diseño): >31 días → meses; si no, días.
-  function formatoRestante(dias) {
-    if (dias > 31) {
-      const meses = Math.round(dias / 30.44);
-      return { num: String(meses), sufijo: meses === 1 ? 'mes' : 'meses' };
-    }
-    return { num: String(dias), sufijo: dias === 1 ? 'día' : 'días' };
-  }
-
-  const container = document.getElementById('contadores');
-
-  const vigentes = EXAMENES
-    .filter(ex => diasFaltantes(ex.fecha) >= 0)
-    .sort((a, b) => diasFaltantes(a.fecha) - diasFaltantes(b.fecha));
-
-  if (vigentes.length === 0) {
-    container.style.display = 'none';
-    return;
-  }
-
-  const pista = document.createElement('div');
-  pista.className = 'exam-countdown__pista';
-  container.appendChild(pista);
-
-  vigentes.forEach(ex => {
-    const dias = diasFaltantes(ex.fecha);
-
-    let numClass = 'contador-numero';
-    if (dias <= 7) numClass += ' urgente';
-
-    let numContent, sufijo, titulo;
-    if (dias === 0) {
-      numContent = '¡Hoy!';
-      sufijo = '';
-      numClass += ' pequeno';
-      titulo = `¡Hoy es el examen de ${ex.nombre}!`;
-    } else {
-      const f = formatoRestante(dias);
-      numContent = f.num;
-      sufijo = f.sufijo;
-      const prefijo = f.num === '1' ? 'Falta' : 'Faltan';
-      titulo = `${prefijo} ${f.num} ${f.sufijo} para el examen de ${ex.nombre}`;
-    }
-
-    const item = document.createElement('div');
-    item.className = 'contador-item';
-    item.innerHTML = `
-      <div class="contador-tiempo">
-        <div class="${numClass}">${numContent}</div>
-        ${sufijo ? `<div class="contador-sufijo">${sufijo}</div>` : ''}
-      </div>
-      <div class="contador-texto">
-        <div class="contador-titulo">${titulo}</div>
-        <div class="contador-fecha">${formatearFecha(ex.fecha)}</div>
-      </div>
-    `;
-    pista.appendChild(item);
-  });
-
-  const items = pista.querySelectorAll('.contador-item');
-  items[0].classList.add('activo');
-
-  requestAnimationFrame(() => {
-    let maxH = 0;
-    items.forEach(it => { maxH = Math.max(maxH, it.offsetHeight); });
-    pista.style.height = maxH + 'px';
-  });
-
-  if (items.length === 1) return;
-
-  const footer = document.createElement('div');
-  footer.className = 'exam-countdown__footer';
-  footer.innerHTML = `
-    <span class="exam-countdown__pos">1 / ${items.length}</span>
-    <span class="exam-countdown__hint">toca para el siguiente ↓</span>
-  `;
-  container.appendChild(footer);
-
-  let actual = 0;
-  pista.addEventListener('click', () => {
-    const siguiente = (actual + 1) % items.length;
-    const prev = items[actual];
-    prev.classList.remove('activo');
-    prev.classList.add('saliendo');
-    setTimeout(() => prev.classList.remove('saliendo'), 420);
-    items[siguiente].classList.add('activo');
-    actual = siguiente;
-    footer.querySelector('.exam-countdown__pos').textContent = `${actual + 1} / ${items.length}`;
-  });
-})();
-</script>
-
-<script>
-  /* Preview: sincroniza el tema del calendario embebido (iframe) con el del
-     sitio y limpia su marco — quita el fondo "desk", el padding y el botón de
-     demo, para que se vea integrado. Mismo origen (/tercial/), acceso permitido. */
-  (function () {
-    var frame = document.getElementById('calFrame');
-    if (!frame) return;
-    var hooked = false, ro = null;
-    function fit(doc) {
-      // medir SOLO el alto del calendario (.cal). Antes se usaba
-      // body/documentElement.scrollHeight, pero esos quedan "enganchados" al alto
-      // del propio iframe (efecto trinquete) y nunca bajaban → sobraba espacio.
-      // .cal mide su contenido real (el mes) sin importar el alto del iframe.
-      var cal = doc.querySelector('.cal');
-      var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
-      frame.style.height = ((h || 430) + 2) + 'px'; // +2 evita el scrollbar por redondeo
-    }
-    // Panel "En este mes": refleja los estados que sí ocurren en el mes visible
-    // (leídos de las celdas del iframe), para no contradecir al calendario.
-    var ORDEN = [['class', 'Clase'], ['ases', 'Asesoría'], ['ext', 'Nivelación extendida'], ['sim', 'Simulacro de examen'], ['sus', 'Suspensión de clases']];
-    var ultimoPanel = null;
-    function updatePanel(doc) {
-      var ul = document.getElementById('calWeek');
-      if (!ul) return;
-      var cells = doc.querySelectorAll('.cal__grid .cal__cell');
-      var hay = {};
-      for (var i = 0; i < cells.length; i++) {
-        var cl = cells[i].classList;
-        for (var j = 0; j < ORDEN.length; j++) { if (cl.contains('cal__cell--' + ORDEN[j][0])) hay[ORDEN[j][0]] = 1; }
-      }
-      var presentes = ORDEN.filter(function (o) { return hay[o[0]]; });
-      var firma = presentes.map(function (o) { return o[0]; }).join(',');
-      if (firma === ultimoPanel) return;      // sin cambios: no re-render
-      ultimoPanel = firma;
-      ul.innerHTML = presentes.length
-        ? presentes.map(function (o) {
-            return '<li class="cal-week__item"><span class="cal-week__dot cal-week__dot--' + o[0] + '"></span><span>' + o[1] + '</span></li>';
-          }).join('')
-        : '<li class="cal-week__item" style="color:var(--color-text-meta)">Sin sesiones del curso</li>';
-    }
-    function sync() {
-      try {
-        var doc = frame.contentDocument;
-        if (!doc || !doc.documentElement) return;
-        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-        doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-        // fondo del iframe = mismo que el card del home (evita el lienzo blanco)
-        doc.documentElement.style.background = dark ? '#221d1a' : '#f8f3e8';
-        // nunca mostrar barras DENTRO del iframe: rompe la cascada de scrollbars
-        // (barra vertical → quita ancho → celdas cuadradas se recalculan → barra
-        // horizontal → y se retroalimenta). El fit() dimensiona el alto al contenido.
-        doc.documentElement.style.overflow = 'hidden';
-        if (doc.body) doc.body.style.overflow = 'hidden';
-        // "Clase" = acento del nivel (universidad = coñac)
-        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#c7836b' : '#8c4a3a');
-        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1614' : '#f8f3e8');
-        if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
-        var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
-        // una sola caja: quitar el card interno del calendario (lo envuelve el card del home)
-        var cal = doc.querySelector('.cal');
-        if (cal) { cal.style.margin = '0'; cal.style.width = '100%'; cal.style.maxWidth = 'none'; cal.style.border = 'none'; cal.style.background = 'transparent'; cal.style.boxShadow = 'none'; cal.style.padding = '0'; cal.style.borderRadius = '0'; }
-        // leyenda única: se queda solo la del panel "Esta semana"
-        var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
-        // ajustar la altura del iframe al contenido real (evita hueco blanco)
-        fit(doc);
-        updatePanel(doc); // panel "En este mes" según el mes visible
-        // re-ajustar cuando cambie el mes dentro del iframe (nav ‹ ›): un mes de
-        // 6 filas es más alto que uno de 5. El ResizeObserver (retenido en `ro`
-        // para que no lo recoja el GC) sigue el alto real de .cal; los clics en
-        // ‹ › son el respaldo. Se engancha una sola vez.
-        if (!hooked) {
-          var W = frame.contentWindow;
-          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
-          var prev = doc.getElementById('prev'), next = doc.getElementById('next');
-          if (prev) prev.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
-          if (next) next.addEventListener('click', function () { setTimeout(function () { fit(doc); }, 0); });
-          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
-          // respaldo definitivo: el ResizeObserver / los clics no re-disparaban
-          // fit() de forma fiable al cambiar de mes en algunos navegadores, y un
-          // mes de 6 filas (mayo) quedaba recortado con barras de scroll. Esta
-          // sincronización periódica (barata, solo cambia el alto si difiere)
-          // garantiza que el iframe siempre calce el mes visible.
-          setInterval(function () { try { var d = frame.contentDocument; if (d) { fit(d); updatePanel(d); } } catch (e) {} }, 200);
-          hooked = true;
-        }
-      } catch (e) {}
-    }
-    frame.addEventListener('load', sync);
-    window.addEventListener('tercial:themechange', sync);
-    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  })();
-</script>
 
 </body>
 </html>

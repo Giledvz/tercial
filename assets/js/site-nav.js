@@ -30,13 +30,13 @@
   const NAV_ITEMS = [
     { route: 'inicio',      label: 'Inicio',       href: HOME,
       test: (p) => p === '' || p === 'index.html' },
-    { route: 'examenes',    label: 'Exámenes',     href: HOME + 'index.html#examenes',
+    { route: 'examenes',    label: 'Exámenes',     href: HOME + 'uni.html#examenes',
       test: (p) => p.startsWith('examen') && p.endsWith('.html') },
     { route: 'tarjetas',    label: 'Tarjetas',     href: HOME + 'practicar.html',
       test: (p) => p === 'practicar.html' || p === 'flashcards.html' },
-    { route: 'fisica',      label: 'Física',       href: HOME + 'index.html#fisica',
+    { route: 'fisica',      label: 'Física',       href: HOME + 'uni.html#fisica',
       test: (p) => /^(fluidos|electricidad|cinematica|dinamica|trabajo_energia|cantidad_movimiento|termodinamica|optica|ondas|magnetismo|fisica_moderna)\.html$/.test(p) },
-    { route: 'matematicas', label: 'Matemáticas',  href: HOME + 'index.html#matematicas',
+    { route: 'matematicas', label: 'Matemáticas',  href: HOME + 'uni.html#matematicas',
       test: (p) => /^(calculo|geometria|trigonometria)/.test(p) && p.endsWith('.html') },
     { route: 'notas',       label: 'Notas',        href: HOME + 'repaso.html',
       test: (p) => p === 'repaso.html' || p === 'formulario.html' }
