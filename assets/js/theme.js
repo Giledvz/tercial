@@ -56,6 +56,11 @@
     if (ClasesTheme.get() === 'auto') apply();
   });
 
+  /* Al restaurar desde el bfcache (botón atrás/adelante, sobre todo en Safari),
+     el DOM vuelve con el data-theme viejo y los scripts no re-corren. Reaplicar
+     el tema según la preferencia actual para que no quede desincronizado. */
+  window.addEventListener('pageshow', (e) => { if (e.persisted) apply(); });
+
   apply();
   window.ClasesTheme = ClasesTheme;
 })();
