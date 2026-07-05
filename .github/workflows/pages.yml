@@ -1,0 +1,39 @@
+name: Desplegar sitio estático a GitHub Pages
+
+# El sitio es 100% estático (sin Jekyll). El builder legacy de Pages venía
+# fallando de forma intermitente; este workflow sube el repo tal cual y lo
+# publica con la acción oficial de Pages (más confiable, sin Jekyll).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un solo deploy a la vez; cancela los que queden atrás.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+      - name: Subir el sitio (raíz del repo)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Desplegar
+        id: deployment
+        uses: actions/deploy-pages@v4
