@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tercial · propuesta C · la ruta</title>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PROPUESTA C · «La ruta»
+     El home deja de agrupar por TIPO de material y se organiza por
+     lo que el alumno HACE: aprende → practica → simula (+ el curso).
+     Una línea con nodos numerados guía el recorrido; cada etapa
+     lleva la voz del profesor («cuándo usar esto»). El montón de
+     ligas se convierte en un método.
+     ══════════════════════════════════════════════════════════════ -->
+
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+
+<style>
+  .ruta-page { max-width: 1080px; margin-inline: auto; padding: 0 var(--space-5) var(--space-9); }
+
+  /* ── barra superior mínima ── */
+  .ruta-top { display: flex; align-items: center; gap: var(--space-4);
+    padding: var(--space-4) 0; }
+  .ruta-top__brand { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-20); color: var(--color-text-primary); text-decoration: none; }
+  .ruta-top__brand:hover { color: var(--color-accent); text-decoration: none; }
+  .ruta-top__level { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta); }
+  .ruta-top__right { margin-left: auto; display: flex; align-items: center; gap: var(--space-4); }
+  .ruta-top__switch { font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    color: var(--color-text-meta); text-decoration: none; }
+  .ruta-top__switch:hover { color: var(--color-accent); }
+
+  /* ── cabecera: método + contador ── */
+  .ruta-hero { display: grid; gap: var(--space-6); padding: var(--space-7) 0 var(--space-8);
+    align-items: center; }
+  @media (min-width: 880px) { .ruta-hero { grid-template-columns: minmax(0, 1fr) 300px; } }
+  .ruta-hero__eyebrow { margin-bottom: var(--space-3); }
+  .ruta-hero__t { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: clamp(34px, 5vw, 52px); line-height: 1.08; letter-spacing: var(--tracking-tight);
+    color: var(--color-text-primary); margin: 0 0 var(--space-3); font-variation-settings: "opsz" 96; }
+  .ruta-hero__t em { font-style: italic; color: var(--color-accent); }
+  .ruta-hero__lede { font-size: var(--font-size-16); color: var(--color-text-secondary);
+    max-width: 46ch; margin: 0; }
+
+  /* pasos como píldoras-ancla */
+  .ruta-pasos { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+  .ruta-pasos a { display: inline-flex; align-items: center; gap: 8px;
+    font-size: var(--font-size-13); font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary); text-decoration: none;
+    border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 14px 6px 8px; }
+  .ruta-pasos a:hover { border-color: var(--paso, var(--color-accent)); color: var(--color-text-primary); text-decoration: none; }
+  .ruta-pasos i { font-style: normal; font-family: var(--font-family-display);
+    width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--paso, var(--color-accent)); color: var(--color-bg-page); font-size: var(--font-size-12); }
+
+  /* contador compacto en el hero */
+  .ruta-conteo { cursor: pointer; border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent); border-radius: var(--radius-lg);
+    background: var(--color-bg-raised); padding: var(--space-4) var(--space-5); }
+  .ruta-conteo__label { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-meta); }
+  .ruta-conteo__pos { float: right; font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+  .ruta-conteo__linea { display: flex; align-items: baseline; gap: var(--space-2); margin-top: var(--space-2); }
+  .ruta-conteo__num { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: 44px; line-height: 1; color: var(--color-accent); font-variation-settings: "opsz" 96; }
+  .ruta-conteo__num.urgente { color: var(--color-state-err); }
+  .ruta-conteo__sufijo { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-18); color: var(--color-text-primary); }
+  .ruta-conteo__quien { font-size: var(--font-size-13); color: var(--color-text-secondary); margin: 4px 0 0; }
+  .ruta-conteo__fecha { font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); margin: 2px 0 0; }
+
+  /* ── la ruta: línea + nodos ── */
+  .ruta { position: relative; }
+  .etapa { position: relative; padding: 0 0 var(--space-8) 64px; }
+  .etapa::before { content: ''; position: absolute; left: 21px; top: 48px; bottom: -6px;
+    width: 2px; background: var(--color-border-strong); }
+  .etapa:last-child::before { display: none; }
+  .etapa__num { position: absolute; left: 0; top: 0; width: 44px; height: 44px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-20); font-style: italic;
+    background: var(--etapa, var(--color-accent)); color: var(--color-bg-page); }
+  .etapa__head { margin-bottom: var(--space-4); }
+  .etapa__t { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-28, 28px); line-height: 1.15; color: var(--color-text-primary); margin: 2px 0 4px; }
+  .etapa__t em { font-style: italic; color: var(--etapa, var(--color-accent)); }
+  .etapa__cuando { font-size: var(--font-size-14); color: var(--color-text-meta);
+    font-family: var(--font-family-display); font-style: italic; margin: 0; }
+  @media (max-width: 560px) { .etapa { padding-left: 0; } .etapa::before, .etapa__num { display: none; } }
+
+  /* colores por etapa */
+  .etapa--aprende  { --etapa: var(--cat-purple); }
+  .etapa--practica { --etapa: var(--cat-teal); }
+  .etapa--simula   { --etapa: var(--cat-navy); }
+  .etapa--curso    { --etapa: var(--cat-amber); }
+
+  /* ── piezas dentro de las etapas ── */
+  .banda { display: flex; align-items: center; gap: var(--space-4); text-decoration: none;
+    border: 1px solid var(--color-border); border-left: 3px solid var(--etapa, var(--color-accent));
+    border-radius: var(--radius-md); background: var(--color-bg-raised);
+    padding: var(--space-4) var(--space-5); margin-bottom: var(--space-4);
+    transition: transform var(--motion-fast) var(--motion-ease-standard), border-color var(--motion-fast) ease; }
+  .banda:hover { transform: translateX(4px); border-color: var(--etapa, var(--color-accent)); text-decoration: none; }
+  .banda__txt { min-width: 0; }
+  .banda__n { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-18); color: var(--color-text-primary); margin: 0; }
+  .banda__n em { font-style: italic; color: var(--etapa, var(--color-accent)); }
+  .banda__d { font-size: var(--font-size-13); color: var(--color-text-secondary); margin: 2px 0 0; }
+  .banda__meta { margin-left: auto; flex: none; text-align: right;
+    font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+  .banda__ir { display: block; font-family: var(--font-family-body); font-size: var(--font-size-13);
+    font-weight: var(--font-weight-medium); color: var(--etapa, var(--color-accent)); margin-top: 2px; }
+  @media (max-width: 620px) { .banda { flex-direction: column; align-items: flex-start; } .banda__meta { margin-left: 0; text-align: left; } }
+
+  /* rejilla de ligas compactas */
+  .ligas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px var(--space-5); }
+  @media (max-width: 640px) { .ligas { grid-template-columns: 1fr; } }
+  .liga { display: flex; align-items: baseline; gap: var(--space-2); text-decoration: none;
+    padding: 8px 2px; border-bottom: 1px dotted var(--color-border); min-width: 0; }
+  .liga:hover { text-decoration: none; }
+  .liga__n { font-size: var(--font-size-14); font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary); white-space: nowrap; }
+  .liga:hover .liga__n { color: var(--etapa, var(--color-accent)); }
+  .liga__hint { font-size: var(--font-size-12); color: var(--color-text-meta);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .liga__tag { margin-left: auto; flex: none; font-family: var(--font-family-mono); font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-meta); }
+  .liga__flecha { margin-left: auto; flex: none; color: var(--color-text-meta);
+    transition: transform var(--motion-fast) var(--motion-ease-standard); }
+  .liga:hover .liga__flecha { transform: translateX(4px); color: var(--etapa, var(--color-accent)); }
+
+  /* subtítulos dentro de etapa */
+  .subrubro { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-meta);
+    margin: var(--space-5) 0 var(--space-2); }
+  .subrubro:first-of-type { margin-top: 0; }
+
+  /* etapa 4: curso + calendario lado a lado */
+  .curso-grid { display: grid; gap: var(--space-4); }
+  @media (min-width: 880px) { .curso-grid { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; } }
+  .cal-caja { --nivel: #8c4a3a; border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    background: var(--color-bg-raised); padding: var(--space-4); }
+  [data-theme="dark"] .cal-caja { --nivel: #c7836b; }
+  .cal-caja__frame { width: 100%; height: 320px; border: 0; background: transparent; display: block; }
+  .cal-week { list-style: none; padding: var(--space-3) 0 0; margin: var(--space-2) 0 0;
+    border-top: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-2); }
+  .cal-week__item { display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-13); color: var(--color-text-secondary); }
+  .cal-week__dot { width: 11px; height: 11px; border-radius: 4px; flex: none; display: inline-block; }
+  .cal-week__dot--class { background: var(--nivel); }
+  .cal-week__dot--ases  { background: #f2e9db; }
+  .cal-week__dot--ext   { background: #c98a2b; }
+  .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
+  .cal-week__dot--sim   { background: #1f8ca0; }
+  [data-theme="dark"] .cal-week__dot--ases { background: #2e2823; }
+  [data-theme="dark"] .cal-week__dot--ext  { background: #d4a04a; }
+  [data-theme="dark"] .cal-week__dot--sus  { border-color: #6a473b; }
+  [data-theme="dark"] .cal-week__dot--sim  { background: #5fc0d2; }
+  .cal-caja__link { display: inline-block; margin-top: var(--space-3); font-size: var(--font-size-13);
+    font-weight: var(--font-weight-medium); color: var(--nivel); }
+</style>
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+</head>
+<body>
+
+<div class="ruta-page">
+
+  <header class="ruta-top">
+    <a class="ruta-top__brand" href="/tercial/">Tercial</a>
+    <span class="ruta-top__level">universidad</span>
+    <div class="ruta-top__right">
+      <a class="ruta-top__switch" href="/tercial/">cambiar nivel ↗</a>
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- CABECERA -->
+  <section class="ruta-hero">
+    <div>
+      <p class="eyebrow ruta-hero__eyebrow">Nivel superior · ingreso a universidad</p>
+      <h1 class="ruta-hero__t">Un método,<br>no un montón de <em>ligas</em>.</h1>
+      <p class="ruta-hero__lede">Aprende la teoría, practica todos los días y simula el examen.
+        Cada material de Tercial tiene su momento en la ruta.</p>
+      <nav class="ruta-pasos" aria-label="etapas">
+        <a href="#aprende" style="--paso: var(--cat-purple)"><i>1</i>Aprende</a>
+        <a href="#practica" style="--paso: var(--cat-teal)"><i>2</i>Practica</a>
+        <a href="#simula" style="--paso: var(--cat-navy)"><i>3</i>Simula</a>
+        <a href="#curso" style="--paso: var(--cat-amber)"><i>4</i>El curso</a>
+      </nav>
+    </div>
+    <div class="ruta-conteo" id="contador" title="toca para ver el siguiente">
+      <span class="ruta-conteo__pos" id="cPos"></span>
+      <span class="ruta-conteo__label">Próximo examen</span>
+      <div class="ruta-conteo__linea">
+        <span class="ruta-conteo__num" id="cNum">—</span>
+        <span class="ruta-conteo__sufijo" id="cSuf"></span>
+      </div>
+      <p class="ruta-conteo__quien" id="cQuien"></p>
+      <p class="ruta-conteo__fecha" id="cFecha"></p>
+    </div>
+  </section>
+
+  <!-- LA RUTA -->
+  <main class="ruta">
+
+    <!-- 1 · APRENDE -->
+    <section class="etapa etapa--aprende" id="aprende">
+      <span class="etapa__num" aria-hidden="true">1</span>
+      <header class="etapa__head">
+        <h2 class="etapa__t">Aprende la <em>teoría</em></h2>
+        <p class="etapa__cuando">Empieza aquí si el tema es nuevo o hace mucho que no lo tocas.</p>
+      </header>
+
+      <a class="banda" href="/tercial/formulario.html">
+        <span class="banda__txt">
+          <p class="banda__n">Formulario <em>completo</em></p>
+          <p class="banda__d">Diez unidades, más de cien fórmulas. Tenlo abierto mientras resuelves.</p>
+        </span>
+        <span class="banda__meta">html<span class="banda__ir">Abrir →</span></span>
+      </a>
+
+      <p class="subrubro">Física · 11 temas</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/cinematica.html"><span class="liga__n">Cinemática</span><span class="liga__hint">MRU · caída libre</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/dinamica.html"><span class="liga__n">Dinámica</span><span class="liga__hint">Newton · fricción</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/trabajo_energia.html"><span class="liga__n">Trabajo y energía</span><span class="liga__hint">conservación</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/cantidad_movimiento.html"><span class="liga__n">Cantidad de movimiento</span><span class="liga__hint">choques</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/fluidos.html"><span class="liga__n">Fluidos</span><span class="liga__hint">presión · Arquímedes</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/termodinamica.html"><span class="liga__n">Termodinámica</span><span class="liga__hint">calor · gases</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/optica.html"><span class="liga__n">Óptica</span><span class="liga__hint">reflexión · lentes</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/ondas.html"><span class="liga__n">Ondas y sonido</span><span class="liga__hint">frecuencia · MAS</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/electricidad.html"><span class="liga__n">Electricidad</span><span class="liga__hint">Coulomb · Ohm</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/magnetismo.html"><span class="liga__n">Magnetismo</span><span class="liga__hint">campo · Lorentz</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/fisica_moderna.html"><span class="liga__n">Física moderna</span><span class="liga__hint">fotoeléctrico · cuántica</span><span class="liga__flecha">→</span></a>
+      </div>
+
+      <p class="subrubro">Matemáticas · 4 recursos</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/calculo_diferencial_v3.html"><span class="liga__n">Cálculo diferencial</span><span class="liga__hint">límites · derivadas</span><span class="liga__tag">html</span></a>
+        <a class="liga" href="/tercial/calculo_diferencial_latex.pdf"><span class="liga__n">Cálculo · resumen</span><span class="liga__hint">para imprimir</span><span class="liga__tag">pdf</span></a>
+        <a class="liga" href="/tercial/geometria_analitica.pdf"><span class="liga__n">Geometría analítica</span><span class="liga__hint">rectas · cónicas</span><span class="liga__tag">pdf</span></a>
+        <a class="liga" href="/tercial/trigonometria_con_figuras.pdf"><span class="liga__n">Trigonometría</span><span class="liga__hint">identidades · senos</span><span class="liga__tag">pdf</span></a>
+      </div>
+    </section>
+
+    <!-- 2 · PRACTICA -->
+    <section class="etapa etapa--practica" id="practica">
+      <span class="etapa__num" aria-hidden="true">2</span>
+      <header class="etapa__head">
+        <h2 class="etapa__t">Practica <em>todos los días</em></h2>
+        <p class="etapa__cuando">Quince minutos diarios rinden más que una tarde entera el domingo.</p>
+      </header>
+
+      <p class="subrubro">Tarjetas y notas</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/practicar.html"><span class="liga__n">Practicar por tema</span><span class="liga__hint">flashcards, orden nuevo cada sesión</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/flashcards.html"><span class="liga__n">Práctica rápida</span><span class="liga__hint">30 al azar · 15 min</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/repaso.html"><span class="liga__n">Notas de repaso</span><span class="liga__hint">la idea clave de cada tema</span><span class="liga__flecha">→</span></a>
+      </div>
+
+      <p class="subrubro">Cuatro modos · cada uno entrena una jugada distinta</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/relampago.html"><span class="liga__n">Relámpago</span><span class="liga__hint">60 s · velocidad en lo básico</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/descarta.html"><span class="liga__n">Descarta los dos</span><span class="liga__hint">elimina distractores</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/a-ojo.html"><span class="liga__n">A ojo</span><span class="liga__hint">estima sin lápiz</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/factos.html"><span class="liga__n">Factos</span><span class="liga__hint">datos que van sí o sí</span><span class="liga__flecha">→</span></a>
+      </div>
+    </section>
+
+    <!-- 3 · SIMULA -->
+    <section class="etapa etapa--simula" id="simula">
+      <span class="etapa__num" aria-hidden="true">3</span>
+      <header class="etapa__head">
+        <h2 class="etapa__t">Simula el <em>examen</em></h2>
+        <p class="etapa__cuando">Para cuando ya practicaste: mide tu nivel y sabrás dónde estás parado.</p>
+      </header>
+
+      <a class="banda" href="/tercial/examen_unam_area2.html">
+        <span class="banda__txt">
+          <p class="banda__n">UNAM Área 2 — <em>banco especial</em></p>
+          <p class="banda__d">120 preguntas curadas del banco UNAM, en el formato exacto del examen oficial.</p>
+        </span>
+        <span class="banda__meta">html<span class="banda__ir">Empezar →</span></span>
+      </a>
+
+      <div class="ligas">
+        <a class="liga" href="/tercial/examen_adaptativo.html"><span class="liga__n">Matemáticas · adaptativo</span><span class="liga__hint">sube si vas bien, baja si te trabas</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/examen_adaptativo_fisica.html"><span class="liga__n">Física · adaptativo</span><span class="liga__hint">cubre las 10 unidades</span><span class="liga__flecha">→</span></a>
+      </div>
+    </section>
+
+    <!-- 4 · EL CURSO -->
+    <section class="etapa etapa--curso" id="curso">
+      <span class="etapa__num" aria-hidden="true">4</span>
+      <header class="etapa__head">
+        <h2 class="etapa__t">Sigue el <em>curso</em></h2>
+        <p class="etapa__cuando">Lo que vemos en clase, y el calendario para no perderte ninguna.</p>
+      </header>
+
+      <div class="curso-grid">
+        <a class="banda" href="/tercial/aula.html" style="margin-bottom:0">
+          <span class="banda__txt">
+            <p class="banda__n">Aula <em>ECOEMS</em></p>
+            <p class="banda__d">El curso en papel: exámenes semanales, hojas de trabajo y simulacros
+              para imprimir y resolver. Sin entrar a Classroom.</p>
+          </span>
+          <span class="banda__meta">16 exámenes · 20 hojas<span class="banda__ir">Abrir el aula →</span></span>
+        </a>
+
+        <div class="cal-caja" id="calendario">
+          <iframe id="calFrame" class="cal-caja__frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario universidad" loading="lazy"></iframe>
+          <ul class="cal-week" id="calWeek">
+            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
+            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span>Asesoría</span></li>
+            <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
+          </ul>
+          <a class="cal-caja__link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Propuesta C · «La ruta» · compuesto en <em>Fraunces</em> e IBM Plex Sans</p>
+</footer>
+
+<script>
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    if (window.ClasesTheme) window.ClasesTheme.toggle();
+  });
+
+  /* contador: mismos datos/reglas que el home actual, presentación compacta */
+  const EXAMENES = [
+    { nombre: "Renata",  fecha: "2026-07-04" },
+    { nombre: "Mateo",   fecha: "2026-07-13" },
+    { nombre: "Valeria", fecha: "2026-07-27" },
+    { nombre: "Diego",   fecha: "2026-08-15" },
+    { nombre: "Camila",  fecha: "2026-09-14" },
+    { nombre: "Emiliano",fecha: "2026-10-24" },
+  ];
+  (function () {
+    var D = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var M = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function faltan(f) { var hoy = new Date(); hoy.setHours(0,0,0,0);
+      var p = f.split('-').map(Number); return Math.round((new Date(p[0], p[1]-1, p[2]) - hoy) / 864e5); }
+    function fechaTxt(f) { var p = f.split('-').map(Number); var d = new Date(p[0], p[1]-1, p[2]);
+      return D[d.getDay()] + ' ' + p[2] + ' de ' + M[p[1]-1]; }
+    var vig = EXAMENES.filter(function (e) { return faltan(e.fecha) >= 0; })
+      .sort(function (a, b) { return faltan(a.fecha) - faltan(b.fecha); });
+    var caja = document.getElementById('contador');
+    if (!vig.length) { caja.style.display = 'none'; return; }
+    var i = 0;
+    function pinta() {
+      var e = vig[i], d = faltan(e.fecha), num, suf;
+      if (d === 0) { num = '¡Hoy!'; suf = ''; }
+      else if (d > 31) { var m = Math.round(d / 30.44); num = m; suf = m === 1 ? 'mes' : 'meses'; }
+      else { num = d; suf = d === 1 ? 'día' : 'días'; }
+      var el = document.getElementById('cNum');
+      el.textContent = num;
+      el.classList.toggle('urgente', d <= 7);
+      document.getElementById('cSuf').textContent = suf;
+      document.getElementById('cQuien').textContent = 'para el examen de ' + e.nombre;
+      document.getElementById('cFecha').textContent = fechaTxt(e.fecha);
+      document.getElementById('cPos').textContent = vig.length > 1 ? (i + 1) + ' / ' + vig.length + ' ↓' : '';
+    }
+    pinta();
+    if (vig.length > 1) caja.addEventListener('click', function () { i = (i + 1) % vig.length; pinta(); });
+  })();
+</script>
+
+<script>
+  /* Calendario embebido: sincroniza tema, quita el marco de demo y ajusta el
+     alto al mes visible (mismo comportamiento que el home actual). */
+  (function () {
+    var frame = document.getElementById('calFrame');
+    if (!frame) return;
+    var hooked = false, ro = null;
+    function fit(doc) {
+      var cal = doc.querySelector('.cal');
+      var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
+      frame.style.height = ((h || 430) + 2) + 'px';
+    }
+    var ORDEN = [['class','Clase'],['ases','Asesoría'],['ext','Nivelación extendida'],['sim','Simulacro de examen'],['sus','Suspensión de clases']];
+    var ultimo = null;
+    function panel(doc) {
+      var ul = document.getElementById('calWeek'); if (!ul) return;
+      var cells = doc.querySelectorAll('.cal__grid .cal__cell'); var hay = {};
+      for (var i = 0; i < cells.length; i++) for (var j = 0; j < ORDEN.length; j++)
+        if (cells[i].classList.contains('cal__cell--' + ORDEN[j][0])) hay[ORDEN[j][0]] = 1;
+      var pres = ORDEN.filter(function (o) { return hay[o[0]]; });
+      var firma = pres.map(function (o) { return o[0]; }).join(',');
+      if (firma === ultimo) return; ultimo = firma;
+      ul.innerHTML = pres.length ? pres.map(function (o) {
+        return '<li class="cal-week__item"><span class="cal-week__dot cal-week__dot--' + o[0] + '"></span><span>' + o[1] + '</span></li>';
+      }).join('') : '<li class="cal-week__item" style="color:var(--color-text-meta)">Sin sesiones del curso</li>';
+    }
+    function sync() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.documentElement) return;
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        /* igualar color-scheme al de la página: si difieren, el navegador vuelve
+           OPACO el iframe (lienzo blanco en dark) y se pierde la transparencia */
+        doc.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        doc.documentElement.style.background = 'transparent';
+        doc.documentElement.style.overflow = 'hidden';
+        if (doc.body) doc.body.style.overflow = 'hidden';
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#c7836b' : '#8c4a3a');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1614' : '#f8f3e8');
+        if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
+        var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
+        var cal = doc.querySelector('.cal');
+        if (cal) { cal.style.margin = '0'; cal.style.width = '100%'; cal.style.maxWidth = 'none'; cal.style.border = 'none'; cal.style.background = 'transparent'; cal.style.boxShadow = 'none'; cal.style.padding = '0'; cal.style.borderRadius = '0'; }
+        var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
+        fit(doc); panel(doc);
+        if (!hooked) {
+          var W = frame.contentWindow;
+          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
+          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          setInterval(function () { try { var d = frame.contentDocument; if (d) { fit(d); panel(d); } } catch (e) {} }, 200);
+          hooked = true;
+        }
+      } catch (e) {}
+    }
+    frame.addEventListener('load', sync);
+    window.addEventListener('tercial:themechange', sync);
+    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
+
+</body>
+</html>

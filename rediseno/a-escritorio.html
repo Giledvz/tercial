@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tercial · propuesta A · el escritorio</title>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PROPUESTA A · «El escritorio»
+     El home deja de ser un rollo vertical y se vuelve una mesa de
+     trabajo: todo a la mano, denso, panorámico. Paneles tipo
+     instrumento sobre papel milimétrico. Cero scroll infinito:
+     una pantalla te enseña TODO lo que hay.
+     ══════════════════════════════════════════════════════════════ -->
+
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+
+<style>
+  /* ── fondo: papel milimétrico (retícula de puntos, muy tenue) ── */
+  body {
+    background-image: radial-gradient(color-mix(in srgb, var(--color-border) 55%, transparent) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: -11px -11px;
+  }
+  @supports not (color: color-mix(in srgb, red 50%, blue)) {
+    body { background-image: none; }
+  }
+
+  /* ── barra superior ── */
+  .desk-top {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; align-items: center; gap: var(--space-5);
+    padding: var(--space-3) var(--space-6);
+    background: color-mix(in srgb, var(--color-bg-page) 86%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .desk-top__brand { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-20); color: var(--color-text-primary); text-decoration: none; }
+  .desk-top__brand:hover { color: var(--color-accent); text-decoration: none; }
+  .desk-top__level { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta);
+    border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 3px 10px; }
+  .desk-top__nav { display: flex; gap: var(--space-4); margin-left: auto; }
+  .desk-top__nav a { font-size: var(--font-size-13); font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary); text-decoration: none; }
+  .desk-top__nav a:hover { color: var(--color-accent); text-decoration: none; }
+  .desk-top__switch { font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    color: var(--color-text-meta); text-decoration: none; }
+  .desk-top__switch:hover { color: var(--color-accent); }
+  @media (max-width: 860px) { .desk-top__nav { display: none; } }
+
+  /* ── lienzo ── */
+  .desk { max-width: 1360px; margin-inline: auto; padding: var(--space-6) var(--space-6) var(--space-9); }
+  @media (min-width: 1100px) {
+    .desk { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--space-5); align-items: start; }
+  }
+  .desk__rail { margin-top: var(--space-5); }
+  @media (min-width: 1100px) { .desk__rail { margin-top: 0; position: sticky; top: 68px; } }
+
+  /* ── panel base (instrumento) ── */
+  .tile { background: var(--color-bg-raised); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); padding: var(--space-5);
+    transition: border-color var(--motion-fast) ease; }
+  .tile__head { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4); }
+  .tile__label { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-meta); }
+  .tile__dot { width: 8px; height: 8px; border-radius: 3px; background: var(--tile-cat, var(--color-accent)); flex: none; }
+  .tile__count { margin-left: auto; font-family: var(--font-family-mono);
+    font-size: var(--font-size-11); color: var(--color-text-meta); }
+
+  /* ── rejilla principal de paneles ── */
+  .desk__main { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
+  .t-hoy    { grid-column: span 7; }
+  .t-examen { grid-column: span 5; }
+  .t-modos  { grid-column: span 7; }
+  .t-cartas { grid-column: span 5; }
+  .t-fisica { grid-column: span 7; grid-row: span 2; }
+  .t-mate   { grid-column: span 5; }
+  .t-simula { grid-column: span 5; }
+  .t-aula   { grid-column: 1 / -1; }
+  @media (max-width: 920px) {
+    .t-hoy, .t-examen, .t-modos, .t-cartas, .t-fisica, .t-mate, .t-simula { grid-column: 1 / -1; grid-row: auto; }
+  }
+
+  /* ── panel HOY ── */
+  .t-hoy__fecha { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-24); color: var(--color-text-primary); margin: 0 0 var(--space-1); }
+  .t-hoy__linea { font-size: var(--font-size-14); color: var(--color-text-secondary); margin: 0 0 var(--space-4); }
+  .t-hoy__acciones { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .quick { display: inline-flex; align-items: center; gap: 7px;
+    font-size: var(--font-size-13); font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary); text-decoration: none;
+    border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill);
+    padding: 7px 14px; background: var(--color-bg-page);
+    transition: border-color var(--motion-fast) ease, background var(--motion-fast) ease; }
+  .quick:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+  .quick__min { font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+
+  /* ── panel contador ── */
+  .t-examen { cursor: pointer; }
+  .t-examen__cuerpo { display: flex; align-items: baseline; gap: var(--space-3); }
+  .t-examen__num { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: 56px; line-height: 1; color: var(--color-accent); font-variation-settings: "opsz" 96; }
+  .t-examen__num.urgente { color: var(--color-state-err); }
+  .t-examen__resto { display: flex; flex-direction: column; gap: 2px; }
+  .t-examen__sufijo { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-18); color: var(--color-text-primary); }
+  .t-examen__quien { font-size: var(--font-size-13); color: var(--color-text-secondary); }
+  .t-examen__fecha { font-family: var(--font-family-mono); font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .t-examen__pos { float: right; font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+
+  /* ── modos: 4 mini-fichas ── */
+  .modos { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+  @media (max-width: 560px) { .modos { grid-template-columns: repeat(2, 1fr); } }
+  .modo { display: flex; flex-direction: column; gap: var(--space-2); text-decoration: none;
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-3); background: var(--color-bg-page);
+    transition: transform var(--motion-fast) var(--motion-ease-standard), border-color var(--motion-fast) ease; }
+  .modo:hover { transform: translateY(-3px); border-color: var(--cat-teal); text-decoration: none; }
+  .modo svg { width: 22px; height: 22px; color: var(--cat-teal); }
+  .modo__n { font-family: var(--font-family-display); font-size: var(--font-size-16);
+    font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+  .modo__n em { font-style: italic; color: var(--cat-teal); }
+  .modo__d { font-size: var(--font-size-12); line-height: 1.45; color: var(--color-text-meta); }
+
+  /* ── listas compactas (tarjetas / mate / exámenes) ── */
+  .fila { display: flex; align-items: baseline; gap: var(--space-3); text-decoration: none;
+    padding: var(--space-2) var(--space-1); border-radius: var(--radius-sm); }
+  .fila + .fila { border-top: 1px dotted var(--color-border); }
+  .fila:hover { text-decoration: none; background: var(--color-bg-hover); }
+  .fila__n { font-family: var(--font-family-display); font-size: var(--font-size-15);
+    font-weight: var(--font-weight-medium); color: var(--color-text-primary); white-space: nowrap; }
+  .fila:hover .fila__n { color: var(--color-accent); }
+  .fila__hint { font-size: var(--font-size-12); color: var(--color-text-meta);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fila__tag { margin-left: auto; font-family: var(--font-family-mono); font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-meta);
+    border: 1px solid var(--color-border); border-radius: 4px; padding: 1px 6px; flex: none; }
+
+  /* ── física: retícula de temas ── */
+  .temas { display: grid; grid-template-columns: 1fr 1fr; gap: 2px var(--space-4); }
+  @media (max-width: 560px) { .temas { grid-template-columns: 1fr; } }
+  .tema { display: flex; align-items: baseline; gap: var(--space-2); padding: 7px var(--space-1);
+    text-decoration: none; border-bottom: 1px dotted var(--color-border); min-width: 0; }
+  .tema:hover { text-decoration: none; }
+  .tema__idx { font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--cat-purple); flex: none; }
+  .tema__n { font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--color-text-primary); white-space: nowrap; }
+  .tema:hover .tema__n { color: var(--cat-purple); }
+  .tema__hint { font-size: var(--font-size-12); color: var(--color-text-meta);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .formulario-cta { display: flex; align-items: center; gap: var(--space-3); text-decoration: none;
+    margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--cat-purple) 35%, var(--color-border));
+    border-left: 3px solid var(--cat-purple); border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--cat-purple) 5%, var(--color-bg-page)); }
+  .formulario-cta:hover { text-decoration: none; background: color-mix(in srgb, var(--cat-purple) 9%, var(--color-bg-page)); }
+  .formulario-cta__n { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-16); color: var(--color-text-primary); }
+  .formulario-cta__n em { font-style: italic; color: var(--cat-purple); }
+  .formulario-cta__d { font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .formulario-cta__ir { margin-left: auto; color: var(--cat-purple); font-size: var(--font-size-14); }
+
+  /* ── exámenes ── */
+  .t-simula .fila__n em { font-style: italic; color: var(--cat-navy); }
+  [data-theme="dark"] .t-simula .fila__n em { color: var(--cat-navy); }
+
+  /* ── aula: banda ancha ── */
+  .t-aula { display: flex; align-items: center; gap: var(--space-5); text-decoration: none;
+    border-left: 3px solid var(--cat-amber); }
+  .t-aula:hover { text-decoration: none; border-color: var(--cat-amber); }
+  .t-aula__txt { min-width: 0; }
+  .t-aula__n { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-20); color: var(--color-text-primary); margin: 0 0 2px; }
+  .t-aula__n em { font-style: italic; color: var(--cat-amber); }
+  .t-aula__d { font-size: var(--font-size-13); color: var(--color-text-secondary); margin: 0; }
+  .t-aula__meta { margin-left: auto; text-align: right; flex: none; }
+  .t-aula__cifras { font-family: var(--font-family-mono); font-size: var(--font-size-12); color: var(--color-text-meta); display: block; }
+  .t-aula__ir { font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--cat-amber); }
+  @media (max-width: 700px) { .t-aula { flex-direction: column; align-items: flex-start; } .t-aula__meta { margin-left: 0; text-align: left; } }
+
+  /* ── riel calendario ── */
+  .cal-tile { --nivel: #8c4a3a; }
+  [data-theme="dark"] .cal-tile { --nivel: #c7836b; }
+  .cal-tile__frame { width: 100%; height: 320px; border: 0; background: transparent; display: block; }
+  .cal-tile__side { border-top: 1px solid var(--color-border); padding-top: var(--space-4); margin-top: var(--space-2); }
+  .cal-week { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  .cal-week__item { display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-13); color: var(--color-text-secondary); }
+  .cal-week__dot { width: 11px; height: 11px; border-radius: 4px; flex: none; display: inline-block; }
+  .cal-week__dot--class { background: var(--nivel); }
+  .cal-week__dot--ases  { background: #f2e9db; }
+  .cal-week__dot--ext   { background: #c98a2b; }
+  .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
+  .cal-week__dot--sim   { background: #1f8ca0; }
+  [data-theme="dark"] .cal-week__dot--ases { background: #2e2823; }
+  [data-theme="dark"] .cal-week__dot--ext  { background: #d4a04a; }
+  [data-theme="dark"] .cal-week__dot--sus  { border-color: #6a473b; }
+  [data-theme="dark"] .cal-week__dot--sim  { background: #5fc0d2; }
+  .cal-tile__link { display: inline-block; margin-top: var(--space-3); font-size: var(--font-size-13);
+    font-weight: var(--font-weight-medium); color: var(--nivel); }
+</style>
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+</head>
+<body>
+
+<header class="desk-top">
+  <a class="desk-top__brand" href="/tercial/">Tercial</a>
+  <span class="desk-top__level">universidad</span>
+  <nav class="desk-top__nav" aria-label="secciones">
+    <a href="#fisica">Física</a>
+    <a href="#matematicas">Matemáticas</a>
+    <a href="#practica">Práctica</a>
+    <a href="#examenes">Exámenes</a>
+    <a href="#aula">Aula</a>
+  </nav>
+  <a class="desk-top__switch" href="/tercial/">cambiar nivel ↗</a>
+  <button class="theme-toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+  </button>
+</header>
+
+<main class="desk">
+  <div class="desk__main">
+
+    <!-- HOY -->
+    <section class="tile t-hoy" aria-label="hoy">
+      <div class="tile__head"><span class="tile__dot"></span><span class="tile__label">Hoy</span></div>
+      <p class="t-hoy__fecha" id="hoyFecha">—</p>
+      <p class="t-hoy__linea">Quince minutos cuentan. Entra directo:</p>
+      <div class="t-hoy__acciones">
+        <a class="quick" href="/tercial/flashcards.html">Práctica rápida <span class="quick__min">15 min</span></a>
+        <a class="quick" href="/tercial/relampago.html">Relámpago <span class="quick__min">60 s</span></a>
+        <a class="quick" href="/tercial/repaso.html">Notas de repaso</a>
+        <a class="quick" href="/tercial/formulario.html">Formulario</a>
+      </div>
+    </section>
+
+    <!-- CONTADOR -->
+    <section class="tile t-examen" id="contador" aria-label="próximo examen" title="toca para ver el siguiente">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--color-state-err)"></span>
+        <span class="tile__label">Próximo examen</span><span class="t-examen__pos" id="cPos"></span></div>
+      <div class="t-examen__cuerpo">
+        <div class="t-examen__num" id="cNum">—</div>
+        <div class="t-examen__resto">
+          <span class="t-examen__sufijo" id="cSuf"></span>
+          <span class="t-examen__quien" id="cQuien"></span>
+          <span class="t-examen__fecha" id="cFecha"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODOS -->
+    <section class="tile t-modos" id="practica" aria-label="practica de otra forma">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--cat-teal)"></span>
+        <span class="tile__label">Entrena</span><span class="tile__count">4 modos</span></div>
+      <div class="modos">
+        <a class="modo" href="/tercial/relampago.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 5 13h5l-1 9 8-11h-5l1-9z"/></svg>
+          <span class="modo__n"><em>Relámpago</em></span>
+          <span class="modo__d">60 segundos contra el reloj, combo por racha.</span>
+        </a>
+        <a class="modo" href="/tercial/descarta.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg>
+          <span class="modo__n">Descarta <em>los dos</em></span>
+          <span class="modo__d">Tacha las dos opciones imposibles.</span>
+        </a>
+        <a class="modo" href="/tercial/a-ojo.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="modo__n">A <em>ojo</em></span>
+          <span class="modo__d">Estima el resultado sin lápiz.</span>
+        </a>
+        <a class="modo" href="/tercial/factos.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg>
+          <span class="modo__n"><em>Factos</em></span>
+          <span class="modo__d">Datos que van sí o sí. Pura memoria.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- TARJETAS Y NOTAS -->
+    <section class="tile t-cartas" aria-label="tarjetas y notas">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--cat-coral)"></span>
+        <span class="tile__label">Tarjetas y notas</span><span class="tile__count">3</span></div>
+      <a class="fila" href="/tercial/practicar.html"><span class="fila__n">Practicar por tema</span><span class="fila__hint">flashcards por tema, orden nuevo cada sesión</span></a>
+      <a class="fila" href="/tercial/flashcards.html"><span class="fila__n">Práctica rápida</span><span class="fila__hint">30 preguntas al azar · 15 min</span></a>
+      <a class="fila" href="/tercial/repaso.html"><span class="fila__n">Notas de repaso</span><span class="fila__hint">la idea clave de cada tema</span></a>
+    </section>
+
+    <!-- FÍSICA -->
+    <section class="tile t-fisica" id="fisica" aria-label="física">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--cat-purple)"></span>
+        <span class="tile__label">Física</span><span class="tile__count">12 recursos</span></div>
+      <a class="formulario-cta" href="/tercial/formulario.html">
+        <span>
+          <span class="formulario-cta__n">Formulario <em>completo</em></span><br>
+          <span class="formulario-cta__d">10 unidades · 100+ fórmulas · tenlo abierto al lado</span>
+        </span>
+        <span class="formulario-cta__ir">→</span>
+      </a>
+      <div class="temas">
+        <a class="tema" href="/tercial/cinematica.html"><span class="tema__idx">01</span><span class="tema__n">Cinemática</span><span class="tema__hint">MRU · caída libre</span></a>
+        <a class="tema" href="/tercial/dinamica.html"><span class="tema__idx">02</span><span class="tema__n">Dinámica</span><span class="tema__hint">Newton · fricción</span></a>
+        <a class="tema" href="/tercial/trabajo_energia.html"><span class="tema__idx">03</span><span class="tema__n">Trabajo y energía</span><span class="tema__hint">conservación</span></a>
+        <a class="tema" href="/tercial/cantidad_movimiento.html"><span class="tema__idx">04</span><span class="tema__n">Cant. de movimiento</span><span class="tema__hint">choques</span></a>
+        <a class="tema" href="/tercial/fluidos.html"><span class="tema__idx">05</span><span class="tema__n">Fluidos</span><span class="tema__hint">presión · Arquímedes</span></a>
+        <a class="tema" href="/tercial/termodinamica.html"><span class="tema__idx">06</span><span class="tema__n">Termodinámica</span><span class="tema__hint">calor · gases</span></a>
+        <a class="tema" href="/tercial/optica.html"><span class="tema__idx">07</span><span class="tema__n">Óptica</span><span class="tema__hint">reflexión · lentes</span></a>
+        <a class="tema" href="/tercial/ondas.html"><span class="tema__idx">08</span><span class="tema__n">Ondas y sonido</span><span class="tema__hint">frecuencia · MAS</span></a>
+        <a class="tema" href="/tercial/electricidad.html"><span class="tema__idx">09</span><span class="tema__n">Electricidad</span><span class="tema__hint">Coulomb · Ohm</span></a>
+        <a class="tema" href="/tercial/magnetismo.html"><span class="tema__idx">10</span><span class="tema__n">Magnetismo</span><span class="tema__hint">campo · Lorentz</span></a>
+        <a class="tema" href="/tercial/fisica_moderna.html"><span class="tema__idx">11</span><span class="tema__n">Física moderna</span><span class="tema__hint">fotoeléctrico · cuántica</span></a>
+      </div>
+    </section>
+
+    <!-- MATEMÁTICAS -->
+    <section class="tile t-mate" id="matematicas" aria-label="matemáticas">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--cat-blue)"></span>
+        <span class="tile__label">Matemáticas</span><span class="tile__count">4</span></div>
+      <a class="fila" href="/tercial/calculo_diferencial_v3.html"><span class="fila__n">Cálculo diferencial</span><span class="fila__hint">límites · derivadas</span><span class="fila__tag">html</span></a>
+      <a class="fila" href="/tercial/calculo_diferencial_latex.pdf"><span class="fila__n">Cálculo · resumen</span><span class="fila__hint">para imprimir</span><span class="fila__tag">pdf</span></a>
+      <a class="fila" href="/tercial/geometria_analitica.pdf"><span class="fila__n">Geometría analítica</span><span class="fila__hint">rectas · cónicas</span><span class="fila__tag">pdf</span></a>
+      <a class="fila" href="/tercial/trigonometria_con_figuras.pdf"><span class="fila__n">Trigonometría</span><span class="fila__hint">identidades · senos</span><span class="fila__tag">pdf</span></a>
+    </section>
+
+    <!-- EXÁMENES -->
+    <section class="tile t-simula" id="examenes" aria-label="exámenes adaptativos">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--cat-navy)"></span>
+        <span class="tile__label">Simula el examen</span><span class="tile__count">3</span></div>
+      <a class="fila" href="/tercial/examen_unam_area2.html"><span class="fila__n">UNAM Área 2 — <em>banco especial</em></span><span class="fila__hint">120 preguntas, formato oficial</span></a>
+      <a class="fila" href="/tercial/examen_adaptativo.html"><span class="fila__n">Matemáticas</span><span class="fila__hint">adaptativo: sube si vas bien</span></a>
+      <a class="fila" href="/tercial/examen_adaptativo_fisica.html"><span class="fila__n">Física</span><span class="fila__hint">adaptativo · 10 unidades</span></a>
+    </section>
+
+    <!-- AULA -->
+    <a class="tile t-aula" id="aula" href="/tercial/aula.html">
+      <span class="t-aula__txt">
+        <span class="tile__label" style="display:block; margin-bottom:6px">El curso · presencial</span>
+        <p class="t-aula__n">Aula <em>ECOEMS</em></p>
+        <p class="t-aula__d">El curso en papel: exámenes semanales, hojas de trabajo y simulacros para imprimir y resolver.</p>
+      </span>
+      <span class="t-aula__meta">
+        <span class="t-aula__cifras">16 exámenes · 20 hojas · 2 simulacros</span>
+        <span class="t-aula__ir">Abrir el aula →</span>
+      </span>
+    </a>
+
+  </div>
+
+  <!-- RIEL: calendario -->
+  <aside class="desk__rail">
+    <section class="tile cal-tile" id="calendario" aria-label="calendario universidad">
+      <div class="tile__head"><span class="tile__dot" style="--tile-cat: var(--nivel)"></span>
+        <span class="tile__label">Calendario universidad</span></div>
+      <iframe id="calFrame" class="cal-tile__frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario universidad" loading="lazy"></iframe>
+      <div class="cal-tile__side">
+        <ul class="cal-week" id="calWeek">
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span>Asesoría</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
+        </ul>
+        <a class="cal-tile__link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
+      </div>
+    </section>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · preparación examen UNAM</p>
+  <p class="site-footer__credits">Propuesta A · «El escritorio» · compuesto en <em>Fraunces</em> e IBM Plex Sans</p>
+</footer>
+
+<script>
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    if (window.ClasesTheme) window.ClasesTheme.toggle();
+  });
+
+  /* fecha de hoy, editorial */
+  (function () {
+    var D = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var M = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var h = new Date();
+    document.getElementById('hoyFecha').textContent =
+      D[h.getDay()].charAt(0).toUpperCase() + D[h.getDay()].slice(1) + ' ' + h.getDate() + ' de ' + M[h.getMonth()];
+  })();
+
+  /* contador: mismos datos/reglas que el home actual, presentación de panel */
+  const EXAMENES = [
+    { nombre: "Renata",  fecha: "2026-07-04" },
+    { nombre: "Mateo",   fecha: "2026-07-13" },
+    { nombre: "Valeria", fecha: "2026-07-27" },
+    { nombre: "Diego",   fecha: "2026-08-15" },
+    { nombre: "Camila",  fecha: "2026-09-14" },
+    { nombre: "Emiliano",fecha: "2026-10-24" },
+  ];
+  (function () {
+    var D = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var M = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function faltan(f) { var hoy = new Date(); hoy.setHours(0,0,0,0);
+      var p = f.split('-').map(Number); return Math.round((new Date(p[0], p[1]-1, p[2]) - hoy) / 864e5); }
+    function fechaTxt(f) { var p = f.split('-').map(Number); var d = new Date(p[0], p[1]-1, p[2]);
+      return D[d.getDay()] + ' ' + p[2] + ' de ' + M[p[1]-1]; }
+    var vig = EXAMENES.filter(function (e) { return faltan(e.fecha) >= 0; })
+      .sort(function (a, b) { return faltan(a.fecha) - faltan(b.fecha); });
+    var tile = document.getElementById('contador');
+    if (!vig.length) { tile.style.display = 'none'; return; }
+    var i = 0;
+    function pinta() {
+      var e = vig[i], d = faltan(e.fecha), num, suf;
+      if (d === 0) { num = '¡Hoy!'; suf = ''; }
+      else if (d > 31) { var m = Math.round(d / 30.44); num = m; suf = m === 1 ? 'mes' : 'meses'; }
+      else { num = d; suf = d === 1 ? 'día' : 'días'; }
+      var el = document.getElementById('cNum');
+      el.textContent = num;
+      el.classList.toggle('urgente', d <= 7);
+      document.getElementById('cSuf').textContent = suf;
+      document.getElementById('cQuien').textContent = 'para el examen de ' + e.nombre;
+      document.getElementById('cFecha').textContent = fechaTxt(e.fecha);
+      document.getElementById('cPos').textContent = vig.length > 1 ? (i + 1) + ' / ' + vig.length + ' ↓' : '';
+    }
+    pinta();
+    if (vig.length > 1) tile.addEventListener('click', function () { i = (i + 1) % vig.length; pinta(); });
+  })();
+</script>
+
+<script>
+  /* Calendario embebido: sincroniza tema, quita el marco de demo y ajusta el
+     alto al mes visible (mismo comportamiento que el home actual). */
+  (function () {
+    var frame = document.getElementById('calFrame');
+    if (!frame) return;
+    var hooked = false, ro = null;
+    function fit(doc) {
+      var cal = doc.querySelector('.cal');
+      var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
+      frame.style.height = ((h || 430) + 2) + 'px';
+    }
+    var ORDEN = [['class','Clase'],['ases','Asesoría'],['ext','Nivelación extendida'],['sim','Simulacro de examen'],['sus','Suspensión de clases']];
+    var ultimo = null;
+    function panel(doc) {
+      var ul = document.getElementById('calWeek'); if (!ul) return;
+      var cells = doc.querySelectorAll('.cal__grid .cal__cell'); var hay = {};
+      for (var i = 0; i < cells.length; i++) for (var j = 0; j < ORDEN.length; j++)
+        if (cells[i].classList.contains('cal__cell--' + ORDEN[j][0])) hay[ORDEN[j][0]] = 1;
+      var pres = ORDEN.filter(function (o) { return hay[o[0]]; });
+      var firma = pres.map(function (o) { return o[0]; }).join(',');
+      if (firma === ultimo) return; ultimo = firma;
+      ul.innerHTML = pres.length ? pres.map(function (o) {
+        return '<li class="cal-week__item"><span class="cal-week__dot cal-week__dot--' + o[0] + '"></span><span>' + o[1] + '</span></li>';
+      }).join('') : '<li class="cal-week__item" style="color:var(--color-text-meta)">Sin sesiones del curso</li>';
+    }
+    function sync() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.documentElement) return;
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        /* igualar color-scheme al de la página: si difieren, el navegador vuelve
+           OPACO el iframe (lienzo blanco en dark) y se pierde la transparencia */
+        doc.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        doc.documentElement.style.background = 'transparent';
+        doc.documentElement.style.overflow = 'hidden';
+        if (doc.body) doc.body.style.overflow = 'hidden';
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#c7836b' : '#8c4a3a');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1614' : '#f8f3e8');
+        if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
+        var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
+        var cal = doc.querySelector('.cal');
+        if (cal) { cal.style.margin = '0'; cal.style.width = '100%'; cal.style.maxWidth = 'none'; cal.style.border = 'none'; cal.style.background = 'transparent'; cal.style.boxShadow = 'none'; cal.style.padding = '0'; cal.style.borderRadius = '0'; }
+        var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
+        fit(doc); panel(doc);
+        if (!hooked) {
+          var W = frame.contentWindow;
+          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
+          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          setInterval(function () { try { var d = frame.contentDocument; if (d) { fit(d); panel(d); } } catch (e) {} }, 200);
+          hooked = true;
+        }
+      } catch (e) {}
+    }
+    frame.addEventListener('load', sync);
+    window.addEventListener('tercial:themechange', sync);
+    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
+
+</body>
+</html>

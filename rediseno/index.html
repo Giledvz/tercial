@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Tercial · propuestas de rediseño del index</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+
+<style>
+  .hub { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: var(--space-7); padding: var(--space-7) var(--space-5); }
+  .hub__head { text-align: center; max-width: 40rem; }
+  .hub__eyebrow { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .16em; text-transform: uppercase; color: var(--color-text-meta); margin: 0 0 var(--space-2); }
+  .hub__t { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-32); margin: 0 0 var(--space-2); }
+  .hub__t em { font-style: italic; color: var(--color-accent); }
+  .hub__p { color: var(--color-text-secondary); margin: 0; font-size: var(--font-size-14); }
+
+  .hub__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); width: min(62rem, 100%); }
+  @media (min-width: 860px) { .hub__grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .prop { display: flex; flex-direction: column; gap: var(--space-2); text-decoration: none;
+    background: var(--color-bg-raised); border: 1px solid var(--color-border);
+    border-top: 3px solid var(--p, var(--color-accent)); border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    transition: transform var(--motion-base) var(--motion-ease-standard),
+                border-color var(--motion-base) ease, box-shadow var(--motion-base) ease; }
+  .prop:hover { transform: translateY(-4px); border-color: var(--p, var(--color-accent));
+    box-shadow: 0 10px 30px rgba(74,63,51,.16); text-decoration: none; }
+  .prop__letra { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--p, var(--color-accent)); font-weight: 500; margin: 0; }
+  .prop__n { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-22, 22px); color: var(--color-text-primary); margin: 0; }
+  .prop__n em { font-style: italic; color: var(--p, var(--color-accent)); }
+  .prop__d { font-size: var(--font-size-13); line-height: 1.55; color: var(--color-text-secondary); margin: 0 0 var(--space-2); }
+  .prop__cta { margin-top: auto; font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--p, var(--color-accent)); }
+  .hub__nota { font-size: var(--font-size-12); color: var(--color-text-meta); text-align: center; max-width: 44rem; }
+  .hub__nota a { color: var(--color-accent); }
+</style>
+</head>
+<body>
+
+<main class="hub">
+  <div class="hub__head">
+    <p class="hub__eyebrow">Rama rediseno-index · solo preview</p>
+    <h1 class="hub__t">Tres propuestas de <em>index</em></h1>
+    <p class="hub__p">El mismo contenido, tres arquitecturas distintas. Ábrelas, úsalas un rato
+      y dime cuál dirección te late — luego la afinamos juntos.</p>
+  </div>
+
+  <div class="hub__grid">
+    <a class="prop" href="/tercial/rediseno/a-escritorio.html" style="--p: #2d5c63">
+      <p class="prop__letra">Propuesta A</p>
+      <h2 class="prop__n">El <em>escritorio</em></h2>
+      <p class="prop__d">Una mesa de trabajo: paneles densos sobre papel milimétrico, todo visible
+        de un vistazo. «Hoy», contador, modos, temas y calendario como instrumentos. La más funcional/app.</p>
+      <span class="prop__cta">Abrir →</span>
+    </a>
+
+    <a class="prop" href="/tercial/rediseno/b-indice.html" style="--p: #8c4a3a">
+      <p class="prop__letra">Propuesta B</p>
+      <h2 class="prop__n">El <em>índice</em></h2>
+      <p class="prop__d">Una portada de publicación: cabecera tipo periódico, columnas tipográficas,
+        filetes y numeración. Cero cajitas. La identidad editorial de Tercial al máximo.</p>
+      <span class="prop__cta">Abrir →</span>
+    </a>
+
+    <a class="prop" href="/tercial/rediseno/c-ruta.html" style="--p: #7a4a6b">
+      <p class="prop__letra">Propuesta C</p>
+      <h2 class="prop__n">La <em>ruta</em></h2>
+      <p class="prop__d">Un método, no un catálogo: aprende → practica → simula → el curso.
+        Línea con nodos numerados y la voz del profe diciendo cuándo usar cada cosa.</p>
+      <span class="prop__cta">Abrir →</span>
+    </a>
+  </div>
+
+  <p class="hub__nota">Las tres usan el contenido real (ligas funcionales), respetan la paleta
+    Tercial y tienen modo claro/oscuro. El home actual sigue igual en
+    <a href="/tercial/uni.html">uni.html</a>.</p>
+</main>
+
+</body>
+</html>

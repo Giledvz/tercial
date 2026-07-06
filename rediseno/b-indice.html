@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tercial · propuesta B · el índice</title>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PROPUESTA B · «El índice»
+     Ni blog ni dashboard: una PORTADA. Cabecera de periódico,
+     columnas tipográficas, filetes y numeración — cero cajitas.
+     Todo el catálogo visible como el índice de una publicación
+     seria. La identidad editorial de Tercial llevada al máximo.
+     ══════════════════════════════════════════════════════════════ -->
+
+<script>
+  /* Anti-flash · ver design-system § 11 */
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+
+<style>
+  .diario { max-width: 1200px; margin-inline: auto; padding: var(--space-6) var(--space-5) var(--space-9); }
+
+  /* ── cabecera de periódico ── */
+  .masthead { text-align: center; padding-top: var(--space-4); }
+  .masthead__meta { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta);
+    border-top: 1px solid var(--color-text-primary); padding-top: 7px; }
+  .masthead__nombre { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: clamp(56px, 9vw, 92px); line-height: 1.02; letter-spacing: -0.015em;
+    color: var(--color-text-primary); margin: var(--space-3) 0 var(--space-2);
+    font-variation-settings: "opsz" 144; }
+  .masthead__nombre a { color: inherit; text-decoration: none; }
+  .masthead__nombre em { font-style: italic; color: var(--color-accent); }
+  .masthead__bajada { font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    letter-spacing: .18em; text-transform: uppercase; color: var(--color-text-secondary);
+    margin: 0 0 var(--space-3); }
+  .masthead__doble { border: 0; border-top: 3px double var(--color-text-primary);
+    border-bottom: 1px solid var(--color-text-primary); height: 5px; margin: 0 0 var(--space-6); }
+  .masthead__toggle { position: absolute; top: var(--space-4); right: var(--space-4); }
+
+  /* ── retícula: pliego 8 + columna del día 4 ── */
+  .pliego { display: grid; grid-template-columns: 1fr; gap: var(--space-7); }
+  @media (min-width: 980px) {
+    .pliego { grid-template-columns: minmax(0, 1fr) 330px; }
+    .pliego__hoy { border-left: 1px solid var(--color-border-strong); padding-left: var(--space-6); }
+  }
+
+  /* ── secciones tipográficas ── */
+  .rubrica { display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 2px solid var(--color-text-primary); padding-top: 8px; margin: var(--space-7) 0 var(--space-4); }
+  .rubrica:first-child { margin-top: 0; }
+  .rubrica__n { font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: var(--color-text-primary); }
+  .rubrica__folio { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-14); color: var(--color-text-meta); }
+
+  /* ── artículo de portada: el aula ── */
+  .lead { display: block; text-decoration: none; margin-bottom: var(--space-2); }
+  .lead:hover { text-decoration: none; }
+  .lead__kicker { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--cat-amber); margin: 0 0 var(--space-2); }
+  .lead__titular { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: clamp(28px, 4vw, 40px); line-height: 1.12; color: var(--color-text-primary);
+    margin: 0 0 var(--space-3); font-variation-settings: "opsz" 96; }
+  .lead__titular em { font-style: italic; color: var(--color-accent); }
+  .lead:hover .lead__titular em { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+  .lead__deck { font-size: var(--font-size-16); line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary); margin: 0 0 var(--space-3); max-width: 56ch; }
+  .lead__meta { font-family: var(--font-family-mono); font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .lead__meta strong { font-weight: 500; color: var(--color-accent); }
+
+  /* ── entradas de índice ── */
+  .indice { margin: 0; padding: 0; list-style: none; }
+  .indice--2col { column-count: 2; column-gap: var(--space-7); column-rule: 1px dotted var(--color-border); }
+  @media (max-width: 640px) { .indice--2col { column-count: 1; } }
+  .entrada { break-inside: avoid; border-bottom: 1px dotted var(--color-border); }
+  .entrada__link { display: flex; align-items: baseline; gap: var(--space-3);
+    padding: 9px 2px; text-decoration: none; }
+  .entrada__link:hover { text-decoration: none; }
+  .entrada__num { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    color: var(--color-text-meta); flex: none; width: 1.6em; }
+  .entrada__nombre { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-16); color: var(--color-text-primary); white-space: nowrap; }
+  .entrada__link:hover .entrada__nombre { color: var(--color-accent); font-style: italic; }
+  .entrada__puntos { flex: 1; min-width: 12px; border-bottom: 1px dotted var(--color-border-strong);
+    transform: translateY(-4px); }
+  .entrada__hint { font-size: var(--font-size-12); color: var(--color-text-meta);
+    flex: none; max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
+  .entrada__tag { font-family: var(--font-family-mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--color-text-meta); flex: none; }
+
+  /* entrada destacada (formulario / unam) */
+  .entrada--destacada .entrada__nombre { font-size: var(--font-size-18); }
+  .entrada--destacada .entrada__nombre em { font-style: italic; color: var(--color-accent); }
+
+  /* ── nota al pie de sección (voz del profe) ── */
+  .nota { font-family: var(--font-family-display); font-style: italic; font-size: var(--font-size-14);
+    color: var(--color-text-meta); margin: var(--space-3) 0 0; }
+
+  /* ── columna «hoy» ── */
+  .hoy__rubrica { border-top: 2px solid var(--color-text-primary); padding-top: 8px;
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-4); }
+  .hoy__fecha { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-meta); }
+
+  .hoy-conteo { cursor: pointer; padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border-strong); }
+  .hoy-conteo__num { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: 84px; line-height: .95; color: var(--color-accent); font-variation-settings: "opsz" 144; }
+  .hoy-conteo__num.urgente { color: var(--color-state-err); }
+  .hoy-conteo__sufijo { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-24); color: var(--color-text-primary); }
+  .hoy-conteo__quien { font-size: var(--font-size-14); color: var(--color-text-secondary); margin-top: var(--space-2); }
+  .hoy-conteo__fecha { font-family: var(--font-family-mono); font-size: var(--font-size-12); color: var(--color-text-meta); margin-top: 3px; }
+  .hoy-conteo__pos { float: right; font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+
+  .hoy__cal { --nivel: #8c4a3a; padding-top: var(--space-5); }
+  [data-theme="dark"] .hoy__cal { --nivel: #c7836b; }
+  .hoy__cal-frame { width: 100%; height: 320px; border: 0; background: transparent; display: block; }
+  .cal-week { list-style: none; padding: var(--space-3) 0 0; margin: var(--space-2) 0 0;
+    border-top: 1px dotted var(--color-border-strong); display: flex; flex-direction: column; gap: var(--space-2); }
+  .cal-week__item { display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-13); color: var(--color-text-secondary); }
+  .cal-week__dot { width: 11px; height: 11px; border-radius: 4px; flex: none; display: inline-block; }
+  .cal-week__dot--class { background: var(--nivel); }
+  .cal-week__dot--ases  { background: #f2e9db; }
+  .cal-week__dot--ext   { background: #c98a2b; }
+  .cal-week__dot--sus   { background: transparent; border: 1px dashed #d6a98f; }
+  .cal-week__dot--sim   { background: #1f8ca0; }
+  [data-theme="dark"] .cal-week__dot--ases { background: #2e2823; }
+  [data-theme="dark"] .cal-week__dot--ext  { background: #d4a04a; }
+  [data-theme="dark"] .cal-week__dot--sus  { border-color: #6a473b; }
+  [data-theme="dark"] .cal-week__dot--sim  { background: #5fc0d2; }
+  .hoy__cal-link { display: inline-block; margin-top: var(--space-3); font-size: var(--font-size-13);
+    font-weight: var(--font-weight-medium); color: var(--nivel); }
+
+  .hoy__nivel { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-strong);
+    font-size: var(--font-size-13); color: var(--color-text-meta); }
+  .hoy__nivel a { color: var(--color-accent); }
+
+  /* ── colofón ── */
+  .colofon { margin-top: var(--space-8); border-top: 3px double var(--color-text-primary);
+    padding-top: var(--space-4); text-align: center;
+    font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta); }
+</style>
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+</head>
+<body>
+
+<button class="theme-toggle masthead__toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+  <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+</button>
+
+<div class="diario">
+
+  <!-- CABECERA -->
+  <header class="masthead">
+    <div class="masthead__meta">
+      <span>Ciudad de México</span>
+      <span>Nivel superior · UNAM</span>
+      <span id="mastFecha">MMXXVI</span>
+    </div>
+    <h1 class="masthead__nombre"><a href="/tercial/">Ter<em>cial</em></a></h1>
+    <p class="masthead__bajada">Índice de materiales de preparación</p>
+    <hr class="masthead__doble">
+  </header>
+
+  <div class="pliego">
+    <!-- PLIEGO PRINCIPAL -->
+    <main>
+
+      <!-- portada: el aula -->
+      <a class="lead" href="/tercial/aula.html">
+        <p class="lead__kicker">El curso · presencial</p>
+        <h2 class="lead__titular">Aula <em>ECOEMS</em>: el curso, en papel</h2>
+        <p class="lead__deck">Exámenes semanales, hojas de trabajo y simulacros para imprimir
+          y resolver. Todo en un solo lugar, sin entrar a Classroom.</p>
+        <p class="lead__meta">16 exámenes · 20 hojas · 2 simulacros — <strong>abrir el aula →</strong></p>
+      </a>
+
+      <!-- física -->
+      <header class="rubrica"><span class="rubrica__n">Física — 12 recursos</span><span class="rubrica__folio">§ i</span></header>
+      <ul class="indice">
+        <li class="entrada entrada--destacada">
+          <a class="entrada__link" href="/tercial/formulario.html">
+            <span class="entrada__num">★</span>
+            <span class="entrada__nombre">Formulario <em>completo</em></span>
+            <span class="entrada__puntos"></span>
+            <span class="entrada__hint">10 unidades · 100+ fórmulas, para tener al lado</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="indice indice--2col">
+        <li class="entrada"><a class="entrada__link" href="/tercial/cinematica.html"><span class="entrada__num">01</span><span class="entrada__nombre">Cinemática</span><span class="entrada__puntos"></span><span class="entrada__hint">MRU · caída libre</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/dinamica.html"><span class="entrada__num">02</span><span class="entrada__nombre">Dinámica</span><span class="entrada__puntos"></span><span class="entrada__hint">Newton · fricción</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/trabajo_energia.html"><span class="entrada__num">03</span><span class="entrada__nombre">Trabajo y energía</span><span class="entrada__puntos"></span><span class="entrada__hint">conservación</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/cantidad_movimiento.html"><span class="entrada__num">04</span><span class="entrada__nombre">Cantidad de mov.</span><span class="entrada__puntos"></span><span class="entrada__hint">choques</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/fluidos.html"><span class="entrada__num">05</span><span class="entrada__nombre">Fluidos</span><span class="entrada__puntos"></span><span class="entrada__hint">Arquímedes</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/termodinamica.html"><span class="entrada__num">06</span><span class="entrada__nombre">Termodinámica</span><span class="entrada__puntos"></span><span class="entrada__hint">calor · gases</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/optica.html"><span class="entrada__num">07</span><span class="entrada__nombre">Óptica</span><span class="entrada__puntos"></span><span class="entrada__hint">reflexión · lentes</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/ondas.html"><span class="entrada__num">08</span><span class="entrada__nombre">Ondas y sonido</span><span class="entrada__puntos"></span><span class="entrada__hint">frecuencia · MAS</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/electricidad.html"><span class="entrada__num">09</span><span class="entrada__nombre">Electricidad</span><span class="entrada__puntos"></span><span class="entrada__hint">Coulomb · Ohm</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/magnetismo.html"><span class="entrada__num">10</span><span class="entrada__nombre">Magnetismo</span><span class="entrada__puntos"></span><span class="entrada__hint">campo · Lorentz</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/fisica_moderna.html"><span class="entrada__num">11</span><span class="entrada__nombre">Física moderna</span><span class="entrada__puntos"></span><span class="entrada__hint">cuántica</span></a></li>
+      </ul>
+
+      <!-- matemáticas -->
+      <header class="rubrica"><span class="rubrica__n">Matemáticas — 4 recursos</span><span class="rubrica__folio">§ ii</span></header>
+      <ul class="indice indice--2col">
+        <li class="entrada"><a class="entrada__link" href="/tercial/calculo_diferencial_v3.html"><span class="entrada__num">01</span><span class="entrada__nombre">Cálculo diferencial</span><span class="entrada__puntos"></span><span class="entrada__tag">html</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/calculo_diferencial_latex.pdf"><span class="entrada__num">02</span><span class="entrada__nombre">Cálculo · resumen</span><span class="entrada__puntos"></span><span class="entrada__tag">pdf</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/geometria_analitica.pdf"><span class="entrada__num">03</span><span class="entrada__nombre">Geometría analítica</span><span class="entrada__puntos"></span><span class="entrada__tag">pdf</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/trigonometria_con_figuras.pdf"><span class="entrada__num">04</span><span class="entrada__nombre">Trigonometría</span><span class="entrada__puntos"></span><span class="entrada__tag">pdf</span></a></li>
+      </ul>
+
+      <!-- práctica -->
+      <header class="rubrica"><span class="rubrica__n">Práctica diaria — 7 recursos</span><span class="rubrica__folio">§ iii</span></header>
+      <ul class="indice indice--2col">
+        <li class="entrada"><a class="entrada__link" href="/tercial/practicar.html"><span class="entrada__num">01</span><span class="entrada__nombre">Practicar por tema</span><span class="entrada__puntos"></span><span class="entrada__hint">flashcards por tema</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/flashcards.html"><span class="entrada__num">02</span><span class="entrada__nombre">Práctica rápida</span><span class="entrada__puntos"></span><span class="entrada__hint">30 al azar · 15 min</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/repaso.html"><span class="entrada__num">03</span><span class="entrada__nombre">Notas de repaso</span><span class="entrada__puntos"></span><span class="entrada__hint">la idea clave por tema</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/relampago.html"><span class="entrada__num">04</span><span class="entrada__nombre">Relámpago</span><span class="entrada__puntos"></span><span class="entrada__hint">60 s contra el reloj</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/descarta.html"><span class="entrada__num">05</span><span class="entrada__nombre">Descarta los dos</span><span class="entrada__puntos"></span><span class="entrada__hint">elimina distractores</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/a-ojo.html"><span class="entrada__num">06</span><span class="entrada__nombre">A ojo</span><span class="entrada__puntos"></span><span class="entrada__hint">estima sin lápiz</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/factos.html"><span class="entrada__num">07</span><span class="entrada__nombre">Factos</span><span class="entrada__puntos"></span><span class="entrada__hint">pura memoria</span></a></li>
+      </ul>
+      <p class="nota">Cada modo entrena una jugada distinta del examen: descartar, correr, estimar, memorizar.</p>
+
+      <!-- exámenes -->
+      <header class="rubrica"><span class="rubrica__n">Exámenes adaptativos — 3 simulacros</span><span class="rubrica__folio">§ iv</span></header>
+      <ul class="indice">
+        <li class="entrada entrada--destacada">
+          <a class="entrada__link" href="/tercial/examen_unam_area2.html">
+            <span class="entrada__num">★</span>
+            <span class="entrada__nombre">UNAM Área 2 — <em>banco especial</em></span>
+            <span class="entrada__puntos"></span>
+            <span class="entrada__hint">120 preguntas, formato oficial</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="indice indice--2col">
+        <li class="entrada"><a class="entrada__link" href="/tercial/examen_adaptativo.html"><span class="entrada__num">01</span><span class="entrada__nombre">Matemáticas</span><span class="entrada__puntos"></span><span class="entrada__hint">sube si vas bien</span></a></li>
+        <li class="entrada"><a class="entrada__link" href="/tercial/examen_adaptativo_fisica.html"><span class="entrada__num">02</span><span class="entrada__nombre">Física</span><span class="entrada__puntos"></span><span class="entrada__hint">10 unidades</span></a></li>
+      </ul>
+      <p class="nota">Para cuando ya practicaste: miden tu nivel y te dicen dónde estás parado.</p>
+
+    </main>
+
+    <!-- COLUMNA DEL DÍA -->
+    <aside class="pliego__hoy">
+      <div class="hoy__rubrica">
+        <span class="rubrica__n">Hoy</span>
+        <span class="hoy__fecha" id="hoyFecha">—</span>
+      </div>
+
+      <div class="hoy-conteo" id="contador" title="toca para ver el siguiente">
+        <span class="hoy-conteo__pos" id="cPos"></span>
+        <div><span class="hoy-conteo__num" id="cNum">—</span>
+          <span class="hoy-conteo__sufijo" id="cSuf"></span></div>
+        <p class="hoy-conteo__quien" id="cQuien"></p>
+        <p class="hoy-conteo__fecha" id="cFecha"></p>
+      </div>
+
+      <div class="hoy__cal">
+        <iframe id="calFrame" class="hoy__cal-frame" src="/tercial/calendario/calendario-uni-2026.html" title="Calendario universidad" loading="lazy"></iframe>
+        <ul class="cal-week" id="calWeek">
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--class"></span><span>Clase</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--ases"></span><span>Asesoría</span></li>
+          <li class="cal-week__item"><span class="cal-week__dot cal-week__dot--sus"></span><span>Suspensión de clases</span></li>
+        </ul>
+        <a class="hoy__cal-link" href="/tercial/calendario/calendario-uni-2026.html">Ver calendario completo →</a>
+      </div>
+
+      <p class="hoy__nivel">¿Vas por la prepa? <a href="/tercial/">Cambia de nivel aquí</a>.</p>
+    </aside>
+  </div>
+
+  <footer class="colofon">
+    Tercial · compuesto en Fraunces e IBM Plex · MMXXVI
+  </footer>
+</div>
+
+<script>
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    if (window.ClasesTheme) window.ClasesTheme.toggle();
+  });
+
+  /* fechas de cabecera y columna */
+  (function () {
+    var D = ['dom','lun','mar','mié','jue','vie','sáb'];
+    var M = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    var h = new Date();
+    document.getElementById('mastFecha').textContent = h.getDate() + ' de ' + M[h.getMonth()] + ' de ' + h.getFullYear();
+    document.getElementById('hoyFecha').textContent = D[h.getDay()] + ' ' + h.getDate() + ' · ' + M[h.getMonth()];
+  })();
+
+  /* contador: mismos datos/reglas que el home actual, presentación de columna */
+  const EXAMENES = [
+    { nombre: "Renata",  fecha: "2026-07-04" },
+    { nombre: "Mateo",   fecha: "2026-07-13" },
+    { nombre: "Valeria", fecha: "2026-07-27" },
+    { nombre: "Diego",   fecha: "2026-08-15" },
+    { nombre: "Camila",  fecha: "2026-09-14" },
+    { nombre: "Emiliano",fecha: "2026-10-24" },
+  ];
+  (function () {
+    var D = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+    var M = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function faltan(f) { var hoy = new Date(); hoy.setHours(0,0,0,0);
+      var p = f.split('-').map(Number); return Math.round((new Date(p[0], p[1]-1, p[2]) - hoy) / 864e5); }
+    function fechaTxt(f) { var p = f.split('-').map(Number); var d = new Date(p[0], p[1]-1, p[2]);
+      return D[d.getDay()] + ' ' + p[2] + ' de ' + M[p[1]-1]; }
+    var vig = EXAMENES.filter(function (e) { return faltan(e.fecha) >= 0; })
+      .sort(function (a, b) { return faltan(a.fecha) - faltan(b.fecha); });
+    var caja = document.getElementById('contador');
+    if (!vig.length) { caja.style.display = 'none'; return; }
+    var i = 0;
+    function pinta() {
+      var e = vig[i], d = faltan(e.fecha), num, suf;
+      if (d === 0) { num = '¡Hoy!'; suf = ''; }
+      else if (d > 31) { var m = Math.round(d / 30.44); num = m; suf = m === 1 ? 'mes' : 'meses'; }
+      else { num = d; suf = d === 1 ? 'día' : 'días'; }
+      var el = document.getElementById('cNum');
+      el.textContent = num;
+      el.classList.toggle('urgente', d <= 7);
+      document.getElementById('cSuf').textContent = suf;
+      document.getElementById('cQuien').textContent = 'para el examen de ' + e.nombre;
+      document.getElementById('cFecha').textContent = fechaTxt(e.fecha);
+      document.getElementById('cPos').textContent = vig.length > 1 ? (i + 1) + ' / ' + vig.length + ' ↓' : '';
+    }
+    pinta();
+    if (vig.length > 1) caja.addEventListener('click', function () { i = (i + 1) % vig.length; pinta(); });
+  })();
+</script>
+
+<script>
+  /* Calendario embebido: sincroniza tema, quita el marco de demo y ajusta el
+     alto al mes visible (mismo comportamiento que el home actual). */
+  (function () {
+    var frame = document.getElementById('calFrame');
+    if (!frame) return;
+    var hooked = false, ro = null;
+    function fit(doc) {
+      var cal = doc.querySelector('.cal');
+      var h = cal ? cal.offsetHeight : (doc.body ? doc.body.scrollHeight : 0);
+      frame.style.height = ((h || 430) + 2) + 'px';
+    }
+    var ORDEN = [['class','Clase'],['ases','Asesoría'],['ext','Nivelación extendida'],['sim','Simulacro de examen'],['sus','Suspensión de clases']];
+    var ultimo = null;
+    function panel(doc) {
+      var ul = document.getElementById('calWeek'); if (!ul) return;
+      var cells = doc.querySelectorAll('.cal__grid .cal__cell'); var hay = {};
+      for (var i = 0; i < cells.length; i++) for (var j = 0; j < ORDEN.length; j++)
+        if (cells[i].classList.contains('cal__cell--' + ORDEN[j][0])) hay[ORDEN[j][0]] = 1;
+      var pres = ORDEN.filter(function (o) { return hay[o[0]]; });
+      var firma = pres.map(function (o) { return o[0]; }).join(',');
+      if (firma === ultimo) return; ultimo = firma;
+      ul.innerHTML = pres.length ? pres.map(function (o) {
+        return '<li class="cal-week__item"><span class="cal-week__dot cal-week__dot--' + o[0] + '"></span><span>' + o[1] + '</span></li>';
+      }).join('') : '<li class="cal-week__item" style="color:var(--color-text-meta)">Sin sesiones del curso</li>';
+    }
+    function sync() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.documentElement) return;
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        doc.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        /* igualar color-scheme al de la página: si difieren, el navegador vuelve
+           OPACO el iframe (lienzo blanco en dark) y se pierde la transparencia */
+        doc.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        doc.documentElement.style.background = 'transparent';
+        doc.documentElement.style.overflow = 'hidden';
+        if (doc.body) doc.body.style.overflow = 'hidden';
+        doc.documentElement.style.setProperty('--st-class-bg', dark ? '#c7836b' : '#8c4a3a');
+        doc.documentElement.style.setProperty('--st-class-fg', dark ? '#1a1614' : '#f8f3e8');
+        if (doc.body) { doc.body.style.background = 'transparent'; doc.body.style.padding = '0'; doc.body.style.display = 'block'; }
+        var t = doc.querySelector('.cal__toggle'); if (t) t.style.display = 'none';
+        var cal = doc.querySelector('.cal');
+        if (cal) { cal.style.margin = '0'; cal.style.width = '100%'; cal.style.maxWidth = 'none'; cal.style.border = 'none'; cal.style.background = 'transparent'; cal.style.boxShadow = 'none'; cal.style.padding = '0'; cal.style.borderRadius = '0'; }
+        var leg = doc.querySelector('.cal__legend'); if (leg) leg.style.display = 'none';
+        fit(doc); panel(doc);
+        if (!hooked) {
+          var W = frame.contentWindow;
+          if (cal && W && W.ResizeObserver) { ro = new W.ResizeObserver(function () { fit(doc); }); ro.observe(cal); }
+          if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(function () { fit(doc); }); }
+          setInterval(function () { try { var d = frame.contentDocument; if (d) { fit(d); panel(d); } } catch (e) {} }, 200);
+          hooked = true;
+        }
+      } catch (e) {}
+    }
+    frame.addEventListener('load', sync);
+    window.addEventListener('tercial:themechange', sync);
+    new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
+
+</body>
+</html>
