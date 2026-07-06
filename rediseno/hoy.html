@@ -70,6 +70,14 @@
   .badge--rest  { --bk: var(--color-text-meta); }
 
   .hoy__body { padding: var(--space-5) var(--space-6) var(--space-6); }
+  /* chip «tema de la semana» (sale del temario mapeado al calendario) */
+  .hoy__tema { display: inline-block; font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    letter-spacing: .06em; text-transform: uppercase; color: var(--color-accent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+    border-radius: var(--radius-pill); padding: 5px 13px; margin: 0 0 var(--space-3); }
+  .hoy__tema strong { font-family: var(--font-family-display); font-style: italic; font-weight: var(--font-weight-medium);
+    text-transform: none; letter-spacing: 0; font-size: var(--font-size-14); }
   .hoy__title { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
     font-size: var(--font-size-20); color: var(--color-text-primary); margin: 0 0 var(--space-2); }
   .hoy__nota { font-size: var(--font-size-14); color: var(--color-text-secondary); margin: 0 0 var(--space-5); }
@@ -165,6 +173,7 @@
       <span class="hoy__badge" id="badge"><b></b><span id="badgeTxt"></span></span>
     </div>
     <div class="hoy__body">
+      <p class="hoy__tema" id="tema" hidden>Esta semana · <strong id="temaN"></strong></p>
       <h2 class="hoy__title" id="title">—</h2>
       <p class="hoy__nota" id="nota"></p>
       <ul class="plan" id="plan"></ul>
@@ -245,6 +254,46 @@
   var DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
+  /* ── Temario del curso ──────────────────────────────────────────
+     PROVISIONAL: uso el orden de temas del sitio (física). Reemplazar
+     por el temario real de Gil y su ritmo. Cada tema se reparte a una
+     semana de clase, en orden, arrancando en la 1ª semana de agosto.
+     Con esto el plan del día dice el TEMA concreto y enlaza a su
+     material. Si un tema se recorre, basta mover su semana aquí. */
+  var TEMARIO = [
+    { n: 'Cinemática',             href: '/tercial/cinematica.html' },
+    { n: 'Dinámica',               href: '/tercial/dinamica.html' },
+    { n: 'Trabajo y energía',      href: '/tercial/trabajo_energia.html' },
+    { n: 'Cantidad de movimiento', href: '/tercial/cantidad_movimiento.html' },
+    { n: 'Fluidos',                href: '/tercial/fluidos.html' },
+    { n: 'Termodinámica',          href: '/tercial/termodinamica.html' },
+    { n: 'Óptica',                 href: '/tercial/optica.html' },
+    { n: 'Ondas y sonido',         href: '/tercial/ondas.html' },
+    { n: 'Electricidad',           href: '/tercial/electricidad.html' },
+    { n: 'Magnetismo',             href: '/tercial/magnetismo.html' },
+    { n: 'Física moderna',         href: '/tercial/fisica_moderna.html' }
+  ];
+  // ancla del temario = lunes de la semana del PRIMER día de clase (así el
+  // tema 1 cae en la primera semana con clase, no en un hueco de agosto)
+  function primeraClase() {
+    var d = new Date(2026, 7, 1);                    // desde el 1 de agosto
+    for (var i = 0; i < 60 && stateOf(d) !== 'class'; i++) d.setDate(d.getDate() + 1);
+    return d;
+  }
+  function lunesAncla() {
+    var a = primeraClase();
+    a.setDate(a.getDate() - ((a.getDay() + 6) % 7)); // retrocede al lunes
+    return a;
+  }
+  // tema de la semana de esa fecha (null si estamos fuera del semestre,
+  // en receso, o ya pasado el último tema → toca repaso/simulacros)
+  function temaDe(date) {
+    var st = stateOf(date);
+    if (st === 'none' || st === 'receso') return null;
+    var semanas = Math.floor((date - lunesAncla()) / (7 * 864e5));
+    return (semanas >= 0 && semanas < TEMARIO.length) ? TEMARIO[semanas] : null;
+  }
+
   /* Pasos base por día de la semana (el ritmo). El estado del calendario
      (clase / asesoría / finde / receso) reajusta el encuadre encima. */
   function pasosPorDia(dow) {
@@ -275,6 +324,7 @@
 
   function construirPlan(date) {
     var st = stateOf(date), dow = date.getDay();
+    var tema = temaDe(date);                         // tema de la semana (o null)
     var badge, badgeClass, title, nota, pasos;
 
     if (st === 'receso') {
@@ -285,21 +335,31 @@
     } else if (st === 'class') {
       badge = 'Hoy hay clase'; badgeClass = 'badge--class';
       title = 'Antes y después de clase';
-      nota = 'Hoy tienes clase. Saca el mayor provecho llegando con la teoría fresca y fijándola al salir.';
-      pasos = (dow === 3)
-        ? [ ['aprende','Antes de clase, repasa el formulario del tema para llegar preparado.','/tercial/formulario.html','Abrir formulario'],
-            ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ]
-        : [ ['aprende','Antes de clase, echa un ojo a tus notas del tema.','/tercial/repaso.html','Notas de repaso'],
-            ['practica','Después de clase, practica lo visto por tema.','/tercial/practicar.html','Practicar por tema'] ];
+      if (tema) {
+        nota = 'Hoy tienes clase de <strong>' + tema.n + '</strong>. Llega con la teoría fresca y fíjala al salir.';
+        pasos = [ ['aprende','Antes de clase, repasa ' + tema.n + ' para llegar preparado.', tema.href, 'Repasar ' + tema.n],
+                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
+      } else {
+        nota = 'Hoy tienes clase. Saca el mayor provecho llegando con la teoría fresca y fijándola al salir.';
+        pasos = [ ['aprende','Antes de clase, repasa el formulario del tema para llegar preparado.','/tercial/formulario.html','Abrir formulario'],
+                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
+      }
     } else if (st === 'ases') {
       badge = 'Asesoría disponible'; badgeClass = 'badge--ases';
       title = (dow === 1) ? 'Arranca la semana' : (dow === 5) ? 'Cierra la semana' : 'Día de práctica';
       nota = 'Hoy hay <strong>asesoría</strong>: si algo no te cuadró, tráelo. Mientras tanto, el plan del día:';
-      pasos = pasosPorDia(dow);
+      if (tema) {
+        pasos = [ ['practica','Toca ' + tema.n + ': practícalo por tema hasta que fluya.', tema.href, 'Ir a ' + tema.n],
+                  pasosPorDia(dow)[1] ];
+      } else {
+        pasos = pasosPorDia(dow);
+      }
     } else if (st === 'sus') {
       badge = 'Sin clase'; badgeClass = 'badge--off';
       title = (dow === 6) ? 'Buen día para un simulacro' : 'Repaso tranquilo';
-      nota = 'Fin de semana, sin clase. Perfecto para lo que no cabe entre semana:';
+      nota = tema
+        ? 'Fin de semana. Buen momento para cerrar <strong>' + tema.n + '</strong>, el tema de la semana:'
+        : 'Fin de semana, sin clase. Perfecto para lo que no cabe entre semana:';
       pasos = pasosPorDia(dow);
     } else { // none — fuera de semestre
       badge = 'Preparación libre'; badgeClass = 'badge--off';
@@ -307,7 +367,7 @@
       nota = 'Fuera del semestre de clases: el ritmo lo pones tú. Aquí va el de hoy:';
       pasos = pasosPorDia(dow);
     }
-    return { badge: badge, badgeClass: badgeClass, title: title, nota: nota, pasos: pasos };
+    return { badge: badge, badgeClass: badgeClass, title: title, nota: nota, pasos: pasos, tema: tema };
   }
 
   function pintar(date) {
@@ -316,6 +376,9 @@
     var badge = document.getElementById('badge');
     badge.className = 'hoy__badge ' + p.badgeClass;
     document.getElementById('badgeTxt').textContent = p.badge;
+    var tema = document.getElementById('tema');
+    if (p.tema) { document.getElementById('temaN').textContent = p.tema.n; tema.hidden = false; }
+    else { tema.hidden = true; }
     document.getElementById('title').textContent = p.title;
     document.getElementById('nota').innerHTML = p.nota;
     document.getElementById('plan').innerHTML = p.pasos.map(function (s) {
@@ -334,11 +397,12 @@
     return desde;
   }
   var HOY = new Date();
+  var CLASE1 = primeraClase();                         // 1er día de clase del semestre
   var DEMO = {
     hoy: HOY,
-    clase: buscarDia(new Date(2026, 8, 1), 'class'),   // 1er día de clase desde septiembre
-    asesoria: buscarDia(new Date(2026, 8, 1), 'ases'),
-    finde: buscarDia(new Date(2026, 8, 1), 'sus'),
+    clase: CLASE1,                                      // cae en el tema 1 del temario
+    asesoria: buscarDia(CLASE1, 'ases'),               // asesoría de esa misma semana
+    finde: buscarDia(CLASE1, 'sus'),                   // fin de semana de esa semana
     receso: new Date(2026, 11, 24)                     // 24 de diciembre
   };
 
