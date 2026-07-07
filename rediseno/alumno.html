@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tercial · universidad · tu día</title>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HOME DEL ALUMNO (el producto) · síntesis del método
+     Superficie para el alumno YA inscrito — herramienta de trabajo,
+     cero venta (el "por qué funciona" y el precio viven en una página
+     de venta aparte). Dos capas:
+       1. HOY — su tarea del día (repaso acumulativo + contexto del
+          curso). Es el no-negociable de Gil hecho pantalla.
+       2. TU MATERIAL — la caja de herramientas (aprende/practica/
+          simula) por si quiere ir más allá del plan del día.
+     El control «vista previa» es solo para que Gil vea otros días.
+     ══════════════════════════════════════════════════════════════ -->
+
+<script>
+  (function () {
+    var p = localStorage.getItem('tercial-theme-pref') || 'auto';
+    var d = p === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d); r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+
+<style>
+  .wrap { max-width: 960px; margin-inline: auto; padding: 0 var(--space-5) var(--space-9); }
+
+  /* barra mínima */
+  .top { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; }
+  .top__brand { font-family: var(--font-family-display); font-style: italic;
+    font-size: var(--font-size-20); color: var(--color-text-primary); text-decoration: none; }
+  .top__brand:hover { color: var(--color-accent); text-decoration: none; }
+  .top__level { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta); }
+  .top__right { margin-left: auto; display: flex; align-items: center; gap: var(--space-4); }
+  .top__switch { font-family: var(--font-family-mono); font-size: var(--font-size-12); color: var(--color-text-meta); text-decoration: none; }
+  .top__switch:hover { color: var(--color-accent); }
+
+  /* ── panel HOY (protagonista) ── */
+  .hoy { border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    background: var(--color-bg-raised); overflow: hidden; margin-top: var(--space-3); }
+  .hoy__head { display: flex; align-items: flex-start; gap: var(--space-4);
+    padding: var(--space-6) var(--space-6) var(--space-5);
+    border-bottom: 1px solid var(--color-border); flex-wrap: wrap; }
+  .hoy__fechabox { flex: 1; min-width: 0; }
+  .hoy__eyebrow { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-meta); margin: 0 0 var(--space-2); }
+  .hoy__fecha { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: clamp(28px, 4.5vw, 40px); line-height: 1.05; color: var(--color-text-primary);
+    margin: 0; font-variation-settings: "opsz" 96; }
+  .hoy__fecha em { font-style: italic; color: var(--color-accent); }
+  .hoy__badge { flex: none; display: inline-flex; align-items: center; gap: 7px;
+    font-family: var(--font-family-mono); font-size: var(--font-size-12); letter-spacing: .04em;
+    padding: 6px 12px; border-radius: var(--radius-pill); border: 1px solid var(--bk, var(--color-border));
+    color: var(--bk, var(--color-text-secondary)); background: color-mix(in srgb, var(--bk, transparent) 8%, transparent); }
+  .hoy__badge b { width: 8px; height: 8px; border-radius: 50%; background: var(--bk, var(--color-text-meta)); }
+  .badge--class { --bk: #8c4a3a; } [data-theme="dark"] .badge--class { --bk: #c7836b; }
+  .badge--ases  { --bk: #2d5c63; } [data-theme="dark"] .badge--ases  { --bk: #7eb0b5; }
+  .badge--off   { --bk: var(--color-text-meta); }
+  .badge--rest  { --bk: var(--color-text-meta); }
+
+  .hoy__body { padding: var(--space-5) var(--space-6) var(--space-6); }
+  .hoy__tema { display: inline-block; font-family: var(--font-family-mono); font-size: var(--font-size-12);
+    letter-spacing: .06em; text-transform: uppercase; color: var(--color-accent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+    border-radius: var(--radius-pill); padding: 5px 13px; margin: 0 0 var(--space-3); }
+  .hoy__tema strong { font-family: var(--font-family-display); font-style: italic; font-weight: var(--font-weight-medium);
+    text-transform: none; letter-spacing: 0; font-size: var(--font-size-14); }
+  .hoy__title { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-20); color: var(--color-text-primary); margin: 0 0 var(--space-2); }
+  .hoy__nota { font-size: var(--font-size-14); color: var(--color-text-secondary); margin: 0 0 var(--space-5); }
+  .hoy__nota strong { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+
+  /* pasos del plan */
+  .plan { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .paso { display: flex; align-items: center; gap: var(--space-4);
+    padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    background: var(--color-bg-page);
+    border-left: 3px solid var(--fase, var(--color-accent));
+    transition: transform var(--motion-fast) var(--motion-ease-standard), border-color var(--motion-fast) ease; }
+  .paso:hover { transform: translateX(3px); }
+  .paso__tag { flex: none; width: 74px; font-family: var(--font-family-mono); font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--fase, var(--color-accent)); font-weight: 500; }
+  .paso__txt { flex: 1; min-width: 0; font-size: var(--font-size-14); line-height: 1.5; color: var(--color-text-primary); }
+  .paso__cta { flex: none; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    font-size: var(--font-size-13); font-weight: var(--font-weight-medium); color: var(--fase, var(--color-accent));
+    border: 1px solid color-mix(in srgb, var(--fase, var(--color-accent)) 40%, var(--color-border));
+    border-radius: var(--radius-pill); padding: 6px 13px; white-space: nowrap;
+    transition: background var(--motion-fast) ease, color var(--motion-fast) ease; }
+  .paso__cta:hover { background: var(--fase, var(--color-accent)); color: var(--color-bg-page); text-decoration: none; }
+  .fase--aprende  { --fase: #7a4a6b; } [data-theme="dark"] .fase--aprende  { --fase: #b08299; }
+  .fase--practica { --fase: #2d5c63; } [data-theme="dark"] .fase--practica { --fase: #7eb0b5; }
+  .fase--simula   { --fase: #2d3955; } [data-theme="dark"] .fase--simula   { --fase: #8090b0; }
+  @media (max-width: 560px) {
+    .paso { flex-wrap: wrap; }
+    .paso__tag { width: 100%; }
+    .paso__cta { margin-left: auto; }
+  }
+
+  .hoy__pie { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px dotted var(--color-border);
+    font-size: var(--font-size-12); color: var(--color-text-meta); display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+  .hoy__pie a { color: var(--color-accent); }
+
+  /* ── TU MATERIAL (la caja de herramientas) ── */
+  .material { margin-top: var(--space-8); }
+  .material__intro { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-meta);
+    border-top: 2px solid var(--color-text-primary); padding-top: 8px; margin-bottom: var(--space-6); }
+
+  .bloque { margin-bottom: var(--space-7); }
+  .bloque__head { display: flex; align-items: baseline; gap: var(--space-3);
+    border-bottom: 1px solid color-mix(in srgb, var(--fase) 30%, var(--color-border));
+    padding-bottom: var(--space-2); margin-bottom: var(--space-4); }
+  .bloque__t { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-24); color: var(--color-text-primary); margin: 0; }
+  .bloque__t em { font-style: italic; color: var(--fase); }
+  .bloque__d { font-size: var(--font-size-13); color: var(--color-text-meta); margin-left: auto; }
+
+  .destacado { display: flex; align-items: center; gap: var(--space-3); text-decoration: none;
+    margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--fase) 35%, var(--color-border));
+    border-left: 3px solid var(--fase); border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--fase) 5%, var(--color-bg-page)); }
+  .destacado:hover { text-decoration: none; background: color-mix(in srgb, var(--fase) 9%, var(--color-bg-page)); }
+  .destacado__txt { min-width: 0; }
+  .destacado__n { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-16); color: var(--color-text-primary); }
+  .destacado__n em { font-style: italic; color: var(--fase); }
+  .destacado__d { font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .destacado__ir { margin-left: auto; flex: none; color: var(--fase); font-size: var(--font-size-16); }
+
+  .sub { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-meta);
+    margin: var(--space-4) 0 var(--space-2); }
+
+  .ligas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-5); }
+  @media (max-width: 620px) { .ligas { grid-template-columns: 1fr; } }
+  .liga { display: flex; align-items: baseline; gap: var(--space-2); text-decoration: none;
+    padding: 8px 2px; border-bottom: 1px dotted var(--color-border); min-width: 0; }
+  .liga:hover { text-decoration: none; }
+  .liga__n { font-size: var(--font-size-14); font-weight: var(--font-weight-medium); color: var(--color-text-primary); white-space: nowrap; }
+  .liga:hover .liga__n { color: var(--fase); }
+  .liga__hint { font-size: var(--font-size-12); color: var(--color-text-meta);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .liga__tag { margin-left: auto; flex: none; font-family: var(--font-family-mono); font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-meta); }
+  .liga__flecha { margin-left: auto; flex: none; color: var(--color-text-meta);
+    transition: transform var(--motion-fast) var(--motion-ease-standard); }
+  .liga:hover .liga__flecha { transform: translateX(4px); color: var(--fase); }
+
+  /* ── control de vista previa (solo demo) ── */
+  .demo { position: sticky; bottom: 0; z-index: 30; margin-top: var(--space-7);
+    background: color-mix(in srgb, var(--color-bg-page) 90%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border); border-radius: var(--radius-pill);
+    padding: 7px 8px; display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap;
+    box-shadow: 0 6px 20px rgba(74,63,51,.14); }
+  .demo__lbl { font-family: var(--font-family-mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--color-text-meta); padding: 0 6px; }
+  .demo button { font-size: var(--font-size-12); font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary); border: 1px solid transparent; border-radius: var(--radius-pill); padding: 6px 12px; }
+  .demo button:hover { color: var(--color-text-primary); }
+  .demo button.on { background: var(--color-accent); color: var(--color-bg-page); }
+</style>
+
+<script defer src="/tercial/assets/js/theme.js"></script>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <a class="top__brand" href="/tercial/">Tercial</a>
+    <span class="top__level">universidad</span>
+    <div class="top__right">
+      <a class="top__switch" href="/tercial/">cambiar nivel ↗</a>
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <svg class="icon-sunmoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a2.83 2.83 0 0 0 4 4 4 4 0 1 1-4-4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- CAPA 1 · HOY (el protagonista) -->
+  <section class="hoy" id="hoy" aria-label="tu tarea de hoy">
+    <div class="hoy__head">
+      <div class="hoy__fechabox">
+        <p class="hoy__eyebrow">Tu tarea de hoy</p>
+        <h1 class="hoy__fecha" id="fecha">—</h1>
+      </div>
+      <span class="hoy__badge" id="badge"><b></b><span id="badgeTxt"></span></span>
+    </div>
+    <div class="hoy__body">
+      <p class="hoy__tema" id="tema" hidden>Esta semana · <strong id="temaN"></strong></p>
+      <h2 class="hoy__title" id="title">—</h2>
+      <p class="hoy__nota" id="nota"></p>
+      <ul class="plan" id="plan"></ul>
+      <div class="hoy__pie">
+        <span id="pie">Tu plan se arma solo desde el calendario del curso — mañana cambia solo.</span>
+        <a href="/tercial/calendario/calendario-uni-2026.html">Ver el calendario →</a>
+        <a href="/tercial/aula.html">Ir al aula →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPA 2 · TU MATERIAL (la caja de herramientas) -->
+  <section class="material" aria-label="tu material">
+    <p class="material__intro">Tu material · por si quieres ir más allá del plan de hoy</p>
+
+    <!-- APRENDE -->
+    <div class="bloque fase--aprende">
+      <header class="bloque__head">
+        <h2 class="bloque__t">1 · <em>Aprende</em></h2>
+        <span class="bloque__d">La teoría, tema por tema</span>
+      </header>
+      <a class="destacado" href="/tercial/formulario.html">
+        <span class="destacado__txt">
+          <span class="destacado__n">Formulario <em>completo</em></span>
+          <span class="destacado__d"> — 10 unidades · 100+ fórmulas, para tener al lado</span>
+        </span>
+        <span class="destacado__ir">→</span>
+      </a>
+      <p class="sub">Física · 11 temas</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/cinematica.html"><span class="liga__n">Cinemática</span><span class="liga__hint">MRU · caída libre</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/dinamica.html"><span class="liga__n">Dinámica</span><span class="liga__hint">Newton · fricción</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/trabajo_energia.html"><span class="liga__n">Trabajo y energía</span><span class="liga__hint">conservación</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/cantidad_movimiento.html"><span class="liga__n">Cantidad de mov.</span><span class="liga__hint">choques</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/fluidos.html"><span class="liga__n">Fluidos</span><span class="liga__hint">presión · Arquímedes</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/termodinamica.html"><span class="liga__n">Termodinámica</span><span class="liga__hint">calor · gases</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/optica.html"><span class="liga__n">Óptica</span><span class="liga__hint">reflexión · lentes</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/ondas.html"><span class="liga__n">Ondas y sonido</span><span class="liga__hint">frecuencia · MAS</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/electricidad.html"><span class="liga__n">Electricidad</span><span class="liga__hint">Coulomb · Ohm</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/magnetismo.html"><span class="liga__n">Magnetismo</span><span class="liga__hint">campo · Lorentz</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/fisica_moderna.html"><span class="liga__n">Física moderna</span><span class="liga__hint">cuántica</span><span class="liga__flecha">→</span></a>
+      </div>
+      <p class="sub">Matemáticas · 4 recursos</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/calculo_diferencial_v3.html"><span class="liga__n">Cálculo diferencial</span><span class="liga__hint">límites · derivadas</span><span class="liga__tag">html</span></a>
+        <a class="liga" href="/tercial/calculo_diferencial_latex.pdf"><span class="liga__n">Cálculo · resumen</span><span class="liga__hint">para imprimir</span><span class="liga__tag">pdf</span></a>
+        <a class="liga" href="/tercial/geometria_analitica.pdf"><span class="liga__n">Geometría analítica</span><span class="liga__hint">rectas · cónicas</span><span class="liga__tag">pdf</span></a>
+        <a class="liga" href="/tercial/trigonometria_con_figuras.pdf"><span class="liga__n">Trigonometría</span><span class="liga__hint">identidades · senos</span><span class="liga__tag">pdf</span></a>
+      </div>
+    </div>
+
+    <!-- PRACTICA -->
+    <div class="bloque fase--practica">
+      <header class="bloque__head">
+        <h2 class="bloque__t">2 · <em>Practica</em></h2>
+        <span class="bloque__d">Todos los días, 15 min</span>
+      </header>
+      <p class="sub">Tarjetas y notas</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/practicar.html"><span class="liga__n">Practicar por tema</span><span class="liga__hint">orden nuevo cada sesión</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/flashcards.html"><span class="liga__n">Práctica rápida</span><span class="liga__hint">30 al azar · 15 min</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/repaso.html"><span class="liga__n">Notas de repaso</span><span class="liga__hint">la idea clave de cada tema</span><span class="liga__flecha">→</span></a>
+      </div>
+      <p class="sub">Cuatro modos · cada uno entrena una jugada distinta</p>
+      <div class="ligas">
+        <a class="liga" href="/tercial/relampago.html"><span class="liga__n">Relámpago</span><span class="liga__hint">60 s contra el reloj</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/descarta.html"><span class="liga__n">Descarta los dos</span><span class="liga__hint">elimina distractores</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/a-ojo.html"><span class="liga__n">A ojo</span><span class="liga__hint">estima sin lápiz</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/factos.html"><span class="liga__n">Factos</span><span class="liga__hint">datos que van sí o sí</span><span class="liga__flecha">→</span></a>
+      </div>
+    </div>
+
+    <!-- SIMULA -->
+    <div class="bloque fase--simula">
+      <header class="bloque__head">
+        <h2 class="bloque__t">3 · <em>Simula</em></h2>
+        <span class="bloque__d">Cuando ya practicaste</span>
+      </header>
+      <a class="destacado" href="/tercial/examen_unam_area2.html">
+        <span class="destacado__txt">
+          <span class="destacado__n">UNAM Área 2 — <em>banco especial</em></span>
+          <span class="destacado__d"> — 120 preguntas, en el formato exacto del examen</span>
+        </span>
+        <span class="destacado__ir">→</span>
+      </a>
+      <div class="ligas">
+        <a class="liga" href="/tercial/examen_adaptativo.html"><span class="liga__n">Matemáticas · adaptativo</span><span class="liga__hint">sube si vas bien</span><span class="liga__flecha">→</span></a>
+        <a class="liga" href="/tercial/examen_adaptativo_fisica.html"><span class="liga__n">Física · adaptativo</span><span class="liga__hint">las 10 unidades</span><span class="liga__flecha">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTROL DEMO (no va en la versión final) -->
+  <div class="demo" role="group" aria-label="vista previa de otros días">
+    <span class="demo__lbl">Vista previa</span>
+    <button type="button" data-day="hoy" class="on">Hoy</button>
+    <button type="button" data-day="clase">Día de clase</button>
+    <button type="button" data-day="asesoria">Asesoría</button>
+    <button type="button" data-day="finde">Fin de semana</button>
+    <button type="button" data-day="receso">Receso</button>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    if (window.ClasesTheme) window.ClasesTheme.toggle();
+  });
+
+  /* ── lógica del calendario universidad (misma que el calendario real) ── */
+  var CLASE_DOW = { 3: 1, 4: 1 };                          // miércoles y jueves
+  var CLASE_MESES = { 8:1, 9:1, 10:1, 11:1, 12:1 };        // agosto–diciembre
+  function enReceso(m, d) { return (m === 12 && d >= 18) || (m === 1 && d <= 5); }
+  function stateOf(date) {
+    var m = date.getMonth() + 1, d = date.getDate(), dow = date.getDay();
+    if (enReceso(m, d)) return 'receso';
+    if (!CLASE_MESES[m]) return 'none';                    // fuera de semestre: preparación libre
+    if (dow === 0 || dow === 6) return 'sus';              // fin de semana en semestre
+    if (CLASE_DOW[dow]) return 'class';                    // clase
+    return 'ases';                                         // asesoría (lun/mar/vie)
+  }
+
+  var DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+  /* ── Temario del curso (PROVISIONAL — reemplazar por el real de Gil) ── */
+  var TEMARIO = [
+    { n: 'Cinemática',             href: '/tercial/cinematica.html' },
+    { n: 'Dinámica',               href: '/tercial/dinamica.html' },
+    { n: 'Trabajo y energía',      href: '/tercial/trabajo_energia.html' },
+    { n: 'Cantidad de movimiento', href: '/tercial/cantidad_movimiento.html' },
+    { n: 'Fluidos',                href: '/tercial/fluidos.html' },
+    { n: 'Termodinámica',          href: '/tercial/termodinamica.html' },
+    { n: 'Óptica',                 href: '/tercial/optica.html' },
+    { n: 'Ondas y sonido',         href: '/tercial/ondas.html' },
+    { n: 'Electricidad',           href: '/tercial/electricidad.html' },
+    { n: 'Magnetismo',             href: '/tercial/magnetismo.html' },
+    { n: 'Física moderna',         href: '/tercial/fisica_moderna.html' }
+  ];
+  function primeraClase() {
+    var d = new Date(2026, 7, 1);
+    for (var i = 0; i < 60 && stateOf(d) !== 'class'; i++) d.setDate(d.getDate() + 1);
+    return d;
+  }
+  function lunesAncla() {
+    var a = primeraClase();
+    a.setDate(a.getDate() - ((a.getDay() + 6) % 7));
+    return a;
+  }
+  function temaDe(date) {
+    var st = stateOf(date);
+    if (st === 'none' || st === 'receso') return null;
+    var semanas = Math.floor((date - lunesAncla()) / (7 * 864e5));
+    return (semanas >= 0 && semanas < TEMARIO.length) ? TEMARIO[semanas] : null;
+  }
+
+  /* Pasos base por día de la semana (el ritmo). Nota: la tarea diaria es
+     repaso ACUMULATIVO de todo lo visto (no-negociable de Gil). */
+  function pasosPorDia(dow) {
+    switch (dow) {
+      case 1: return [
+        ['aprende','Retoma el hilo: relee tus notas del último tema.','/tercial/repaso.html','Notas de repaso'],
+        ['practica','Repaso acumulativo: 15 min de práctica de todo lo visto.','/tercial/flashcards.html','Práctica rápida'] ];
+      case 2: return [
+        ['practica','Elige el tema de la semana y dale a las flashcards por tema.','/tercial/practicar.html','Practicar por tema'],
+        ['practica','Repaso acumulativo: 60 segundos de Relámpago.','/tercial/relampago.html','Relámpago'] ];
+      case 3: return [
+        ['aprende','Repasa el formulario del tema para tener la teoría a la mano.','/tercial/formulario.html','Abrir formulario'],
+        ['practica','Repaso acumulativo: 15 min de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
+      case 4: return [
+        ['practica','Afina el ojo clínico: descarta las dos opciones imposibles.','/tercial/descarta.html','Descarta los dos'],
+        ['practica','Cierra con 5 Factos: los datos que van sí o sí.','/tercial/factos.html','Factos'] ];
+      case 5: return [
+        ['simula','Mídete: un examen adaptativo corto de lo de la semana.','/tercial/examen_adaptativo.html','Examen adaptativo'],
+        ['aprende','Anota lo que falló; eso repasas el fin de semana.','/tercial/repaso.html','Notas de repaso'] ];
+      case 6: return [
+        ['simula','Con calma y sin prisas: un simulacro completo tipo examen real.','/tercial/examen_unam_area2.html','Simulacro UNAM'],
+        ['aprende','Al terminar, revisa cada error — ahí está el oro.','/tercial/repaso.html','Repaso'] ];
+      default: return [
+        ['aprende','Repaso ligero de la semana + 5 Factos para fijar datos.','/tercial/factos.html','Factos'],
+        ['practica','Echa un ojo al calendario para saber qué viene la semana entrante.','/tercial/calendario/calendario-uni-2026.html','Ver calendario'] ];
+    }
+  }
+
+  function construirPlan(date) {
+    var st = stateOf(date), dow = date.getDay();
+    var tema = temaDe(date);
+    var badge, badgeClass, title, nota, pasos;
+
+    if (st === 'receso') {
+      badge = 'Receso'; badgeClass = 'badge--rest';
+      title = 'Semana de descanso';
+      nota = 'Estamos en receso. Descansa de verdad — la mente también se prepara descansando.';
+      pasos = [['practica','Si quieres mantener el ritmo, 15 minutos de práctica rápida y ya.','/tercial/flashcards.html','Práctica rápida']];
+    } else if (st === 'class') {
+      badge = 'Hoy hay clase'; badgeClass = 'badge--class';
+      title = 'Antes y después de clase';
+      if (tema) {
+        nota = 'Hoy tienes clase de <strong>' + tema.n + '</strong>. Llega con la teoría fresca y fíjala al salir.';
+        pasos = [ ['aprende','Antes de clase, repasa ' + tema.n + ' para llegar preparado.', tema.href, 'Repasar ' + tema.n],
+                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
+      } else {
+        nota = 'Hoy tienes clase. Saca el mayor provecho llegando con la teoría fresca y fijándola al salir.';
+        pasos = [ ['aprende','Antes de clase, repasa el formulario del tema para llegar preparado.','/tercial/formulario.html','Abrir formulario'],
+                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
+      }
+    } else if (st === 'ases') {
+      badge = 'Asesoría disponible'; badgeClass = 'badge--ases';
+      title = (dow === 1) ? 'Arranca la semana' : (dow === 5) ? 'Cierra la semana' : 'Día de práctica';
+      nota = 'Hoy hay <strong>asesoría</strong>: si algo no te cuadró, tráelo. Mientras tanto, el plan del día:';
+      if (tema) {
+        pasos = [ ['practica','Toca ' + tema.n + ': practícalo por tema hasta que fluya.', tema.href, 'Ir a ' + tema.n],
+                  pasosPorDia(dow)[1] ];
+      } else {
+        pasos = pasosPorDia(dow);
+      }
+    } else if (st === 'sus') {
+      badge = 'Sin clase'; badgeClass = 'badge--off';
+      title = (dow === 6) ? 'Buen día para un simulacro' : 'Repaso tranquilo';
+      nota = tema
+        ? 'Fin de semana. Buen momento para cerrar <strong>' + tema.n + '</strong>, el tema de la semana:'
+        : 'Fin de semana, sin clase. Perfecto para lo que no cabe entre semana:';
+      pasos = pasosPorDia(dow);
+    } else {
+      badge = 'Preparación libre'; badgeClass = 'badge--off';
+      title = (dow === 0 || dow === 6) ? 'Fin de semana' : 'Plan del día';
+      nota = 'Fuera del semestre de clases: el ritmo lo pones tú. Aquí va el de hoy:';
+      pasos = pasosPorDia(dow);
+    }
+    return { badge: badge, badgeClass: badgeClass, title: title, nota: nota, pasos: pasos, tema: tema };
+  }
+
+  function pintar(date) {
+    var p = construirPlan(date);
+    document.getElementById('fecha').innerHTML = DIAS[date.getDay()] + ' <em>' + date.getDate() + '</em> de ' + MESES[date.getMonth()];
+    var badge = document.getElementById('badge');
+    badge.className = 'hoy__badge ' + p.badgeClass;
+    document.getElementById('badgeTxt').textContent = p.badge;
+    var tema = document.getElementById('tema');
+    if (p.tema) { document.getElementById('temaN').textContent = p.tema.n; tema.hidden = false; }
+    else { tema.hidden = true; }
+    document.getElementById('title').textContent = p.title;
+    document.getElementById('nota').innerHTML = p.nota;
+    document.getElementById('plan').innerHTML = p.pasos.map(function (s) {
+      var etq = { aprende: 'Aprende', practica: 'Practica', simula: 'Simula' }[s[0]];
+      return '<li class="paso fase--' + s[0] + '">' +
+        '<span class="paso__tag">' + etq + '</span>' +
+        '<span class="paso__txt">' + s[1] + '</span>' +
+        '<a class="paso__cta" href="' + s[2] + '">' + s[3] + ' →</a></li>';
+    }).join('');
+  }
+
+  function buscarDia(desde, quiero) {
+    var d = new Date(desde.getTime());
+    for (var i = 0; i < 400; i++) { if (stateOf(d) === quiero) return new Date(d.getTime()); d.setDate(d.getDate() + 1); }
+    return desde;
+  }
+  var HOY = new Date();
+  var CLASE1 = primeraClase();
+  var DEMO = {
+    hoy: HOY,
+    clase: CLASE1,
+    asesoria: buscarDia(CLASE1, 'ases'),
+    finde: buscarDia(CLASE1, 'sus'),
+    receso: new Date(2026, 11, 24)
+  };
+
+  document.querySelectorAll('.demo button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.demo button').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      pintar(DEMO[b.dataset.day]);
+    });
+  });
+
+  pintar(HOY);
+</script>
+
+</body>
+</html>
