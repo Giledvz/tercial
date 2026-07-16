@@ -155,6 +155,11 @@
   .stats { margin-left: auto; display: flex; gap: var(--space-4); font-family: var(--font-family-mono);
     font-size: var(--font-size-12); color: var(--color-text-meta); }
   .stats b { color: var(--prac); font-weight: var(--font-weight-medium); }
+  .kbdhint { display: flex; align-items: center; gap: 6px; font-size: var(--font-size-12); color: var(--color-text-meta); }
+  .kbd { font-family: var(--font-family-mono); font-size: 11px; line-height: 1;
+    border: 1px solid var(--color-border); border-bottom-width: 2px; border-radius: 5px;
+    padding: 3px 6px 2px; color: var(--color-text-secondary); background: var(--color-bg-page); }
+  @media (max-width: 560px) { .kbdhint { display: none; } }
 
   .foot { margin-top: var(--space-6); font-size: var(--font-size-12); color: var(--color-text-meta); line-height: 1.6; }
   .foot b { color: var(--color-text-secondary); font-weight: var(--font-weight-medium); }
@@ -215,6 +220,7 @@
     <div class="acts">
       <button class="btn btn--main" id="otro" type="button">Otro ejercicio →</button>
       <button class="btn btn--ghost" id="verSol" type="button" hidden>Ver solución</button>
+      <span class="kbdhint"><span class="kbd">1</span>–<span class="kbd">4</span> responder · <span class="kbd">Enter</span> siguiente</span>
       <span class="stats">
         <span>racha <b id="stRacha">0</b></span>
         <span>aciertos <b id="stAc">0</b>/<b id="stTot">0</b></span>
@@ -571,6 +577,24 @@
   });
 
   document.getElementById('otro').addEventListener('click', nuevo);
+
+  /* ── control por teclado ──
+     1-4 (o A-D) responden mientras no hayas contestado;
+     Enter pasa a la siguiente una vez que ves la retro. */
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === 'Enter') {
+      if (estado.contestada) { e.preventDefault(); nuevo(); }
+      return;
+    }
+    if (estado.contestada) return;
+    var k = e.key.toLowerCase(), idx = -1;
+    if (k >= '1' && k <= '4') idx = +k - 1;
+    else idx = ['a', 'b', 'c', 'd'].indexOf(k);
+    if (idx < 0) return;
+    var btns = elOpts.querySelectorAll('.opt');
+    if (idx < btns.length) { e.preventDefault(); responder(estado.prob.opciones[idx], btns[idx]); }
+  });
 
   nuevo();
 </script>
