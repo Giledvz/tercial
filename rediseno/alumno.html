@@ -9,13 +9,16 @@
 <!-- ══════════════════════════════════════════════════════════════
      HOME DEL ALUMNO (el producto) · síntesis del método
      Superficie para el alumno YA inscrito — herramienta de trabajo,
-     cero venta (el "por qué funciona" y el precio viven en una página
-     de venta aparte). Dos capas:
-       1. HOY — su tarea del día (repaso acumulativo + contexto del
-          curso). Es el no-negociable de Gil hecho pantalla.
+     cero venta. Dos capas:
+       1. HOY — su tarea del día, calculada del temario REAL + el
+          ritmo real de Gil (mié = mate 3 h · jue = física 3 h).
+          Incluye su NIVELACIÓN si entró tarde al curso.
        2. TU MATERIAL — la caja de herramientas (aprende/practica/
           simula) por si quiere ir más allá del plan del día.
-     El control «vista previa» es solo para que Gil vea otros días.
+
+     FASE 1   = todo lo que es función de la fecha (igual para todos).
+     FASE 1.5 = la semana de ingreso, guardada en localStorage.
+                Da nivelación personal SIN backend y SIN login.
      ══════════════════════════════════════════════════════════════ -->
 
 <script>
@@ -67,10 +70,10 @@
     padding: 6px 12px; border-radius: var(--radius-pill); border: 1px solid var(--bk, var(--color-border));
     color: var(--bk, var(--color-text-secondary)); background: color-mix(in srgb, var(--bk, transparent) 8%, transparent); }
   .hoy__badge b { width: 8px; height: 8px; border-radius: 50%; background: var(--bk, var(--color-text-meta)); }
-  .badge--class { --bk: #8c4a3a; } [data-theme="dark"] .badge--class { --bk: #c7836b; }
-  .badge--ases  { --bk: #2d5c63; } [data-theme="dark"] .badge--ases  { --bk: #7eb0b5; }
-  .badge--off   { --bk: var(--color-text-meta); }
-  .badge--rest  { --bk: var(--color-text-meta); }
+  .badge--clase  { --bk: #8c4a3a; } [data-theme="dark"] .badge--clase  { --bk: #c7836b; }
+  .badge--taller { --bk: #2d5c63; } [data-theme="dark"] .badge--taller { --bk: #7eb0b5; }
+  .badge--finde  { --bk: #2d3955; } [data-theme="dark"] .badge--finde  { --bk: #8090b0; }
+  .badge--off    { --bk: var(--color-text-meta); }
 
   .hoy__body { padding: var(--space-5) var(--space-6) var(--space-6); }
   .hoy__tema { display: inline-block; font-family: var(--font-family-mono); font-size: var(--font-size-12);
@@ -105,15 +108,45 @@
   .fase--aprende  { --fase: #7a4a6b; } [data-theme="dark"] .fase--aprende  { --fase: #b08299; }
   .fase--practica { --fase: #2d5c63; } [data-theme="dark"] .fase--practica { --fase: #7eb0b5; }
   .fase--simula   { --fase: #2d3955; } [data-theme="dark"] .fase--simula   { --fase: #8090b0; }
+
+  /* tema sin material todavía (hueco visible — señal para Gil) */
+  .paso__falta { flex: none; font-family: var(--font-family-mono); font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--color-text-meta);
+    border: 1px dashed var(--color-border); border-radius: var(--radius-pill); padding: 5px 11px; white-space: nowrap; }
   @media (max-width: 560px) {
     .paso { flex-wrap: wrap; }
     .paso__tag { width: 100%; }
-    .paso__cta { margin-left: auto; }
+    .paso__cta, .paso__falta { margin-left: auto; }
   }
+
+  /* ── NIVELACIÓN (rezago personal · Fase 1.5) ── */
+  .nivel { margin-top: var(--space-5); padding: var(--space-4) var(--space-5);
+    border: 1px dashed color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+    border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-accent) 4%, transparent); }
+  .nivel__t { font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 var(--space-2); }
+  .nivel__d { font-size: var(--font-size-13); color: var(--color-text-secondary); margin: 0 0 var(--space-3); }
+  .nivel__d strong { color: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+  .nivel__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .nivel__i { display: flex; align-items: baseline; gap: var(--space-3); font-size: var(--font-size-13);
+    padding: 5px 0; border-bottom: 1px dotted var(--color-border); }
+  .nivel__i:last-child { border-bottom: 0; }
+  .nivel__num { flex: none; font-family: var(--font-family-mono); font-size: 10px; color: var(--color-text-meta); width: 4.6em; }
+  .nivel__n { flex: 1; min-width: 0; color: var(--color-text-primary); }
+  .nivel__i--next .nivel__n { font-weight: var(--font-weight-medium); }
+  .nivel__i--next .nivel__num { color: var(--color-accent); }
+  .nivel__a { flex: none; color: var(--color-accent); text-decoration: none; font-size: var(--font-size-12); }
+  .nivel__x { flex: none; font-size: var(--font-size-11); color: var(--color-text-meta); font-style: italic; }
+  .nivel__mas { font-size: var(--font-size-12); color: var(--color-text-meta); margin: var(--space-2) 0 0; }
 
   .hoy__pie { margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px dotted var(--color-border);
     font-size: var(--font-size-12); color: var(--color-text-meta); display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
   .hoy__pie a { color: var(--color-accent); }
+  .ingreso { margin-left: auto; display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-family-mono); font-size: var(--font-size-11); color: var(--color-text-meta); }
+  .ingreso select { font-family: inherit; font-size: var(--font-size-11); color: var(--color-text-secondary);
+    background: var(--color-bg-page); border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm); padding: 3px 6px; }
 
   /* ── TU MATERIAL (la caja de herramientas) ── */
   .material { margin-top: var(--space-8); }
@@ -206,14 +239,26 @@
       <span class="hoy__badge" id="badge"><b></b><span id="badgeTxt"></span></span>
     </div>
     <div class="hoy__body">
-      <p class="hoy__tema" id="tema" hidden>Esta semana · <strong id="temaN"></strong></p>
+      <p class="hoy__tema" id="tema" hidden><span id="temaPre">Esta semana</span> · <strong id="temaN"></strong></p>
       <h2 class="hoy__title" id="title">—</h2>
       <p class="hoy__nota" id="nota"></p>
       <ul class="plan" id="plan"></ul>
+
+      <!-- NIVELACIÓN · solo si entró tarde (Fase 1.5, localStorage) -->
+      <div class="nivel" id="nivel" hidden>
+        <p class="nivel__t">Tu nivelación</p>
+        <p class="nivel__d" id="nivelD"></p>
+        <ul class="nivel__lista" id="nivelLista"></ul>
+        <p class="nivel__mas" id="nivelMas" hidden></p>
+      </div>
+
       <div class="hoy__pie">
         <span id="pie">Tu plan se arma solo desde el calendario del curso — mañana cambia solo.</span>
         <a href="/tercial/calendario/calendario-uni-2026.html">Ver el calendario →</a>
         <a href="/tercial/aula.html">Ir al aula →</a>
+        <label class="ingreso">entré en la semana
+          <select id="ingreso" aria-label="Semana en que entraste al curso"></select>
+        </label>
       </div>
     </div>
   </section>
@@ -287,7 +332,7 @@
       </header>
       <a class="destacado" href="/tercial/examen_unam_area2.html">
         <span class="destacado__txt">
-          <span class="destacado__n">UNAM Área 2 — <em>banco especial</em></span>
+          <span class="destacado__n">UNAM — <em>banco especial</em></span>
           <span class="destacado__d"> — 120 preguntas, en el formato exacto del examen</span>
         </span>
         <span class="destacado__ir">→</span>
@@ -303,8 +348,9 @@
   <div class="demo" role="group" aria-label="vista previa de otros días">
     <span class="demo__lbl">Vista previa</span>
     <button type="button" data-day="hoy" class="on">Hoy</button>
-    <button type="button" data-day="clase">Día de clase</button>
-    <button type="button" data-day="asesoria">Asesoría</button>
+    <button type="button" data-day="mate">Miércoles · mate</button>
+    <button type="button" data-day="fisica">Jueves · física</button>
+    <button type="button" data-day="taller">Día de 1 h</button>
     <button type="button" data-day="finde">Fin de semana</button>
     <button type="button" data-day="receso">Receso</button>
   </div>
@@ -316,173 +362,336 @@
     if (window.ClasesTheme) window.ClasesTheme.toggle();
   });
 
-  /* ── lógica del calendario universidad (misma que el calendario real) ── */
-  var CLASE_DOW = { 3: 1, 4: 1 };                          // miércoles y jueves
-  var CLASE_MESES = { 8:1, 9:1, 10:1, 11:1, 12:1 };        // agosto–diciembre
-  function enReceso(m, d) { return (m === 12 && d >= 18) || (m === 1 && d <= 5); }
-  function stateOf(date) {
-    var m = date.getMonth() + 1, d = date.getDate(), dow = date.getDay();
-    if (enReceso(m, d)) return 'receso';
-    if (!CLASE_MESES[m]) return 'none';                    // fuera de semestre: preparación libre
-    if (dow === 0 || dow === 6) return 'sus';              // fin de semana en semestre
-    if (CLASE_DOW[dow]) return 'class';                    // clase
-    return 'ases';                                         // asesoría (lun/mar/vie)
-  }
+  /* ═══════════════════════════════════════════════════════════════
+     1 · CONFIGURACIÓN DEL CURSO
+     Lo ÚNICO que hay que editar cada generación. Todo lo demás
+     (qué tema toca qué día, la nivelación, el conteo de semanas)
+     se calcula solo a partir de esto.
+     ═══════════════════════════════════════════════════════════════ */
+  var CURSO = {
+    inicio: '2026-08-05',                 // 1er día de clase (un miércoles)
+    examen: '2027-02-07',                 // ❓ PENDIENTE: fecha real del examen UNAM
+    receso: ['2026-12-18', '2027-01-05'], // vacaciones (no avanza el temario)
+    claseMate:   3,                       // miércoles · 3 h
+    claseFisica: 4                        // jueves · 3 h
+  };
 
-  var DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  /* ═══════════════════════════════════════════════════════════════
+     2 · TEMARIO REAL · Guía UNAM 2025
+     Las 4 áreas comparten el MISMO temario por materia (solo cambia
+     el peso del examen), así que esta secuencia sirve para las 4.
+     `mat: []` = ese tema TODAVÍA no tiene material en el sitio.
+     ═══════════════════════════════════════════════════════════════ */
+
+  /* Matemáticas · 17 temas · 1 por semana (miércoles) */
+  var TEMARIO_MATE = [
+    { n: 'Operaciones con reales, complejos y expresiones algebraicas', mat: [] },
+    { n: 'Productos notables y factorización',        mat: [] },
+    { n: 'Ecuaciones de 1er y 2º grado',              mat: [] },
+    { n: 'Desigualdades',                             mat: [] },
+    { n: 'Sistemas de ecuaciones',                    mat: [] },
+    { n: 'Funciones algebraicas',                     mat: [] },
+    { n: 'Trigonometría',                             mat: [{ n: 'Trigonometría', href: '/tercial/trigonometria_con_figuras.pdf' }] },
+    { n: 'Funciones exponenciales y logarítmicas',    mat: [] },
+    { n: 'La recta',                                  mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'La circunferencia',                         mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'La parábola',                               mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'La elipse',                                 mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'La hipérbola',                              mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'Ecuación general de segundo grado',         mat: [{ n: 'Geometría analítica', href: '/tercial/geometria_analitica.pdf' }] },
+    { n: 'Límites',                                   mat: [{ n: 'Cálculo diferencial', href: '/tercial/calculo_diferencial_v3.html' }] },
+    { n: 'La derivada',                               mat: [{ n: 'Cálculo diferencial', href: '/tercial/calculo_diferencial_v3.html' }] },
+    { n: 'La integral',                               mat: [] }
+  ];
+
+  /* Física · 9 temas · con holgura (jueves). `semanas` = cuántas dura.
+     Suman 17 para empatar con mate. Ajústalo a tu gusto. */
+  var TEMARIO_FISICA = [
+    { n: 'Cinemática',                          semanas: 2, mat: [{ n: 'Cinemática', href: '/tercial/cinematica.html' }] },
+    { n: 'Fuerzas, leyes de Newton y Gravitación', semanas: 2, mat: [{ n: 'Dinámica', href: '/tercial/dinamica.html' }] },
+    { n: 'Trabajo y leyes de la conservación',  semanas: 2, mat: [{ n: 'Trabajo y energía', href: '/tercial/trabajo_energia.html' }, { n: 'Cantidad de movimiento', href: '/tercial/cantidad_movimiento.html' }] },
+    { n: 'Termodinámica',                       semanas: 2, mat: [{ n: 'Termodinámica', href: '/tercial/termodinamica.html' }] },
+    { n: 'Ondas',                               semanas: 2, mat: [{ n: 'Ondas y sonido', href: '/tercial/ondas.html' }] },
+    { n: 'Electromagnetismo',                   semanas: 3, mat: [{ n: 'Electricidad', href: '/tercial/electricidad.html' }, { n: 'Magnetismo', href: '/tercial/magnetismo.html' }] },
+    { n: 'Fluidos',                             semanas: 2, mat: [{ n: 'Fluidos', href: '/tercial/fluidos.html' }] },
+    { n: 'Óptica',                              semanas: 1, mat: [{ n: 'Óptica', href: '/tercial/optica.html' }] },
+    { n: 'Física contemporánea',                semanas: 1, mat: [{ n: 'Física moderna', href: '/tercial/fisica_moderna.html' }] }
+  ];
+
+  /* ═══════════════════════════════════════════════════════════════
+     3 · MOTOR · todo es función de la fecha (FASE 1)
+     ═══════════════════════════════════════════════════════════════ */
+  var DIAS  = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
-  /* ── Temario del curso (PROVISIONAL — reemplazar por el real de Gil) ── */
-  var TEMARIO = [
-    { n: 'Cinemática',             href: '/tercial/cinematica.html' },
-    { n: 'Dinámica',               href: '/tercial/dinamica.html' },
-    { n: 'Trabajo y energía',      href: '/tercial/trabajo_energia.html' },
-    { n: 'Cantidad de movimiento', href: '/tercial/cantidad_movimiento.html' },
-    { n: 'Fluidos',                href: '/tercial/fluidos.html' },
-    { n: 'Termodinámica',          href: '/tercial/termodinamica.html' },
-    { n: 'Óptica',                 href: '/tercial/optica.html' },
-    { n: 'Ondas y sonido',         href: '/tercial/ondas.html' },
-    { n: 'Electricidad',           href: '/tercial/electricidad.html' },
-    { n: 'Magnetismo',             href: '/tercial/magnetismo.html' },
-    { n: 'Física moderna',         href: '/tercial/fisica_moderna.html' }
-  ];
-  function primeraClase() {
-    var d = new Date(2026, 7, 1);
-    for (var i = 0; i < 60 && stateOf(d) !== 'class'; i++) d.setDate(d.getDate() + 1);
-    return d;
-  }
-  function lunesAncla() {
-    var a = primeraClase();
-    a.setDate(a.getDate() - ((a.getDay() + 6) % 7));
-    return a;
-  }
-  function temaDe(date) {
-    var st = stateOf(date);
-    if (st === 'none' || st === 'receso') return null;
-    var semanas = Math.floor((date - lunesAncla()) / (7 * 864e5));
-    return (semanas >= 0 && semanas < TEMARIO.length) ? TEMARIO[semanas] : null;
-  }
+  function d(iso) { var p = iso.split('-'); return new Date(+p[0], p[1] - 1, +p[2]); }
+  var INICIO = d(CURSO.inicio), EXAMEN = d(CURSO.examen);
+  var REC0 = d(CURSO.receso[0]), REC1 = d(CURSO.receso[1]);
+  var SEMANAS_MATE = TEMARIO_MATE.length;                                    // 17
 
-  /* Pasos base por día de la semana (el ritmo). Nota: la tarea diaria es
-     repaso ACUMULATIVO de todo lo visto (no-negociable de Gil). */
-  function pasosPorDia(dow) {
-    switch (dow) {
-      case 1: return [
-        ['aprende','Retoma el hilo: relee tus notas del último tema.','/tercial/repaso.html','Notas de repaso'],
-        ['practica','Repaso acumulativo: 15 min de práctica de todo lo visto.','/tercial/flashcards.html','Práctica rápida'] ];
-      case 2: return [
-        ['practica','Elige el tema de la semana y dale a las flashcards por tema.','/tercial/practicar.html','Practicar por tema'],
-        ['practica','Repaso acumulativo: 60 segundos de Relámpago.','/tercial/relampago.html','Relámpago'] ];
-      case 3: return [
-        ['aprende','Repasa el formulario del tema para tener la teoría a la mano.','/tercial/formulario.html','Abrir formulario'],
-        ['practica','Repaso acumulativo: 15 min de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
-      case 4: return [
-        ['practica','Afina el ojo clínico: descarta las dos opciones imposibles.','/tercial/descarta.html','Descarta los dos'],
-        ['practica','Cierra con 5 Factos: los datos que van sí o sí.','/tercial/factos.html','Factos'] ];
-      case 5: return [
-        ['simula','Mídete: un examen adaptativo corto de lo de la semana.','/tercial/examen_adaptativo.html','Examen adaptativo'],
-        ['aprende','Anota lo que falló; eso repasas el fin de semana.','/tercial/repaso.html','Notas de repaso'] ];
-      case 6: return [
-        ['simula','Con calma y sin prisas: un simulacro completo tipo examen real.','/tercial/examen_unam_area2.html','Simulacro UNAM'],
-        ['aprende','Al terminar, revisa cada error — ahí está el oro.','/tercial/repaso.html','Repaso'] ];
-      default: return [
-        ['aprende','Repaso ligero de la semana + 5 Factos para fijar datos.','/tercial/factos.html','Factos'],
-        ['practica','Echa un ojo al calendario para saber qué viene la semana entrante.','/tercial/calendario/calendario-uni-2026.html','Ver calendario'] ];
+  function lunesDe(x) { var r = new Date(x); r.setHours(0,0,0,0); r.setDate(r.getDate() - ((r.getDay() + 6) % 7)); return r; }
+  var ANCLA = lunesDe(INICIO);
+
+  function enReceso(x) { return x >= REC0 && x <= REC1; }
+
+  /* Semana del curso, SIN contar las de receso. 0 = aún no empieza. */
+  function semanaDe(x) {
+    var meta = lunesDe(x);
+    if (meta < ANCLA) return 0;
+    var n = 0;
+    for (var w = new Date(ANCLA); w <= meta; w.setDate(w.getDate() + 7)) {
+      var mier = new Date(w); mier.setDate(mier.getDate() + 2);
+      if (!enReceso(mier)) n++;
     }
+    return n;
   }
 
-  function construirPlan(date) {
-    var st = stateOf(date), dow = date.getDay();
-    var tema = temaDe(date);
-    var badge, badgeClass, title, nota, pasos;
+  function stateOf(x) {
+    if (enReceso(x)) return 'receso';
+    var s = semanaDe(x);
+    if (s < 1 || s > SEMANAS_MATE) return 'none';   // fuera del curso: preparación libre
+    var dow = x.getDay();
+    if (dow === 0 || dow === 6)      return 'finde';
+    if (dow === CURSO.claseMate)     return 'mate';
+    if (dow === CURSO.claseFisica)   return 'fisica';
+    return 'taller';                                 // lun/mar/vie · 1 h
+  }
 
-    if (st === 'receso') {
-      badge = 'Receso'; badgeClass = 'badge--rest';
-      title = 'Semana de descanso';
-      nota = 'Estamos en receso. Descansa de verdad — la mente también se prepara descansando.';
-      pasos = [['practica','Si quieres mantener el ritmo, 15 minutos de práctica rápida y ya.','/tercial/flashcards.html','Práctica rápida']];
-    } else if (st === 'class') {
-      badge = 'Hoy hay clase'; badgeClass = 'badge--class';
-      title = 'Antes y después de clase';
-      if (tema) {
-        nota = 'Hoy tienes clase de <strong>' + tema.n + '</strong>. Llega con la teoría fresca y fíjala al salir.';
-        pasos = [ ['aprende','Antes de clase, repasa ' + tema.n + ' para llegar preparado.', tema.href, 'Repasar ' + tema.n],
-                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
-      } else {
-        nota = 'Hoy tienes clase. Saca el mayor provecho llegando con la teoría fresca y fijándola al salir.';
-        pasos = [ ['aprende','Antes de clase, repasa el formulario del tema para llegar preparado.','/tercial/formulario.html','Abrir formulario'],
-                  ['practica','Después de clase, fija lo visto con 15 minutos de flashcards.','/tercial/flashcards.html','Práctica rápida'] ];
-      }
-    } else if (st === 'ases') {
-      badge = 'Asesoría disponible'; badgeClass = 'badge--ases';
-      title = (dow === 1) ? 'Arranca la semana' : (dow === 5) ? 'Cierra la semana' : 'Día de práctica';
-      nota = 'Hoy hay <strong>asesoría</strong>: si algo no te cuadró, tráelo. Mientras tanto, el plan del día:';
-      if (tema) {
-        pasos = [ ['practica','Toca ' + tema.n + ': practícalo por tema hasta que fluya.', tema.href, 'Ir a ' + tema.n],
-                  pasosPorDia(dow)[1] ];
-      } else {
-        pasos = pasosPorDia(dow);
-      }
-    } else if (st === 'sus') {
-      badge = 'Sin clase'; badgeClass = 'badge--off';
-      title = (dow === 6) ? 'Buen día para un simulacro' : 'Repaso tranquilo';
-      nota = tema
-        ? 'Fin de semana. Buen momento para cerrar <strong>' + tema.n + '</strong>, el tema de la semana:'
-        : 'Fin de semana, sin clase. Perfecto para lo que no cabe entre semana:';
-      pasos = pasosPorDia(dow);
-    } else {
-      badge = 'Preparación libre'; badgeClass = 'badge--off';
-      title = (dow === 0 || dow === 6) ? 'Fin de semana' : 'Plan del día';
-      nota = 'Fuera del semestre de clases: el ritmo lo pones tú. Aquí va el de hoy:';
-      pasos = pasosPorDia(dow);
+  function temaMate(sem) { return (sem >= 1 && sem <= TEMARIO_MATE.length) ? TEMARIO_MATE[sem - 1] : null; }
+  function temaFisica(sem) {
+    var acc = 0;
+    for (var i = 0; i < TEMARIO_FISICA.length; i++) {
+      acc += TEMARIO_FISICA[i].semanas;
+      if (sem <= acc) return TEMARIO_FISICA[i];
     }
-    return { badge: badge, badgeClass: badgeClass, title: title, nota: nota, pasos: pasos, tema: tema };
+    return null;
   }
 
-  function pintar(date) {
-    var p = construirPlan(date);
-    document.getElementById('fecha').innerHTML = DIAS[date.getDay()] + ' <em>' + date.getDate() + '</em> de ' + MESES[date.getMonth()];
-    var badge = document.getElementById('badge');
-    badge.className = 'hoy__badge ' + p.badgeClass;
-    document.getElementById('badgeTxt').textContent = p.badge;
-    var tema = document.getElementById('tema');
-    if (p.tema) { document.getElementById('temaN').textContent = p.tema.n; tema.hidden = false; }
-    else { tema.hidden = true; }
-    document.getElementById('title').textContent = p.title;
-    document.getElementById('nota').innerHTML = p.nota;
-    document.getElementById('plan').innerHTML = p.pasos.map(function (s) {
-      var etq = { aprende: 'Aprende', practica: 'Practica', simula: 'Simula' }[s[0]];
-      return '<li class="paso fase--' + s[0] + '">' +
-        '<span class="paso__tag">' + etq + '</span>' +
-        '<span class="paso__txt">' + s[1] + '</span>' +
-        '<a class="paso__cta" href="' + s[2] + '">' + s[3] + ' →</a></li>';
+  /* ── FASE 1.5 · la semana de ingreso vive en localStorage ── */
+  var K_INGRESO = 'tercial-semana-ingreso';
+  function semanaIngreso() { return Math.max(1, parseInt(localStorage.getItem(K_INGRESO) || '1', 10) || 1); }
+  function setSemanaIngreso(n) { localStorage.setItem(K_INGRESO, String(n)); }
+
+  /* Lo que se perdió quien entró en la semana `ing`: los temas de mate
+     de las semanas 1..ing-1 (la física va más lenta, se empalma sola). */
+  function rezago(ing) {
+    var out = [];
+    for (var s = 1; s < ing; s++) out.push({ sem: s, t: temaMate(s) });
+    return out;
+  }
+
+  /* ── helpers de material ── */
+  function ctas(tema, fase) {
+    if (!tema || !tema.mat.length) return '<span class="paso__falta">material pendiente</span>';
+    return tema.mat.map(function (m) {
+      return '<a class="paso__cta" href="' + m.href + '">' + m.n + ' →</a>';
     }).join('');
   }
 
-  function buscarDia(desde, quiero) {
-    var d = new Date(desde.getTime());
-    for (var i = 0; i < 400; i++) { if (stateOf(d) === quiero) return new Date(d.getTime()); d.setDate(d.getDate() + 1); }
-    return desde;
+  /* ═══════════════════════════════════════════════════════════════
+     4 · EL PLAN DEL DÍA
+     Regla de oro (no-negociable de Gil): TODOS los días llevan
+     repaso ACUMULATIVO de todo lo visto, no solo del tema de hoy.
+     ═══════════════════════════════════════════════════════════════ */
+  var ACUM = ['practica', 'Repaso acumulativo: 15 min de todo lo que llevas — no solo lo de hoy.', '/tercial/flashcards.html', 'Práctica rápida'];
+
+  function construirPlan(x) {
+    var st = stateOf(x), dow = x.getDay(), sem = semanaDe(x);
+    var tm = temaMate(sem), tf = temaFisica(sem);
+    var p = { sem: sem, badgeClass: 'badge--off', chipPre: 'Esta semana', chip: null, pasos: [] };
+
+    if (st === 'receso') {
+      p.badge = 'Receso'; p.badgeClass = 'badge--off';
+      p.title = 'Semana de descanso';
+      p.nota  = 'Estamos en receso: el temario no avanza. Descansa de verdad — la mente también se prepara descansando.';
+      p.pasos = [['practica', 'Si quieres mantener el hilo, 15 minutos y ya. Nada más.', '/tercial/flashcards.html', 'Práctica rápida']];
+
+    } else if (st === 'mate') {
+      p.badge = 'Clase de mate · 3 h'; p.badgeClass = 'badge--clase';
+      p.chipPre = 'Semana ' + sem + ' · miércoles de mate'; p.chip = tm ? tm.n : null;
+      p.title = 'Llega leído a tu clase de hoy';
+      p.nota  = 'Hoy son <strong>3 horas de matemáticas</strong> sobre <strong>' + (tm ? tm.n : 'el tema de la semana') + '</strong>. Si llegas con la teoría vista, la clase te rinde el doble.';
+      p.pasos = [
+        ['aprende', 'Antes de clase: lee ' + (tm ? tm.n : 'el tema') + '. Aunque no lo entiendas todo — para eso es la clase.', null, null, tm],
+        ['practica', 'Al salir: fija lo visto mientras está fresco.', '/tercial/practicar.html', 'Practicar por tema'],
+        ACUM
+      ];
+
+    } else if (st === 'fisica') {
+      p.badge = 'Clase de física · 3 h'; p.badgeClass = 'badge--clase';
+      p.chipPre = 'Semana ' + sem + ' · jueves de física'; p.chip = tf ? tf.n : null;
+      p.title = 'Llega leído a tu clase de hoy';
+      p.nota  = 'Hoy son <strong>3 horas de física</strong> sobre <strong>' + (tf ? tf.n : 'el tema de la semana') + '</strong>. Si llegas con la teoría vista, la clase te rinde el doble.';
+      p.pasos = [
+        ['aprende', 'Antes de clase: lee ' + (tf ? tf.n : 'el tema') + '. Aunque no lo entiendas todo — para eso es la clase.', null, null, tf],
+        ['practica', 'Al salir: fija lo visto mientras está fresco.', '/tercial/practicar.html', 'Practicar por tema'],
+        ACUM
+      ];
+
+    } else if (st === 'taller') {
+      p.badge = 'Sesión de 1 h'; p.badgeClass = 'badge--taller';
+      p.chipPre = 'Semana ' + sem + ' de ' + SEMANAS_MATE;
+      p.chip = (tm && tf) ? (tm.n + ' · ' + tf.n) : null;
+
+      if (dow === 5) {                 // VIERNES · repaso #1 (temas frescos)
+        p.title = 'Cierra la semana';
+        p.nota  = 'Acabas de ver <strong>' + (tm ? tm.n : 'mate') + '</strong> el miércoles y <strong>' + (tf ? tf.n : 'física') + '</strong> el jueves. Hoy se afianzan, mientras están frescos.';
+        p.pasos = [
+          ['practica', 'Repasa lo de mate del miércoles: ' + (tm ? tm.n : 'el tema') + '.', null, null, tm],
+          ['practica', 'Repasa lo de física del jueves: ' + (tf ? tf.n : 'el tema') + '.', null, null, tf],
+          ACUM
+        ];
+      } else if (dow === 1) {          // LUNES · repaso #2 + mecánica
+        p.title = 'Arranca con la base afilada';
+        p.nota  = 'Segundo repaso de los temas de la semana pasada — y un rato de <strong>mecánica</strong>, que es donde se cae todo el mundo: fracciones y signos.';
+        p.pasos = [
+          ['practica', 'Mecánica: fracciones y reglas de signos, hasta que salgan sin pensar.', '/tercial/relampago.html', 'Relámpago'],
+          ['practica', 'Segundo repaso de los temas de la semana pasada.', '/tercial/practicar.html', 'Practicar por tema'],
+          ACUM
+        ];
+      } else {                          // MARTES · aula invertida
+        p.title = 'Prepara el miércoles';
+        p.nota  = 'Mañana son 3 horas de <strong>' + (tm ? tm.n : 'matemáticas') + '</strong>. Hoy lo lees por encima y traes tus dudas — así mañana no se va la clase en arrancar.';
+        p.pasos = [
+          ['aprende', 'Lee por encima ' + (tm ? tm.n : 'el tema de mañana') + ' y anota lo que no te cuadre.', null, null, tm],
+          ['practica', 'Cierra pendientes de la semana pasada.', '/tercial/practicar.html', 'Practicar por tema'],
+          ACUM
+        ];
+      }
+
+    } else if (st === 'finde') {
+      p.badge = 'Simulacro'; p.badgeClass = 'badge--finde';
+      p.chipPre = 'Semana ' + sem + ' de ' + SEMANAS_MATE;
+      p.chip = (tm && tf) ? (tm.n + ' · ' + tf.n) : null;
+      p.title = (dow === 6) ? 'Buen día para un simulacro' : 'Repaso tranquilo';
+      p.nota  = (dow === 6)
+        ? 'Sin prisas y con tiempo: hoy cabe un examen completo en formato real. Es el único día que cabe.'
+        : 'Cierra la semana revisando los errores del simulacro. <strong>Ahí está el oro</strong> — un error entendido vale por diez ejercicios bien.';
+      p.pasos = (dow === 6)
+        ? [['simula', 'Un simulacro completo, cronometrado, como el día del examen.', '/tercial/examen_unam_area2.html', 'Simulacro UNAM'], ACUM]
+        : [['aprende', 'Revisa cada error de ayer: ¿fue de mecánica o de razonamiento? No es lo mismo.', '/tercial/repaso.html', 'Notas de repaso'], ACUM];
+
+    } else {                            // fuera del curso
+      p.badge = 'Preparación libre'; p.badgeClass = 'badge--off';
+      p.title = 'El ritmo lo pones tú';
+      p.nota  = 'Fuera del curso no hay clases, pero el examen no se mueve. Aquí va algo para hoy:';
+      p.pasos = [
+        ['practica', 'Práctica rápida: 15 minutos y mantienes el hilo.', '/tercial/flashcards.html', 'Práctica rápida'],
+        ['simula', 'Si traes tiempo, mídete con un adaptativo.', '/tercial/examen_adaptativo.html', 'Examen adaptativo']
+      ];
+    }
+    return p;
   }
-  var HOY = new Date();
-  var CLASE1 = primeraClase();
+
+  /* ═══════════════════════════════════════════════════════════════
+     5 · PINTAR
+     ═══════════════════════════════════════════════════════════════ */
+  function pintar(x) {
+    var p = construirPlan(x);
+
+    document.getElementById('fecha').innerHTML = DIAS[x.getDay()] + ' <em>' + x.getDate() + '</em> de ' + MESES[x.getMonth()];
+    document.getElementById('badge').className = 'hoy__badge ' + p.badgeClass;
+    document.getElementById('badgeTxt').textContent = p.badge;
+
+    var chip = document.getElementById('tema');
+    if (p.chip) {
+      document.getElementById('temaPre').textContent = p.chipPre;
+      document.getElementById('temaN').textContent = p.chip;
+      chip.hidden = false;
+    } else { chip.hidden = true; }
+
+    document.getElementById('title').textContent = p.title;
+    document.getElementById('nota').innerHTML = p.nota;
+
+    document.getElementById('plan').innerHTML = p.pasos.map(function (s) {
+      var etq = { aprende: 'Aprende', practica: 'Practica', simula: 'Simula' }[s[0]];
+      var cta = s[4] !== undefined ? ctas(s[4]) : '<a class="paso__cta" href="' + s[2] + '">' + s[3] + ' →</a>';
+      return '<li class="paso fase--' + s[0] + '">' +
+        '<span class="paso__tag">' + etq + '</span>' +
+        '<span class="paso__txt">' + s[1] + '</span>' + cta + '</li>';
+    }).join('');
+
+    pintarNivelacion(p.sem);
+  }
+
+  /* NIVELACIÓN · solo aparece si entró después de la semana 1 */
+  function pintarNivelacion(semHoy) {
+    var ing = semanaIngreso();
+    var caja = document.getElementById('nivel');
+    var pend = rezago(ing);
+
+    if (ing <= 1 || !pend.length || semHoy < 1) { caja.hidden = true; return; }
+    caja.hidden = false;
+
+    document.getElementById('nivelD').innerHTML =
+      'Entraste en la <strong>semana ' + ing + '</strong>, así que traes <strong>' + pend.length +
+      ' tema' + (pend.length > 1 ? 's' : '') + '</strong> de mate de antes. Esto es <strong>aparte</strong> del plan de arriba: ' +
+      've uno por semana, sin prisa. Lo que no te salga, tráelo a la sesión de 1 h.';
+
+    var MOSTRAR = 4;
+    document.getElementById('nivelLista').innerHTML = pend.slice(0, MOSTRAR).map(function (r, i) {
+      var link = r.t.mat.length
+        ? '<a class="nivel__a" href="' + r.t.mat[0].href + '">abrir →</a>'
+        : '<span class="nivel__x">material pendiente</span>';
+      return '<li class="nivel__i' + (i === 0 ? ' nivel__i--next' : '') + '">' +
+        '<span class="nivel__num">sem. ' + r.sem + '</span>' +
+        '<span class="nivel__n">' + r.t.n + '</span>' + link + '</li>';
+    }).join('');
+
+    var mas = document.getElementById('nivelMas');
+    if (pend.length > MOSTRAR) {
+      mas.textContent = '+ ' + (pend.length - MOSTRAR) + ' temas más — de uno en uno, empezando por el de arriba.';
+      mas.hidden = false;
+    } else { mas.hidden = true; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     6 · CONTROLES
+     ═══════════════════════════════════════════════════════════════ */
+  var VISTA = new Date();
+
+  var sel = document.getElementById('ingreso');
+  for (var i = 1; i <= SEMANAS_MATE; i++) {
+    var o = document.createElement('option');
+    o.value = i; o.textContent = i + (i === 1 ? ' (desde el inicio)' : '');
+    sel.appendChild(o);
+  }
+  sel.value = semanaIngreso();
+  sel.addEventListener('change', function () { setSemanaIngreso(+sel.value); pintar(VISTA); });
+
+  /* vista previa (solo demo) */
+  function buscar(estado) {
+    var x = new Date(INICIO.getTime());
+    for (var i = 0; i < 400; i++) { if (stateOf(x) === estado) return new Date(x.getTime()); x.setDate(x.getDate() + 1); }
+    return INICIO;
+  }
+  var SEM5 = new Date(ANCLA); SEM5.setDate(SEM5.getDate() + 7 * 4);   // semana 5, para que se vea con temario
+  function enSemana5(dow) { var x = new Date(SEM5); x.setDate(x.getDate() + ((dow + 6) % 7)); return x; }
+
   var DEMO = {
-    hoy: HOY,
-    clase: CLASE1,
-    asesoria: buscarDia(CLASE1, 'ases'),
-    finde: buscarDia(CLASE1, 'sus'),
-    receso: new Date(2026, 11, 24)
+    hoy:    new Date(),
+    mate:   enSemana5(3),
+    fisica: enSemana5(4),
+    taller: enSemana5(2),
+    finde:  enSemana5(6),
+    receso: d('2026-12-24')
   };
 
+  /* ?d=2026-09-02 → previsualizar un día concreto (solo demo) */
+  var qd = new URLSearchParams(location.search).get('d');
+  if (qd && /^\d{4}-\d{2}-\d{2}$/.test(qd)) { DEMO.hoy = d(qd); VISTA = DEMO.hoy; }
+  var qi = new URLSearchParams(location.search).get('ingreso');
+  if (qi) { setSemanaIngreso(+qi); sel.value = +qi; }
   document.querySelectorAll('.demo button').forEach(function (b) {
     b.addEventListener('click', function () {
       document.querySelectorAll('.demo button').forEach(function (x) { x.classList.remove('on'); });
       b.classList.add('on');
-      pintar(DEMO[b.dataset.day]);
+      VISTA = DEMO[b.dataset.day];
+      pintar(VISTA);
     });
   });
 
-  pintar(HOY);
+  pintar(VISTA);
 </script>
 
 </body>
