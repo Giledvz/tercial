@@ -161,6 +161,26 @@
     padding: 3px 6px 2px; color: var(--color-text-secondary); background: var(--color-bg-page); }
   @media (max-width: 560px) { .kbdhint { display: none; } }
 
+  /* progreso de sesión (en la cabecera de la tarjeta) */
+  .card__prog { margin-left: auto; font-family: var(--font-family-mono); font-size: var(--font-size-11);
+    letter-spacing: .08em; text-transform: uppercase; color: var(--prac); }
+  .card__prog b { color: var(--prac); font-weight: var(--font-weight-medium); }
+
+  /* tarjeta de cierre de la tanda */
+  .resumen { text-align: center; padding: var(--space-8) var(--space-5) var(--space-6); }
+  .resumen__ask { font-family: var(--font-family-mono); font-size: var(--font-size-12); letter-spacing: .1em;
+    text-transform: uppercase; color: var(--color-text-meta); margin: 0; }
+  .resumen__score { font-family: var(--font-family-display); font-weight: var(--font-weight-medium);
+    font-size: clamp(46px, 11vw, 76px); line-height: 1; color: var(--color-text-primary); margin: var(--space-3) 0; }
+  .resumen__score b { color: var(--prac); font-weight: var(--font-weight-medium); }
+  .resumen__score span { color: var(--color-text-meta); font-size: .45em; }
+  .resumen__msg { font-size: var(--font-size-16); color: var(--color-text-secondary);
+    max-width: 44ch; margin: 0 auto var(--space-5); line-height: 1.55; }
+  .resumen__racha { display: inline-block; font-family: var(--font-family-mono); font-size: var(--font-size-13);
+    color: var(--prac); border: 1px solid color-mix(in srgb, var(--prac) 35%, var(--color-border));
+    background: var(--prac-soft); border-radius: var(--radius-pill); padding: 9px 17px; margin: 0; }
+  .resumen__racha strong { font-weight: var(--font-weight-medium); }
+
   .foot { margin-top: var(--space-6); font-size: var(--font-size-12); color: var(--color-text-meta); line-height: 1.6; }
   .foot b { color: var(--color-text-secondary); font-weight: var(--font-weight-medium); }
 </style>
@@ -204,11 +224,19 @@
         <button type="button" data-n="3">Avanzado</button>
       </div>
     </div>
+    <div>
+      <p class="ctl__lbl">Modo</p>
+      <div class="niveles" id="modos">
+        <button type="button" data-m="libre" class="on">Libre · infinito</button>
+        <button type="button" data-m="sesion">Sesión de 10</button>
+      </div>
+    </div>
   </div>
 
   <section class="card" id="card" aria-live="polite">
     <div class="card__top">
       <span class="card__tema" id="cardTema">—</span>
+      <span class="card__prog" id="cardProg" hidden></span>
       <span class="card__ref" id="cardRef"></span>
     </div>
     <div class="q">
@@ -222,9 +250,24 @@
       <button class="btn btn--ghost" id="verSol" type="button" hidden>Ver solución</button>
       <span class="kbdhint"><span class="kbd">1</span>–<span class="kbd">4</span> responder · <span class="kbd">Enter</span> siguiente</span>
       <span class="stats">
-        <span>racha <b id="stRacha">0</b></span>
         <span>aciertos <b id="stAc">0</b>/<b id="stTot">0</b></span>
+        <span>racha <b id="stDias">0</b> d</span>
       </span>
+    </div>
+  </section>
+
+  <!-- CIERRE DE LA TANDA (modo sesión) -->
+  <section class="card" id="resumen" hidden aria-live="polite">
+    <div class="resumen">
+      <p class="resumen__ask">Sesión terminada</p>
+      <div class="resumen__score"><b id="rScore">0</b> <span>/ <span id="rMeta">10</span></span></div>
+      <p class="resumen__msg" id="rMsg"></p>
+      <p class="resumen__racha" id="rRacha"></p>
+    </div>
+    <div class="acts">
+      <button class="btn btn--main" id="otraTanda" type="button">Otra tanda →</button>
+      <button class="btn btn--ghost" id="aLibre" type="button">Seguir en modo libre</button>
+      <span class="kbdhint"><span class="kbd">Enter</span> otra tanda</span>
     </div>
   </section>
 
@@ -482,7 +525,27 @@
   /* ═══════════════════════════════════════════════════════════════
      UI
      ═══════════════════════════════════════════════════════════════ */
-  var estado = { tema: 'signos-suma', nivel: 1, prob: null, contestada: false, racha: 0, ac: 0, tot: 0 };
+  var estado = { tema: 'signos-suma', nivel: 1, prob: null, contestada: false, ac: 0, tot: 0,
+                 modo: 'libre', meta: 10, sHechos: 0, sAc: 0, fase: 'jugando' };
+
+  /* ── RACHA DIARIA · días seguidos practicando (localStorage, sin backend) ── */
+  var K_RACHA = 'tercial-practica-racha';
+  function isoDe(d) { return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function hoyISO() { return isoDe(new Date()); }
+  function ayerISO() { var d = new Date(); d.setDate(d.getDate() - 1); return isoDe(d); }
+  function leerRacha() { try { return JSON.parse(localStorage.getItem(K_RACHA)) || { dias: 0, ultimo: null }; } catch (e) { return { dias: 0, ultimo: null }; } }
+  function rachaVigente() {                       // qué mostrar: 0 si ya se rompió
+    var r = leerRacha();
+    return (r.ultimo === hoyISO() || r.ultimo === ayerISO()) ? r.dias : 0;
+  }
+  function marcarHoy() {                           // cuenta el día al primer ejercicio (idempotente)
+    var r = leerRacha(), hoy = hoyISO();
+    if (r.ultimo === hoy) return r.dias;
+    r.dias = (r.ultimo === ayerISO()) ? (r.dias || 0) + 1 : 1;
+    r.ultimo = hoy;
+    localStorage.setItem(K_RACHA, JSON.stringify(r));
+    return r.dias;
+  }
 
   var chipsTema = document.getElementById('chipsTema');
   GEN.forEach(function (g) {
@@ -506,14 +569,44 @@
     });
   });
 
+  document.querySelectorAll('#modos button').forEach(function (b) {
+    b.addEventListener('click', function () { setModo(b.dataset.m); });
+  });
+
   var elExp = document.getElementById('exp'), elOpts = document.getElementById('opts'),
       elVer = document.getElementById('verdict'), elTema = document.getElementById('cardTema'),
-      elRef = document.getElementById('cardRef'), elVerSol = document.getElementById('verSol');
+      elRef = document.getElementById('cardRef'), elVerSol = document.getElementById('verSol'),
+      elProg = document.getElementById('cardProg'), elCard = document.getElementById('card'),
+      elResumen = document.getElementById('resumen'), elOtro = document.getElementById('otro');
+
+  function actualizarStats() {
+    var sesion = estado.modo === 'sesion';
+    document.getElementById('stAc').textContent = sesion ? estado.sAc : estado.ac;
+    document.getElementById('stTot').textContent = sesion ? estado.sHechos : estado.tot;
+    document.getElementById('stDias').textContent = rachaVigente();
+    if (sesion) { elProg.hidden = false; elProg.innerHTML = 'Sesión · <b>' + estado.sHechos + '</b> / ' + estado.meta; elRef.style.display = 'none'; }
+    else { elProg.hidden = true; elRef.style.display = ''; }
+  }
+
+  function setModo(m) {
+    estado.modo = m;
+    document.querySelectorAll('#modos button').forEach(function (x) { x.classList.toggle('on', x.dataset.m === m); });
+    estado.sHechos = 0; estado.sAc = 0;
+    empezarTanda();
+  }
+
+  function empezarTanda() {                    // (re)inicia una sesión / arranca en libre
+    estado.sHechos = 0; estado.sAc = 0; estado.fase = 'jugando';
+    elResumen.hidden = true; elCard.hidden = false;
+    nuevo();
+  }
 
   function nuevo() {
     var g = GEN.filter(function (x) { return x.id === estado.tema; })[0];
     var p = g.fn(estado.nivel);
-    estado.prob = p; estado.contestada = false;
+    estado.prob = p; estado.contestada = false; estado.fase = 'jugando';
+    elCard.classList.remove('ok', 'bad');
+    elOtro.textContent = 'Otro ejercicio →';
     elTema.textContent = p.meta.tema;
     elRef.textContent = p.meta.ref;
     elExp.innerHTML = p.enunciado;
@@ -528,12 +621,15 @@
       btn.addEventListener('click', function () { responder(o, btn); });
       elOpts.appendChild(btn);
     });
+    actualizarStats();
   }
 
   function responder(o, btn) {
     if (estado.contestada) return;
     estado.contestada = true;
     estado.tot++;
+    if (estado.modo === 'sesion') estado.sHechos++;
+    marcarHoy();                                 // cuenta el día
     var p = estado.prob;
     var botones = elOpts.querySelectorAll('.opt');
     botones.forEach(function (b, i) {
@@ -542,17 +638,15 @@
       else b.classList.add('dim');
     });
 
-    var card = document.getElementById('card');
     if (o.ok) {
-      estado.ac++; estado.racha++;
-      card.classList.remove('bad'); card.classList.add('ok');
+      estado.ac++; if (estado.modo === 'sesion') estado.sAc++;
+      elCard.classList.remove('bad'); elCard.classList.add('ok');
       btn.classList.add('sel');
       elVer.innerHTML =
         '<div class="verdict__box"><div class="verdict__h"><span class="verdict__tag">Correcto</span></div>' +
         '<p class="verdict__err">' + pick(['Bien. Otra igual para fijarlo.', 'Eso es. Sigue.', 'Correcto — vas afinando el ojo.']) + '</p></div>';
     } else {
-      estado.racha = 0;
-      card.classList.remove('ok'); card.classList.add('bad');
+      elCard.classList.remove('ok'); elCard.classList.add('bad');
       btn.classList.remove('dim'); btn.classList.add('sel');
       elVer.innerHTML =
         '<div class="verdict__box"><div class="verdict__h"><span class="verdict__tag">Ojo aquí</span></div>' +
@@ -560,9 +654,36 @@
     }
     elVer.hidden = false;
     elVerSol.hidden = false;
-    document.getElementById('stRacha').textContent = estado.racha;
-    document.getElementById('stAc').textContent = estado.ac;
-    document.getElementById('stTot').textContent = estado.tot;
+    if (estado.modo === 'sesion' && estado.sHechos >= estado.meta) elOtro.textContent = 'Ver resumen →';
+    actualizarStats();
+  }
+
+  /* avanzar = botón principal / Enter: siguiente ejercicio, o cierre si terminó la tanda */
+  function avanzar() {
+    if (estado.modo === 'sesion' && estado.sHechos >= estado.meta) mostrarResumen();
+    else nuevo();
+  }
+
+  function mensajeResumen(sc, meta) {
+    if (sc === meta) return '¡Perfecto! Las diez sin fallar. Súbete de nivel o cámbiate de tema.';
+    var r = sc / meta;
+    if (r >= 0.8) return 'Muy bien — ya casi te sale sin pensar. Una tanda más y queda.';
+    if (r >= 0.6) return 'Vas bien. Repasa los que te marcó y dale otra tanda.';
+    if (r >= 0.4) return 'Vas agarrando el hilo. Fíjate en el error que te señaló cada vez: ahí está la clave.';
+    return 'Esto todavía se te resiste, y está bien: para eso es la práctica. Abre la solución de los que fallaste y vuelve a intentar.';
+  }
+
+  function mostrarResumen() {
+    estado.fase = 'resumen';
+    document.getElementById('rScore').textContent = estado.sAc;
+    document.getElementById('rMeta').textContent = estado.meta;
+    document.getElementById('rMsg').innerHTML = mensajeResumen(estado.sAc, estado.meta);
+    var d = rachaVigente();
+    document.getElementById('rRacha').innerHTML = d <= 1
+      ? 'Practicaste hoy · <strong>empiezas racha</strong>'
+      : 'Practicaste hoy · llevas <strong>' + d + ' días seguidos</strong>';
+    elCard.hidden = true;
+    elResumen.hidden = false;
   }
 
   elVerSol.addEventListener('click', function () {
@@ -576,15 +697,21 @@
     box.appendChild(div);
   });
 
-  document.getElementById('otro').addEventListener('click', nuevo);
+  elOtro.addEventListener('click', avanzar);
+  document.getElementById('otraTanda').addEventListener('click', empezarTanda);
+  document.getElementById('aLibre').addEventListener('click', function () { setModo('libre'); });
 
   /* ── control por teclado ──
      1-4 (o A-D) responden mientras no hayas contestado;
-     Enter pasa a la siguiente una vez que ves la retro. */
+     Enter = siguiente (o cierre de tanda, o "otra tanda" en el resumen). */
   document.addEventListener('keydown', function (e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (estado.fase === 'resumen') {
+      if (e.key === 'Enter') { e.preventDefault(); empezarTanda(); }
+      return;
+    }
     if (e.key === 'Enter') {
-      if (estado.contestada) { e.preventDefault(); nuevo(); }
+      if (estado.contestada) { e.preventDefault(); avanzar(); }
       return;
     }
     if (estado.contestada) return;
