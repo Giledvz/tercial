@@ -219,3 +219,69 @@ Historia de México:
 > 💡 **Bonus de la guía:** trae un **examen muestra de 128 preguntas con clave de respuestas
 > mapeada a materia + tema**. Es material listo para sembrar los módulos de práctica/simulacro
 > y el diagnóstico (dice qué tema evalúa cada pregunta).
+
+---
+
+## TRONCO COMÚN · prepa ⇄ universidad  (cómo NO duplicar)
+
+**El punto de Gil:** muchos temas del inicio son **los mismos** para prepa y uni —un **tronco
+común**— y luego el árbol se ramifica. Modelarlo bien evita mantener la misma información en
+dos lugares.
+
+### El modelo: un catálogo de temas + dos rutas
+- **Un solo catálogo de temas** (nodos), cada uno definido **una vez** con su material y sus
+  **generadores**, etiquetado con **qué niveles lo usan y a qué profundidad**.
+- **Cada nivel es una RUTA ordenada** que referencia esos nodos. Los del tronco salen en las
+  **dos** rutas; los de rama, en **una** sola.
+- Consecuencia: se arregla el material de fracciones **una vez** y sirve a los dos niveles; el
+  generador **filtra por `nivel`**; hay **dos "plan de hoy"** (distinto orden/ritmo) sobre el
+  **mismo** material. **Cero duplicación** — justo lo que preocupa.
+
+### Matemáticas — el mapa (materia de Gil)
+**A · Tronco común idéntico** (misma habilidad y profundidad → el generador sirve tal cual):
+
+| Nodo | ECOEMS (prepa) | UNAM (uni) | Generador |
+|---|---|---|---|
+| Signos (enteros) | Mate 1 | Mate 1 | ✅ signos-suma · signos-mul |
+| Fracciones y decimales | Mate 1 | Mate 1 | ✅ frac-suma · frac-mul |
+| Potencias y radicales | Mate 1 | Mate 1 | ⬜ por hacer |
+| Expresiones algebraicas | Mate 2 | Mate 1 | ⬜ |
+| Productos notables y factorización | Mate 2 | Mate 2 | ⬜ |
+| Ecuaciones de 1er grado | Mate 2 | Mate 3 | ✅ ecuacion |
+| Ecuaciones de 2º grado | Mate 2 | Mate 3 | ⬜ |
+| Sistemas 2×2 | Mate 2 | Mate 5 | ⬜ |
+
+**B · Tronco que se profundiza** (mismo nodo raíz; uni va más lejos → prepa = versión básica):
+
+| Nodo | ECOEMS (prepa) | UNAM (uni) |
+|---|---|---|
+| Proporcionalidad y % | Mate 1 | aritmética implícita |
+| Plano cartesiano → la recta | Mate 2 (plano cartesiano) | Mate 9 (recta completa) |
+| Razones trig. / Pitágoras | Mate 4 (básico) | Mate 7 (trigonometría completa) |
+
+**C · Ramas separadas** (aquí se abre el árbol):
+- **Solo prepa:** Estadística y probabilidad (Mate 3) · Geometría euclidiana — perímetros,
+  áreas, volúmenes, figuras planas, ángulos (Mate 4).
+- **Solo uni:** Desigualdades (4) · Funciones algebraicas (6) · Exponenciales y logarítmicas (8) ·
+  Geometría analítica — circunferencia/parábola/elipse/hipérbola (10–14) · Cálculo — límites,
+  derivada, integral (15–17).
+
+**Punto de separación:** después del **álgebra básica** (sistemas 2×2, ec. 2º grado, plano
+cartesiano), prepa se va a **estadística + geometría** y uni a
+**funciones → trigonometría → geometría analítica → cálculo.**
+
+> 💡 El tronco común **A es justo lo que ya construimos** en el generador (signos, fracciones,
+> ecuaciones) — y es el **cuello de botella de mecánica de LOS DOS** niveles. Rinde doble: un
+> generador de "fracciones" sirve a prepa y a uni al mismo tiempo. → **construir el tronco
+> primero** es lo más apalancado (un solo esfuerzo, dos mercados).
+
+### Física (materia de Gil)
+Prepa cubre **los mismos temas** que uni pero **comprimidos y menos profundos**: los 4
+mega-temas de ECOEMS (movimiento · fuerzas · interacciones de la materia · estructura interna)
+se **despliegan** en los 9 de UNAM. Aquí casi todo es **"tronco que se profundiza"**, poca
+rama: mismo árbol, más alto en uni.
+
+### Materias de concepto (de la mamá)
+Biología, Química, Historia, Geografía y Español también comparten tronco (célula, herencia,
+evolución; mismos periodos históricos; comprensión lectora, ortografía…). **Mismo modelo**
+cuando toque cargarlas: un catálogo, dos rutas.
