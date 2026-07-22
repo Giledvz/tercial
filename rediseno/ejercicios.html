@@ -41,8 +41,10 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 
 <style>
-  :root { --prac: #2d5c63; --prac-soft: color-mix(in srgb, #2d5c63 8%, transparent); }
-  [data-theme="dark"] { --prac: #7eb0b5; --prac-soft: color-mix(in srgb, #7eb0b5 12%, transparent); }
+  /* El acento de la página = el acento del NIVEL (nada de azul):
+     universidad = coñac (default de tokens) · prepa = terracota (?nivel=prepa). */
+  :root { --prac: var(--color-accent); --prac-soft: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+  :root[data-nivel="prepa"] { --color-accent: var(--accent-terracota); --color-accent-soft: var(--accent-terracota-soft); }
   .ok  { --sig: #2f7d4f; } [data-theme="dark"] .ok  { --sig: #6fbf8e; }
   .bad { --sig: #b0432f; } [data-theme="dark"] .bad { --sig: #d98a76; }
 
@@ -193,7 +195,7 @@
 
   <header class="top">
     <a class="top__brand" href="/tercial/">Tercial</a>
-    <span class="top__level">universidad · práctica</span>
+    <span class="top__level" id="topLevel">universidad · práctica</span>
     <div class="top__right">
       <a class="top__switch" href="/tercial/rediseno/alumno.html">← volver a mi día</a>
       <button class="theme-toggle" id="themeBtn" type="button" aria-label="Cambiar modo de color">
@@ -285,6 +287,15 @@
   document.getElementById('themeBtn').addEventListener('click', function () {
     if (window.ClasesTheme) window.ClasesTheme.toggle();
   });
+
+  /* nivel: universidad (coñac, por defecto) o prepa (terracota) vía ?nivel=prepa */
+  (function () {
+    if (new URLSearchParams(location.search).get('nivel') === 'prepa') {
+      document.documentElement.setAttribute('data-nivel', 'prepa');
+      var lv = document.getElementById('topLevel');
+      if (lv) lv.textContent = 'prepa · práctica';
+    }
+  })();
 
   /* ═══════════════════════════════════════════════════════════════
      ARITMÉTICA EXACTA · fracciones (nada de coma flotante)
