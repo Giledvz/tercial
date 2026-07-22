@@ -78,6 +78,33 @@ por tema y dificultad). Es su mayor dolor **y** de lo más fácil de resolver co
 
 ## 3 · El ritmo (semana / día) — `[SISTEMA]` casi listo
 
+### 3.0 · Dos cursos, dos arquitecturas (define los dos "plan de hoy")
+La diferencia de fondo entre prepa y uni, dicha por Gil:
+
+- **PREPA (ECOEMS) — INTENSIVO, ~4 meses.** Temario **chico** → se ven **todos** los temas de
+  forma intensiva en ~4 meses. Núcleo = **fin de semana** (sáb + dom, 4 h), con **examen
+  acumulativo de mate+física el sábado**; asesorías **obligatorias** entre semana (refuerzo de
+  "deficiencias de niveles previos"). Ritmo rápido, mucha repetición.
+  → Plan de hoy: **marcha intensiva** anclada al fin de semana.
+
+- **UNI (UNAM) — NO intensivo, ANUAL.** Mucha más información (4 áreas, temario grande con
+  cálculo) → estructurado como curso de **~1 año**. **Empieza desde lo que debieron ver en
+  primaria / secundaria / prepa** (fundamentos: aritmética, fracciones, signos, álgebra básica)
+  y **sube gradualmente** hasta lo avanzado (funciones, trig, geometría analítica, cálculo).
+  Un tema por semana (mié mate / jue física), ritmo tranquilo.
+  → Plan de hoy: **arco largo y gradual, fundamentos primero.**
+
+**La unificación (clave del producto):** el curso de **uni, en su fase de fundamentos, cubre el
+MISMO material que prepa** (y de más abajo). Es decir: **prepa ≈ la fase fundacional del curso
+de uni, pero comprimida.** Uni la estira sobre el año y arranca desde más abajo. Por eso el
+**tronco común** (aritmética + álgebra básica) y su **generador** rinden en los dos: en prepa
+es casi todo el curso; en uni es el arranque del año.
+
+⚠️ **Refina el prototipo:** `rediseno/alumno.html` modela uni como un curso comprimido de ~17
+semanas (ago–dic). El modelo correcto es **anual, empezando en fundamentos** antes de los 17
+temas UNAM. ❓Falta a Gil para modelarlo bien: ¿cuándo arranca el año?, ¿cuántas semanas de
+**fundamentos** antes del temario UNAM formal?
+
 ### 3.1 · El ritmo REAL (curso que acaba de terminar — dicho por Gil)
 | Día | Duración | Qué pasa |
 |---|---|---|
