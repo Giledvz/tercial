@@ -18,8 +18,9 @@
      una lleva etiquetada la equivocación que representa, para que al
      fallar el alumno vea EN QUÉ se equivocó, no solo "mal".
 
-     v1: temas 1 y 3 del temario UNAM (el hueco de material + el
-     cuello de botella mecánico de las semanas 1-10). Extensible:
+     Cubre temas 1, 2 y 3 del temario (el hueco de material + el
+     cuello de botella mecánico de las semanas 1-10). Es el TRONCO
+     COMÚN: los mismos temas sirven a prepa y a universidad. Extensible:
      agregar un tema = agregar un generador al registro GEN.
      ══════════════════════════════════════════════════════════════ -->
 
@@ -210,7 +211,8 @@
     <p class="head__eyebrow">Práctica ilimitada</p>
     <h1 class="head__t">Ejercicios que <em>nunca se acaban</em></h1>
     <p class="head__d">Cada uno se genera al vuelo con números nuevos. Las tres opciones falsas son
-      los errores típicos —signos, fracciones— para que si te equivocas veas <em>en qué</em>.</p>
+      los errores típicos —de signos, de fracciones, del doble producto— para que si te equivocas
+      veas <em>en qué</em>.</p>
   </div>
 
   <div class="controls">
@@ -242,7 +244,7 @@
       <span class="card__ref" id="cardRef"></span>
     </div>
     <div class="q">
-      <p class="q__ask">¿Cuánto es?</p>
+      <p class="q__ask" id="qAsk">¿Cuánto es?</p>
       <div class="q__exp" id="exp">—</div>
     </div>
     <div class="opts" id="opts"></div>
@@ -277,8 +279,8 @@
     <b>Cómo funciona:</b> no hay banco de preguntas ni servidor — cada ejercicio se arma con una
     plantilla y números al azar, y la respuesta se calcula exacta. Por eso son infinitos y nunca
     se repiten igual. <b>Los distractores son intencionales:</b> cada opción falsa es un error real
-    del temario. Hoy cubre <b>temas 1 y 3</b> (operaciones con signos y fracciones · ecuaciones de
-    1<sup>er</sup> grado); se agregan más generadores tema por tema.
+    del temario. Hoy cubre <b>temas 1, 2 y 3</b> (signos y fracciones · productos notables y factorización ·
+    ecuaciones de 1<sup>er</sup> grado); se agregan más generadores tema por tema.
   </p>
 
 </div>
@@ -311,12 +313,58 @@
   function fsub(a, b) { return fr(a.n * b.d - b.n * a.d, a.d * b.d); }
   function fmul(a, b) { return fr(a.n * b.n, a.d * b.d); }
   function fdiv(a, b) { return fr(a.n * b.d, a.d * b.n); }
-  function feq(a, b) { return a && b && a.n === b.n && a.d === b.d; }
-  function fkey(a) { return a.n + '/' + a.d; }
+  function fkey(a) { return (a && a.k !== undefined) ? a.k : (a.n + '/' + a.d); }
+  function feq(a, b) { return !!a && !!b && fkey(a) === fkey(b); }
 
-  /* render de un valor (entero o fracción) como HTML */
+  /* ═══════════════════════════════════════════════════════════════
+     POLINOMIOS · coeficientes por grado: [c0, c1, c2, c3]
+     Para productos notables y factorización (respuestas algebraicas),
+     igual de exactas que las fracciones: todo es aritmética entera.
+     ═══════════════════════════════════════════════════════════════ */
+  var POT = ['', 'x', 'x²', 'x³'];
+  function pTrim(A) { var B = A.slice(); while (B.length > 1 && B[B.length - 1] === 0) B.pop(); return B; }
+  function pmul(A, B) {
+    var C = []; for (var i = 0; i < A.length + B.length - 1; i++) C.push(0);
+    for (var i2 = 0; i2 < A.length; i2++) for (var j = 0; j < B.length; j++) C[i2 + j] += A[i2] * B[j];
+    return pTrim(C);
+  }
+  function pkey(A) { return pTrim(A).join(','); }
+  function pstr(A) {
+    A = pTrim(A); var s = '';
+    for (var g = A.length - 1; g >= 0; g--) {
+      var c = A[g]; if (c === 0) continue;
+      var abs = Math.abs(c);
+      var t = (g === 0) ? String(abs) : ((abs === 1 ? '' : abs) + POT[g]);
+      s += (s === '') ? ((c < 0 ? MIN : '') + t) : ((c < 0 ? ' ' + MIN + ' ' : ' + ') + t);
+    }
+    return s === '' ? '0' : s;
+  }
+  /* factor lineal {a,b} = (a·x + b) */
+  function facUno(f) {
+    if (f.a === 1 && f.b === 0) return 'x';
+    var izq = f.a === 1 ? 'x' : (f.a === -1 ? MIN + 'x' : f.a + 'x');
+    if (f.b === 0) return '(' + izq + ')';
+    return '(' + izq + (f.b < 0 ? ' ' + MIN + ' ' : ' + ') + Math.abs(f.b) + ')';
+  }
+  function facStr(F) {
+    if (F.length === 2 && F[0].a === F[1].a && F[0].b === F[1].b) return facUno(F[0]) + '²';
+    return F.map(facUno).join('');
+  }
+  function facKey(F) { return F.map(function (f) { return f.a + ',' + f.b; }).sort().join('|'); }
+  function facPoly(F) { return F.reduce(function (acc, f) { return pmul(acc, [f.b, f.a]); }, [1]); }
+
+  /* envoltorios de respuesta */
+  function ansP(A) { return { k: 'p:' + pkey(A), h: pstr(A) }; }        // polinomio desarrollado
+  function ansF(F) { return { k: 'f:' + facKey(F), h: facStr(F) }; }    // forma factorizada
+  function sg(v) { return (v < 0 ? MIN + ' ' : '+ ') + Math.abs(v); }   // " + 3" / " − 3"
+
+  /* render de un valor como HTML.
+     Una respuesta puede ser una FRACCIÓN {n,d} o una respuesta genérica
+     {k: clave para deduplicar, h: html} — así el mismo motor sirve para
+     números, polinomios y formas factorizadas. */
   var MIN = '−';                        // signo menos tipográfico
   function tex(f) {
+    if (f && f.h !== undefined) return f.h;      // respuesta genérica ya renderizada
     if (f.d === 1) return (f.n < 0 ? MIN : '') + Math.abs(f.n);
     var s = f.n < 0 ? MIN : '';
     return s + '<span class="fr"><span class="fr__n">' + Math.abs(f.n) + '</span><span class="fr__d">' + f.d + '</span></span>';
@@ -344,7 +392,9 @@
       seen[k] = 1; dis.push(c);
     }
     var tries = 0;
-    while (dis.length < 3 && tries < 40) {           // relleno de seguridad
+    /* relleno de seguridad · solo aplica a respuestas numéricas (las algebraicas
+       traen siempre ≥3 distractores propios; el test lo verifica). */
+    while (dis.length < 3 && tries < 40 && correcta.d !== undefined) {
       tries++;
       var delta = pick([-2, -1, 1, 2, 3]);
       var v = correcta.d === 1 ? ent(correcta.n + delta) : fr(correcta.n + delta, correcta.d);
@@ -517,6 +567,132 @@
     return finish(enun, correcta, cand, { ref: 'Tema 3 · ecuaciones', tema: 'Ecuaciones de 1er grado', pasos: pasos });
   }
 
+  /* — productos notables — */
+  function genProdNotables(nivel) {
+    var top = [6, 9, 12][nivel - 1];
+    var tipo = pick(nivel === 1 ? ['cuad', 'conj'] : nivel === 2 ? ['cuad', 'conj', 'comun'] : ['cuad', 'conj', 'comun', 'coef']);
+    var enun, correcta, cand, pasos, A;
+
+    if (tipo === 'cuad') {                                  // (x ± a)²
+      var a = rint(2, top) * ((nivel >= 2 && coin()) ? -1 : 1);
+      A = [a * a, 2 * a, 1];
+      enun = '(x ' + sg(a) + ')²';
+      correcta = ansP(A);
+      cand = [
+        { val: ansP([a * a, 0, 1]),      err: 'Te faltó el <strong>doble producto</strong>. (x ± a)² = x² <strong>± 2ax</strong> + a², no solo x² + a².' },
+        { val: ansP([a * a, a, 1]),      err: 'El término de en medio lleva el <strong>2</strong>: 2·x·(' + a + ') = ' + (2 * a) + 'x.' },
+        { val: ansP([-a * a, 2 * a, 1]), err: 'El último término es un <strong>cuadrado</strong>: (' + a + ')² = ' + (a * a) + ', siempre <strong>positivo</strong>.' },
+        { val: ansP([a * a, -2 * a, 1]), err: 'El signo del término de en medio <strong>sigue al del binomio</strong>.' }
+      ];
+      pasos = ['Cuadrado del primero: <b>x²</b>.',
+               'Doble producto: <b>2·x·(' + a + ') = ' + (2 * a) + 'x</b>.',
+               'Cuadrado del segundo: <b>(' + a + ')² = ' + (a * a) + '</b> (positivo).',
+               'Queda: <b>' + pstr(A) + '</b>.'];
+
+    } else if (tipo === 'conj') {                           // (x + a)(x − a)
+      var b = rint(2, top);
+      A = [-b * b, 0, 1];
+      enun = '(x + ' + b + ')(x ' + MIN + ' ' + b + ')';
+      correcta = ansP(A);
+      cand = [
+        { val: ansP([b * b, 0, 1]),        err: 'Binomios conjugados dan <strong>diferencia</strong> de cuadrados: x² <strong>' + MIN + '</strong> a².' },
+        { val: ansP([-b * b, 2 * b, 1]),   err: 'Los productos cruzados <strong>se cancelan</strong> (+' + b + 'x y ' + MIN + b + 'x): no hay término de en medio.' },
+        { val: ansP([b * b, 2 * b, 1]),    err: 'Eso es (x + ' + b + ')², no el producto de <strong>conjugados</strong>.' },
+        { val: ansP([-b * b, -2 * b, 1]),  err: 'No queda término en x: los cruzados se anulan.' }
+      ];
+      pasos = ['Son <b>conjugados</b>: mismo par, signos opuestos.',
+               'Los productos cruzados se anulan: +' + b + 'x ' + MIN + ' ' + b + 'x = 0.',
+               'Queda <b>cuadrado del primero menos cuadrado del segundo</b>: <b>' + pstr(A) + '</b>.'];
+
+    } else if (tipo === 'comun') {                          // (x + a)(x + b)
+      var p = nz(-top, top), q = nz(-top, top);
+      if (p === 2 && q === 2) q = 3;                        // evita a+b === a·b
+      A = [p * q, p + q, 1];
+      enun = '(x ' + sg(p) + ')(x ' + sg(q) + ')';
+      correcta = ansP(A);
+      cand = [
+        { val: ansP([p + q, p * q, 1]), err: 'Los <strong>invertiste</strong>: en medio va la <strong>suma</strong> (' + (p + q) + ') y al final el <strong>producto</strong> (' + (p * q) + ').' },
+        { val: ansP([p * q, p * q, 1]), err: 'El término de en medio es la <strong>suma</strong> de los dos números, no el producto.' },
+        { val: ansP([p + q, p + q, 1]), err: 'El término independiente es el <strong>producto</strong> de los dos números.' },
+        { val: ansP([-p * q, p + q, 1]), err: 'Cuida el <strong>signo</strong> del producto: (' + p + ')(' + q + ') = ' + (p * q) + '.' }
+      ];
+      pasos = ['Término común x: <b>x²</b>.',
+               'Término de en medio = <b>suma</b>: (' + p + ') + (' + q + ') = <b>' + (p + q) + '</b>.',
+               'Independiente = <b>producto</b>: (' + p + ')(' + q + ') = <b>' + (p * q) + '</b>.',
+               'Queda: <b>' + pstr(A) + '</b>.'];
+
+    } else {                                                // (cx ± a)²
+      var c = rint(2, 4), d = nz(-top, top);
+      A = [d * d, 2 * c * d, c * c];
+      enun = '(' + c + 'x ' + sg(d) + ')²';
+      correcta = ansP(A);
+      cand = [
+        { val: ansP([d * d, 0, c * c]),         err: 'Te faltó el <strong>doble producto</strong>: 2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x.' },
+        { val: ansP([d * d, 2 * d, c * c]),     err: 'En el doble producto también entra el <strong>' + c + '</strong>: 2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x.' },
+        { val: ansP([d * d, 2 * c * d, c]),     err: 'El coeficiente también se <strong>eleva al cuadrado</strong>: (' + c + 'x)² = ' + (c * c) + 'x².' },
+        { val: ansP([-d * d, 2 * c * d, c * c]), err: 'El último término es un cuadrado → <strong>positivo</strong>.' }
+      ];
+      pasos = ['Cuadrado del primero: <b>(' + c + 'x)² = ' + (c * c) + 'x²</b> (el coeficiente también se eleva).',
+               'Doble producto: <b>2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x</b>.',
+               'Cuadrado del segundo: <b>' + (d * d) + '</b>.',
+               'Queda: <b>' + pstr(A) + '</b>.'];
+    }
+    return finish(enun, correcta, cand, { ref: 'Tema 2 · productos notables', tema: 'Productos notables', pasos: pasos, ask: 'Desarrolla' });
+  }
+
+  /* — factorización — */
+  function genFactorizacion(nivel) {
+    var top = [6, 9, 10][nivel - 1];
+    var tipo = pick(nivel === 1 ? ['dif', 'tri'] : ['dif', 'tri', 'tcp']);
+    var enun, correcta, cand, pasos, P;
+
+    if (tipo === 'dif') {                                   // x² − a²
+      var a = rint(2, top);
+      P = [-a * a, 0, 1];
+      enun = pstr(P);
+      correcta = ansF([{ a: 1, b: a }, { a: 1, b: -a }]);
+      cand = [
+        { val: ansF([{ a: 1, b: a * a }, { a: 1, b: -a * a }]), err: 'Hay que sacar la <strong>raíz cuadrada</strong> de ' + (a * a) + ', que es <strong>' + a + '</strong> — no usar ' + (a * a) + '.' },
+        { val: ansF([{ a: 1, b: a }, { a: 1, b: a }]),         err: 'Eso es un <strong>trinomio cuadrado perfecto</strong>. Una <strong>diferencia</strong> de cuadrados da binomios <strong>conjugados</strong>.' },
+        { val: ansF([{ a: 1, b: -a }, { a: 1, b: -a }]),       err: 'Los signos deben ser <strong>opuestos</strong>: (x + ' + a + ')(x ' + MIN + ' ' + a + ').' }
+      ];
+      pasos = ['Reconoce la forma: <b>diferencia de cuadrados</b> (a² ' + MIN + ' b²).',
+               'Raíces: √x² = <b>x</b> y √' + (a * a) + ' = <b>' + a + '</b>.',
+               'Se factoriza en <b>conjugados</b>: <b>(x + ' + a + ')(x ' + MIN + ' ' + a + ')</b>.'];
+
+    } else if (tipo === 'tcp') {                            // x² + 2ax + a²
+      var t = rint(2, top) * (coin() ? -1 : 1);
+      P = [t * t, 2 * t, 1];
+      enun = pstr(P);
+      correcta = ansF([{ a: 1, b: t }, { a: 1, b: t }]);
+      cand = [
+        { val: ansF([{ a: 1, b: 2 * t }, { a: 1, b: 2 * t }]), err: 'Usaste el término de en medio completo. Va su <strong>mitad</strong>: √' + (t * t) + ' = ' + Math.abs(t) + '.' },
+        { val: ansF([{ a: 1, b: t }, { a: 1, b: -t }]),        err: 'Eso es una <strong>diferencia de cuadrados</strong>. Aquí hay término de en medio → <strong>cuadrado perfecto</strong>.' },
+        { val: ansF([{ a: 1, b: -t }, { a: 1, b: -t }]),       err: 'El binomio lleva el <strong>mismo signo</strong> que el término de en medio (' + (2 * t) + 'x).' }
+      ];
+      pasos = ['Checa si es <b>cuadrado perfecto</b>: √x² = x y √' + (t * t) + ' = ' + Math.abs(t) + '.',
+               'Verifica el de en medio: 2·x·(' + t + ') = <b>' + (2 * t) + 'x</b> ✓.',
+               'Queda: <b>(x ' + sg(t) + ')²</b>.'];
+
+    } else {                                                // x² + (p+q)x + pq
+      var p, q, g = 0;
+      do { p = nz(-top, top); q = nz(-top, top); g++; }
+      while (g < 50 && (Math.abs(p) < 2 || Math.abs(q) < 2 || q === -p));
+      P = [p * q, p + q, 1];
+      enun = pstr(P);
+      correcta = ansF([{ a: 1, b: p }, { a: 1, b: q }]);
+      cand = [
+        { val: ansF([{ a: 1, b: -p }, { a: 1, b: -q }]),   err: 'Signos al revés: deben <strong>multiplicar</strong> ' + (p * q) + ' y <strong>sumar</strong> ' + (p + q) + '.' },
+        { val: ansF([{ a: 1, b: p * q }, { a: 1, b: 1 }]), err: 'Esos <strong>multiplican</strong> bien, pero <strong>no suman</strong> el término de en medio (' + (p + q) + ').' },
+        { val: ansF([{ a: 1, b: p }, { a: 1, b: -q }]),    err: 'Revisa signos: el producto debe dar ' + (p * q) + '.' }
+      ];
+      pasos = ['Busca dos números que <b>multiplicados</b> den ' + (p * q) + ' y <b>sumados</b> ' + (p + q) + '.',
+               'Son <b>' + p + '</b> y <b>' + q + '</b>.',
+               'Queda: <b>(x ' + sg(p) + ')(x ' + sg(q) + ')</b>.'];
+    }
+    return finish(enun, correcta, cand, { ref: 'Tema 2 · factorización', tema: 'Factorización', pasos: pasos, ask: 'Factoriza' });
+  }
+
   function finish(enun, correcta, cand, meta) {
     var e = ensamblar(correcta, cand, meta);
     return { enunciado: enun, correcta: correcta, opciones: e.opciones, meta: meta };
@@ -530,6 +706,8 @@
     { id: 'signos-mul',  label: 'Multiplicar',  sub: '× ÷ signos',  fn: genSignosMul },
     { id: 'frac-suma',   label: 'Fracciones',   sub: 'suma / resta', fn: genFracSuma },
     { id: 'frac-mul',    label: 'Fracciones',   sub: '× ÷',          fn: genFracMul },
+    { id: 'prod-notables', label: 'Productos', sub: 'notables',     fn: genProdNotables },
+    { id: 'factorizacion', label: 'Factorizar', sub: 'trinomios',   fn: genFactorizacion },
     { id: 'ecuacion',    label: 'Ecuaciones',   sub: '1er grado',   fn: genEcuacion }
   ];
 
@@ -620,6 +798,7 @@
     elOtro.textContent = 'Otro ejercicio →';
     elTema.textContent = p.meta.tema;
     elRef.textContent = p.meta.ref;
+    document.getElementById('qAsk').textContent = p.meta.ask || '¿Cuánto es?';
     elExp.innerHTML = p.enunciado;
     elVer.hidden = true; elVer.innerHTML = '';
     elVerSol.hidden = true;
