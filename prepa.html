@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Tercial · materiales</title>
+<title>Tercial · Prepa — examen ECOEMS / COMIPEMS</title>
+<meta name="description" content="Material de estudio, práctica y simulacros para el examen de ingreso a la educación media superior (ECOEMS/COMIPEMS): matemáticas, física y las demás materias del examen.">
 
 <script>
   /* Anti-flash · ver design-system § 11 */
@@ -425,17 +426,15 @@
 
 <script>
 /* Carrusel de contadores de examen.
-   Para agregar un alumno: { nombre: "...", fecha: "AAAA-MM-DD" }
-   El examen se oculta automáticamente después de la fecha. */
+   Se llena SOLO con fechas reales. Para agregar una:
+       { nombre: "Nombre real", fecha: "AAAA-MM-DD" }
+   Cada examen se oculta solo al pasar la fecha, y si la lista queda vacía
+   el bloque entero desaparece (no hay que tocar nada más).
+
+   ⚠️ Nunca poner alumnos ni fechas de ejemplo: esto es público y se lee
+   como información real. Vacío es mejor que inventado. */
 const EXAMENES = [
-  // DEMO · fechas FICTICIAS: los exámenes reales (jun 2026) ya pasaron y el
-  // carrusel quedaba vacío. Sustituir por las fechas reales del próximo ciclo.
-  { nombre: "Renata",  fecha: "2026-07-04" },
-  { nombre: "Mateo",   fecha: "2026-07-13" },
-  { nombre: "Valeria", fecha: "2026-07-27" },
-  { nombre: "Diego",   fecha: "2026-08-15" },
-  { nombre: "Camila",  fecha: "2026-09-14" },
-  { nombre: "Emiliano",fecha: "2026-10-24" },
+  // Vacío entre ciclos. Cargar aquí las fechas del próximo curso.
 ];
 
 (function() {
