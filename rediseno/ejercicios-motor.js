@@ -146,7 +146,7 @@ window.TercialMotor = (function () {
         : 'Signos distintos → <b>resta</b> la menor de la mayor y toma el signo del que pesa más.',
       'Resultado: <b>' + (correcta.n) + '</b>.'
     ];
-    return finish(enun, correcta, cand, { ref: 'Tema 1 · reales', tema: 'Operaciones con signos', pasos: pasos });
+    return finish(enun, correcta, cand, { tema: 'Operaciones con signos', pasos: pasos });
   }
 
   /* — signos · multiplicación y división de enteros — */
@@ -176,7 +176,7 @@ window.TercialMotor = (function () {
       'Luego el número: ' + Math.abs(A) + (esDiv ? ' ÷ ' : ' × ') + Math.abs(B) + ' = <b>' + Math.abs(val) + '</b>.',
       'Junta signo y número: <b>' + val + '</b>.'
     ];
-    return finish(enun, correcta, cand, { ref: 'Tema 1 · reales', tema: 'Operaciones con signos', pasos: pasos });
+    return finish(enun, correcta, cand, { tema: 'Operaciones con signos', pasos: pasos });
   }
 
   /* — fracciones · suma y resta — */
@@ -212,7 +212,7 @@ window.TercialMotor = (function () {
       'Reescribe: ' + tex({ n: an * (L / ad), d: L }) + ' ' + (resta ? MIN : '+') + ' ' + tex({ n: bn * (L / bd), d: L }) + '.',
       (resta ? 'Resta' : 'Suma') + ' solo los numeradores: <b>' + tex(correcta) + '</b>' + (correcta.d === 1 ? ' (se simplificó a entero).' : '.')
     ];
-    return finish(enun, correcta, cand, { ref: 'Tema 1 · reales', tema: 'Fracciones', pasos: pasos });
+    return finish(enun, correcta, cand, { tema: 'Fracciones', pasos: pasos });
   }
 
   /* — fracciones · multiplicación y división — */
@@ -244,7 +244,7 @@ window.TercialMotor = (function () {
       : ['Multiplica <b>numerador por numerador</b> y <b>denominador por denominador</b>.',
          tex(a) + ' × ' + tex(b) + ' = ' + tex(fr(n1 * n2, d1 * d2)) + '.',
          'Simplifica: <b>' + tex(correcta) + '</b>.'];
-    return finish(enun, correcta, cand, { ref: 'Tema 1 · reales', tema: 'Fracciones', pasos: pasos });
+    return finish(enun, correcta, cand, { tema: 'Fracciones', pasos: pasos });
   }
 
   /* — ecuaciones de primer grado — */
@@ -271,7 +271,7 @@ window.TercialMotor = (function () {
       'Divide ambos lados entre <b>' + a + '</b>.',
       'x = <b>' + tex(correcta) + '</b>.'
     ];
-    return finish(enun, correcta, cand, { ref: 'Tema 3 · ecuaciones', tema: 'Ecuaciones de 1er grado', pasos: pasos });
+    return finish(enun, correcta, cand, { tema: 'Ecuaciones de 1er grado', pasos: pasos });
   }
 
   /* — productos notables — */
@@ -344,7 +344,7 @@ window.TercialMotor = (function () {
                'Cuadrado del segundo: <b>' + (d * d) + '</b>.',
                'Queda: <b>' + pstr(A) + '</b>.'];
     }
-    return finish(enun, correcta, cand, { ref: 'Tema 2 · productos notables', tema: 'Productos notables', pasos: pasos, ask: 'Desarrolla' });
+    return finish(enun, correcta, cand, { tema: 'Productos notables', pasos: pasos, ask: 'Desarrolla' });
   }
 
   /* — factorización — */
@@ -397,7 +397,7 @@ window.TercialMotor = (function () {
                'Son <b>' + p + '</b> y <b>' + q + '</b>.',
                'Queda: <b>(x ' + sg(p) + ')(x ' + sg(q) + ')</b>.'];
     }
-    return finish(enun, correcta, cand, { ref: 'Tema 2 · factorización', tema: 'Factorización', pasos: pasos, ask: 'Factoriza' });
+    return finish(enun, correcta, cand, { tema: 'Factorización', pasos: pasos, ask: 'Factoriza' });
   }
 
   function finish(enun, correcta, cand, meta) {
@@ -437,7 +437,7 @@ window.TercialMotor = (function () {
       { val: ansPair(x0, -y0), tipo: 'signo-y', err: 'Signo cambiado en y. Sustituye tu solución en las DOS ecuaciones para comprobar.' },
       { val: ansPair(x0 + 1, y0 - 1), tipo: 'aritmetica', err: 'Revisa la aritmética al despejar; comprueba sustituyendo.' }
     ];
-    return finish(enun, ansPair(x0, y0), cand, { ref: 'Tema 2 · sistemas', tema: 'Sistema 2×2', ask: 'Resuelve',
+    return finish(enun, ansPair(x0, y0), cand, { tema: 'Sistema 2×2', ask: 'Resuelve',
       pasos: ['Resuélvelo por sustitución o por eliminación.',
               'Comprueba: sustituye x = ' + x0 + ', y = ' + y0 + ' en las dos ecuaciones y deben cumplirse.',
               'Solución: <b>x = ' + x0 + ', y = ' + y0 + '</b>.'] });
@@ -473,7 +473,7 @@ window.TercialMotor = (function () {
       { val: ansRoots(b, c), tipo: 'coeficientes',
         err: 'Esos son los coeficientes (' + b + ' y ' + c + '), no las raíces.' }
     ];
-    return finish(enun, ansRoots(r1, r2), cand, { ref: 'Tema 3 · cuadráticas', tema: 'Ecuación de 2º grado', ask: 'Resuelve',
+    return finish(enun, ansRoots(r1, r2), cand, { tema: 'Ecuación de 2º grado', ask: 'Resuelve',
       pasos: ['Busca dos números que multiplicados den ' + c + ' y sumados ' + (r1 + r2) + ': son ' + r1 + ' y ' + r2 + '.',
               'Factoriza: (x ' + sg(-r1) + ')(x ' + sg(-r2) + ') = 0.',
               'Cada factor a cero: x ' + sg(-r1) + ' = 0 → x = ' + r1 + '; x ' + sg(-r2) + ' = 0 → x = ' + r2 + '.'] });
@@ -498,7 +498,7 @@ window.TercialMotor = (function () {
         { val: ent(Math.pow(e, b)), tipo: 'invirtio', err: 'Invertiste base y exponente: eso es ' + powH(e, b) + ', no ' + powH(b, e) + '.' },
         { val: ent(val * b), tipo: 'un-factor-de-mas', err: 'Un factor de más: multiplicaste ' + (e + 1) + ' veces, no ' + e + '.' }
       ];
-      return finish(powH(b, e), ent(val), cand, { ref: 'Tema 1 · potencias', tema: 'Potencias', ask: 'Calcula',
+      return finish(powH(b, e), ent(val), cand, { tema: 'Potencias', ask: 'Calcula',
         pasos: [powH(b, e) + ' = ' + fac.join(' × ') + ' = <b>' + val + '</b>.',
                 'El exponente dice CUÁNTAS VECES se multiplica la base por sí misma.'] });
     }
@@ -510,7 +510,7 @@ window.TercialMotor = (function () {
       cand.push({ val: ent(2 * n), tipo: 'doble', err: 'Ese es el doble. La raíz es el número que al cuadrado da ' + sq + ' (' + n + '×' + n + ').' });
       cand.push({ val: ent(n + 1), tipo: 'cerca', err: 'Casi: ' + (n + 1) + '² = ' + ((n + 1) * (n + 1)) + ', no ' + sq + '. Es ' + n + '.' });
       cand.push({ val: ent(n - 1), tipo: 'cerca', err: 'Casi: ' + (n - 1) + '² = ' + ((n - 1) * (n - 1)) + ', no ' + sq + '. Es ' + n + '.' });
-      return finish('√' + sq, ent(n), cand, { ref: 'Tema 1 · radicales', tema: 'Raíz cuadrada', ask: 'Calcula',
+      return finish('√' + sq, ent(n), cand, { tema: 'Raíz cuadrada', ask: 'Calcula',
         pasos: ['√' + sq + ' pregunta: ¿qué número al cuadrado da ' + sq + '?', n + ' × ' + n + ' = ' + sq + ' → <b>' + n + '</b>.'] });
     }
 
@@ -537,7 +537,7 @@ window.TercialMotor = (function () {
         if (usados[extra[j]]) continue; usados[extra[j]] = 1;
         cand.push({ val: ansPow('x', extra[j]), tipo: 'exp-incorrecto', err: 'Revisa la ley del ' + ley + ': el exponente correcto es ' + expc + '.' });
       }
-      return finish(enun, ansPow('x', expc), cand, { ref: 'Tema 1 · potencias', tema: 'Leyes de exponentes', ask: 'Simplifica',
+      return finish(enun, ansPow('x', expc), cand, { tema: 'Leyes de exponentes', ask: 'Simplifica',
         pasos: ['Ley del <b>' + ley + '</b> (misma base).',
                 (op === 'prod' ? 'Se SUMAN los exponentes: ' + m + ' + ' + k + ' = ' + expc
                  : op === 'coc' ? 'Se RESTAN los exponentes: ' + m + ' − ' + k + ' = ' + expc
@@ -553,7 +553,7 @@ window.TercialMotor = (function () {
         { val: ent(b), tipo: 'da-base', err: 'No es la base. Todo número a la potencia 0 da 1.' },
         { val: ent(b * b), tipo: 'da-cuadrado', err: 'El exponente es 0, no 2. Da 1.' }
       ];
-      return finish(powH(b, 0), ent(1), cand, { ref: 'Tema 1 · potencias', tema: 'Exponente cero', ask: 'Calcula',
+      return finish(powH(b, 0), ent(1), cand, { tema: 'Exponente cero', ask: 'Calcula',
         pasos: ['Cualquier base distinta de 0 elevada al exponente 0 vale <b>1</b>.', powH(b, 0) + ' = <b>1</b>.'] });
     }
     var b2 = rint(2, 5), e2 = rint(2, 3), pot = Math.pow(b2, e2);
@@ -563,7 +563,7 @@ window.TercialMotor = (function () {
       { val: fr(-1, pot), tipo: 'signo-frac', err: 'El recíproco es positivo: 1/' + pot + '.' },
       { val: fr(1, b2 * e2), tipo: 'base-por-exp', err: 'Primero ' + powH(b2, e2) + ' = ' + pot + ', luego el recíproco.' }
     ];
-    return finish(powH(b2, -e2), fr(1, pot), cand, { ref: 'Tema 1 · potencias', tema: 'Exponente negativo', ask: 'Calcula',
+    return finish(powH(b2, -e2), fr(1, pot), cand, { tema: 'Exponente negativo', ask: 'Calcula',
       pasos: ['Un exponente negativo significa <b>recíproco</b>: ' + powH(b2, -e2) + ' = 1 / ' + powH(b2, e2) + '.',
               powH(b2, e2) + ' = ' + pot + ', así que <b>1/' + pot + '</b>.'] });
   }
