@@ -1,8 +1,10 @@
 # Reglas de trabajo para Codex
 
-## El diseño pertenece a otro agente
+## Claude es responsable del diseño
 
 - Codex no debe modificar el diseño visual de este proyecto.
+- Claude sí puede modificar libremente el diseño visual y es la IA responsable
+  de CSS, layout, componentes y decisiones de interfaz.
 - Esto incluye CSS, tokens, colores, tipografías, espaciado, tamaños, layout,
   breakpoints, componentes, animaciones y estructura visual del HTML.
 - Codex puede corregir contenido dentro de la estructura existente, pero debe
