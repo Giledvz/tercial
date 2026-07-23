@@ -1,8 +1,14 @@
 name: Desplegar sitio estático a GitHub Pages
 
 # El sitio es 100% estático (sin Jekyll). El builder legacy de Pages venía
-# fallando de forma intermitente; este workflow sube el repo tal cual y lo
-# publica con la acción oficial de Pages (más confiable, sin Jekyll).
+# fallando de forma intermitente; este workflow arma el sitio y lo publica
+# con la acción oficial de Pages (más confiable, sin Jekyll).
+#
+# ⚠️ NO se publica la raíz tal cual. Antes se subía `path: '.'`, lo que dejaba
+# público TODO el repo: documentación interna, herramientas, generadores y
+# —al fusionar la rama de rediseño— METODO.md con la estrategia de negocio.
+# Ahora se copia el sitio a `_site/` EXCLUYENDO lo interno (lista abajo).
+# Regla: si un archivo no le sirve al alumno, no se publica.
 
 on:
   push:
@@ -28,12 +34,47 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Configurar Pages
-        uses: actions/configure-pages@v5
-      - name: Subir el sitio (raíz del repo)
+
+      - name: Armar _site (solo lo que le sirve al alumno)
+        run: |
+          set -euo pipefail
+          rsync -a ./ _site/ \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.gitignore' \
+            --exclude '_site' \
+            `# — documentación y estrategia interna —` \
+            --exclude 'METODO.md' \
+            --exclude 'README.md' \
+            --exclude 'design/' \
+            `# — herramientas y generadores (no son del alumno) —` \
+            --exclude 'migrar/' \
+            --exclude 'tools/' \
+            --exclude 'package.json' \
+            --exclude 'package-lock.json' \
+            --exclude 'node_modules/' \
+            `# — prototipos: quitar esta línea cuando el rediseño esté listo —` \
+            --exclude 'rediseno/'
+          # .nojekyll debe viajar sí o sí (evita que Pages procese con Jekyll)
+          touch _site/.nojekyll
+          echo "── se publica ──"
+          find _site -maxdepth 1 | sort
+
+      - name: Verificar que no se cuele nada interno
+        run: |
+          set -euo pipefail
+          fugas=0
+          for p in METODO.md README.md package.json design migrar tools rediseno; do
+            if [ -e "_site/$p" ]; then echo "❌ FUGA: _site/$p"; fugas=1; fi
+          done
+          [ "$fugas" -eq 0 ] && echo "✅ Sin archivos internos en _site"
+          exit $fugas
+
+      - name: Subir el sitio
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
+
       - name: Desplegar
         id: deployment
         uses: actions/deploy-pages@v4
