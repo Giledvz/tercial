@@ -1,252 +1,214 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-theme-pref="light">
+
+<html data-theme="light" data-theme-pref="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Matemáticas 7 — Estadística y probabilidad · Tercial</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/exam-print.css">
-
-  <script defer src="../assets/js/katex-loader.js"></script>
-  <script defer src="../assets/js/exam-clave.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Matemáticas 7 — Estadística y probabilidad · Tercial</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/tokens.css" rel="stylesheet"/>
+<link href="../assets/css/base.css" rel="stylesheet"/>
+<link href="../assets/css/components.css" rel="stylesheet"/>
+<link href="../assets/css/exam-print.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<!-- Hoja única alumno/clave: sin parámetros se ve la versión del alumno;
-     con ?clave=1 aparecen las respuestas (.clave-only). -->
 <main class="exam-pdf exam-pdf--mate">
-
-  <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Matemáticas 7</span><span class="clave-only">Clave · profesor · Matemáticas 7</span></p>
-    <h1 class="exam-pdf__title">Matemáticas 7 — <em>Estadística y probabilidad</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Medidas de tendencia central y probabilidad · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
-  </header>
-
-  <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span><span class="clave-only">Clave</span></span>
-    <p class="alumno-only">Calcula lo que se pide en cada caso con procedimiento. En probabilidad, expresa el resultado como fracción simplificada.</p>
-    <p class="clave-only">Cada resultado aparece subrayado. La media se redondea a dos decimales.</p>
-  </div>
-
-  <section class="exam-pdf__section exam-pdf__section--first">
-    <h2 class="exam-pdf__section-title">Estadística</h2>
-  </section>
-
-  <p class="exam-pdf__subsection">Medidas de tendencia central</p>
-
-  <p class="exam-pdf__section-intro">Las medidas de tendencia central ayudan a resumir un grupo de datos. La <strong>media</strong> (promedio) es la suma de todos los datos dividida entre el número de datos. La <strong>mediana</strong> es el dato central al ordenarlos de menor a mayor (si hay un número par de datos, es el promedio de los dos centrales). La <strong>moda</strong> es el dato que más se repite. El <strong>rango</strong> es la diferencia entre el dato mayor y el menor.</p>
-
-  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Encuentra la media, moda y mediana de los siguientes conjuntos de datos.</p>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>$12, 13, 15, 18, 22, 25, 30, 31, 32, 34, 40$</p>
-      <p class="clave-only">Media $= \dfrac{272}{11} \approx$ <span class="answer-final">$24.73$</span> · Mediana <span class="answer-final">$25$</span> · Moda: <span class="answer-final">no hay</span> · Rango <span class="answer-final">$28$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>$13, 18, 24, 21, 16, 24, 14, 17, 24$</p>
-      <p class="clave-only">Media $= \dfrac{171}{9} =$ <span class="answer-final">$19$</span> · Mediana <span class="answer-final">$18$</span> · Moda <span class="answer-final">$24$</span> · Rango <span class="answer-final">$11$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>$116, 137, 120, 75, 98, 98, 137, 139, 139$</p>
-      <p class="clave-only">Media $= \dfrac{1\,059}{9} \approx$ <span class="answer-final">$117.67$</span> · Mediana <span class="answer-final">$120$</span> · Moda <span class="answer-final">$98$, $137$ y $139$</span> · Rango <span class="answer-final">$64$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>$22, 24, 25, 30, 32, 34, 37, 22, 22, 38, 40$</p>
-      <p class="clave-only">Media $= \dfrac{326}{11} \approx$ <span class="answer-final">$29.64$</span> · Mediana <span class="answer-final">$30$</span> · Moda <span class="answer-final">$22$</span> · Rango <span class="answer-final">$18$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>$123, 150, 163, 150, 163, 150, 180, 200, 201$</p>
-      <p class="clave-only">Media $= \dfrac{1\,480}{9} \approx$ <span class="answer-final">$164.44$</span> · Mediana <span class="answer-final">$163$</span> · Moda <span class="answer-final">$150$</span> · Rango <span class="answer-final">$78$</span></p>
-    </div></li>
-  </ol>
-
-  <p class="exam-pdf__subsection">Problemas de medidas de tendencia central</p>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Puntajes de videojuegos.</strong> Ocho amigos comparten sus puntajes más altos: $450, 375, 500, 500, 550, 425, 475, 450$. Calcula el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{3\,725}{8} =$ <span class="answer-final">$465.63$</span> · Mediana <span class="answer-final">$462.5$</span> · Moda <span class="answer-final">$450$ y $500$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Horas de sueño.</strong> Cuántas horas durmieron anoche $10$ estudiantes: $8, 6, 7, 7, 5, 8, 6, 9, 7, 6$. Determina el promedio, la mediana, la moda y el rango.</p>
-      <p class="clave-only">Media $= \dfrac{69}{10} =$ <span class="answer-final">$6.9$</span> · Mediana <span class="answer-final">$7$</span> · Moda <span class="answer-final">$6$ y $7$</span> · Rango <span class="answer-final">$4$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Pesos de mochilas.</strong> Los pesos en kilogramos de $12$ mochilas son: $3.5, 4.0, 4.5, 3.0, 4.0, 3.5, 3.5, 4.0, 3.0, 3.5, 4.5, 4.0$. Calcula el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{45}{12} =$ <span class="answer-final">$3.75$</span> · Mediana <span class="answer-final">$3.75$</span> · Moda <span class="answer-final">$3.5$ y $4.0$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Consumo de agua.</strong> Litros de agua al día: $2, 1.5, 2.5, 3, 2, 2, 1, 2.5, 3, 2$. Determina el promedio, la mediana, la moda y el rango.</p>
-      <p class="clave-only">Media $= \dfrac{21.5}{10} =$ <span class="answer-final">$2.15$</span> · Mediana <span class="answer-final">$2$</span> · Moda <span class="answer-final">$2$</span> · Rango <span class="answer-final">$2$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Edades en una fiesta.</strong> $12, 15, 14, 13, 12, 15, 16, 14, 12, 15$. Calcula el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{138}{10} =$ <span class="answer-final">$13.8$</span> · Mediana <span class="answer-final">$14$</span> · Moda <span class="answer-final">$12$ y $15$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Puntajes de pruebas.</strong> $70, 75, 80, 85, 90, 75, 80, 85, 70, 75$. Determina el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{785}{10} =$ <span class="answer-final">$78.5$</span> · Mediana <span class="answer-final">$77.5$</span> · Moda <span class="answer-final">$75$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Tiempo en internet.</strong> Horas al día de $10$ adolescentes: $3, 2, 4, 5, 3, 2, 2, 4, 3, 3$. Calcula el promedio, la mediana, la moda y el rango.</p>
-      <p class="clave-only">Media $= \dfrac{31}{10} =$ <span class="answer-final">$3.1$</span> · Mediana <span class="answer-final">$3$</span> · Moda <span class="answer-final">$3$</span> · Rango <span class="answer-final">$3$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Libros leídos.</strong> En un año: $12, 15, 8, 20, 15, 12, 11, 15, 12, 14$. Encuentra el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{134}{10} =$ <span class="answer-final">$13.4$</span> · Mediana <span class="answer-final">$13$</span> · Moda <span class="answer-final">$12$ y $15$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Asistencia a clases virtuales.</strong> En una semana, $10$ estudiantes: $10, 8, 10, 9, 8, 9, 10, 10, 8, 9$. Determina el promedio, la mediana y la moda.</p>
-      <p class="clave-only">Media $= \dfrac{91}{10} =$ <span class="answer-final">$9.1$</span> · Mediana <span class="answer-final">$9$</span> · Moda <span class="answer-final">$10$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><strong>Distancias al colegio.</strong> En kilómetros: $1.2, 0.5, 1.5, 1.0, 0.3, 0.7, 0.4, 1.1, 1.5, 0.6$. Encuentra el promedio, la mediana, la moda y el rango.</p>
-      <p class="clave-only">Media $= \dfrac{8.8}{10} =$ <span class="answer-final">$0.88$</span> · Mediana <span class="answer-final">$0.85$</span> · Moda <span class="answer-final">$1.5$</span> · Rango <span class="answer-final">$1.2$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>El histograma muestra la distribución del peso de $100$ alumnos de bachillerato. Calcula la media, la moda y la mediana.</p>
-      <figure class="exam-pdf__figure">
-        <svg viewBox="0 0 360 210" width="360" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Histograma del peso de 100 alumnos: 60 kg con 5 alumnos, 63 kg con 20, 66 kg con 40, 69 kg con 25, 72 kg con 10">
-          <defs>
-            <style>
+<header class="exam-pdf__hero">
+<p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Matemáticas 7</span></p>
+<h1 class="exam-pdf__title">Matemáticas 7 — <em>Estadística y probabilidad</em></h1>
+<p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Medidas de tendencia central y probabilidad · <span class="alumno-only">versión alumno</span></p>
+</header>
+<div class="exam-pdf__instructions">
+<span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span></span>
+<p class="alumno-only">Calcula lo que se pide en cada caso con procedimiento. En probabilidad, expresa el resultado como fracción simplificada.</p>
+</div>
+<section class="exam-pdf__section exam-pdf__section--first">
+<h2 class="exam-pdf__section-title">Estadística</h2>
+</section>
+<p class="exam-pdf__subsection">Medidas de tendencia central</p>
+<p class="exam-pdf__section-intro">Las medidas de tendencia central ayudan a resumir un grupo de datos. La <strong>media</strong> (promedio) es la suma de todos los datos dividida entre el número de datos. La <strong>mediana</strong> es el dato central al ordenarlos de menor a mayor (si hay un número par de datos, es el promedio de los dos centrales). La <strong>moda</strong> es el dato que más se repite. El <strong>rango</strong> es la diferencia entre el dato mayor y el menor.</p>
+<p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Encuentra la media, moda y mediana de los siguientes conjuntos de datos.</p>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>$12, 13, 15, 18, 22, 25, 30, 31, 32, 34, 40$</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>$13, 18, 24, 21, 16, 24, 14, 17, 24$</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>$116, 137, 120, 75, 98, 98, 137, 139, 139$</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>$22, 24, 25, 30, 32, 34, 37, 22, 22, 38, 40$</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>$123, 150, 163, 150, 163, 150, 180, 200, 201$</p>
+</div></li>
+</ol>
+<p class="exam-pdf__subsection">Problemas de medidas de tendencia central</p>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Puntajes de videojuegos.</strong> Ocho amigos comparten sus puntajes más altos: $450, 375, 500, 500, 550, 425, 475, 450$. Calcula el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Horas de sueño.</strong> Cuántas horas durmieron anoche $10$ estudiantes: $8, 6, 7, 7, 5, 8, 6, 9, 7, 6$. Determina el promedio, la mediana, la moda y el rango.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Pesos de mochilas.</strong> Los pesos en kilogramos de $12$ mochilas son: $3.5, 4.0, 4.5, 3.0, 4.0, 3.5, 3.5, 4.0, 3.0, 3.5, 4.5, 4.0$. Calcula el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Consumo de agua.</strong> Litros de agua al día: $2, 1.5, 2.5, 3, 2, 2, 1, 2.5, 3, 2$. Determina el promedio, la mediana, la moda y el rango.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Edades en una fiesta.</strong> $12, 15, 14, 13, 12, 15, 16, 14, 12, 15$. Calcula el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Puntajes de pruebas.</strong> $70, 75, 80, 85, 90, 75, 80, 85, 70, 75$. Determina el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Tiempo en internet.</strong> Horas al día de $10$ adolescentes: $3, 2, 4, 5, 3, 2, 2, 4, 3, 3$. Calcula el promedio, la mediana, la moda y el rango.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Libros leídos.</strong> En un año: $12, 15, 8, 20, 15, 12, 11, 15, 12, 14$. Encuentra el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Asistencia a clases virtuales.</strong> En una semana, $10$ estudiantes: $10, 8, 10, 9, 8, 9, 10, 10, 8, 9$. Determina el promedio, la mediana y la moda.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><strong>Distancias al colegio.</strong> En kilómetros: $1.2, 0.5, 1.5, 1.0, 0.3, 0.7, 0.4, 1.1, 1.5, 0.6$. Encuentra el promedio, la mediana, la moda y el rango.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>El histograma muestra la distribución del peso de $100$ alumnos de bachillerato. Calcula la media, la moda y la mediana.</p>
+<figure class="exam-pdf__figure">
+<svg aria-label="Histograma del peso de 100 alumnos: 60 kg con 5 alumnos, 63 kg con 20, 66 kg con 40, 69 kg con 25, 72 kg con 10" height="210" role="img" viewbox="0 0 360 210" width="360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
               .ax { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
               .bar { fill: #ede2c5; stroke: #4a3f33; stroke-width: 1; }
               .lbl { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; fill: #877b6c; }
               .val { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; fill: #6b3a2e; }
             </style>
-          </defs>
-          <line class="ax" x1="44" y1="20" x2="44" y2="170"/>
-          <line class="ax" x1="44" y1="170" x2="340" y2="170"/>
-          <text class="lbl" x="10" y="96" transform="rotate(-90 10 96)" text-anchor="middle">N.º de estudiantes</text>
-          <!-- bars: scale value/50*140 -->
-          <rect class="bar" x="58"  y="156" width="34" height="14"/>
-          <text class="val" x="75"  y="150" text-anchor="middle">5</text>
-          <text class="lbl" x="75"  y="184" text-anchor="middle">60</text>
-          <rect class="bar" x="112" y="114" width="34" height="56"/>
-          <text class="val" x="129" y="108" text-anchor="middle">20</text>
-          <text class="lbl" x="129" y="184" text-anchor="middle">63</text>
-          <rect class="bar" x="166" y="58"  width="34" height="112"/>
-          <text class="val" x="183" y="52"  text-anchor="middle">40</text>
-          <text class="lbl" x="183" y="184" text-anchor="middle">66</text>
-          <rect class="bar" x="220" y="100" width="34" height="70"/>
-          <text class="val" x="237" y="94"  text-anchor="middle">25</text>
-          <text class="lbl" x="237" y="184" text-anchor="middle">69</text>
-          <rect class="bar" x="274" y="142" width="34" height="28"/>
-          <text class="val" x="291" y="136" text-anchor="middle">10</text>
-          <text class="lbl" x="291" y="184" text-anchor="middle">72</text>
-          <text class="lbl" x="192" y="202" text-anchor="middle">Peso (kg)</text>
-        </svg>
-      </figure>
-      <p class="clave-only">Media $= \dfrac{6\,645}{100} =$ <span class="answer-final">$66.45\,\mathrm{kg}$</span> · Moda <span class="answer-final">$66\,\mathrm{kg}$</span> (frecuencia $40$) · Mediana <span class="answer-final">$66\,\mathrm{kg}$</span> (datos $50$ y $51$)</p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Las personas de una encuesta registraron sus edades con la siguiente distribución. Calcula la media, la moda y la mediana.</p>
-      <figure class="exam-pdf__figure">
-        <svg viewBox="0 0 360 210" width="360" height="210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Histograma de edades: 23 años con 11 personas, 27 con 13, 32 con 10, 35 con 8, 40 con 12">
-          <defs>
-            <style>
+</defs>
+<line class="ax" x1="44" x2="44" y1="20" y2="170"></line>
+<line class="ax" x1="44" x2="340" y1="170" y2="170"></line>
+<text class="lbl" text-anchor="middle" transform="rotate(-90 10 96)" x="10" y="96">N.º de estudiantes</text>
+<!-- bars: scale value/50*140 -->
+<rect class="bar" height="14" width="34" x="58" y="156"></rect>
+<text class="val" text-anchor="middle" x="75" y="150">5</text>
+<text class="lbl" text-anchor="middle" x="75" y="184">60</text>
+<rect class="bar" height="56" width="34" x="112" y="114"></rect>
+<text class="val" text-anchor="middle" x="129" y="108">20</text>
+<text class="lbl" text-anchor="middle" x="129" y="184">63</text>
+<rect class="bar" height="112" width="34" x="166" y="58"></rect>
+<text class="val" text-anchor="middle" x="183" y="52">40</text>
+<text class="lbl" text-anchor="middle" x="183" y="184">66</text>
+<rect class="bar" height="70" width="34" x="220" y="100"></rect>
+<text class="val" text-anchor="middle" x="237" y="94">25</text>
+<text class="lbl" text-anchor="middle" x="237" y="184">69</text>
+<rect class="bar" height="28" width="34" x="274" y="142"></rect>
+<text class="val" text-anchor="middle" x="291" y="136">10</text>
+<text class="lbl" text-anchor="middle" x="291" y="184">72</text>
+<text class="lbl" text-anchor="middle" x="192" y="202">Peso (kg)</text>
+</svg>
+</figure>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Las personas de una encuesta registraron sus edades con la siguiente distribución. Calcula la media, la moda y la mediana.</p>
+<figure class="exam-pdf__figure">
+<svg aria-label="Histograma de edades: 23 años con 11 personas, 27 con 13, 32 con 10, 35 con 8, 40 con 12" height="210" role="img" viewbox="0 0 360 210" width="360" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
               .ax { stroke: #4a3f33; stroke-width: 1.2; fill: none; }
               .bar { fill: #ede2c5; stroke: #4a3f33; stroke-width: 1; }
               .lbl { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; fill: #877b6c; }
               .val { font-family: 'IBM Plex Sans', sans-serif; font-size: 10px; fill: #6b3a2e; }
             </style>
-          </defs>
-          <line class="ax" x1="44" y1="20" x2="44" y2="170"/>
-          <line class="ax" x1="44" y1="170" x2="340" y2="170"/>
-          <text class="lbl" x="10" y="96" transform="rotate(-90 10 96)" text-anchor="middle">N.º de personas</text>
-          <!-- scale value/15*140 -->
-          <rect class="bar" x="58"  y="67"  width="34" height="103"/>
-          <text class="val" x="75"  y="61"  text-anchor="middle">11</text>
-          <text class="lbl" x="75"  y="184" text-anchor="middle">23</text>
-          <rect class="bar" x="112" y="49"  width="34" height="121"/>
-          <text class="val" x="129" y="43"  text-anchor="middle">13</text>
-          <text class="lbl" x="129" y="184" text-anchor="middle">27</text>
-          <rect class="bar" x="166" y="77"  width="34" height="93"/>
-          <text class="val" x="183" y="71"  text-anchor="middle">10</text>
-          <text class="lbl" x="183" y="184" text-anchor="middle">32</text>
-          <rect class="bar" x="220" y="95"  width="34" height="75"/>
-          <text class="val" x="237" y="89"  text-anchor="middle">8</text>
-          <text class="lbl" x="237" y="184" text-anchor="middle">35</text>
-          <rect class="bar" x="274" y="58"  width="34" height="112"/>
-          <text class="val" x="291" y="52"  text-anchor="middle">12</text>
-          <text class="lbl" x="291" y="184" text-anchor="middle">40</text>
-          <text class="lbl" x="192" y="202" text-anchor="middle">Edades</text>
-        </svg>
-      </figure>
-      <p class="clave-only">Total $= 54$ personas · Media $= \dfrac{1\,684}{54} \approx$ <span class="answer-final">$31.19$ años</span> · Moda <span class="answer-final">$27$ años</span> (frecuencia $13$) · Mediana <span class="answer-final">$32$ años</span></p>
-    </div></li>
-  </ol>
-
-  <section class="exam-pdf__section">
-    <h2 class="exam-pdf__section-title">Probabilidad</h2>
-    <p class="exam-pdf__section-intro">La probabilidad evalúa qué tan posible es que algo suceda cuando interviene el azar. Se calcula con el cociente de los casos favorables entre los casos totales.</p>
-  </section>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Hallar la probabilidad de que al lanzar una moneda se obtenga:</p>
-      <ol class="exam-pdf__sublist">
-        <li>Una cara<span class="clave-only"> — <span class="answer-final">$P = \dfrac{1}{2}$</span></span></li>
-        <li>Un sol<span class="clave-only"> — <span class="answer-final">$P = \dfrac{1}{2}$</span></span></li>
-      </ol>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Hallar la probabilidad de que al lanzar un dado se obtenga:</p>
-      <ol class="exam-pdf__sublist">
-        <li>Un número par<span class="clave-only"> — <span class="answer-final">$\dfrac{3}{6} = \dfrac{1}{2}$</span></span></li>
-        <li>Un número primo<span class="clave-only"> — <span class="answer-final">$\dfrac{3}{6} = \dfrac{1}{2}$</span> (2, 3, 5)</span></li>
-        <li>Un múltiplo de $3$<span class="clave-only"> — <span class="answer-final">$\dfrac{2}{6} = \dfrac{1}{3}$</span></span></li>
-        <li>Un múltiplo de $5$<span class="clave-only"> — <span class="answer-final">$\dfrac{1}{6}$</span></span></li>
-        <li>Un $7$<span class="clave-only"> — <span class="answer-final">$0$</span></span></li>
-        <li>Un número menor que $3$<span class="clave-only"> — <span class="answer-final">$\dfrac{2}{6} = \dfrac{1}{3}$</span></span></li>
-        <li>Un número mayor que $2$<span class="clave-only"> — <span class="answer-final">$\dfrac{4}{6} = \dfrac{2}{3}$</span></span></li>
-        <li>Un número primo menor que $4$<span class="clave-only"> — <span class="answer-final">$\dfrac{2}{6} = \dfrac{1}{3}$</span> (2, 3)</span></li>
-      </ol>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>En una urna con $8$ bolas rojas, $11$ azules y $17$ amarillas ($36$ en total), calcula la probabilidad de obtener:</p>
-      <ol class="exam-pdf__sublist">
-        <li>Una bola roja<span class="clave-only"> — <span class="answer-final">$\dfrac{8}{36} = \dfrac{2}{9}$</span></span></li>
-        <li>Una bola azul<span class="clave-only"> — <span class="answer-final">$\dfrac{11}{36}$</span></span></li>
-        <li>Una bola amarilla<span class="clave-only"> — <span class="answer-final">$\dfrac{17}{36}$</span></span></li>
-        <li>Una bola que no sea roja<span class="clave-only"> — <span class="answer-final">$\dfrac{7}{9}$</span></span></li>
-        <li>Una bola que no sea azul<span class="clave-only"> — <span class="answer-final">$\dfrac{25}{36}$</span></span></li>
-        <li>Una bola que no sea amarilla<span class="clave-only"> — <span class="answer-final">$\dfrac{19}{36}$</span></span></li>
-      </ol>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Se extrae una bola de una urna con $7$ rojas, $5$ blancas y $6$ negras. ¿Cuál es la probabilidad de que la bola sea roja o blanca?</p>
-      <p class="clave-only">$P = \dfrac{7+5}{18} = \dfrac{12}{18} =$ <span class="answer-final">$\dfrac{2}{3}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>De una baraja inglesa de $52$ cartas, hallar la probabilidad de extraer:</p>
-      <ol class="exam-pdf__sublist">
-        <li>Una carta mayor que $3$ pero menor que $9$<span class="clave-only"> — $4,5,6,7,8$ de cada palo: $20$ cartas. <span class="answer-final">$\dfrac{20}{52} = \dfrac{5}{13}$</span></span></li>
-        <li>Un número primo<span class="clave-only"> — $2,3,5,7$: $16$ cartas. <span class="answer-final">$\dfrac{16}{52} = \dfrac{4}{13}$</span></span></li>
-        <li>Una reina roja<span class="clave-only"> — $2$ cartas. <span class="answer-final">$\dfrac{2}{52} = \dfrac{1}{26}$</span></span></li>
-        <li>Una figura (incluyendo el as)<span class="clave-only"> — A, J, Q, K: $16$ cartas. <span class="answer-final">$\dfrac{16}{52} = \dfrac{4}{13}$</span></span></li>
-        <li>Una carta de diamantes<span class="clave-only"> — $13$ cartas. <span class="answer-final">$\dfrac{13}{52} = \dfrac{1}{4}$</span></span></li>
-        <li>Una carta negra<span class="clave-only"> — picas y tréboles: $26$ cartas. <span class="answer-final">$\dfrac{26}{52} = \dfrac{1}{2}$</span></span></li>
-      </ol>
-    </div></li>
-  </ol>
-
+</defs>
+<line class="ax" x1="44" x2="44" y1="20" y2="170"></line>
+<line class="ax" x1="44" x2="340" y1="170" y2="170"></line>
+<text class="lbl" text-anchor="middle" transform="rotate(-90 10 96)" x="10" y="96">N.º de personas</text>
+<!-- scale value/15*140 -->
+<rect class="bar" height="103" width="34" x="58" y="67"></rect>
+<text class="val" text-anchor="middle" x="75" y="61">11</text>
+<text class="lbl" text-anchor="middle" x="75" y="184">23</text>
+<rect class="bar" height="121" width="34" x="112" y="49"></rect>
+<text class="val" text-anchor="middle" x="129" y="43">13</text>
+<text class="lbl" text-anchor="middle" x="129" y="184">27</text>
+<rect class="bar" height="93" width="34" x="166" y="77"></rect>
+<text class="val" text-anchor="middle" x="183" y="71">10</text>
+<text class="lbl" text-anchor="middle" x="183" y="184">32</text>
+<rect class="bar" height="75" width="34" x="220" y="95"></rect>
+<text class="val" text-anchor="middle" x="237" y="89">8</text>
+<text class="lbl" text-anchor="middle" x="237" y="184">35</text>
+<rect class="bar" height="112" width="34" x="274" y="58"></rect>
+<text class="val" text-anchor="middle" x="291" y="52">12</text>
+<text class="lbl" text-anchor="middle" x="291" y="184">40</text>
+<text class="lbl" text-anchor="middle" x="192" y="202">Edades</text>
+</svg>
+</figure>
+</div></li>
+</ol>
+<section class="exam-pdf__section">
+<h2 class="exam-pdf__section-title">Probabilidad</h2>
+<p class="exam-pdf__section-intro">La probabilidad evalúa qué tan posible es que algo suceda cuando interviene el azar. Se calcula con el cociente de los casos favorables entre los casos totales.</p>
+</section>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Hallar la probabilidad de que al lanzar una moneda se obtenga:</p>
+<ol class="exam-pdf__sublist">
+<li>Una cara</li>
+<li>Un sol</li>
+</ol>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Hallar la probabilidad de que al lanzar un dado se obtenga:</p>
+<ol class="exam-pdf__sublist">
+<li>Un número par</li>
+<li>Un número primo</li>
+<li>Un múltiplo de $3$</li>
+<li>Un múltiplo de $5$</li>
+<li>Un $7$</li>
+<li>Un número menor que $3$</li>
+<li>Un número mayor que $2$</li>
+<li>Un número primo menor que $4$</li>
+</ol>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>En una urna con $8$ bolas rojas, $11$ azules y $17$ amarillas ($36$ en total), calcula la probabilidad de obtener:</p>
+<ol class="exam-pdf__sublist">
+<li>Una bola roja</li>
+<li>Una bola azul</li>
+<li>Una bola amarilla</li>
+<li>Una bola que no sea roja</li>
+<li>Una bola que no sea azul</li>
+<li>Una bola que no sea amarilla</li>
+</ol>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Se extrae una bola de una urna con $7$ rojas, $5$ blancas y $6$ negras. ¿Cuál es la probabilidad de que la bola sea roja o blanca?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>De una baraja inglesa de $52$ cartas, hallar la probabilidad de extraer:</p>
+<ol class="exam-pdf__sublist">
+<li>Una carta mayor que $3$ pero menor que $9$</li>
+<li>Un número primo</li>
+<li>Una reina roja</li>
+<li>Una figura (incluyendo el as)</li>
+<li>Una carta de diamantes</li>
+<li>Una carta negra</li>
+</ol>
+</div></li>
+</ol>
 </main>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (window.ClasesKatex) window.ClasesKatex.load();
   });
 </script>
-
 </body>
 </html>

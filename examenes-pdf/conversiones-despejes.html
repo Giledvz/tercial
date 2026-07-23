@@ -1,175 +1,159 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-theme-pref="light">
+
+<html data-theme="light" data-theme-pref="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Conversiones y despejes · Tercial</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/exam-print.css">
-
-  <script defer src="../assets/js/katex-loader.js"></script>
-  <script defer src="../assets/js/exam-clave.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Conversiones y despejes · Tercial</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/tokens.css" rel="stylesheet"/>
+<link href="../assets/css/base.css" rel="stylesheet"/>
+<link href="../assets/css/components.css" rel="stylesheet"/>
+<link href="../assets/css/exam-print.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<!-- Hoja única alumno/clave: sin parámetros se ve la versión del alumno;
-     con ?clave=1 aparecen las respuestas (.clave-only). -->
 <main class="exam-pdf exam-pdf--mate">
-
-  <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Preliminares</span><span class="clave-only">Clave · profesor · Preliminares</span></p>
-    <h1 class="exam-pdf__title">Conversiones y <em>despejes</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Conversión de unidades y despeje de fórmulas físicas · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
-  </header>
-
-  <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span><span class="clave-only">Clave</span></span>
-    <p class="alumno-only">Realiza cada conversión apoyándote en la tabla de equivalencias. En los despejes, deja sola la variable indicada.</p>
-    <p class="clave-only">Cada resultado aparece subrayado.</p>
-  </div>
-
-  <section class="exam-pdf__section exam-pdf__section--first">
-    <h2 class="exam-pdf__section-title">Conversiones</h2>
-  </section>
-
-  <div class="exam-pdf__table-pair">
-    <table class="exam-pdf__table">
-      <thead><tr><th>Unidad</th><th>Equivalencia</th></tr></thead>
-      <tbody>
-        <tr><td>1 kilómetro (km)</td><td>$1\,000$ metros (m)</td></tr>
-        <tr><td>1 metro (m)</td><td>$10$ decímetros (dm)</td></tr>
-        <tr><td>1 metro (m)</td><td>$100$ centímetros (cm)</td></tr>
-        <tr><td>1 metro (m)</td><td>$0.001$ kilómetros (km)</td></tr>
-        <tr><td>1 milímetro (mm)</td><td>$0.001$ metros (m)</td></tr>
-        <tr><td>1 centímetro (cm)</td><td>$0.01$ metros (m)</td></tr>
-        <tr><td>1 decámetro (dam)</td><td>$10$ metros (m)</td></tr>
-        <tr><td>1 hectómetro (hm)</td><td>$100$ metros (m)</td></tr>
-        <tr><td>1 pulgada (in)</td><td>$2.54$ centímetros (cm)</td></tr>
-        <tr><td>1 pie (ft)</td><td>$0.3048$ metros (m)</td></tr>
-      </tbody>
-    </table>
-    <table class="exam-pdf__table">
-      <thead><tr><th>Unidad</th><th>Equivalencia</th></tr></thead>
-      <tbody>
-        <tr><td>1 pie (ft)</td><td>$12$ pulgadas (in)</td></tr>
-        <tr><td>1 yarda (yd)</td><td>$0.9144$ metros (m)</td></tr>
-        <tr><td>1 yarda (yd)</td><td>$3$ pies (ft)</td></tr>
-        <tr><td>1 milla (mi)</td><td>$1.609$ kilómetros (km)</td></tr>
-        <tr><td>1 milla (mi)</td><td>$5\,280$ pies (ft)</td></tr>
-        <tr><td>1 hora (h)</td><td>$3\,600$ segundos (s)</td></tr>
-        <tr><td>1 hora (h)</td><td>$60$ minutos (min)</td></tr>
-        <tr><td>1 libra (lb)</td><td>$0.45$ kilogramos (kg)</td></tr>
-        <tr><td>1 kilogramo (kg)</td><td>$2.20$ libras (lb)</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
-    <li class="exam-pdf__exercise">$769\,000\,000\,\mathrm{mm}$ a $\mathrm{km}$ = <span class="clave-only"><span class="answer-final">$769\,\mathrm{km}$</span></span></li>
-    <li class="exam-pdf__exercise">$237.04\,\mathrm{m}$ a $\mathrm{hm}$ = <span class="clave-only"><span class="answer-final">$2.3704\,\mathrm{hm}$</span></span></li>
-    <li class="exam-pdf__exercise">$0.000004\,\mathrm{km}$ a $\mathrm{cm}$ = <span class="clave-only"><span class="answer-final">$0.4\,\mathrm{cm}$</span></span></li>
-    <li class="exam-pdf__exercise">$4\,120\,000\,\mathrm{dm}$ a $\mathrm{hm}$ = <span class="clave-only"><span class="answer-final">$4\,120\,\mathrm{hm}$</span></span></li>
-    <li class="exam-pdf__exercise">$960\,\mathrm{mm}$ a $\mathrm{dam}$ = <span class="clave-only"><span class="answer-final">$0.096\,\mathrm{dam}$</span></span></li>
-    <li class="exam-pdf__exercise">$214\,\mathrm{in}$ a $\mathrm{ft}$ = <span class="clave-only"><span class="answer-final">$17.83\,\mathrm{ft}$</span></span></li>
-    <li class="exam-pdf__exercise">$0.005\,\mathrm{yd}$ a $\mathrm{cm}$ = <span class="clave-only"><span class="answer-final">$0.4572\,\mathrm{cm}$</span></span></li>
-    <li class="exam-pdf__exercise">$300\,\mathrm{mi}$ a $\mathrm{dam}$ = <span class="clave-only"><span class="answer-final">$48\,270\,\mathrm{dam}$</span></span></li>
-    <li class="exam-pdf__exercise">$2\,640\,\mathrm{ft}$ a $\mathrm{mi}$ = <span class="clave-only"><span class="answer-final">$0.5\,\mathrm{mi}$</span></span></li>
-    <li class="exam-pdf__exercise">$1\,200\,\mathrm{km}$ a $\mathrm{mi}$ = <span class="clave-only"><span class="answer-final">$745.21\,\mathrm{mi}$</span></span></li>
-    <li class="exam-pdf__exercise">$7\,200\,\mathrm{s}$ a $\mathrm{h}$ = <span class="clave-only"><span class="answer-final">$2\,\mathrm{h}$</span></span></li>
-    <li class="exam-pdf__exercise">$45\,\mathrm{h}$ a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$2\,700\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$890\,\mathrm{s}$ a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$14.83\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$415\,\mathrm{min}$ a $\mathrm{h}$ = <span class="clave-only"><span class="answer-final">$6.92\,\mathrm{h}$</span></span></li>
-    <li class="exam-pdf__exercise">$220\,\mathrm{lb}$ a $\mathrm{kg}$ = <span class="clave-only"><span class="answer-final">$99\,\mathrm{kg}$</span></span></li>
-    <li class="exam-pdf__exercise">$58\,\mathrm{kg}$ a $\mathrm{lb}$ = <span class="clave-only"><span class="answer-final">$127.6\,\mathrm{lb}$</span></span></li>
-    <li class="exam-pdf__exercise">$17$ días a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$24\,480\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$3\,400\,\mathrm{min}$ a días = <span class="clave-only"><span class="answer-final">$2.36$ días</span></span></li>
-    <li class="exam-pdf__exercise">$582\,000\,000\,\mathrm{mm}$ a $\mathrm{km}$ = <span class="clave-only"><span class="answer-final">$582\,\mathrm{km}$</span></span></li>
-    <li class="exam-pdf__exercise">$156.25\,\mathrm{m}$ a $\mathrm{hm}$ = <span class="clave-only"><span class="answer-final">$1.5625\,\mathrm{hm}$</span></span></li>
-    <li class="exam-pdf__exercise">$0.000007\,\mathrm{km}$ a $\mathrm{cm}$ = <span class="clave-only"><span class="answer-final">$0.7\,\mathrm{cm}$</span></span></li>
-    <li class="exam-pdf__exercise">$3\,250\,000\,\mathrm{dm}$ a $\mathrm{hm}$ = <span class="clave-only"><span class="answer-final">$3\,250\,\mathrm{hm}$</span></span></li>
-    <li class="exam-pdf__exercise">$850\,\mathrm{mm}$ a $\mathrm{dam}$ = <span class="clave-only"><span class="answer-final">$0.085\,\mathrm{dam}$</span></span></li>
-    <li class="exam-pdf__exercise">$300\,\mathrm{in}$ a $\mathrm{ft}$ = <span class="clave-only"><span class="answer-final">$25\,\mathrm{ft}$</span></span></li>
-    <li class="exam-pdf__exercise">$0.01\,\mathrm{yd}$ a $\mathrm{cm}$ = <span class="clave-only"><span class="answer-final">$0.9144\,\mathrm{cm}$</span></span></li>
-    <li class="exam-pdf__exercise">$150\,\mathrm{mi}$ a $\mathrm{dam}$ = <span class="clave-only"><span class="answer-final">$24\,135\,\mathrm{dam}$</span></span></li>
-    <li class="exam-pdf__exercise">$5\,280\,\mathrm{ft}$ a $\mathrm{mi}$ = <span class="clave-only"><span class="answer-final">$1\,\mathrm{mi}$</span></span></li>
-    <li class="exam-pdf__exercise">$950\,\mathrm{km}$ a $\mathrm{mi}$ = <span class="clave-only"><span class="answer-final">$590.37\,\mathrm{mi}$</span></span></li>
-    <li class="exam-pdf__exercise">$5\,400\,\mathrm{s}$ a $\mathrm{h}$ = <span class="clave-only"><span class="answer-final">$1.5\,\mathrm{h}$</span></span></li>
-    <li class="exam-pdf__exercise">$72\,\mathrm{h}$ a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$4\,320\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$530\,\mathrm{s}$ a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$8.83\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$625\,\mathrm{min}$ a $\mathrm{h}$ = <span class="clave-only"><span class="answer-final">$10.42\,\mathrm{h}$</span></span></li>
-    <li class="exam-pdf__exercise">$150\,\mathrm{lb}$ a $\mathrm{kg}$ = <span class="clave-only"><span class="answer-final">$67.5\,\mathrm{kg}$</span></span></li>
-    <li class="exam-pdf__exercise">$75\,\mathrm{kg}$ a $\mathrm{lb}$ = <span class="clave-only"><span class="answer-final">$165\,\mathrm{lb}$</span></span></li>
-    <li class="exam-pdf__exercise">$24$ días a $\mathrm{min}$ = <span class="clave-only"><span class="answer-final">$34\,560\,\mathrm{min}$</span></span></li>
-    <li class="exam-pdf__exercise">$2\,560\,\mathrm{min}$ a días = <span class="clave-only"><span class="answer-final">$1.78$ días</span></span></li>
-    <li class="exam-pdf__exercise">$15\,\mathrm{km/h}$ a $\mathrm{m/s}$ = <span class="clave-only"><span class="answer-final">$4.17\,\mathrm{m/s}$</span></span></li>
-    <li class="exam-pdf__exercise">$82\,\mathrm{m/s}$ a $\mathrm{km/h}$ = <span class="clave-only"><span class="answer-final">$295.2\,\mathrm{km/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$55\,\mathrm{mi/h}$ a $\mathrm{km/h}$ = <span class="clave-only"><span class="answer-final">$88.50\,\mathrm{km/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$50.6\,\mathrm{ft/s}$ a $\mathrm{m/s}$ = <span class="clave-only"><span class="answer-final">$15.42\,\mathrm{m/s}$</span></span></li>
-    <li class="exam-pdf__exercise">$60\,\mathrm{km/h}$ a $\mathrm{mi/h}$ = <span class="clave-only"><span class="answer-final">$37.27\,\mathrm{mi/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$20\,\mathrm{km/h}$ a $\mathrm{m/s}$ = <span class="clave-only"><span class="answer-final">$5.56\,\mathrm{m/s}$</span></span></li>
-    <li class="exam-pdf__exercise">$100\,\mathrm{km/h}$ a $\mathrm{m/s}$ = <span class="clave-only"><span class="answer-final">$27.78\,\mathrm{m/s}$</span></span></li>
-    <li class="exam-pdf__exercise">$45\,\mathrm{mi/h}$ a $\mathrm{km/h}$ = <span class="clave-only"><span class="answer-final">$72.41\,\mathrm{km/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$30\,\mathrm{m/s}$ a $\mathrm{mi/h}$ = <span class="clave-only"><span class="answer-final">$67.15\,\mathrm{mi/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$25\,\mathrm{m/s}$ a $\mathrm{km/h}$ = <span class="clave-only"><span class="answer-final">$90\,\mathrm{km/h}$</span></span></li>
-    <li class="exam-pdf__exercise">$5\,000\,\mathrm{m}$ a $\mathrm{km}$ = <span class="clave-only"><span class="answer-final">$5\,\mathrm{km}$</span></span></li>
-    <li class="exam-pdf__exercise">$2\,500\,\mathrm{cm}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$25\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$5\,\mathrm{km}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$5\,000\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$3\,\mathrm{m}$ a $\mathrm{dm}$ = <span class="clave-only"><span class="answer-final">$30\,\mathrm{dm}$</span></span></li>
-    <li class="exam-pdf__exercise">$7\,\mathrm{dam}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$70\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$12\,\mathrm{hm}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$1\,200\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$8\,\mathrm{in}$ a $\mathrm{cm}$ = <span class="clave-only"><span class="answer-final">$20.32\,\mathrm{cm}$</span></span></li>
-    <li class="exam-pdf__exercise">$10\,\mathrm{ft}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$3.048\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$5\,\mathrm{yd}$ a $\mathrm{m}$ = <span class="clave-only"><span class="answer-final">$4.572\,\mathrm{m}$</span></span></li>
-    <li class="exam-pdf__exercise">$3\,\mathrm{mi}$ a $\mathrm{km}$ = <span class="clave-only"><span class="answer-final">$4.827\,\mathrm{km}$</span></span></li>
-    <li class="exam-pdf__exercise">$2\,\mathrm{h}$ a $\mathrm{s}$ = <span class="clave-only"><span class="answer-final">$7\,200\,\mathrm{s}$</span></span></li>
-    <li class="exam-pdf__exercise">$15\,\mathrm{min}$ a $\mathrm{s}$ = <span class="clave-only"><span class="answer-final">$900\,\mathrm{s}$</span></span></li>
-    <li class="exam-pdf__exercise">$200\,\mathrm{lb}$ a $\mathrm{kg}$ = <span class="clave-only"><span class="answer-final">$90\,\mathrm{kg}$</span></span></li>
-    <li class="exam-pdf__exercise">$30\,\mathrm{kg}$ a $\mathrm{lb}$ = <span class="clave-only"><span class="answer-final">$66\,\mathrm{lb}$</span></span></li>
-  </ol>
-
-  <section class="exam-pdf__section">
-    <h2 class="exam-pdf__section-title">Despejes de fórmulas físicas</h2>
-    <p class="exam-pdf__section-intro">Despeja la variable indicada en cada fórmula.</p>
-  </section>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Velocidad final (MUA): $v = v_0 + at$. Despejar $t$.<span class="clave-only"> &nbsp;<span class="answer-final">$t = \dfrac{v - v_0}{a}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Fuerza gravitacional: $F = G\dfrac{m_1 m_2}{r^2}$. Despejar $r$.<span class="clave-only"> &nbsp;<span class="answer-final">$r = \sqrt{\dfrac{G m_1 m_2}{F}}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía cinética: $E_k = \dfrac{1}{2}mv^2$. Despejar $m$.<span class="clave-only"> &nbsp;<span class="answer-final">$m = \dfrac{2E_k}{v^2}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Ohm: $V = IR$. Despejar $R$.<span class="clave-only"> &nbsp;<span class="answer-final">$R = \dfrac{V}{I}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Presión hidrostática: $P = \rho g h$. Despejar $h$.<span class="clave-only"> &nbsp;<span class="answer-final">$h = \dfrac{P}{\rho g}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Densidad: $\rho = \dfrac{m}{V}$. Despejar $V$.<span class="clave-only"> &nbsp;<span class="answer-final">$V = \dfrac{m}{\rho}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Periodo del péndulo simple: $T = 2\pi\sqrt{\dfrac{l}{g}}$. Despejar $l$.<span class="clave-only"> &nbsp;<span class="answer-final">$l = \dfrac{T^2 g}{4\pi^2}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Trabajo de una fuerza: $W = Fd\cos\theta$. Despejar $F$.<span class="clave-only"> &nbsp;<span class="answer-final">$F = \dfrac{W}{d\cos\theta}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía potencial gravitatoria: $U = mgh$. Despejar $g$.<span class="clave-only"> &nbsp;<span class="answer-final">$g = \dfrac{U}{mh}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Dilatación lineal: $\Delta L = L_0\alpha\Delta T$. Despejar $\Delta T$.<span class="clave-only"> &nbsp;<span class="answer-final">$\Delta T = \dfrac{\Delta L}{L_0\alpha}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Impulso: $J = Ft$. Despejar $F$.<span class="clave-only"> &nbsp;<span class="answer-final">$F = \dfrac{J}{t}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Potencia eléctrica: $P = VI$. Despejar $I$.<span class="clave-only"> &nbsp;<span class="answer-final">$I = \dfrac{P}{V}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Cantidad de movimiento: $p = mv$. Despejar $v$.<span class="clave-only"> &nbsp;<span class="answer-final">$v = \dfrac{p}{m}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Presión: $P = \dfrac{F}{A}$. Despejar $A$.<span class="clave-only"> &nbsp;<span class="answer-final">$A = \dfrac{F}{P}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Calor específico: $Q = mc\Delta T$. Despejar $c$.<span class="clave-only"> &nbsp;<span class="answer-final">$c = \dfrac{Q}{m\Delta T}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Capacidad eléctrica: $C = \dfrac{Q}{V}$. Despejar $Q$.<span class="clave-only"> &nbsp;<span class="answer-final">$Q = CV$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Coulomb: $F = k\dfrac{q_1 q_2}{r^2}$. Despejar $q_1$.<span class="clave-only"> &nbsp;<span class="answer-final">$q_1 = \dfrac{Fr^2}{kq_2}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Snell: $n_1\sin\theta_1 = n_2\sin\theta_2$. Despejar $\theta_2$.<span class="clave-only"> &nbsp;<span class="answer-final">$\theta_2 = \arcsin\!\left(\dfrac{n_1\sin\theta_1}{n_2}\right)$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía potencial elástica: $U = \dfrac{1}{2}kx^2$. Despejar $x$.<span class="clave-only"> &nbsp;<span class="answer-final">$x = \sqrt{\dfrac{2U}{k}}$</span></span></p></div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Periodo del péndulo físico: $T = 2\pi\sqrt{\dfrac{I}{mgd}}$. Despejar $I$.<span class="clave-only"> &nbsp;<span class="answer-final">$I = \dfrac{T^2 mgd}{4\pi^2}$</span></span></p></div></li>
-  </ol>
-
+<header class="exam-pdf__hero">
+<p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Preliminares</span></p>
+<h1 class="exam-pdf__title">Conversiones y <em>despejes</em></h1>
+<p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Conversión de unidades y despeje de fórmulas físicas · <span class="alumno-only">versión alumno</span></p>
+</header>
+<div class="exam-pdf__instructions">
+<span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span></span>
+<p class="alumno-only">Realiza cada conversión apoyándote en la tabla de equivalencias. En los despejes, deja sola la variable indicada.</p>
+</div>
+<section class="exam-pdf__section exam-pdf__section--first">
+<h2 class="exam-pdf__section-title">Conversiones</h2>
+</section>
+<div class="exam-pdf__table-pair">
+<table class="exam-pdf__table">
+<thead><tr><th>Unidad</th><th>Equivalencia</th></tr></thead>
+<tbody>
+<tr><td>1 kilómetro (km)</td><td>$1\,000$ metros (m)</td></tr>
+<tr><td>1 metro (m)</td><td>$10$ decímetros (dm)</td></tr>
+<tr><td>1 metro (m)</td><td>$100$ centímetros (cm)</td></tr>
+<tr><td>1 metro (m)</td><td>$0.001$ kilómetros (km)</td></tr>
+<tr><td>1 milímetro (mm)</td><td>$0.001$ metros (m)</td></tr>
+<tr><td>1 centímetro (cm)</td><td>$0.01$ metros (m)</td></tr>
+<tr><td>1 decámetro (dam)</td><td>$10$ metros (m)</td></tr>
+<tr><td>1 hectómetro (hm)</td><td>$100$ metros (m)</td></tr>
+<tr><td>1 pulgada (in)</td><td>$2.54$ centímetros (cm)</td></tr>
+<tr><td>1 pie (ft)</td><td>$0.3048$ metros (m)</td></tr>
+</tbody>
+</table>
+<table class="exam-pdf__table">
+<thead><tr><th>Unidad</th><th>Equivalencia</th></tr></thead>
+<tbody>
+<tr><td>1 pie (ft)</td><td>$12$ pulgadas (in)</td></tr>
+<tr><td>1 yarda (yd)</td><td>$0.9144$ metros (m)</td></tr>
+<tr><td>1 yarda (yd)</td><td>$3$ pies (ft)</td></tr>
+<tr><td>1 milla (mi)</td><td>$1.609$ kilómetros (km)</td></tr>
+<tr><td>1 milla (mi)</td><td>$5\,280$ pies (ft)</td></tr>
+<tr><td>1 hora (h)</td><td>$3\,600$ segundos (s)</td></tr>
+<tr><td>1 hora (h)</td><td>$60$ minutos (min)</td></tr>
+<tr><td>1 libra (lb)</td><td>$0.45$ kilogramos (kg)</td></tr>
+<tr><td>1 kilogramo (kg)</td><td>$2.20$ libras (lb)</td></tr>
+</tbody>
+</table>
+</div>
+<ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
+<li class="exam-pdf__exercise">$769\,000\,000\,\mathrm{mm}$ a $\mathrm{km}$ = </li>
+<li class="exam-pdf__exercise">$237.04\,\mathrm{m}$ a $\mathrm{hm}$ = </li>
+<li class="exam-pdf__exercise">$0.000004\,\mathrm{km}$ a $\mathrm{cm}$ = </li>
+<li class="exam-pdf__exercise">$4\,120\,000\,\mathrm{dm}$ a $\mathrm{hm}$ = </li>
+<li class="exam-pdf__exercise">$960\,\mathrm{mm}$ a $\mathrm{dam}$ = </li>
+<li class="exam-pdf__exercise">$214\,\mathrm{in}$ a $\mathrm{ft}$ = </li>
+<li class="exam-pdf__exercise">$0.005\,\mathrm{yd}$ a $\mathrm{cm}$ = </li>
+<li class="exam-pdf__exercise">$300\,\mathrm{mi}$ a $\mathrm{dam}$ = </li>
+<li class="exam-pdf__exercise">$2\,640\,\mathrm{ft}$ a $\mathrm{mi}$ = </li>
+<li class="exam-pdf__exercise">$1\,200\,\mathrm{km}$ a $\mathrm{mi}$ = </li>
+<li class="exam-pdf__exercise">$7\,200\,\mathrm{s}$ a $\mathrm{h}$ = </li>
+<li class="exam-pdf__exercise">$45\,\mathrm{h}$ a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$890\,\mathrm{s}$ a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$415\,\mathrm{min}$ a $\mathrm{h}$ = </li>
+<li class="exam-pdf__exercise">$220\,\mathrm{lb}$ a $\mathrm{kg}$ = </li>
+<li class="exam-pdf__exercise">$58\,\mathrm{kg}$ a $\mathrm{lb}$ = </li>
+<li class="exam-pdf__exercise">$17$ días a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$3\,400\,\mathrm{min}$ a días = </li>
+<li class="exam-pdf__exercise">$582\,000\,000\,\mathrm{mm}$ a $\mathrm{km}$ = </li>
+<li class="exam-pdf__exercise">$156.25\,\mathrm{m}$ a $\mathrm{hm}$ = </li>
+<li class="exam-pdf__exercise">$0.000007\,\mathrm{km}$ a $\mathrm{cm}$ = </li>
+<li class="exam-pdf__exercise">$3\,250\,000\,\mathrm{dm}$ a $\mathrm{hm}$ = </li>
+<li class="exam-pdf__exercise">$850\,\mathrm{mm}$ a $\mathrm{dam}$ = </li>
+<li class="exam-pdf__exercise">$300\,\mathrm{in}$ a $\mathrm{ft}$ = </li>
+<li class="exam-pdf__exercise">$0.01\,\mathrm{yd}$ a $\mathrm{cm}$ = </li>
+<li class="exam-pdf__exercise">$150\,\mathrm{mi}$ a $\mathrm{dam}$ = </li>
+<li class="exam-pdf__exercise">$5\,280\,\mathrm{ft}$ a $\mathrm{mi}$ = </li>
+<li class="exam-pdf__exercise">$950\,\mathrm{km}$ a $\mathrm{mi}$ = </li>
+<li class="exam-pdf__exercise">$5\,400\,\mathrm{s}$ a $\mathrm{h}$ = </li>
+<li class="exam-pdf__exercise">$72\,\mathrm{h}$ a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$530\,\mathrm{s}$ a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$625\,\mathrm{min}$ a $\mathrm{h}$ = </li>
+<li class="exam-pdf__exercise">$150\,\mathrm{lb}$ a $\mathrm{kg}$ = </li>
+<li class="exam-pdf__exercise">$75\,\mathrm{kg}$ a $\mathrm{lb}$ = </li>
+<li class="exam-pdf__exercise">$24$ días a $\mathrm{min}$ = </li>
+<li class="exam-pdf__exercise">$2\,560\,\mathrm{min}$ a días = </li>
+<li class="exam-pdf__exercise">$15\,\mathrm{km/h}$ a $\mathrm{m/s}$ = </li>
+<li class="exam-pdf__exercise">$82\,\mathrm{m/s}$ a $\mathrm{km/h}$ = </li>
+<li class="exam-pdf__exercise">$55\,\mathrm{mi/h}$ a $\mathrm{km/h}$ = </li>
+<li class="exam-pdf__exercise">$50.6\,\mathrm{ft/s}$ a $\mathrm{m/s}$ = </li>
+<li class="exam-pdf__exercise">$60\,\mathrm{km/h}$ a $\mathrm{mi/h}$ = </li>
+<li class="exam-pdf__exercise">$20\,\mathrm{km/h}$ a $\mathrm{m/s}$ = </li>
+<li class="exam-pdf__exercise">$100\,\mathrm{km/h}$ a $\mathrm{m/s}$ = </li>
+<li class="exam-pdf__exercise">$45\,\mathrm{mi/h}$ a $\mathrm{km/h}$ = </li>
+<li class="exam-pdf__exercise">$30\,\mathrm{m/s}$ a $\mathrm{mi/h}$ = </li>
+<li class="exam-pdf__exercise">$25\,\mathrm{m/s}$ a $\mathrm{km/h}$ = </li>
+<li class="exam-pdf__exercise">$5\,000\,\mathrm{m}$ a $\mathrm{km}$ = </li>
+<li class="exam-pdf__exercise">$2\,500\,\mathrm{cm}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$5\,\mathrm{km}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$3\,\mathrm{m}$ a $\mathrm{dm}$ = </li>
+<li class="exam-pdf__exercise">$7\,\mathrm{dam}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$12\,\mathrm{hm}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$8\,\mathrm{in}$ a $\mathrm{cm}$ = </li>
+<li class="exam-pdf__exercise">$10\,\mathrm{ft}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$5\,\mathrm{yd}$ a $\mathrm{m}$ = </li>
+<li class="exam-pdf__exercise">$3\,\mathrm{mi}$ a $\mathrm{km}$ = </li>
+<li class="exam-pdf__exercise">$2\,\mathrm{h}$ a $\mathrm{s}$ = </li>
+<li class="exam-pdf__exercise">$15\,\mathrm{min}$ a $\mathrm{s}$ = </li>
+<li class="exam-pdf__exercise">$200\,\mathrm{lb}$ a $\mathrm{kg}$ = </li>
+<li class="exam-pdf__exercise">$30\,\mathrm{kg}$ a $\mathrm{lb}$ = </li>
+</ol>
+<section class="exam-pdf__section">
+<h2 class="exam-pdf__section-title">Despejes de fórmulas físicas</h2>
+<p class="exam-pdf__section-intro">Despeja la variable indicada en cada fórmula.</p>
+</section>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Velocidad final (MUA): $v = v_0 + at$. Despejar $t$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Fuerza gravitacional: $F = G\dfrac{m_1 m_2}{r^2}$. Despejar $r$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía cinética: $E_k = \dfrac{1}{2}mv^2$. Despejar $m$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Ohm: $V = IR$. Despejar $R$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Presión hidrostática: $P = \rho g h$. Despejar $h$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Densidad: $\rho = \dfrac{m}{V}$. Despejar $V$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Periodo del péndulo simple: $T = 2\pi\sqrt{\dfrac{l}{g}}$. Despejar $l$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Trabajo de una fuerza: $W = Fd\cos\theta$. Despejar $F$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía potencial gravitatoria: $U = mgh$. Despejar $g$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Dilatación lineal: $\Delta L = L_0\alpha\Delta T$. Despejar $\Delta T$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Impulso: $J = Ft$. Despejar $F$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Potencia eléctrica: $P = VI$. Despejar $I$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Cantidad de movimiento: $p = mv$. Despejar $v$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Presión: $P = \dfrac{F}{A}$. Despejar $A$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Calor específico: $Q = mc\Delta T$. Despejar $c$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Capacidad eléctrica: $C = \dfrac{Q}{V}$. Despejar $Q$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Coulomb: $F = k\dfrac{q_1 q_2}{r^2}$. Despejar $q_1$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Ley de Snell: $n_1\sin\theta_1 = n_2\sin\theta_2$. Despejar $\theta_2$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Energía potencial elástica: $U = \dfrac{1}{2}kx^2$. Despejar $x$.</p></div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>Periodo del péndulo físico: $T = 2\pi\sqrt{\dfrac{I}{mgd}}$. Despejar $I$.</p></div></li>
+</ol>
 </main>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (window.ClasesKatex) window.ClasesKatex.load();
   });
 </script>
-
 </body>
 </html>

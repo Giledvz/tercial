@@ -1,229 +1,190 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-theme-pref="light">
+
+<html data-theme="light" data-theme-pref="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Examen 6 · Tercial</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Examen 6 · Tercial</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/tokens.css" rel="stylesheet"/>
+<link href="../assets/css/base.css" rel="stylesheet"/>
+<link href="../assets/css/components.css" rel="stylesheet"/>
+<link href="../assets/css/exam-print.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/katex-loader.js"></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/exam-print.css">
-
-  <script defer src="../assets/js/katex-loader.js"></script>
-  <script defer src="../assets/js/exam-clave.js"></script>
 </head>
 <body>
-
 <main class="exam-pdf exam-pdf--mate">
+<header class="exam-pdf__hero">
+<p class="exam-pdf__eyebrow">Evaluación · ECOEMS</p>
+<h1 class="exam-pdf__title">Examen 6 — <em>Matemáticas y Física</em></h1>
+<p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Sexto fin de semana del curso · <span class="alumno-only">versión alumno</span></p>
+</header>
+<div class="exam-pdf__instructions">
+<span class="exam-pdf__instructions-label">Instrucciones</span>
+<p>Resuelve el examen sin ningún tipo de ayuda (calculadora o apuntes). Para las preguntas que no puedas resolver, podrás revisar tus apuntes después para recordar cómo se hacían.</p>
+</div>
+<section class="exam-pdf__section exam-pdf__section--first">
+<h2 class="exam-pdf__section-title">Matemáticas</h2>
+</section>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">2 pts</span>Encuentra el valor de $x$ y $y$: $\begin{cases}3x - 4y &amp;= 6\\5x + 6y &amp;= -28\end{cases}$</p>
 
-  <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow">Evaluación · ECOEMS</p>
-    <h1 class="exam-pdf__title">Examen 6 — <em>Matemáticas y Física</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Sexto fin de semana del curso · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
-  </header>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>En $5$ días, $3$ alumnos vendieron $930$ paletas. ¿Cuántos días tienen que dedicar para vender $2\,790$ paletas?</p>
 
-  <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label">Instrucciones</span>
-    <p>Resuelve el examen sin ningún tipo de ayuda (calculadora o apuntes). Para las preguntas que no puedas resolver, podrás revisar tus apuntes después para recordar cómo se hacían.</p>
-  </div>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>$\dfrac{1}{4}+\dfrac{6}{60}+\dfrac{12}{18} =$</p>
 
-  <section class="exam-pdf__section exam-pdf__section--first">
-    <h2 class="exam-pdf__section-title">Matemáticas</h2>
-  </section>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Encuentra el valor de $x$: $16-2x-15=3x+21$</p>
 
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">2 pts</span>Encuentra el valor de $x$ y $y$: $\begin{cases}3x - 4y &= 6\\5x + 6y &= -28\end{cases}$</p>
-    
-      <p class="clave-only">Eliminación: $9x-12y=18$, $10x+12y=-56 \Rightarrow 19x=-38 \Rightarrow$ <span class="answer-final">$x=-2,\ y=-3$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>En $5$ días, $3$ alumnos vendieron $930$ paletas. ¿Cuántos días tienen que dedicar para vender $2\,790$ paletas?</p>
-    
-      <p class="clave-only">$\dfrac{2\,790}{930}=3$ (directa) $\Rightarrow 5\times3 =$ <span class="answer-final">$15\,\text{días}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>$\dfrac{1}{4}+\dfrac{6}{60}+\dfrac{12}{18} =$</p>
-    
-      <p class="clave-only">$\dfrac{15+6+40}{60} =$ <span class="answer-final">$\dfrac{61}{60}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Encuentra el valor de $x$: $16-2x-15=3x+21$</p>
-    
-      <p class="clave-only">$1-2x=3x+21 \Rightarrow -20=5x \Rightarrow$ <span class="answer-final">$x=-4$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Factoriza $10m^2-9m-9 =$</p>
-    
-      <p class="clave-only">$10m^2-9m-9 =$ <span class="answer-final">$(2m-3)(5m+3)$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>$-28+31-35+27-40 =$</p>
-    
-      <p class="clave-only">$-28+31-35+27-40 =$ <span class="answer-final">$-45$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>$(2x+6)^2 =$</p>
-    
-      <p class="clave-only">$(2x+6)^2 =$ <span class="answer-final">$4x^2+24x+36$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Obtén el mínimo común múltiplo de $18$ y $42$.</p>
-    
-      <p class="clave-only">$18=2\cdot3^2$, $42=2\cdot3\cdot7 \Rightarrow$ m.c.m. $=2\cdot3^2\cdot7 =$ <span class="answer-final">$126$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Nueve trabajadores cargan un camión en $2$ horas. ¿Cuánto tardan seis trabajadores?</p>
-    
-      <p class="clave-only">Inversa: $9\times2=18 \Rightarrow 18\div6 =$ <span class="answer-final">$3\,\text{horas}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>$(x+12)(x+8) =$</p>
-    
-      <p class="clave-only">$(x+12)(x+8) =$ <span class="answer-final">$x^2+20x+96$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Halla el número tal que, si sumamos su mitad con su doble y su triple, obtenemos $55$.</p>
-    
-      <p class="clave-only">$\dfrac{x}{2}+2x+3x=55 \Rightarrow \dfrac{11x}{2}=55 \Rightarrow$ <span class="answer-final">$x=10$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Factoriza $49x^2-16y^4 =$</p>
-    
-      <p class="clave-only">$49x^2-16y^4 =$ <span class="answer-final">$(7x-4y^2)(7x+4y^2)$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">2 pts</span>Encuentra los dos valores de $x$: $x^2+10=2x+90$</p>
-    
-      <p class="clave-only">$x^2-2x-80=0 \Rightarrow (x-10)(x+8)=0 \Rightarrow$ <span class="answer-final">$x=10,\ x=-8$</span></p>
-    </div></li>
-  </ol>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Factoriza $10m^2-9m-9 =$</p>
 
-  <section class="exam-pdf__section" style="page-break-before: always;">
-    <h2 class="exam-pdf__section-title">Física</h2>
-  </section>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>$-28+31-35+27-40 =$</p>
 
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Despeja $a$ en la ecuación $\dfrac{F}{a}=m$.</p>
-    
-      <p class="clave-only">$\dfrac{F}{a}=m \Rightarrow$ <span class="answer-final">$a=\dfrac{F}{m}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Convierte $514.46\,\mathrm{dm}$ a $\mathrm{hm}$.</p>
-    
-      <p class="clave-only">$1\,\mathrm{hm}=1\,000\,\mathrm{dm}$; $514.46\div1\,000 =$ <span class="answer-final">$0.51446\,\mathrm{hm}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">5 pts</span>De acuerdo con la gráfica mostrada, calcula:</p>
-      <ol class="exam-pdf__sublist">
-        <li>La distancia total</li>
-        <li>El desplazamiento total</li>
-        <li>La velocidad en el periodo de 6 a 9 segundos</li>
-        <li>La velocidad en los 3 primeros segundos</li>
-        <li>La velocidad en el periodo de 15 a 18 segundos</li>
-      </ol>
-      <figure class="exam-pdf__figure">
-        <svg viewBox="0 0 340 220" width="340" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfica de Posición [m] contra tiempo">
-        <defs><style>.grid{stroke:#ede2c5;stroke-width:.8}.ax{stroke:#4a3f33;stroke-width:1.2}.zero{stroke:#8c7556;stroke-width:1}.ln{stroke:#6b3a2e;stroke-width:1.6;fill:none}.dot{fill:#6b3a2e}.tk{font-family:'IBM Plex Sans',sans-serif;font-size:8px;fill:#877b6c}.axl{font-family:'IBM Plex Sans',sans-serif;font-size:9px;fill:#877b6c}</style></defs>
-        <line class="grid" x1="46.0" y1="16" x2="46.0" y2="190"/>
-        <line class="grid" x1="81.2" y1="16" x2="81.2" y2="190"/>
-        <line class="grid" x1="116.5" y1="16" x2="116.5" y2="190"/>
-        <line class="grid" x1="151.8" y1="16" x2="151.8" y2="190"/>
-        <line class="grid" x1="187.0" y1="16" x2="187.0" y2="190"/>
-        <line class="grid" x1="222.2" y1="16" x2="222.2" y2="190"/>
-        <line class="grid" x1="257.5" y1="16" x2="257.5" y2="190"/>
-        <line class="grid" x1="292.8" y1="16" x2="292.8" y2="190"/>
-        <line class="grid" x1="328.0" y1="16" x2="328.0" y2="190"/>
-        <line class="grid" x1="46" y1="168.2" x2="328" y2="168.2"/>
-        <line class="grid" x1="46" y1="146.5" x2="328" y2="146.5"/>
-        <line class="grid" x1="46" y1="124.8" x2="328" y2="124.8"/>
-        <line class="grid" x1="46" y1="103.0" x2="328" y2="103.0"/>
-        <line class="grid" x1="46" y1="81.2" x2="328" y2="81.2"/>
-        <line class="grid" x1="46" y1="59.5" x2="328" y2="59.5"/>
-        <line class="grid" x1="46" y1="37.8" x2="328" y2="37.8"/>
-        <line class="zero" x1="46" y1="103.0" x2="328" y2="103.0"/>
-        <line class="ax" x1="46" y1="16" x2="46" y2="190"/>
-        <line class="ax" x1="46" y1="190" x2="328" y2="190"/>
-        <text class="tk" x="46.0" y="201" text-anchor="middle">0</text>
-        <text class="tk" x="81.2" y="201" text-anchor="middle">3</text>
-        <text class="tk" x="116.5" y="201" text-anchor="middle">6</text>
-        <text class="tk" x="151.8" y="201" text-anchor="middle">9</text>
-        <text class="tk" x="187.0" y="201" text-anchor="middle">12</text>
-        <text class="tk" x="222.2" y="201" text-anchor="middle">15</text>
-        <text class="tk" x="257.5" y="201" text-anchor="middle">18</text>
-        <text class="tk" x="292.8" y="201" text-anchor="middle">21</text>
-        <text class="tk" x="328.0" y="201" text-anchor="middle">24</text>
-        <text class="tk" x="42" y="171.2" text-anchor="end">-150</text>
-        <text class="tk" x="42" y="149.5" text-anchor="end">-100</text>
-        <text class="tk" x="42" y="127.8" text-anchor="end">-50</text>
-        <text class="tk" x="42" y="106.0" text-anchor="end">0</text>
-        <text class="tk" x="42" y="84.2" text-anchor="end">50</text>
-        <text class="tk" x="42" y="62.5" text-anchor="end">100</text>
-        <text class="tk" x="42" y="40.8" text-anchor="end">150</text>
-        <text class="axl" x="187" y="216" text-anchor="middle">Tiempo [s]</text>
-        <text class="axl" x="12" y="103" text-anchor="middle" transform="rotate(-90 12 103)">Posición [m]</text>
-        <polyline class="ln" points="46.0,124.8 81.2,146.5 116.5,103.0 151.8,37.8 187.0,124.8 222.2,103.0 257.5,168.2 292.8,59.5 328.0,81.2"/>
-        <circle class="dot" cx="46.0" cy="124.8" r="2.2"/>
-        <circle class="dot" cx="81.2" cy="146.5" r="2.2"/>
-        <circle class="dot" cx="116.5" cy="103.0" r="2.2"/>
-        <circle class="dot" cx="151.8" cy="37.8" r="2.2"/>
-        <circle class="dot" cx="187.0" cy="124.8" r="2.2"/>
-        <circle class="dot" cx="222.2" cy="103.0" r="2.2"/>
-        <circle class="dot" cx="257.5" cy="168.2" r="2.2"/>
-        <circle class="dot" cx="292.8" cy="59.5" r="2.2"/>
-        <circle class="dot" cx="328.0" cy="81.2" r="2.2"/>
-        </svg>
-      </figure>
-    
-      <ol class="exam-pdf__sublist clave-only">
-        <li>Distancia total $= 50+100+150+200+50+150+250+50 =$ <span class="answer-final">$1\,000\,\mathrm{m}$</span></li>
-        <li>Desplazamiento $= 50-(-50) =$ <span class="answer-final">$+100\,\mathrm{m}$</span></li>
-        <li>$v_{[6,9]} = \dfrac{150-0}{3} =$ <span class="answer-final">$+50\,\mathrm{m/s}$</span></li>
-        <li>$v_{[0,3]} = \dfrac{-100-(-50)}{3} \approx$ <span class="answer-final">$-16.7\,\mathrm{m/s}$</span></li>
-        <li>$v_{[15,18]} = \dfrac{-150-0}{3} =$ <span class="answer-final">$-50\,\mathrm{m/s}$</span></li>
-      </ol>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>La velocidad del sonido en el aire es $340\,\mathrm{m/s}$. Desde que se produjo el relámpago hasta que se oyó el trueno transcurrieron $8\,\mathrm{s}$. ¿A qué distancia se produjo la descarga eléctrica?</p>
-    
-      <p class="clave-only">$d=vt=340\times8 =$ <span class="answer-final">$2\,720\,\mathrm{m}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Lanzamos verticalmente hacia arriba un cuerpo a $20\,\mathrm{m/s}$. Calcula cuánto tiempo le cuesta llegar al punto más alto.</p>
-    
-      <p class="clave-only">Punto más alto $v=0$: $t=\dfrac{v_0}{g}=\dfrac{20}{10} =$ <span class="answer-final">$2\,\mathrm{s}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>¿Cuánto pesa un hombre que tiene una masa de $70\,\mathrm{kg}$?</p>
-    
-      <p class="clave-only">$P=mg=70\times10 =$ <span class="answer-final">$700\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p><span class="exam-pdf__points">1 pt</span>Un cuerpo se desplaza $62\,\mathrm{m}$ con un trabajo de $310\,\mathrm{J}$. ¿Con qué fuerza se empuja?</p>
-    
-      <p class="clave-only">$F=\dfrac{W}{d}=\dfrac{310}{62} =$ <span class="answer-final">$5\,\mathrm{N}$</span></p>
-    </div></li>
-  </ol>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>$(2x+6)^2 =$</p>
 
-  <div class="exam-pdf__total">
-    <span class="exam-pdf__total-label">Total de puntos</span>
-    <span class="exam-pdf__total-value">26</span>
-  </div>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Obtén el mínimo común múltiplo de $18$ y $42$.</p>
 
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Nueve trabajadores cargan un camión en $2$ horas. ¿Cuánto tardan seis trabajadores?</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>$(x+12)(x+8) =$</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Halla el número tal que, si sumamos su mitad con su doble y su triple, obtenemos $55$.</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Factoriza $49x^2-16y^4 =$</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">2 pts</span>Encuentra los dos valores de $x$: $x^2+10=2x+90$</p>
+
+</div></li>
+</ol>
+<section class="exam-pdf__section" style="page-break-before: always;">
+<h2 class="exam-pdf__section-title">Física</h2>
+</section>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Despeja $a$ en la ecuación $\dfrac{F}{a}=m$.</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Convierte $514.46\,\mathrm{dm}$ a $\mathrm{hm}$.</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">5 pts</span>De acuerdo con la gráfica mostrada, calcula:</p>
+<ol class="exam-pdf__sublist">
+<li>La distancia total</li>
+<li>El desplazamiento total</li>
+<li>La velocidad en el periodo de 6 a 9 segundos</li>
+<li>La velocidad en los 3 primeros segundos</li>
+<li>La velocidad en el periodo de 15 a 18 segundos</li>
+</ol>
+<figure class="exam-pdf__figure">
+<svg aria-label="Gráfica de Posición [m] contra tiempo" height="220" role="img" viewbox="0 0 340 220" width="340" xmlns="http://www.w3.org/2000/svg">
+<defs><style>.grid{stroke:#ede2c5;stroke-width:.8}.ax{stroke:#4a3f33;stroke-width:1.2}.zero{stroke:#8c7556;stroke-width:1}.ln{stroke:#6b3a2e;stroke-width:1.6;fill:none}.dot{fill:#6b3a2e}.tk{font-family:'IBM Plex Sans',sans-serif;font-size:8px;fill:#877b6c}.axl{font-family:'IBM Plex Sans',sans-serif;font-size:9px;fill:#877b6c}</style></defs>
+<line class="grid" x1="46.0" x2="46.0" y1="16" y2="190"></line>
+<line class="grid" x1="81.2" x2="81.2" y1="16" y2="190"></line>
+<line class="grid" x1="116.5" x2="116.5" y1="16" y2="190"></line>
+<line class="grid" x1="151.8" x2="151.8" y1="16" y2="190"></line>
+<line class="grid" x1="187.0" x2="187.0" y1="16" y2="190"></line>
+<line class="grid" x1="222.2" x2="222.2" y1="16" y2="190"></line>
+<line class="grid" x1="257.5" x2="257.5" y1="16" y2="190"></line>
+<line class="grid" x1="292.8" x2="292.8" y1="16" y2="190"></line>
+<line class="grid" x1="328.0" x2="328.0" y1="16" y2="190"></line>
+<line class="grid" x1="46" x2="328" y1="168.2" y2="168.2"></line>
+<line class="grid" x1="46" x2="328" y1="146.5" y2="146.5"></line>
+<line class="grid" x1="46" x2="328" y1="124.8" y2="124.8"></line>
+<line class="grid" x1="46" x2="328" y1="103.0" y2="103.0"></line>
+<line class="grid" x1="46" x2="328" y1="81.2" y2="81.2"></line>
+<line class="grid" x1="46" x2="328" y1="59.5" y2="59.5"></line>
+<line class="grid" x1="46" x2="328" y1="37.8" y2="37.8"></line>
+<line class="zero" x1="46" x2="328" y1="103.0" y2="103.0"></line>
+<line class="ax" x1="46" x2="46" y1="16" y2="190"></line>
+<line class="ax" x1="46" x2="328" y1="190" y2="190"></line>
+<text class="tk" text-anchor="middle" x="46.0" y="201">0</text>
+<text class="tk" text-anchor="middle" x="81.2" y="201">3</text>
+<text class="tk" text-anchor="middle" x="116.5" y="201">6</text>
+<text class="tk" text-anchor="middle" x="151.8" y="201">9</text>
+<text class="tk" text-anchor="middle" x="187.0" y="201">12</text>
+<text class="tk" text-anchor="middle" x="222.2" y="201">15</text>
+<text class="tk" text-anchor="middle" x="257.5" y="201">18</text>
+<text class="tk" text-anchor="middle" x="292.8" y="201">21</text>
+<text class="tk" text-anchor="middle" x="328.0" y="201">24</text>
+<text class="tk" text-anchor="end" x="42" y="171.2">-150</text>
+<text class="tk" text-anchor="end" x="42" y="149.5">-100</text>
+<text class="tk" text-anchor="end" x="42" y="127.8">-50</text>
+<text class="tk" text-anchor="end" x="42" y="106.0">0</text>
+<text class="tk" text-anchor="end" x="42" y="84.2">50</text>
+<text class="tk" text-anchor="end" x="42" y="62.5">100</text>
+<text class="tk" text-anchor="end" x="42" y="40.8">150</text>
+<text class="axl" text-anchor="middle" x="187" y="216">Tiempo [s]</text>
+<text class="axl" text-anchor="middle" transform="rotate(-90 12 103)" x="12" y="103">Posición [m]</text>
+<polyline class="ln" points="46.0,124.8 81.2,146.5 116.5,103.0 151.8,37.8 187.0,124.8 222.2,103.0 257.5,168.2 292.8,59.5 328.0,81.2"></polyline>
+<circle class="dot" cx="46.0" cy="124.8" r="2.2"></circle>
+<circle class="dot" cx="81.2" cy="146.5" r="2.2"></circle>
+<circle class="dot" cx="116.5" cy="103.0" r="2.2"></circle>
+<circle class="dot" cx="151.8" cy="37.8" r="2.2"></circle>
+<circle class="dot" cx="187.0" cy="124.8" r="2.2"></circle>
+<circle class="dot" cx="222.2" cy="103.0" r="2.2"></circle>
+<circle class="dot" cx="257.5" cy="168.2" r="2.2"></circle>
+<circle class="dot" cx="292.8" cy="59.5" r="2.2"></circle>
+<circle class="dot" cx="328.0" cy="81.2" r="2.2"></circle>
+</svg>
+</figure>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>La velocidad del sonido en el aire es $340\,\mathrm{m/s}$. Desde que se produjo el relámpago hasta que se oyó el trueno transcurrieron $8\,\mathrm{s}$. ¿A qué distancia se produjo la descarga eléctrica?</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Lanzamos verticalmente hacia arriba un cuerpo a $20\,\mathrm{m/s}$. Calcula cuánto tiempo le cuesta llegar al punto más alto.</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>¿Cuánto pesa un hombre que tiene una masa de $70\,\mathrm{kg}$?</p>
+
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p><span class="exam-pdf__points">1 pt</span>Un cuerpo se desplaza $62\,\mathrm{m}$ con un trabajo de $310\,\mathrm{J}$. ¿Con qué fuerza se empuja?</p>
+
+</div></li>
+</ol>
+<div class="exam-pdf__total">
+<span class="exam-pdf__total-label">Total de puntos</span>
+<span class="exam-pdf__total-value">26</span>
+</div>
 </main>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (window.ClasesKatex) window.ClasesKatex.load();
   });
 </script>
-
 </body>
 </html>

@@ -64,10 +64,19 @@ jobs:
         run: |
           set -euo pipefail
           fugas=0
+          # a · archivos/carpetas internas que nunca deben publicarse
           for p in METODO.md README.md package.json design migrar tools rediseno; do
-            if [ -e "_site/$p" ]; then echo "❌ FUGA: _site/$p"; fugas=1; fi
+            if [ -e "_site/$p" ]; then echo "❌ FUGA (archivo interno): _site/$p"; fugas=1; fi
           done
-          [ "$fugas" -eq 0 ] && echo "✅ Sin archivos internos en _site"
+          # b · claves del profesor: ni marcadores ni archivos de respuestas
+          #     (las claves viven SOLO en el repo privado tercial-claves)
+          if grep -rlE 'clave-only|answer-final|is-clave|[?]clave=1|exam-clave' _site >/dev/null 2>&1; then
+            echo "❌ FUGA (marcador de clave):"; grep -rlE 'clave-only|answer-final|is-clave|[?]clave=1|exam-clave' _site; fugas=1
+          fi
+          if find _site -name '*-respuestas.html' | grep -q .; then
+            echo "❌ FUGA (archivo de respuestas):"; find _site -name '*-respuestas.html'; fugas=1
+          fi
+          [ "$fugas" -eq 0 ] && echo "✅ Sin archivos internos ni claves en _site"
           exit $fugas
 
       - name: Subir el sitio
