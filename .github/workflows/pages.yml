@@ -54,7 +54,11 @@ jobs:
             --exclude 'package-lock.json' \
             --exclude 'node_modules/' \
             `# — prototipos: quitar esta línea cuando el rediseño esté listo —` \
-            --exclude 'rediseno/'
+            --exclude 'rediseno/' \
+            `# — simulacros con errores: en revisión, NO publicar hasta corregir —` \
+            --exclude 'examenes-pdf/simulacion-2024-v1.html' \
+            --exclude 'examenes-pdf/simulacion-2024-v2.html' \
+            --exclude 'examenes-pdf/img/simulacion-2024/'
           # .nojekyll debe viajar sí o sí (evita que Pages procese con Jekyll)
           touch _site/.nojekyll
           echo "── se publica ──"
