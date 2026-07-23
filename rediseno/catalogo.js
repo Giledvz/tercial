@@ -87,11 +87,30 @@ window.TercialCatalogo = (function () {
     uni:   idsTronco.concat(['mat-desigualdades', 'mat-funciones', 'mat-trigonometria', 'mat-exp-log', 'mat-conicas', 'mat-calculo'])
   };
 
+  /* número de tema en cada guía (difiere entre prepa/ECOEMS y uni/UNAM):
+     el generador NO debe fijarlo — sale de aquí según la ruta. */
+  var REF = {
+    'mat-signos-suma':          { prepa: 'Tema 1', uni: 'Tema 1' },
+    'mat-signos-producto':      { prepa: 'Tema 1', uni: 'Tema 1' },
+    'mat-potencias':            { prepa: 'Tema 1', uni: 'Tema 1' },
+    'mat-fracciones-suma':      { prepa: 'Tema 1', uni: 'Tema 1' },
+    'mat-fracciones-producto':  { prepa: 'Tema 1', uni: 'Tema 1' },
+    'mat-productos-notables':   { prepa: 'Tema 2', uni: 'Tema 2' },
+    'mat-factorizacion':        { prepa: 'Tema 2', uni: 'Tema 2' },
+    'mat-ecuaciones-lineales':  { prepa: 'Tema 2', uni: 'Tema 3' },
+    'mat-ecuaciones-cuadraticas': { prepa: 'Tema 2', uni: 'Tema 3' },
+    'mat-sistemas-2x2':         { prepa: 'Tema 2', uni: 'Tema 5' }
+  };
+  function refDe(id, nivel) {
+    var r = REF[id];
+    return 'Matemáticas' + (r ? ' · ' + (r[nivel] || r.uni) : '');
+  }
+
   function temaPorId(id) { return PORID[id] || null; }
   function temasDeRuta(nivel) { return (RUTAS[nivel] || RUTAS.uni).map(temaPorId).filter(Boolean); }
   function disponibles(nivel) { return temasDeRuta(nivel).filter(function (t) { return t.estado === 'disponible'; }); }
   function pendientes(nivel) { return temasDeRuta(nivel).filter(function (t) { return t.estado !== 'disponible'; }); }
 
-  return { TEMAS: TEMAS, RUTAS: RUTAS, temaPorId: temaPorId,
+  return { TEMAS: TEMAS, RUTAS: RUTAS, temaPorId: temaPorId, refDe: refDe,
            temasDeRuta: temasDeRuta, disponibles: disponibles, pendientes: pendientes };
 })();

@@ -411,7 +411,7 @@
     elCard.classList.remove('ok', 'bad');
     elOtro.textContent = 'Otro ejercicio →';
     elTema.textContent = p.meta.tema;
-    elRef.textContent = p.meta.ref;
+    elRef.textContent = C.refDe(estado.temaId, RUTA);   // nº de tema según la ruta (no lo fija el generador)
     document.getElementById('qAsk').textContent = p.meta.ask || '¿Cuánto es?';
     elExp.innerHTML = p.enunciado;
     elVer.hidden = true; elVer.innerHTML = '';

@@ -164,13 +164,13 @@ window.TercialMotor = (function () {
       enun = tex(ent(A)) + ' × ' + tex(ent(B));
     }
     var val = correcta.n;
-    var cand = [
-      { val: ent(-val), err: 'Regla de los signos: <strong>' + (val < 0 ? 'menos por menos da MÁS' : 'signos iguales dan más, distintos dan menos') + '</strong>. Te salió con el signo cambiado.' },
-      { val: ent(A + B), err: '<strong>Sumaste</strong> en vez de ' + (esDiv ? 'dividir' : 'multiplicar') + '.' },
-      { val: ent(Math.abs(val)), err: 'Sacaste bien el número pero <strong>ignoraste el signo</strong>.' },
-      { val: ent(-Math.abs(val)), err: 'Signo equivocado: revisa la regla.' }
-    ];
     var mismo = (A < 0) === (B < 0);
+    var cand = [
+      { val: ent(-val), tipo: 'signo', err: 'Regla de los signos: <strong>' + (mismo ? 'signos iguales dan POSITIVO' : 'signos distintos dan NEGATIVO') + '</strong>, así que el resultado es ' + val + '.' },
+      { val: ent(A + B), tipo: 'sumo', err: '<strong>Sumaste</strong> en vez de ' + (esDiv ? 'dividir' : 'multiplicar') + '.' },
+      { val: ent(Math.abs(val)), tipo: 'ignoro-signo', err: 'Sacaste bien el número pero <strong>ignoraste el signo</strong>.' },
+      { val: ent(-Math.abs(val)), tipo: 'signo', err: 'Signo equivocado: revisa la regla (' + (mismo ? 'iguales → +' : 'distintos → −') + ').' }
+    ];
     var pasos = [
       'Primero el <b>signo</b>: ' + (mismo ? 'signos <b>iguales</b> → resultado <b>positivo</b>.' : 'signos <b>distintos</b> → resultado <b>negativo</b>.'),
       'Luego el número: ' + Math.abs(A) + (esDiv ? ' ÷ ' : ' × ') + Math.abs(B) + ' = <b>' + Math.abs(val) + '</b>.',
@@ -190,22 +190,26 @@ window.TercialMotor = (function () {
     var correcta = resta ? fsub(a, b) : fadd(a, b);
     var enun = tex(a) + ' ' + (resta ? MIN : '+') + ' ' + tex(b);
 
+    // los distractores y pasos usan las fracciones MOSTRADAS (a, b reducidas),
+    // no los n/d originales — si no, hablarían de denominadores que el alumno no ve.
+    var an = a.n, ad = a.d, bn = b.n, bd = b.d;
     var cand = [];
     // el clásico "de frente": operar numeradores y denominadores por separado
-    var frente = fr(resta ? n1 - n2 : n1 + n2, resta ? (d1 - d2) : (d1 + d2));
-    cand.push({ val: frente, err: 'Operaste <strong>numerador con numerador y denominador con denominador</strong>. Primero hay que igualar denominadores.' });
+    cand.push({ val: fr(resta ? an - bn : an + bn, resta ? (ad - bd) : (ad + bd)), tipo: 'de-frente',
+      err: 'Operaste <strong>numerador con numerador y denominador con denominador</strong>. Primero hay que igualar denominadores.' });
     // olvidó escalar los numeradores al sacar común denominador
-    var comun = d1 * d2 / gcd(d1, d2);
-    cand.push({ val: fr(resta ? n1 - n2 : n1 + n2, comun), err: 'Sacaste el <strong>común denominador</strong> pero no ajustaste los numeradores.' });
+    var comun = ad * bd / gcd(ad, bd);
+    cand.push({ val: fr(resta ? an - bn : an + bn, comun), tipo: 'no-escalo',
+      err: 'Sacaste el <strong>común denominador</strong> pero no ajustaste los numeradores.' });
     // signo cambiado
-    cand.push({ val: fr(-correcta.n, correcta.d), err: 'Signo cambiado — cuida el orden al restar.' });
+    cand.push({ val: fr(-correcta.n, correcta.d), tipo: 'signo', err: 'Signo cambiado — cuida el orden al restar.' });
     // restó al revés
-    if (resta) cand.push({ val: fsub(b, a), err: 'Restaste <strong>al revés</strong> (segunda menos primera).' });
+    if (resta) cand.push({ val: fsub(b, a), tipo: 'al-reves', err: 'Restaste <strong>al revés</strong> (segunda menos primera).' });
 
-    var lcm = d1 * d2 / gcd(d1, d2);
+    var L = ad * bd / gcd(ad, bd);
     var pasos = [
-      'Común denominador de ' + d1 + ' y ' + d2 + ': <b>' + lcm + '</b>.',
-      'Reescribe: ' + tex(fr(n1 * (lcm / d1), lcm)) + ' ' + (resta ? MIN : '+') + ' ' + tex(fr(n2 * (lcm / d2), lcm)) + '.',
+      'Común denominador de ' + ad + ' y ' + bd + ': <b>' + L + '</b>.',
+      'Reescribe: ' + tex({ n: an * (L / ad), d: L }) + ' ' + (resta ? MIN : '+') + ' ' + tex({ n: bn * (L / bd), d: L }) + '.',
       (resta ? 'Resta' : 'Suma') + ' solo los numeradores: <b>' + tex(correcta) + '</b>' + (correcta.d === 1 ? ' (se simplificó a entero).' : '.')
     ];
     return finish(enun, correcta, cand, { ref: 'Tema 1 · reales', tema: 'Fracciones', pasos: pasos });
