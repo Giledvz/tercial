@@ -47,7 +47,7 @@ window.TercialCatalogo = (function () {
 
     { id: 'mat-ecuaciones-cuadraticas', materia: 'matematicas', titulo: 'Ecuaciones', sub: '2º grado',
       niveles: { prepa: { profundidad: 'basica' }, uni: { profundidad: 'fundamentos' } },
-      prerrequisitos: ['mat-factorizacion', 'mat-ecuaciones-lineales'], generadores: [], estado: 'pendiente' },
+      prerrequisitos: ['mat-factorizacion', 'mat-ecuaciones-lineales'], generadores: ['cuadratica'], estado: 'disponible' },
 
     { id: 'mat-sistemas-2x2', materia: 'matematicas', titulo: 'Sistemas', sub: '2×2',
       niveles: { prepa: { profundidad: 'basica' }, uni: { profundidad: 'fundamentos' } },

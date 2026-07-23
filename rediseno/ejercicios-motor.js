@@ -401,6 +401,42 @@ window.TercialMotor = (function () {
     return { enunciado: enun, correcta: correcta, opciones: e.opciones, meta: meta };
   }
 
+  /* — ecuación de 2º grado (x² + bx + c = 0, factorizable) — */
+  function ansRoots(a, b) {
+    var lo = Math.min(a, b), hi = Math.max(a, b);
+    function f(n) { return n < 0 ? MIN + Math.abs(n) : String(n); }
+    return { k: 'rt:' + lo + ',' + hi, h: 'x = ' + f(lo) + ', ' + f(hi) };
+  }
+  function genCuadratica(nivel) {
+    var top = [6, 8, 11][nivel - 1];
+    var r1, r2, g = 0;
+    do {
+      r1 = nz(nivel === 1 ? 1 : -top, top);
+      r2 = nz(nivel === 1 ? 1 : -top, top);
+      g++;
+    } while (g < 80 && (r1 === r2 || r1 === -r2));     // raíces distintas y b≠0
+
+    var b = -(r1 + r2), c = r1 * r2;
+    var signB = b < 0 ? MIN + ' ' : '+ ';
+    var magB = Math.abs(b) === 1 ? '' : Math.abs(b);
+    var enun = 'x² ' + signB + magB + 'x ' + sg(c) + ' = 0';
+
+    var cand = [
+      { val: ansRoots(-r1, -r2), tipo: 'signo-ambas',
+        err: 'Signo cambiado en las dos. El factor (x ' + sg(-r1) + ') se hace cero cuando x = ' + r1 + ', no ' + (-r1) + '.' },
+      { val: ansRoots(-r1, r2), tipo: 'signo-una',
+        err: 'Una raíz con el signo al revés. Iguala cada factor a cero por separado y despeja.' },
+      { val: ansRoots(r1, -r2), tipo: 'signo-una',
+        err: 'Una raíz con el signo al revés. Iguala cada factor a cero por separado y despeja.' },
+      { val: ansRoots(b, c), tipo: 'coeficientes',
+        err: 'Esos son los coeficientes (' + b + ' y ' + c + '), no las raíces.' }
+    ];
+    return finish(enun, ansRoots(r1, r2), cand, { ref: 'Tema 3 · cuadráticas', tema: 'Ecuación de 2º grado', ask: 'Resuelve',
+      pasos: ['Busca dos números que multiplicados den ' + c + ' y sumados ' + (r1 + r2) + ': son ' + r1 + ' y ' + r2 + '.',
+              'Factoriza: (x ' + sg(-r1) + ')(x ' + sg(-r2) + ') = 0.',
+              'Cada factor a cero: x ' + sg(-r1) + ' = 0 → x = ' + r1 + '; x ' + sg(-r2) + ' = 0 → x = ' + r2 + '.'] });
+  }
+
   /* — potencias y radicales — */
   function sup(e) { return '<sup>' + (e < 0 ? MIN + Math.abs(e) : e) + '</sup>'; }
   function powH(base, e) { return String(base) + sup(e); }
@@ -504,7 +540,8 @@ window.TercialMotor = (function () {
     'prod-notables': genProdNotables,
     'factorizacion': genFactorizacion,
     'ecuacion':      genEcuacion,
-    'potencias':     genPotencias
+    'potencias':     genPotencias,
+    'cuadratica':    genCuadratica
   };
 
   return { GENERADORES: GENERADORES, tex: tex, feq: feq, fkey: fkey, pick: pick };
