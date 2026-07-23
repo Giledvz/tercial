@@ -1,240 +1,216 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-theme-pref="light">
+
+<html data-theme="light" data-theme-pref="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Matemáticas 2 — Regla de 3 y porcentajes · Tercial</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/exam-print.css">
-
-  <script defer src="../assets/js/katex-loader.js"></script>
-  <script defer src="../assets/js/exam-clave.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Matemáticas 2 — Regla de 3 y porcentajes · Tercial</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/tokens.css" rel="stylesheet"/>
+<link href="../assets/css/base.css" rel="stylesheet"/>
+<link href="../assets/css/components.css" rel="stylesheet"/>
+<link href="../assets/css/exam-print.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<!-- Hoja única alumno/clave: sin parámetros se ve la versión del alumno;
-     con ?clave=1 aparecen las respuestas (.clave-only). -->
 <main class="exam-pdf exam-pdf--mate">
-
-  <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Matemáticas 2</span><span class="clave-only">Clave · profesor · Matemáticas 2</span></p>
-    <h1 class="exam-pdf__title">Matemáticas 2 — <em>Regla de 3 y porcentajes</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Proporcionalidad directa e inversa, problemas y porcentajes · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
-  </header>
-
-  <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span><span class="clave-only">Clave</span></span>
-    <p class="alumno-only">Encuentra el valor de $x$ en cada proporción y resuelve los problemas con procedimiento completo.</p>
-    <p class="clave-only">Cada respuesta aparece subrayada al final del ejercicio.</p>
-  </div>
-
-  <section class="exam-pdf__section exam-pdf__section--first">
-    <h2 class="exam-pdf__section-title">Relaciones de proporcionalidad</h2>
-    <p class="exam-pdf__section-intro">La regla de tres es aplicada cuando existe una proporcionalidad, ya sea directa o inversa, entre dos variables. Existen dos tipos:</p>
-  </section>
-
-  <ol class="exam-pdf__sublist">
-    <li><strong>Proporción directa o regla de tres directa:</strong> se da cuando una de las dos variables aumenta y la otra también, así como cuando una disminuye y la otra también disminuye en la misma proporción.</li>
-    <li><strong>Proporción inversa o regla de tres inversa:</strong> se da cuando una variable aumenta y la otra disminuye, o viceversa.</li>
-  </ol>
-
-  <p class="exam-pdf__subsection">Proporción directa o regla de tres directa</p>
-
-  <p class="exam-pdf__section-intro">En la regla de tres directa se multiplica <strong>cruzado</strong> y se divide entre el que resta.</p>
-
-  <ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
-    <li class="exam-pdf__exercise">$\dfrac{14}{7} = \dfrac{22}{x}$<span class="clave-only"> → <span class="answer-final">$x = 11$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{21}{3} = \dfrac{7}{x}$<span class="clave-only"> → <span class="answer-final">$x = 1$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{32}{4} = \dfrac{x}{6}$<span class="clave-only"> → <span class="answer-final">$x = 48$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{36}{x} = \dfrac{27}{3}$<span class="clave-only"> → <span class="answer-final">$x = 4$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{33}{x} = \dfrac{55}{5}$<span class="clave-only"> → <span class="answer-final">$x = 3$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{0.25}{5} = \dfrac{x}{6}$<span class="clave-only"> → <span class="answer-final">$x = 0.3$ $\left(\tfrac{3}{10}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{0.25}{0.05} = \dfrac{0.15}{x}$<span class="clave-only"> → <span class="answer-final">$x = 0.03$ $\left(\tfrac{3}{100}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{1/5} = \dfrac{5}{1}$<span class="clave-only"> → <span class="answer-final">$x = 1$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{18}{x} = \dfrac{x}{32}$<span class="clave-only"> → <span class="answer-final">$x = 24$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{25}{x} = \dfrac{x}{4}$<span class="clave-only"> → <span class="answer-final">$x = 10$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{45}{27} = \dfrac{x}{54}$<span class="clave-only"> → <span class="answer-final">$x = 90$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{36}{50} = \dfrac{96}{x}$<span class="clave-only"> → <span class="answer-final">$x = 133.33$ $\left(\tfrac{400}{3}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{20} = \dfrac{72}{18}$<span class="clave-only"> → <span class="answer-final">$x = 80$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{24}{x} = \dfrac{96}{40}$<span class="clave-only"> → <span class="answer-final">$x = 10$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{45}{50} = \dfrac{x}{36}$<span class="clave-only"> → <span class="answer-final">$x = 32.4$ $\left(\tfrac{162}{5}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{16}{8} = \dfrac{24}{x}$<span class="clave-only"> → <span class="answer-final">$x = 12$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{20}{4} = \dfrac{5}{x}$<span class="clave-only"> → <span class="answer-final">$x = 1$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{48}{8} = \dfrac{x}{6}$<span class="clave-only"> → <span class="answer-final">$x = 36$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{42}{x} = \dfrac{14}{2}$<span class="clave-only"> → <span class="answer-final">$x = 6$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{60}{x} = \dfrac{30}{3}$<span class="clave-only"> → <span class="answer-final">$x = 6$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{0.5}{10} = \dfrac{x}{20}$<span class="clave-only"> → <span class="answer-final">$x = 1$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{0.5}{0.1} = \dfrac{0.25}{x}$<span class="clave-only"> → <span class="answer-final">$x = 0.05$ $\left(\tfrac{1}{20}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{1/4} = \dfrac{4}{1}$<span class="clave-only"> → <span class="answer-final">$x = 1$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{21}{x} = \dfrac{x}{49}$<span class="clave-only"> → <span class="answer-final">$x = 32.09$ $\left(7\sqrt{21}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{36}{x} = \dfrac{x}{6}$<span class="clave-only"> → <span class="answer-final">$x = 14.70$ $\left(6\sqrt{6}\right)$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{60}{40} = \dfrac{x}{80}$<span class="clave-only"> → <span class="answer-final">$x = 120$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{48}{64} = \dfrac{96}{x}$<span class="clave-only"> → <span class="answer-final">$x = 128$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{25} = \dfrac{100}{20}$<span class="clave-only"> → <span class="answer-final">$x = 125$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{30}{x} = \dfrac{120}{60}$<span class="clave-only"> → <span class="answer-final">$x = 15$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{50}{25} = \dfrac{x}{10}$<span class="clave-only"> → <span class="answer-final">$x = 20$</span></span></li>
-  </ol>
-
-  <p class="exam-pdf__subsection">Proporción inversa o regla de tres inversa</p>
-
-  <p class="exam-pdf__section-intro">En la regla de tres inversa se multiplica <strong>directo</strong> y se divide entre el que resta.</p>
-
-  <ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
-    <li class="exam-pdf__exercise">$\dfrac{25}{10}$ — $\dfrac{42}{x}$<span class="clave-only"> → <span class="answer-final">$x = 105$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{15}{40}$ — $\dfrac{x}{21}$<span class="clave-only"> → <span class="answer-final">$x = 56$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{13}$ — $\dfrac{12}{36}$<span class="clave-only"> → <span class="answer-final">$x = 39$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{20}$ — $\dfrac{40}{30}$<span class="clave-only"> → <span class="answer-final">$x = 15$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{26}{x}$ — $\dfrac{15}{13}$<span class="clave-only"> → <span class="answer-final">$x = 30$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{35}{70}$ — $\dfrac{400}{x}$<span class="clave-only"> → <span class="answer-final">$x = 200$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{25}{10}$ — $\dfrac{30}{x}$<span class="clave-only"> → <span class="answer-final">$x = 75$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{15}{x}$ — $\dfrac{21}{5}$<span class="clave-only"> → <span class="answer-final">$x = 63$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{11}{20}$ — $\dfrac{x}{33}$<span class="clave-only"> → <span class="answer-final">$x = 60$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{9}{7}$ — $\dfrac{x}{36}$<span class="clave-only"> → <span class="answer-final">$x = 28$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{28}{x}$ — $\dfrac{4}{7}$<span class="clave-only"> → <span class="answer-final">$x = 16$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{55}{11}$ — $\dfrac{x}{45}$<span class="clave-only"> → <span class="answer-final">$x = 9$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{27}$ — $\dfrac{24}{16}$<span class="clave-only"> → <span class="answer-final">$x = 18$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{15}{9}$ — $\dfrac{x}{5}$<span class="clave-only"> → <span class="answer-final">$x = 3$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{24}{x}$ — $\dfrac{14}{21}$<span class="clave-only"> → <span class="answer-final">$x = 16$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{30}{15}$ — $\dfrac{45}{x}$<span class="clave-only"> → <span class="answer-final">$x = 90$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{18}{54}$ — $\dfrac{x}{27}$<span class="clave-only"> → <span class="answer-final">$x = 81$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{15}$ — $\dfrac{20}{60}$<span class="clave-only"> → <span class="answer-final">$x = 45$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{25}$ — $\dfrac{50}{40}$<span class="clave-only"> → <span class="answer-final">$x = 20$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{32}{x}$ — $\dfrac{16}{8}$<span class="clave-only"> → <span class="answer-final">$x = 64$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{40}{80}$ — $\dfrac{500}{x}$<span class="clave-only"> → <span class="answer-final">$x = 250$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{35}{14}$ — $\dfrac{50}{x}$<span class="clave-only"> → <span class="answer-final">$x = 125$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{20}{x}$ — $\dfrac{25}{5}$<span class="clave-only"> → <span class="answer-final">$x = 4$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{14}{28}$ — $\dfrac{x}{42}$<span class="clave-only"> → <span class="answer-final">$x = 84$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{10}{8}$ — $\dfrac{x}{40}$<span class="clave-only"> → <span class="answer-final">$x = 32$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{36}{x}$ — $\dfrac{6}{9}$<span class="clave-only"> → <span class="answer-final">$x = 54$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{60}{12}$ — $\dfrac{x}{48}$<span class="clave-only"> → <span class="answer-final">$x = 9.6$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{x}{33}$ — $\dfrac{30}{20}$<span class="clave-only"> → <span class="answer-final">$x = 22$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{21}{14}$ — $\dfrac{x}{7}$<span class="clave-only"> → <span class="answer-final">$x = 4.66$</span></span></li>
-    <li class="exam-pdf__exercise">$\dfrac{48}{x}$ — $\dfrac{18}{27}$<span class="clave-only"> → <span class="answer-final">$x = 72$</span></span></li>
-  </ol>
-
-  <p class="exam-pdf__subsection">Problemas con regla de tres directa e inversa</p>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un estanque de $2\,430$ litros de capacidad se llena en $5.4$ horas. ¿Cuántos litros por minuto arroja la llave?<span class="clave-only"> = <span class="answer-final">$7.5\,\mathrm{L/min}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Una actriz de teatro memoriza $30$ líneas de su parlamento en $25$ minutos. En esa misma razón, ¿cuánto tiempo necesita para memorizar $240$ líneas?<span class="clave-only"> = <span class="answer-final">$200\,\mathrm{min}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un automóvil recorre cierta distancia en dos horas y media a una velocidad constante de $60$ kilómetros por hora. ¿Cuánto le tomará recorrer la misma distancia, a una velocidad de $75$ kilómetros por hora?<span class="clave-only"> = <span class="answer-final">$2\,\mathrm{h}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si un ciclista tarda $2.5$ horas en llegar de una ciudad a otra con una velocidad de $40\,\mathrm{km/h}$, ¿cuánto tardará en llegar a una velocidad de $25\,\mathrm{km/h}$?<span class="clave-only"> = <span class="answer-final">$4\,\mathrm{h}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Una rueda da $\dfrac{3}{4}$ de vuelta cada medio minuto, ¿cuántas vueltas dará en media hora?<span class="clave-only"> = <span class="answer-final">$45$ vueltas</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un escritor redacta $3$ páginas completas en una hora y trabaja diariamente $6.5$ horas. ¿Cuántas horas requiere para escribir un libro de $702$ páginas?<span class="clave-only"> = <span class="answer-final">$234\,\mathrm{h}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un paquete de $8$ huevos cuesta $\$14.50$, ¿cuánto costará un paquete con una docena?<span class="clave-only"> = <span class="answer-final">$\$21.75$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un taxista cobra $\$6.50$ al ser abordado y luego $\$0.65$ por cada $80\,\mathrm{m}$ recorridos. ¿Cuánto cobrará por un recorrido de $12\,\mathrm{km}$?<span class="clave-only"> = <span class="answer-final">$\$104$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>En cinco minutos, los riñones filtran $0.625$ litros de sangre. ¿Cuántos mililitros de sangre se filtrarán en hora y media?<span class="clave-only"> = <span class="answer-final">$11\,250\,\mathrm{mL}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si $9$ tarros tienen un precio de $\$450$, ¿cuántos tarros se comprarían con $\$7\,200$?<span class="clave-only"> = <span class="answer-final">$144$ tarros</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un ejército de $900$ hombres tiene víveres para $20$ días; si se desea que las provisiones duren $10$ días más, ¿cuántos hombres habrá que dar de baja?<span class="clave-only"> = <span class="answer-final">$300$ hombres</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Seis hombres siembran una hortaliza en $10$ días. ¿En cuánto tiempo sembrarán la misma hortaliza sólo cuatro hombres?<span class="clave-only"> = <span class="answer-final">$15$ días</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si $4$ estudiantes pueden terminar una tarea en $6$ días, ¿cuántos estudiantes más se necesitan para concluirlo en $2$ días?<span class="clave-only"> = <span class="answer-final">$8$ estudiantes adicionales</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Una docena de hombres construyen una barda en $20$ días, ¿en cuánto tiempo la construirán $15$ hombres?<span class="clave-only"> = <span class="answer-final">$16$ días</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Fabián pinta una pared en $6$ días. Andrés la pinta en $3$ días y Carlos la pinta en $2$ días. ¿Cuánto tiempo les llevará realizar la tarea a los tres juntos?<span class="clave-only"> = <span class="answer-final">$1$ día</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Una cisterna se llena con una llave de agua caliente en $4$ horas, mientras que la misma cisterna se llena con una llave de agua fría en $5$ horas. ¿Cuánto tiempo les llevará a ambas llaves llenar la cisterna?<span class="clave-only"> = <span class="answer-final">$2.22\,\mathrm{h}$ (aprox.)</span></span></p>
-    </div></li>
-  </ol>
-
-  <section class="exam-pdf__section">
-    <h2 class="exam-pdf__section-title">Porcentajes</h2>
-    <p class="exam-pdf__section-intro">Otra aplicación de la <strong>regla de tres</strong> se encuentra en el estudio de los porcentajes. Para resolver un problema de este estilo se debe identificar correctamente cuál es el $100\,\%$ del problema, para después poder modelar de manera correcta la situación.</p>
-  </section>
-
-  <ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
-    <li class="exam-pdf__exercise">$50\,\%$ de $2\,500$ es:<span class="clave-only"> <span class="answer-final">$1\,250$</span></span></li>
-    <li class="exam-pdf__exercise">$35\,\%$ de $5\,500$ es:<span class="clave-only"> <span class="answer-final">$1\,925$</span></span></li>
-    <li class="exam-pdf__exercise">$30\,\%$ de $800$ es:<span class="clave-only"> <span class="answer-final">$240$</span></span></li>
-    <li class="exam-pdf__exercise">$200\,\%$ de $400$ es:<span class="clave-only"> <span class="answer-final">$800$</span></span></li>
-    <li class="exam-pdf__exercise">$40\,\%$ de $120$ es:<span class="clave-only"> <span class="answer-final">$48$</span></span></li>
-    <li class="exam-pdf__exercise">$30\,\%$ de $4\,500$ es:<span class="clave-only"> <span class="answer-final">$1\,350$</span></span></li>
-    <li class="exam-pdf__exercise">$200\,\%$ de $400$ es:<span class="clave-only"> <span class="answer-final">$800$</span></span></li>
-    <li class="exam-pdf__exercise">$150\,\%$ de $700$ es:<span class="clave-only"> <span class="answer-final">$1\,050$</span></span></li>
-  </ol>
-
-  <ol class="exam-pdf__exercises exam-pdf__exercises--continue">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un artículo tiene un precio de $\$1\,650$ y al momento de comprarlo se efectúa un descuento de $42\,\%$. ¿Cuánto se pagó al adquirirlo?<span class="clave-only"> = <span class="answer-final">$\$957$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>En un grupo de $60$ alumnos $20\,\%$ son mujeres. ¿Cuál es el número de varones?<span class="clave-only"> = <span class="answer-final">$48$ varones</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un pantalón tiene un costo de $\$340$ incluido un descuento de $30\,\%$. ¿Cuál es el precio real del pantalón?<span class="clave-only"> = <span class="answer-final">$\$485.71$ (aprox.)</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Daniel vendió un automóvil en $\$32\,200$, ganando así $20\,\%$ de lo que le había costado. ¿En cuánto compró el automóvil Daniel?<span class="clave-only"> = <span class="answer-final">$\$26\,833.33$ (aprox.)</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>El costo de una calculadora es $\$161$ ya con $15\,\%$ de IVA incluido. ¿Cuál es el precio de la calculadora sin IVA?<span class="clave-only"> = <span class="answer-final">$\$140$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>En una tienda departamental se anuncian todas las llantas con $20\,\%$ de descuento. Si la que se desea comprar viene marcada con un precio de $\$440$, ¿cuánto se tendrá que pagar por una llanta?<span class="clave-only"> = <span class="answer-final">$\$352$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Manuel ahorra para comprar una bicicleta cuyo precio es de $\$1\,250$. Cuando reúne el dinero va al almacén a comprarla, pero se entera que además tiene que pagar $15\,\%$ de IVA, ¿cuánto dinero le hace falta para poder comprar la bicicleta?<span class="clave-only"> = <span class="answer-final">$\$187.50$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>El precio de un libro es de $\$122.50$, pero a los estudiantes les hacen descuento de $10\,\%$. ¿Cuánto hay que pagar por dicho libro?<span class="clave-only"> = <span class="answer-final">$\$110.25$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si $75\,\%$ del cuerpo humano está compuesto por líquidos, ¿cuál es el peso de los sólidos que conforman a una persona cuya masa corporal es de $80\,\mathrm{kg}$?<span class="clave-only"> = <span class="answer-final">$20\,\mathrm{kg}$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>En un pueblo de $5\,000$ habitantes, $3\,750$ de ellos son hombres. ¿Qué porcentaje de la población es mujer?<span class="clave-only"> = <span class="answer-final">$25\,\%$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Axel ha gastado el $25\,\%$ de su dinero en un videojuego. Si el precio del videojuego era de $\$750$, ¿cuánto dinero tenía Axel antes de la compra?<span class="clave-only"> = <span class="answer-final">$\$3\,000$</span></span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un salón tiene capacidad para $80$ alumnos, $20\,\%$ se presenta puntualmente. ¿Cuántos estudiantes son impuntuales?<span class="clave-only"> = <span class="answer-final">$64$ estudiantes</span></span></p>
-    </div></li>
-  </ol>
-
+<header class="exam-pdf__hero">
+<p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Matemáticas 2</span></p>
+<h1 class="exam-pdf__title">Matemáticas 2 — <em>Regla de 3 y porcentajes</em></h1>
+<p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Proporcionalidad directa e inversa, problemas y porcentajes · <span class="alumno-only">versión alumno</span></p>
+</header>
+<div class="exam-pdf__instructions">
+<span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span></span>
+<p class="alumno-only">Encuentra el valor de $x$ en cada proporción y resuelve los problemas con procedimiento completo.</p>
+</div>
+<section class="exam-pdf__section exam-pdf__section--first">
+<h2 class="exam-pdf__section-title">Relaciones de proporcionalidad</h2>
+<p class="exam-pdf__section-intro">La regla de tres es aplicada cuando existe una proporcionalidad, ya sea directa o inversa, entre dos variables. Existen dos tipos:</p>
+</section>
+<ol class="exam-pdf__sublist">
+<li><strong>Proporción directa o regla de tres directa:</strong> se da cuando una de las dos variables aumenta y la otra también, así como cuando una disminuye y la otra también disminuye en la misma proporción.</li>
+<li><strong>Proporción inversa o regla de tres inversa:</strong> se da cuando una variable aumenta y la otra disminuye, o viceversa.</li>
+</ol>
+<p class="exam-pdf__subsection">Proporción directa o regla de tres directa</p>
+<p class="exam-pdf__section-intro">En la regla de tres directa se multiplica <strong>cruzado</strong> y se divide entre el que resta.</p>
+<ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
+<li class="exam-pdf__exercise">$\dfrac{14}{7} = \dfrac{22}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{21}{3} = \dfrac{7}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{32}{4} = \dfrac{x}{6}$</li>
+<li class="exam-pdf__exercise">$\dfrac{36}{x} = \dfrac{27}{3}$</li>
+<li class="exam-pdf__exercise">$\dfrac{33}{x} = \dfrac{55}{5}$</li>
+<li class="exam-pdf__exercise">$\dfrac{0.25}{5} = \dfrac{x}{6}$</li>
+<li class="exam-pdf__exercise">$\dfrac{0.25}{0.05} = \dfrac{0.15}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{1/5} = \dfrac{5}{1}$</li>
+<li class="exam-pdf__exercise">$\dfrac{18}{x} = \dfrac{x}{32}$</li>
+<li class="exam-pdf__exercise">$\dfrac{25}{x} = \dfrac{x}{4}$</li>
+<li class="exam-pdf__exercise">$\dfrac{45}{27} = \dfrac{x}{54}$</li>
+<li class="exam-pdf__exercise">$\dfrac{36}{50} = \dfrac{96}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{20} = \dfrac{72}{18}$</li>
+<li class="exam-pdf__exercise">$\dfrac{24}{x} = \dfrac{96}{40}$</li>
+<li class="exam-pdf__exercise">$\dfrac{45}{50} = \dfrac{x}{36}$</li>
+<li class="exam-pdf__exercise">$\dfrac{16}{8} = \dfrac{24}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{20}{4} = \dfrac{5}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{48}{8} = \dfrac{x}{6}$</li>
+<li class="exam-pdf__exercise">$\dfrac{42}{x} = \dfrac{14}{2}$</li>
+<li class="exam-pdf__exercise">$\dfrac{60}{x} = \dfrac{30}{3}$</li>
+<li class="exam-pdf__exercise">$\dfrac{0.5}{10} = \dfrac{x}{20}$</li>
+<li class="exam-pdf__exercise">$\dfrac{0.5}{0.1} = \dfrac{0.25}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{1/4} = \dfrac{4}{1}$</li>
+<li class="exam-pdf__exercise">$\dfrac{21}{x} = \dfrac{x}{49}$</li>
+<li class="exam-pdf__exercise">$\dfrac{36}{x} = \dfrac{x}{6}$</li>
+<li class="exam-pdf__exercise">$\dfrac{60}{40} = \dfrac{x}{80}$</li>
+<li class="exam-pdf__exercise">$\dfrac{48}{64} = \dfrac{96}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{25} = \dfrac{100}{20}$</li>
+<li class="exam-pdf__exercise">$\dfrac{30}{x} = \dfrac{120}{60}$</li>
+<li class="exam-pdf__exercise">$\dfrac{50}{25} = \dfrac{x}{10}$</li>
+</ol>
+<p class="exam-pdf__subsection">Proporción inversa o regla de tres inversa</p>
+<p class="exam-pdf__section-intro">En la regla de tres inversa se multiplica <strong>directo</strong> y se divide entre el que resta.</p>
+<ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
+<li class="exam-pdf__exercise">$\dfrac{25}{10}$ — $\dfrac{42}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{15}{40}$ — $\dfrac{x}{21}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{13}$ — $\dfrac{12}{36}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{20}$ — $\dfrac{40}{30}$</li>
+<li class="exam-pdf__exercise">$\dfrac{26}{x}$ — $\dfrac{15}{13}$</li>
+<li class="exam-pdf__exercise">$\dfrac{35}{70}$ — $\dfrac{400}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{25}{10}$ — $\dfrac{30}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{15}{x}$ — $\dfrac{21}{5}$</li>
+<li class="exam-pdf__exercise">$\dfrac{11}{20}$ — $\dfrac{x}{33}$</li>
+<li class="exam-pdf__exercise">$\dfrac{9}{7}$ — $\dfrac{x}{36}$</li>
+<li class="exam-pdf__exercise">$\dfrac{28}{x}$ — $\dfrac{4}{7}$</li>
+<li class="exam-pdf__exercise">$\dfrac{55}{11}$ — $\dfrac{x}{45}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{27}$ — $\dfrac{24}{16}$</li>
+<li class="exam-pdf__exercise">$\dfrac{15}{9}$ — $\dfrac{x}{5}$</li>
+<li class="exam-pdf__exercise">$\dfrac{24}{x}$ — $\dfrac{14}{21}$</li>
+<li class="exam-pdf__exercise">$\dfrac{30}{15}$ — $\dfrac{45}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{18}{54}$ — $\dfrac{x}{27}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{15}$ — $\dfrac{20}{60}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{25}$ — $\dfrac{50}{40}$</li>
+<li class="exam-pdf__exercise">$\dfrac{32}{x}$ — $\dfrac{16}{8}$</li>
+<li class="exam-pdf__exercise">$\dfrac{40}{80}$ — $\dfrac{500}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{35}{14}$ — $\dfrac{50}{x}$</li>
+<li class="exam-pdf__exercise">$\dfrac{20}{x}$ — $\dfrac{25}{5}$</li>
+<li class="exam-pdf__exercise">$\dfrac{14}{28}$ — $\dfrac{x}{42}$</li>
+<li class="exam-pdf__exercise">$\dfrac{10}{8}$ — $\dfrac{x}{40}$</li>
+<li class="exam-pdf__exercise">$\dfrac{36}{x}$ — $\dfrac{6}{9}$</li>
+<li class="exam-pdf__exercise">$\dfrac{60}{12}$ — $\dfrac{x}{48}$</li>
+<li class="exam-pdf__exercise">$\dfrac{x}{33}$ — $\dfrac{30}{20}$</li>
+<li class="exam-pdf__exercise">$\dfrac{21}{14}$ — $\dfrac{x}{7}$</li>
+<li class="exam-pdf__exercise">$\dfrac{48}{x}$ — $\dfrac{18}{27}$</li>
+</ol>
+<p class="exam-pdf__subsection">Problemas con regla de tres directa e inversa</p>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un estanque de $2\,430$ litros de capacidad se llena en $5.4$ horas. ¿Cuántos litros por minuto arroja la llave?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Una actriz de teatro memoriza $30$ líneas de su parlamento en $25$ minutos. En esa misma razón, ¿cuánto tiempo necesita para memorizar $240$ líneas?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un automóvil recorre cierta distancia en dos horas y media a una velocidad constante de $60$ kilómetros por hora. ¿Cuánto le tomará recorrer la misma distancia, a una velocidad de $75$ kilómetros por hora?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si un ciclista tarda $2.5$ horas en llegar de una ciudad a otra con una velocidad de $40\,\mathrm{km/h}$, ¿cuánto tardará en llegar a una velocidad de $25\,\mathrm{km/h}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Una rueda da $\dfrac{3}{4}$ de vuelta cada medio minuto, ¿cuántas vueltas dará en media hora?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un escritor redacta $3$ páginas completas en una hora y trabaja diariamente $6.5$ horas. ¿Cuántas horas requiere para escribir un libro de $702$ páginas?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un paquete de $8$ huevos cuesta $\$14.50$, ¿cuánto costará un paquete con una docena?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un taxista cobra $\$6.50$ al ser abordado y luego $\$0.65$ por cada $80\,\mathrm{m}$ recorridos. ¿Cuánto cobrará por un recorrido de $12\,\mathrm{km}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>En cinco minutos, los riñones filtran $0.625$ litros de sangre. ¿Cuántos mililitros de sangre se filtrarán en hora y media?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si $9$ tarros tienen un precio de $\$450$, ¿cuántos tarros se comprarían con $\$7\,200$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un ejército de $900$ hombres tiene víveres para $20$ días; si se desea que las provisiones duren $10$ días más, ¿cuántos hombres habrá que dar de baja?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Seis hombres siembran una hortaliza en $10$ días. ¿En cuánto tiempo sembrarán la misma hortaliza sólo cuatro hombres?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si $4$ estudiantes pueden terminar una tarea en $6$ días, ¿cuántos estudiantes más se necesitan para concluirlo en $2$ días?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Una docena de hombres construyen una barda en $20$ días, ¿en cuánto tiempo la construirán $15$ hombres?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Fabián pinta una pared en $6$ días. Andrés la pinta en $3$ días y Carlos la pinta en $2$ días. ¿Cuánto tiempo les llevará realizar la tarea a los tres juntos?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Una cisterna se llena con una llave de agua caliente en $4$ horas, mientras que la misma cisterna se llena con una llave de agua fría en $5$ horas. ¿Cuánto tiempo les llevará a ambas llaves llenar la cisterna?</p>
+</div></li>
+</ol>
+<section class="exam-pdf__section">
+<h2 class="exam-pdf__section-title">Porcentajes</h2>
+<p class="exam-pdf__section-intro">Otra aplicación de la <strong>regla de tres</strong> se encuentra en el estudio de los porcentajes. Para resolver un problema de este estilo se debe identificar correctamente cuál es el $100\,\%$ del problema, para después poder modelar de manera correcta la situación.</p>
+</section>
+<ol class="exam-pdf__exercises exam-pdf__exercises--compact exam-pdf__exercises--cols2">
+<li class="exam-pdf__exercise">$50\,\%$ de $2\,500$ es:</li>
+<li class="exam-pdf__exercise">$35\,\%$ de $5\,500$ es:</li>
+<li class="exam-pdf__exercise">$30\,\%$ de $800$ es:</li>
+<li class="exam-pdf__exercise">$200\,\%$ de $400$ es:</li>
+<li class="exam-pdf__exercise">$40\,\%$ de $120$ es:</li>
+<li class="exam-pdf__exercise">$30\,\%$ de $4\,500$ es:</li>
+<li class="exam-pdf__exercise">$200\,\%$ de $400$ es:</li>
+<li class="exam-pdf__exercise">$150\,\%$ de $700$ es:</li>
+</ol>
+<ol class="exam-pdf__exercises exam-pdf__exercises--continue">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un artículo tiene un precio de $\$1\,650$ y al momento de comprarlo se efectúa un descuento de $42\,\%$. ¿Cuánto se pagó al adquirirlo?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>En un grupo de $60$ alumnos $20\,\%$ son mujeres. ¿Cuál es el número de varones?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un pantalón tiene un costo de $\$340$ incluido un descuento de $30\,\%$. ¿Cuál es el precio real del pantalón?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Daniel vendió un automóvil en $\$32\,200$, ganando así $20\,\%$ de lo que le había costado. ¿En cuánto compró el automóvil Daniel?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>El costo de una calculadora es $\$161$ ya con $15\,\%$ de IVA incluido. ¿Cuál es el precio de la calculadora sin IVA?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>En una tienda departamental se anuncian todas las llantas con $20\,\%$ de descuento. Si la que se desea comprar viene marcada con un precio de $\$440$, ¿cuánto se tendrá que pagar por una llanta?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Manuel ahorra para comprar una bicicleta cuyo precio es de $\$1\,250$. Cuando reúne el dinero va al almacén a comprarla, pero se entera que además tiene que pagar $15\,\%$ de IVA, ¿cuánto dinero le hace falta para poder comprar la bicicleta?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>El precio de un libro es de $\$122.50$, pero a los estudiantes les hacen descuento de $10\,\%$. ¿Cuánto hay que pagar por dicho libro?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si $75\,\%$ del cuerpo humano está compuesto por líquidos, ¿cuál es el peso de los sólidos que conforman a una persona cuya masa corporal es de $80\,\mathrm{kg}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>En un pueblo de $5\,000$ habitantes, $3\,750$ de ellos son hombres. ¿Qué porcentaje de la población es mujer?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Axel ha gastado el $25\,\%$ de su dinero en un videojuego. Si el precio del videojuego era de $\$750$, ¿cuánto dinero tenía Axel antes de la compra?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un salón tiene capacidad para $80$ alumnos, $20\,\%$ se presenta puntualmente. ¿Cuántos estudiantes son impuntuales?</p>
+</div></li>
+</ol>
 </main>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (window.ClasesKatex) window.ClasesKatex.load();
   });
 </script>
-
 </body>
 </html>

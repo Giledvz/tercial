@@ -200,19 +200,9 @@
 .exam-pdf__body p { margin: 0 0 var(--space-2); }
 .exam-pdf__body p:last-child { margin-bottom: 0; }
 
-/* Clave del profesor: subrayar SÓLO el valor final de cada respuesta.
-   Línea coñac al mismo grosor (2px) que el border-left editorial.
-   Se aplica envolviendo el valor con <span class="answer-final">…</span>.
-   Usamos border-bottom (no text-decoration) porque KaTeX renderiza con
-   display: inline-block y text-decoration no atraviesa ese contexto.
-   Aplica dentro de cualquier .exam-pdf: sirve tanto para la sección
-   __answer-key como para hojas de respuestas completas. */
-.exam-pdf .answer-final {
-  display: inline-block;
-  border-bottom: 2px solid var(--accent-conac);
-  padding-bottom: 1px;
-  line-height: 1.2;
-}
+/* Nota: los estilos de la clave del profesor viven SOLO en el repo privado
+   tercial-claves. El sitio público sirve únicamente la versión del alumno,
+   sin respuestas, así que aquí no hace falta ninguna regla de clave. */
 
 .exam-pdf__points {
   font-family: var(--font-family-body);
@@ -225,19 +215,6 @@
   vertical-align: 1.5pt;
   white-space: nowrap;
 }
-
-/* ============================================================
-   Hoja única alumno/clave
-   Un mismo HTML sirve las dos versiones: lo marcado con
-   .clave-only sólo aparece cuando <main class="exam-pdf"> lleva
-   .is-clave (la agrega assets/js/exam-clave.js al abrir la página
-   con ?clave=1); lo marcado con .alumno-only desaparece en la
-   clave. Así las preguntas viven en un solo archivo y el PDF del
-   alumno nunca contiene las respuestas.
-   ============================================================ */
-
-.exam-pdf:not(.is-clave) .clave-only { display: none !important; }
-.exam-pdf.is-clave .alumno-only { display: none !important; }
 
 /* ============================================================
    Math display (centrado, fuera del flujo de párrafo)

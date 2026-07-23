@@ -1,220 +1,160 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-theme-pref="light">
+
+<html data-theme="light" data-theme-pref="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <title>Física 4 — Dinámica · Tercial</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
-  <link rel="stylesheet" href="../assets/css/tokens.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/exam-print.css">
-
-  <script defer src="../assets/js/katex-loader.js"></script>
-  <script defer src="../assets/js/exam-clave.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<title>Física 4 — Dinámica · Tercial</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/tokens.css" rel="stylesheet"/>
+<link href="../assets/css/base.css" rel="stylesheet"/>
+<link href="../assets/css/components.css" rel="stylesheet"/>
+<link href="../assets/css/exam-print.css" rel="stylesheet"/>
+<script defer="" src="../assets/js/katex-loader.js"></script>
 </head>
 <body>
 
-<!-- Hoja única alumno/clave: sin parámetros se ve la versión del alumno;
-     con ?clave=1 aparecen las respuestas (.clave-only). -->
 <main class="exam-pdf exam-pdf--fisica">
-
-  <header class="exam-pdf__hero">
-    <p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Física 4</span><span class="clave-only">Clave · profesor · Física 4</span></p>
-    <h1 class="exam-pdf__title">Física 4 — <em>Dinámica</em></h1>
-    <p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Leyes de Newton, fuerza, peso y masa · <span class="alumno-only">versión alumno</span><span class="clave-only">clave del profesor</span></p>
-  </header>
-
-  <div class="exam-pdf__instructions">
-    <span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span><span class="clave-only">Clave</span></span>
-    <p class="alumno-only">Resuelve cada problema con procedimiento completo. <strong>Nota:</strong> para todos los problemas, tomaremos la gravedad de la Tierra como $10\,\mathrm{m/s^2}$.</p>
-    <p class="clave-only">Cada ejercicio muestra el procedimiento completo; el valor final aparece subrayado. Se toma $g = 10\,\mathrm{m/s^2}$.</p>
-  </div>
-
-  <section class="exam-pdf__section exam-pdf__section--first">
-    <h2 class="exam-pdf__section-title">Dinámica</h2>
-    <p class="exam-pdf__section-intro">Estudia las causas de reposo y movimiento de los cuerpos. Existen tres leyes de la dinámica.</p>
-  </section>
-
-  <ol class="exam-pdf__sublist" style="margin-bottom: 16pt;">
-    <li><strong>Primera ley de Newton (ley de la inercia):</strong> todo cuerpo permanece en estado de reposo o de movimiento rectilíneo uniforme hasta que llegue una fuerza externa que lo modifique.</li>
-    <li><strong>Segunda ley de Newton (ley de la aceleración):</strong> la magnitud de la aceleración de un cuerpo es directamente proporcional a la magnitud de la fuerza aplicada e inversamente proporcional a su masa.</li>
-    <li><strong>Tercera ley de Newton (acción y reacción):</strong> a toda acción le corresponde una reacción de igual magnitud pero en sentido opuesto.</li>
-  </ol>
-
-  <div class="exam-pdf__formulas">
-    <span class="exam-pdf__formulas-label">Fórmula</span>
-    <span>$F = ma$</span>
-  </div>
-
-  <p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes problemas de dinámica.</p>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la fuerza necesaria para imprimir una aceleración de $15\,\mathrm{m/s^2}$ a un cuerpo cuya masa es de $3\,\mathrm{kg}$.</p>
-      <p class="clave-only">$F = ma = 3\,\mathrm{kg} \times 15\,\mathrm{m/s^2} =$ <span class="answer-final">$45\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la masa de un cuerpo que se acelera a $6\,\mathrm{m/s^2}$ cuando se le aplica una fuerza de $54\,\mathrm{N}$.</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{54\,\mathrm{N}}{6\,\mathrm{m/s^2}} =$ <span class="answer-final">$9\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determine la magnitud de la fuerza que se debe aplicar a un carrito de baleros que tiene una masa de $40\,\mathrm{kg}$ para que cambie la magnitud de su velocidad de $0$ a $3\,\mathrm{m/s}$ en un segundo.</p>
-      <p class="clave-only">$a = \dfrac{\Delta v}{\Delta t} = \dfrac{3\,\mathrm{m/s} - 0\,\mathrm{m/s}}{1\,\mathrm{s}} = 3\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$F = ma = 40\,\mathrm{kg} \times 3\,\mathrm{m/s^2} =$ <span class="answer-final">$120\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcule la masa de un cuerpo en kilogramos si al recibir una fuerza cuya magnitud es de $300\,\mathrm{N}$ le produce una aceleración con una magnitud de $150\,\mathrm{cm/s^2}$.</p>
-      <p class="clave-only">$a = 150\,\mathrm{cm/s^2} \times \dfrac{1\,\mathrm{m}}{100\,\mathrm{cm}} = 1.5\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{300\,\mathrm{N}}{1.5\,\mathrm{m/s^2}} =$ <span class="answer-final">$200\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determine la magnitud de la aceleración en $\mathrm{m/s^2}$ que le produce una fuerza cuya magnitud es de $75\,\mathrm{N}$ a un cuerpo con una masa de $1\,500\,\mathrm{g}$.</p>
-      <p class="clave-only">$m = 1\,500\,\mathrm{g} \times \dfrac{1\,\mathrm{kg}}{1\,000\,\mathrm{g}} = 1.5\,\mathrm{kg}$</p>
-      <p class="clave-only">$a = \dfrac{F}{m} = \dfrac{75\,\mathrm{N}}{1.5\,\mathrm{kg}} =$ <span class="answer-final">$50\,\mathrm{m/s^2}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcular la magnitud de la fuerza que se le aplica a un cuerpo de $10\,\mathrm{kg}$ de masa si adquiere una aceleración con una magnitud de $2.5\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$F = ma = 10\,\mathrm{kg} \times 2.5\,\mathrm{m/s^2} =$ <span class="answer-final">$25\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la magnitud de la aceleración que produce una fuerza cuya magnitud es de $60\,\mathrm{N}$ a un cuerpo cuya masa es de $6\,000\,\mathrm{g}$. Expresar el resultado en $\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$m = 6\,000\,\mathrm{g} \times \dfrac{1\,\mathrm{kg}}{1\,000\,\mathrm{g}} = 6\,\mathrm{kg}$</p>
-      <p class="clave-only">$a = \dfrac{F}{m} = \dfrac{60\,\mathrm{N}}{6\,\mathrm{kg}} =$ <span class="answer-final">$10\,\mathrm{m/s^2}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la masa de un cuerpo si al recibir una fuerza cuya magnitud es de $200\,\mathrm{N}$ le produce una aceleración cuya magnitud es de $200\,\mathrm{cm/s^2}$. Exprese el resultado en $\mathrm{kg}$.</p>
-      <p class="clave-only">$a = 200\,\mathrm{cm/s^2} \times \dfrac{1\,\mathrm{m}}{100\,\mathrm{cm}} = 2\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{200\,\mathrm{N}}{2\,\mathrm{m/s^2}} =$ <span class="answer-final">$100\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la magnitud de la fuerza que recibe un cuerpo de $40\,\mathrm{kg}$, la cual produce una aceleración cuya magnitud es de $3\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$F = ma = 40\,\mathrm{kg} \times 3\,\mathrm{m/s^2} =$ <span class="answer-final">$120\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la magnitud de la fuerza que se debe aplicar a un cuerpo de masa de $40\,\mathrm{kg}$ para que cambie la magnitud de su velocidad de $0$ a $6\,\mathrm{m/s}$ en $3$ segundos.</p>
-      <p class="clave-only">$a = \dfrac{\Delta v}{\Delta t} = \dfrac{6\,\mathrm{m/s} - 0\,\mathrm{m/s}}{3\,\mathrm{s}} = 2\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$F = ma = 40\,\mathrm{kg} \times 2\,\mathrm{m/s^2} =$ <span class="answer-final">$80\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la masa de un cuerpo en kilogramos si al recibir una fuerza cuya magnitud es de $500\,\mathrm{N}$ le produce una aceleración con una magnitud de $250\,\mathrm{cm/s^2}$.</p>
-      <p class="clave-only">$a = 250\,\mathrm{cm/s^2} \times \dfrac{1\,\mathrm{m}}{100\,\mathrm{cm}} = 2.5\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{500\,\mathrm{N}}{2.5\,\mathrm{m/s^2}} =$ <span class="answer-final">$200\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la magnitud de la aceleración en $\mathrm{m/s^2}$ que le produce una fuerza cuya magnitud es de $75\,\mathrm{N}$ a un cuerpo con una masa de $2\,500\,\mathrm{g}$.</p>
-      <p class="clave-only">$m = 2\,500\,\mathrm{g} \times \dfrac{1\,\mathrm{kg}}{1\,000\,\mathrm{g}} = 2.5\,\mathrm{kg}$</p>
-      <p class="clave-only">$a = \dfrac{F}{m} = \dfrac{75\,\mathrm{N}}{2.5\,\mathrm{kg}} =$ <span class="answer-final">$30\,\mathrm{m/s^2}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcular la magnitud de la fuerza que se aplica a un cuerpo de $20\,\mathrm{kg}$ de masa si adquiere una aceleración de $7.5\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$F = ma = 20\,\mathrm{kg} \times 7.5\,\mathrm{m/s^2} =$ <span class="answer-final">$150\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si aceleramos un proyectil de $250\,\mathrm{kg}$ de masa con una aceleración de $3\,\mathrm{m/s^2}$, ¿con qué fuerza saldrá el proyectil?</p>
-      <p class="clave-only">$F = ma = 250\,\mathrm{kg} \times 3\,\mathrm{m/s^2} =$ <span class="answer-final">$750\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la fuerza que desarrolla un motor de un coche de $2\,300\,\mathrm{kg}$ de masa que consigue una velocidad de $40\,\mathrm{m/s}$ en $11$ segundos.</p>
-      <p class="clave-only">$a = \dfrac{\Delta v}{\Delta t} = \dfrac{40\,\mathrm{m/s} - 0\,\mathrm{m/s}}{11\,\mathrm{s}} = 3.64\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$F = ma = 2\,300\,\mathrm{kg} \times 3.64\,\mathrm{m/s^2} =$ <span class="answer-final">$8\,372\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>¿Con qué fuerza se empuja un cuerpo cuya masa es de $4.5\,\mathrm{kg}$ y su aceleración es de $3\,\mathrm{m/s^2}$?</p>
-      <p class="clave-only">$F = ma = 4.5\,\mathrm{kg} \times 3\,\mathrm{m/s^2} =$ <span class="answer-final">$13.5\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un móvil de $1\,500\,\mathrm{kg}$ desarrolla una velocidad de $140\,\mathrm{km/h}$ en $16$ segundos, ¿qué fuerza ha desarrollado el motor?</p>
-      <p class="clave-only">$v = 140\,\mathrm{km/h} \times \dfrac{1\,000\,\mathrm{m}}{1\,\mathrm{km}} \times \dfrac{1\,\mathrm{h}}{3\,600\,\mathrm{s}} = 38.89\,\mathrm{m/s}$</p>
-      <p class="clave-only">$a = \dfrac{\Delta v}{\Delta t} = \dfrac{38.89\,\mathrm{m/s} - 0\,\mathrm{m/s}}{16\,\mathrm{s}} = 2.43\,\mathrm{m/s^2}$</p>
-      <p class="clave-only">$F = ma = 1\,500\,\mathrm{kg} \times 2.43\,\mathrm{m/s^2} =$ <span class="answer-final">$3\,645\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Para mover una carretilla se necesita una fuerza de $650\,\mathrm{N}$. La carretilla se ha deslizado por una vía horizontal con una aceleración inicial de $1.2\,\mathrm{m/s^2}$. Calcula la masa total de la carretilla.</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{650\,\mathrm{N}}{1.2\,\mathrm{m/s^2}} =$ <span class="answer-final">$541.67\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>¿Qué aceleración tiene un objeto de $300\,\mathrm{kg}$ si se empuja con una fuerza de $7\,050\,\mathrm{N}$?</p>
-      <p class="clave-only">$a = \dfrac{F}{m} = \dfrac{7\,050\,\mathrm{N}}{300\,\mathrm{kg}} =$ <span class="answer-final">$23.5\,\mathrm{m/s^2}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la masa de un objeto si al golpearlo con una fuerza de $25\,\mathrm{N}$, se acelera a $8.5\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{25\,\mathrm{N}}{8.5\,\mathrm{m/s^2}} =$ <span class="answer-final">$2.94\,\mathrm{kg}$</span></p>
-    </div></li>
-  </ol>
-
-  <section class="exam-pdf__section">
-    <h2 class="exam-pdf__section-title">Diferencia entre peso y masa</h2>
-    <p class="exam-pdf__section-intro">El peso se define como la acción que ejerce la gravedad sobre una masa. El peso se mide en $\mathrm{N}$ mientras que la masa se mide en $\mathrm{kg}$.</p>
-  </section>
-
-  <ol class="exam-pdf__exercises">
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la magnitud del peso de un cuerpo cuya masa es de $60\,\mathrm{kg}$.</p>
-      <p class="clave-only">$P = mg = 60\,\mathrm{kg} \times 10\,\mathrm{m/s^2} =$ <span class="answer-final">$600\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina el peso de un cuerpo cuya masa es $850\,\mathrm{kg}$.</p>
-      <p class="clave-only">$P = mg = 850\,\mathrm{kg} \times 10\,\mathrm{m/s^2} =$ <span class="answer-final">$8\,500\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la masa de un cuerpo cuyo peso es de $2\,500\,\mathrm{N}$.</p>
-      <p class="clave-only">$m = \dfrac{P}{g} = \dfrac{2\,500\,\mathrm{N}}{10\,\mathrm{m/s^2}} =$ <span class="answer-final">$250\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la masa de un cuerpo cuyo peso es de $350\,\mathrm{N}$.</p>
-      <p class="clave-only">$m = \dfrac{P}{g} = \dfrac{350\,\mathrm{N}}{10\,\mathrm{m/s^2}} =$ <span class="answer-final">$35\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula el peso de un paquete de $2.5\,\mathrm{kg}$ de masa.</p>
-      <p class="clave-only">$P = mg = 2.5\,\mathrm{kg} \times 10\,\mathrm{m/s^2} =$ <span class="answer-final">$25\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Calcula la masa de un cuerpo al que una fuerza de $8\,\mathrm{N}$ le imprime una aceleración de $4\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$m = \dfrac{F}{a} = \dfrac{8\,\mathrm{N}}{4\,\mathrm{m/s^2}} =$ <span class="answer-final">$2\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>¿Qué aceleración adquiere un cuerpo de $60\,\mathrm{kg}$ cuando se le aplica una fuerza de $10\,\mathrm{N}$?</p>
-      <p class="clave-only">$a = \dfrac{F}{m} = \dfrac{10\,\mathrm{N}}{60\,\mathrm{kg}} =$ <span class="answer-final">$0.17\,\mathrm{m/s^2}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>¿Cuánto pesa un hombre que tiene una masa de $70\,\mathrm{kg}$?</p>
-      <p class="clave-only">$P = mg = 70\,\mathrm{kg} \times 10\,\mathrm{m/s^2} =$ <span class="answer-final">$700\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Si una mesa pesa $70.3\,\mathrm{N}$, ¿cuál es su masa?</p>
-      <p class="clave-only">$m = \dfrac{P}{g} = \dfrac{70.3\,\mathrm{N}}{10\,\mathrm{m/s^2}} =$ <span class="answer-final">$7.03\,\mathrm{kg}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Determina la magnitud de la fuerza neta que se debe aplicar a un cuerpo cuyo peso tiene una magnitud de $400\,\mathrm{N}$ para que adquiera una aceleración de $2\,\mathrm{m/s^2}$.</p>
-      <p class="clave-only">$m = \dfrac{P}{g} = \dfrac{400\,\mathrm{N}}{10\,\mathrm{m/s^2}} = 40\,\mathrm{kg}$</p>
-      <p class="clave-only">$F = ma = 40\,\mathrm{kg} \times 2\,\mathrm{m/s^2} =$ <span class="answer-final">$80\,\mathrm{N}$</span></p>
-    </div></li>
-    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
-      <p>Un astronauta tiene una masa de $80\,\mathrm{kg}$. Calcula su peso en:</p>
-      <ol class="exam-pdf__sublist">
-        <li>La Tierra ($g = 10\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 10 =$ <span class="answer-final">$800\,\mathrm{N}$</span></span></li>
-        <li>La Luna ($g = 1.6\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 1.6 =$ <span class="answer-final">$128\,\mathrm{N}$</span></span></li>
-        <li>Mercurio ($g = 4\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 4 =$ <span class="answer-final">$320\,\mathrm{N}$</span></span></li>
-        <li>Venus ($g = 9\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 9 =$ <span class="answer-final">$720\,\mathrm{N}$</span></span></li>
-        <li>Marte ($g = 4\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 4 =$ <span class="answer-final">$320\,\mathrm{N}$</span></span></li>
-        <li>Júpiter ($g = 25\,\mathrm{m/s^2}$)<span class="clave-only">: $P = mg = 80 \times 25 =$ <span class="answer-final">$2\,000\,\mathrm{N}$</span></span></li>
-      </ol>
-    </div></li>
-  </ol>
-
+<header class="exam-pdf__hero">
+<p class="exam-pdf__eyebrow"><span class="alumno-only">Hoja de trabajo · Física 4</span></p>
+<h1 class="exam-pdf__title">Física 4 — <em>Dinámica</em></h1>
+<p class="exam-pdf__meta"><strong>Prof. Gil</strong> · Leyes de Newton, fuerza, peso y masa · <span class="alumno-only">versión alumno</span></p>
+</header>
+<div class="exam-pdf__instructions">
+<span class="exam-pdf__instructions-label"><span class="alumno-only">Instrucciones</span></span>
+<p class="alumno-only">Resuelve cada problema con procedimiento completo. <strong>Nota:</strong> para todos los problemas, tomaremos la gravedad de la Tierra como $10\,\mathrm{m/s^2}$.</p>
+</div>
+<section class="exam-pdf__section exam-pdf__section--first">
+<h2 class="exam-pdf__section-title">Dinámica</h2>
+<p class="exam-pdf__section-intro">Estudia las causas de reposo y movimiento de los cuerpos. Existen tres leyes de la dinámica.</p>
+</section>
+<ol class="exam-pdf__sublist" style="margin-bottom: 16pt;">
+<li><strong>Primera ley de Newton (ley de la inercia):</strong> todo cuerpo permanece en estado de reposo o de movimiento rectilíneo uniforme hasta que llegue una fuerza externa que lo modifique.</li>
+<li><strong>Segunda ley de Newton (ley de la aceleración):</strong> la magnitud de la aceleración de un cuerpo es directamente proporcional a la magnitud de la fuerza aplicada e inversamente proporcional a su masa.</li>
+<li><strong>Tercera ley de Newton (acción y reacción):</strong> a toda acción le corresponde una reacción de igual magnitud pero en sentido opuesto.</li>
+</ol>
+<div class="exam-pdf__formulas">
+<span class="exam-pdf__formulas-label">Fórmula</span>
+<span>$F = ma$</span>
+</div>
+<p class="exam-pdf__section-intro" style="margin-bottom: 12pt;">Resuelve los siguientes problemas de dinámica.</p>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la fuerza necesaria para imprimir una aceleración de $15\,\mathrm{m/s^2}$ a un cuerpo cuya masa es de $3\,\mathrm{kg}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la masa de un cuerpo que se acelera a $6\,\mathrm{m/s^2}$ cuando se le aplica una fuerza de $54\,\mathrm{N}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determine la magnitud de la fuerza que se debe aplicar a un carrito de baleros que tiene una masa de $40\,\mathrm{kg}$ para que cambie la magnitud de su velocidad de $0$ a $3\,\mathrm{m/s}$ en un segundo.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcule la masa de un cuerpo en kilogramos si al recibir una fuerza cuya magnitud es de $300\,\mathrm{N}$ le produce una aceleración con una magnitud de $150\,\mathrm{cm/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determine la magnitud de la aceleración en $\mathrm{m/s^2}$ que le produce una fuerza cuya magnitud es de $75\,\mathrm{N}$ a un cuerpo con una masa de $1\,500\,\mathrm{g}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcular la magnitud de la fuerza que se le aplica a un cuerpo de $10\,\mathrm{kg}$ de masa si adquiere una aceleración con una magnitud de $2.5\,\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la magnitud de la aceleración que produce una fuerza cuya magnitud es de $60\,\mathrm{N}$ a un cuerpo cuya masa es de $6\,000\,\mathrm{g}$. Expresar el resultado en $\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la masa de un cuerpo si al recibir una fuerza cuya magnitud es de $200\,\mathrm{N}$ le produce una aceleración cuya magnitud es de $200\,\mathrm{cm/s^2}$. Exprese el resultado en $\mathrm{kg}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la magnitud de la fuerza que recibe un cuerpo de $40\,\mathrm{kg}$, la cual produce una aceleración cuya magnitud es de $3\,\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la magnitud de la fuerza que se debe aplicar a un cuerpo de masa de $40\,\mathrm{kg}$ para que cambie la magnitud de su velocidad de $0$ a $6\,\mathrm{m/s}$ en $3$ segundos.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la masa de un cuerpo en kilogramos si al recibir una fuerza cuya magnitud es de $500\,\mathrm{N}$ le produce una aceleración con una magnitud de $250\,\mathrm{cm/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la magnitud de la aceleración en $\mathrm{m/s^2}$ que le produce una fuerza cuya magnitud es de $75\,\mathrm{N}$ a un cuerpo con una masa de $2\,500\,\mathrm{g}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcular la magnitud de la fuerza que se aplica a un cuerpo de $20\,\mathrm{kg}$ de masa si adquiere una aceleración de $7.5\,\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si aceleramos un proyectil de $250\,\mathrm{kg}$ de masa con una aceleración de $3\,\mathrm{m/s^2}$, ¿con qué fuerza saldrá el proyectil?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la fuerza que desarrolla un motor de un coche de $2\,300\,\mathrm{kg}$ de masa que consigue una velocidad de $40\,\mathrm{m/s}$ en $11$ segundos.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>¿Con qué fuerza se empuja un cuerpo cuya masa es de $4.5\,\mathrm{kg}$ y su aceleración es de $3\,\mathrm{m/s^2}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un móvil de $1\,500\,\mathrm{kg}$ desarrolla una velocidad de $140\,\mathrm{km/h}$ en $16$ segundos, ¿qué fuerza ha desarrollado el motor?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Para mover una carretilla se necesita una fuerza de $650\,\mathrm{N}$. La carretilla se ha deslizado por una vía horizontal con una aceleración inicial de $1.2\,\mathrm{m/s^2}$. Calcula la masa total de la carretilla.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>¿Qué aceleración tiene un objeto de $300\,\mathrm{kg}$ si se empuja con una fuerza de $7\,050\,\mathrm{N}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la masa de un objeto si al golpearlo con una fuerza de $25\,\mathrm{N}$, se acelera a $8.5\,\mathrm{m/s^2}$.</p>
+</div></li>
+</ol>
+<section class="exam-pdf__section">
+<h2 class="exam-pdf__section-title">Diferencia entre peso y masa</h2>
+<p class="exam-pdf__section-intro">El peso se define como la acción que ejerce la gravedad sobre una masa. El peso se mide en $\mathrm{N}$ mientras que la masa se mide en $\mathrm{kg}$.</p>
+</section>
+<ol class="exam-pdf__exercises">
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la magnitud del peso de un cuerpo cuya masa es de $60\,\mathrm{kg}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina el peso de un cuerpo cuya masa es $850\,\mathrm{kg}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la masa de un cuerpo cuyo peso es de $2\,500\,\mathrm{N}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la masa de un cuerpo cuyo peso es de $350\,\mathrm{N}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula el peso de un paquete de $2.5\,\mathrm{kg}$ de masa.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Calcula la masa de un cuerpo al que una fuerza de $8\,\mathrm{N}$ le imprime una aceleración de $4\,\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>¿Qué aceleración adquiere un cuerpo de $60\,\mathrm{kg}$ cuando se le aplica una fuerza de $10\,\mathrm{N}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>¿Cuánto pesa un hombre que tiene una masa de $70\,\mathrm{kg}$?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Si una mesa pesa $70.3\,\mathrm{N}$, ¿cuál es su masa?</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Determina la magnitud de la fuerza neta que se debe aplicar a un cuerpo cuyo peso tiene una magnitud de $400\,\mathrm{N}$ para que adquiera una aceleración de $2\,\mathrm{m/s^2}$.</p>
+</div></li>
+<li class="exam-pdf__exercise"><div class="exam-pdf__body">
+<p>Un astronauta tiene una masa de $80\,\mathrm{kg}$. Calcula su peso en:</p>
+<ol class="exam-pdf__sublist">
+<li>La Tierra ($g = 10\,\mathrm{m/s^2}$)</li>
+<li>La Luna ($g = 1.6\,\mathrm{m/s^2}$)</li>
+<li>Mercurio ($g = 4\,\mathrm{m/s^2}$)</li>
+<li>Venus ($g = 9\,\mathrm{m/s^2}$)</li>
+<li>Marte ($g = 4\,\mathrm{m/s^2}$)</li>
+<li>Júpiter ($g = 25\,\mathrm{m/s^2}$)</li>
+</ol>
+</div></li>
+</ol>
 </main>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     if (window.ClasesKatex) window.ClasesKatex.load();
   });
 </script>
-
 </body>
 </html>
