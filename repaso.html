@@ -73,7 +73,7 @@
         <svg class="accordion__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="accordion__body">
-        <p><span class="tag tag--accent">Idea clave</span> Para $Ax^2+Cy^2+Dx+Ey+F=0$, agrupa términos en $x$ y en $y$, factoriza el coeficiente de cada cuadrado y completa el cuadrado en cada grupo. El discriminante $B^2-4AC$ identifica el tipo: $<0$ elipse (o circunferencia si $A=C$), $=0$ parábola, $>0$ hipérbola.</p>
+        <p><span class="tag tag--accent">Idea clave</span> La forma general completa es $Ax^2+Bxy+Cy^2+Dx+Ey+F=0$; en este curso casi siempre $B=0$ (sin término $xy$), y entonces: agrupa términos en $x$ y en $y$, factoriza el coeficiente de cada cuadrado y completa el cuadrado en cada grupo. El discriminante $B^2-4AC$ identifica el tipo: $<0$ elipse (o circunferencia si $A=C$ y $B=0$), $=0$ parábola, $>0$ hipérbola.</p>
         <p><span class="tag tag--err">Cuidado</span> Cuando el coeficiente del cuadrado no es $1$, el término que sumas se ve afectado: $4(x^2-4x+\boxed{4})$ suma $4 \cdot 4 = 16$ del lado derecho, no sólo $4$.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $x^2+y^2-4x+6y-12=0 \Rightarrow (x^2-4x+4)+(y^2+6y+9)=12+4+9 \Rightarrow (x-2)^2+(y+3)^2=25$. Centro $(2,-3)$, radio $5$.</p>
         <a href="/tercial/flashcards.html?tema=forma+general" class="btn btn--secondary">Practicar este tema →</a>
@@ -155,7 +155,7 @@
       </summary>
       <div class="accordion__body">
         <p><span class="tag tag--accent">Idea clave</span> Las tres leyes principales: $\log(ab) = \log a + \log b$; $\log\!\left(\dfrac{a}{b}\right) = \log a - \log b$; $\log(a^n) = n\log a$. Para resolver una ecuación: junta los logs en uno solo usando las leyes, luego despeja.</p>
-        <p><span class="tag tag--err">Cuidado</span> Verificar SIEMPRE que las soluciones no hagan negativo el argumento de algún logaritmo — esas se descartan (raíces extrañas).</p>
+        <p><span class="tag tag--err">Cuidado</span> Verificar SIEMPRE que cada argumento quede <em>estrictamente positivo</em>: si una solución deja algún argumento negativo <strong>o cero</strong>, se descarta (raíz extraña) — $\log 0$ tampoco existe.</p>
         <p><span class="tag tag--ok">Ejemplo</span> $\log x + \log(x-3) = 1 \Rightarrow \log[x(x-3)] = 1 \Rightarrow x(x-3) = 10 \Rightarrow x^2-3x-10 = 0 \Rightarrow (x-5)(x+2)=0$. Soluciones: $x=5$ o $x=-2$. Se descarta $x=-2$ (haría negativo el argumento). Resultado: $x=5$.</p>
         <a href="/tercial/flashcards.html?tema=logar%C3%ADtmica" class="btn btn--secondary">Practicar este tema →</a>
       </div>

@@ -19,3 +19,20 @@ independiente y comprueba el HTML). **15/15 OK.**
 
 Nota: en #4 el error incluía la monotonía, no solo el punto (0,0); se reescribió
 el análisis completo del ejercicio. El resto fueron correcciones puntuales.
+
+---
+
+# Integridad · formulario.html + repaso.html — 3 correcciones
+
+Barrido completo adicional: las 85 fórmulas de formulario.html y los 14 acordeones de
+repaso.html fueron revisados por 8 agentes independientes + revisión manual — **ningún
+error adicional** a los 3 reportados por la auditoría externa.
+
+| Archivo | Antes (mal) | Después |
+|---|---|---|
+| formulario.html (energía) | `W_total = ΔEc + ΔEp + W_rozamiento` (incoherente: W_total ya incluye esos trabajos) | `E_m,inicial = E_m,final + \|W_rozamiento\|` — la energía disipada |
+| repaso.html (cónicas) | `Ax²+Cy²+Dx+Ey+F=0` pero clasifica con `B²−4AC` (B nunca definida) | forma general completa `Ax²+Bxy+Cy²+…`, nota de que aquí casi siempre B=0 |
+| repaso.html (logaritmos) | "descartar argumentos negativos" | argumento **estrictamente positivo**: negativo **o cero** se descarta (log 0 no existe) |
+
+Verificado: $ balanceados, 0 errores de KaTeX en ambos (148 y 44 nodos renderizados),
+la nota vieja de fricción removida.
