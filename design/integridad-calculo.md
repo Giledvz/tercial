@@ -4,12 +4,16 @@ Fuente corregida: `calculo_diferencial_v3.html` (el HTML es la fuente principal)
 El PDF `calculo_diferencial_latex.pdf` **no tiene fuente editable** en el repo →
 se retira del deploy hasta regenerarlo desde el mismo banco que alimenta el HTML.
 
-Prueba reproducible: `design/verify-calculo.mjs` (recalcula cada resultado de forma
-independiente y comprueba el HTML). **15/15 OK.**
+Prueba reproducible: `design/verify-calculo.mjs` (recalcula estos siete resultados
+y comprueba su representación en el HTML y el dominio). Se ejecuta junto con el
+verificador del formulario mediante `npm run test:regresiones`; corre en los pull
+requests y bloquea el deploy si detecta que reaparece una corrección auditada.
+Es una prueba de **regresión conocida**, no una certificación automática de los
+88 ejercicios.
 
 | # | Ejercicio | Antes (mal) | Después (correcto) | Comprobación |
 |---|---|---|---|---|
-| 1 | Composición · f(x)=1/(x−2), f(f(x)) | (x−2)/(3−2x) | **(x−2)/(5−2x)** | f(f(1))=−1/3 = (1−2)/(5−2) ✓ |
+| 1 | Composición · f(x)=1/(x−2), f(f(x)) | (x−2)/(3−2x) | **(x−2)/(5−2x)**, dominio **ℝ∖{2,5/2}** | f(f(1))=−1/3 = (1−2)/(5−2); se excluyen el valor fuera del dominio de f y el que hace f(x)=2 |
 | 2 | Curvas · x⁴−8x²+7 · ordenada de inflexión | (±2/√3, 1/9) | **(±2/√3, −17/9)** | f en x²=4/3: 16/9−32/3+7 = −17/9 |
 | 3 | Curvas · 3x⁴−16x³+24x²−9 · f(2/3) | (2/3, −5) | **(2/3, −67/27)** | (16−128+288−243)/27 = −67/27 |
 | 4 | Curvas · x⁵−5x⁴ · punto (0,0) | "x=0 no es extremo · Inflexión (0,0)" | **Máx. (0,0); inflexión solo (3,−162)** | f′=5x³(x−4) cambia + a − en 0 → máx; f″=20x²(x−3) no cambia signo en 0 → no inflexión. (También se corrigió Crece/Decrece: Crece (−∞,0)∪(4,∞), Decrece (0,4).) |
@@ -22,17 +26,24 @@ el análisis completo del ejercicio. El resto fueron correcciones puntuales.
 
 ---
 
-# Integridad · formulario.html + repaso.html — 3 correcciones
+# Integridad · formulario.html + repaso.html
 
-Barrido completo adicional: las 85 fórmulas de formulario.html y los 14 acordeones de
-repaso.html fueron revisados por 8 agentes independientes + revisión manual — **ningún
-error adicional** a los 3 reportados por la auditoría externa.
+Una segunda revisión independiente confirmó las tres correcciones iniciales y
+detectó condiciones de aplicación que todavía faltaban. Se corrigieron sin
+alterar la jerarquía ni la navegación de las páginas.
 
-| Archivo | Antes (mal) | Después |
-|---|---|---|
-| formulario.html (energía) | `W_total = ΔEc + ΔEp + W_rozamiento` (incoherente: W_total ya incluye esos trabajos) | `E_m,inicial = E_m,final + \|W_rozamiento\|` — la energía disipada |
-| repaso.html (cónicas) | `Ax²+Cy²+Dx+Ey+F=0` pero clasifica con `B²−4AC` (B nunca definida) | forma general completa `Ax²+Bxy+Cy²+…`, nota de que aquí casi siempre B=0 |
-| repaso.html (logaritmos) | "descartar argumentos negativos" | argumento **estrictamente positivo**: negativo **o cero** se descarta (log 0 no existe) |
+Cambios principales:
 
-Verificado: $ balanceados, 0 errores de KaTeX en ambos (148 y 44 nodos renderizados),
-la nota vieja de fricción removida.
+- Fricción cinética y estática separadas; ley de Hooke con signo restaurador.
+- Tercera ley y condición de `N=F_g` expresadas con sus hipótesis.
+- Teorema trabajo–energía y relación general `W_no conservativas = ΔE_m`.
+- Constante de los gases y `PV=nRT` alineadas en SI y en atm·L.
+- Pascal formulado como transmisión del **incremento** de presión.
+- Bernoulli, primera ley de la termodinámica y efecto fotoeléctrico con sus condiciones.
+- Cónicas clasificadas sólo después de descartar casos degenerados.
+- L’Hôpital presentado como teorema con hipótesis, no como sustitución automática.
+- Conservación de energía condicionada a fuerzas conservativas.
+- Argumentos de logaritmos estrictamente positivos.
+
+Prueba reproducible: `design/verify-formulario.mjs`. Protege las correcciones
+enumeradas; la auditoría conceptual completa sigue siendo una revisión humana.

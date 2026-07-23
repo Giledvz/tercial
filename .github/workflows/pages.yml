@@ -35,6 +35,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verificar regresiones matemáticas conocidas
+        run: npm run test:regresiones
+
       - name: Armar _site (solo lo que le sirve al alumno)
         run: |
           set -euo pipefail
