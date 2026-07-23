@@ -401,6 +401,44 @@ window.TercialMotor = (function () {
     return { enunciado: enun, correcta: correcta, opciones: e.opciones, meta: meta };
   }
 
+  /* — sistemas de 2×2 — */
+  function ansPair(x, y) {
+    function f(n) { return n < 0 ? MIN + Math.abs(n) : String(n); }
+    return { k: 'xy:' + x + ',' + y, h: 'x = ' + f(x) + ',  y = ' + f(y) };
+  }
+  function ecu2(a, b, c) {                            // "a x + b y = c" (a>0)
+    var t1 = (a === 1 ? '' : a) + 'x';
+    var op = b < 0 ? ' ' + MIN + ' ' : ' + ';
+    var t2 = (Math.abs(b) === 1 ? '' : Math.abs(b)) + 'y';
+    return t1 + op + t2 + ' = ' + (c < 0 ? MIN + Math.abs(c) : c);
+  }
+  function genSistemas(nivel) {
+    var top = [5, 7, 9][nivel - 1];
+    var x0, y0, a1, b1, a2, b2, g = 0;
+    do {
+      x0 = nz(nivel === 1 ? 1 : -top, top);
+      y0 = nz(nivel === 1 ? 1 : -top, top);
+      a1 = rint(1, nivel >= 2 ? 4 : 3); b1 = nz(-top, top);
+      a2 = rint(1, nivel >= 2 ? 4 : 3); b2 = nz(-top, top);
+      g++;
+    } while (g < 100 && (x0 === y0 || a1 * b2 - a2 * b1 === 0));   // no degenerado, x≠y
+
+    var c1 = a1 * x0 + b1 * y0, c2 = a2 * x0 + b2 * y0;
+    var enun = '<span style="font-size:.72em; line-height:1.4; display:inline-block">' +
+               ecu2(a1, b1, c1) + '<br>' + ecu2(a2, b2, c2) + '</span>';
+
+    var cand = [
+      { val: ansPair(y0, x0), tipo: 'invertido', err: 'Invertiste los valores: revisa cuál es x y cuál es y.' },
+      { val: ansPair(-x0, y0), tipo: 'signo-x', err: 'Signo cambiado en x. Sustituye tu solución en las DOS ecuaciones para comprobar.' },
+      { val: ansPair(x0, -y0), tipo: 'signo-y', err: 'Signo cambiado en y. Sustituye tu solución en las DOS ecuaciones para comprobar.' },
+      { val: ansPair(x0 + 1, y0 - 1), tipo: 'aritmetica', err: 'Revisa la aritmética al despejar; comprueba sustituyendo.' }
+    ];
+    return finish(enun, ansPair(x0, y0), cand, { ref: 'Tema 2 · sistemas', tema: 'Sistema 2×2', ask: 'Resuelve',
+      pasos: ['Resuélvelo por sustitución o por eliminación.',
+              'Comprueba: sustituye x = ' + x0 + ', y = ' + y0 + ' en las dos ecuaciones y deben cumplirse.',
+              'Solución: <b>x = ' + x0 + ', y = ' + y0 + '</b>.'] });
+  }
+
   /* — ecuación de 2º grado (x² + bx + c = 0, factorizable) — */
   function ansRoots(a, b) {
     var lo = Math.min(a, b), hi = Math.max(a, b);
@@ -541,7 +579,8 @@ window.TercialMotor = (function () {
     'factorizacion': genFactorizacion,
     'ecuacion':      genEcuacion,
     'potencias':     genPotencias,
-    'cuadratica':    genCuadratica
+    'cuadratica':    genCuadratica,
+    'sistemas':      genSistemas
   };
 
   return { GENERADORES: GENERADORES, tex: tex, feq: feq, fkey: fkey, pick: pick };

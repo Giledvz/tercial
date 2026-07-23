@@ -51,7 +51,7 @@ window.TercialCatalogo = (function () {
 
     { id: 'mat-sistemas-2x2', materia: 'matematicas', titulo: 'Sistemas', sub: '2×2',
       niveles: { prepa: { profundidad: 'basica' }, uni: { profundidad: 'fundamentos' } },
-      prerrequisitos: ['mat-ecuaciones-lineales'], generadores: [], estado: 'pendiente' }
+      prerrequisitos: ['mat-ecuaciones-lineales'], generadores: ['sistemas'], estado: 'disponible' }
   ];
 
   /* ramas divergentes (aún sin generador; marcan a dónde crece cada árbol) */
