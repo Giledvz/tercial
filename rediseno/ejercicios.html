@@ -421,7 +421,7 @@
     p.opciones.forEach(function (o, i) {
       var btn = document.createElement('button');
       btn.className = 'opt'; btn.type = 'button';
-      btn.innerHTML = '<span class="opt__key">' + 'ABCD'[i] + '</span>' + tex(o.val);
+      btn.innerHTML = '<span class="opt__key">' + 'ABCD'[i] + '</span><span class="opt__val">' + tex(o.val) + '</span>';
       btn.addEventListener('click', function () { responder(o, btn); });
       elOpts.appendChild(btn);
     });

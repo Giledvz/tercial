@@ -401,6 +401,95 @@ window.TercialMotor = (function () {
     return { enunciado: enun, correcta: correcta, opciones: e.opciones, meta: meta };
   }
 
+  /* — potencias y radicales — */
+  function sup(e) { return '<sup>' + (e < 0 ? MIN + Math.abs(e) : e) + '</sup>'; }
+  function powH(base, e) { return String(base) + sup(e); }
+  function ansPow(base, e) { return { k: 'pw:' + base + ':' + e, h: powH(base, e) }; }
+
+  function genPotencias(nivel) {
+    var tipos = nivel === 1 ? ['eval', 'raiz'] : nivel === 2 ? ['eval', 'raiz', 'ley', 'neg'] : ['ley', 'neg'];
+    var tipo = pick(tipos);
+
+    if (tipo === 'eval') {                                   // b^e (número)
+      var b = rint(2, nivel >= 2 ? 7 : 5), e = rint(2, nivel >= 2 ? 4 : 3);
+      var val = Math.pow(b, e), fac = [];
+      for (var i = 0; i < e; i++) fac.push(b);
+      var cand = [
+        { val: ent(b * e), tipo: 'base-por-exp', err: 'Multiplicaste base por exponente. ' + powH(b, e) + ' es ' + b + ' multiplicado por sí mismo ' + e + ' veces, no ' + b + '×' + e + '.' },
+        { val: ent(b + e), tipo: 'base-mas-exp', err: 'Sumaste base y exponente.' },
+        { val: ent(Math.pow(e, b)), tipo: 'invirtio', err: 'Invertiste base y exponente: eso es ' + powH(e, b) + ', no ' + powH(b, e) + '.' },
+        { val: ent(val * b), tipo: 'un-factor-de-mas', err: 'Un factor de más: multiplicaste ' + (e + 1) + ' veces, no ' + e + '.' }
+      ];
+      return finish(powH(b, e), ent(val), cand, { ref: 'Tema 1 · potencias', tema: 'Potencias', ask: 'Calcula',
+        pasos: [powH(b, e) + ' = ' + fac.join(' × ') + ' = <b>' + val + '</b>.',
+                'El exponente dice CUÁNTAS VECES se multiplica la base por sí misma.'] });
+    }
+
+    if (tipo === 'raiz') {                                   // √(cuadrado perfecto)
+      var n = rint(4, nivel >= 2 ? 15 : 12), sq = n * n;
+      var cand = [];
+      if (sq % 2 === 0) cand.push({ val: ent(sq / 2), tipo: 'mitad', err: 'La raíz no es la mitad. √' + sq + ' es el número que multiplicado por SÍ MISMO da ' + sq + '.' });
+      cand.push({ val: ent(2 * n), tipo: 'doble', err: 'Ese es el doble. La raíz es el número que al cuadrado da ' + sq + ' (' + n + '×' + n + ').' });
+      cand.push({ val: ent(n + 1), tipo: 'cerca', err: 'Casi: ' + (n + 1) + '² = ' + ((n + 1) * (n + 1)) + ', no ' + sq + '. Es ' + n + '.' });
+      cand.push({ val: ent(n - 1), tipo: 'cerca', err: 'Casi: ' + (n - 1) + '² = ' + ((n - 1) * (n - 1)) + ', no ' + sq + '. Es ' + n + '.' });
+      return finish('√' + sq, ent(n), cand, { ref: 'Tema 1 · radicales', tema: 'Raíz cuadrada', ask: 'Calcula',
+        pasos: ['√' + sq + ' pregunta: ¿qué número al cuadrado da ' + sq + '?', n + ' × ' + n + ' = ' + sq + ' → <b>' + n + '</b>.'] });
+    }
+
+    if (tipo === 'ley') {                                    // leyes de exponentes (x, simbólico)
+      var op = pick(['prod', 'coc', 'pot']), m, k, expc, enun, ley, malos;
+      if (op === 'prod') {
+        m = rint(2, 7); k = rint(2, 6); if (m === 2 && k === 2) k = 3;
+        expc = m + k; enun = powH('x', m) + ' · ' + powH('x', k); ley = 'producto';
+        malos = [{ e: m * k, tipo: 'mult-exp', txt: 'Multiplicaste los exponentes. En un PRODUCTO de la misma base se SUMAN: x' + sup(m) + '·x' + sup(k) + ' = x' + sup(m + k) + '.' }];
+      } else if (op === 'coc') {
+        m = rint(5, 9); k = rint(2, 4); if (k >= m) k = 2;
+        expc = m - k; enun = powH('x', m) + ' ÷ ' + powH('x', k); ley = 'cociente';
+        malos = [{ e: m + k, tipo: 'suma-exp', txt: 'Sumaste. En un COCIENTE se RESTAN los exponentes: x' + sup(m - k) + '.' },
+                 { e: m * k, tipo: 'mult-exp', txt: 'Multiplicaste. En un cociente se RESTAN los exponentes.' }];
+      } else {
+        m = rint(2, 5); k = rint(2, 4);
+        expc = m * k; enun = '(' + powH('x', m) + ')' + sup(k); ley = 'potencia de potencia';
+        malos = [{ e: m + k, tipo: 'suma-exp', txt: 'Sumaste. En una POTENCIA DE POTENCIA se MULTIPLICAN: (x' + sup(m) + ')' + sup(k) + ' = x' + sup(m * k) + '.' }];
+      }
+      var usados = {}; usados[expc] = 1; var cand = [];
+      malos.forEach(function (bad) { if (!usados[bad.e]) { usados[bad.e] = 1; cand.push({ val: ansPow('x', bad.e), tipo: bad.tipo, err: bad.txt }); } });
+      var extra = [expc + 1, expc - 1, expc + 2, Math.abs(m - k), 2 * expc, expc + 3];
+      for (var j = 0; j < extra.length && cand.length < 3; j++) {
+        if (usados[extra[j]]) continue; usados[extra[j]] = 1;
+        cand.push({ val: ansPow('x', extra[j]), tipo: 'exp-incorrecto', err: 'Revisa la ley del ' + ley + ': el exponente correcto es ' + expc + '.' });
+      }
+      return finish(enun, ansPow('x', expc), cand, { ref: 'Tema 1 · potencias', tema: 'Leyes de exponentes', ask: 'Simplifica',
+        pasos: ['Ley del <b>' + ley + '</b> (misma base).',
+                (op === 'prod' ? 'Se SUMAN los exponentes: ' + m + ' + ' + k + ' = ' + expc
+                 : op === 'coc' ? 'Se RESTAN los exponentes: ' + m + ' − ' + k + ' = ' + expc
+                 : 'Se MULTIPLICAN los exponentes: ' + m + ' × ' + k + ' = ' + expc) + '.',
+                'Queda <b>x' + sup(expc) + '</b>.'] });
+    }
+
+    // neg: exponente cero o negativo
+    if (pick(['cero', 'neg']) === 'cero') {
+      var b = rint(2, 9);
+      var cand = [
+        { val: ent(0), tipo: 'da-cero', err: 'Cualquier número (≠0) elevado a la 0 es <strong>1</strong>, no 0.' },
+        { val: ent(b), tipo: 'da-base', err: 'No es la base. Todo número a la potencia 0 da 1.' },
+        { val: ent(b * b), tipo: 'da-cuadrado', err: 'El exponente es 0, no 2. Da 1.' }
+      ];
+      return finish(powH(b, 0), ent(1), cand, { ref: 'Tema 1 · potencias', tema: 'Exponente cero', ask: 'Calcula',
+        pasos: ['Cualquier base distinta de 0 elevada al exponente 0 vale <b>1</b>.', powH(b, 0) + ' = <b>1</b>.'] });
+    }
+    var b2 = rint(2, 5), e2 = rint(2, 3), pot = Math.pow(b2, e2);
+    var cand = [
+      { val: ent(-pot), tipo: 'signo', err: 'El exponente negativo NO hace negativo el resultado: da el <strong>recíproco</strong> 1/' + powH(b2, e2) + ', no ' + MIN + pot + '.' },
+      { val: ent(pot), tipo: 'ignoro-neg', err: 'Ignoraste el negativo. ' + powH(b2, -e2) + ' = 1/' + powH(b2, e2) + ', no ' + pot + '.' },
+      { val: fr(-1, pot), tipo: 'signo-frac', err: 'El recíproco es positivo: 1/' + pot + '.' },
+      { val: fr(1, b2 * e2), tipo: 'base-por-exp', err: 'Primero ' + powH(b2, e2) + ' = ' + pot + ', luego el recíproco.' }
+    ];
+    return finish(powH(b2, -e2), fr(1, pot), cand, { ref: 'Tema 1 · potencias', tema: 'Exponente negativo', ask: 'Calcula',
+      pasos: ['Un exponente negativo significa <b>recíproco</b>: ' + powH(b2, -e2) + ' = 1 / ' + powH(b2, e2) + '.',
+              powH(b2, e2) + ' = ' + pot + ', así que <b>1/' + pot + '</b>.'] });
+  }
+
   /* ═══════════════════════════════════════════════════════════════
      REGISTRO · agregar un tema = agregar una entrada aquí
      ═══════════════════════════════════════════════════════════════ */
@@ -414,7 +503,8 @@ window.TercialMotor = (function () {
     'frac-mul':      genFracMul,
     'prod-notables': genProdNotables,
     'factorizacion': genFactorizacion,
-    'ecuacion':      genEcuacion
+    'ecuacion':      genEcuacion,
+    'potencias':     genPotencias
   };
 
   return { GENERADORES: GENERADORES, tex: tex, feq: feq, fkey: fkey, pick: pick };

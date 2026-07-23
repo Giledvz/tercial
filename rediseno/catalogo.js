@@ -23,7 +23,7 @@ window.TercialCatalogo = (function () {
 
     { id: 'mat-potencias', materia: 'matematicas', titulo: 'Potencias', sub: 'y radicales',
       niveles: { prepa: { profundidad: 'basica' }, uni: { profundidad: 'fundamentos' } },
-      prerrequisitos: ['mat-signos-producto'], generadores: [], estado: 'pendiente' },
+      prerrequisitos: ['mat-signos-producto'], generadores: ['potencias'], estado: 'disponible' },
 
     { id: 'mat-fracciones-suma', materia: 'matematicas', titulo: 'Fracciones', sub: 'suma y resta',
       niveles: { prepa: { profundidad: 'basica' }, uni: { profundidad: 'fundamentos' } },
