@@ -269,20 +269,6 @@
   white-space: nowrap;
 }
 
-@media (max-width: 759px) {
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-1);
-  }
-
-  .section-header__count {
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-}
-
 /* Section-header categorical — mismo patrón que .hero[data-cat].
    Border-top con color por categoría/unidad. margin-top genera
    respiro vertical entre secciones consecutivas (ej. unidades
@@ -2307,14 +2293,11 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  min-width: 0;
 }
 
 .constantes-grid__value {
   font-family: var(--font-family-body);
   color: var(--color-text-primary);
-  max-width: 100%;
-  overflow-x: auto;
 }
 
 .constantes-grid__label {
@@ -2353,9 +2336,6 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
 .formula-row__eq {
   font-size: var(--font-size-15);
   color: var(--color-text-primary);
-  min-width: 0;
-  max-width: 100%;
-  overflow-x: auto;
 }
 
 .formula-row__desc {
@@ -2374,8 +2354,6 @@ body:has(.exam-stage[data-stage="examen"].is-active) > site-nav {
   font-style: italic;
   font-size: var(--font-size-13);
   color: var(--color-text-meta);
-  max-width: 100%;
-  overflow-x: auto;
   padding-top: var(--space-3);
   margin-top: var(--space-2);
   border-top: var(--border-thin) solid var(--color-border);
