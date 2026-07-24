@@ -12,6 +12,11 @@
 <link rel="stylesheet" href="../assets/css/components.css">
 <link rel="stylesheet" href="../assets/css/exam-print.css">
 <style>
+  /* Esta hoja tiene 128 reactivos (32 filas/columna) y con los márgenes
+     generosos compartidos se iba a 2 páginas. Debe caber en UNA (es hoja de
+     lectura óptica). Se le da su propio @page con márgenes más ajustados,
+     sin afectar los demás exámenes. */
+  @page { size: letter; margin: 0.55in 0.85in; }
   /* Prepa (COMIPEMS): el acento de esta hoja es terracota. Se redefine el token
      a nivel de la hoja para que TODO lo que use el acento —incluida la itálica del
      título, cuyo color vive en exam-print.css— quede en terracota. */
