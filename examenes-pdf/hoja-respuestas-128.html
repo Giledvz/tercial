@@ -12,10 +12,14 @@
 <link rel="stylesheet" href="../assets/css/components.css">
 <link rel="stylesheet" href="../assets/css/exam-print.css">
 <style>
+  /* Prepa (COMIPEMS): el acento de esta hoja es terracota. Se redefine el token
+     a nivel de la hoja para que TODO lo que use el acento —incluida la itálica del
+     título, cuyo color vive en exam-print.css— quede en terracota. */
+  .exam-pdf--neutral { --accent-conac: var(--accent-terracota); }
   /* ===== Hoja de respuestas (OMR) · componente local =====
      Las clases hr-* viven aquí porque son específicas de esta hoja
      (lectura óptica). Todo lo cromático sale de tokens.css. */
-  .exam-pdf--neutral .exam-pdf__hero { border-top-color: var(--accent-terracota); }
+  .exam-pdf--neutral .exam-pdf__hero { border-top-color: var(--accent-conac); }
 
   .hr-sheet { position: relative; padding-bottom: 0.3in; }
   /* Marcas de registro para alinear al calificar con cámara/escáner */
@@ -26,11 +30,11 @@
   .hr-reg--br { bottom: 0; right: 0; }
 
   .hr-hero { display: flex; justify-content: space-between; align-items: flex-start;
-             border-top: 3px solid var(--accent-terracota); padding-top: 0.16in; }
+             border-top: 3px solid var(--accent-conac); padding-top: 0.16in; }
   .hr-count { text-align: right; }
   .hr-count b { font-family: var(--font-family-display); font-style: italic;
                 font-weight: var(--font-weight-medium); font-size: 22pt;
-                color: var(--accent-terracota); line-height: 1; display: block; }
+                color: var(--accent-conac); line-height: 1; display: block; }
   .hr-count span { font-size: 7pt; font-weight: var(--font-weight-medium);
                    letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--ink-300); }
 
