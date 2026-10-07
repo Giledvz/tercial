@@ -160,6 +160,76 @@
   color: var(--color-accent);
 }
 
+.property-scene {
+  grid-column: 2 / -1;
+  display: block;
+  width: min(100%, 34rem);
+  margin-block: var(--space-2);
+}
+
+.property-scene__drawing {
+  display: block;
+  width: 100%;
+  height: auto;
+  stroke: none;
+  pointer-events: none;
+}
+
+.property-scene__caption {
+  display: block;
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-loose);
+}
+
+.property-scene__metal { fill: var(--color-text-meta); }
+.property-scene__metal-top { fill: var(--color-text-secondary); }
+.property-scene__metal-side { fill: var(--color-border-strong); }
+.property-scene__wood { fill: var(--color-accent); }
+.property-scene__wood-edge {
+  fill: none;
+  stroke: var(--color-bg-page);
+  stroke-width: 2;
+  opacity: .35;
+}
+.property-scene__support { fill: var(--color-border); }
+.property-scene__tool { fill: var(--color-border-strong); }
+.property-scene__tool-side { fill: var(--color-border); }
+.property-scene__edge {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.property-scene__shine {
+  fill: none;
+  stroke: var(--color-bg-page);
+  stroke-width: 2;
+  opacity: .35;
+}
+.property-scene__wire {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+.property-scene__bolt { fill: var(--color-bg-page); }
+.property-scene__label {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 18px;
+}
+
+#maleabilidad,
+#ductilidad {
+  scroll-margin-top: var(--space-8);
+}
+
+@media (max-width: 580px) {
+  .property-scene { grid-column: 1 / -1; }
+}
+
 .classification-route__root {
   display: grid;
   justify-items: center;

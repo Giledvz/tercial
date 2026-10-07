@@ -31,10 +31,11 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="./quimica-material.css?v=20261007-propiedades">
+<link rel="stylesheet" href="./quimica-material.css?v=20261007-propiedades-escenas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="./propiedades-escenas.js?v=20261007"></script>
 </head>
 <body>
 
@@ -163,7 +164,42 @@
     <p class="section-intro">Decide si cada propiedad es física o química; después abre la fila para comprobar.</p>
     <p class="source-note">Ejercicios del material fuente QUA-001 · p. 5</p>
     <div class="exercise-list">
-      <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">01</span><div class="exercise__statement"><p class="exercise__text">Maleabilidad</p><p class="exercise__hint">¿Puede observarse al deformar el material sin producir otra sustancia?</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física. Describe la capacidad de formar láminas sin cambiar la composición.</p></div></details>
+      <details class="exercise" id="maleabilidad">
+        <summary class="exercise__summary">
+          <span class="exercise__num">01</span>
+          <div class="exercise__statement">
+            <p class="exercise__text">Maleabilidad</p>
+            <p class="exercise__hint">Observa qué ocurre con el metal cuando recibe golpes.</p>
+          </div>
+          <svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          <span class="property-scene" data-property-scene="maleabilidad">
+            <svg class="property-scene__drawing" viewBox="0 0 560 280" aria-hidden="true">
+              <path class="property-scene__support" d="M68 230h424v10H68zM90 240h24v21H90zM446 240h24v21h-24z"/>
+              <path class="property-scene__edge" d="M68 230h424"/>
+              <g data-scene-moving>
+                <g transform="translate(280 230)">
+                  <g data-scene-metal>
+                    <path class="property-scene__metal" d="M-52-58H52V-4q0 4-4 4h-96q-4 0-4-4z"/>
+                    <path class="property-scene__metal-top" d="m-52-58 8-7H60l-8 7z"/>
+                    <path class="property-scene__metal-side" d="m52-58 8-7v57l-8 8z"/>
+                    <path class="property-scene__shine" d="M-42-48H40"/>
+                  </g>
+                </g>
+                <g data-scene-hammer transform="translate(280 111)">
+                  <path class="property-scene__wood" d="M-7-98q7-4 14 0v72H-7z"/>
+                  <path class="property-scene__wood-edge" d="M2-94v64"/>
+                  <path class="property-scene__metal" d="M-38-26H38V-5q0 5-5 5h-66q-5 0-5-5z"/>
+                  <path class="property-scene__metal-top" d="m-38-26 8-8H46l-8 8z"/>
+                  <path class="property-scene__metal-side" d="m38-26 8-8v26l-8 8z"/>
+                  <path class="property-scene__shine" d="M-29-17H27"/>
+                </g>
+              </g>
+            </svg>
+            <span class="property-scene__caption">El metal se aplana hasta formar una lámina.</span>
+          </span>
+        </summary>
+        <div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física. Describe la capacidad de formar láminas sin cambiar la composición.</p></div>
+      </details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">02</span><div class="exercise__statement"><p class="exercise__text">Oxidación</p><p class="exercise__hint">Durante el proceso aparecen sustancias distintas.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Química. Indica la capacidad de reaccionar mediante una oxidación.</p></div></details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">03</span><div class="exercise__statement"><p class="exercise__text">Estado de agregación</p><p class="exercise__hint">Sólido, líquido o gas pueden identificarse sin cambiar la identidad.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física.</p></div></details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">04</span><div class="exercise__statement"><p class="exercise__text">Capacidad de formar bases</p><p class="exercise__hint">Describe el comportamiento de la sustancia en una reacción.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Química.</p></div></details>
@@ -173,7 +209,41 @@
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">08</span><div class="exercise__statement"><p class="exercise__text">Olor</p><p class="exercise__hint">Se percibe con los sentidos sin producir otra sustancia.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física.</p></div></details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">09</span><div class="exercise__statement"><p class="exercise__text">Punto de fusión</p><p class="exercise__hint">Es una temperatura característica de cambio de estado.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física e intensiva.</p></div></details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">10</span><div class="exercise__statement"><p class="exercise__text">Punto de ebullición</p><p class="exercise__hint">No depende de la cantidad de la muestra a una presión dada.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física e intensiva.</p></div></details>
-      <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">11</span><div class="exercise__statement"><p class="exercise__text">Ductilidad</p><p class="exercise__hint">Describe la capacidad de formar hilos.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física.</p></div></details>
+      <details class="exercise" id="ductilidad">
+        <summary class="exercise__summary">
+          <span class="exercise__num">11</span>
+          <div class="exercise__statement">
+            <p class="exercise__text">Ductilidad</p>
+            <p class="exercise__hint">Observa cómo se forma un hilo de metal.</p>
+          </div>
+          <svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          <span class="property-scene" data-property-scene="ductilidad">
+            <svg class="property-scene__drawing" viewBox="0 0 560 280" aria-hidden="true">
+              <g data-scene-moving>
+                <rect class="property-scene__metal" data-scene-feed x="78" y="118" width="154" height="30" rx="6"/>
+                <path class="property-scene__shine" data-scene-feed-shine d="M88 125H230"/>
+                <path class="property-scene__metal" d="M230 118h7l38 12h17v6h-17l-38 12h-7z"/>
+                <path class="property-scene__wire" data-scene-wire d="M290 133H318"/>
+                <g data-scene-grip transform="translate(318 133)">
+                  <path class="property-scene__wood" d="M-9-19H25q4 0 4 4v30q0 4-4 4H-9V5H5V-5H-9z"/>
+                  <path class="property-scene__wood-edge" d="M18-12v24"/>
+                  <circle class="property-scene__bolt" cx="13" cy="-11" r="3"/>
+                  <circle class="property-scene__bolt" cx="13" cy="11" r="3"/>
+                </g>
+              </g>
+              <path class="property-scene__tool" d="M230 69h62v61h-17l-38-12h-7zM230 197h62v-61h-17l-38 12h-7z"/>
+              <path class="property-scene__tool-side" d="m292 69 14 9v48l-14 4zM292 136l14 4v48l-14 9z"/>
+              <path class="property-scene__edge" d="M239 80h44M239 186h44M237 118l38 12h17M237 148l38-12h17"/>
+              <circle class="property-scene__bolt" cx="261" cy="94" r="5"/>
+              <circle class="property-scene__bolt" cx="261" cy="172" r="5"/>
+              <text class="property-scene__label" x="150" y="228" text-anchor="middle">metal</text>
+              <text class="property-scene__label" x="397" y="228" text-anchor="middle">alambre</text>
+            </svg>
+            <span class="property-scene__caption">Al pasar por una abertura estrecha, el metal forma un alambre.</span>
+          </span>
+        </summary>
+        <div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Física. Describe la capacidad de formar hilos o alambres sin cambiar la composición.</p></div>
+      </details>
       <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">12</span><div class="exercise__statement"><p class="exercise__text">Reactividad con ácidos</p><p class="exercise__hint">Sólo se reconoce al observar una interacción química.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__answer"><p class="exercise__answer-label">Respuesta</p><p class="exercise__answer-text">Química.</p></div></details>
     </div>
   </section>
