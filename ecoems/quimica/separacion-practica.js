@@ -22,10 +22,10 @@
     { id: 'tamizado', label: 'Tamizado', property: 'tamaño entre sólidos' },
     { id: 'imantacion', label: 'Imantación', property: 'magnetismo' },
     { id: 'centrifugacion', label: 'Centrifugación', property: 'densidad' },
-    { id: 'evaporacion', label: 'Evaporación', property: 'volatilidad' },
+    { id: 'evaporacion', label: 'Evaporación', property: 'el líquido se evapora' },
     { id: 'cristalizacion', label: 'Cristalización', property: 'solubilidad' },
     { id: 'destilacion', label: 'Destilación', property: 'ebullición' },
-    { id: 'cromatografia', label: 'Cromatografía', property: 'afinidad entre fases' },
+    { id: 'cromatografia', label: 'Cromatografía', property: 'avanzan a distinta velocidad' },
     { id: 'sublimacion', label: 'Sublimación', property: 'cambio directo a gas' }
   ];
 
@@ -45,6 +45,26 @@
     'separacion-13': 'imantacion',
     'separacion-14': 'sublimacion',
     'separacion-15': 'filtracion'
+  };
+
+  /* Retroalimentación: al acertar se explica por qué funciona el método; al
+     fallar, una pista sobre la propiedad que conviene aprovechar. */
+  var feedback = {
+    'separacion-01': ['¿Cuál de los dos sólidos responde a un imán?', 'El imán atrae al hierro y deja el azufre.'],
+    'separacion-02': ['La sal está disuelta. ¿Cómo recuperas sus cristales?', 'Al evaporarse el agua, la sal forma cristales.'],
+    'separacion-03': ['Los dos son líquidos que se mezclan. ¿Cuál hierve primero?', 'El alcohol hierve antes que el agua; su vapor se enfría y se recoge por separado.'],
+    'separacion-04': ['Forman dos capas. ¿Cómo separas la de arriba de la de abajo?', 'El aceite queda arriba y se separa del agua sin mezclarse.'],
+    'separacion-05': ['Cada tinta avanza a distinta velocidad sobre un papel.', 'Cada pigmento avanza distinto por el papel y queda separado de los demás.'],
+    'separacion-06': ['Sus componentes tienen distinta densidad; hay que acelerar que se asienten.', 'El giro rápido manda al fondo lo más denso: los glóbulos se separan del plasma.'],
+    'separacion-07': ['Los dos son sólidos de distinto tamaño.', 'La malla deja pasar la arena y retiene la grava.'],
+    'separacion-08': ['Uno de los dos pasa directamente a gas al calentarse.', 'El hielo seco se vuelve gas y la tierra se queda.'],
+    'separacion-09': ['El arroz no se disuelve en el agua. ¿Qué lo retiene y deja pasar el agua?', 'El colador o el filtro retiene el arroz y deja pasar el agua.'],
+    'separacion-10': ['Los colorantes están disueltos y avanzan distinto sobre un papel.', 'Cada colorante avanza a distinta velocidad y se separa de los otros.'],
+    'separacion-11': ['La sal está disuelta en el agua de mar.', 'Al evaporarse el agua, quedan los cristales de sal.'],
+    'separacion-12': ['Primero el aire se vuelve líquido; cada gas hierve a una temperatura distinta.', 'El nitrógeno y el oxígeno líquidos hierven a temperaturas distintas y se recogen por separado.'],
+    'separacion-13': ['La aguja es de metal; la paja no.', 'El imán atrae la aguja de acero y la saca del pajar.'],
+    'separacion-14': ['Uno de los dos sólidos pasa directamente a vapor.', 'El yodo pasa a vapor y el azufre se queda.'],
+    'separacion-15': ['La harina no se disuelve en el agua. ¿Qué la retiene?', 'El filtro retiene la harina y deja pasar el agua. Evaporar también la recuperaría, pero tarda más y se pierde el agua.']
   };
 
   var methodById = methods.reduce(function (index, method) {
@@ -215,7 +235,20 @@
       button.setAttribute('aria-label', item.number + '. ' + item.title + '. Método elegido: ' +
         method.label + '. Toca para cambiarlo.');
       button.addEventListener('click', function () { reviseCase(item.id); });
-      historyList.appendChild(button);
+
+      var entry = document.createElement('div');
+      entry.className = 'method-workbench__history-entry';
+      entry.dataset.historyCase = item.id;
+      button.removeAttribute('data-history-case');
+      entry.appendChild(button);
+      if (typeof result === 'boolean' && feedback[item.id]) {
+        var note = document.createElement('p');
+        note.className = 'practice-feedback' + (result ? '' : ' is-hint');
+        note.innerHTML = '<span class="practice-feedback__label">' + (result ? 'Por qué' : 'Pista') + '</span> ';
+        note.appendChild(document.createTextNode(result ? feedback[item.id][1] : feedback[item.id][0]));
+        entry.appendChild(note);
+      }
+      historyList.appendChild(entry);
     });
 
     historyEmpty.hidden = answered > 0;
@@ -268,8 +301,9 @@
     });
 
     renderHistory();
-    validation.textContent = correct + ' de ' + cases.length +
-      ' correctas. Toca las marcadas para cambiar el método.';
+    validation.textContent = correct === cases.length
+      ? '¡' + correct + ' de ' + cases.length + ' correctas! Dominas este tema.'
+      : correct + ' de ' + cases.length + ' correctas. Lee las pistas y toca las marcadas para cambiar el método.';
     validation.classList.add('has-result');
     reportResult(correct, errorIds);
   }

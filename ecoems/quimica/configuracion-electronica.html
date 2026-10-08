@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Configuración electrónica · Química ECOEMS · Tercial</title>
+<meta name="description" content="Escribe configuraciones electrónicas con la regla de las diagonales y léelas para encontrar periodo, electrones de valencia y familia.">
+<meta name="tercial:resource-id" content="ecoems-quimica-configuracion-electronica">
+<meta name="tercial:resource-title" content="Configuración electrónica">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-rutherford">
+<link rel="stylesheet" href="./selector-elemento.css?v=20261008-selector">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-atomo.js?v=20261008-rutherford"></script>
+<script defer src="./practica-quimica.js?v=20261008-estructura"></script>
+<script defer src="./configuracion-practica.js?v=20261008-estructura"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 3 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Configuración <em>electrónica</em></h1>
+    <p class="hero__lede">Los electrones de un átomo no están en cualquier lugar: ocupan niveles y
+      subniveles en un orden fijo. Escribir ese orden te dice en qué periodo y en qué familia está el
+      elemento.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=electrones#courseIndex">electrones</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=orbitales#courseIndex">orbitales</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=valencia#courseIndex">valencia</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaConfiguracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaConfiguracion">
+        <span class="lesson-section__kicker">Idea central</span> Primero se llenan los lugares de menor energía
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">La configuración es la <em>dirección</em> de cada electrón</h3>
+      </header>
+      <div class="reading-block__body">
+        <p>La configuración electrónica muestra cómo se acomodan los electrones de un átomo en los
+          orbitales, en orden de energía creciente: primero se ocupan los de menor energía y después los
+          siguientes.</p>
+        <p>Un <strong>orbital</strong> es la región donde es más probable encontrar un electrón: la nube
+          del modelo de Schrödinger. En cada orbital caben, como máximo, 2 electrones.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 13 -->
+      <footer class="source-line">
+        <span>Lectura · 10 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="notacionConfiguracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="notacionConfiguracion">
+        <span class="lesson-section__kicker">Lee la notación</span> Tres datos en cada término
+      </h2>
+    </header>
+    <figure class="config-anatomy" aria-labelledby="anatomiaCaption">
+      <div class="config-anatomy__term" aria-hidden="true"><span>3</span><span>p</span><sup>5</sup></div>
+      <ul class="config-anatomy__parts">
+        <li><span class="config-anatomy__glyph">3</span><span class="config-anatomy__tag">Nivel de energía</span>
+          Va del 1 al 7. Es el número de la capa, como los niveles de Bohr.</li>
+        <li><span class="config-anatomy__glyph">p</span><span class="config-anatomy__tag">Subnivel</span>
+          El tipo de orbital: s, p, d o f.</li>
+        <li><span class="config-anatomy__glyph config-anatomy__glyph--sup">5</span><span class="config-anatomy__tag">Electrones</span>
+          Cuántos electrones hay en ese subnivel.</li>
+      </ul>
+      <figcaption class="atom-figure__caption" id="anatomiaCaption">3p<sup>5</sup> se lee «tres pe cinco»:
+        en el subnivel p del nivel 3 hay 5 electrones.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="tiposOrbital">
+    <header class="section-header">
+      <h2 class="section-header__title" id="tiposOrbital">
+        <span class="lesson-section__kicker">Observa</span> Cuatro tipos de orbital
+      </h2>
+      <span class="section-header__count">s · p · d · f</span>
+    </header>
+    <ul class="orbital-grid">
+      <li class="orbital-type">
+        <svg class="escena orbital-type__shape" viewBox="0 0 100 100" role="img" aria-label="Orbital s: una esfera alrededor del núcleo">
+          <circle class="escena__orbital" cx="50" cy="50" r="30"/>
+          <ellipse class="escena__reflejo-esfera" cx="40" cy="38" rx="11" ry="7"/>
+          <circle class="escena__nucleo" cx="50" cy="50" r="2.6"/>
+        </svg>
+        <p class="orbital-type__name">s</p>
+        <p class="orbital-type__fact">1 orbital · <strong>2 electrones</strong></p>
+        <p class="orbital-type__shape-name">esfera</p>
+      </li>
+      <li class="orbital-type">
+        <svg class="escena orbital-type__shape" viewBox="0 0 100 100" role="img" aria-label="Orbital p: dos lóbulos opuestos, como una pesa">
+          <path class="escena__orbital" d="M50 50C38 40 37 13 50 12C63 13 62 40 50 50Z"/>
+          <path class="escena__orbital escena__orbital--alt" d="M50 50C38 60 37 87 50 88C63 87 62 60 50 50Z"/>
+          <circle class="escena__nucleo" cx="50" cy="50" r="2.6"/>
+        </svg>
+        <p class="orbital-type__name">p</p>
+        <p class="orbital-type__fact">3 orbitales · <strong>6 electrones</strong></p>
+        <p class="orbital-type__shape-name">dos lóbulos</p>
+      </li>
+      <li class="orbital-type">
+        <svg class="escena orbital-type__shape" viewBox="0 0 100 100" role="img" aria-label="Orbital d: cuatro lóbulos en forma de trébol">
+          <g transform="rotate(45 50 50)">
+            <path class="escena__orbital" d="M50 50C41 42 40 18 50 17C60 18 59 42 50 50Z"/>
+            <path class="escena__orbital escena__orbital--alt" d="M50 50C58 41 82 40 83 50C82 60 58 59 50 50Z"/>
+            <path class="escena__orbital" d="M50 50C59 58 60 82 50 83C40 82 41 58 50 50Z"/>
+            <path class="escena__orbital escena__orbital--alt" d="M50 50C42 59 18 60 17 50C18 40 42 41 50 50Z"/>
+          </g>
+          <circle class="escena__nucleo" cx="50" cy="50" r="2.6"/>
+        </svg>
+        <p class="orbital-type__name">d</p>
+        <p class="orbital-type__fact">5 orbitales · <strong>10 electrones</strong></p>
+        <p class="orbital-type__shape-name">cuatro lóbulos</p>
+      </li>
+      <li class="orbital-type">
+        <svg class="escena orbital-type__shape" viewBox="0 0 100 100" role="img" aria-label="Orbital f: seis lóbulos alrededor del núcleo">
+          <path class="escena__orbital" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z"/>
+          <path class="escena__orbital escena__orbital--alt" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z" transform="rotate(60 50 50)"/>
+          <path class="escena__orbital" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z" transform="rotate(120 50 50)"/>
+          <path class="escena__orbital escena__orbital--alt" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z" transform="rotate(180 50 50)"/>
+          <path class="escena__orbital" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z" transform="rotate(240 50 50)"/>
+          <path class="escena__orbital escena__orbital--alt" d="M50 50C43 43 43 20 50 19C57 20 57 43 50 50Z" transform="rotate(300 50 50)"/>
+          <circle class="escena__nucleo" cx="50" cy="50" r="2.6"/>
+        </svg>
+        <p class="orbital-type__name">f</p>
+        <p class="orbital-type__fact">7 orbitales · <strong>14 electrones</strong></p>
+        <p class="orbital-type__shape-name">formas más complejas</p>
+      </li>
+    </ul>
+    <p class="editorial-note">En cada orbital caben 2 electrones. Por eso un subnivel s admite 2; uno p,
+      6; uno d, 10, y uno f, 14. El punto del centro es el núcleo.</p>
+  </section>
+
+  <section aria-labelledby="reglaDiagonales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglaDiagonales">
+        <span class="lesson-section__kicker">Sigue el orden</span> La regla de las diagonales
+      </h2>
+    </header>
+    <p class="section-intro">Para saber qué subnivel se llena primero, sigue las flechas diagonales de
+      arriba hacia abajo: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p… Elige un elemento y observa cómo se
+      acomodan sus electrones.</p>
+    <div class="diagonal-tool" data-diagonales>
+      <div class="diagonal-tool__picker">
+        <label class="diagonal-tool__label" for="diagonalElemento">Elemento</label>
+        <div class="diagonal-tool__select-row">
+          <button class="atom-builder__step" type="button" data-diagonal-step="-1" aria-label="Elemento anterior">−</button>
+          <div class="element-picker" data-element-picker>
+            <button class="select element-picker__button" id="diagonalElemento" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="diagonalLista" data-picker-button>11 · Na · Sodio</button>
+            <div class="element-picker__panel" data-picker-panel hidden>
+              <input class="input element-picker__search" type="text" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="diagonalLista" aria-label="Busca un elemento por nombre, símbolo o número" placeholder="Busca: sodio, Na u 11" autocomplete="off" autocapitalize="off" spellcheck="false" data-picker-search>
+              <ul class="element-picker__list" id="diagonalLista" role="listbox" aria-label="Elementos de la tabla periódica" tabindex="-1" data-picker-list></ul>
+              <p class="element-picker__empty" data-picker-empty hidden>No hay elementos con ese nombre.</p>
+            </div>
+          </div>
+          <button class="atom-builder__step" type="button" data-diagonal-step="1" aria-label="Elemento siguiente">+</button>
+        </div>
+        <button class="practice-action diagonal-tool__replay" type="button" data-diagonal-replay>Repetir la animación</button>
+      </div>
+      <div class="diagonal-tool__body">
+        <figure class="diagonal-tool__figure">
+          <svg class="escena escena--diagonales" data-escena-atomo="diagonales" viewBox="0 0 320 330" role="img" aria-labelledby="diagonalTitle">
+            <title id="diagonalTitle">Diagrama de la regla de las diagonales: los subniveles de 1s a 7p con un hueco por cada electrón que cabe; las flechas diagonales marcan el orden de llenado</title>
+          </svg>
+        </figure>
+        <div class="diagonal-tool__result">
+          <p class="diagonal-tool__kicker">Configuración</p>
+          <p class="diagonal-tool__config" data-diagonal-config></p>
+          <p class="diagonal-tool__count" data-diagonal-count></p>
+          <dl class="diagonal-tool__facts">
+            <div><dt>Periodo</dt><dd data-diagonal-period></dd></div>
+            <div><dt>Electrones de valencia</dt><dd data-diagonal-valence></dd></div>
+            <div><dt>Familia</dt><dd data-diagonal-family></dd></div>
+          </dl>
+          <div class="diagonal-tool__levels-wrap">
+            <p class="diagonal-tool__kicker">Electrones por nivel</p>
+            <svg class="escena diagonal-tool__levels" data-diagonal-levels viewBox="0 0 340 56" role="img" aria-label="Electrones en cada nivel de energía"></svg>
+          </div>
+          <p class="diagonal-tool__note" data-diagonal-note hidden></p>
+          <p class="visually-hidden" data-diagonal-live aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="leeConfiguracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="leeConfiguracion">
+        <span class="lesson-section__kicker">Interpreta</span> Lo que te dice la configuración
+      </h2>
+    </header>
+    <div class="rule-grid rule-grid--three">
+      <article class="rule-card">
+        <p class="rule-card__formula">Periodo</p>
+        <p class="rule-card__text">Es el nivel más alto que aparece en la configuración.</p>
+      </article>
+      <article class="rule-card">
+        <p class="rule-card__formula">Electrones de valencia</p>
+        <p class="rule-card__text">Son los del último nivel: suma los electrones s y p de ese número.</p>
+      </article>
+      <article class="rule-card">
+        <p class="rule-card__formula">Familia (grupo A)</p>
+        <p class="rule-card__text">Es el número de electrones de valencia, escrito en números romanos.</p>
+      </article>
+    </div>
+
+    <div class="config-examples">
+      <article class="config-example">
+        <p class="config-example__element"><sup>11</sup>Na · sodio</p>
+        <p class="config-example__config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> <strong>3s<sup>1</sup></strong></p>
+        <dl class="config-example__facts">
+          <div><dt>Periodo</dt><dd>3 · el nivel más alto es 3</dd></div>
+          <div><dt>Valencia</dt><dd>1 electrón · 3s<sup>1</sup></dd></div>
+          <div><dt>Familia</dt><dd>IA</dd></div>
+          <div><dt>Por niveles</dt><dd>2 · 8 · 1</dd></div>
+        </dl>
+      </article>
+      <article class="config-example">
+        <p class="config-example__element"><sup>35</sup>Br · bromo</p>
+        <p class="config-example__config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> <strong>4s<sup>2</sup></strong> 3d<sup>10</sup> <strong>4p<sup>5</sup></strong></p>
+        <dl class="config-example__facts">
+          <div><dt>Periodo</dt><dd>4 · el nivel más alto es 4</dd></div>
+          <div><dt>Valencia</dt><dd>4s<sup>2</sup> + 4p<sup>5</sup> = 7 electrones</dd></div>
+          <div><dt>Familia</dt><dd>VIIA</dd></div>
+          <div><dt>Por niveles</dt><dd>2 · 8 · 18 · 7</dd></div>
+        </dl>
+        <p class="config-example__note">Ojo: 3d<sup>10</sup> no cuenta para la valencia, porque es del nivel 3.</p>
+      </article>
+    </div>
+    <p class="editorial-note">Estas reglas sirven para los elementos de los grupos A (bloques s y p). Los
+      metales de transición, como el hierro, se leen de otra forma; los verás en «Bloques s, p, d y f».
+      El helio es la excepción: tiene 2 electrones de valencia, pero va con los gases nobles (VIIIA)
+      porque su único nivel está lleno.</p>
+  </section>
+
+  <section aria-labelledby="practicaConfiguracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaConfiguracion">
+        <span class="lesson-section__kicker">Practica</span> Escribe y lee la configuración
+      </h2>
+      <span class="section-header__count">10 elementos</span>
+    </header>
+    <p class="section-intro">Escribe la configuración de cada elemento con números normales
+      (1s2 2s2 2p6…) y elige su periodo, sus electrones de valencia y su familia. Hazlo sin la
+      herramienta de arriba: después úsala para revisar.</p>
+    <!-- Ejercicios: QUA-001 · p. 13 (el selenio se corrige: familia VIA, 6 electrones de valencia) -->
+    <form data-practice-form autocomplete="off">
+      <ol class="config-sheet" data-config-cards></ol>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los elementos de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./particulas-subatomicas.html">← Partículas</a>
+    <a href="./index.html">Índice de Química</a>
+    <a href="./tabla-periodica.html">Siguiente: tabla periódica →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

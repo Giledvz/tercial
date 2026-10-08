@@ -26,6 +26,37 @@
     'cambio-12': 'Químico'
   };
 
+  /* Retroalimentación: al acertar se explica el porqué; al fallar, una pista
+     que lleva a la pregunta clave sin revelar la respuesta. */
+  var feedback = {
+    'cambio-01': ['La fruta fermentada huele y sabe distinto. ¿Se formaron sustancias nuevas?', 'Los azúcares de la fruta se transforman en alcohol y gas: sustancias nuevas.'],
+    'cambio-02': ['La planta toma agua y dióxido de carbono. ¿Qué fabrica con ellos?', 'Con agua y dióxido de carbono la planta fabrica glucosa y oxígeno: sustancias nuevas.'],
+    'cambio-03': ['La roca fundida se enfría. ¿Cambia de material o sólo de estado?', 'La lava sólo pasa de líquido a sólido; sigue siendo la misma roca.'],
+    'cambio-04': ['Después del choque, ¿la lámina sigue siendo del mismo metal?', 'Cambia la forma, pero el metal sigue siendo el mismo.'],
+    'cambio-05': ['Al hornear, la masa cambia de color, olor y sabor. ¿Aparecieron sustancias nuevas?', 'El calor transforma los ingredientes en sustancias nuevas.'],
+    'cambio-06': ['Al soltarla, ¿la liga sigue siendo de hule?', 'Sólo cambia su forma por un momento; el hule sigue siendo hule.'],
+    'cambio-07': ['El agua que sale del hielo derretido, ¿sigue siendo agua?', 'Es un cambio de estado: el H₂O sigue siendo H₂O.'],
+    'cambio-08': ['Al quemarla aparecen humo y partes negras. ¿Son sustancias nuevas?', 'La combustión forma sustancias nuevas, como carbón y gases.'],
+    'cambio-09': ['Si no se quema ni se descompone, ¿qué cambia: la sustancia o sólo el estado del agua que contiene?', 'El agua de la leche pasa a vapor, pero no se forman sustancias nuevas.'],
+    'cambio-10': ['Los trozos pequeños, ¿son de un material distinto?', 'Sólo cambia el tamaño de los trozos.'],
+    'cambio-11': ['Es un cambio de estado. ¿Los cambios de estado forman sustancias nuevas?', 'El yodo pasa de sólido a gas, pero sigue siendo yodo.'],
+    'cambio-12': ['Tus células usan glucosa y oxígeno. ¿Qué producen?', 'La glucosa y el oxígeno se transforman en dióxido de carbono, agua y energía.']
+  };
+
+  function renderFeedback(field, isCorrect) {
+    var statement = field.closest('.exercise').querySelector('.exercise__statement');
+    var note = statement.querySelector('.practice-feedback');
+    var texts = feedback[field.name];
+    if (!texts) return;
+    if (!note) {
+      note = document.createElement('p');
+      statement.appendChild(note);
+    }
+    note.className = 'practice-feedback' + (isCorrect ? '' : ' is-hint');
+    note.innerHTML = '<span class="practice-feedback__label">' + (isCorrect ? 'Por qué' : 'Pista') + '</span> ';
+    note.appendChild(document.createTextNode(isCorrect ? texts[1] : texts[0]));
+  }
+
   function buildTercialChoices(field) {
     var sourceLabel = form.querySelector('label[for="' + field.id + '"]');
     var choices = document.createElement('fieldset');
@@ -145,12 +176,14 @@
 
       result.textContent = isCorrect ? '✓ Correcta' : '× Revisa';
       result.classList.toggle('is-review', !isCorrect);
+      renderFeedback(field, isCorrect);
       if (isCorrect) correct += 1;
       else errorIds.push(field.name);
     });
 
-    validation.textContent = correct + ' de ' + responses.length +
-      ' correctas. Revisa las marcadas y vuelve a intentarlo.';
+    validation.textContent = correct === responses.length
+      ? '¡' + correct + ' de ' + responses.length + ' correctas! Dominas este tema.'
+      : correct + ' de ' + responses.length + ' correctas. Lee las pistas de las marcadas y vuelve a intentarlo.';
     validation.classList.add('has-result');
     reportResult(correct, errorIds);
   }
@@ -169,8 +202,8 @@
     form.querySelectorAll('.exercise__choices input').forEach(function (input) {
       input.checked = false;
     });
-    form.querySelectorAll('.exercise__result').forEach(function (result) {
-      result.remove();
+    form.querySelectorAll('.exercise__result, .practice-feedback').forEach(function (node) {
+      node.remove();
     });
     validation.classList.remove('has-result');
     try { localStorage.removeItem(storageKey); } catch (_) {}

@@ -16,13 +16,13 @@ export const FUENTE = {
 export const ALCANCES = {
   nucleo: {
     id: 'nucleo',
-    nombre: 'Núcleo ECOEMS',
+    nombre: 'Lo esencial',
     corto: 'ECOEMS',
     descripcion: 'Contenido directamente alineado con el temario de ingreso a bachillerato.'
   },
   ampliacion: {
     id: 'ampliacion',
-    nombre: 'Ampliación ECOEMS',
+    nombre: 'Para profundizar',
     corto: 'ECOEMS +',
     descripcion: 'Profundiza el tema sin formar parte de la primera ruta de estudio.'
   },
@@ -38,7 +38,7 @@ export const USOS = {
   aprende: 'Aprende',
   clase: 'Clase',
   consulta: 'Consulta',
-  practica: 'Practica'
+  practica: 'Práctica'
 };
 
 export const TEMAS = [
@@ -79,18 +79,6 @@ export const SEGMENTOS = [
     href: './materia-propiedades.html'
   },
   {
-    id: 'cambios-materia',
-    tema: 'materiales',
-    titulo: 'Cambios físicos y químicos',
-    descripcion: 'Compara transformaciones reversibles y cambios que producen sustancias nuevas.',
-    paginas: '5',
-    alcance: 'nucleo',
-    usos: ['aprende', 'clase', 'practica'],
-    etiquetas: ['cambio físico', 'cambio químico', 'transformación'],
-    estado: 'disponible',
-    href: './cambios-materia.html'
-  },
-  {
     id: 'estados-agregacion',
     tema: 'materiales',
     titulo: 'Estados de agregación',
@@ -101,6 +89,18 @@ export const SEGMENTOS = [
     etiquetas: ['sólido', 'líquido', 'gas', 'plasma', 'cambios de estado'],
     estado: 'disponible',
     href: './estados-agregacion.html'
+  },
+  {
+    id: 'cambios-materia',
+    tema: 'materiales',
+    titulo: 'Cambios físicos y químicos',
+    descripcion: 'Distingue los cambios que conservan la sustancia de los que forman sustancias nuevas.',
+    paginas: '5',
+    alcance: 'nucleo',
+    usos: ['aprende', 'clase', 'practica'],
+    etiquetas: ['cambio físico', 'cambio químico', 'transformación'],
+    estado: 'disponible',
+    href: './cambios-materia.html'
   },
   {
     id: 'clasificacion-materia',
@@ -143,34 +143,37 @@ export const SEGMENTOS = [
     id: 'modelos-atomicos',
     tema: 'estructura-periodicidad',
     titulo: 'Modelos atómicos',
-    descripcion: 'Recorre las ideas que dieron forma al modelo actual del átomo.',
+    descripcion: 'De Demócrito a Schrödinger: cómo cambió la idea del átomo con cada experimento.',
     paginas: '11',
     alcance: 'nucleo',
-    usos: ['aprende', 'clase'],
+    usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['Dalton', 'Thomson', 'Rutherford', 'Bohr', 'átomo'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './modelos-atomicos.html'
   },
   {
     id: 'particulas-subatomicas',
     tema: 'estructura-periodicidad',
     titulo: 'Partículas subatómicas',
-    descripcion: 'Protones, neutrones, electrones y cálculo de partículas en átomos e iones.',
+    descripcion: 'Protones, neutrones y electrones: qué elemento es, cuánta masa tiene y si es un ion.',
     paginas: '12',
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['protón', 'neutrón', 'electrón', 'número atómico', 'masa'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './particulas-subatomicas.html'
   },
   {
     id: 'configuracion-electronica',
     tema: 'estructura-periodicidad',
     titulo: 'Configuración electrónica',
-    descripcion: 'Distribuye electrones por niveles, subniveles y orbitales.',
+    descripcion: 'Acomoda los electrones con la regla de las diagonales y encuentra periodo, valencia y familia.',
     paginas: '13',
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
-    etiquetas: ['electrones', 'orbitales', 'diagrama de Moeller', 'valencia'],
-    estado: 'fuente'
+    etiquetas: ['electrones', 'orbitales', 'regla de las diagonales', 'valencia'],
+    estado: 'disponible',
+    href: './configuracion-electronica.html'
   },
   {
     id: 'numeros-cuanticos',

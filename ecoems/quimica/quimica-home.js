@@ -27,10 +27,7 @@ function normalize(value) {
 
 function renderSummary() {
   const ecoems = segmentosEcoems();
-  document.getElementById('themeCount').textContent = TEMAS.length;
-  document.getElementById('segmentCount').textContent = ecoems.length;
   document.getElementById('availableCount').textContent = ecoems.filter((item) => item.href).length;
-  document.getElementById('unamCount').textContent = `${segmentosUnam().length} contenidos reservados`;
 }
 
 function renderThemeNav() {
@@ -168,7 +165,7 @@ function applyFilters() {
   });
 
   if (!term && activeScope === 'all') {
-    finderStatus.textContent = `${visibleTotal} contenidos organizados en los tres temas ECOEMS.`;
+    finderStatus.textContent = `${visibleTotal} contenidos en los tres temas.`;
   } else if (visibleTotal === 0) {
     finderStatus.textContent = 'No encontramos contenidos con esos criterios.';
   } else {

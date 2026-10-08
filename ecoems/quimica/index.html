@@ -374,24 +374,6 @@
     text-transform: uppercase;
   }
 
-  .boundary {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
-    gap: var(--space-7);
-    margin-bottom: var(--space-10);
-    padding: var(--space-6);
-    border: var(--border-thin) solid var(--color-border);
-    border-left: var(--border-thick) solid var(--chem);
-    border-radius: var(--radius-md);
-    background: var(--color-bg-raised);
-  }
-  .boundary h2 { margin-bottom: var(--space-2); font-size: var(--font-size-24); }
-  .boundary p { font-size: var(--font-size-13); line-height: var(--line-height-loose); }
-  .boundary__aside {
-    padding-left: var(--space-5);
-    border-left: var(--border-thin) solid var(--color-border);
-  }
-  .boundary__aside strong { display: block; margin-bottom: var(--space-1); font-family: var(--font-family-display); font-size: var(--font-size-18); }
 
   .empty {
     display: none;
@@ -413,8 +395,6 @@
     .finder-status { grid-column: auto; }
     .chapter { grid-template-columns: 1fr; gap: var(--space-5); }
     .chapter__head { position: static; }
-    .boundary { grid-template-columns: 1fr; }
-    .boundary__aside { padding: var(--space-4) 0 0; border: 0; border-top: var(--border-thin) solid var(--color-border); }
   }
 
   @media (max-width: 580px) {
@@ -433,7 +413,7 @@
 
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
-<script type="module" src="./quimica-home.js"></script>
+<script type="module" src="./quimica-home.js?v=20261008-tandas"></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido de Química</a>
@@ -462,12 +442,11 @@
   <section class="shell chem-hero" aria-labelledby="pageTitle">
     <div class="chem-hero__main">
       <p class="chem-eyebrow">Ciencias III · Química</p>
-      <h1 id="pageTitle">Todo tiene su <em>lugar</em></h1>
-      <p class="chem-hero__lede">El curso se organiza en tres temas. Puedes entrar por la ruta del
-        temario o buscar directamente una idea, una actividad o una consulta.</p>
-      <p class="chem-hero__summary"><strong>Ya puedes abrir <span id="availableCount">4</span>
-        materiales.</strong> En total, el índice organiza <span id="segmentCount">26</span>
-        contenidos en <span id="themeCount">3</span> temas.</p>
+      <h1 id="pageTitle">Química, tema por <em>tema</em></h1>
+      <p class="chem-hero__lede">Los tres temas de química del examen, en el orden en que conviene
+        estudiarlos. Empieza por el primero o busca una palabra que quieras repasar.</p>
+      <p class="chem-hero__summary"><strong><span id="availableCount">7</span> lecciones ya están
+        abiertas.</strong> Las demás irán apareciendo.</p>
     </div>
   </section>
 
@@ -487,9 +466,9 @@
   <section class="shell route-intro" aria-labelledby="routeTitle">
     <div class="route-intro__copy">
       <p class="chem-eyebrow">La ruta del temario</p>
-      <h2 id="routeTitle">Tres temas, no una carpeta enorme</h2>
-      <p>El archivo original se conserva como fuente. Aquí cada parte aparece en el tema donde se
-        estudia y puede recuperarse también por uso o palabra clave.</p>
+      <h2 id="routeTitle">Los tres temas del examen</h2>
+      <p>Cada tema reúne sus lecciones en orden. También puedes buscar una palabra o ver sólo lo
+        esencial.</p>
     </div>
     <nav class="theme-nav" id="themeNav" aria-label="Temas de Química"></nav>
   </section>
@@ -513,19 +492,6 @@
   <section class="shell course-index" id="courseIndex" aria-label="Índice del curso"></section>
   <p class="shell empty" id="emptyState">No encontramos contenidos con esos criterios.</p>
 
-  <aside class="shell boundary" aria-labelledby="boundaryTitle">
-    <div>
-      <p class="chem-eyebrow">Límite editorial</p>
-      <h2 id="boundaryTitle">ECOEMS aquí; UNAM en su propia ruta</h2>
-      <p>Química orgánica, termodinámica, equilibrio y cinética permanecen vinculadas al mismo
-        paquete fuente, pero no se muestran en esta ruta. Cuando exista la sección UNAM podrán
-        reutilizarse allí sin duplicar ni desordenar el contenido.</p>
-    </div>
-    <div class="boundary__aside">
-      <strong id="unamCount">4 contenidos reservados</strong>
-      <p>La forma en que llegó el archivo no determina lo que ve el estudiante.</p>
-    </div>
-  </aside>
 </main>
 
 <noscript><p class="shell">Activa JavaScript para construir el índice segmentado de Química.</p></noscript>

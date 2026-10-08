@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Partículas subatómicas · Química ECOEMS · Tercial</title>
+<meta name="description" content="Protones, neutrones y electrones: número atómico, número de masa, iones y cálculo de partículas subatómicas.">
+<meta name="tercial:resource-id" content="ecoems-quimica-particulas-subatomicas">
+<meta name="tercial:resource-title" content="Partículas subatómicas">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-rutherford">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-atomo.js?v=20261008-rutherford"></script>
+<script defer src="./practica-quimica.js?v=20261008-estructura"></script>
+<script defer src="./particulas-practica.js?v=20261008-estructura"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 2 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Partículas <em>subatómicas</em></h1>
+    <p class="hero__lede">Todo átomo está hecho de protones, neutrones y electrones. Contarlos te dice
+      qué elemento es, cuánta masa tiene y si tiene carga eléctrica.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=protón#courseIndex">protón</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=neutrón#courseIndex">neutrón</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=electrón#courseIndex">electrón</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=número%20atómico#courseIndex">número atómico</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="tresParticulas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="tresParticulas">
+        <span class="lesson-section__kicker">Idea central</span> Tres partículas, tres papeles
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">El núcleo guarda la <em>masa</em>; los electrones, la carga negativa</h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Los protones y los neutrones están en el núcleo y tienen casi la misma masa. Los electrones
+          están fuera del núcleo y su masa es tan pequeña que casi no cuenta: un protón tiene unas
+          1,800 veces más masa que un electrón.</p>
+        <p>La masa de estas partículas se mide en <strong>uma</strong>, unidades de masa atómica.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 12 -->
+      <footer class="source-line">
+        <span>Lectura · 9 min</span>
+      </footer>
+    </article>
+    <div class="reference-table-wrap" role="region" aria-labelledby="tresParticulas" tabindex="0">
+      <table class="reference-table particle-table">
+        <caption class="visually-hidden">Partículas subatómicas: símbolo, carga eléctrica, masa y ubicación en el átomo</caption>
+        <thead>
+          <tr>
+            <th scope="col">Partícula</th>
+            <th scope="col">Símbolo</th>
+            <th scope="col">Carga</th>
+            <th scope="col">Masa (uma)</th>
+            <th scope="col">Dónde está</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="particle-key particle-key--proton" aria-hidden="true"></span>Protón</th>
+            <td>p<sup>+</sup></td>
+            <td>+1</td>
+            <td>1</td>
+            <td>En el núcleo</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="particle-key particle-key--neutron" aria-hidden="true"></span>Neutrón</th>
+            <td>n<sup>0</sup></td>
+            <td>0</td>
+            <td>1</td>
+            <td>En el núcleo</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="particle-key particle-key--electron" aria-hidden="true"></span>Electrón</th>
+            <td>e<sup>−</sup></td>
+            <td>−1</td>
+            <td>0.00055</td>
+            <td>Fuera del núcleo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="construyeAtomo">
+    <header class="section-header">
+      <h2 class="section-header__title" id="construyeAtomo">
+        <span class="lesson-section__kicker">Experimenta</span> Construye un átomo
+      </h2>
+    </header>
+    <p class="section-intro">Agrega o quita partículas y observa qué cambia. Empiezas con un átomo de
+      carbono: 6 protones, 6 neutrones y 6 electrones.</p>
+    <div class="atom-builder" data-constructor>
+      <figure class="atom-builder__stage">
+        <svg class="escena escena--constructor" data-escena-atomo="constructor" viewBox="0 0 280 280" role="img" aria-labelledby="builderTitle">
+          <title id="builderTitle">Átomo armado con los protones, neutrones y electrones elegidos: los protones y neutrones forman el núcleo y los electrones giran en capas a su alrededor</title>
+        </svg>
+        <figcaption class="atom-builder__legend">
+          <span><span class="particle-key particle-key--proton" aria-hidden="true"></span>protón</span>
+          <span><span class="particle-key particle-key--neutron" aria-hidden="true"></span>neutrón</span>
+          <span><span class="particle-key particle-key--electron" aria-hidden="true"></span>electrón</span>
+        </figcaption>
+      </figure>
+      <div class="atom-builder__panel">
+        <div class="atom-builder__controls" role="group" aria-label="Partículas del átomo">
+          <div class="atom-builder__control">
+            <span class="atom-builder__label"><span class="particle-key particle-key--proton" aria-hidden="true"></span>Protones</span>
+            <button class="atom-builder__step" type="button" data-builder-step="p" data-delta="-1" aria-label="Quitar un protón">−</button>
+            <output class="atom-builder__count" data-builder-count="p">6</output>
+            <button class="atom-builder__step" type="button" data-builder-step="p" data-delta="1" aria-label="Agregar un protón">+</button>
+          </div>
+          <div class="atom-builder__control">
+            <span class="atom-builder__label"><span class="particle-key particle-key--neutron" aria-hidden="true"></span>Neutrones</span>
+            <button class="atom-builder__step" type="button" data-builder-step="n" data-delta="-1" aria-label="Quitar un neutrón">−</button>
+            <output class="atom-builder__count" data-builder-count="n">6</output>
+            <button class="atom-builder__step" type="button" data-builder-step="n" data-delta="1" aria-label="Agregar un neutrón">+</button>
+          </div>
+          <div class="atom-builder__control">
+            <span class="atom-builder__label"><span class="particle-key particle-key--electron" aria-hidden="true"></span>Electrones</span>
+            <button class="atom-builder__step" type="button" data-builder-step="e" data-delta="-1" aria-label="Quitar un electrón">−</button>
+            <output class="atom-builder__count" data-builder-count="e">6</output>
+            <button class="atom-builder__step" type="button" data-builder-step="e" data-delta="1" aria-label="Agregar un electrón">+</button>
+          </div>
+        </div>
+        <div class="atom-builder__readout" aria-live="polite">
+          <p class="atom-builder__element"><span class="atom-builder__notation" data-builder-notation></span>
+            <span class="atom-builder__name"><span data-builder-name>Carbono</span> <span class="atom-builder__symbol" data-builder-symbol>C</span></span></p>
+          <dl class="atom-builder__facts">
+            <div><dt>Número atómico · Z = p<sup>+</sup></dt><dd data-builder-z>6</dd></div>
+            <div><dt>Número de masa · A = p<sup>+</sup> + n<sup>0</sup></dt><dd data-builder-a>6 + 6 = 12</dd></div>
+            <div><dt>Carga · p<sup>+</sup> − e<sup>−</sup></dt><dd data-builder-charge>6 − 6 = 0 · átomo neutro</dd></div>
+          </dl>
+          <p class="atom-builder__note" data-builder-note></p>
+        </div>
+        <button class="practice-reset atom-builder__reset" type="button" data-builder-reset>Volver al carbono</button>
+      </div>
+    </div>
+    <ol class="try-list">
+      <li><strong>Agrega un protón.</strong> ¿Sigue siendo carbono? Cambiar los protones cambia el elemento.</li>
+      <li><strong>Agrega un neutrón.</strong> El elemento no cambia; sólo aumenta la masa.</li>
+      <li><strong>Quita un electrón.</strong> El elemento y la masa siguen igual, pero ahora el átomo tiene carga.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="reglasParticulas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasParticulas">
+        <span class="lesson-section__kicker">Lee la notación</span> Tres números para contar partículas
+      </h2>
+    </header>
+    <figure class="isotope-notation" aria-labelledby="notacionCaption">
+      <div class="isotope-notation__symbol" aria-hidden="true">
+        <span class="isotope-notation__scripts"><span class="isotope-notation__mass">23</span><span class="isotope-notation__z">11</span></span><span class="isotope-notation__x">Na</span><span class="isotope-notation__charge">1+</span>
+      </div>
+      <ul class="isotope-notation__keys">
+        <li><span class="isotope-notation__tag">Arriba a la izquierda</span> <strong>A</strong>, número de masa: protones + neutrones.</li>
+        <li><span class="isotope-notation__tag">Abajo a la izquierda</span> <strong>Z</strong>, número atómico: los protones.</li>
+        <li><span class="isotope-notation__tag">Arriba a la derecha</span> la <strong>carga</strong>; si no aparece, el átomo es neutro.</li>
+      </ul>
+      <figcaption class="atom-figure__caption" id="notacionCaption">El ion sodio: 11 protones, 23 − 11 = 12
+        neutrones y, como perdió un electrón, 10 electrones.</figcaption>
+    </figure>
+
+    <div class="rule-grid">
+      <article class="rule-card">
+        <p class="rule-card__formula">Z = p<sup>+</sup></p>
+        <p class="rule-card__text">El número atómico es el número de protones. Identifica al elemento:
+          si cambia Z, cambia el elemento.</p>
+      </article>
+      <article class="rule-card">
+        <p class="rule-card__formula">A = p<sup>+</sup> + n<sup>0</sup></p>
+        <p class="rule-card__text">El número de masa cuenta las partículas del núcleo. Por eso
+          n<sup>0</sup> = A − Z.</p>
+      </article>
+      <article class="rule-card">
+        <p class="rule-card__formula">átomo neutro: e<sup>−</sup> = p<sup>+</sup></p>
+        <p class="rule-card__text">Si el átomo no tiene carga, tiene tantos electrones como protones.</p>
+      </article>
+      <article class="rule-card">
+        <p class="rule-card__formula">carga = p<sup>+</sup> − e<sup>−</sup></p>
+        <p class="rule-card__text">Un <strong>ion</strong> ganó o perdió electrones. Si pierde, queda
+          positivo (catión); si gana, queda negativo (anión).</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploParticulas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploParticulas">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> El ion aluminio, <sup>27</sup>Al<sup>3+</sup>
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Protones</span><p>El aluminio tiene Z = 13, así que tiene
+        <strong>13 protones</strong>.</p></li>
+      <li><span class="worked-steps__label">Neutrones</span><p>n<sup>0</sup> = A − Z = 27 − 13 =
+        <strong>14 neutrones</strong>.</p></li>
+      <li><span class="worked-steps__label">Electrones</span><p>La carga 3+ indica que perdió 3 electrones:
+        13 − 3 = <strong>10 electrones</strong>.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p>carga = p<sup>+</sup> − e<sup>−</sup> =
+        13 − 10 = 3+ ✓</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="practicaParticulas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaParticulas">
+        <span class="lesson-section__kicker">Practica</span> Completa la tabla
+      </h2>
+      <span class="section-header__count">10 elementos · 30 datos</span>
+    </header>
+    <p class="section-intro">En cada fila faltan tres datos. Calcúlalos con las reglas y comprueba cada
+      tanda: se marcarán las casillas por revisar, sin mostrar la respuesta. Si prefieres papel,
+      descarga la tabla completa como tarea en PDF.</p>
+    <!-- Ejercicios: QUA-001 · p. 12 -->
+    <form data-practice-form autocomplete="off">
+      <div class="particle-sheet" role="group" aria-label="Tabla de partículas subatómicas por completar">
+        <div class="particle-sheet__head" aria-hidden="true">
+          <span>Elemento</span><span>Z</span><span>A</span><span>p<sup>+</sup></span><span>n<sup>0</sup></span><span>e<sup>−</sup></span><span>Carga</span>
+        </div>
+        <ol class="particle-sheet__rows" data-particle-rows></ol>
+      </div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-particulas-subatomicas.pdf?v=20261008-tabla" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los elementos de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la tabla de práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./modelos-atomicos.html">← Modelos atómicos</a>
+    <a href="./index.html">Índice de Química</a>
+    <a href="./configuracion-electronica.html">Siguiente: configuración →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

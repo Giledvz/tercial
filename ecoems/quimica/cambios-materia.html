@@ -31,11 +31,12 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css?v=20260824-production">
-<link rel="stylesheet" href="./quimica-material.css?v=20260825-cambios">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="./cambios-practica.js?v=20260825-cambios"></script>
+<script defer src="./escenas-particulas.js?v=20261008-escenas-particulas"></script>
+<script defer src="./cambios-practica.js?v=20261008-tandas"></script>
 </head>
 <body>
 
@@ -43,7 +44,7 @@
 
 <main class="container container--base">
   <header class="hero">
-    <p class="eyebrow">Tema 01 · 2 de 6 · Aprende y practica</p>
+    <p class="eyebrow">Tema 01 · 3 de 6 · Aprende y practica</p>
     <h1 class="hero__title">Cambios físicos y <em>químicos</em></h1>
     <p class="hero__lede">Una transformación puede modificar la forma o el estado de la materia,
       o puede producir sustancias diferentes. La clave está en reconocer qué permanece.</p>
@@ -66,19 +67,19 @@
     </header>
     <article class="reading-block">
       <header class="reading-block__header">
-        <p class="reading-block__kicker">Antes de clasificar</p>
         <h3 class="reading-block__title">¿Después del cambio siguen presentes las <em>mismas sustancias</em>?</h3>
       </header>
       <div class="reading-block__body">
         <p>Si la composición se conserva, el cambio es <strong>físico</strong>: puede variar la forma,
           el tamaño, la posición o el estado de agregación. Si aparecen sustancias con una composición
           diferente, el cambio es <strong>químico</strong>.</p>
-        <p>Que un proceso sea fácil o difícil de revertir no basta para clasificarlo. Romper papel es un
-          cambio físico aunque no podamos reconstruir la hoja con facilidad; algunas reacciones químicas,
-          en cambio, sí pueden avanzar en ambos sentidos.</p>
+        <p>En muchos libros y exámenes leerás que los cambios físicos <strong>se pueden revertir</strong>.
+          Es una buena pista, pero no la regla: romper papel es un cambio físico aunque no puedas reconstruir
+          la hoja, y algunas reacciones químicas sí pueden ir en ambos sentidos. La prueba definitiva es si se
+          formó una sustancia nueva.</p>
       </div>
+      <!-- Fuente: QUA-001 · p. 5 -->
       <footer class="source-line">
-        <span>Fuente QUA-001 · p. 5</span>
       </footer>
     </article>
   </section>
@@ -88,7 +89,7 @@
       <h2 class="section-header__title" id="observaTransformacion">
         <span class="lesson-section__kicker">Observa</span> Dos transformaciones, dos resultados
       </h2>
-      <span class="section-header__count">antes → después</span>
+      <span class="section-header__count">en movimiento</span>
     </header>
 
     <div class="transformation-sequence">
@@ -97,31 +98,20 @@
           <p class="transformation-example__kicker">La identidad se conserva</p>
           <h3 class="transformation-example__title">El hielo se <em>derrite</em></h3>
         </header>
-        <div class="matter-model" role="img" aria-label="Las mismas moléculas de agua aparecen ordenadas en el hielo y con mayor movilidad en el agua líquida">
-            <svg class="matter-model__visual matter-model__visual--before molecule-field molecule-field--ordered" viewBox="0 0 240 132" aria-hidden="true">
-              <rect class="molecule-field__frame" x="1" y="1" width="238" height="130"/>
-              <g class="water-molecule" transform="translate(78 51)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(120 51)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(162 51)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(78 82)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(120 82)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(162 82)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-            </svg>
-          <svg class="matter-model__arrow" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
+        <div class="escena-modelo">
+          <svg class="escena" data-escena="fusion" viewBox="112 36 410 200" role="img" aria-labelledby="fusionTitulo">
+            <title id="fusionTitulo">Moléculas de agua ordenadas en hielo se separan al calentarse y vuelven a ordenarse al enfriarse; el termómetro se detiene en cero grados durante cada cambio y una molécula marcada sigue entera</title>
+            <path class="escena__vidrio" d="M137 56V214Q137 225 148 225H352Q363 225 363 214V56"/>
+            <g data-capa="puentes"></g>
+            <g data-capa="moleculas"></g>
+            <rect class="escena__termometro-tubo" x="403" y="46" width="14" height="168" rx="7"/>
+            <rect class="escena__termometro-columna" data-termometro x="406.5" y="154" width="7" height="54"/>
+            <circle class="escena__termometro-columna" cx="410" cy="222" r="12"/>
+            <path class="escena__marca-cero" d="M421 154H429"/>
+            <text class="escena__etiqueta" x="434" y="158">0</text>
+            <text class="escena__lectura" x="434" y="62" data-lectura>−10 °C</text>
+            <text class="escena__etiqueta" x="434" y="82" data-proceso></text>
           </svg>
-            <svg class="matter-model__visual matter-model__visual--after molecule-field molecule-field--mobile" viewBox="0 0 240 132" aria-hidden="true">
-              <rect class="molecule-field__frame" x="1" y="1" width="238" height="130"/>
-              <g class="water-molecule" transform="translate(38 91)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(79 66)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(112 101)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(149 74)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(198 94)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-              <g class="water-molecule" transform="translate(176 38)"><circle class="water-molecule__oxygen" r="10"/><circle class="water-molecule__hydrogen" cx="-12" cy="-8" r="5"/><circle class="water-molecule__hydrogen" cx="12" cy="-8" r="5"/></g>
-            </svg>
-          <p class="matter-model__caption matter-model__caption--before">Antes · H<sub>2</sub>O sólida</p>
-          <p class="matter-model__caption matter-model__caption--after">Después · H<sub>2</sub>O líquida</p>
         </div>
         <p class="transformation-example__conclusion"><strong>Cambio físico.</strong> Cambian el orden y el movimiento; cada molécula sigue siendo H<sub>2</sub>O.</p>
       </article>
@@ -131,15 +121,23 @@
           <p class="transformation-example__kicker">La identidad cambia</p>
           <h3 class="transformation-example__title">Los reactivos forman <em>productos</em></h3>
         </header>
-        <div class="reaction-model" role="img" aria-label="El ácido clorhídrico y el hidróxido de sodio se transforman en cloruro de sodio y agua">
-          <p class="reaction-model__formula reaction-model__formula--before">HCl + NaOH</p>
-          <svg class="reaction-model__arrow" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
+        <div class="escena-modelo">
+          <svg class="escena" data-escena="reaccion" viewBox="0 0 600 236" role="img" aria-labelledby="reaccionTitulo">
+            <title id="reaccionTitulo">Una molécula de ácido clorhídrico y una de hidróxido de sodio chocan; el hidrógeno pasa al oxígeno y el sodio se une al cloro: los mismos átomos forman agua y cloruro de sodio. HCl + NaOH → NaCl + H2O</title>
+            <g transform="translate(300 102) scale(1.45) translate(-300 -102)"><g data-capa="reaccion">
+              <path class="escena__enlace" data-enlace="HCl"/>
+              <path class="escena__enlace" data-enlace="NaO"/>
+              <path class="escena__enlace" data-enlace="OH"/>
+              <path class="escena__enlace escena__enlace--nuevo" data-enlace="OHnuevo"/>
+              <path class="escena__enlace escena__enlace--nuevo" data-enlace="NaCl"/>
+              <g data-atomo="Cl"><circle class="escena__atomo escena__atomo--cl" r="17"/><text class="escena__simbolo" y="4">Cl</text></g>
+              <g data-atomo="Na"><circle class="escena__atomo escena__atomo--na" r="15"/><text class="escena__simbolo" y="4">Na</text></g>
+              <g data-atomo="O"><circle class="escena__atomo escena__atomo--o" r="12"/><text class="escena__simbolo" y="4">O</text></g>
+              <g data-atomo="H1"><circle class="escena__atomo escena__atomo--h" r="7.5"/><text class="escena__simbolo escena__simbolo--h" y="4">H</text></g>
+              <g data-atomo="H2"><circle class="escena__atomo escena__atomo--h" r="7.5"/><text class="escena__simbolo escena__simbolo--h" y="4">H</text></g>
+            </g></g>
+            <text class="escena__ecuacion" x="300" y="222" text-anchor="middle"><tspan data-lado="reactivos">HCl + NaOH</tspan><tspan class="escena__flecha" dx="10">→</tspan><tspan data-lado="productos" dx="10">NaCl + H<tspan class="escena__sub" dy="4">2</tspan><tspan dy="-4">O</tspan></tspan></text>
           </svg>
-          <p class="reaction-model__formula reaction-model__formula--after">NaCl + H<sub>2</sub>O</p>
-          <p class="reaction-model__label reaction-model__label--before">Reactivos</p>
-          <p class="reaction-model__label reaction-model__label--after">Productos</p>
         </div>
         <p class="transformation-example__conclusion"><strong>Cambio químico.</strong> Los átomos se reorganizan y las sustancias finales son diferentes de las iniciales.</p>
       </article>
@@ -178,19 +176,19 @@
             <td>
               <span class="change-comparison-table__label">Ejemplos</span>
               <ul class="change-comparison-table__examples">
-                <li>derretir hielo</li>
-                <li>romper papel</li>
-                <li>estirar una liga</li>
-                <li>picar carne</li>
+                <li>lanzar una pelota</li>
+                <li>doblar un clavo</li>
+                <li>disolver azúcar en agua</li>
+                <li>secar ropa al sol</li>
               </ul>
             </td>
             <td>
               <span class="change-comparison-table__label">Ejemplos</span>
               <ul class="change-comparison-table__examples">
-                <li>fermentar fruta</li>
-                <li>hacer fotosíntesis</li>
-                <li>hornear un pastel</li>
-                <li>respiración celular</li>
+                <li>oxidarse un clavo</li>
+                <li>encender un cerillo</li>
+                <li>digerir los alimentos</li>
+                <li>cocer un huevo</li>
               </ul>
             </td>
           </tr>
@@ -207,7 +205,7 @@
       <span class="section-header__count">12 situaciones</span>
     </header>
     <p class="section-intro">Decide si se conserva la identidad de las sustancias. La página señalará cuáles conviene revisar, sin mostrar la respuesta.</p>
-    <p class="source-note">Ejercicios del material fuente QUA-001 · p. 5</p>
+    <!-- Ejercicios: QUA-001 · p. 5 -->
 
     <form data-practice-form autocomplete="off">
       <div class="exercise-list">
@@ -217,11 +215,11 @@
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">04</span><div class="exercise__statement"><p class="exercise__text">La carrocería de un automóvil se deforma en un choque.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-04">Tu respuesta</label><select class="select exercise__select" id="cambio-04" name="cambio-04" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">05</span><div class="exercise__statement"><p class="exercise__text">Hornear un pastel.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-05">Tu respuesta</label><select class="select exercise__select" id="cambio-05" name="cambio-05" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">06</span><div class="exercise__statement"><p class="exercise__text">Estirar una liga sin romperla.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-06">Tu respuesta</label><select class="select exercise__select" id="cambio-06" name="cambio-06" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
-        <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">07</span><div class="exercise__statement"><p class="exercise__text">Fusión del hielo.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-07">Tu respuesta</label><select class="select exercise__select" id="cambio-07" name="cambio-07" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
+        <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">07</span><div class="exercise__statement"><p class="exercise__text">Fusión del hielo (el hielo se derrite).</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-07">Tu respuesta</label><select class="select exercise__select" id="cambio-07" name="cambio-07" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">08</span><div class="exercise__statement"><p class="exercise__text">Quemar carne.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-08">Tu respuesta</label><select class="select exercise__select" id="cambio-08" name="cambio-08" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">09</span><div class="exercise__statement"><p class="exercise__text">La leche llega a ebullición sin quemarse ni descomponerse.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-09">Tu respuesta</label><select class="select exercise__select" id="cambio-09" name="cambio-09" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">10</span><div class="exercise__statement"><p class="exercise__text">Picar carne en trozos pequeños.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-10">Tu respuesta</label><select class="select exercise__select" id="cambio-10" name="cambio-10" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
-        <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">11</span><div class="exercise__statement"><p class="exercise__text">Sublimación del yodo.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-11">Tu respuesta</label><select class="select exercise__select" id="cambio-11" name="cambio-11" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
+        <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">11</span><div class="exercise__statement"><p class="exercise__text">Sublimación del yodo (el yodo sólido pasa directamente a gas).</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-11">Tu respuesta</label><select class="select exercise__select" id="cambio-11" name="cambio-11" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
         <details class="exercise"><summary class="exercise__summary"><span class="exercise__num">12</span><div class="exercise__statement"><p class="exercise__text">Respiración celular.</p></div><svg class="exercise__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="exercise__response"><label class="exercise__response-label" for="cambio-12">Tu respuesta</label><select class="select exercise__select" id="cambio-12" name="cambio-12" data-response><option value="">Elige una opción</option><option>Físico</option><option>Químico</option></select></div></details>
       </div>
 
@@ -242,9 +240,9 @@
 <footer class="site-footer">
   <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
   <nav class="site-footer__links" aria-label="Navegación del material">
-    <a href="./materia-propiedades.html">← Propiedades</a>
+    <a href="./estados-agregacion.html">← Estados</a>
     <a href="./index.html">Índice de Química</a>
-    <a href="./estados-agregacion.html">Siguiente: estados →</a>
+    <a href="./clasificacion-materia.html">Siguiente: clasificación →</a>
   </nav>
 </footer>
 

@@ -160,69 +160,320 @@
   color: var(--color-accent);
 }
 
+/* Escenas de propiedades (maleabilidad y ductilidad).
+   Materiales y herramientas en grises cálidos obtenidos de mezclar tinta y
+   papel; el único acento es la marca terracota dibujada sobre el metal, que
+   deja ver cómo se extiende el mismo material. Sin trazos de contorno: el
+   SVG base hereda stroke: currentColor y aquí se anula. */
 .property-scene {
+  --scene-ink: var(--color-text-primary);
+  --scene-paper: var(--color-bg-page);
+  --scene-steel: var(--ink-700);
+  --scene-steel-top: var(--ink-500);
+  --scene-steel-shade: var(--ink-900);
+  --scene-metal: var(--crema-800);
+  --scene-metal-top: var(--crema-600);
+  --scene-metal-shade: var(--crema-900);
+  --scene-metal-glint: var(--crema-500);
+  --scene-wood: var(--crema-700);
+  --scene-wood-shade: var(--crema-800);
+  --scene-shadow: var(--crema-400);
+  --scene-cloth: var(--crema-300);
+  --scene-cloth-front: var(--crema-400);
+  --scene-wet: var(--crema-500);
+  --scene-water: var(--crema-400);
+  --scene-glass: var(--crema-100);
+  --scene-wax: var(--crema-400);
+  --scene-wax-shade: var(--crema-500);
+  --scene-char: var(--ink-900);
+  --scene-smoke: var(--crema-700);
+  --scene-ash: var(--ink-500);
+  --scene-ice: var(--crema-500);
+  --scene-ice-top: var(--crema-300);
+  --scene-rust-dark: var(--accent-conac);
+  --scene-flame-core: var(--crema-50);
+  --scene-shine: var(--crema-50);
+  --scene-ice-side: var(--crema-600);
+  --scene-wood-light: var(--crema-600);
+  --scene-scorch: var(--crema-900);
+
   grid-column: 2 / -1;
   display: block;
   width: min(100%, 34rem);
   margin-block: var(--space-2);
 }
 
+@supports (color: color-mix(in oklab, red, blue)) {
+  .property-scene {
+    --scene-steel: color-mix(in oklab, var(--scene-ink) 68%, var(--scene-paper));
+    --scene-steel-top: color-mix(in oklab, var(--scene-ink) 57%, var(--scene-paper));
+    --scene-steel-shade: color-mix(in oklab, var(--scene-ink) 80%, var(--scene-paper));
+    --scene-metal: color-mix(in oklab, var(--scene-ink) 36%, var(--scene-paper));
+    --scene-metal-top: color-mix(in oklab, var(--scene-ink) 21%, var(--scene-paper));
+    --scene-metal-shade: color-mix(in oklab, var(--scene-ink) 47%, var(--scene-paper));
+    --scene-metal-glint: color-mix(in oklab, var(--scene-ink) 15%, var(--scene-paper));
+    --scene-shadow: color-mix(in oklab, var(--scene-ink) 9%, var(--scene-paper));
+    --scene-cloth: color-mix(in oklab, var(--scene-ink) 8%, var(--scene-paper));
+    --scene-cloth-front: color-mix(in oklab, var(--scene-ink) 15%, var(--scene-paper));
+    --scene-wet: color-mix(in oklab, var(--scene-ink) 16%, var(--scene-paper));
+    --scene-water: color-mix(in oklab, var(--scene-ink) 11%, var(--scene-paper));
+    --scene-glass: color-mix(in oklab, var(--scene-ink) 3%, var(--scene-paper));
+    --scene-wax: color-mix(in oklab, var(--scene-ink) 12%, var(--scene-paper));
+    --scene-wax-shade: color-mix(in oklab, var(--scene-ink) 20%, var(--scene-paper));
+    --scene-char: color-mix(in oklab, var(--scene-ink) 86%, var(--scene-paper));
+    --scene-smoke: color-mix(in oklab, var(--scene-ink) 40%, var(--scene-paper));
+    --scene-ash: color-mix(in oklab, var(--scene-ink) 52%, var(--scene-paper));
+    --scene-ice: color-mix(in oklab, var(--scene-ink) 15%, var(--scene-paper));
+    --scene-ice-top: color-mix(in oklab, var(--scene-ink) 7%, var(--scene-paper));
+    --scene-rust-dark: color-mix(in oklab, var(--color-accent) 72%, var(--scene-ink));
+    --scene-flame-core: color-mix(in oklab, var(--color-accent) 22%, #fff7ec);
+    --scene-shine: var(--scene-paper);
+    --scene-ice-side: color-mix(in oklab, var(--scene-ink) 24%, var(--scene-paper));
+    --scene-scorch: color-mix(in oklab, var(--scene-char) 55%, var(--scene-wood-shade));
+  }
+
+  [data-theme="dark"] .property-scene {
+    --scene-steel: color-mix(in oklab, var(--scene-ink) 37%, var(--scene-paper));
+    --scene-steel-top: color-mix(in oklab, var(--scene-ink) 49%, var(--scene-paper));
+    --scene-steel-shade: color-mix(in oklab, var(--scene-ink) 27%, var(--scene-paper));
+    --scene-metal: color-mix(in oklab, var(--scene-ink) 58%, var(--scene-paper));
+    --scene-metal-top: color-mix(in oklab, var(--scene-ink) 76%, var(--scene-paper));
+    --scene-metal-shade: color-mix(in oklab, var(--scene-ink) 46%, var(--scene-paper));
+    --scene-metal-glint: color-mix(in oklab, var(--scene-ink) 88%, var(--scene-paper));
+    --scene-shadow: color-mix(in oklab, black 28%, var(--scene-paper));
+    --scene-cloth: color-mix(in oklab, var(--scene-ink) 16%, var(--scene-paper));
+    --scene-cloth-front: color-mix(in oklab, var(--scene-ink) 10%, var(--scene-paper));
+    --scene-wet: color-mix(in oklab, var(--scene-ink) 8%, var(--scene-paper));
+    --scene-water: color-mix(in oklab, var(--scene-ink) 18%, var(--scene-paper));
+    --scene-glass: color-mix(in oklab, var(--scene-ink) 5%, var(--scene-paper));
+    --scene-wax: color-mix(in oklab, var(--scene-ink) 70%, var(--scene-paper));
+    --scene-wax-shade: color-mix(in oklab, var(--scene-ink) 56%, var(--scene-paper));
+    --scene-char: color-mix(in oklab, black 70%, var(--scene-paper));
+    --scene-smoke: color-mix(in oklab, var(--scene-ink) 50%, var(--scene-paper));
+    --scene-ash: color-mix(in oklab, var(--scene-ink) 60%, var(--scene-paper));
+    --scene-ice: color-mix(in oklab, var(--scene-ink) 62%, var(--scene-paper));
+    --scene-ice-top: color-mix(in oklab, var(--scene-ink) 80%, var(--scene-paper));
+    --scene-rust-dark: color-mix(in oklab, var(--color-accent) 70%, black);
+    --scene-flame-core: color-mix(in oklab, var(--color-accent) 30%, #fff7ec);
+    --scene-shine: color-mix(in oklab, var(--scene-ink) 92%, var(--scene-paper));
+    --scene-ice-side: color-mix(in oklab, var(--scene-ink) 48%, var(--scene-paper));
+    --scene-scorch: color-mix(in oklab, var(--scene-char) 55%, var(--scene-wood-shade));
+  }
+}
+
+[data-theme="dark"] .property-scene {
+  --scene-wood: var(--crema-800);
+  --scene-wood-shade: var(--crema-700);
+  --scene-wood-light: var(--crema-900);
+}
+
 .property-scene__drawing {
   display: block;
   width: 100%;
   height: auto;
+  overflow: hidden;
+  fill: none;
   stroke: none;
   pointer-events: none;
 }
 
 .property-scene__caption {
   display: block;
+  max-width: 52ch;
   margin-top: var(--space-2);
   color: var(--color-text-secondary);
   font-size: var(--font-size-13);
   line-height: var(--line-height-loose);
 }
 
-.property-scene__metal { fill: var(--color-text-meta); }
-.property-scene__metal-top { fill: var(--color-text-secondary); }
-.property-scene__metal-side { fill: var(--color-border-strong); }
-.property-scene__wood { fill: var(--color-accent); }
-.property-scene__wood-edge {
-  fill: none;
-  stroke: var(--color-bg-page);
-  stroke-width: 2;
-  opacity: .35;
+.property-scene__steel { fill: var(--scene-steel); }
+.property-scene__steel-top { fill: var(--scene-steel-top); }
+.property-scene__steel-shade { fill: var(--scene-steel-shade); }
+.property-scene__metal { fill: var(--scene-metal); }
+.property-scene__metal-top { fill: var(--scene-metal-top); }
+.property-scene__metal-shade { fill: var(--scene-metal-shade); }
+.property-scene__metal-glint,
+.property-scene__metal-edge { fill: var(--scene-metal-glint); }
+.property-scene__wood { fill: var(--scene-wood); }
+.property-scene__wood-shade { fill: var(--scene-wood-shade); }
+.property-scene__shadow { fill: var(--scene-shadow); }
+
+.property-scene__floor {
+  stroke: var(--color-border);
+  stroke-width: 1;
 }
-.property-scene__support { fill: var(--color-border); }
-.property-scene__tool { fill: var(--color-border-strong); }
-.property-scene__tool-side { fill: var(--color-border); }
-.property-scene__edge {
+
+.property-scene__section { fill: url(#ductilidadCorte); }
+
+.property-scene__hatch {
+  stroke: var(--scene-steel-shade);
+  stroke-width: 1.4;
+}
+
+.property-scene__mark {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.property-scene__impact {
   fill: none;
   stroke: var(--color-text-meta);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* El contorno del estado inicial sólo aparece cuando la escena queda quieta
+   (movimiento reducido): resume el antes y el después en una imagen. */
+.property-scene__ghost {
+  display: none;
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  stroke-linejoin: round;
+}
+
+.property-scene[data-scene-still] .property-scene__ghost {
+  display: inline;
+}
+
+/* Materiales de las escenas de oxidación, inflamabilidad, fusión,
+   ebullición y reactividad con ácidos. */
+.property-scene__cloth { fill: var(--scene-cloth); }
+.property-scene__cloth-front { fill: var(--scene-cloth-front); }
+.property-scene__wet { fill: var(--scene-wet); }
+.property-scene__drop { fill: var(--scene-wet); }
+.property-scene__drop-glint { fill: var(--scene-shine); }
+.property-scene__water { fill: var(--scene-water); opacity: .85; }
+.property-scene__acid { fill: var(--scene-water); }
+.property-scene__wax { fill: var(--scene-wax); }
+.property-scene__wax-shade { fill: var(--scene-wax-shade); }
+.property-scene__char { fill: var(--scene-char); }
+.property-scene__smoke { fill: var(--scene-smoke); }
+.property-scene__steam { fill: var(--scene-smoke); }
+.property-scene__ash { fill: var(--scene-ash); }
+.property-scene__ice-front { fill: var(--scene-ice); }
+.property-scene__ice-top { fill: var(--scene-ice-top); }
+.property-scene__ice-side { fill: var(--scene-ice-side); }
+.property-scene__ice-core { fill: var(--scene-shine); }
+.property-scene__ice-bubble { fill: var(--scene-shine); }
+
+.property-scene__ice-edge {
+  stroke: var(--scene-shine);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+/* Madera: canto con luz, vetas, chamuscado, carbón, ceniza y brasas. */
+.property-scene__wood-light { fill: var(--scene-wood-light); }
+.property-scene__scorch { fill: var(--scene-scorch); }
+.property-scene__ember { fill: var(--color-accent); }
+
+.property-scene__grain {
+  fill: none;
+  stroke: var(--scene-wood-shade);
+  stroke-width: .9;
+  opacity: .55;
+}
+
+/* Cuchara: metal claro, cuenco cóncavo y reflejos. */
+.property-scene__spoon { fill: var(--scene-metal); }
+.property-scene__spoon-inner { fill: var(--scene-metal-shade); }
+.property-scene__spoon-glint { fill: var(--scene-metal-glint); }
+
+.property-scene__spoon-line {
+  stroke: var(--scene-metal-glint);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.property-scene__bubble { fill: var(--scene-shine); opacity: .9; }
+.property-scene__rust,
+.property-scene__flame,
+.property-scene__gas { fill: var(--color-accent); }
+.property-scene__rust-dark { fill: var(--scene-rust-dark); }
+.property-scene__flame-core { fill: var(--scene-flame-core); }
+
+.property-scene__wick {
+  stroke: var(--scene-steel-shade);
   stroke-width: 2;
   stroke-linecap: round;
 }
-.property-scene__shine {
-  fill: none;
-  stroke: var(--color-bg-page);
+
+.property-scene__glass {
+  fill: var(--scene-glass);
+  stroke: var(--color-border-strong);
   stroke-width: 2;
-  opacity: .35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.property-scene__wire {
+
+/* Un vaso dibujado delante de su contenido sólo lleva contorno. */
+.property-scene__glass--front { fill: none; }
+
+.property-scene__surface,
+.property-scene__leader {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+}
+
+.property-scene__ripple {
   fill: none;
   stroke: var(--color-text-meta);
-  stroke-width: 6;
-  stroke-linecap: round;
+  stroke-width: 1.2;
 }
-.property-scene__bolt { fill: var(--color-bg-page); }
-.property-scene__label {
+
+.property-scene__thermo-tube {
+  fill: var(--scene-paper);
+  stroke: var(--color-border-strong);
+  stroke-width: 1.5;
+}
+
+.property-scene__thermo-col,
+.property-scene__thermo-bulb { fill: var(--scene-steel); }
+
+.property-scene__thermo-col.is-key,
+.property-scene__thermo-bulb.is-key { fill: var(--color-accent); }
+
+.property-scene__guide {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+
+.property-scene__drawing text {
+  font-family: var(--font-family-mono);
+}
+
+.property-scene__label,
+.property-scene__guide-label {
   fill: var(--color-text-meta);
-  font-family: var(--font-family-body);
-  font-size: 18px;
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+
+.property-scene__reading {
+  fill: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}
+
+.property-scene__reading.is-key { fill: var(--color-accent); }
+
+.property-scene__counter {
+  fill: var(--color-text-primary);
+  font-size: 17px;
+  font-weight: var(--font-weight-medium);
 }
 
 #maleabilidad,
-#ductilidad {
+#ductilidad,
+#oxidacion,
+#inflamabilidad,
+#punto-de-fusion,
+#punto-de-ebullicion,
+#reactividad-acidos {
   scroll-margin-top: var(--space-8);
 }
 
@@ -339,32 +590,6 @@
   border-left: var(--border-thin) solid var(--color-border);
 }
 
-.classification-particle {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: var(--space-4);
-}
-
-.classification-particle__frame {
-  fill: none;
-  stroke: var(--color-border-strong);
-  stroke-width: 1.5;
-}
-
-.classification-particle__atom--a {
-  fill: var(--color-accent);
-}
-
-.classification-particle__atom--b {
-  fill: var(--color-text-secondary);
-}
-
-.classification-particle__bond {
-  stroke: var(--color-border-strong);
-  stroke-width: 1.5;
-}
-
 .classification-model h3 {
   margin-bottom: var(--space-2);
   color: var(--color-text-primary);
@@ -385,6 +610,13 @@
   color: var(--color-text-meta);
   font-family: var(--font-family-mono);
   font-size: var(--font-size-11);
+}
+
+.classification-model .classification-model__note {
+  margin-top: var(--space-2);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-relaxed);
 }
 
 .classification-sorter {
@@ -537,6 +769,11 @@
   font-size: var(--font-size-13);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
+}
+
+/* all: unset anula el ocultamiento del navegador; se restituye aquí. */
+.classification-bucket__target[hidden] {
+  display: none;
 }
 
 .classification-bucket__list {
@@ -1164,91 +1401,11 @@
   line-height: var(--line-height-loose);
 }
 
-.particle-model {
-  display: block;
-  width: 100%;
-  max-width: 13rem;
-  height: auto;
-  margin: 0 auto var(--space-4);
-  color: var(--color-accent);
-}
-
-.particle-model__frame {
-  fill: none;
-  stroke: var(--color-border-strong);
-  stroke-width: 1.5;
-}
-
-.particle-model__particle {
-  fill: currentColor;
-}
-
-.particle-model__particle circle {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Sólido: vibración pequeña y rápida alrededor de una posición fija. */
-  .particle-model--solid .particle-model__particle circle {
-    animation: solid-vibration .4s ease-in-out infinite;
-  }
-
-  .particle-model--solid .particle-model__particle circle:nth-child(3n + 1) {
-    animation-duration: .34s;
-    animation-delay: -.18s;
-  }
-
-  .particle-model--solid .particle-model__particle circle:nth-child(3n + 2) {
-    animation-duration: .46s;
-    animation-delay: -.31s;
-  }
-
-  .particle-model--solid .particle-model__particle circle:nth-child(3n) {
-    animation-delay: -.09s;
-  }
-
-  /* Líquido: recorridos cortos que conservan la cercanía entre partículas. */
-  .particle-model--liquid .particle-model__particle circle:nth-child(3n + 1) {
-    animation: liquid-drift-a 6.4s ease-in-out infinite alternate;
-  }
-
-  .particle-model--liquid .particle-model__particle circle:nth-child(3n + 2) {
-    animation: liquid-drift-b 7.3s ease-in-out -2.6s infinite alternate;
-  }
-
-  .particle-model--liquid .particle-model__particle circle:nth-child(3n) {
-    animation: liquid-drift-c 5.8s ease-in-out -1.4s infinite alternate;
-  }
-
-}
-
 @keyframes solid-vibration {
   0%, 100% { transform: translate(0, 0); }
   25% { transform: translate(.7px, -.5px); }
   50% { transform: translate(-.6px, .6px); }
   75% { transform: translate(.4px, .7px); }
-}
-
-@keyframes liquid-drift-a {
-  0% { transform: translate(0, 0); }
-  35% { transform: translate(5px, -3px); }
-  70% { transform: translate(-3px, -6px); }
-  100% { transform: translate(2px, 2px); }
-}
-
-@keyframes liquid-drift-b {
-  0% { transform: translate(0, 0); }
-  30% { transform: translate(-5px, 3px); }
-  65% { transform: translate(3px, -5px); }
-  100% { transform: translate(6px, 1px); }
-}
-
-@keyframes liquid-drift-c {
-  0% { transform: translate(0, 0); }
-  40% { transform: translate(3px, 5px); }
-  75% { transform: translate(-5px, 1px); }
-  100% { transform: translate(-1px, -4px); }
 }
 
 .reference-table-wrap {
@@ -1293,11 +1450,6 @@
 .reference-table__models th,
 .reference-table__models td {
   vertical-align: middle;
-}
-
-.reference-table__models .particle-model {
-  min-width: 10rem;
-  margin-block: var(--space-2);
 }
 
 .phase-change-diagram {
@@ -1357,6 +1509,31 @@
   fill: var(--color-text-secondary);
 }
 
+/* El color de las flechas significa algo: terracota cuando el material
+   absorbe calor; gris cuando lo libera (al enfriarse o comprimirse). */
+.phase-change-diagram__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+}
+
+.phase-change-diagram__key::before {
+  content: '';
+  display: inline-block;
+  width: 1.25rem;
+  margin-right: var(--space-2);
+  vertical-align: middle;
+  border-top: var(--border-medium) solid var(--color-text-secondary);
+}
+
+.phase-change-diagram__key--calor::before {
+  border-top-color: var(--color-accent);
+}
+
 .phase-change-examples {
   width: 100%;
   max-width: 56rem;
@@ -1372,27 +1549,55 @@
   line-height: var(--line-height-heading);
 }
 
-.phase-change-examples__list {
-  display: grid;
-  gap: var(--space-3);
-  margin: 0;
-}
-
-.phase-change-examples__list > div {
-  display: grid;
-  grid-template-columns: minmax(8.5rem, 10rem) minmax(0, 1fr);
-  gap: var(--space-4);
-  align-items: baseline;
-}
-
-.phase-change-examples__list dt {
-  color: var(--color-accent);
-  font-family: var(--font-family-body);
+.phase-change-examples__intro {
+  max-width: 60ch;
+  color: var(--color-text-secondary);
   font-size: var(--font-size-14);
-  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
 }
 
-.phase-change-examples__list dd {
+/* Parejas de cambios inversos: a la izquierda el que ocurre al calentar,
+   a la derecha el que ocurre al enfriar. La licuefacción ocupa la columna
+   de los que liberan calor. */
+.phase-change-examples__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--space-7);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.phase-change-example {
+  min-width: 0;
+  padding-block: var(--space-5);
+  border-top: var(--border-thin) dotted var(--color-border);
+}
+
+.phase-change-example--solo {
+  grid-column: 2;
+}
+
+.phase-change-example .escena--cambio {
+  margin-bottom: var(--space-3);
+}
+
+.phase-change-example__name {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}
+
+.phase-change-example__route {
+  margin-top: var(--space-1);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-12);
+}
+
+.phase-change-example__text {
+  margin-top: var(--space-2);
   color: var(--color-text-secondary);
   font-size: var(--font-size-14);
   line-height: var(--line-height-relaxed);
@@ -1453,176 +1658,6 @@
 .transformation-example__conclusion strong {
   color: var(--color-text-primary);
   font-weight: var(--font-weight-medium);
-}
-
-.matter-model {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: var(--space-4);
-  row-gap: var(--space-2);
-  align-items: center;
-}
-
-.matter-model__visual {
-  min-width: 0;
-}
-
-.matter-model__visual--before {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.matter-model__visual--after {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.matter-model__caption {
-  grid-row: 2;
-  color: var(--color-text-meta);
-  font-size: var(--font-size-12);
-  text-align: center;
-}
-
-.matter-model__caption--before {
-  grid-column: 1;
-}
-
-.matter-model__caption--after {
-  grid-column: 3;
-}
-
-.matter-model__arrow,
-.reaction-model__arrow {
-  display: block;
-  width: var(--icon-size-2xl);
-  height: var(--icon-size-2xl);
-  color: var(--color-accent);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.matter-model__arrow {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.molecule-field {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-.molecule-field__frame {
-  fill: none;
-  stroke: var(--color-border-strong);
-  stroke-width: 1.5;
-}
-
-.water-molecule {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.water-molecule__oxygen {
-  fill: var(--color-accent);
-}
-
-.water-molecule__hydrogen {
-  fill: var(--color-text-secondary);
-}
-
-.reaction-model {
-  display: grid;
-  grid-template-columns: max-content var(--icon-size-2xl) max-content;
-  grid-template-rows: auto auto;
-  column-gap: clamp(var(--space-5), 4vw, var(--space-8));
-  row-gap: var(--space-2);
-  align-items: center;
-  justify-content: center;
-  padding-block: var(--space-6);
-}
-
-.reaction-model__formula {
-  color: var(--color-text-primary);
-  font-family: var(--font-family-display);
-  font-size: clamp(1.45rem, 3vw, 2.2rem);
-  line-height: var(--line-height-heading);
-  white-space: nowrap;
-}
-
-.reaction-model__formula--before {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.reaction-model__formula--after {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.reaction-model__arrow {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: center;
-}
-
-.reaction-model__label {
-  grid-row: 2;
-  color: var(--color-text-meta);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-11);
-  letter-spacing: var(--tracking-eyebrow);
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.reaction-model__label--before {
-  grid-column: 1;
-}
-
-.reaction-model__label--after {
-  grid-column: 3;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .molecule-field--ordered .water-molecule {
-    animation: identity-vibration .7s ease-in-out infinite alternate;
-  }
-
-  .molecule-field--ordered .water-molecule:nth-of-type(2n) {
-    animation-delay: -.35s;
-  }
-
-  .molecule-field--mobile .water-molecule {
-    animation: identity-drift 4.8s ease-in-out infinite alternate;
-  }
-
-  .molecule-field--mobile .water-molecule:nth-of-type(3n) {
-    animation-duration: 5.7s;
-    animation-delay: -2s;
-  }
-
-  .molecule-field--mobile .water-molecule:nth-of-type(2n) {
-    animation-duration: 4.2s;
-    animation-delay: -1s;
-  }
-}
-
-@keyframes identity-vibration {
-  from { translate: -.6px .4px; }
-  to { translate: .7px -.5px; }
-}
-
-@keyframes identity-drift {
-  0% { translate: 0 0; }
-  45% { translate: 3px -2px; }
-  100% { translate: -2px 3px; }
 }
 
 .change-comparison-table-wrap {
@@ -1802,136 +1837,6 @@
   margin: var(--space-5) auto 0;
 }
 
-.solution-process__svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-.solution-process__vessel,
-.solution-process__surface,
-.solution-process__zoom-frame,
-.solution-process__zoom-link,
-.solution-process__zoom-target {
-  fill: none;
-  stroke: var(--color-border-strong);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-
-.solution-process__liquid {
-  fill: var(--color-text-meta);
-  opacity: .1;
-}
-
-.solution-process__surface {
-  opacity: .8;
-}
-
-.solution-process__zoom-link {
-  stroke-dasharray: 3 7;
-}
-
-.solution-process__zoom-target {
-  fill: var(--color-bg-page);
-}
-
-.solution-process__zoom-frame {
-  fill: var(--color-bg-page);
-}
-
-.solution-process__zoom-link,
-.solution-process__zoom-target,
-.solution-process__zoom-frame,
-.solution-process__label--zoom,
-.solution-process__key {
-  opacity: 0;
-  animation: solution-zoom-stage-cycle 10s ease-in-out infinite;
-}
-
-.solution-process__label,
-.solution-process__key {
-  fill: var(--color-text-meta);
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-11);
-  letter-spacing: var(--tracking-eyebrow);
-}
-
-.solution-process__label {
-  text-anchor: middle;
-  text-transform: uppercase;
-}
-
-.solution-process__solute,
-.solution-process__reduced,
-.solution-process__zoom-solute,
-.solution-process__key-solute {
-  fill: var(--color-accent);
-}
-
-.solution-process__solvent-core {
-  fill: var(--color-bg-page);
-  stroke: var(--color-text-secondary);
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.solution-process__solvent-side {
-  fill: var(--color-text-secondary);
-}
-
-.solution-process__solute {
-  animation: solution-solute-cycle 10s linear infinite;
-}
-
-.solution-process__reduced {
-  display: none;
-}
-
-.solution-process__solvent-particle {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: solution-solvent-drift 4.2s ease-in-out infinite alternate;
-}
-
-.solution-process__svg g[aria-hidden="true"] > g:nth-child(3n + 2) .solution-process__solvent-particle {
-  animation-delay: -2.1s;
-}
-
-.solution-process__svg g[aria-hidden="true"] > g:nth-child(3n) .solution-process__solvent-particle {
-  animation-duration: 5s;
-  animation-delay: -1.2s;
-}
-
-.solution-process__zoom-content {
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-  animation: solution-zoom-cycle 10s ease-in-out infinite;
-}
-
-.solution-process__zoom-solvent {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: solution-zoom-drift 3.8s ease-in-out infinite alternate;
-}
-
-.solution-process__zoom-content > g:nth-child(3n + 2) .solution-process__zoom-solvent {
-  animation-delay: -1.9s;
-}
-
-.solution-process__zoom-content > g:nth-child(3n) .solution-process__zoom-solvent {
-  animation-duration: 4.6s;
-  animation-delay: -.9s;
-}
-
-.solution-process__key text {
-  text-transform: lowercase;
-}
-
 .solution-process__caption {
   max-width: 56ch;
   margin: var(--space-4) auto 0;
@@ -1939,43 +1844,6 @@
   font-size: var(--font-size-14);
   line-height: var(--line-height-relaxed);
   text-align: center;
-}
-
-@keyframes solution-solute-cycle {
-  0% { opacity: 0; }
-  4%, 89% { opacity: 1; }
-  93%, 100% { opacity: 0; }
-}
-
-@keyframes solution-zoom-cycle {
-  0%, 31% {
-    opacity: 0;
-    transform: scale(.92);
-  }
-  42%, 89% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  93%, 100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-
-@keyframes solution-zoom-stage-cycle {
-  0%, 31% { opacity: 0; }
-  39%, 89% { opacity: 1; }
-  93%, 100% { opacity: 0; }
-}
-
-@keyframes solution-solvent-drift {
-  from { transform: translate(-1px, 1px); }
-  to { transform: translate(1.5px, -1px); }
-}
-
-@keyframes solution-zoom-drift {
-  from { transform: translate(-2px, 1px); }
-  to { transform: translate(2px, -1px); }
 }
 
 .solution-drill {
@@ -2158,40 +2026,6 @@
 
 .solution-drill__tools .practice-progress {
   margin-right: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .solution-process__solute {
-    display: none;
-  }
-
-  .solution-process__reduced {
-    display: block;
-  }
-
-  .solution-process__solvent-particle,
-  .solution-process__zoom-content,
-  .solution-process__zoom-solvent,
-  .solution-process__zoom-link,
-  .solution-process__zoom-target,
-  .solution-process__zoom-frame,
-  .solution-process__label--zoom,
-  .solution-process__key {
-    animation: none;
-  }
-
-  .solution-process__zoom-content,
-  .solution-process__zoom-link,
-  .solution-process__zoom-target,
-  .solution-process__zoom-frame,
-  .solution-process__label--zoom,
-  .solution-process__key {
-    opacity: 1;
-  }
-
-  .solution-process__zoom-content {
-    transform: none;
-  }
 }
 
 .editorial-note {
@@ -2405,6 +2239,83 @@
   font-size: var(--font-size-18);
 }
 
+/* Tandas: la práctica larga se resuelve de 5 en 5. */
+.practice-batch__status {
+  margin-top: var(--space-5);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* Retroalimentación tras comprobar: «Por qué» si acertó; «Pista» si no.
+   La pista nunca revela la respuesta. */
+.practice-feedback {
+  margin-top: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.practice-feedback.is-hint {
+  border-left-color: var(--color-accent);
+}
+
+.practice-feedback__label {
+  margin-right: var(--space-2);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.practice-feedback.is-hint .practice-feedback__label {
+  color: var(--color-accent);
+}
+
+.classification-sorter__review {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.classification-sorter__review-list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.classification-sorter__review-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+}
+
+.classification-sorter__review-result {
+  margin-left: var(--space-2);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-regular);
+}
+
+.classification-sorter__review-item.is-review .classification-sorter__review-result {
+  color: var(--color-accent);
+}
+
+.method-workbench__history-entry {
+  min-width: 0;
+}
+
+.method-workbench__history-entry .practice-feedback {
+  margin: 0 0 var(--space-3) 2rem;
+}
+
 @media (max-width: 900px) {
   .method-workbench {
     grid-template-columns: 1fr;
@@ -2506,49 +2417,13 @@
     grid-template-columns: 1fr;
   }
 
-  .classification-sorter__complete {
+  .classification-sorter__complete,
+  .classification-sorter__review {
     grid-column: 1;
   }
 
   .classification-sorter__buckets {
     grid-template-columns: 1fr;
-  }
-
-  .matter-model,
-  .reaction-model {
-    grid-template-columns: 1fr;
-  }
-
-  .matter-model__visual--before,
-  .reaction-model__formula--before {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .matter-model__caption--before,
-  .reaction-model__label--before {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .matter-model__arrow,
-  .reaction-model__arrow {
-    grid-column: 1;
-    grid-row: 3;
-    rotate: 90deg;
-    justify-self: center;
-  }
-
-  .matter-model__visual--after,
-  .reaction-model__formula--after {
-    grid-column: 1;
-    grid-row: 4;
-  }
-
-  .matter-model__caption--after,
-  .reaction-model__label--after {
-    grid-column: 1;
-    grid-row: 5;
   }
 }
 
@@ -2582,8 +2457,1773 @@
     display: block;
   }
 
-  .phase-change-examples__list > div {
-    grid-template-columns: 1fr;
+  .phase-change-examples__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .phase-change-example--solo {
+    grid-column: auto;
+  }
+}
+
+/* ============================================================
+   Escenas de partículas (escenas-particulas.js)
+   Estados de agregación, fusión del hielo, reacción química,
+   disolución y clasificación. Partículas en grises cálidos sin
+   contorno; el terracota marca lo que hay que seguir con la vista:
+   la partícula con rastro, la molécula señalada, el soluto, la
+   especie A y los enlaces que se forman.
+   ============================================================ */
+
+.reference-table__models .escena--estado {
+  width: 100%;
+  max-width: 7rem;
+  margin: var(--space-2) auto;
+}
+
+.escena-modelo {
+  min-width: 0;
+}
+
+.solution-process .escena--disolucion {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.classification-model .escena--clasificacion {
+  margin-bottom: var(--space-4);
+}
+
+/* La primera columna no lleva sangría izquierda; sin compensarla, su dibujo
+   sale más grande que los otros tres. */
+.classification-model:first-child {
+  padding-right: calc(var(--space-4) * 2);
+}
+
+.escena {
+  --e-ink: var(--color-text-primary);
+  --e-paper: var(--color-bg-page);
+  --e-particula: var(--ink-500);
+  --e-oxigeno: var(--ink-700);
+  --e-hidrogeno: var(--crema-600);
+  --e-tapa: var(--ink-700);
+  --e-enlace: var(--crema-800);
+  --e-cl: var(--ink-700);
+  --e-na: var(--ink-500);
+  --e-o: var(--ink-900);
+  --e-h: var(--crema-500);
+  --e-agua: var(--crema-300);
+  --e-fondo: var(--crema-500);
+  --e-disolvente: var(--ink-500);
+  --e-especie-b: var(--ink-500);
+  --e-hielo: var(--crema-500);
+  --e-hielo-cara: var(--crema-300);
+  --e-brillo: var(--crema-50);
+  --e-charco: var(--crema-500);
+  --e-plato: var(--crema-400);
+  --e-gota: var(--crema-600);
+  --e-cera: var(--crema-400);
+  --e-cera-sombra: var(--crema-500);
+  --e-cera-liquida: var(--crema-100);
+  --e-humo: var(--crema-700);
+  --e-tela: var(--crema-500);
+  --e-tela-mojada: var(--crema-800);
+  --e-madera: var(--crema-700);
+  --e-vidrio-relleno: var(--crema-100);
+  --e-bebida: var(--crema-300);
+  --e-liquido: var(--crema-400);
+  --e-naftalina: var(--crema-50);
+  --e-naftalina-sombra: var(--crema-500);
+  --e-cristal: var(--ink-500);
+  --e-escarcha: var(--crema-50);
+  --e-flama-nucleo: var(--crema-50);
+  --e-hielo-lado: var(--crema-600);
+  --e-metal: var(--crema-700);
+  --e-metal-sombra: var(--crema-800);
+  --e-metal-brillo: var(--crema-300);
+  --e-tapa-clara: var(--ink-500);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena {
+    --e-particula: color-mix(in oklab, var(--e-ink) 52%, var(--e-paper));
+    --e-oxigeno: color-mix(in oklab, var(--e-ink) 60%, var(--e-paper));
+    --e-hidrogeno: color-mix(in oklab, var(--e-ink) 26%, var(--e-paper));
+    --e-tapa: color-mix(in oklab, var(--e-ink) 58%, var(--e-paper));
+    --e-enlace: color-mix(in oklab, var(--e-ink) 36%, var(--e-paper));
+    --e-cl: color-mix(in oklab, var(--e-ink) 62%, var(--e-paper));
+    --e-na: color-mix(in oklab, var(--e-ink) 45%, var(--e-paper));
+    --e-o: color-mix(in oklab, var(--e-ink) 76%, var(--e-paper));
+    --e-h: color-mix(in oklab, var(--e-ink) 20%, var(--e-paper));
+    --e-agua: color-mix(in oklab, var(--e-ink) 5%, var(--e-paper));
+    --e-fondo: color-mix(in oklab, var(--e-ink) 13%, var(--e-paper));
+    --e-disolvente: color-mix(in oklab, var(--e-ink) 42%, var(--e-paper));
+    --e-especie-b: color-mix(in oklab, var(--e-ink) 45%, var(--e-paper));
+    --e-hielo: color-mix(in oklab, var(--e-ink) 14%, var(--e-paper));
+    --e-hielo-cara: color-mix(in oklab, var(--e-ink) 7%, var(--e-paper));
+    --e-brillo: var(--e-paper);
+    --e-charco: color-mix(in oklab, var(--e-ink) 15%, var(--e-paper));
+    --e-plato: color-mix(in oklab, var(--e-ink) 10%, var(--e-paper));
+    --e-gota: color-mix(in oklab, var(--e-ink) 34%, var(--e-paper));
+    --e-cera: color-mix(in oklab, var(--e-ink) 12%, var(--e-paper));
+    --e-cera-sombra: color-mix(in oklab, var(--e-ink) 20%, var(--e-paper));
+    --e-cera-liquida: color-mix(in oklab, var(--e-ink) 4%, var(--e-paper));
+    --e-humo: color-mix(in oklab, var(--e-ink) 32%, var(--e-paper));
+    --e-tela: color-mix(in oklab, var(--e-ink) 18%, var(--e-paper));
+    --e-tela-mojada: color-mix(in oklab, var(--e-ink) 42%, var(--e-paper));
+    --e-vidrio-relleno: color-mix(in oklab, var(--e-ink) 3%, var(--e-paper));
+    --e-bebida: color-mix(in oklab, var(--e-ink) 9%, var(--e-paper));
+    --e-liquido: color-mix(in oklab, var(--e-ink) 12%, var(--e-paper));
+    --e-naftalina: color-mix(in oklab, var(--e-ink) 4%, var(--e-paper));
+    --e-naftalina-sombra: color-mix(in oklab, var(--e-ink) 17%, var(--e-paper));
+    --e-cristal: color-mix(in oklab, var(--e-ink) 52%, var(--e-paper));
+    --e-escarcha: var(--e-paper);
+    --e-flama-nucleo: color-mix(in oklab, var(--color-accent) 22%, #fff7ec);
+    --e-hielo-lado: color-mix(in oklab, var(--e-ink) 24%, var(--e-paper));
+    --e-metal: color-mix(in oklab, var(--e-ink) 36%, var(--e-paper));
+    --e-metal-sombra: color-mix(in oklab, var(--e-ink) 47%, var(--e-paper));
+    --e-metal-brillo: color-mix(in oklab, var(--e-ink) 15%, var(--e-paper));
+    --e-tapa-clara: color-mix(in oklab, var(--e-ink) 44%, var(--e-paper));
+  }
+
+  [data-theme="dark"] .escena {
+    --e-particula: color-mix(in oklab, var(--e-ink) 62%, var(--e-paper));
+    --e-oxigeno: color-mix(in oklab, var(--e-ink) 64%, var(--e-paper));
+    --e-hidrogeno: color-mix(in oklab, var(--e-ink) 34%, var(--e-paper));
+    --e-tapa: color-mix(in oklab, var(--e-ink) 36%, var(--e-paper));
+    --e-enlace: color-mix(in oklab, var(--e-ink) 40%, var(--e-paper));
+    --e-cl: color-mix(in oklab, var(--e-ink) 58%, var(--e-paper));
+    --e-na: color-mix(in oklab, var(--e-ink) 74%, var(--e-paper));
+    --e-o: color-mix(in oklab, var(--e-ink) 88%, var(--e-paper));
+    --e-h: color-mix(in oklab, var(--e-ink) 30%, var(--e-paper));
+    --e-agua: color-mix(in oklab, var(--e-ink) 5%, var(--e-paper));
+    --e-fondo: color-mix(in oklab, var(--e-ink) 14%, var(--e-paper));
+    --e-disolvente: color-mix(in oklab, var(--e-ink) 56%, var(--e-paper));
+    --e-especie-b: color-mix(in oklab, var(--e-ink) 64%, var(--e-paper));
+    --e-hielo: color-mix(in oklab, var(--e-ink) 62%, var(--e-paper));
+    --e-hielo-cara: color-mix(in oklab, var(--e-ink) 78%, var(--e-paper));
+    --e-brillo: color-mix(in oklab, var(--e-ink) 92%, var(--e-paper));
+    --e-charco: color-mix(in oklab, var(--e-ink) 22%, var(--e-paper));
+    --e-plato: color-mix(in oklab, var(--e-ink) 26%, var(--e-paper));
+    --e-gota: color-mix(in oklab, var(--e-ink) 56%, var(--e-paper));
+    --e-cera: color-mix(in oklab, var(--e-ink) 66%, var(--e-paper));
+    --e-cera-sombra: color-mix(in oklab, var(--e-ink) 54%, var(--e-paper));
+    --e-cera-liquida: color-mix(in oklab, var(--e-ink) 86%, var(--e-paper));
+    --e-humo: color-mix(in oklab, var(--e-ink) 46%, var(--e-paper));
+    --e-tela: color-mix(in oklab, var(--e-ink) 52%, var(--e-paper));
+    --e-tela-mojada: color-mix(in oklab, var(--e-ink) 30%, var(--e-paper));
+    --e-vidrio-relleno: color-mix(in oklab, var(--e-ink) 6%, var(--e-paper));
+    --e-bebida: color-mix(in oklab, var(--e-ink) 16%, var(--e-paper));
+    --e-liquido: color-mix(in oklab, var(--e-ink) 22%, var(--e-paper));
+    --e-naftalina: color-mix(in oklab, var(--e-ink) 88%, var(--e-paper));
+    --e-naftalina-sombra: color-mix(in oklab, var(--e-ink) 64%, var(--e-paper));
+    --e-cristal: color-mix(in oklab, black 45%, var(--e-paper));
+    --e-escarcha: color-mix(in oklab, var(--e-ink) 90%, var(--e-paper));
+    --e-flama-nucleo: color-mix(in oklab, var(--color-accent) 30%, #fff7ec);
+    --e-hielo-lado: color-mix(in oklab, var(--e-ink) 48%, var(--e-paper));
+    --e-metal: color-mix(in oklab, var(--e-ink) 58%, var(--e-paper));
+    --e-metal-sombra: color-mix(in oklab, var(--e-ink) 46%, var(--e-paper));
+    --e-metal-brillo: color-mix(in oklab, var(--e-ink) 88%, var(--e-paper));
+    --e-tapa-clara: color-mix(in oklab, var(--e-ink) 50%, var(--e-paper));
+  }
+}
+
+[data-theme="dark"] .escena {
+  --e-madera: var(--crema-800);
+}
+
+.escena {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  fill: none;
+  stroke: none;
+}
+
+.escena text {
+  font-family: var(--font-family-body);
+}
+
+.escena__particula { fill: var(--e-particula); }
+.escena__marcada,
+.escena__soluto,
+.escena__especie-a { fill: var(--color-accent); }
+.escena__especie-b { fill: var(--e-especie-b); }
+.escena__oxigeno { fill: var(--e-oxigeno); }
+.escena__hidrogeno { fill: var(--e-hidrogeno); }
+.escena__disolvente { fill: var(--e-disolvente); }
+.escena__tapa { fill: var(--e-tapa); }
+.escena__agua { fill: var(--e-agua); }
+.escena__fondo-vaso { fill: var(--e-fondo); }
+
+.escena__vidrio {
+  stroke: var(--color-border-strong);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.escena__marco {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.5;
+}
+
+.escena__superficie,
+.escena__interfaz {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+}
+
+.escena__interfaz {
+  stroke-dasharray: 3 3;
+}
+
+.escena__rastro {
+  stroke: var(--color-accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .5;
+}
+
+.escena__anillo {
+  stroke: var(--color-accent);
+  stroke-width: 2.2;
+}
+
+.escena__puente {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.3;
+  stroke-dasharray: 2 3;
+  stroke-linecap: round;
+  opacity: .8;
+}
+
+.escena__termometro-tubo {
+  fill: var(--e-paper);
+  stroke: var(--color-border-strong);
+  stroke-width: 2;
+}
+
+.escena__termometro-columna { fill: var(--e-tapa); }
+
+.escena__marca-cero {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.5;
+}
+
+.escena__lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+}
+
+.escena__etiqueta,
+.escena__clave {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+
+.escena__etiqueta {
+  text-transform: uppercase;
+}
+
+.escena .escena__etiqueta,
+.escena .escena__clave,
+.escena .escena__lectura,
+.escena .escena__simbolo {
+  font-family: var(--font-family-mono);
+}
+
+.escena__atomo--cl { fill: var(--e-cl); }
+.escena__atomo--na { fill: var(--e-na); }
+.escena__atomo--o { fill: var(--e-o); }
+.escena__atomo--h { fill: var(--e-h); }
+
+.escena__simbolo {
+  fill: var(--e-paper);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  text-anchor: middle;
+}
+
+.escena__simbolo--h {
+  fill: var(--e-ink);
+  font-size: 10px;
+}
+
+.escena__enlace {
+  stroke: var(--e-enlace);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+
+.escena__enlace--nuevo {
+  stroke: var(--color-accent);
+}
+
+.escena__ecuacion {
+  font-size: 23px;
+}
+
+.escena__ecuacion [data-lado] {
+  fill: var(--color-text-meta);
+  transition: fill var(--motion-slow) var(--motion-ease-standard);
+}
+
+.escena__ecuacion [data-lado].es-activo {
+  fill: var(--color-text-primary);
+}
+
+.escena__flecha { fill: var(--color-accent); }
+.escena__sub { font-size: 15px; }
+
+.escena__lupa {
+  stroke: var(--color-border-strong);
+  stroke-width: 2;
+}
+
+.escena__zoom {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+/* Viñetas de los cambios de estado */
+.escena__piso {
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.escena__plato { fill: var(--e-plato); }
+.escena__hielo { fill: var(--e-hielo); }
+.escena__hielo-cara { fill: var(--e-hielo-cara); }
+.escena__brillo { fill: var(--e-brillo); opacity: .8; }
+.escena__charco { fill: var(--e-charco); }
+.escena__gota { fill: var(--e-gota); }
+.escena__cera { fill: var(--e-cera); }
+.escena__cera-sombra { fill: var(--e-cera-sombra); }
+.escena__cera-liquida { fill: var(--e-cera-liquida); }
+.escena__flama { fill: var(--color-accent); }
+.escena__flama-nucleo { fill: var(--e-flama-nucleo); }
+.escena__humo,
+.escena__vapor { fill: var(--e-humo); }
+.escena__tela { fill: var(--e-tela); }
+.escena__tela-mojada { fill: var(--e-tela-mojada); }
+.escena__pinza,
+.escena__marco-ventana { fill: var(--e-madera); }
+.escena__vidrio-relleno { fill: var(--e-vidrio-relleno); }
+.escena__bebida { fill: var(--e-bebida); }
+.escena__liquido { fill: var(--e-liquido); }
+.escena__naftalina { fill: var(--e-naftalina); }
+.escena__naftalina-sombra { fill: var(--e-naftalina-sombra); }
+.escena__cristal { fill: var(--e-cristal); }
+.escena__reflejo { fill: var(--e-brillo); opacity: .14; }
+
+.escena__brillo-linea {
+  stroke: var(--e-brillo);
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  opacity: .85;
+}
+
+.escena__superficie-bebida {
+  stroke: var(--e-gota);
+  stroke-width: 1;
+}
+.escena__punto-vapor { fill: var(--e-escarcha); }
+
+.escena__mecha {
+  stroke: var(--e-o);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.escena__cuerda {
+  stroke: var(--e-tapa);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.escena__rastro-gota {
+  stroke: var(--e-gota);
+  stroke-linecap: round;
+  opacity: .5;
+}
+
+.escena__escarcha {
+  stroke: var(--e-escarcha);
+  stroke-linecap: round;
+}
+
+.escena__flecha-fuerza {
+  stroke: var(--color-text-meta);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+.escena .escena__etiqueta--chica {
+  font-size: 9px;
+}
+
+/* Hielo en tres cuartos, cuchara de metal y mechero */
+.escena__hielo-lado { fill: var(--e-hielo-lado); }
+.escena__hielo-nube,
+.escena__hielo-burbuja { fill: var(--e-brillo); }
+.escena__bebida--velo { opacity: .6; }
+.escena__cuchara { fill: var(--e-metal); }
+.escena__cuchara-interior { fill: var(--e-metal-sombra); }
+.escena__cuchara-brillo { fill: var(--e-metal-brillo); }
+.escena__tapa-clara { fill: var(--e-tapa-clara); }
+
+.escena__hielo-arista {
+  stroke: var(--e-brillo);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+
+.escena__hielo-arista--fina {
+  stroke-width: .9;
+}
+
+.escena__cuchara-linea {
+  stroke: var(--e-metal-brillo);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.escena__manguera {
+  stroke: var(--e-o);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+/* ============================================================
+   Tema 2 · Estructura del átomo
+   El terracota marca la carga positiva: núcleo, protones, partículas
+   alfa y la masa positiva de Thomson. Los electrones son de tinta.
+   ============================================================ */
+.escena {
+  --e-piedra: var(--crema-700);
+  --e-c: var(--ink-500);
+  --e-electron: var(--ink-900);
+  --e-neutron: var(--crema-700);
+  --e-panque: var(--crema-300);
+  --e-oro: var(--crema-600);
+  --e-nube: var(--ink-700);
+  --e-nucleo-suave: var(--crema-300);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena {
+    --e-piedra: color-mix(in oklab, var(--e-ink) 34%, var(--e-paper));
+    --e-c: color-mix(in oklab, var(--e-ink) 50%, var(--e-paper));
+    --e-electron: color-mix(in oklab, var(--e-ink) 84%, var(--e-paper));
+    --e-neutron: color-mix(in oklab, var(--e-ink) 36%, var(--e-paper));
+    --e-panque: color-mix(in oklab, var(--color-accent) 11%, var(--e-paper));
+    --e-oro: color-mix(in oklab, var(--e-ink) 28%, var(--e-paper));
+    --e-nube: color-mix(in oklab, var(--e-ink) 72%, var(--e-paper));
+    --e-nucleo-suave: color-mix(in oklab, var(--color-accent) 16%, var(--e-paper));
+  }
+
+  [data-theme="dark"] .escena {
+    --e-piedra: color-mix(in oklab, var(--e-ink) 46%, var(--e-paper));
+    --e-c: color-mix(in oklab, var(--e-ink) 56%, var(--e-paper));
+    --e-electron: color-mix(in oklab, var(--e-ink) 90%, var(--e-paper));
+    --e-neutron: color-mix(in oklab, var(--e-ink) 48%, var(--e-paper));
+    --e-panque: color-mix(in oklab, var(--color-accent) 18%, var(--e-paper));
+    --e-oro: color-mix(in oklab, var(--e-ink) 42%, var(--e-paper));
+    --e-nube: color-mix(in oklab, var(--e-ink) 82%, var(--e-paper));
+    --e-nucleo-suave: color-mix(in oklab, var(--color-accent) 24%, var(--e-paper));
+  }
+}
+
+.escena .escena__clave--chica { font-size: 10px; }
+.escena .escena__clave--acento { fill: var(--color-accent); }
+.escena .escena__operador,
+.escena .escena__subnivel { font-family: var(--font-family-mono); }
+
+.escena__reflejo-esfera { fill: var(--e-brillo); opacity: .3; }
+.escena__piedra { fill: var(--e-piedra); }
+.escena__piedra-brillo { fill: var(--e-brillo); opacity: .22; }
+.escena__grieta {
+  stroke: var(--e-paper);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.escena__mango { fill: var(--e-tapa); }
+
+.escena__atomo--c { fill: var(--e-c); }
+.escena__operador { fill: var(--color-text-meta); font-size: 18px; }
+.escena__flecha-linea {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.escena__flecha-punta { fill: var(--color-text-meta); }
+
+.escena__panque { fill: var(--e-panque); }
+.escena__panque-borde { stroke: var(--color-accent); stroke-width: 1.2; opacity: .45; }
+.escena__mas {
+  stroke: var(--color-accent);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.escena__electron { fill: var(--e-electron); }
+.escena__menos {
+  stroke: var(--e-paper);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.escena__regla { stroke: var(--color-border-strong); stroke-width: 1; }
+
+.escena__pantalla {
+  stroke: var(--color-border-strong);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.escena__plomo { fill: var(--e-tapa); }
+.escena__plomo-canal { fill: var(--e-paper); }
+.escena__oro { fill: var(--e-oro); }
+.escena__lupa-marca { stroke: var(--color-border-strong); stroke-width: 1.2; }
+.escena__lupa-guia {
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.escena__zoom-fondo { fill: var(--e-paper); }
+.escena__zoom-borde { stroke: var(--color-border-strong); stroke-width: 1.5; }
+.escena__orbita {
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 3.5;
+}
+.escena__orbita--fija { stroke-dasharray: none; }
+.escena__nucleo,
+.escena__alfa,
+.escena__proton { fill: var(--color-accent); }
+.escena__nucleo-signo {
+  stroke: var(--e-paper);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.escena__nucleo-suave { fill: var(--e-nucleo-suave); }
+.escena__neutron { fill: var(--e-neutron); }
+.escena__alfa-rastro {
+  stroke: var(--color-accent);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: .55;
+}
+.escena__impacto { fill: var(--color-text-primary); }
+
+.escena__foton {
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.escena__foton-punta { fill: var(--color-text-secondary); }
+.escena__electron-fantasma {
+  stroke: var(--e-electron);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 2;
+}
+.escena__salto {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+}
+.escena__salto-flecha {
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.escena__eje { stroke: var(--color-text-meta); stroke-width: 1.2; }
+.escena__eje-punta { fill: var(--color-text-meta); }
+.escena__escalon {
+  stroke: var(--color-border-strong);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.escena__nube-punto { fill: var(--e-nube); }
+
+/* Línea del tiempo de los modelos atómicos */
+.atom-figure {
+  max-width: 38rem;
+  margin: var(--space-6) auto 0;
+}
+
+.atom-figure__caption {
+  margin-top: var(--space-2);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.atom-timeline {
+  margin-top: var(--space-5);
+}
+
+.atom-model {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  grid-template-areas:
+    "head figure"
+    "ideas figure";
+  grid-template-rows: auto 1fr;
+  gap: var(--space-3) var(--space-6);
+  align-items: start;
+  padding-block: var(--space-6);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+.atom-model--wide {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "ideas"
+    "figure";
+  grid-template-rows: auto;
+}
+
+.atom-model__head { grid-area: head; }
+.atom-model__ideas { grid-area: ideas; }
+.atom-model__figure { grid-area: figure; margin: 0; }
+.atom-model--wide .atom-model__figure {
+  width: 100%;
+  max-width: 40rem;
+  justify-self: center;
+}
+
+.atom-model__year {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+}
+
+.atom-model__name {
+  margin-top: var(--space-1);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}
+
+.atom-model__nick {
+  margin-top: var(--space-1);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-15);
+  font-style: italic;
+}
+
+.atom-model__ideas {
+  margin: 0;
+  padding-left: 1.1em;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.atom-model__ideas li + li {
+  margin-top: var(--space-2);
+}
+
+.atom-timeline__bridge {
+  max-width: 40rem;
+  margin: 0 0 var(--space-1) var(--space-2);
+  padding: var(--space-2) 0 var(--space-4) var(--space-5);
+  border-left: var(--border-thick) solid var(--color-accent);
+}
+
+.atom-timeline__kicker {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.atom-timeline__text {
+  margin-top: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 44rem) {
+  .atom-model {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "figure"
+      "ideas";
+    grid-template-rows: auto;
+  }
+
+  .atom-model--wide {
+    grid-template-areas:
+      "head"
+      "figure"
+      "ideas";
+  }
+}
+
+.escena .escena__formula {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 22px;
+}
+.escena__cuchillo { fill: var(--e-metal-sombra); }
+.escena__cuchillo-filo {
+  stroke: var(--e-metal-brillo);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+.escena__haz {
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  stroke-dasharray: 1.5 3.5;
+  opacity: .55;
+}
+.escena .escena__formula-sub { font-size: 14px; }
+.escena .escena__lectura--chica { font-size: 13px; }
+
+/* Partículas subatómicas: muestras de color, constructor, notación y tabla */
+.particle-key {
+  --particle-neutron: var(--crema-700);
+  --particle-electron: var(--ink-900);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .particle-key {
+    --particle-neutron: color-mix(in oklab, var(--color-text-primary) 36%, var(--color-bg-page));
+    --particle-electron: color-mix(in oklab, var(--color-text-primary) 84%, var(--color-bg-page));
+  }
+
+  [data-theme="dark"] .particle-key {
+    --particle-neutron: color-mix(in oklab, var(--color-text-primary) 48%, var(--color-bg-page));
+    --particle-electron: color-mix(in oklab, var(--color-text-primary) 90%, var(--color-bg-page));
+  }
+}
+
+.particle-key::before {
+  content: '●';
+  display: inline-block;
+  width: 1.15em;
+  font-size: .95em;
+  line-height: 1;
+}
+
+.particle-key--proton::before { color: var(--color-accent); }
+.particle-key--neutron::before { color: var(--particle-neutron); }
+.particle-key--electron::before { color: var(--particle-electron); }
+
+.particle-table th[scope="row"] {
+  white-space: nowrap;
+}
+
+.atom-builder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5) var(--space-7);
+  align-items: start;
+  margin-top: var(--space-5);
+}
+
+.atom-builder__stage {
+  margin: 0;
+}
+
+.atom-builder__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-2);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .04em;
+}
+
+.atom-builder__controls {
+  display: grid;
+}
+
+.atom-builder__control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.75rem 3rem 2.75rem;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.atom-builder__label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+}
+
+.atom-builder__step {
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--color-accent);
+  border: var(--border-thin) solid var(--color-border-strong);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-20);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.atom-builder__step:hover,
+.atom-builder__step:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.atom-builder__step:disabled {
+  color: var(--color-text-meta);
+  border-color: var(--color-border);
+  cursor: default;
+  opacity: .45;
+}
+
+.atom-builder__count {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-20);
+  text-align: center;
+}
+
+.atom-builder__readout {
+  margin-top: var(--space-5);
+}
+
+.atom-builder__element {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-5);
+}
+
+.atom-builder__notation,
+.isotope-notation__symbol {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-primary);
+}
+
+.atom-builder__scripts,
+.isotope-notation__scripts {
+  display: inline-grid;
+  margin-right: .08em;
+  font-family: var(--font-family-mono);
+  line-height: 1.15;
+  text-align: right;
+}
+
+.atom-builder__scripts {
+  font-size: var(--font-size-15);
+}
+
+.atom-builder__scripts sup,
+.atom-builder__scripts sub {
+  position: static;
+  font-size: inherit;
+  vertical-align: baseline;
+}
+
+.atom-builder__x {
+  font-family: var(--font-family-display);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.atom-builder__q {
+  align-self: flex-start;
+  min-width: 1.6em;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+}
+
+.atom-builder__name {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+}
+
+.atom-builder__symbol {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.atom-builder__facts {
+  display: grid;
+  margin: var(--space-4) 0 0;
+}
+
+.atom-builder__facts div {
+  padding-block: var(--space-2);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.atom-builder__facts dt {
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+}
+
+.atom-builder__facts dd {
+  margin: 2px 0 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-14);
+}
+
+.atom-builder__note {
+  margin-top: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.atom-builder__reset {
+  margin-top: var(--space-4);
+}
+
+.try-list {
+  max-width: 68ch;
+  margin: var(--space-6) 0 0;
+  padding-left: 1.3em;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.try-list li + li {
+  margin-top: var(--space-2);
+}
+
+.try-list strong,
+.worked-steps strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.isotope-notation {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4) var(--space-7);
+  align-items: center;
+  margin: var(--space-5) 0 0;
+}
+
+.isotope-notation__scripts {
+  font-size: 1.25rem;
+}
+
+.isotope-notation__x {
+  font-family: var(--font-family-display);
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.isotope-notation__charge {
+  align-self: flex-start;
+  margin-left: .06em;
+  font-family: var(--font-family-mono);
+  font-size: 1.25rem;
+}
+
+.isotope-notation__keys {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.isotope-notation__tag {
+  display: block;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.isotope-notation .atom-figure__caption {
+  grid-column: 1 / -1;
+}
+
+.rule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-7);
+  margin-top: var(--space-7);
+}
+
+.rule-card {
+  padding-left: var(--space-4);
+  border-left: var(--border-thick) solid var(--color-border-strong);
+}
+
+.rule-card__formula {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+}
+
+.rule-card__text {
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-relaxed);
+}
+
+.worked-steps {
+  max-width: 46rem;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.worked-steps li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-top: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.worked-steps__label {
+  padding-top: .3em;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.particle-sheet {
+  margin-top: var(--space-5);
+}
+
+.particle-sheet__head,
+.particle-row {
+  display: grid;
+  grid-template-columns: 4.5rem repeat(6, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-3);
+  align-items: start;
+}
+
+.particle-sheet__head {
+  padding-bottom: var(--space-2);
+  border-bottom: var(--border-thin) solid var(--color-border-strong);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+.particle-sheet__head span:first-child {
+  text-align: left;
+}
+
+.particle-sheet__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.particle-row {
+  padding-block: var(--space-3);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.particle-row__name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: .35em;
+}
+
+.particle-row__letter {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+  line-height: 1.1;
+}
+
+.particle-row__result {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .02em;
+}
+
+.particle-row__result.is-review {
+  color: var(--color-accent);
+}
+
+.particle-row__cell {
+  min-width: 0;
+  text-align: center;
+}
+
+.particle-row__label {
+  display: none;
+}
+
+.particle-row__value {
+  display: block;
+  padding-block: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+  line-height: 1.75rem;
+}
+
+.particle-row__input {
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-1);
+  font-family: var(--font-family-mono);
+  text-align: center;
+}
+
+select.particle-row__input {
+  padding-right: var(--space-6);
+  text-align-last: center;
+}
+
+.particle-row__cell.is-wrong .particle-row__input {
+  border-color: var(--color-accent);
+}
+
+.particle-row__cell.is-wrong::after,
+.particle-row__cell.is-right::after {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+}
+
+.particle-row__cell.is-wrong::after {
+  content: '× revisa';
+  color: var(--color-accent);
+}
+
+.particle-row__cell.is-right::after {
+  content: '✓';
+  color: var(--color-text-meta);
+}
+
+.particle-row__feedback {
+  grid-column: 1 / -1;
+}
+
+.particle-row__feedback:empty,
+.particle-row[hidden] {
+  display: none;
+}
+
+@media (max-width: 44rem) {
+  .atom-builder,
+  .rule-grid,
+  .isotope-notation {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .atom-builder__stage {
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .isotope-notation__symbol {
+    justify-self: center;
+  }
+
+  .worked-steps li {
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-1);
   }
+}
+
+@media (max-width: 40rem) {
+  .particle-sheet__head {
+    display: none;
+  }
+
+  .particle-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .particle-row__name {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-top: 0;
+  }
+
+  .particle-row__label {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--color-text-meta);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-11);
+  }
+}
+
+/* Configuración electrónica */
+.escena {
+  --e-orbital: var(--crema-600);
+  --e-orbital-alt: var(--crema-500);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena {
+    --e-orbital: color-mix(in oklab, var(--e-ink) 30%, var(--e-paper));
+    --e-orbital-alt: color-mix(in oklab, var(--e-ink) 19%, var(--e-paper));
+  }
+
+  [data-theme="dark"] .escena {
+    --e-orbital: color-mix(in oklab, var(--e-ink) 42%, var(--e-paper));
+    --e-orbital-alt: color-mix(in oklab, var(--e-ink) 28%, var(--e-paper));
+  }
+}
+
+.escena__orbital { fill: var(--e-orbital); }
+.escena__orbital--alt { fill: var(--e-orbital-alt); }
+
+.escena__diagonal path:first-child {
+  stroke: var(--color-border);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  transition: stroke var(--motion-fast) var(--motion-ease-standard);
+}
+.escena__diagonal-punta { fill: var(--color-border-strong); }
+.escena__diagonal.es-activa path:first-child {
+  stroke: var(--color-accent);
+  stroke-width: 2.2;
+}
+.escena__diagonal.es-activa .escena__diagonal-punta { fill: var(--color-accent); }
+.escena__subnivel {
+  fill: var(--color-text-meta);
+  font-size: 16px;
+}
+.escena__subnivel.es-lleno { fill: var(--color-text-primary); }
+.escena__subnivel.es-activo { fill: var(--color-accent); }
+.escena__subnivel-cuenta { font-size: 11px; }
+.escena__hueco {
+  fill: transparent;
+  stroke: var(--color-border-strong);
+  stroke-width: .8;
+  transition: fill var(--motion-fast) var(--motion-ease-standard);
+}
+.escena__hueco.es-lleno {
+  fill: var(--color-text-primary);
+  stroke: none;
+}
+.escena__hueco.es-valencia { fill: var(--color-accent); }
+.escena__fila-periodo { fill: var(--e-panque); }
+.escena__nivel-arco {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.config-anatomy {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-4) var(--space-7);
+  align-items: center;
+  margin: var(--space-5) 0 0;
+}
+
+.config-anatomy__term {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.config-anatomy__term sup {
+  top: -.9em;
+  font-size: .5em;
+}
+
+.config-anatomy__parts {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.config-anatomy__parts li {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  column-gap: var(--space-3);
+}
+
+.config-anatomy__glyph {
+  grid-row: span 2;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.config-anatomy__glyph--sup {
+  font-size: var(--font-size-15);
+  line-height: 1;
+}
+
+.config-anatomy__tag {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.config-anatomy .atom-figure__caption {
+  grid-column: 1 / -1;
+}
+
+.orbital-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+  margin: var(--space-5) 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+.orbital-type {
+  text-align: center;
+}
+
+.orbital-type__shape {
+  max-width: 8rem;
+  margin-inline: auto;
+}
+
+.orbital-type__name {
+  margin-top: var(--space-1);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.orbital-type__fact {
+  margin-top: var(--space-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+}
+
+.orbital-type__fact strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.orbital-type__shape-name {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .04em;
+}
+
+.diagonal-tool {
+  margin-top: var(--space-5);
+}
+
+.diagonal-tool__picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+}
+
+.diagonal-tool__label,
+.diagonal-tool__kicker,
+.config-card__label {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.diagonal-tool__select-row {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 16rem) 2.75rem;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.diagonal-tool__select {
+  min-height: 2.75rem;
+}
+
+.diagonal-tool__replay {
+  padding-top: var(--space-2);
+}
+
+.diagonal-tool__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-5) var(--space-7);
+  align-items: start;
+  margin-top: var(--space-5);
+}
+
+.diagonal-tool__figure {
+  margin: 0;
+}
+
+.diagonal-tool__config {
+  min-height: 3.2em;
+  margin-top: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+  line-height: 1.6;
+}
+
+.diagonal-tool__term {
+  display: inline-block;
+  margin-right: .25em;
+}
+
+.diagonal-tool__term.is-valence {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.diagonal-tool__count {
+  margin-top: var(--space-1);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+}
+
+.diagonal-tool__facts {
+  display: grid;
+  margin: var(--space-4) 0 0;
+}
+
+.diagonal-tool__facts div,
+.config-example__facts div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-bottom: var(--border-thin) solid var(--color-border);
+}
+
+.diagonal-tool__facts dt,
+.config-example__facts dt {
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+}
+
+.diagonal-tool__facts dd,
+.config-example__facts dd {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-14);
+}
+
+.diagonal-tool__levels-wrap {
+  margin-top: var(--space-4);
+}
+
+.diagonal-tool__levels {
+  max-width: 22rem;
+  margin-top: var(--space-2);
+}
+
+.diagonal-tool__note,
+.config-example__note {
+  margin-top: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.diagonal-tool__facts,
+.diagonal-tool__levels-wrap,
+.diagonal-tool__note {
+  transition: opacity var(--motion-slow) var(--motion-ease-standard);
+}
+
+.diagonal-tool.is-playing .diagonal-tool__facts,
+.diagonal-tool.is-playing .diagonal-tool__levels-wrap,
+.diagonal-tool.is-playing .diagonal-tool__note {
+  opacity: 0;
+}
+
+.rule-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: var(--space-5);
+}
+
+.config-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-7);
+  margin: var(--space-7) 0 var(--space-5);
+}
+
+.config-example__element {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+}
+
+.config-example__config {
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-14);
+  line-height: 1.7;
+}
+
+.config-example__config strong {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.config-example__facts {
+  display: grid;
+  margin: var(--space-3) 0 0;
+}
+
+.config-example__facts div {
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+}
+
+.config-sheet {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.config-card {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-5);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+.config-card[hidden] {
+  display: none;
+}
+
+.config-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.config-card__element {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.config-card__z {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+}
+
+.config-card__symbol {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  line-height: 1;
+}
+
+.config-card__name {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+}
+
+.config-card__result {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+}
+
+.config-card__result.is-review {
+  color: var(--color-accent);
+}
+
+.config-card__field {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.config-card__input {
+  font-family: var(--font-family-mono);
+}
+
+.config-card__preview {
+  min-height: 1.4em;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  overflow-wrap: anywhere;
+}
+
+.config-card__row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.config-card__field.is-wrong .input,
+.config-card__field.is-wrong .select {
+  border-color: var(--color-accent);
+}
+
+.config-card__field.is-wrong .config-card__label::after {
+  content: ' · revisa';
+}
+
+.config-card__field.is-right .config-card__label::after {
+  content: ' ✓';
+  color: var(--color-text-meta);
+}
+
+.config-card__feedback:empty {
+  display: none;
+}
+
+@media (max-width: 44rem) {
+  .config-anatomy,
+  .diagonal-tool__body,
+  .config-examples,
+  .rule-grid--three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .config-anatomy__term {
+    justify-self: center;
+  }
+
+  .diagonal-tool__figure {
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+
+  .orbital-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 21rem) {
+  .config-card__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 30rem) {
+  .config-card__row {
+    gap: var(--space-2);
+  }
+
+  .config-card__select {
+    padding-left: var(--space-2);
+    padding-right: var(--space-6);
+  }
+}
+
+/* Rutherford: composición vertical en teléfonos */
+.escena--vertical {
+  display: none;
+}
+
+@media (max-width: 34rem) {
+  .escena--rutherford.escena--horizontal {
+    display: none;
+  }
+
+  .escena--rutherford.escena--vertical {
+    display: block;
+    max-width: 21rem;
+    margin-inline: auto;
+  }
+}
+
+/* Rutherford: destellos, pulsos de los núcleos y la lámina de metal */
+.escena__destello {
+  stroke: var(--color-text-primary);
+  stroke-width: 1.2;
+}
+.escena__onda {
+  stroke: var(--color-accent);
+  stroke-width: 1;
+}
+.escena__marca-angulo {
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+.escena__oro-frente { fill: var(--e-metal); }
+.escena__oro-canto { fill: var(--e-metal-sombra); }
+.escena__oro-brillo {
+  stroke: var(--e-metal-brillo);
+  stroke-width: .9;
+  stroke-linecap: round;
+}
+
+.atom-figure__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .04em;
 }

@@ -27,17 +27,17 @@
     {
       id: 'compuesto',
       label: 'Compuesto',
-      description: 'Elementos unidos en proporción fija.'
+      description: 'Dos o más elementos unidos químicamente, siempre en la misma proporción.'
     },
     {
       id: 'mezcla-homogenea',
       label: 'Mezcla homogénea',
-      description: 'Una sola fase visible.'
+      description: 'Una sola fase: no distingues sus componentes a simple vista.'
     },
     {
       id: 'mezcla-heterogenea',
       label: 'Mezcla heterogénea',
-      description: 'Componentes o fases distinguibles.'
+      description: 'Dos o más fases: distingues sus componentes a simple vista.'
     }
   ];
 
@@ -74,6 +74,48 @@
     'clasificacion-30': 'mezcla-homogenea'
   };
 
+  /* Retroalimentación: al acertar se explica el porqué; al fallar, una pista
+     que lleva a la pregunta clave sin revelar la categoría. */
+  var feedback = {
+    'clasificacion-01': ["Mira la fórmula: ¿cuántos tipos de átomo tiene?", "Es un compuesto: hidrógeno y oxígeno unidos químicamente."],
+    'clasificacion-02': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de sodio."],
+    'clasificacion-03': ["¿Puedes ver por separado el cereal y la leche?", "Es una mezcla heterogénea: distingues sus componentes a simple vista."],
+    'clasificacion-04': ["Reúne muchas sustancias, pero ¿se ve en partes o como un solo líquido?", "Es una mezcla homogénea: muchas sustancias juntas que se ven como un solo líquido."],
+    'clasificacion-05': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de plata."],
+    'clasificacion-06': ["El agua de mar lleva sal disuelta. ¿Puedes ver la sal?", "Es una mezcla homogénea: la sal está disuelta y no se distingue."],
+    'clasificacion-07': ["Cuenta los tipos de átomo que aparecen en la fórmula.", "Es un compuesto: hidrógeno, azufre y oxígeno unidos químicamente."],
+    'clasificacion-08': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de hierro."],
+    'clasificacion-09': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de cobre."],
+    'clasificacion-10': ["El bronce se hace fundiendo cobre y estaño. ¿Distingues los dos metales?", "Es una mezcla homogénea, una aleación: los metales no se distinguen."],
+    'clasificacion-11': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de uranio."],
+    'clasificacion-12': ["Cuenta los tipos de átomo: C, H y O.", "Es un compuesto: carbono, hidrógeno y oxígeno unidos químicamente."],
+    'clasificacion-13': ["Tiene dos átomos, pero ¿son de distinto tipo?", "Es un elemento: sus dos átomos son iguales, los dos de oxígeno."],
+    'clasificacion-14': ["Es el azúcar de mesa. Cuenta los tipos de átomo de su fórmula.", "Es un compuesto: carbono, hidrógeno y oxígeno unidos químicamente."],
+    'clasificacion-15': ["Es la sal de mesa. ¿Cuántos tipos de átomo tiene NaCl?", "Es un compuesto: sodio y cloro unidos químicamente."],
+    'clasificacion-16': ["¿Cuántos tipos de átomo tiene HCl?", "Es un compuesto: hidrógeno y cloro unidos químicamente."],
+    'clasificacion-17': ["El aire reúne varios gases. ¿Puedes verlos por separado?", "Es una mezcla homogénea de gases, como nitrógeno y oxígeno."],
+    'clasificacion-18': ["¿Cuántos tipos de átomo tiene KCl?", "Es un compuesto: potasio y cloro unidos químicamente."],
+    'clasificacion-19': ["Fíjate en las mayúsculas: C y O son dos átomos distintos.", "Es un compuesto: carbono y oxígeno unidos. (Co, con o minúscula, sería el elemento cobalto.)"],
+    'clasificacion-20': ["El azúcar se disolvió. ¿Todavía la ves?", "Es una mezcla homogénea: el azúcar disuelta no se distingue."],
+    'clasificacion-21': ["¿Puedes ver cada ingrediente por separado?", "Es una mezcla heterogénea: cada ingrediente se ve a simple vista."],
+    'clasificacion-22': ["¿Aparece en la tabla periódica con un solo símbolo?", "Es un elemento: sólo tiene átomos de aluminio."],
+    'clasificacion-23': ["El acero se hace fundiendo hierro con un poco de carbono. ¿Se distinguen?", "Es una mezcla homogénea, una aleación: el hierro y el carbono no se distinguen."],
+    'clasificacion-24': ["Deja reposar la mezcla. ¿Qué pasa con la arena?", "Es una mezcla heterogénea: la arena se ve y se va al fondo."],
+    'clasificacion-25': ["¿El aceite se mezcla con el agua o forma una capa?", "Es una mezcla heterogénea: se forman dos capas que se ven."],
+    'clasificacion-26': ["Cuenta los tipos de átomo: C, H y O.", "Es un compuesto: carbono, hidrógeno y oxígeno unidos químicamente."],
+    'clasificacion-27': ["¿Cuántos tipos de átomo tiene NH₃?", "Es un compuesto: nitrógeno e hidrógeno unidos químicamente."],
+    'clasificacion-28': ["A simple vista parece uniforme. ¿Qué verías con un microscopio o al centrifugarla?", "Es una mezcla heterogénea: aunque parezca uniforme, al microscopio o en una centrífuga se separan los glóbulos del plasma."],
+    'clasificacion-29': ["¿Cuántos tipos de átomo tiene CH₄?", "Es un compuesto: carbono e hidrógeno unidos químicamente."],
+    'clasificacion-30': ["El agua y el alcohol se mezclan por completo. ¿Puedes distinguirlos?", "Es una mezcla homogénea: forman un solo líquido."]
+  };
+
+  /* Las 30 situaciones se clasifican en tandas de 5: al colocar las 5 se
+     comprueban y se lee la retroalimentación antes de seguir. */
+  var BATCH = 5;
+  var currentBatch = 0;
+  var checkedBatches = {};
+  var results = {};
+
   var categoryById = categories.reduce(function (index, category) {
     index[category.id] = category;
     return index;
@@ -91,10 +133,14 @@
     '<div class="classification-sorter__stage" tabindex="-1" data-sorter-stage>',
       '<div class="classification-sorter__stage-copy">',
         '<p class="classification-sorter__kicker">Por clasificar</p>',
-        '<p class="classification-sorter__instruction">Toca un bucket o arrastra la situación hasta él.</p>',
+        '<p class="classification-sorter__instruction">Toca una categoría o arrastra la situación hasta ella.</p>',
       '</div>',
       '<div class="classification-sorter__source" data-sorter-source aria-live="polite"></div>',
-      '<p class="classification-sorter__complete" data-sorter-complete hidden>Ya colocaste las 30 situaciones. Ahora puedes validar o mover cualquiera tocándola.</p>',
+      '<p class="classification-sorter__complete" data-sorter-complete hidden>Comprobaste las 30 situaciones. Toca cualquiera para moverla.</p>',
+      '<div class="classification-sorter__review" data-sorter-review hidden>',
+        '<ol class="classification-sorter__review-list" data-sorter-review-list></ol>',
+        '<button class="practice-action practice-batch__button" type="button" data-sorter-next>Siguiente tanda →</button>',
+      '</div>',
     '</div>',
     '<div class="classification-sorter__buckets" data-sorter-buckets></div>'
   ].join('');
@@ -107,6 +153,9 @@
   var source = sorter.querySelector('[data-sorter-source]');
   var complete = sorter.querySelector('[data-sorter-complete]');
   var buckets = sorter.querySelector('[data-sorter-buckets]');
+  var review = sorter.querySelector('[data-sorter-review]');
+  var reviewList = sorter.querySelector('[data-sorter-review-list]');
+  var nextButton = sorter.querySelector('[data-sorter-next]');
   var items = [];
   var itemById = {};
 
@@ -298,22 +347,46 @@
     if (result) result.remove();
   }
 
-  function showNextItem(preferredId) {
-    var remaining = items.filter(function (item) {
-      return !assignments[item.dataset.sortItem];
-    });
-    var next = preferredId ? itemById[preferredId] : remaining[0];
-    if (!next || assignments[next.dataset.sortItem]) next = remaining[0] || null;
+  function batchCount() {
+    return Math.ceil(items.length / BATCH);
+  }
 
-    remaining.forEach(function (item) { item.hidden = item !== next; });
+  function batchOfId(id) {
+    return Math.floor(items.indexOf(itemById[id]) / BATCH);
+  }
+
+  function batchItems(index) {
+    return items.slice(index * BATCH, index * BATCH + BATCH);
+  }
+
+  function isAssigned(item) {
+    return Boolean(assignments[item.dataset.sortItem]);
+  }
+
+  function showNextItem(preferredId) {
+    if (preferredId && itemById[preferredId] && !assignments[preferredId]) currentBatch = batchOfId(preferredId);
+    var unassigned = items.filter(function (item) { return !isAssigned(item); });
+    var remaining = batchItems(currentBatch).filter(function (item) { return !isAssigned(item); });
+    var next = preferredId && remaining.indexOf(itemById[preferredId]) !== -1 ? itemById[preferredId] : remaining[0] || null;
+    var checkedNow = Boolean(checkedBatches[currentBatch]);
+    var allChecked = Object.keys(checkedBatches).length === batchCount() && unassigned.length === 0;
+    var label = 'Tanda ' + (currentBatch + 1) + ' de ' + batchCount();
+
+    unassigned.forEach(function (item) { item.hidden = item !== next; });
     activeItem = next;
-    complete.hidden = Boolean(next);
     source.hidden = !next;
+    review.hidden = Boolean(next) || !checkedNow;
+    nextButton.hidden = currentBatch >= batchCount() - 1;
+    complete.hidden = !(allChecked && !next);
     sorter.classList.toggle('is-complete', !next);
-    stageKicker.textContent = next ? 'Por clasificar' : 'Clasificación completa';
+    stageKicker.textContent = next
+      ? label + ' · por clasificar'
+      : checkedNow ? label + ' · comprobada' : label + ' · lista';
     stageInstruction.textContent = next
-      ? 'Toca un bucket o arrastra la situación hasta él.'
-      : items.length + ' de ' + items.length + ' situaciones colocadas.';
+      ? 'Toca una categoría o arrastra la situación hasta ella.'
+      : checkedNow
+        ? 'Lee la retroalimentación. Toca una tarjeta marcada para moverla.'
+        : 'Ya colocaste las 5. Compruébalas antes de seguir.';
     sorter.querySelectorAll('[data-bucket-target]').forEach(function (target) {
       target.hidden = !next;
     });
@@ -339,7 +412,11 @@
     showNextItem();
     updateProgress();
     updateBuckets();
-    if (hasValidated && Object.keys(assignments).length === items.length) validateResponses();
+    if (checkedBatches[batchOfId(id)]) {
+      evaluateItem(item);
+      renderReview();
+      summarize();
+    }
     if (shouldFocus && activeItem) stage.focus({ preventScroll: true });
   }
 
@@ -358,8 +435,8 @@
     saveAssignments();
     updateProgress();
     updateBuckets();
-    if (hasValidated) {
-      validation.textContent = 'Vuelve a colocar la situación para validar de nuevo.';
+    if (checkedBatches[batchOfId(id)]) {
+      validation.textContent = 'Vuelve a colocarla: se comprobará al momento.';
     }
     if (shouldFocus) stage.focus({ preventScroll: true });
   }
@@ -392,46 +469,87 @@
     var answered = Object.keys(assignments).length;
     progress.textContent = answered + ' de ' + items.length +
       ' clasificadas · guardado en este dispositivo';
+    var pending = batchItems(currentBatch).filter(function (item) { return !isAssigned(item); }).length;
     reset.disabled = answered === 0;
-    check.disabled = answered !== items.length;
+    check.disabled = pending > 0 || Boolean(checkedBatches[currentBatch]);
+    check.textContent = 'Comprobar esta tanda';
     if (!hasValidated) {
-      var remaining = items.length - answered;
-      validation.textContent = answered === items.length
-        ? 'Ya puedes validar la clasificación.'
-        : remaining === 1
-          ? 'Queda 1 situación por clasificar.'
-          : 'Quedan ' + remaining + ' situaciones por clasificar.';
+      validation.textContent = pending === 0
+        ? 'Ya puedes comprobar esta tanda.'
+        : pending === 1
+          ? 'Queda 1 situación en esta tanda.'
+          : 'Quedan ' + pending + ' situaciones en esta tanda.';
     }
     reportProgress(answered);
   }
 
-  function validateResponses() {
-    var correct = 0;
-    var errorIds = [];
-    hasValidated = true;
+  function evaluateItem(item) {
+    var id = item.dataset.sortItem;
+    var isCorrect = answerKey[id] === assignments[id];
+    var result = item.querySelector('.classification-sorter__result');
 
-    items.forEach(function (item) {
+    if (!result) {
+      result = document.createElement('span');
+      result.className = 'classification-sorter__result';
+      item.appendChild(result);
+    }
+
+    result.textContent = isCorrect ? '✓ Correcta' : '× Revisa';
+    item.classList.toggle('is-correct', isCorrect);
+    item.classList.toggle('is-review', !isCorrect);
+    results[id] = isCorrect;
+  }
+
+  function renderReview() {
+    reviewList.innerHTML = '';
+    batchItems(currentBatch).forEach(function (item) {
       var id = item.dataset.sortItem;
-      var isCorrect = answerKey[id] === assignments[id];
-      var result = item.querySelector('.classification-sorter__result');
-
-      if (!result) {
-        result = document.createElement('span');
-        result.className = 'classification-sorter__result';
-        item.appendChild(result);
-      }
-
-      result.textContent = isCorrect ? '✓ Correcta' : '× Revisa';
-      item.classList.toggle('is-correct', isCorrect);
-      item.classList.toggle('is-review', !isCorrect);
-      if (isCorrect) correct += 1;
-      else errorIds.push(id);
+      if (!(id in results) || !assignments[id]) return;
+      var entry = document.createElement('li');
+      var title = document.createElement('p');
+      var note = document.createElement('p');
+      var texts = feedback[id] || ['', ''];
+      entry.className = 'classification-sorter__review-item' + (results[id] ? '' : ' is-review');
+      title.className = 'classification-sorter__review-title';
+      title.innerHTML = item.querySelector('.classification-sorter__item-label').innerHTML +
+        ' <span class="classification-sorter__review-result">' + (results[id] ? '✓ Correcta' : '× Revisa') + '</span>';
+      note.className = 'practice-feedback' + (results[id] ? '' : ' is-hint');
+      note.innerHTML = '<span class="practice-feedback__label">' + (results[id] ? 'Por qué' : 'Pista') + '</span> ';
+      note.appendChild(document.createTextNode(results[id] ? texts[1] : texts[0]));
+      entry.appendChild(title);
+      entry.appendChild(note);
+      reviewList.appendChild(entry);
     });
+  }
 
-    validation.textContent = correct + ' de ' + items.length +
-      ' correctas. Toca las marcadas para volver a colocarlas.';
+  function summarize() {
+    var checkedIds = Object.keys(results);
+    var inBatch = batchItems(currentBatch);
+    var batchCorrect = inBatch.filter(function (item) { return results[item.dataset.sortItem]; }).length;
+
+    if (Object.keys(checkedBatches).length === batchCount() && checkedIds.length === items.length) {
+      var correct = items.filter(function (item) { return results[item.dataset.sortItem]; }).length;
+      var errorIds = items.filter(function (item) { return !results[item.dataset.sortItem]; })
+        .map(function (item) { return item.dataset.sortItem; });
+      validation.textContent = correct === items.length
+        ? '¡' + correct + ' de ' + items.length + ' correctas! Dominas este tema.'
+        : correct + ' de ' + items.length + ' correctas. Lee las pistas y toca las marcadas para volver a colocarlas.';
+      reportResult(correct, errorIds);
+    } else {
+      validation.textContent = 'Esta tanda: ' + batchCorrect + ' de ' + inBatch.length + ' correctas. ' +
+        (batchCorrect === inBatch.length ? 'Sigue con la próxima tanda.' : 'Lee las pistas y toca las marcadas para moverlas.');
+    }
     validation.classList.add('has-result');
-    reportResult(correct, errorIds);
+  }
+
+  function validateResponses() {
+    hasValidated = true;
+    batchItems(currentBatch).forEach(evaluateItem);
+    checkedBatches[currentBatch] = true;
+    renderReview();
+    summarize();
+    showNextItem();
+    updateProgress();
   }
 
   function restoreAssignments() {
@@ -455,6 +573,10 @@
   reset.addEventListener('click', function () {
     form.reset();
     assignments = {};
+    checkedBatches = {};
+    results = {};
+    currentBatch = 0;
+    reviewList.innerHTML = '';
     hasValidated = false;
     validation.classList.remove('has-result');
     items.forEach(function (item) {
@@ -471,4 +593,12 @@
   });
 
   check.addEventListener('click', validateResponses);
+  nextButton.addEventListener('click', function () {
+    currentBatch = Math.min(currentBatch + 1, batchCount() - 1);
+    reviewList.innerHTML = '';
+    showNextItem();
+    updateProgress();
+    if (Object.keys(results).some(function (id) { return batchOfId(id) === currentBatch; })) renderReview();
+    stage.focus({ preventScroll: true });
+  });
 })();
