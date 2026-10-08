@@ -268,7 +268,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['enlace iónico', 'enlace covalente', 'Lewis', 'electrones de valencia'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './enlaces-lewis.html'
   },
 
   {

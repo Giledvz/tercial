@@ -340,6 +340,74 @@ body,
   font-size: 9.5pt;
 }
 
+/* Franja de datos: símbolo y valor (masas atómicas, electronegatividades) */
+.task-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0.42in, 1fr));
+  margin: 0 0 0.2in;
+  border-top: 1px solid var(--ink-300);
+  border-bottom: 1px solid var(--ink-300);
+  page-break-inside: avoid;
+}
+
+.task-strip div {
+  padding: 5pt 0 6pt;
+  text-align: center;
+}
+
+.task-strip div + div { border-left: 1px solid var(--crema-500); }
+
+.task-strip strong {
+  display: block;
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 12pt;
+  font-weight: var(--font-weight-regular);
+}
+
+.task-strip span {
+  color: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 8.5pt;
+}
+
+/* Cajas para dibujar símbolos de Lewis alrededor del símbolo impreso */
+.task-lewis {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10pt;
+  margin-top: 8pt;
+}
+
+.task-lewis__box {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 4pt;
+  height: 1.05in;
+  border: 1px solid var(--ink-300);
+  background: #fbf8f2;
+}
+
+.task-lewis__box strong {
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 22pt;
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+}
+
+.task-lewis__box span {
+  color: var(--ink-500);
+  font-size: 8pt;
+}
+
+/* Filas altas para dibujar estructuras */
+.task-table--alta td,
+.task-table--alta tbody th { height: 0.64in; }
+
+.task-table--alta tbody th { text-align: center; }
+
 @media print {
   html,
   body,

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Enlaces químicos y estructuras de Lewis · Química ECOEMS · Tercial</title>
+<meta name="description" content="Regla del octeto, símbolos y estructuras de Lewis, enlace iónico, covalente polar y no polar, metálico y puentes de hidrógeno, con la diferencia de electronegatividad como criterio.">
+<meta name="tercial:resource-id" content="ecoems-quimica-enlaces-lewis">
+<meta name="tercial:resource-title" content="Enlaces químicos y estructuras de Lewis">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-enlace.js?v=20261008-tanda3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./enlaces-practica.js?v=20261008-tanda3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 11 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Enlaces químicos y estructuras de <em>Lewis</em></h1>
+    <p class="hero__lede">Los átomos se unen para quedar más estables: ganan, pierden o comparten electrones
+      de valencia hasta parecerse a un gas noble. Cómo lo hacen depende de qué tanto atrae cada uno a los
+      electrones.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=enlace%20iónico#courseIndex">enlace iónico</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=Lewis#courseIndex">Lewis</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./tendencias-periodicas.html">electronegatividad</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaEnlaces">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaEnlaces">
+        <span class="lesson-section__kicker">Idea central</span> La regla del octeto
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Ocho electrones en el <em>último nivel</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Un <strong>enlace químico</strong> es la fuerza eléctrica que mantiene unidos a los átomos. Se
+          forma con los <strong>electrones de valencia</strong>, los del último nivel.</p>
+        <p><strong>Regla del octeto:</strong> los átomos tienden a ganar, perder o compartir electrones hasta
+          tener 8 en su último nivel, como el gas noble más cercano. El hidrógeno se completa con 2, como el
+          helio.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 19–21. Correcciones: el NaCl se escribe con iones; los puentes de hidrógeno sólo se forman con F, O y N; el AgCl es covalente polar por su ΔEN. -->
+      <footer class="source-line">
+        <span>Lectura · 12 min</span>
+      </footer>
+    </article>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="lewis" viewBox="0 0 360 188" role="img" aria-labelledby="lewisTitle">
+        <title id="lewisTitle">Símbolos de Lewis del periodo 3: el sodio con un punto, el magnesio con dos y así hasta el argón con ocho; cada punto es un electrón de valencia y el número de puntos coincide con la familia A</title>
+      </svg>
+      <figcaption class="atom-figure__caption">En un símbolo de Lewis cada punto es un electrón de valencia:
+        primero uno por lado y después en pares. Igual se escriben el fósforo y el antimonio (5 puntos), el
+        potasio (1) y el bromo (7).</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="tiposEnlace">
+    <header class="section-header">
+      <h2 class="section-header__title" id="tiposEnlace">
+        <span class="lesson-section__kicker">Compara</span> Ceder, compartir o soltarlos
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="tiposEnlace" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Tipos de enlace: entre quiénes se forman, qué pasa con los electrones y ejemplos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Enlace</th>
+            <th scope="col">Entre</th>
+            <th scope="col">Los electrones</th>
+            <th scope="col">ΔEN</th>
+            <th scope="col">Ejemplos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Iónico</th><td>Un metal y un no metal</td><td>El metal los cede y el no metal los acepta</td><td>Más de 1.7</td><td>NaCl, KF, CaCl<sub>2</sub></td></tr>
+          <tr><th scope="row">Covalente no polar</th><td>No metales iguales o muy parecidos</td><td>Se comparten por igual</td><td>0 a 0.4</td><td>Cl<sub>2</sub>, N<sub>2</sub>, CH<sub>4</sub></td></tr>
+          <tr><th scope="row">Covalente polar</th><td>No metales distintos</td><td>Se comparten, pero uno los jala más</td><td>0.4 a 1.7</td><td>HCl, H<sub>2</sub>O, NH<sub>3</sub></td></tr>
+          <tr><th scope="row">Metálico</th><td>Metales</td><td>Se mueven libres entre los cationes</td><td>—</td><td>Cobre, hierro, latón</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="escala" viewBox="0 0 360 166" role="img" aria-labelledby="escalaTitle">
+        <title id="escalaTitle">Escala de diferencia de electronegatividad de 0 a 3.4: de 0 a 0.4 covalente no polar, de 0.4 a 1.7 covalente polar y más de 1.7 iónico; los compuestos Cl2 (0), CH4 (0.35), HBr (0.76), NH3 (0.84), AgCl (1.23), KI (1.84), NaCl (2.23) y KF (3.16) caen en su lugar</title>
+      </svg>
+      <figcaption class="atom-figure__caption">ΔEN es la diferencia de electronegatividad: la mayor menos la
+        menor. Los límites 0.4 y 1.7 son los de la fuente; algunos libros usan 0.5 o 2.0.</figcaption>
+    </figure>
+    <p class="editorial-note">Ojo con el AgCl: la plata es un metal, pero su ΔEN con el cloro es de 1.23, así
+      que el enlace es covalente polar. Por eso el cloruro de plata casi no se disuelve en agua.</p>
+  </section>
+
+  <section aria-labelledby="ionicoSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ionicoSeccion">
+        <span class="lesson-section__kicker">Observa</span> Enlace iónico: uno cede, otro acepta
+      </h2>
+    </header>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="ionico" viewBox="0 0 360 168" role="img" aria-labelledby="ionicoTitle">
+        <title id="ionicoTitle">El sodio, con un electrón de valencia, se lo cede al cloro, que tenía siete; quedan el ion Na+ y el ion Cl- con ocho electrones en su último nivel, que se atraen; al final se ve un cristal de iones Na+ y Cl- alternados</title>
+      </svg>
+      <figcaption class="atom-figure__caption">El metal (menos electronegativo) cede su electrón y queda como
+        catión; el no metal lo acepta y queda como anión. Las cargas opuestas se atraen y forman un
+        cristal.</figcaption>
+    </figure>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="estructuras" viewBox="0 0 360 140" role="img" aria-labelledby="estructurasTitle">
+        <title id="estructurasTitle">Estructuras de Lewis: el agua con dos pares compartidos y dos pares libres en el oxígeno; el cloruro de sodio como ion sodio positivo junto al ion cloruro entre corchetes con ocho electrones y carga negativa; el metano con cuatro pares compartidos</title>
+      </svg>
+      <figcaption class="atom-figure__caption">En el NaCl no hay un par compartido: se escribe con los iones,
+        Na<sup>+</sup> y el cloro entre corchetes con sus 8 electrones y carga −.</figcaption>
+    </figure>
+    <p class="editorial-note">Los compuestos iónicos forman cristales y no moléculas, tienen puntos de fusión
+      altos, por lo general se disuelven en agua y conducen la electricidad disueltos o fundidos; por eso se usan como
+      electrolitos. Sólidos, no conducen. Ejemplos: NaCl, KF, LiBr, CaCl<sub>2</sub>, NaBr.</p>
+  </section>
+
+  <section aria-labelledby="covalenteSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="covalenteSeccion">
+        <span class="lesson-section__kicker">Observa</span> Enlace covalente: compartir
+      </h2>
+    </header>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="covalente" viewBox="0 0 360 156" role="img" aria-labelledby="covalenteTitle">
+        <title id="covalenteTitle">A la izquierda, dos átomos de cloro comparten un par de electrones a la mitad: enlace covalente no polar. A la derecha, en el HCl el par se corre hacia el cloro y la nube de electrones se carga hacia él: el H queda con carga parcial positiva y el Cl con carga parcial negativa</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Entre no metales nadie cede: comparten pares. Si los dos atraen
+        igual, el par queda a la mitad (no polar); si uno atrae más, se forman cargas parciales δ+ y δ−
+        (polar).</figcaption>
+    </figure>
+    <div class="comparison-grid">
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">ΔEN de 0 a 0.4</p>
+          <h3 class="comparison-item__title">Covalente <em>no polar</em></h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>La nube de electrones se reparte por igual. Está en casi todos los compuestos orgánicos. Puntos de
+            fusión y de ebullición bajos; no conducen la electricidad; se disuelven en disolventes no polares,
+            como el aceite.</p>
+        </div>
+      </article>
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">ΔEN de 0.4 a 1.7</p>
+          <h3 class="comparison-item__title">Covalente <em>polar</em></h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>La nube se carga hacia el átomo más electronegativo. Suelen ser líquidos o gases que se disuelven
+            en agua. Por sí solos casi no conducen; algunos, como el HCl, sí lo hacen al disolverse en agua
+            porque forman iones.</p>
+        </div>
+      </article>
+    </div>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="multiples" viewBox="0 0 360 144" role="img" aria-labelledby="multiplesTitle">
+        <title id="multiplesTitle">Fórmulas estructurales: el metano con cuatro enlaces simples, el eteno con un enlace doble entre los carbonos y el etino con un enlace triple</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Cada guion es un par compartido: un enlace simple tiene 2
+        electrones, uno doble 4 y uno triple 6. El N<sub>2</sub> también tiene un enlace triple:
+        :N≡N:.</figcaption>
+    </figure>
+    <p class="editorial-note">En el <strong>enlace covalente coordinado</strong>, los dos electrones del par
+      los pone el mismo átomo. Así el NH<sub>3</sub> usa su par libre para unirse a un H<sup>+</sup> y formar
+      el ion amonio, NH<sub>4</sub><sup>+</sup>.</p>
+  </section>
+
+  <section aria-labelledby="metalicoSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="metalicoSeccion">
+        <span class="lesson-section__kicker">Observa</span> Enlace metálico: un mar de electrones
+      </h2>
+    </header>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="metalico" viewBox="0 0 360 156" role="img" aria-labelledby="metalicoTitle">
+        <title id="metalicoTitle">Una red de cationes metálicos fijos y, entre ellos, electrones que se mueven libremente por todo el metal</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Los cationes del metal forman una red y sus electrones de
+        valencia se mueven entre todos. Por eso los metales conducen la electricidad y se doblan sin
+        romperse.</figcaption>
+    </figure>
+    <p class="editorial-note">Las <strong>aleaciones</strong> mezclan metales (o un metal con otro elemento): el
+      latón es cobre con zinc y el acero, hierro con un poco de carbono. Las <strong>amalgamas</strong> son
+      aleaciones de mercurio, como las que se usaban para tapar muelas.</p>
+  </section>
+
+  <section aria-labelledby="puentesSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="puentesSeccion">
+        <span class="lesson-section__kicker">Distingue</span> Puentes de hidrógeno
+      </h2>
+    </header>
+    <figure class="atom-figure">
+      <svg class="escena" data-escena-enlace="puentes" viewBox="0 0 360 180" role="img" aria-labelledby="puentesTitle">
+        <title id="puentesTitle">Cinco moléculas de agua; líneas punteadas unen el hidrógeno de una molécula, con carga parcial positiva, con el oxígeno de otra, con carga parcial negativa</title>
+      </svg>
+      <figcaption class="atom-figure__caption">El H de una molécula, con carga δ+, atrae el par libre del O de
+        la vecina, con carga δ−. Esa atracción entre moléculas es el puente de hidrógeno.</figcaption>
+    </figure>
+    <p class="editorial-note">No es un enlace dentro de una molécula, sino una atracción entre moléculas. Sólo
+      se forma cuando el hidrógeno está unido a <strong>F, O o N</strong>, que son muy electronegativos y
+      pequeños; el HCl, aunque el cloro es electronegativo, no forma puentes de hidrógeno porque el cloro es
+      demasiado grande. Gracias a ellos el agua hierve a 100 °C, mucho para una molécula tan pequeña, y el
+      hielo flota.</p>
+  </section>
+
+  <section aria-labelledby="practicaEnlaces">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaEnlaces">
+        <span class="lesson-section__kicker">Practica</span> Lewis y tipo de enlace
+      </h2>
+      <span class="section-header__count">15 situaciones</span>
+    </header>
+    <p class="section-intro">Primero cuenta los puntos de cinco símbolos de Lewis. Después calcula la ΔEN de
+      cada compuesto con esta tabla (la mayor menos la menor) y elige el tipo de enlace.</p>
+    <ul class="en-tabla" aria-label="Electronegatividades de Pauling">
+      <li><strong>H</strong><span>2.20</span></li>
+      <li><strong>Li</strong><span>0.98</span></li>
+      <li><strong>C</strong><span>2.55</span></li>
+      <li><strong>N</strong><span>3.04</span></li>
+      <li><strong>O</strong><span>3.44</span></li>
+      <li><strong>F</strong><span>3.98</span></li>
+      <li><strong>Na</strong><span>0.93</span></li>
+      <li><strong>Cl</strong><span>3.16</span></li>
+      <li><strong>K</strong><span>0.82</span></li>
+      <li><strong>Ca</strong><span>1.00</span></li>
+      <li><strong>Br</strong><span>2.96</span></li>
+      <li><strong>Ag</strong><span>1.93</span></li>
+      <li><strong>I</strong><span>2.66</span></li>
+      <li><strong>Ba</strong><span>0.89</span></li>
+    </ul>
+    <form data-practice-form autocomplete="off">
+      <h3 class="practice-group__title">¿Cuántos puntos lleva su símbolo de Lewis?</h3>
+      <div class="exercise-list" data-enlaces-lewis></div>
+      <h3 class="practice-group__title">¿Qué tipo de enlace tiene?</h3>
+      <ol class="config-sheet" data-enlaces-compuestos></ol>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 15 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-enlaces-lewis.pdf?v=20261008-tanda3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las situaciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./tendencias-periodicas.html">← Tendencias periódicas</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>
