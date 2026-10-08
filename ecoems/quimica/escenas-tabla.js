@@ -17,6 +17,7 @@ const mix = (a, b, p) => a + (b - a) * p;
 const smooth = value => { const p = clamp(value); return p * p * (3 - 2 * p); };
 const round = value => Math.round(value * 100) / 100;
 const span = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = value => { const p = 1 - clamp(value); return 1 - p * p * p; };
 // Aparece en [a, a + entra] y se va en [b − sale, b].
 const ventana = (t, a, b, entra = .4, sale = .4) => smooth((t - a) / entra) * (1 - smooth((t - (b - sale)) / sale));
 
@@ -220,34 +221,72 @@ function martillo(svg) {
     const r = 18 * (.86 + rand() * .26);
     return [Math.cos(a) * r, Math.sin(a) * r * .82];
   });
+  /* Los pedazos caen con física de verdad. Cada uno es un triángulo rígido que
+     vuela con gravedad y girando; toca el suelo cuando su punto más bajo llega
+     a la línea y entonces se vuelca, sin hundirse, hasta quedar acostado sobre
+     el lado más cercano. Todo se calcula al inicio, así que cada fotograma es
+     una función del tiempo (el ciclo y el fotograma fijo salen iguales). */
+  const SUELO = FLOOR - .5;  // borde de arriba de la línea del piso
   const bottom = Math.max(...outline.map(p => p[1]));
-  const cy = FLOOR - bottom;
+  const cy = SUELO - bottom;
   const lump = make('path', { d: `M${outline.map(p => p.map(round).join(' ')).join('L')}Z`, transform: `translate(${RX} ${round(cy)})`, class: 'escena__azufre' }, scene);
-  const GRAVITY = 300;
+  const GRAVITY = 320;
+  const girar = (v, a) => [v[0] * Math.cos(a) - v[1] * Math.sin(a), v[0] * Math.sin(a) + v[1] * Math.cos(a)];
+  // Qué tan abajo del centroide queda el punto más bajo con el giro a.
+  const fondo = (verts, a) => Math.max(...verts.map(v => girar(v, a)[1]));
   const shards = outline.map((p, i) => {
     const q = outline[(i + 1) % outline.length];
     const c = [(p[0] + q[0]) / 3, (p[1] + q[1]) / 3];
     const local = [[-c[0], -c[1]], [p[0] - c[0], p[1] - c[1]], [q[0] - c[0], q[1] - c[1]]];
-    const reach = Math.max(...local.map(v => Math.hypot(v[0], v[1])));
     const angle = Math.atan2(c[1], c[0]);
     const vx = Math.cos(angle) * (40 + rand() * 22);
     const vy = Math.sin(angle) * 28 - 58 - rand() * 14;
-    const drop = FLOOR - reach * .72 - (cy + c[1]);
-    const root = vy * vy + 2 * GRAVITY * drop;
-    const land = root > 0 ? (-vy + Math.sqrt(root)) / GRAVITY : .35;
+    const omega = (rand() - .5) * 7;
+    const x0 = RX + c[0], y0 = cy + c[1];
+    const yAt = tau => y0 + vy * tau + GRAVITY * tau * tau / 2;
+    const toca = tau => yAt(tau) + fondo(local, omega * tau) >= SUELO;
+    // Vuelo: el primer instante en que el punto más bajo llega al suelo.
+    let lo = .02, hi = .02;
+    while (!toca(hi) && hi < 3) { lo = hi; hi += .005; }
+    for (let k = 0; k < 18; k += 1) { const mid = (lo + hi) / 2; if (toca(mid)) hi = mid; else lo = mid; }
+    const land = hi, aLand = omega * land, xLand = x0 + vx * land;
+    // Reposo: de los tres lados, el que queda plano con el menor giro y con el
+    // tercer vértice arriba (y menor, porque en SVG y crece hacia abajo).
+    let aRest = aLand, best = Infinity;
+    for (let e = 0; e < 3; e += 1) {
+      const a = local[e], b = local[(e + 1) % 3], third = local[(e + 2) % 3];
+      const base = -Math.atan2(b[1] - a[1], b[0] - a[0]);
+      [base, base + Math.PI].forEach(cand => {
+        if (girar(third, cand)[1] >= girar(a, cand)[1] - 1e-6) return;
+        const turns = Math.round((aLand - cand) / TAU);
+        const option = cand + turns * TAU;
+        if (Math.abs(option - aLand) < best) { best = Math.abs(option - aLand); aRest = option; }
+      });
+    }
+    const settle = .14 + .22 * Math.min(1, best / Math.PI);
+    const xRest = xLand + vx * .05;
     const node = make('path', { d: `M${local.map(v => v.map(round).join(' ')).join('L')}Z`, class: 'escena__azufre', opacity: 0 }, scene);
-    return { node, c, vx, vy, land, spin: (rand() - .5) * 9 };
+    return { node, local, x0, vx, omega, yAt, land, aLand, xLand, aRest, xRest, settle };
   });
   function romper(t) {
     const broken = t >= HIT_R;
     fade(lump, broken ? 0 : 1);
-    shards.forEach(s => {
-      fade(s.node, broken ? 1 : 0);
+    shards.forEach(sh => {
+      fade(sh.node, broken ? 1 : 0);
       if (!broken) return;
-      const tau = Math.min(t - HIT_R, s.land);
-      const x = RX + s.c[0] + s.vx * tau;
-      const y = cy + s.c[1] + s.vy * tau + GRAVITY * tau * tau / 2;
-      s.node.setAttribute('transform', `translate(${round(x)} ${round(y)}) rotate(${round(s.spin * tau * 57.3 / 6)})`);
+      const tau = t - HIT_R;
+      let x, y, a;
+      if (tau < sh.land) {
+        a = sh.omega * tau;
+        x = sh.x0 + sh.vx * tau;
+        y = sh.yAt(tau);
+      } else {
+        const u = easeOut(Math.min(1, (tau - sh.land) / sh.settle));
+        a = mix(sh.aLand, sh.aRest, u);
+        x = mix(sh.xLand, sh.xRest, u);
+        y = SUELO - fondo(sh.local, a);
+      }
+      sh.node.setAttribute('transform', `translate(${round(x)} ${round(y)}) rotate(${round(a * 180 / Math.PI)})`);
     });
   }
 
