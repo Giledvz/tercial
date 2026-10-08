@@ -91,8 +91,10 @@
         var field;
         cell.setAttribute('data-cell', '');
         if (key === 'carga') {
+          // Las cargas van de 7− a 7+; el desplegable abre en 0, cerca de casi todas las respuestas.
           field = document.createElement('select');
           field.className = 'select particle-row__input';
+          field.setAttribute('data-inicio', '0');
           field.innerHTML = '<option value="">?</option>';
           for (var q = -7; q <= 7; q += 1) {
             var option = document.createElement('option');

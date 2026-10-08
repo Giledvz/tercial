@@ -1,9 +1,10 @@
-/* Selector de elemento (Configuración electrónica).
-   Es un control, no parte de la retícula editorial: el panel flota sobre el
-   diagrama y necesita fondo opaco para que la lista se lea. Por eso vive
-   aparte de quimica-material.css, que no admite cajas ni fondos. Sigue el
-   sistema: borde fino en lugar de sombra, radio pequeño, terracota sólo para
-   el elemento elegido. */
+/* Controles de Química con el diseño de Tercial: el selector de elemento
+   (con buscador) y el desplegable de las prácticas. Sustituyen a las listas
+   que dibuja el sistema operativo. Son controles, no parte de la retícula
+   editorial: sus paneles flotan sobre el contenido y necesitan fondo opaco,
+   por eso viven aparte de quimica-material.css, que no admite cajas ni
+   fondos. Siguen el sistema: borde fino en lugar de sombra, radio pequeño y
+   terracota sólo para lo elegido. */
 .element-picker {
   position: relative;
   min-width: 0;
@@ -134,4 +135,100 @@
   padding: var(--space-3) var(--space-2);
   color: var(--color-text-meta);
   font-size: var(--font-size-13);
+}
+
+/* Desplegable de las prácticas */
+.t-select {
+  position: relative;
+  min-width: 0;
+}
+
+.t-select__button {
+  width: 100%;
+  min-height: 2.75rem;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.t-select__button.is-empty {
+  color: var(--color-text-meta);
+}
+
+.t-select.is-open .t-select__button {
+  border-color: var(--color-border-focus);
+}
+
+.t-select__list {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: min(18rem, calc(100vw - 2rem));
+  max-height: min(21.5rem, 60vh);
+  margin: 0;
+  padding: var(--space-1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  background-color: var(--color-bg-input);
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.t-select.is-up .t-select__list {
+  top: auto;
+  bottom: calc(100% + var(--space-1));
+}
+
+.t-select__list[hidden] {
+  display: none;
+}
+
+.t-select__list:focus {
+  outline: none;
+}
+
+.t-select__list:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.t-select__option {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+  color: var(--color-text-secondary);
+  border-left: 2px solid transparent;
+  border-radius: var(--radius-sm, 2px);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-15);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.t-select__option.is-active {
+  color: var(--color-text-primary);
+  background-color: color-mix(in oklab, var(--color-text-primary) 7%, transparent);
+}
+
+.t-select__option[aria-selected="true"] {
+  color: var(--color-accent);
+  border-left-color: var(--color-accent);
+}
+
+/* En la tabla de partículas, el valor va centrado y en monoespaciada. */
+.t-select__button.particle-row__input {
+  padding-right: var(--space-6);
+  text-align: center;
+}
+
+.particle-row__cell .t-select__option {
+  justify-content: center;
+  font-family: var(--font-family-mono);
 }

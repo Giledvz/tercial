@@ -21,6 +21,206 @@
     return Array.prototype.slice.call(list);
   }
 
+  /* ---------- Desplegable con el diseño de Tercial ----------
+     Sustituye la lista que dibuja el sistema operativo. El select nativo
+     sigue en el documento, oculto, y es la fuente de verdad: el desplegable
+     cambia su valor y avisa con un evento change, así que el guardado y la
+     comprobación funcionan igual. Se maneja con ratón, toque y teclado
+     (flechas, Inicio, Fin, Enter, Esc y letras para saltar). */
+  var openDropdown = null;
+  var dropdownCount = 0;
+
+  function plain(text) {
+    return String(text).normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/−/g, '-').toLowerCase().trim();
+  }
+
+  document.addEventListener('pointerdown', function (event) {
+    if (openDropdown && !openDropdown.wrap.contains(event.target)) openDropdown.close(false);
+  });
+
+  function buildDropdown(field) {
+    dropdownCount += 1;
+    var uid = 'desplegable-' + dropdownCount;
+    var wrap = document.createElement('div');
+    var button = document.createElement('button');
+    var list = document.createElement('ul');
+    var label = field.id ? document.querySelector('label[for="' + field.id + '"]') : null;
+    var placeholderOption = slice(field.options).filter(function (o) { return o.value === ''; })[0];
+    var placeholder = placeholderOption ? placeholderOption.textContent : 'Elige';
+    var options = slice(field.options).filter(function (o) { return o.value !== ''; });
+    var active = -1;
+    var typed = '';
+    var typedAt = 0;
+    var api;
+
+    wrap.className = 't-select';
+    button.type = 'button';
+    button.className = field.className.replace(/\bselect\b/, '').trim() + ' select t-select__button';
+    button.id = (field.id || uid) + '-boton';
+    button.setAttribute('aria-haspopup', 'listbox');
+    button.setAttribute('aria-expanded', 'false');
+    list.className = 't-select__list';
+    list.id = uid + '-lista';
+    list.setAttribute('role', 'listbox');
+    list.setAttribute('tabindex', '-1');
+    list.hidden = true;
+    button.setAttribute('aria-controls', list.id);
+    if (label) {
+      if (!label.id) label.id = button.id + '-etiqueta';
+      label.htmlFor = button.id;
+      button.setAttribute('aria-labelledby', label.id + ' ' + button.id);
+      list.setAttribute('aria-labelledby', label.id);
+    } else if (field.getAttribute('aria-label')) {
+      button.setAttribute('aria-label', field.getAttribute('aria-label'));
+      list.setAttribute('aria-label', field.getAttribute('aria-label'));
+    }
+
+    var rows = options.map(function (option, index) {
+      var row = document.createElement('li');
+      row.className = 't-select__option';
+      row.id = uid + '-opcion-' + index;
+      row.setAttribute('role', 'option');
+      row.setAttribute('aria-selected', 'false');
+      row.textContent = option.textContent;
+      row.setAttribute('data-index', String(index));
+      list.appendChild(row);
+      return row;
+    });
+
+    field.parentNode.insertBefore(wrap, field);
+    wrap.appendChild(field);
+    wrap.appendChild(button);
+    wrap.appendChild(list);
+    field.hidden = true;
+    field.tabIndex = -1;
+    field.tercialControl = button;
+
+    function selectedIndex() {
+      for (var i = 0; i < options.length; i += 1) if (options[i].value === field.value) return i;
+      return -1;
+    }
+
+    function sync() {
+      var index = selectedIndex();
+      button.textContent = index === -1 ? placeholder : options[index].textContent;
+      button.classList.toggle('is-empty', index === -1);
+      rows.forEach(function (row, i) { row.setAttribute('aria-selected', i === index ? 'true' : 'false'); });
+      return index;
+    }
+
+    function setActive(index) {
+      if (!rows.length) return;
+      active = Math.max(0, Math.min(rows.length - 1, index));
+      rows.forEach(function (row, i) { row.classList.toggle('is-active', i === active); });
+      list.setAttribute('aria-activedescendant', rows[active].id);
+      var row = rows[active];
+      if (row.offsetTop < list.scrollTop) list.scrollTop = row.offsetTop - 4;
+      else if (row.offsetTop + row.offsetHeight > list.scrollTop + list.clientHeight) {
+        list.scrollTop = row.offsetTop + row.offsetHeight - list.clientHeight + 4;
+      }
+    }
+
+    function open() {
+      if (openDropdown && openDropdown !== api) openDropdown.close(false);
+      typed = '';
+      var current = sync();
+      list.hidden = false;
+      wrap.classList.add('is-open');
+      button.setAttribute('aria-expanded', 'true');
+      // Si no cabe debajo, se abre hacia arriba.
+      wrap.classList.remove('is-up');
+      var rect = button.getBoundingClientRect();
+      var height = list.offsetHeight;
+      if (rect.bottom + height + 12 > window.innerHeight && rect.top - height - 12 > 0) wrap.classList.add('is-up');
+      // Sin respuesta, abre en la opción de data-inicio (o en la primera).
+      var start = current;
+      if (start === -1) {
+        start = Math.max(0, options.map(function (o) { return o.value; }).indexOf(field.getAttribute('data-inicio')));
+      }
+      setActive(start);
+      // La opción activa queda al centro: se ven sus vecinas de los dos lados.
+      var row = rows[active];
+      if (row) list.scrollTop = row.offsetTop - (list.clientHeight - row.offsetHeight) / 2;
+      list.focus({ preventScroll: true });
+      openDropdown = api;
+    }
+
+    function close(returnFocus) {
+      if (list.hidden) return;
+      list.hidden = true;
+      wrap.classList.remove('is-open', 'is-up');
+      button.setAttribute('aria-expanded', 'false');
+      list.removeAttribute('aria-activedescendant');
+      if (openDropdown === api) openDropdown = null;
+      if (returnFocus) button.focus();
+    }
+
+    function choose(index) {
+      var option = options[index];
+      if (!option) return;
+      var changed = field.value !== option.value;
+      field.value = option.value;
+      sync();
+      close(true);
+      if (changed) field.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    // Escribir una letra o un número salta a la primera opción que empieza así.
+    function typeahead(key) {
+      var now = Date.now();
+      typed = now - typedAt > 700 ? key : typed + key;
+      typedAt = now;
+      var query = plain(typed);
+      var start = typed.length === 1 ? active + 1 : active;
+      for (var k = 0; k < rows.length; k += 1) {
+        var i = (start + k) % rows.length;
+        if (plain(options[i].textContent).indexOf(query) === 0) { setActive(i); return; }
+      }
+    }
+
+    button.addEventListener('click', function () {
+      if (list.hidden) open(); else close(false);
+    });
+    button.addEventListener('keydown', function (event) {
+      if (['ArrowDown', 'ArrowUp', 'Enter', ' '].indexOf(event.key) !== -1) {
+        event.preventDefault();
+        open();
+      }
+    });
+    list.addEventListener('keydown', function (event) {
+      var key = event.key;
+      if (key === 'ArrowDown') { event.preventDefault(); setActive(active + 1); }
+      else if (key === 'ArrowUp') { event.preventDefault(); setActive(active - 1); }
+      else if (key === 'Home') { event.preventDefault(); setActive(0); }
+      else if (key === 'End') { event.preventDefault(); setActive(rows.length - 1); }
+      else if (key === 'PageDown') { event.preventDefault(); setActive(active + 5); }
+      else if (key === 'PageUp') { event.preventDefault(); setActive(active - 5); }
+      else if (key === 'Enter' || key === ' ') { event.preventDefault(); choose(active); }
+      else if (key === 'Escape') { event.preventDefault(); close(true); }
+      else if (key === 'Tab') close(false);
+      else if (key.length === 1 && !event.metaKey && !event.ctrlKey && !event.altKey) typeahead(key);
+    });
+    list.addEventListener('click', function (event) {
+      var row = event.target.closest('[role="option"]');
+      if (row) choose(Number(row.getAttribute('data-index')));
+    });
+    list.addEventListener('pointermove', function (event) {
+      if (event.pointerType !== 'mouse') return;
+      var row = event.target.closest('[role="option"]');
+      if (row) setActive(Number(row.getAttribute('data-index')));
+    });
+    list.addEventListener('focusout', function (event) {
+      if (!wrap.contains(event.relatedTarget)) close(false);
+    });
+    field.addEventListener('change', sync);
+    field.addEventListener('tercial:reset', sync);
+
+    api = { wrap: wrap, close: close, sync: sync };
+    sync();
+    return api;
+  }
+
   function init(config) {
     var form = document.querySelector(config.form || '[data-practice-form]');
     if (!form) return null;
@@ -223,8 +423,11 @@
         cell.classList.toggle('is-right', state === true);
         cell.classList.toggle('is-wrong', state === false);
       }
-      if (state === false) field.setAttribute('aria-invalid', 'true');
-      else field.removeAttribute('aria-invalid');
+      [field, field.tercialControl].forEach(function (node) {
+        if (!node) return;
+        if (state === false) node.setAttribute('aria-invalid', 'true');
+        else node.removeAttribute('aria-invalid');
+      });
     }
 
     function resultSlot(item) {
@@ -330,7 +533,10 @@
       if (typeof saved[field.name] === 'string') field.value = saved[field.name];
       if (field.tagName === 'SELECT') {
         if (field.hasAttribute('data-choices')) buildChoices(field);
-        else field.addEventListener('change', function () { responded(field, true); });
+        else {
+          buildDropdown(field);
+          field.addEventListener('change', function () { responded(field, true); });
+        }
       } else {
         field.addEventListener('input', function () { responded(field, false); });
         field.addEventListener('change', function () { responded(field, true); });
@@ -381,5 +587,5 @@
     return { form: form, items: items, fields: fields };
   }
 
-  window.TercialPractica = { init: init };
+  window.TercialPractica = { init: init, desplegable: buildDropdown };
 })();
