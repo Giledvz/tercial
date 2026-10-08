@@ -179,34 +179,37 @@ export const SEGMENTOS = [
     id: 'numeros-cuanticos',
     tema: 'estructura-periodicidad',
     titulo: 'Orbitales y números cuánticos',
-    descripcion: 'Amplía la configuración con la descripción cuántica de los electrones.',
+    descripcion: 'Los cuatro números que ubican a cada electrón y cómo encontrar los del último.',
     paginas: '14',
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['números cuánticos', 'orbital', 'espín', 'diagrama orbital'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './numeros-cuanticos.html'
   },
   {
     id: 'isotopos',
     tema: 'estructura-periodicidad',
-    titulo: 'Número atómico, masa e isótopos',
-    descripcion: 'Distingue número atómico, número de masa, isótopos y alótropos.',
+    titulo: 'Isótopos, iones y alótropos',
+    descripcion: 'Mismo elemento, distinta masa, carga o acomodo: cómo distinguir isótopos, iones y alótropos.',
     paginas: '15',
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['isótopos', 'número atómico', 'número de masa', 'alótropos'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './isotopos.html'
   },
   {
     id: 'mol-masa-molar',
     tema: 'estructura-periodicidad',
     titulo: 'Mol y masa molar',
-    descripcion: 'Relaciona partículas, cantidad de sustancia y masa mediante el mol.',
+    descripcion: 'Cuenta partículas por montones: el número de Avogadro, la masa molar y las conversiones.',
     paginas: '15–16',
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['mol', 'masa molar', 'Avogadro', 'partículas'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './mol-masa-molar.html'
   },
   {
     id: 'tabla-periodica',

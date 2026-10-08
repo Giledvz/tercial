@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light" data-nivel="prepa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 04 - Mol y masa molar · Química ECOEMS · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <style>
+    @page {
+      size: letter;
+      margin: 0.62in 0.8in 0.72in 0.8in;
+      background: var(--color-bg-page);
+    }
+    html,
+    body,
+    .exam-pdf { background-color: var(--color-bg-page); }
+    .exam-pdf--quimica .exam-pdf__hero { border-top-color: var(--accent-terracota); }
+    .exam-pdf--quimica .exam-pdf__title em,
+    .exam-pdf--quimica .exam-pdf__exercise::before,
+    .exam-pdf--quimica .exam-pdf__total-value { color: var(--accent-terracota); }
+    .exam-pdf--quimica .exam-pdf__instructions { border-left-color: var(--accent-terracota); }
+    .exam-pdf--quimica .exam-pdf__hero {
+      padding-top: 0.18in;
+      margin-bottom: 0.2in;
+    }
+    .exam-pdf--quimica .exam-pdf__title { font-size: 30pt; }
+    .exam-pdf--quimica .exam-pdf__instructions { margin-bottom: 0.2in; }
+    .task-student {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 0.35in;
+      margin: -0.12in 0 0.24in;
+      color: var(--ink-500);
+      font-size: 9.5pt;
+    }
+    .task-student p {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 8pt;
+      align-items: end;
+    }
+    .task-student span {
+      display: block;
+      min-width: 0;
+      height: 0.18in;
+      border-bottom: 1px solid var(--ink-300);
+    }
+    .task-masses {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      margin: 0 0 0.22in;
+      border-top: 1px solid var(--ink-300);
+      border-bottom: 1px solid var(--ink-300);
+      page-break-inside: avoid;
+    }
+    .task-masses div {
+      padding: 6pt 0 7pt;
+      text-align: center;
+    }
+    .task-masses div + div { border-left: 1px solid var(--crema-500); }
+    .task-masses strong {
+      display: block;
+      color: var(--ink-900);
+      font-family: var(--font-family-display);
+      font-size: 13pt;
+      font-weight: var(--font-weight-regular);
+    }
+    .task-masses span {
+      color: var(--ink-500);
+      font-family: var(--font-family-mono);
+      font-size: 9pt;
+    }
+    .task-rules {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10pt;
+      margin: 0 0 0.24in;
+      color: var(--ink-500);
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+    .task-rules strong {
+      display: block;
+      color: var(--ink-900);
+      font-family: var(--font-family-display);
+      font-size: 11.5pt;
+      font-weight: var(--font-weight-regular);
+    }
+    .task-problems .exam-pdf__exercise { margin-bottom: 0.06in; page-break-inside: avoid; }
+    /* La segunda hoja continúa la numeración: 5 a 10. */
+    .task-page-break .task-problems { counter-reset: exercise 4; }
+    .task-work {
+      height: 0.56in;
+      margin-top: 4pt;
+      border: 1px dashed var(--crema-500);
+    }
+    .task-answer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      gap: 6pt;
+      margin-top: 4pt;
+      color: var(--ink-500);
+      font-size: 9pt;
+    }
+    .task-answer span {
+      display: inline-block;
+      width: 1.2in;
+      border-bottom: 1px solid var(--ink-300);
+    }
+    .task-answer b {
+      display: inline-block;
+      width: 2.2em;
+      font-weight: var(--font-weight-regular);
+      text-align: left;
+    }
+    .task-page-break { page-break-before: always; padding-top: 0.08in; }
+    .task-page-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.28in;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--ink-300);
+    }
+    .task-page-heading strong {
+      color: var(--ink-900);
+      font-family: var(--font-family-display);
+      font-size: 18pt;
+      font-weight: var(--font-weight-medium);
+    }
+    .task-page-heading span {
+      color: var(--ink-300);
+      font-size: 9pt;
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+    }
+    .exam-pdf__total { margin-top: 0.2in; padding-top: 8pt; }
+    @media print {
+      html,
+      body,
+      .exam-pdf {
+        background: var(--color-bg-page) !important;
+        background-image: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--quimica">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 04 · ECOEMS · Química</p>
+    <h1 class="exam-pdf__title">Mol y masa <em>molar</em></h1>
+    <p class="exam-pdf__meta">Conversiones entre partículas, moles y gramos</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve cada problema en el recuadro y escribe el resultado con sus unidades. Usa el número de
+      Avogadro 6.022 × 10<sup>23</sup> y estas masas atómicas, en g/mol:</p>
+  </div>
+
+  <div class="task-masses" aria-label="Masas atómicas"><div><strong>H</strong><span>1</span></div><div><strong>C</strong><span>12</span></div><div><strong>N</strong><span>14</span></div><div><strong>O</strong><span>16</span></div><div><strong>Na</strong><span>23</span></div><div><strong>S</strong><span>32</span></div><div><strong>Cl</strong><span>35.5</span></div><div><strong>Ni</strong><span>58.7</span></div><div><strong>Zn</strong><span>65.4</span></div><div><strong>Ag</strong><span>108</span></div></div>
+
+  <div class="task-rules">
+    <p><strong>Partículas → moles</strong>Divide entre 6.022 × 10<sup>23</sup>.</p>
+    <p><strong>Gramos → moles</strong>Divide entre la masa molar.</p>
+    <p><strong>Moles → gramos</strong>Multiplica por la masa molar.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-problems">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles de átomos de cloro hay en 1.65 × 10<sup>23</sup> átomos de cloro?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles de moléculas de agua (H<sub>2</sub>O) hay en 209.88 g de agua?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles de N<sub>2</sub>O<sub>3</sub> hay en 30 g?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles hay en 30 g de Ni<sub>2</sub>O<sub>3</sub>?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Mol y masa molar</strong>
+      <span>Tarea 04 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-problems">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles hay en 46.6 g de zinc (Zn)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos moles hay en 50 g de sacarosa (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>mol</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos gramos hay en 4.5 moles de sacarosa (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>g</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos gramos hay en 8.2 moles de nitrato de plata (AgNO<sub>3</sub>)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>g</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos gramos hay en 7 moles de ácido sulfúrico (H<sub>2</sub>SO<sub>4</sub>)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>g</b></p></div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body"><p>¿Cuántos gramos hay en 6.3 moles de cloruro de sodio (NaCl)?</p><div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>g</b></p></div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">10</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

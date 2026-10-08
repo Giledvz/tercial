@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Isótopos, iones y alótropos · Química ECOEMS · Tercial</title>
+<meta name="description" content="Distingue isótopos, iones y alótropos: en los tres casos el elemento es el mismo, pero cambian los neutrones, los electrones o el acomodo de los átomos.">
+<meta name="tercial:resource-id" content="ecoems-quimica-isotopos">
+<meta name="tercial:resource-title" content="Isótopos, iones y alótropos">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda2">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-atomo.js?v=20261008-tanda2"></script>
+<script defer src="./practica-quimica.js?v=20261008-tanda2"></script>
+<script defer src="./isotopos-practica.js?v=20261008-tanda2"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 5 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Isótopos, iones y <em>alótropos</em></h1>
+    <p class="hero__lede">Tres palabras que se confunden y una idea que las une: en los tres casos el
+      elemento es el mismo, porque no cambian sus protones. Lo que cambia es otra cosa.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=isótopos#courseIndex">isótopos</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=alótropos#courseIndex">alótropos</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=número%20de%20masa#courseIndex">número de masa</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaIsotopos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaIsotopos">
+        <span class="lesson-section__kicker">Idea central</span> Los protones deciden el elemento
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Si cambia Z, cambia el elemento; si cambia otra cosa, <em>no</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>El número atómico (Z) es el número de protones y es lo que identifica a un elemento: todo
+          átomo con 6 protones es carbono. El número de masa (A) suma protones y neutrones.</p>
+        <p>Un elemento puede tener átomos con distinta cantidad de neutrones (isótopos), átomos con
+          electrones de más o de menos (iones) o átomos acomodados de distintas formas (alótropos).
+          En ninguno de los tres cambia el elemento.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 14–15 -->
+      <footer class="source-line">
+        <span>Lectura · 9 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="isotoposSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="isotoposSeccion">
+        <span class="lesson-section__kicker">Isótopos</span> Mismo elemento, distinta masa
+      </h2>
+    </header>
+    <p class="section-intro">Los isótopos son átomos de un mismo elemento que tienen distinto número de
+      neutrones y, por eso, distinto número de masa. Tienen los mismos protones y los mismos electrones.</p>
+    <figure class="atom-figure atom-figure--wide">
+      <svg class="escena escena--isotopos" data-escena-atomo="isotopos" viewBox="0 0 360 160" role="img" aria-labelledby="isotoposTitle">
+        <title id="isotoposTitle">Tres átomos de hidrógeno con un protón y un electrón cada uno: el protio no tiene neutrones, al deuterio llega un neutrón y al tritio dos; su número de masa es 1, 2 y 3</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Los tres son hidrógeno porque tienen un protón. Al agregar
+        neutrones sólo cambia la masa: 1, 2 y 3 uma.</figcaption>
+    </figure>
+    <div class="comparison-grid">
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">Carbono-12</p>
+          <h3 class="comparison-item__title"><sup>12</sup><sub>6</sub>C</h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>6 protones, 6 electrones y 12 − 6 = <strong>6 neutrones</strong>. Es el más abundante.</p>
+        </div>
+      </article>
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">Carbono-14</p>
+          <h3 class="comparison-item__title"><sup>14</sup><sub>6</sub>C</h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>6 protones, 6 electrones y 14 − 6 = <strong>8 neutrones</strong>. Es radiactivo y sirve
+            para calcular la edad de restos antiguos.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="alotroposSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="alotroposSeccion">
+        <span class="lesson-section__kicker">Alótropos</span> Mismo elemento, distinto acomodo
+      </h2>
+    </header>
+    <p class="section-intro">Los alótropos son formas de un mismo elemento, en el mismo estado de
+      agregación, cuyos átomos están acomodados de manera distinta. Por eso tienen propiedades distintas.</p>
+    <figure class="atom-figure atom-figure--wide">
+      <svg class="escena escena--alotropos" data-escena-atomo="alotropos" viewBox="0 0 360 194" role="img" aria-labelledby="alotroposTitle">
+        <title id="alotroposTitle">Dos modelos de átomos de carbono girando: el grafito, formado por capas de hexágonos unidas débilmente, y el diamante, una red rígida en la que cada átomo se une a otros cuatro</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Grafito y diamante son sólo carbono. En el grafito las capas
+        se deslizan: por eso es suave y sirve para la punta de los lápices. En el diamante cada átomo se
+        une a otros cuatro: por eso es el material natural más duro.</figcaption>
+    </figure>
+    <div class="molecule-pair" role="group" aria-label="Oxígeno y ozono">
+      <figure class="molecule-pair__item">
+        <svg class="escena molecule-pair__svg" viewBox="0 0 120 70" role="img" aria-label="Molécula de oxígeno: dos átomos de oxígeno unidos">
+          <g transform="translate(44 36)"><circle r="15" class="escena__atomo escena__atomo--o"/><ellipse cx="-4.8" cy="-5.4" rx="5.4" ry="3.9" class="escena__reflejo-esfera"/><text y="5.4" class="escena__simbolo">O</text></g>
+          <g transform="translate(76 36)"><circle r="15" class="escena__atomo escena__atomo--o"/><ellipse cx="-4.8" cy="-5.4" rx="5.4" ry="3.9" class="escena__reflejo-esfera"/><text y="5.4" class="escena__simbolo">O</text></g>
+        </svg>
+        <figcaption><strong>O<sub>2</sub> · oxígeno</strong> El que respiramos.</figcaption>
+      </figure>
+      <figure class="molecule-pair__item">
+        <svg class="escena molecule-pair__svg" viewBox="0 0 120 70" role="img" aria-label="Molécula de ozono: tres átomos de oxígeno unidos en forma de ángulo">
+          <g transform="translate(34 46)"><circle r="15" class="escena__atomo escena__atomo--o"/><ellipse cx="-4.8" cy="-5.4" rx="5.4" ry="3.9" class="escena__reflejo-esfera"/><text y="5.4" class="escena__simbolo">O</text></g>
+          <g transform="translate(86 46)"><circle r="15" class="escena__atomo escena__atomo--o"/><ellipse cx="-4.8" cy="-5.4" rx="5.4" ry="3.9" class="escena__reflejo-esfera"/><text y="5.4" class="escena__simbolo">O</text></g>
+          <g transform="translate(60 26)"><circle r="15" class="escena__atomo escena__atomo--o"/><ellipse cx="-4.8" cy="-5.4" rx="5.4" ry="3.9" class="escena__reflejo-esfera"/><text y="5.4" class="escena__simbolo">O</text></g>
+        </svg>
+        <figcaption><strong>O<sub>3</sub> · ozono</strong> Forma una capa en la atmósfera que nos protege de
+          la radiación ultravioleta del Sol.</figcaption>
+      </figure>
+    </div>
+    <p class="editorial-note">O<sub>2</sub> y O<sub>3</sub> son <strong>moléculas</strong>: grupos de átomos
+      unidos. Una molécula puede ser de un elemento, como O<sub>2</sub>, o de un compuesto, como
+      H<sub>2</sub>O o CO<sub>2</sub>.</p>
+  </section>
+
+  <section aria-labelledby="ionesSeccion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ionesSeccion">
+        <span class="lesson-section__kicker">Iones</span> Mismo elemento, distinta carga
+      </h2>
+    </header>
+    <div class="comparison-grid">
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">Perdió electrones</p>
+          <h3 class="comparison-item__title"><em>Catión</em> · carga positiva</h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>Le quedan más protones que electrones.</p>
+          <ul class="example-list"><li>H<sup>+</sup></li><li>Fe<sup>2+</sup></li><li>Ca<sup>2+</sup></li><li>Al<sup>3+</sup></li></ul>
+        </div>
+      </article>
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">Ganó electrones</p>
+          <h3 class="comparison-item__title"><em>Anión</em> · carga negativa</h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>Tiene más electrones que protones.</p>
+          <ul class="example-list"><li>Cl<sup>−</sup></li><li>O<sup>2−</sup></li><li>N<sup>3−</sup></li></ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="noConfundir">
+    <header class="section-header">
+      <h2 class="section-header__title" id="noConfundir">
+        <span class="lesson-section__kicker">Compara</span> No los confundas
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="noConfundir" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Qué cambia y qué se conserva en isótopos, iones y alótropos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Son…</th>
+            <th scope="col">Qué cambia</th>
+            <th scope="col">Qué se conserva</th>
+            <th scope="col">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Isótopos</th>
+            <td>Los neutrones y, con ellos, la masa (A)</td>
+            <td>Protones y electrones</td>
+            <td><sup>12</sup>C y <sup>14</sup>C</td>
+          </tr>
+          <tr>
+            <th scope="row">Iones</th>
+            <td>Los electrones y, con ellos, la carga</td>
+            <td>Protones y neutrones</td>
+            <td>Na y Na<sup>+</sup></td>
+          </tr>
+          <tr>
+            <th scope="row">Alótropos</th>
+            <td>El acomodo de los átomos</td>
+            <td>El elemento y su estado</td>
+            <td>Grafito y diamante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">En los tres casos los protones no cambian: por eso sigue siendo el mismo
+      elemento.</p>
+  </section>
+
+  <section aria-labelledby="practicaIsotopos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaIsotopos">
+        <span class="lesson-section__kicker">Practica</span> Distingue y calcula
+      </h2>
+      <span class="section-header__count">10 situaciones</span>
+    </header>
+    <p class="section-intro">Primero decide qué son los pares de la izquierda; después calcula
+      neutrones. Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <form data-practice-form autocomplete="off">
+      <h3 class="practice-group__title">¿Isótopos, iones o alótropos?</h3>
+      <div class="exercise-list" data-isotopos-choices></div>
+      <h3 class="practice-group__title">¿Cuántos neutrones tiene?</h3>
+      <div class="exercise-list" data-isotopos-numbers></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las situaciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./numeros-cuanticos.html">← Números cuánticos</a>
+    <a href="./index.html">Índice de Química</a>
+    <a href="./mol-masa-molar.html">Siguiente: mol →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

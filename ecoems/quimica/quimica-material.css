@@ -4276,3 +4276,349 @@ select.particle-row__input {
   letter-spacing: 0;
   text-transform: none;
 }
+
+/* ============================================================
+   Números cuánticos
+   ============================================================ */
+.quantum-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-5);
+  margin: var(--space-5) 0 var(--space-6);
+}
+
+.quantum-card {
+  padding-left: var(--space-4);
+  border-left: var(--border-thick) solid var(--color-border-strong);
+}
+
+.quantum-card__symbol {
+  color: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 2.6rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.quantum-card__name {
+  margin-top: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+}
+
+.quantum-card__text {
+  margin-top: var(--space-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-relaxed);
+}
+
+.quantum-card__values {
+  margin-top: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+}
+
+.escena__caja {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.3;
+}
+.escena__caja.es-ultimo { stroke: var(--color-accent); stroke-width: 2; }
+.escena__espin {
+  stroke: var(--color-text-primary);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.es-ultimo > .escena__espin { stroke: var(--color-accent); }
+.escena .escena__subnivel--grande { font-size: 20px; }
+.escena .escena__subnivel--gas { fill: var(--color-text-primary); font-weight: var(--font-weight-medium); }
+
+.quantum-tool .diagonal-tool__facts dd {
+  font-family: var(--font-family-mono);
+}
+
+.config-card__given {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+}
+
+.config-card__row--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 44rem) {
+  .quantum-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 21rem) {
+  .config-card__row--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Los símbolos de los números cuánticos y de los subniveles van en minúscula. */
+.reference-table--simbolos th {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.config-card__label.config-card__label--simbolo {
+  color: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Isótopos, iones y alótropos */
+.escena { --e-carbono: var(--ink-700); --e-enlace-red: var(--crema-700); }
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena {
+    --e-carbono: color-mix(in oklab, var(--e-ink) 70%, var(--e-paper));
+    --e-enlace-red: color-mix(in oklab, var(--e-ink) 38%, var(--e-paper));
+  }
+
+  [data-theme="dark"] .escena {
+    --e-carbono: color-mix(in oklab, var(--e-ink) 78%, var(--e-paper));
+    --e-enlace-red: color-mix(in oklab, var(--e-ink) 42%, var(--e-paper));
+  }
+}
+
+.escena__carbono { fill: var(--e-carbono); }
+.escena__enlace-red {
+  stroke: var(--e-enlace-red);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+.escena__enlace-debil {
+  stroke: var(--e-enlace-red);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.molecule-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-6);
+  max-width: 38rem;
+  margin: var(--space-6) auto var(--space-4);
+}
+
+.molecule-pair__item {
+  margin: 0;
+  text-align: center;
+}
+
+.molecule-pair__svg {
+  max-width: 9rem;
+  margin-inline: auto;
+}
+
+.molecule-pair__item figcaption {
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.molecule-pair__item figcaption strong {
+  display: block;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+}
+
+.exercise__input {
+  max-width: 10rem;
+  font-family: var(--font-family-mono);
+}
+
+/* Mol y masa molar */
+.escena {
+  --e-balanza: var(--crema-700);
+  --e-sal: var(--crema-100);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena {
+    --e-balanza: color-mix(in oklab, var(--e-ink) 40%, var(--e-paper));
+    --e-sal: color-mix(in oklab, var(--e-ink) 4%, var(--e-paper));
+  }
+
+  [data-theme="dark"] .escena {
+    --e-balanza: color-mix(in oklab, var(--e-ink) 44%, var(--e-paper));
+    --e-sal: color-mix(in oklab, var(--e-ink) 88%, var(--e-paper));
+  }
+}
+
+.escena__balanza-base,
+.escena__balanza-poste,
+.escena__balanza-brazo { fill: var(--e-balanza); }
+.escena__balanza-eje { fill: var(--e-tapa); }
+.escena__balanza-hilo {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+}
+.escena__balanza-platillo { fill: var(--e-metal); }
+.escena__sal {
+  fill: var(--e-sal);
+  stroke: var(--color-border-strong);
+  stroke-width: .8;
+}
+.escena__lupa-burbuja {
+  fill: var(--e-paper);
+  stroke: var(--color-border-strong);
+  stroke-width: 1.3;
+}
+
+.molar-calc {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 34rem;
+  margin-top: var(--space-6);
+}
+
+.molar-calc__input {
+  max-width: 18rem;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-18);
+}
+
+.molar-calc__examples {
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+}
+
+.molar-calc__examples .practice-reset {
+  margin-left: var(--space-2);
+}
+
+.molar-calc__status {
+  min-height: 1.3em;
+  color: var(--color-accent);
+  font-size: var(--font-size-13);
+}
+
+.molar-calc__table td,
+.molar-calc__table tfoot th {
+  font-family: var(--font-family-mono);
+}
+
+.molar-calc__table tfoot td {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.mass-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+  gap: var(--space-2) var(--space-4);
+  max-width: 40rem;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+}
+
+.mass-list span {
+  display: inline-block;
+  min-width: 1.6em;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16, 1rem);
+}
+
+.mol-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.mol-map__box {
+  display: grid;
+  gap: 2px;
+  padding: var(--space-3) var(--space-2);
+  border: var(--border-thin) solid var(--color-border-strong);
+  text-align: center;
+}
+
+.mol-map__box strong {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+}
+
+.mol-map__box span {
+  color: var(--color-text-meta);
+  font-size: var(--font-size-12);
+}
+
+.mol-map__box--center {
+  border-color: var(--color-accent);
+}
+
+.mol-map__box--center strong {
+  color: var(--color-accent);
+}
+
+.mol-map__arrows {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  text-align: center;
+}
+
+.mol-map__arrows b {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+}
+
+.exercise__input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.exercise__unit {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+}
+
+@media (max-width: 44rem) {
+  .mol-map {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 20rem;
+  }
+
+  .mol-map__arrows b {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+
+  .molecule-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* La tabla de la calculadora es corta: no necesita desplazarse de lado. */
+.reference-table.molar-calc__table {
+  min-width: 0;
+}

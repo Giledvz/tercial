@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Números cuánticos · Química ECOEMS · Tercial</title>
+<meta name="description" content="Los cuatro números cuánticos, el diagrama de orbitales con la regla de Hund y cómo encontrar los números del último electrón.">
+<meta name="tercial:resource-id" content="ecoems-quimica-numeros-cuanticos">
+<meta name="tercial:resource-title" content="Números cuánticos">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda2">
+<link rel="stylesheet" href="./selector-elemento.css?v=20261008-tanda2">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-atomo.js?v=20261008-tanda2"></script>
+<script defer src="./practica-quimica.js?v=20261008-tanda2"></script>
+<script defer src="./cuanticos-practica.js?v=20261008-tanda2"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 4 de 11 · Para profundizar</p>
+    <h1 class="hero__title">Números <em>cuánticos</em></h1>
+    <p class="hero__lede">La configuración dice en qué subnivel está cada electrón. Los números
+      cuánticos son su dirección completa: el nivel, el subnivel, el orbital y hacia dónde gira.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=números%20cuánticos#courseIndex">números cuánticos</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=orbital#courseIndex">orbital</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=espín#courseIndex">espín</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaCuanticos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaCuanticos">
+        <span class="lesson-section__kicker">Idea central</span> Cuatro números, una dirección
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Cada electrón tiene su <em>propia</em> dirección</h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Imagina un hotel: para encontrar a un huésped necesitas el piso, el tipo de habitación, el
+          número de cuarto y la cama. Con los electrones pasa algo parecido: cuatro números cuánticos
+          dicen el nivel, el subnivel, el orbital y el giro de cada uno.</p>
+        <p>En un mismo átomo no hay dos electrones con los cuatro números iguales: en cada orbital
+          caben sólo dos, y giran en sentidos contrarios.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 14 -->
+      <footer class="source-line">
+        <span>Lectura · 9 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="cuatroNumeros">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuatroNumeros">
+        <span class="lesson-section__kicker">Distingue</span> Qué dice cada número
+      </h2>
+      <span class="section-header__count">n · l · m · s</span>
+    </header>
+    <div class="quantum-grid">
+      <article class="quantum-card">
+        <p class="quantum-card__symbol">n</p>
+        <h3 class="quantum-card__name">Principal</h3>
+        <p class="quantum-card__text">El nivel de energía. Es el mismo número que el periodo.</p>
+        <p class="quantum-card__values">1, 2, 3, … 7</p>
+      </article>
+      <article class="quantum-card">
+        <p class="quantum-card__symbol">l</p>
+        <h3 class="quantum-card__name">Secundario</h3>
+        <p class="quantum-card__text">El subnivel, es decir, el tipo de orbital.</p>
+        <p class="quantum-card__values">s = 0 · p = 1 · d = 2 · f = 3</p>
+      </article>
+      <article class="quantum-card">
+        <p class="quantum-card__symbol">m</p>
+        <h3 class="quantum-card__name">Magnético</h3>
+        <p class="quantum-card__text">El orbital dentro del subnivel: cada caja del diagrama.</p>
+        <p class="quantum-card__values">de −l a +l · en p: −1, 0, +1</p>
+      </article>
+      <article class="quantum-card">
+        <p class="quantum-card__symbol">s</p>
+        <h3 class="quantum-card__name">Espín</h3>
+        <p class="quantum-card__text">El giro del electrón: hacia arriba o hacia abajo.</p>
+        <p class="quantum-card__values">+½ (↑) · −½ (↓)</p>
+      </article>
+    </div>
+    <div class="reference-table-wrap" role="region" aria-labelledby="cuatroNumeros" tabindex="0">
+      <table class="reference-table reference-table--simbolos">
+        <caption class="visually-hidden">Valores del número magnético en cada subnivel</caption>
+        <thead>
+          <tr>
+            <th scope="col">Subnivel</th>
+            <th scope="col">l</th>
+            <th scope="col">Orbitales (cajas)</th>
+            <th scope="col">Valores de m</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">s</th><td>0</td><td>1</td><td>0</td></tr>
+          <tr><th scope="row">p</th><td>1</td><td>3</td><td>−1, 0, +1</td></tr>
+          <tr><th scope="row">d</th><td>2</td><td>5</td><td>−2, −1, 0, +1, +2</td></tr>
+          <tr><th scope="row">f</th><td>3</td><td>7</td><td>−3, −2, −1, 0, +1, +2, +3</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="diagramaOrbitales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="diagramaOrbitales">
+        <span class="lesson-section__kicker">Observa</span> El diagrama de orbitales
+      </h2>
+    </header>
+    <p class="section-intro">Cada caja es un orbital y cada flecha, un electrón. Las cajas se llenan
+      con dos reglas: primero entra un electrón en cada caja, todos girando hacia arriba (regla de
+      Hund); después se aparean, cada uno con giro contrario, porque en una caja caben sólo dos
+      (principio de exclusión de Pauli).</p>
+    <figure class="atom-figure">
+      <svg class="escena escena--orbitales" data-escena-atomo="orbitales" viewBox="0 0 360 130" role="img" aria-labelledby="orbitalesTitle">
+        <title id="orbitalesTitle">Seis electrones entran uno por uno al subnivel 2p: los tres primeros ocupan cada caja girando hacia arriba y los tres siguientes se aparean girando hacia abajo; se muestran los números m y s del último en llegar</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Las cajas se cuentan de izquierda a derecha: m = −1, 0,
+        +1. El electrón que llega solo a su caja tiene s = +½; el que completa el par, s = −½.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="ultimoElectron">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ultimoElectron">
+        <span class="lesson-section__kicker">Encuentra</span> Los números del último electrón
+      </h2>
+    </header>
+    <p class="section-intro">En los ejercicios se piden los números cuánticos del último electrón que
+      entra, llamado <strong>electrón diferencial</strong>. Elige un elemento: verás las cajas que
+      quedan después del gas noble y cómo se llenan.</p>
+    <div class="diagonal-tool quantum-tool" data-cajas>
+      <div class="diagonal-tool__picker">
+        <label class="diagonal-tool__label" for="cajasElemento">Elemento</label>
+        <div class="diagonal-tool__select-row">
+          <button class="atom-builder__step" type="button" data-cajas-step="-1" aria-label="Elemento anterior">−</button>
+          <div class="element-picker" data-element-picker>
+            <button class="select element-picker__button" id="cajasElemento" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cajasLista" data-picker-button>49 · In · Indio</button>
+            <div class="element-picker__panel" data-picker-panel hidden>
+              <input class="input element-picker__search" type="text" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="cajasLista" aria-label="Busca un elemento por nombre, símbolo o número" placeholder="Busca: indio, In o 49" autocomplete="off" autocapitalize="off" spellcheck="false" data-picker-search>
+              <ul class="element-picker__list" id="cajasLista" role="listbox" aria-label="Elementos de la tabla periódica" tabindex="-1" data-picker-list></ul>
+              <p class="element-picker__empty" data-picker-empty hidden>No hay elementos con ese nombre.</p>
+            </div>
+          </div>
+          <button class="atom-builder__step" type="button" data-cajas-step="1" aria-label="Elemento siguiente">+</button>
+        </div>
+        <button class="practice-action diagonal-tool__replay" type="button" data-cajas-replay>Repetir la animación</button>
+      </div>
+      <div class="diagonal-tool__body">
+        <figure class="diagonal-tool__figure">
+          <svg class="escena escena--cajas" data-escena-atomo="cajas" viewBox="0 0 340 216" role="img" aria-labelledby="cajasTitle">
+            <title id="cajasTitle">Diagrama de cajas de los subniveles que siguen al gas noble del elemento elegido; los electrones se acomodan con la regla de Hund y el último queda marcado</title>
+          </svg>
+        </figure>
+        <div class="diagonal-tool__result">
+          <p class="diagonal-tool__kicker">Configuración abreviada</p>
+          <p class="diagonal-tool__config" data-cajas-config></p>
+          <dl class="diagonal-tool__facts">
+            <div><dt>n · principal</dt><dd data-cajas-n></dd></div>
+            <div><dt>l · secundario</dt><dd data-cajas-l></dd></div>
+            <div><dt>m · magnético</dt><dd data-cajas-m></dd></div>
+            <div><dt>s · espín</dt><dd data-cajas-s></dd></div>
+          </dl>
+          <p class="diagonal-tool__note" data-cajas-why></p>
+          <p class="visually-hidden" data-cajas-live aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploCuanticos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploCuanticos">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> El último electrón del indio
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Configura</span><p><sup>49</sup>In: [Kr] 5s<sup>2</sup>
+        4d<sup>10</sup> <strong>5p<sup>1</sup></strong>. El último electrón entró en 5p.</p></li>
+      <li><span class="worked-steps__label">n y l</span><p>5p está en el nivel 5 y es un subnivel p:
+        <strong>n = 5</strong> y <strong>l = 1</strong>.</p></li>
+      <li><span class="worked-steps__label">Dibuja</span><p>5p tiene 3 cajas (m = −1, 0, +1). El único
+        electrón entra en la primera: <strong>m = −1</strong>.</p></li>
+      <li><span class="worked-steps__label">Gira</span><p>Está solo en su caja y apunta hacia arriba:
+        <strong>s = +½</strong>.</p></li>
+    </ol>
+    <p class="editorial-note">Algunos libros escriben −½ para la primera flecha y +½ para la segunda.
+      Aquí seguimos la convención de la fuente: la flecha hacia arriba vale +½.</p>
+  </section>
+
+  <section aria-labelledby="practicaCuanticos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaCuanticos">
+        <span class="lesson-section__kicker">Practica</span> Los cuatro números del último electrón
+      </h2>
+      <span class="section-header__count">10 elementos</span>
+    </header>
+    <p class="section-intro">Para cada elemento, dibuja en tu cuaderno las cajas de su último subnivel
+      y elige los cuatro números cuánticos de su último electrón. Comprueba cada tanda.</p>
+    <!-- Ejercicios: QUA-001 · p. 14 (Ar, P, O y Se), más seis elementos para practicar s, p y d -->
+    <form data-practice-form autocomplete="off">
+      <ol class="config-sheet" data-cuanticos-cards></ol>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los elementos de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./configuracion-electronica.html">← Configuración</a>
+    <a href="./index.html">Índice de Química</a>
+    <a href="./isotopos.html">Siguiente: isótopos →</a>
+  </nav>
+</footer>
+
+</body>
+</html>
