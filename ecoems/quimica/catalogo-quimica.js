@@ -232,7 +232,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['metales', 'no metales', 'metaloides', 'clasificación'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './metales-no-metales.html'
   },
   {
     id: 'bloques-periodicos',

@@ -4628,7 +4628,253 @@ select.particle-row__input {
   }
 }
 
-/* La tabla de la calculadora es corta: no necesita desplazarse de lado. */
-.reference-table.molar-calc__table {
+/* Tablas cortas que caben en el celular: no necesitan desplazarse de lado. */
+.reference-table.molar-calc__table,
+.reference-table.reference-table--ajustada {
   min-width: 0;
+}
+
+/* ---------- Tema 2 · tabla periódica en escena (escenas-tabla.js) ----------
+   Metales en gris metálico, metaloides en mostaza y no metales en verde
+   azulado; el relleno usa transparencia para que los símbolos se lean en los
+   dos temas. El terracota queda para la escalera y lo que se señala. */
+.tabla-figure {
+  margin: var(--space-6) 0 0;
+}
+
+.tabla-figure__scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.tabla-figure__scroll:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* En pantallas angostas la tabla conserva un tamaño legible y se desplaza. */
+.tabla-figure__scroll > .escena {
+  min-width: 34rem;
+}
+
+.escena__celda,
+.escena__celda-hueco {
+  stroke: var(--color-border-strong);
+  stroke-width: .6;
+}
+
+.escena__celda-hueco {
+  stroke-dasharray: 1.6 1.6;
+}
+
+.escena__celda-relleno--metal { fill: var(--e-ink); fill-opacity: .15; }
+.escena__celda-relleno--metaloide { fill: var(--cat-amber); fill-opacity: .6; }
+.escena__celda-relleno--no-metal { fill: var(--cat-teal); fill-opacity: .5; }
+
+.escena__celda-simbolo {
+  fill: var(--e-ink);
+  font-size: 8px;
+  font-weight: var(--font-weight-medium);
+}
+
+.escena__tabla-grupo,
+.escena__tabla-periodo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 5.4px;
+}
+
+.escena__tabla-periodo {
+  font-size: 6px;
+}
+
+.escena__escalera {
+  stroke: var(--color-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.escena__celda-aro {
+  stroke: var(--color-accent);
+  stroke-width: 1.6;
+}
+
+.escena__leyenda {
+  fill: var(--e-ink);
+  font-size: 7.4px;
+}
+
+.escena__nota-tabla {
+  fill: var(--color-text-secondary);
+  font-size: 7px;
+}
+
+.escena__nota-tabla--acento {
+  fill: var(--e-ink);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Martillo y circuito */
+.escena--propiedad {
+  --e-azufre: var(--crema-300);
+  --e-azufre-borde: var(--crema-600);
+  --e-mango: var(--crema-700);
+  --e-martillo: var(--ink-700);
+}
+
+[data-theme="dark"] .escena--propiedad {
+  --e-azufre: var(--crema-800);
+  --e-mango: var(--crema-800);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  [data-theme="dark"] .escena--propiedad {
+    --e-azufre: color-mix(in oklab, var(--e-ink) 72%, var(--e-paper));
+    --e-azufre-borde: color-mix(in oklab, var(--e-ink) 40%, var(--e-paper));
+    --e-mango: color-mix(in oklab, var(--e-ink) 38%, var(--e-paper));
+    --e-martillo: color-mix(in oklab, var(--e-ink) 80%, var(--e-paper));
+  }
+}
+
+.escena__divisor {
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.escena__metal { fill: var(--e-metal); }
+.escena__metal-reflejo { fill: var(--e-metal-brillo); }
+
+.escena__azufre {
+  fill: var(--e-azufre);
+  stroke: var(--e-azufre-borde);
+  stroke-width: .8;
+  stroke-linejoin: round;
+}
+
+.escena__mango { fill: var(--e-mango); }
+.escena__martillo { fill: var(--e-martillo); }
+.escena__martillo-brillo { fill: var(--e-paper); opacity: .22; }
+
+.escena__chispa {
+  stroke: var(--color-accent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.escena__resultado {
+  fill: var(--e-ink);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+}
+
+.escena__resultado--apagado {
+  fill: var(--color-text-meta);
+}
+
+.escena__cable {
+  stroke: var(--e-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .55;
+}
+
+.escena__pila { fill: var(--e-martillo); }
+.escena__pila-polo { fill: var(--e-metal); }
+.escena__pinza { fill: var(--e-metal-sombra); }
+
+.escena__foco-vidrio {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+}
+
+.escena__filamento {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.escena__filamento.es-encendido { stroke: var(--color-accent); }
+.escena__foco-luz { fill: var(--color-accent); fill-opacity: .18; }
+
+.escena__rayo {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* Rutas con oxígeno: metal → óxido básico → hidróxido; no metal → óxido
+   ácido → oxiácido. Los pasos aparecen en orden la primera vez que se ven. */
+.rutas-oxidos {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.ruta {
+  padding-top: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+.ruta__titulo {
+  margin: 0;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.ruta__pasos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruta__paso {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.ruta__formula {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  line-height: 1.1;
+}
+
+.ruta__nombre {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+}
+
+.ruta__flecha {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+  white-space: nowrap;
+}
+
+.rutas-oxidos.is-armed .ruta__paso,
+.rutas-oxidos.is-armed .ruta__flecha {
+  opacity: 0;
+  transition: opacity .7s var(--motion-ease-standard);
+  transition-delay: calc(var(--i, 0) * 420ms);
+}
+
+.rutas-oxidos.is-armed.is-visible .ruta__paso,
+.rutas-oxidos.is-armed.is-visible .ruta__flecha {
+  opacity: 1;
+}
+
+.rutas-oxidos + .editorial-note {
+  margin-top: var(--space-6);
 }

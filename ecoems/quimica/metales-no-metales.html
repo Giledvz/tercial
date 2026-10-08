@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Metales, no metales y metaloides · Química ECOEMS · Tercial</title>
+<meta name="description" content="Clasifica los elementos en metales, no metales y metaloides por su lugar en la tabla periódica y compara sus propiedades físicas y químicas.">
+<meta name="tercial:resource-id" content="ecoems-quimica-metales-no-metales">
+<meta name="tercial:resource-title" content="Metales, no metales y metaloides">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./metales-practica.js?v=20261008-tanda3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 8 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Metales, no metales y <em>metaloides</em></h1>
+    <p class="hero__lede">Más de 90 de los 118 elementos son metales. Una línea en escalera los separa
+      de los no metales, y pegados a ella están los metaloides, que tienen un poco de los dos.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=metales#courseIndex">metales</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=metaloides#courseIndex">metaloides</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=clasificación#courseIndex">clasificación</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaMetales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaMetales">
+        <span class="lesson-section__kicker">Idea central</span> El lugar en la tabla dice qué es
+      </h2>
+    </header>
+    <figure class="tabla-figure">
+      <div class="tabla-figure__scroll" role="region" aria-label="Tabla periódica: metales, no metales y metaloides" tabindex="0">
+        <svg class="escena escena--tabla" data-escena-tabla="mapa" viewBox="0 0 380 210" role="img" aria-labelledby="mapaTitle">
+          <title id="mapaTitle">Tabla periódica coloreada: los metales ocupan la izquierda, el centro y las dos filas de abajo; los no metales, la esquina de arriba a la derecha y el hidrógeno; los seis metaloides, boro, silicio, germanio, arsénico, antimonio y telurio, están junto a una línea en escalera que va del boro al astato</title>
+        </svg>
+      </div>
+      <figcaption class="atom-figure__caption">La escalera va del boro al astato. A su izquierda, los
+        metales; a su derecha, los no metales; pegados a ella, los metaloides. En el celular, desliza la
+        tabla de lado.</figcaption>
+    </figure>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Izquierda, derecha y <em>la escalera</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Los <strong>metales</strong> ocupan la izquierda y el centro de la tabla, y también las dos
+          filas de abajo (lantánidos y actínidos). Los <strong>no metales</strong> están en la esquina de
+          arriba a la derecha, junto con el hidrógeno.</p>
+        <p>Los <strong>metaloides</strong> son seis: boro, silicio, germanio, arsénico, antimonio y
+          telurio. Están pegados a la escalera y tienen propiedades intermedias.</p>
+        <p>Ojo con el hidrógeno: está en el grupo IA porque tiene 1 electrón de valencia, como los
+          metales alcalinos, pero es un gas no metálico.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 17 (la fuente no describe los metaloides: se agregan) -->
+      <footer class="source-line">
+        <span>Lectura · 8 min</span>
+      </footer>
+    </article>
+    <p class="editorial-note">Los elementos de la última fila, del 104 en adelante, se fabrican en
+      laboratorios y duran muy poco; se clasifican por su lugar en la tabla, pero casi no se conocen sus
+      propiedades.</p>
+  </section>
+
+  <section aria-labelledby="fisicasMetales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="fisicasMetales">
+        <span class="lesson-section__kicker">Observa</span> Propiedades físicas
+      </h2>
+    </header>
+    <p class="section-intro">Las propiedades físicas se observan sin que la sustancia cambie: el brillo,
+      el estado, si se deja doblar y si conduce el calor y la electricidad.</p>
+    <figure class="atom-figure">
+      <svg class="escena escena--propiedad" data-escena-tabla="martillo" viewBox="0 0 360 166" role="img" aria-labelledby="martilloTitle">
+        <title id="martilloTitle">Un martillo golpea tres veces un bloque de cobre, que se aplana en una lámina cada vez más delgada; otro martillo golpea una vez un trozo de azufre, que se rompe en pedazos</title>
+      </svg>
+      <figcaption class="atom-figure__caption">El cobre se aplana sin romperse: es maleable (y dúctil:
+        también se estira en hilos). El azufre, de un golpe, se rompe: es quebradizo.</figcaption>
+    </figure>
+    <figure class="atom-figure">
+      <svg class="escena escena--propiedad" data-escena-tabla="circuito" viewBox="0 0 360 172" role="img" aria-labelledby="circuitoTitle">
+        <title id="circuitoTitle">Un circuito con una pila y un foco: con una barra de cobre, los electrones avanzan por el cable y el foco enciende; con un trozo de azufre, los electrones no avanzan y el foco queda apagado</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Con el cobre, el circuito se cierra y el foco enciende. Con
+        el azufre no pasa la corriente: es un aislante.</figcaption>
+    </figure>
+    <div class="reference-table-wrap" role="region" aria-labelledby="fisicasMetales" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Propiedades físicas de los metales y de los no metales</caption>
+        <thead>
+          <tr>
+            <th scope="col">Propiedad</th>
+            <th scope="col">Metales</th>
+            <th scope="col">No metales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Brillo</th>
+            <td>Tienen brillo metálico</td>
+            <td>No tienen brillo metálico</td>
+          </tr>
+          <tr>
+            <th scope="row">Estado a temperatura ambiente</th>
+            <td>Sólidos, excepto el mercurio, que es líquido</td>
+            <td>Hay sólidos (carbono, azufre), un líquido (bromo) y muchos gases (oxígeno, nitrógeno, cloro)</td>
+          </tr>
+          <tr>
+            <th scope="row">Al golpearlos o estirarlos</th>
+            <td>Maleables (forman láminas) y dúctiles (forman hilos)</td>
+            <td>Los sólidos son quebradizos: se rompen</td>
+          </tr>
+          <tr>
+            <th scope="row">Calor y electricidad</th>
+            <td>Buenos conductores</td>
+            <td>Malos conductores; el grafito es la excepción</td>
+          </tr>
+          <tr>
+            <th scope="row">Dureza</th>
+            <td>Casi todos son duros; el sodio es tan blando que se corta con cuchillo</td>
+            <td>Los sólidos se rayan con facilidad; el diamante es la gran excepción</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Los <strong>metaloides</strong> quedan en medio: el silicio brilla como un
+      metal, pero es quebradizo y conduce la electricidad sólo un poco. Por eso es un
+      <em>semiconductor</em> y con él se fabrican los chips.</p>
+  </section>
+
+  <section aria-labelledby="quimicasMetales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="quimicasMetales">
+        <span class="lesson-section__kicker">Compara</span> Propiedades químicas
+      </h2>
+    </header>
+    <p class="section-intro">Las propiedades químicas aparecen cuando la sustancia reacciona y se
+      transforma en otra.</p>
+    <div class="comparison-grid">
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">Metales · se oxidan</p>
+          <h3 class="comparison-item__title">Pierden electrones: <em>cationes</em></h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>Al reaccionar pierden sus electrones de valencia y quedan con carga positiva.</p>
+          <ul class="example-list"><li>Na<sup>+</sup></li><li>Mg<sup>2+</sup></li><li>Ca<sup>2+</sup></li></ul>
+        </div>
+      </article>
+      <article class="comparison-item">
+        <header class="comparison-item__header">
+          <p class="comparison-item__kicker">No metales · se reducen</p>
+          <h3 class="comparison-item__title">Ganan electrones: <em>aniones</em></h3>
+        </header>
+        <div class="comparison-item__body">
+          <p>Al reaccionar ganan electrones y quedan con carga negativa.</p>
+          <ul class="example-list"><li>Cl<sup>−</sup></li><li>O<sup>2−</sup></li><li>N<sup>3−</sup></li></ul>
+        </div>
+      </article>
+    </div>
+    <div class="rutas-oxidos" data-rutas>
+      <div class="ruta">
+        <p class="ruta__titulo">Metal con oxígeno</p>
+        <ol class="ruta__pasos" aria-label="Del magnesio a un hidróxido">
+          <li class="ruta__paso" style="--i: 0"><span class="ruta__formula">2Mg + O<sub>2</sub></span><span class="ruta__nombre">metal + oxígeno</span></li>
+          <li class="ruta__flecha" style="--i: 1" aria-hidden="true">→</li>
+          <li class="ruta__paso" style="--i: 2"><span class="ruta__formula">2MgO</span><span class="ruta__nombre">óxido básico</span></li>
+          <li class="ruta__flecha" style="--i: 3">+ H<sub>2</sub>O →</li>
+          <li class="ruta__paso" style="--i: 4"><span class="ruta__formula">Mg(OH)<sub>2</sub></span><span class="ruta__nombre">hidróxido: una base</span></li>
+        </ol>
+      </div>
+      <div class="ruta">
+        <p class="ruta__titulo">No metal con oxígeno</p>
+        <ol class="ruta__pasos" aria-label="Del carbono a un oxiácido">
+          <li class="ruta__paso" style="--i: 0"><span class="ruta__formula">C + O<sub>2</sub></span><span class="ruta__nombre">no metal + oxígeno</span></li>
+          <li class="ruta__flecha" style="--i: 1" aria-hidden="true">→</li>
+          <li class="ruta__paso" style="--i: 2"><span class="ruta__formula">CO<sub>2</sub></span><span class="ruta__nombre">óxido ácido o anhídrido</span></li>
+          <li class="ruta__flecha" style="--i: 3">+ H<sub>2</sub>O →</li>
+          <li class="ruta__paso" style="--i: 4"><span class="ruta__formula">H<sub>2</sub>CO<sub>3</sub></span><span class="ruta__nombre">oxiácido: un ácido</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="editorial-note">El hidróxido de magnesio es la «leche de magnesia» de los antiácidos, y el
+      ácido carbónico se forma en los refrescos con gas. Además, muchos metales reaccionan con los ácidos
+      y liberan hidrógeno, como el zinc: Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub>. Los no metales,
+      por lo general, no.</p>
+  </section>
+
+  <section aria-labelledby="familiasA">
+    <header class="section-header">
+      <h2 class="section-header__title" id="familiasA">
+        <span class="lesson-section__kicker">Repasa</span> Las familias A tienen nombre
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="familiasA" tabindex="0">
+      <table class="reference-table reference-table--ajustada">
+        <caption class="visually-hidden">Nombre de cada familia A y sus elementos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Grupo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Elementos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">IA</th><td>Metales alcalinos</td><td>Li, Na, K, Rb, Cs, Fr</td></tr>
+          <tr><th scope="row">IIA</th><td>Metales alcalinotérreos</td><td>Be, Mg, Ca, Sr, Ba, Ra</td></tr>
+          <tr><th scope="row">IIIA</th><td>Familia del boro</td><td>B, Al, Ga, In, Tl</td></tr>
+          <tr><th scope="row">IVA</th><td>Familia del carbono</td><td>C, Si, Ge, Sn, Pb</td></tr>
+          <tr><th scope="row">VA</th><td>Familia del nitrógeno</td><td>N, P, As, Sb, Bi</td></tr>
+          <tr><th scope="row">VIA</th><td>Calcógenos o familia del oxígeno</td><td>O, S, Se, Te, Po</td></tr>
+          <tr><th scope="row">VIIA</th><td>Halógenos</td><td>F, Cl, Br, I, At</td></tr>
+          <tr><th scope="row">VIIIA</th><td>Gases nobles</td><td>He, Ne, Ar, Kr, Xe, Rn</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Las familias A son los <strong>elementos representativos</strong>; las
+      familias B, los <strong>elementos de transición</strong>; y los lantánidos y actínidos, los
+      <strong>elementos de transición interna</strong>. El hidrógeno va arriba del grupo IA, pero no es
+      un metal alcalino.</p>
+  </section>
+
+  <section aria-labelledby="practicaMetales">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaMetales">
+        <span class="lesson-section__kicker">Practica</span> ¿Metal, no metal o metaloide?
+      </h2>
+      <span class="section-header__count">10 situaciones</span>
+    </header>
+    <p class="section-intro">Primero clasifica cinco elementos por su lugar en la tabla; después,
+      cinco propiedades. Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <form data-practice-form autocomplete="off">
+      <h3 class="practice-group__title">¿Qué es este elemento?</h3>
+      <div class="exercise-list" data-metales-elementos></div>
+      <h3 class="practice-group__title">¿De quién es esta propiedad?</h3>
+      <div class="exercise-list" data-metales-propiedades></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-metales-no-metales.pdf?v=20261008-tanda3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las situaciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./tabla-periodica.html">← Tabla periódica</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

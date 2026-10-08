@@ -1,0 +1,305 @@
+/* ============================================================
+   tarea-print.css — tareas en PDF de Tercial
+   Piezas comunes sobre exam-print.css para las tareas que acompañan a
+   cada lección: renglón de nombre y fecha, recuadro de reglas, tabla para
+   llenar a mano, renglones para escribir, encabezado de las hojas
+   siguientes y la tabla periódica para colorear.
+   Se escriben pensando en el lápiz: filas altas y espacio de sobra.
+   Química usa terracota, el color de prepa.
+   ============================================================ */
+
+@page {
+  size: letter;
+  margin: 0.62in 0.8in 0.72in 0.8in;
+  background: var(--color-bg-page);
+}
+
+html,
+body,
+.exam-pdf { background-color: var(--color-bg-page); }
+
+.exam-pdf--quimica .exam-pdf__hero {
+  padding-top: 0.18in;
+  margin-bottom: 0.2in;
+  border-top-color: var(--accent-terracota);
+}
+
+.exam-pdf--quimica .exam-pdf__title { font-size: 30pt; }
+
+.exam-pdf--quimica .exam-pdf__title em,
+.exam-pdf--quimica .exam-pdf__exercise::before,
+.exam-pdf--quimica .exam-pdf__total-value { color: var(--accent-terracota); }
+
+.exam-pdf--quimica .exam-pdf__instructions {
+  margin-bottom: 0.2in;
+  border-left-color: var(--accent-terracota);
+}
+
+.exam-pdf__total {
+  margin-top: 0.2in;
+  padding-top: 8pt;
+}
+
+/* Nombre y fecha */
+.task-student {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 0.35in;
+  margin: -0.12in 0 0.24in;
+  color: var(--ink-500);
+  font-size: 9.5pt;
+}
+
+.task-student p {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8pt;
+  align-items: end;
+  margin: 0;
+}
+
+.task-student span {
+  display: block;
+  min-width: 0;
+  height: 0.18in;
+  border-bottom: 1px solid var(--ink-300);
+}
+
+/* Hojas siguientes: el título de la tarea y el número de página */
+.task-page-break {
+  padding-top: 0.08in;
+  page-break-before: always;
+}
+
+.task-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.28in;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--ink-300);
+}
+
+.task-page-heading strong {
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 18pt;
+  font-weight: var(--font-weight-medium);
+}
+
+.task-page-heading span {
+  color: var(--ink-300);
+  font-size: 9pt;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* La numeración sigue en la hoja siguiente: counter-reset con el último número. */
+.exam-pdf__exercises--sigue { counter-reset: none; }
+
+.task-exercises .exam-pdf__exercise {
+  margin-bottom: 0.26in;
+}
+
+/* Tabla para completar a mano: filas altas, como en el cuaderno */
+.task-table {
+  width: 100%;
+  margin-top: 8pt;
+  border-collapse: collapse;
+  table-layout: fixed;
+  page-break-inside: avoid;
+}
+
+.task-table th,
+.task-table td {
+  height: 0.36in;
+  padding: 0 6pt;
+  border: 1px solid var(--ink-300);
+  color: var(--ink-900);
+  font-size: 11pt;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.task-table thead th {
+  height: 0.32in;
+  color: var(--ink-500);
+  font-size: 8.5pt;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: var(--crema-300);
+}
+
+.task-table tbody th {
+  font-family: var(--font-family-display);
+  font-size: 12.5pt;
+  font-weight: var(--font-weight-regular);
+}
+
+.task-table td.is-blank { background: #fbf8f2; }
+
+/* Afirmaciones con una casilla para escribir la respuesta corta (M, NM…) */
+.task-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6pt 0.3in;
+  margin: 8pt 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+.task-checks li {
+  display: grid;
+  grid-template-columns: 0.48in minmax(0, 1fr);
+  gap: 8pt;
+  align-items: center;
+}
+
+.task-box {
+  display: block;
+  height: 0.28in;
+  border: 1px solid var(--ink-300);
+  background: #fbf8f2;
+}
+
+/* Renglón para escribir una fórmula o una palabra dentro del texto */
+.task-blank {
+  display: inline-block;
+  min-width: 1.15in;
+  margin: 0 3pt;
+  border-bottom: 1px solid var(--ink-300);
+  vertical-align: -3pt;
+  height: 0.26in;
+}
+
+/* Renglones para una respuesta escrita */
+.task-lines {
+  margin-top: 6pt;
+}
+
+.task-lines span {
+  display: block;
+  height: 0.32in;
+  border-bottom: 1px solid var(--crema-500);
+}
+
+/* Rutas de reacción para completar */
+.task-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4pt;
+  margin: 10pt 0 0;
+  font-family: var(--font-family-display);
+  font-size: 14pt;
+}
+
+.task-route small {
+  display: block;
+  color: var(--ink-500);
+  font-family: var(--font-family-body);
+  font-size: 8pt;
+  letter-spacing: .03em;
+}
+
+.task-route__slot {
+  display: inline-grid;
+  gap: 2pt;
+  min-width: 1.25in;
+  text-align: center;
+}
+
+.task-route__slot .task-blank {
+  margin: 0;
+  width: 100%;
+}
+
+.task-route__arrow {
+  color: var(--accent-terracota);
+  font-family: var(--font-family-mono);
+  font-size: 11pt;
+}
+
+.task-note {
+  margin-top: 6pt;
+  color: var(--ink-500);
+  font-size: 8.5pt;
+  line-height: 1.4;
+}
+
+/* Clave de colores para la tabla periódica */
+.task-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6pt 0.3in;
+  margin: 8pt 0 4pt;
+  color: var(--ink-700);
+  font-size: 10pt;
+}
+
+.task-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6pt;
+}
+
+.task-key i {
+  display: inline-block;
+  width: 0.34in;
+  height: 0.2in;
+  border: 1px solid var(--ink-300);
+}
+
+/* Tabla periódica en SVG (blanca para colorear o coloreada en la clave) */
+.task-periodic {
+  margin: 6pt 0 0;
+}
+
+.task-periodic svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tp-celda,
+.tp-hueco {
+  fill: #fbf8f2;
+  stroke: var(--ink-300);
+  stroke-width: .5;
+}
+
+.tp-hueco {
+  fill: none;
+  stroke-dasharray: 1.4 1.4;
+}
+
+.tp-z {
+  fill: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 4.3px;
+}
+
+.tp-simbolo {
+  fill: var(--ink-900);
+  font-family: var(--font-family-body);
+  font-size: 8px;
+  font-weight: var(--font-weight-medium);
+}
+
+.tp-eje {
+  fill: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 5.2px;
+}
+
+@media print {
+  html,
+  body,
+  .exam-pdf {
+    background: var(--color-bg-page) !important;
+    background-image: none !important;
+  }
+}
