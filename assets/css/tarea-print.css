@@ -302,6 +302,44 @@ body,
   font-size: 5.2px;
 }
 
+/* Contornos pequeños de la tabla para dibujar flechas */
+.task-minis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12pt 14pt;
+  margin-top: 8pt;
+}
+
+.task-mini p {
+  margin: 0 0 3pt;
+  color: var(--ink-700);
+  font-size: 9pt;
+  font-weight: var(--font-weight-medium);
+}
+
+.task-mini svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Ordenar de menor a mayor: cuatro renglones cortos con «<» */
+.task-orders > li { margin-bottom: 8pt; }
+
+.task-order {
+  display: block;
+  margin-top: 4pt;
+  color: var(--ink-500);
+}
+
+.task-blank--corta { min-width: 0.85in; }
+
+.task-answer-line {
+  margin: 6pt 0 0;
+  color: var(--ink-500);
+  font-size: 9.5pt;
+}
+
 @media print {
   html,
   body,

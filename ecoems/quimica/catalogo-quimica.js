@@ -256,7 +256,8 @@ export const SEGMENTOS = [
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'consulta', 'practica'],
     etiquetas: ['electronegatividad', 'ionización', 'afinidad electrónica', 'radio atómico'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './tendencias-periodicas.html'
   },
   {
     id: 'enlaces-lewis',

@@ -73,38 +73,38 @@ const ROMANOS_A = { 1: 'IA', 2: 'IIA', 13: 'IIIA', 14: 'IVA', 15: 'VA', 16: 'VIA
 const bordeX = grupo => LEFT + (grupo - 1) * P - (P - CELL) / 2;
 const bordeY = periodo => TOP + periodo * P - (P - CELL) / 2;
 
-function posicion(element) {
+function posicion(element, top = TOP) {
   if (element.familia === 'lantanido' || element.familia === 'actinido') {
     const lantanido = element.familia === 'lantanido';
     const first = lantanido ? 57 : 89;
-    return { x: LEFT + (2 + element.numero - first) * P, y: TOP + (lantanido ? 7 : 8) * P + GAP_F };
+    return { x: LEFT + (2 + element.numero - first) * P, y: top + (lantanido ? 7 : 8) * P + GAP_F };
   }
-  return { x: LEFT + (element.grupo - 1) * P, y: TOP + (element.periodo - 1) * P };
+  return { x: LEFT + (element.grupo - 1) * P, y: top + (element.periodo - 1) * P };
 }
 
-function tabla(parent) {
+function tabla(parent, top = TOP) {
   const ejes = make('g', {}, parent);
   for (const [grupo, nombre] of Object.entries(ROMANOS_A)) {
-    text(ejes, LEFT + (grupo - 1) * P + CELL / 2, TOP - 4, nombre, 'escena__tabla-grupo', { 'text-anchor': 'middle' });
+    text(ejes, LEFT + (grupo - 1) * P + CELL / 2, top - 4, nombre, 'escena__tabla-grupo', { 'text-anchor': 'middle' });
   }
   for (let periodo = 1; periodo <= 7; periodo += 1) {
-    text(ejes, LEFT - 6, TOP + (periodo - 1) * P + CELL / 2 + 2.2, String(periodo), 'escena__tabla-periodo', { 'text-anchor': 'middle' });
+    text(ejes, LEFT - 6, top + (periodo - 1) * P + CELL / 2 + 2.2, String(periodo), 'escena__tabla-periodo', { 'text-anchor': 'middle' });
   }
-  ['Lantánidos', 'Actínidos'].forEach((nombre, i) => text(ejes, LEFT + 2 * P - 3, TOP + (7 + i) * P + GAP_F + CELL / 2 + 2, nombre,
+  ['Lantánidos', 'Actínidos'].forEach((nombre, i) => text(ejes, LEFT + 2 * P - 3, top + (7 + i) * P + GAP_F + CELL / 2 + 2, nombre,
     'escena__tabla-grupo', { 'text-anchor': 'end' }));
   // Donde van los lantánidos y los actínidos queda un hueco punteado.
   [6, 7].forEach(periodo => make('rect', {
-    x: LEFT + 2 * P, y: TOP + (periodo - 1) * P, width: CELL, height: CELL, rx: 2, class: 'escena__celda-hueco'
+    x: LEFT + 2 * P, y: top + (periodo - 1) * P, width: CELL, height: CELL, rx: 2, class: 'escena__celda-hueco'
   }, parent));
   const cells = new Map();
   ELEMENTOS.forEach(element => {
-    const { x, y } = posicion(element);
+    const { x, y } = posicion(element, top);
     const g = make('g', { transform: `translate(${x} ${y})` }, parent);
     const kind = clase(element);
     make('rect', { width: CELL, height: CELL, rx: 2, class: 'escena__celda' }, g);
     const fill = make('rect', { width: CELL, height: CELL, rx: 2, class: `escena__celda-relleno escena__celda-relleno--${kind}`, opacity: 0 }, g);
-    text(g, CELL / 2, CELL / 2 + 2.9, element.simbolo, 'escena__celda-simbolo', { 'text-anchor': 'middle' });
-    cells.set(element.simbolo, { element, kind, fill, x, y });
+    const label = text(g, CELL / 2, CELL / 2 + 2.9, element.simbolo, 'escena__celda-simbolo', { 'text-anchor': 'middle' });
+    cells.set(element.simbolo, { element, kind, fill, label, g, x, y });
   });
   return cells;
 }
@@ -614,6 +614,232 @@ function ubicar(svg) {
   };
 }
 
+/* ---------------- 6 · Tendencias periódicas ----------------
+   La tabla muestra hacia dónde aumenta cada propiedad: un degradado
+   terracota sobre los elementos representativos, flechas de «aumenta» y el
+   extremo señalado. No son valores medidos, es la tendencia general; los
+   metales de transición, el hidrógeno y, donde no aplica, los gases nobles
+   quedan en gris. */
+const COLUMNAS_A = { 1: 0, 2: 1, 13: 2, 14: 3, 15: 4, 16: 5, 17: 6, 18: 7 };
+export const PROPIEDADES = {
+  electronegatividad: {
+    nombre: 'Electronegatividad', sentido: 'arriba', sinNobles: true, extremos: ['F'],
+    definicion: 'Qué tanto atrae un átomo los electrones de un enlace.',
+    aumenta: 'hacia arriba y hacia la derecha',
+    nota: 'El flúor es el más electronegativo: 3.98 en la escala de Pauling; el cesio, de los que menos (0.79). Los gases nobles casi no forman enlaces y no se toman en cuenta.'
+  },
+  ionizacion: {
+    nombre: 'Energía de ionización', sentido: 'arriba', extremos: ['He'],
+    definicion: 'La energía necesaria para arrancarle a un átomo su electrón más externo.',
+    aumenta: 'hacia arriba y hacia la derecha',
+    nota: 'El helio es el que más energía necesita y el cesio, el que menos: su último electrón está lejos del núcleo.'
+  },
+  afinidad: {
+    nombre: 'Afinidad electrónica', sentido: 'arriba', sinNobles: true, extremos: ['Cl'],
+    definicion: 'La energía que se libera cuando un átomo neutro gana un electrón y forma un ion negativo.',
+    aumenta: 'en general, hacia arriba y hacia la derecha',
+    nota: 'Es la tendencia con más excepciones: el cloro libera más energía que el flúor. Los gases nobles no ganan electrones y no se toman en cuenta.'
+  },
+  metalico: {
+    nombre: 'Carácter metálico', sentido: 'abajo', extremos: ['Cs'],
+    definicion: 'Qué tan fácil pierde electrones un átomo: mientras más fácil, más metálico.',
+    aumenta: 'hacia abajo y hacia la izquierda',
+    nota: 'El carácter no metálico va al revés: el flúor es el más no metálico. Debajo del cesio está el francio, pero es radiactivo y casi no se ha estudiado.'
+  },
+  radio: {
+    nombre: 'Radio atómico', sentido: 'abajo', extremos: ['Cs'], menor: 'He',
+    definicion: 'La distancia del centro del núcleo al electrón más externo de un átomo neutro.',
+    aumenta: 'hacia abajo y hacia la izquierda',
+    nota: 'El helio es el más pequeño y el cesio, de los más grandes. Hacia abajo se agregan niveles; hacia la derecha el núcleo jala con más fuerza el mismo nivel.'
+  }
+};
+
+function flecha(parent, d, head) {
+  const g = make('g', { opacity: 0 }, parent);
+  const line = make('path', { d, class: 'escena__tendencia-linea' }, g);
+  const tip = make('path', { d: head, class: 'escena__tendencia-punta' }, g);
+  return { g, line, tip };
+}
+
+function tendencias(svg) {
+  const root = svg.closest('[data-tendencias]');
+  const buttons = [...root.querySelectorAll('[data-tendencia]')];
+  const panel = root.querySelector('[data-tendencia-texto]');
+  const TOP_T = 32, RIGHT = LEFT + 18 * P - (P - CELL);
+  const board = make('g', {}, svg);
+  const cells = [...tabla(board, TOP_T).values()];
+  cells.forEach(cell => {
+    const col = COLUMNAS_A[cell.element.grupo];
+    const fBlock = cell.element.familia === 'lantanido' || cell.element.familia === 'actinido';
+    cell.rep = col !== undefined && !fBlock && cell.element.simbolo !== 'H';
+    cell.col = col;
+    cell.noble = cell.element.familia === 'gas-noble';
+    cell.value = 0;
+    cell.fill.setAttribute('class', 'escena__celda-relleno ' + (cell.rep ? 'escena__celda-relleno--calor' : 'escena__celda-relleno--neutra'));
+    fade(cell.fill, cell.rep ? 0 : 1);
+  });
+
+  // Flechas: arriba, a lo largo de los grupos; a la derecha, a lo largo de los periodos.
+  const yH = 20, xV = RIGHT + 12, yTop = TOP_T, yBottom = TOP_T + 7 * P - (P - CELL);
+  const derecha = flecha(board, `M${LEFT} ${yH}H${round(RIGHT - 6)}`, `M${round(RIGHT)} ${yH}l-7 -3.6v7.2Z`);
+  const izquierda = flecha(board, `M${round(RIGHT)} ${yH}H${LEFT + 6}`, `M${LEFT} ${yH}l7 -3.6v7.2Z`);
+  const arriba = flecha(board, `M${xV} ${round(yBottom)}V${yTop + 6}`, `M${xV} ${yTop}l-3.6 7h7.2Z`);
+  const abajo = flecha(board, `M${xV} ${yTop}V${round(yBottom - 6)}`, `M${xV} ${round(yBottom)}l-3.6 -7h7.2Z`);
+  const textoH = text(board, 0, yH - 5, 'aumenta', 'escena__leyenda', { opacity: 0 });
+  const textoV = text(board, 0, 0, 'aumenta', 'escena__leyenda', { opacity: 0, 'text-anchor': 'middle' });
+  const rings = make('g', {}, board);
+
+  let key = null, t = 0, animating = false;
+  let target = new Map();
+
+  function puntajes(prop) {
+    const result = new Map();
+    const included = cells.filter(cell => cell.rep && !(prop.sinNobles && cell.noble));
+    const raw = cell => {
+      const c = cell.col / 7, f = (cell.element.periodo - 1) / 6;
+      return prop.sentido === 'arriba' ? .55 * c + .45 * (1 - f) : .55 * (1 - c) + .45 * f;
+    };
+    const values = included.map(raw);
+    const min = Math.min(...values), max = Math.max(...values);
+    included.forEach(cell => result.set(cell, .08 + .92 * (raw(cell) - min) / (max - min)));
+    return result;
+  }
+
+  function texto(prop) {
+    if (!panel) return;
+    panel.innerHTML = `<h3 class="tendencias__nombre">${prop.nombre}</h3>` +
+      `<p class="tendencias__definicion">${prop.definicion}</p>` +
+      `<p class="tendencias__aumenta"><span>Aumenta</span> ${prop.aumenta}</p>` +
+      `<p class="tendencias__nota">${prop.nota}</p>`;
+  }
+
+  function select(next, animate) {
+    const prop = PROPIEDADES[next];
+    if (!prop || next === key) return;
+    key = next;
+    buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.tendencia === key)));
+    target = puntajes(prop);
+    cells.forEach(cell => {
+      if (!cell.rep) return;
+      cell.from = cell.value;
+      cell.to = target.has(cell) ? target.get(cell) : 0;
+      cell.fill.setAttribute('class', 'escena__celda-relleno ' + (cell.noble && prop.sinNobles ? 'escena__celda-relleno--neutra' : 'escena__celda-relleno--calor'));
+      // El degradado avanza en el sentido en que aumenta la propiedad.
+      const along = prop.sentido === 'arriba' ? cell.col / 7 + (7 - cell.element.periodo) / 6 : (7 - cell.col) / 7 + (cell.element.periodo - 1) / 6;
+      cell.delay = .3 * along;
+    });
+    rings.innerHTML = '';
+    prop.extremos.forEach(symbol => {
+      const cell = cells.find(c => c.element.simbolo === symbol);
+      make('rect', { x: cell.x - 2, y: cell.y - 2, width: CELL + 4, height: CELL + 4, rx: 3, class: 'escena__celda-aro' }, rings);
+    });
+    texto(prop);
+    t = 0;
+    animating = animate && !reducedMotion.matches;
+    if (!animating) draw(10);
+  }
+
+  function draw(time) {
+    const up = PROPIEDADES[key].sentido === 'arriba';
+    cells.forEach(cell => {
+      if (!cell.rep) return;
+      const a = smooth((time - cell.delay) / .55);
+      cell.value = mix(cell.from, cell.to, a);
+      const neutral = cell.noble && PROPIEDADES[key].sinNobles;
+      fade(cell.fill, neutral ? 1 : cell.value);
+    });
+    const k = smooth(time / .7);
+    [derecha, izquierda, arriba, abajo].forEach(arrow => fade(arrow.g, 0));
+    const h = up ? derecha : izquierda, v = up ? arriba : abajo;
+    fade(h.g, k);
+    fade(v.g, k);
+    fade(textoH, k);
+    fade(textoV, k);
+    set(textoH, { x: up ? RIGHT - 30 : LEFT + 2 });
+    textoV.setAttribute('transform', `translate(${xV + 9} ${up ? yTop + 22 : yBottom - 22}) rotate(-90)`);
+    fade(rings, smooth((time - .9) / .4));
+  }
+
+  buttons.forEach(button => button.addEventListener('click', () => select(button.dataset.tendencia, true)));
+  select(buttons.find(b => b.getAttribute('aria-pressed') === 'true')?.dataset.tendencia || 'electronegatividad', false);
+
+  return {
+    update(dt) {
+      if (!animating) return;
+      t += dt;
+      draw(t);
+      if (t > 2.2) animating = false;
+    },
+    still() { animating = false; draw(10); }
+  };
+}
+
+/* ---------------- 7 · Radios: por qué crece o se encoge el átomo ----------------
+   Radios calculados (Clementi y colaboradores, 1967), en picómetros, a escala.
+   Arriba, el periodo 3: cada átomo tiene un protón más que el anterior y sus
+   electrones siguen en el nivel 3, así que el núcleo los jala más y el átomo se
+   encoge. Abajo, el grupo IA: cada átomo agrega un nivel y crece. */
+const RADIOS = { Li: 167, Na: 190, K: 243, Rb: 265, Cs: 298, Mg: 145, Al: 118, Si: 111, P: 98, S: 88, Cl: 79, Ar: 71 };
+function radios(svg) {
+  const T = 16, K = .085;
+  const scene = make('g', {}, svg);
+  const fila = (symbols, y, gap, from) => {
+    const width = symbols.reduce((sum, s) => sum + 2 * K * RADIOS[s], 0) + gap * (symbols.length - 1);
+    let x = (360 - width) / 2;
+    return symbols.map((symbol, i) => {
+      const r = K * RADIOS[symbol];
+      const cx = x + r;
+      x += 2 * r + gap;
+      const g = make('g', { opacity: 0 }, scene);
+      const body = make('g', { transform: `translate(${round(cx)} ${y})` }, g);
+      make('circle', { r: round(r), class: 'escena__radio-atomo' }, body);
+      make('circle', { r: 1.4, class: 'escena__nucleo' }, body);
+      return { g, body, cx, r, symbol, start: from + i * .5 };
+    });
+  };
+  text(scene, 14, 16, 'Periodo 3, de izquierda a derecha', 'escena__radio-titulo');
+  const periodo = fila(['Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar'], 50, 9, .5);
+  periodo.forEach((atom, i) => {
+    text(atom.g, atom.cx, 30, `+${11 + i}`, 'escena__radio-carga', { 'text-anchor': 'middle' });
+    text(atom.g, atom.cx, 82, atom.symbol, 'escena__radio-simbolo', { 'text-anchor': 'middle' });
+  });
+  const flechaA = flecha(scene, `M${round(periodo[0].cx)} 92H${round(periodo[7].cx - 6)}`, `M${round(periodo[7].cx)} 92l-7 -3.6v7.2Z`);
+  const notaA = text(scene, 180, 107, 'un protón más en cada paso y el mismo nivel: el átomo se encoge', 'escena__radio-nota', { 'text-anchor': 'middle', opacity: 0 });
+
+  text(scene, 14, 126, 'Grupo IA, de arriba abajo', 'escena__radio-titulo');
+  const grupo = fila(['Li', 'Na', 'K', 'Rb', 'Cs'], 164, 12, 5.5);
+  grupo.forEach((atom, i) => {
+    text(atom.g, atom.cx, 200, atom.symbol, 'escena__radio-simbolo', { 'text-anchor': 'middle' });
+    text(atom.g, atom.cx, 209, `${i + 2} niveles`, 'escena__radio-carga', { 'text-anchor': 'middle' });
+  });
+  const flechaB = flecha(scene, `M${round(grupo[0].cx)} 218H${round(grupo[4].cx - 6)}`, `M${round(grupo[4].cx)} 218l-7 -3.6v7.2Z`);
+  const notaB = text(scene, 180, 232, 'un nivel más en cada paso: el átomo crece', 'escena__radio-nota', { 'text-anchor': 'middle', opacity: 0 });
+
+  let t = 0;
+  function draw(time, final) {
+    fade(scene, final ? 1 : time < .4 ? smooth(time / .4) : 1 - smooth((time - (T - 1.2)) / 1.2));
+    // En el periodo cada átomo llega un poco más grande y se encoge; en el grupo, crece.
+    periodo.forEach(atom => {
+      const a = final ? 1 : smooth((time - atom.start) / .5);
+      fade(atom.g, a);
+      atom.body.setAttribute('transform', `translate(${round(atom.cx)} 50) scale(${round(mix(1.3, 1, a))})`);
+    });
+    grupo.forEach(atom => {
+      const a = final ? 1 : smooth((time - atom.start) / .5);
+      fade(atom.g, a);
+      atom.body.setAttribute('transform', `translate(${round(atom.cx)} 164) scale(${round(mix(.7, 1, a))})`);
+    });
+    fade(flechaA.g, final ? 1 : (time - 4.6) / .5);
+    fade(notaA, final ? 1 : (time - 4.8) / .5);
+    fade(flechaB.g, final ? 1 : (time - 8.4) / .5);
+    fade(notaB, final ? 1 : (time - 8.6) / .5);
+  }
+  return {
+    update(dt) { t = (t + dt) % T; draw(t, false); },
+    still() { draw(T, true); }
+  };
+}
+
 /* ---------------- Rutas con oxígeno (HTML) ----------------
    Los pasos de cada ruta aparecen uno tras otro la primera vez que la figura
    entra en pantalla; con movimiento reducido se muestran completos. */
@@ -628,7 +854,7 @@ document.querySelectorAll('[data-rutas]').forEach(node => {
 });
 
 /* ---------------- Reloj compartido ---------------- */
-const factories = { mapa, martillo, circuito, bloques, ubicar };
+const factories = { mapa, martillo, circuito, bloques, ubicar, tendencias, radios };
 const scenes = [...document.querySelectorAll('[data-escena-tabla]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaTabla](svg)
 }));

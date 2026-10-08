@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tendencias periódicas · Química ECOEMS · Tercial</title>
+<meta name="description" content="Radio atómico, energía de ionización, afinidad electrónica, electronegatividad y carácter metálico: hacia dónde aumentan en la tabla periódica y por qué.">
+<meta name="tercial:resource-id" content="ecoems-quimica-tendencias-periodicas">
+<meta name="tercial:resource-title" content="Tendencias periódicas">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./tendencias-practica.js?v=20261008-tanda3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 10 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Tendencias <em>periódicas</em></h1>
+    <p class="hero__lede">Con sólo ver dónde está un elemento en la tabla puedes saber si es grande o
+      pequeño, si atrae electrones con fuerza o si los pierde con facilidad. Cinco propiedades cambian de
+      forma ordenada a lo largo de los periodos y los grupos.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=electronegatividad#courseIndex">electronegatividad</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=radio%20atómico#courseIndex">radio atómico</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=ionización#courseIndex">ionización</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaTendencias">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaTendencias">
+        <span class="lesson-section__kicker">Idea central</span> Dos razones lo explican todo
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Más niveles hacia abajo, más carga <em>hacia la derecha</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p><strong>Hacia abajo</strong> en un grupo, cada elemento agrega un nivel de energía: su electrón más
+          externo queda más lejos del núcleo y el átomo crece.</p>
+        <p><strong>Hacia la derecha</strong> en un periodo, cada elemento tiene un protón más, pero sus
+          electrones externos siguen en el mismo nivel: el núcleo los jala con más fuerza y el átomo se
+          encoge.</p>
+        <p>De esas dos ideas salen las cinco tendencias: un átomo grande retiene poco a sus electrones, y uno
+          pequeño los sujeta con fuerza.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 18–19 -->
+      <footer class="source-line">
+        <span>Lectura · 8 min</span>
+      </footer>
+    </article>
+    <figure class="atom-figure">
+      <svg class="escena escena--tabla" data-escena-tabla="radios" viewBox="0 0 360 236" role="img" aria-labelledby="radiosTitle">
+        <title id="radiosTitle">Átomos dibujados a escala: en el periodo 3, del sodio al argón, cada átomo tiene un protón más y es más pequeño; en el grupo IA, del litio al cesio, cada átomo tiene un nivel más y es más grande</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Radios calculados, a escala. El cesio mide unas cuatro veces lo
+        que el argón: sus electrones externos están en el sexto nivel; los del argón, en el
+        tercero.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="cincoTendencias">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cincoTendencias">
+        <span class="lesson-section__kicker">Observa</span> Cinco propiedades, una tabla
+      </h2>
+    </header>
+    <p class="section-intro">Elige una propiedad: el terracota más intenso marca dónde es mayor y las
+      flechas, hacia dónde aumenta. Es la tendencia general, no valores medidos.</p>
+    <div class="tendencias" data-tendencias>
+      <div class="tendencias__tabs" role="group" aria-label="Elige una propiedad">
+        <button class="tendencias__tab" type="button" aria-pressed="true" data-tendencia="electronegatividad">Electronegatividad</button>
+        <button class="tendencias__tab" type="button" aria-pressed="false" data-tendencia="ionizacion">Energía de ionización</button>
+        <button class="tendencias__tab" type="button" aria-pressed="false" data-tendencia="afinidad">Afinidad electrónica</button>
+        <button class="tendencias__tab" type="button" aria-pressed="false" data-tendencia="metalico">Carácter metálico</button>
+        <button class="tendencias__tab" type="button" aria-pressed="false" data-tendencia="radio">Radio atómico</button>
+      </div>
+      <figure class="tabla-figure">
+        <div class="tabla-figure__scroll" role="region" aria-label="Tabla periódica con la tendencia elegida" tabindex="0">
+          <svg class="escena escena--tabla" data-escena-tabla="tendencias" viewBox="0 0 400 226" role="img" aria-labelledby="tendenciasTitle">
+            <title id="tendenciasTitle">Tabla periódica con un degradado sobre los elementos representativos que muestra hacia dónde aumenta la propiedad elegida, con flechas y el elemento extremo señalado</title>
+          </svg>
+        </div>
+      </figure>
+      <div class="tendencias__texto" aria-live="polite" data-tendencia-texto></div>
+    </div>
+    <p class="editorial-note">En gris quedan los metales de transición, donde estas tendencias son
+      irregulares, y el hidrógeno, que no sigue el patrón de su columna.</p>
+  </section>
+
+  <section aria-labelledby="resumenTendencias">
+    <header class="section-header">
+      <h2 class="section-header__title" id="resumenTendencias">
+        <span class="lesson-section__kicker">Compara</span> Las cinco, de un vistazo
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="resumenTendencias" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Qué mide cada propiedad, hacia dónde aumenta y qué elemento tiene el valor mayor</caption>
+        <thead>
+          <tr>
+            <th scope="col">Propiedad</th>
+            <th scope="col">Qué mide</th>
+            <th scope="col">Aumenta hacia</th>
+            <th scope="col">La mayor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Radio atómico</th><td>Distancia del núcleo al electrón más externo</td><td>Abajo y a la izquierda</td><td>Cesio (el menor: helio)</td></tr>
+          <tr><th scope="row">Energía de ionización</th><td>Energía para arrancar el electrón más externo</td><td>Arriba y a la derecha</td><td>Helio</td></tr>
+          <tr><th scope="row">Afinidad electrónica</th><td>Energía que se libera al ganar un electrón</td><td>Arriba y a la derecha, con excepciones</td><td>Cloro</td></tr>
+          <tr><th scope="row">Electronegatividad</th><td>Atracción por los electrones de un enlace</td><td>Arriba y a la derecha</td><td>Flúor</td></tr>
+          <tr><th scope="row">Carácter metálico</th><td>Facilidad para perder electrones</td><td>Abajo y a la izquierda</td><td>Cesio</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Para recordarlo: el radio y el carácter metálico aumentan hacia abajo a la
+      izquierda; las otras tres, hacia arriba a la derecha. Un átomo grande retiene poco a sus electrones:
+      los pierde fácil, atrae poco a los ajenos y cuesta poco arrancarle uno.</p>
+  </section>
+
+  <section aria-labelledby="practicaTendencias">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaTendencias">
+        <span class="lesson-section__kicker">Practica</span> ¿Cuál tiene más?
+      </h2>
+      <span class="section-header__count">10 comparaciones</span>
+    </header>
+    <p class="section-intro">Busca los dos elementos en la tabla y decide con las tendencias, sin valores.
+      Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-tendencias-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-tendencias-periodicas.pdf?v=20261008-tanda3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las comparaciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./bloques-periodicos.html">← Bloques s, p, d y f</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>
