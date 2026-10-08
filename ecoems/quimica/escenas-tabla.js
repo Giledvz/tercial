@@ -447,50 +447,68 @@ function circuito(svg) {
     }
     return PATH[PATH.length - 1];
   }
-  /* Electrones: cada uno tiene su lugar s a lo largo del recorrido (0 en el
-     polo negativo). Con el cobre circulan parejos. Con el azufre el circuito
-     queda abierto: la pila sigue empujando, así que los del lado negativo
-     salen y avanzan hasta el azufre, donde se detienen amontonados; los del
-     otro lado se quedan quietos. Al volver el cobre retoman el paso parejo. */
-  const N = 24, SPEED = 30, PASO = 6.5;
+  /* Electrones que empuja la pila. Salen del polo negativo uno tras otro,
+     siempre con la misma separación D, como una fila: el electrón n está en
+     s = v·t − n·D del recorrido (0 en el polo negativo).
+     - Con el cobre circulan por todo el circuito.
+     - Al quitar el cobre, los que ya iban más allá del hueco desaparecen:
+       ninguno pasa después del azufre.
+     - Con el azufre la pila sigue soltándolos al mismo ritmo; avanzan hasta
+       el azufre y se estancan uno detrás de otro, así que la fila crece.
+     Todo es función del tiempo: el ciclo cierra sin brincos porque v·T es un
+     múltiplo exacto de D. */
+  const N = 24, PASO = 6.5;
+  const D = TOTAL / N;
+  const SPEED = D * Math.round(30 * T / D) / T;
   const S1 = Math.abs(Y2 - 108) + (GAP1 - L);   // pinza izquierda del hueco
   const S2 = S1 + (GAP2 - GAP1);                 // pinza derecha
-  const electrons = Array.from({ length: N }, () => make('circle', { r: 2.3, class: 'escena__electron' }, scene));
-  const parejo = flowAt => Array.from({ length: N }, (_, i) => (((flowAt + i * TOTAL / N) % TOTAL) + TOTAL) % TOTAL);
-  let pos = parejo(0);
-  const diferencia = (a, b) => { let d = (a - b) % TOTAL; if (d > TOTAL / 2) d -= TOTAL; if (d < -TOTAL / 2) d += TOTAL; return d; };
+  const QUITA = 5.6, SALE = 12, VUELVE = 12.9;    // sale el cobre / sale el azufre / el cobre cierra el circuito
+  const pool = Array.from({ length: 34 }, () => make('circle', { r: 2.3, class: 'escena__electron', opacity: 0 }, scene));
 
   const status = [
     text(scene, 180, 162, 'cobre · metal: conduce, el foco enciende', 'escena__resultado', { 'text-anchor': 'middle' }),
     text(scene, 180, 162, 'azufre · no metal: los electrones no pasan', 'escena__resultado escena__resultado--apagado', { 'text-anchor': 'middle', opacity: 0 })
   ];
 
-  let t = 0, flow = 0;
+  let t = 0;
   // 1 con el cobre puesto; 0 con el azufre.
   function conduce(time) {
     if (time < 5.6) return 1;
     if (time < 5.9) return 1 - smooth((time - 5.6) / .3);
-    if (time < 12.3) return 0;
-    return smooth((time - 12.3) / .4);
+    // Enciende hasta que el cobre toca las dos pinzas: entonces corre la corriente.
+    if (time < VUELVE) return 0;
+    return smooth((time - VUELVE) / .1);
   }
-  function avanzar(dt, c) {
-    if (c > .01) {
-      flow += dt * SPEED * c;
-      const meta = parejo(flow);
-      pos = pos.map((p, i) => {
-        // Avanzan y, si venían amontonados, recuperan poco a poco el paso parejo.
-        const next = p + dt * SPEED * c + diferencia(meta[i], p) * Math.min(1, dt * 1.8);
-        return ((next % TOTAL) + TOTAL) % TOTAL;
-      });
-      return;
+  // Lista de [s, opacidad] de los electrones visibles en el instante time.
+  function electrones(time, final) {
+    const out = [];
+    const tt = final ? 0 : time;
+    const first = Math.ceil((SPEED * tt - TOTAL) / D), last = Math.floor(SPEED * tt / D);
+    const conCobre = final || tt < QUITA || tt >= VUELVE;
+    if (conCobre) {
+      const a = final || tt < QUITA ? 1 : smooth((tt - VUELVE) / .1);
+      for (let n = first; n <= last; n += 1) {
+        const sN = SPEED * tt - n * D;
+        out.push([sN, sN > S1 && sN < S2 ? Math.min(a, cobreVisible) : a]);
+      }
+      return out;
     }
-    // Circuito abierto: los del lado negativo se forman frente al azufre.
-    pos.map((p, i) => [p, i]).filter(([p]) => p < S1).sort((a, b) => b[0] - a[0]).forEach(([p, i], rank) => {
-      const target = S1 - 3 - rank * PASO;
-      const step = Math.min(Math.abs(target - p), SPEED * dt);
-      pos[i] = p + Math.sign(target - p) * step;
-    });
+    // Sin cobre: los que ya habían pasado el hueco se desvanecen mientras siguen.
+    const nFront = Math.floor((SPEED * QUITA - S1) / D) + 1;
+    const fuera = 1 - smooth((tt - QUITA) / .5);
+    const salida = 1 - smooth((tt - SALE) / .5);
+    for (let n = Math.ceil((SPEED * tt - TOTAL) / D); n < nFront; n += 1) {
+      const sN = SPEED * tt - n * D;
+      if (fuera > 0 && sN >= 0 && sN <= TOTAL) out.push([sN, fuera * (sN > S1 && sN < S2 ? cobreVisible : 1)]);
+    }
+    // Los del lado negativo avanzan hasta el azufre y hacen fila.
+    for (let n = nFront; n <= last; n += 1) {
+      const sN = Math.min(SPEED * tt - n * D, S1 - 3 - (n - nFront) * PASO);
+      if (sN >= 0) out.push([sN, salida]);
+    }
+    return out;
   }
+  let cobreVisible = 1;
   // Cambio de muestra: la de cobre baja y sale; sube la de azufre (y al revés).
   function muestra(time) {
     const out = (a, b) => smooth(span(time, a, b));
@@ -498,7 +516,7 @@ function circuito(svg) {
     if (time >= 6.1 && time < 6.6) return { copper: 0, sulfur: out(6.1, 6.6), dy: 26 * (1 - out(6.1, 6.6)) };
     if (time >= 6.6 && time < 12) return { copper: 0, sulfur: 1, dy: 0 };
     if (time >= 12 && time < 12.5) return { copper: 0, sulfur: 1 - out(12, 12.5), dy: 26 * out(12, 12.5) };
-    if (time >= 12.5) return { copper: out(12.5, 13), sulfur: 0, dy: 26 * (1 - out(12.5, 13)) };
+    if (time >= 12.5) return { copper: out(12.5, VUELVE), sulfur: 0, dy: 26 * (1 - out(12.5, VUELVE)) };
     return { copper: 1, sulfur: 0, dy: 0 };
   }
   function draw(time, final) {
@@ -511,14 +529,15 @@ function circuito(svg) {
     fade(rays, on);
     filament.classList.toggle('es-encendido', on > .5);
     glass.classList.toggle('es-encendido', on > .5);
-    electrons.forEach((dot, i) => {
-      const [x, y] = punto(pos[i]);
+    cobreVisible = m.copper;
+    const lista = electrones(time, final);
+    pool.forEach((dot, i) => {
+      if (i >= lista.length) { fade(dot, 0); return; }
+      const [x, y] = punto(lista[i][0]);
       set(dot, { cx: x, cy: y });
-      // Dentro del hueco sólo se ven los que van por el cobre.
-      const inGap = y === Y2 && x > GAP1 && x < GAP2;
-      fade(dot, inGap ? m.copper : 1);
+      fade(dot, lista[i][1]);
     });
-    const copperShown = final || time < 5.9 || time >= 12.5;
+    const copperShown = final || time < 5.9 || time >= VUELVE;
     fade(status[0], copperShown ? 1 : 0);
     fade(status[1], copperShown ? 0 : 1);
   }
@@ -526,10 +545,9 @@ function circuito(svg) {
   return {
     update(dt) {
       t = (t + dt) % T;
-      avanzar(dt, conduce(t));
       draw(t, false);
     },
-    still() { pos = parejo(0); draw(0, true); }
+    still() { draw(0, true); }
   };
 }
 
