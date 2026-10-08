@@ -4724,12 +4724,31 @@ select.particle-row__input {
   font-weight: var(--font-weight-medium);
 }
 
-/* Martillo y circuito */
+/* Martillo y circuito. El cobre va color cobre: el tono «óxido» de la
+   paleta (--cat-coral), que se distingue del terracota de acento; en modo
+   oscuro, un poco más café para no confundirse con la luz del foco. */
 .escena--propiedad {
   --e-azufre: var(--crema-300);
   --e-azufre-borde: var(--crema-600);
   --e-mango: var(--crema-700);
   --e-martillo: var(--ink-700);
+  --e-cobre: var(--cat-coral);
+  --e-cobre-brillo: var(--crema-300);
+  --e-cobre-sombra: var(--cat-coral);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena--propiedad {
+    --e-cobre: color-mix(in oklab, var(--cat-coral) 72%, #e8a070);
+    --e-cobre-brillo: color-mix(in oklab, var(--cat-coral) 30%, #fff4e8);
+    --e-cobre-sombra: color-mix(in oklab, var(--cat-coral) 78%, black);
+  }
+
+  [data-theme="dark"] .escena--propiedad {
+    --e-cobre: color-mix(in oklab, var(--cat-coral) 72%, black);
+    --e-cobre-brillo: color-mix(in oklab, var(--cat-coral) 62%, white);
+    --e-cobre-sombra: color-mix(in oklab, var(--cat-coral) 48%, black);
+  }
 }
 
 [data-theme="dark"] .escena--propiedad {
@@ -4763,6 +4782,18 @@ select.particle-row__input {
 }
 
 .escena__mango { fill: var(--e-mango); }
+
+.escena__mango-veta,
+.escena__martillo-ranura {
+  stroke: var(--crema-50);
+  stroke-width: .7;
+  stroke-linecap: round;
+  opacity: .32;
+}
+
+.escena__cobre { fill: var(--e-cobre); }
+.escena__cobre-brillo { fill: var(--e-cobre-brillo); }
+.escena__cobre-sombra { fill: var(--e-cobre-sombra); }
 .escena__mango-agarre { fill: var(--e-martillo); opacity: .78; }
 .escena__martillo { fill: var(--e-martillo); }
 .escena__martillo-cara { fill: var(--e-metal-sombra); }
@@ -4796,19 +4827,55 @@ select.particle-row__input {
 .escena__pila-polo { fill: var(--e-metal); }
 .escena__pinza { fill: var(--e-metal-sombra); }
 
+/* Foco incandescente: vidrio en pera, casquillo de rosca, alambres de
+   soporte y filamento; encendido, el vidrio se entibia y brilla el halo. */
 .escena__foco-vidrio {
+  fill: var(--e-paper);
+  fill-opacity: .55;
   stroke: var(--color-border-strong);
-  stroke-width: 1.4;
+  stroke-width: 1.2;
+}
+
+.escena__foco-vidrio.es-encendido {
+  fill: var(--color-accent);
+  fill-opacity: .16;
+  stroke: var(--color-accent);
 }
 
 .escena__filamento {
   stroke: var(--color-text-meta);
-  stroke-width: 1.2;
+  stroke-width: 1.1;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.escena__filamento.es-encendido { stroke: var(--color-accent); }
-.escena__foco-luz { fill: var(--color-accent); fill-opacity: .18; }
+.escena__filamento.es-encendido {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+}
+
+.escena__foco-hilo {
+  stroke: var(--color-text-meta);
+  stroke-width: .7;
+}
+
+.escena__foco-reflejo {
+  stroke: var(--crema-50);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: .8;
+}
+
+.escena__foco-rosca { fill: var(--e-metal); }
+
+.escena__foco-vuelta {
+  stroke: var(--e-metal-sombra);
+  stroke-width: 1;
+}
+
+.escena__foco-contacto { fill: var(--e-martillo); }
+.escena__halo-centro { stop-color: var(--color-accent); stop-opacity: .45; }
+.escena__halo-borde { stop-color: var(--color-accent); stop-opacity: 0; }
 
 .escena__rayo {
   stroke: var(--color-accent);

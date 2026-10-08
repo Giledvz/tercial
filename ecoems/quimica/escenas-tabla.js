@@ -197,11 +197,13 @@ function martillo(svg) {
   // Bloque de cobre: el área se conserva al aplastarlo.
   const AREA = 44 * 26;
   const ALTURAS = [26, 17, 11.5, 7.5];
-  const body = make('rect', { rx: 1.5, class: 'escena__metal' }, scene);
-  const shine = make('rect', { rx: 1, class: 'escena__metal-reflejo' }, scene);
+  const body = make('rect', { rx: 1.5, class: 'escena__cobre' }, scene);
+  const edge = make('rect', { rx: 1.5, class: 'escena__cobre-sombra' }, scene);
+  const shine = make('rect', { rx: 1, class: 'escena__cobre-brillo' }, scene);
   function bloque(h) {
     const w = AREA / h;
     set(body, { x: LX - w / 2, y: FLOOR - h, width: w, height: h });
+    set(edge, { x: LX - w / 2, y: FLOOR - h * .28, width: w, height: h * .28 });
     set(shine, { x: LX - w / 2 + w * .1, y: FLOOR - h + h * .2, width: w * .55, height: Math.max(1.2, h * .14) });
   }
   function altura(t) {
@@ -254,15 +256,24 @@ function martillo(svg) {
      Al bajar, el codo baja primero y la muñeca se suelta al final, como un
      látigo; en el golpe el mango queda horizontal y la cara de la cabeza cae
      plana sobre la pieza. Ángulos en grados, 0 en el golpe. */
-  const L = 50, A = 34, FACE = 15, CODO = 30, MUNECA = 40;
+  const L = 50, A = 34, FACE = 15.2, CODO = 30, MUNECA = 40;
+  // El martillo de carpintero, dibujado con el mango hacia la derecha y la
+  // cabeza en (−L, 0): cara de golpe abajo y uña curva arriba, vuelta hacia el
+  // mango, como la que saca clavos.
+  const H = -L;
+  const CABEZA = `M${H - 6.8} 13.6Q${H - 6.8} ${FACE} ${H - 5.2} ${FACE}H${H + 5.2}Q${H + 6.8} ${FACE} ${H + 6.8} 13.6` +
+    `V10.8L${H + 4.6} 9.6V5.2L${H + 6} 4.2V-3.4L${H + 5} -5.4C${H + 4.6} -10.5 ${H + 6} -15.5 ${H + 9.5} -21.5` +
+    `C${H + 3} -19.6 ${H - 3} -14.6 ${H - 4.6} -5.4L${H - 6} -3.4V4.2L${H - 4.6} 5.2V9.6L${H - 6.8} 10.8Z`;
   function hammer(x) {
     const arm = make('g', {}, scene);
     const hand = make('g', {}, arm);
-    make('rect', { x: -L + 4, y: -2.2, width: L + 4, height: 4.4, rx: 2.2, class: 'escena__mango' }, hand);
-    make('rect', { x: -12, y: -3.2, width: 16, height: 6.4, rx: 3, class: 'escena__mango-agarre' }, hand);
-    make('rect', { x: -L - 6, y: -11, width: 12, height: 21, rx: 2, class: 'escena__martillo' }, hand);
-    make('rect', { x: -L - 7, y: 10, width: 14, height: FACE - 10, rx: 1.2, class: 'escena__martillo-cara' }, hand);
-    make('rect', { x: -L - 4.2, y: -9, width: 2.2, height: 17, rx: 1, class: 'escena__martillo-brillo' }, hand);
+    // Mango de madera, más grueso hacia la empuñadura.
+    make('path', { d: `M${H + 5} -2.1L-8 -2.7Q2 -3.4 7 -3.9Q9.6 -3.9 9.6 0Q9.6 3.9 7 3.9Q2 3.4 -8 2.7L${H + 5} 2.1Z`, class: 'escena__mango' }, hand);
+    make('path', { d: `M${H + 9} -0.6L-10 -0.9`, class: 'escena__mango-veta' }, hand);
+    make('path', { d: CABEZA, class: 'escena__martillo' }, hand);
+    make('path', { d: `M${H - 6.8} 13.6Q${H - 6.8} ${FACE} ${H - 5.2} ${FACE}H${H + 5.2}Q${H + 6.8} ${FACE} ${H + 6.8} 13.6V10.8H${H - 6.8}Z`, class: 'escena__martillo-cara' }, hand);
+    make('path', { d: `M${H + 1.4} -6.5C${H + 1.4} -11.5 ${H + 3} -16 ${H + 6.6} -19.8`, class: 'escena__martillo-ranura' }, hand);
+    make('rect', { x: H - 4.3, y: -2.6, width: 1.8, height: 9.5, rx: .9, class: 'escena__martillo-brillo' }, hand);
     const sparks = make('g', { opacity: 0 }, scene);
     // Rayitas de impacto que salen de los bordes de la cara, casi a ras.
     [-168, -150, -30, -12].forEach(a => {
@@ -337,36 +348,48 @@ function martillo(svg) {
    el circuito queda abierto: los electrones del cable no avanzan y el foco no
    enciende. Los electrones salen del polo negativo de la pila. */
 function circuito(svg) {
-  const T = 13, L = 60, R = 300, Y1 = 40, Y2 = 126, GAP1 = 146, GAP2 = 214;
+  const T = 13, L = 60, R = 300, Y1 = 54, Y2 = 132, GAP1 = 146, GAP2 = 214;
   const scene = make('g', {}, svg);
+  const uid = Math.random().toString(36).slice(2, 7);
+  const defs = make('defs', {}, svg);
+  const halo = make('radialGradient', { id: `halo${uid}` }, defs);
+  make('stop', { offset: 0, class: 'escena__halo-centro' }, halo);
+  make('stop', { offset: 1, class: 'escena__halo-borde' }, halo);
   // Cables, con el hueco de la muestra abajo y la pila a la izquierda.
-  make('path', { d: `M${L} 66V${Y1}H${R}V${Y2}H${GAP2}M${GAP1} ${Y2}H${L}V100`, class: 'escena__cable' }, scene);
+  make('path', { d: `M${L} 74V${Y1}H${R}V${Y2}H${GAP2}M${GAP1} ${Y2}H${L}V108`, class: 'escena__cable' }, scene);
   // Pila: el polo positivo arriba.
-  make('rect', { x: L - 11, y: 70, width: 22, height: 30, rx: 2.5, class: 'escena__pila' }, scene);
-  make('rect', { x: L - 5, y: 66, width: 10, height: 4, rx: 1, class: 'escena__pila-polo' }, scene);
-  text(scene, L + 18, 77, '+', 'escena__etiqueta', { 'text-anchor': 'middle' });
-  text(scene, L + 18, 99, '−', 'escena__etiqueta', { 'text-anchor': 'middle' });
-  // Foco sobre el cable de arriba.
-  const glow = make('circle', { cx: 180, cy: 25, r: 23, class: 'escena__foco-luz', opacity: 0 }, scene);
-  const rays = make('g', { opacity: 0 }, scene);
-  for (let i = 0; i < 8; i += 1) {
-    const a = -Math.PI / 2 + (i - 3.5) * .42;
-    make('path', { d: `M${round(180 + Math.cos(a) * 17)} ${round(25 + Math.sin(a) * 17)}L${round(180 + Math.cos(a) * 24)} ${round(25 + Math.sin(a) * 24)}`, class: 'escena__rayo' }, rays);
+  make('rect', { x: L - 11, y: 78, width: 22, height: 30, rx: 2.5, class: 'escena__pila' }, scene);
+  make('rect', { x: L - 5, y: 74, width: 10, height: 4, rx: 1, class: 'escena__pila-polo' }, scene);
+  text(scene, L + 18, 86, '+', 'escena__etiqueta', { 'text-anchor': 'middle' });
+  text(scene, L + 18, 107, '−', 'escena__etiqueta', { 'text-anchor': 'middle' });
+  // Foco incandescente sobre el cable de arriba: vidrio en forma de pera,
+  // casquillo de rosca, dos alambres de soporte y el filamento en espiral.
+  const bulb = make('g', { transform: `translate(180 ${Y1 - 19})` }, scene);
+  const glow = make('circle', { cy: -10, r: 24, fill: `url(#halo${uid})`, opacity: 0 }, bulb);
+  const rays = make('g', { opacity: 0 }, bulb);
+  for (let i = 0; i < 9; i += 1) {
+    const a = (-162 + i * 18) * Math.PI / 180;
+    make('path', { d: `M${round(Math.cos(a) * 16.5)} ${round(-10 + Math.sin(a) * 16.5)}L${round(Math.cos(a) * 22.5)} ${round(-10 + Math.sin(a) * 22.5)}`, class: 'escena__rayo' }, rays);
   }
-  make('circle', { cx: 180, cy: 25, r: 12.5, class: 'escena__foco-vidrio' }, scene);
-  const filament = make('path', { d: 'M174 30Q177 21 180 29Q183 21 186 30', class: 'escena__filamento' }, scene);
-  make('rect', { x: 173.5, y: 35, width: 13, height: 6.5, rx: 1.2, class: 'escena__metal' }, scene);
+  const glass = make('path', { d: 'M-5 8C-5 3.5 -13 -2 -13 -10A13 13 0 0 1 13 -10C13 -2 5 3.5 5 8Z', class: 'escena__foco-vidrio' }, bulb);
+  make('path', { d: 'M-2.4 8L-4.2 -7.6M2.4 8L4.2 -7.6', class: 'escena__foco-hilo' }, bulb);
+  const filament = make('path', { d: 'M-4.2 -7.6q1.05 -2.6 2.1 0t2.1 0t2.1 0t2.1 0', class: 'escena__filamento' }, bulb);
+  make('path', { d: 'M-8.6 -14.8A9.2 9.2 0 0 1 -3.4 -19.6', class: 'escena__foco-reflejo' }, bulb);
+  make('rect', { x: -5.6, y: 8, width: 11.2, height: 9, rx: 1.4, class: 'escena__foco-rosca' }, bulb);
+  make('path', { d: 'M-5.6 10.6L5.6 9.4M-5.6 13.2L5.6 12M-5.6 15.8L5.6 14.6', class: 'escena__foco-vuelta' }, bulb);
+  make('path', { d: 'M-3 17h6l-1.2 2h-3.6Z', class: 'escena__foco-contacto' }, bulb);
   // Pinzas y muestra.
   [GAP1 - 4, GAP2 - 2].forEach(x => make('rect', { x, y: Y2 - 5, width: 6, height: 10, rx: 1.2, class: 'escena__pinza' }, scene));
   const sample = make('g', {}, scene);
   const copper = make('g', {}, sample);
-  make('rect', { x: GAP1 + 4, y: Y2 - 9, width: GAP2 - GAP1 - 8, height: 18, rx: 1.5, class: 'escena__metal' }, copper);
-  make('rect', { x: GAP1 + 10, y: Y2 - 5.5, width: 34, height: 2.4, rx: 1, class: 'escena__metal-reflejo' }, copper);
+  make('rect', { x: GAP1 + 4, y: Y2 - 9, width: GAP2 - GAP1 - 8, height: 18, rx: 1.5, class: 'escena__cobre' }, copper);
+  make('rect', { x: GAP1 + 4, y: Y2 + 4, width: GAP2 - GAP1 - 8, height: 5, rx: 1.5, class: 'escena__cobre-sombra' }, copper);
+  make('rect', { x: GAP1 + 10, y: Y2 - 5.5, width: 34, height: 2.4, rx: 1, class: 'escena__cobre-brillo' }, copper);
   const sulfur = make('g', { opacity: 0 }, sample);
   make('path', { d: `M${GAP1 + 6} ${Y2 + 6}Q${GAP1 + 3} ${Y2 - 7} ${GAP1 + 16} ${Y2 - 9}Q${GAP1 + 34} ${Y2 - 13} ${GAP2 - 16} ${Y2 - 8}Q${GAP2 - 4} ${Y2 - 6} ${GAP2 - 6} ${Y2 + 5}Q${GAP2 - 20} ${Y2 + 11} ${GAP1 + 20} ${Y2 + 10}Z`, class: 'escena__azufre' }, sulfur);
 
   // Recorrido de los electrones: del polo negativo, por fuera, al positivo.
-  const PATH = [[L, 100], [L, Y2], [R, Y2], [R, Y1], [L, Y1], [L, 66]];
+  const PATH = [[L, 108], [L, Y2], [R, Y2], [R, Y1], [L, Y1], [L, 74]];
   const lengths = PATH.slice(1).map((p, i) => Math.hypot(p[0] - PATH[i][0], p[1] - PATH[i][1]));
   const TOTAL = lengths.reduce((a, b) => a + b, 0);
   function punto(s) {
@@ -384,8 +407,8 @@ function circuito(svg) {
   const electrons = Array.from({ length: N }, () => make('circle', { r: 2.3, class: 'escena__electron' }, scene));
 
   const status = [
-    text(scene, 180, 158, 'cobre · metal: conduce, el foco enciende', 'escena__resultado', { 'text-anchor': 'middle' }),
-    text(scene, 180, 158, 'azufre · no metal: no conduce, el foco no enciende', 'escena__resultado escena__resultado--apagado', { 'text-anchor': 'middle', opacity: 0 })
+    text(scene, 180, 162, 'cobre · metal: conduce, el foco enciende', 'escena__resultado', { 'text-anchor': 'middle' }),
+    text(scene, 180, 162, 'azufre · no metal: no conduce, el foco no enciende', 'escena__resultado escena__resultado--apagado', { 'text-anchor': 'middle', opacity: 0 })
   ];
 
   let t = 0, flow = 0;
@@ -415,6 +438,7 @@ function circuito(svg) {
     fade(glow, on * .9);
     fade(rays, on);
     filament.classList.toggle('es-encendido', on > .5);
+    glass.classList.toggle('es-encendido', on > .5);
     electrons.forEach((dot, i) => {
       const [x, y] = punto(flow + i * TOTAL / N);
       set(dot, { cx: x, cy: y });
