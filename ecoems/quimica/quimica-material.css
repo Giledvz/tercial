@@ -5213,9 +5213,11 @@ select.particle-row__input {
   font-weight: var(--font-weight-medium);
 }
 
+.escena .escena__simbolo-chico--o { font-size: 11px; }
+
 .escena .escena__simbolo-chico--h {
   fill: var(--e-ink);
-  font-size: 7px;
+  font-size: 8.5px;
 }
 
 .escena__enlace-linea {

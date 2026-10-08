@@ -127,18 +127,26 @@ function ionico(svg) {
   const naLabel = text(na, NA[0], NA[1] + 5, 'Na', 'escena__ion-simbolo', { 'text-anchor': 'middle' });
   // Cloro, con sus 7 electrones de valencia
   const cl = make('g', {}, pair);
-  make('circle', { cx: CL[0], cy: CL[1], r: RING_CL, class: 'escena__capa' }, cl);
-  make('circle', { cx: CL[0], cy: CL[1], r: 21, class: 'escena__anion' }, cl);
+  const clRing = make('circle', { cx: CL[0], cy: CL[1], r: RING_CL, class: 'escena__capa' }, cl);
+  const clCore = make('circle', { cx: CL[0], cy: CL[1], r: 21, class: 'escena__anion' }, cl);
   text(cl, CL[0], CL[1] + 5, 'Cl', 'escena__ion-simbolo escena__ion-simbolo--tinta', { 'text-anchor': 'middle' });
   const angles = Array.from({ length: 8 }, (_, i) => -Math.PI / 2 + i * TAU / 8);
-  angles.slice(0, 7).forEach(a => make('circle', { cx: round(CL[0] + Math.cos(a) * RING_CL), cy: round(CL[1] + Math.sin(a) * RING_CL), r: 2.6, class: 'escena__electron' }, cl));
+  const clElectrons = angles.slice(0, 7).map(a => ({ a, node: make('circle', { r: 2.6, class: 'escena__electron' }, cl) }));
+  // Al ganar el electrón el cloro crece: el Cl⁻ mide unos 181 pm y el átomo, 99 pm.
+  const CRECE = 4;
+  function capaCl(extra) {
+    const r = RING_CL + extra;
+    set(clRing, { r });
+    set(clCore, { r: 21 + extra * .6 });
+    clElectrons.forEach(e => set(e.node, { cx: CL[0] + Math.cos(e.a) * r, cy: CL[1] + Math.sin(e.a) * r }));
+    return r;
+  }
   // El electrón que viaja (con un aro terracota para seguirlo con la vista)
   const traveler = make('g', {}, pair);
   make('circle', { r: 5.5, class: 'escena__electron-aro' }, traveler);
   make('circle', { r: 2.6, class: 'escena__electron' }, traveler);
   const start = [NA[0] + RING_NA, NA[1]];
   const endAngle = angles[7];
-  const end = [CL[0] + Math.cos(endAngle) * RING_CL, CL[1] + Math.sin(endAngle) * RING_CL];
   // Cargas y letreros
   const plus = text(pair, NA[0] + 20, NA[1] - 18, '+', 'escena__carga escena__carga--mas', { opacity: 0 });
   const minus = text(pair, CL[0] + 30, CL[1] - 26, '−', 'escena__carga', { opacity: 0 });
@@ -168,8 +176,11 @@ function ionico(svg) {
   function draw(time, final) {
     fade(scene, final ? 1 : ciclo(time, T));
     const move = final ? 1 : smooth((time - 2) / 2);
+    const grown = final ? 1 : smooth((time - 4.2) / .8);
+    const rCl = capaCl(CRECE * grown);
+    const endX = CL[0] + Math.cos(endAngle) * rCl, endY = CL[1] + Math.sin(endAngle) * rCl;
     // Arco de ida: el electrón sube y baja entre los dos átomos.
-    const x = mix(start[0], end[0], move), y = mix(start[1], end[1], move) - Math.sin(move * Math.PI) * 34;
+    const x = mix(start[0], endX, move), y = mix(start[1], endY, move) - Math.sin(move * Math.PI) * 34;
     traveler.setAttribute('transform', `translate(${round(x)} ${round(y)})`);
     fade(traveler.firstChild, final ? 0 : 1 - smooth((time - 4.4) / .6));
     const ion = final ? 1 : smooth((time - 4.2) / .8);
@@ -362,10 +373,16 @@ function metalico(svg) {
 function puentes(svg) {
   const scene = make('g', {}, svg);
   const lines = make('g', {}, scene);
-  const BOND = 15, HALF = 104.5 / 2;
+  const BOND = 20.5, HALF = 104.5 / 2, OO = 64;  // O···O ≈ 2.9 veces O–H, como en el agua (2.8 Å y 0.96 Å)
   // A, al centro, le da sus dos H a B y a C; D y E le dan un H cada uno a A.
   // El giro de cada molécula hace que su H donador apunte justo al O vecino.
-  const POS = { A: [180, 92], B: [112, 152], C: [248, 152], D: [100, 40], E: [260, 40] };
+  // A en el centro; B y C en la dirección de sus H; D y E arriba, hacia sus pares libres.
+  const desde = (x, y, grados) => [x + Math.cos(grados * Math.PI / 180) * OO, y + Math.sin(grados * Math.PI / 180) * OO];
+  const POS = { A: [180, 88] };
+  POS.B = desde(...POS.A, 90 + HALF);
+  POS.C = desde(...POS.A, 90 - HALF);
+  POS.D = desde(...POS.A, -138);
+  POS.E = desde(...POS.A, -42);
   const hacia = (from, to) => Math.atan2(POS[to][1] - POS[from][1], POS[to][0] - POS[from][0]) * 180 / Math.PI;
   const GIROS = { A: 90, B: 150, C: 30, D: hacia('D', 'A') + HALF, E: hacia('E', 'A') - HALF };
   const mols = {};
@@ -377,11 +394,11 @@ function puentes(svg) {
       return [Math.cos(a) * BOND, Math.sin(a) * BOND];
     });
     hs.forEach(([hx, hy]) => make('path', { d: `M0 0L${round(hx)} ${round(hy)}`, class: 'escena__enlace-agua' }, g));
-    make('circle', { r: 10, class: 'escena__oxigeno' }, g);
-    text(g, 0, 3.4, 'O', 'escena__simbolo-chico', { 'text-anchor': 'middle' });
+    make('circle', { r: 13.5, class: 'escena__oxigeno' }, g);
+    text(g, 0, 4.2, 'O', 'escena__simbolo-chico escena__simbolo-chico--o', { 'text-anchor': 'middle' });
     hs.forEach(([hx, hy]) => {
-      make('circle', { cx: round(hx), cy: round(hy), r: 6, class: 'escena__hidrogeno' }, g);
-      text(g, round(hx), round(hy) + 2.4, 'H', 'escena__simbolo-chico escena__simbolo-chico--h', { 'text-anchor': 'middle' });
+      make('circle', { cx: round(hx), cy: round(hy), r: 8, class: 'escena__hidrogeno' }, g);
+      text(g, round(hx), round(hy) + 3, 'H', 'escena__simbolo-chico escena__simbolo-chico--h', { 'text-anchor': 'middle' });
     });
     mols[name] = { g, x, y, hs, phase: i * 1.3 };
   });
@@ -403,10 +420,10 @@ function puentes(svg) {
       const x = m.x + m.dx + m.hs[h][0], y = m.y + m.dy + m.hs[h][1];
       const tx = target.x + target.dx, ty = target.y + target.dy;
       const ang = Math.atan2(ty - y, tx - x);
-      bridges[i].setAttribute('d', `M${round(x + Math.cos(ang) * 7)} ${round(y + Math.sin(ang) * 7)}L${round(tx - Math.cos(ang) * 12)} ${round(ty - Math.sin(ang) * 12)}`);
+      bridges[i].setAttribute('d', `M${round(x + Math.cos(ang) * 9)} ${round(y + Math.sin(ang) * 9)}L${round(tx - Math.cos(ang) * 14.5)} ${round(ty - Math.sin(ang) * 14.5)}`);
       if (i === 0) {
-        set(dPlus, { x: x + 9, y: y - 6 });
-        set(dMinus, { x: tx - 20, y: ty + 5 });
+        set(dPlus, { x: x + 14, y: y - 7 });
+        set(dMinus, { x: tx - 25, y: ty + 5 });
       }
     });
   }

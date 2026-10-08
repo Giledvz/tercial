@@ -395,7 +395,9 @@ function circuito(svg) {
   make('stop', { offset: 0, class: 'escena__halo-centro' }, halo);
   make('stop', { offset: 1, class: 'escena__halo-borde' }, halo);
   // Cables, con el hueco de la muestra abajo y la pila a la izquierda.
-  make('path', { d: `M${L} 74V${Y1}H${R}V${Y2}H${GAP2}M${GAP1} ${Y2}H${L}V108`, class: 'escena__cable' }, scene);
+  // El cable de la izquierda llega a la rosca del foco y el de la derecha a su
+  // contacto de abajo: así la corriente tiene que cruzar el filamento.
+  make('path', { d: `M${L} 74V${Y1}H171V${Y1 - 6.5}H174.4M180 ${Y1}H${R}V${Y2}H${GAP2}M${GAP1} ${Y2}H${L}V108`, class: 'escena__cable' }, scene);
   // Pila: el polo positivo arriba.
   make('rect', { x: L - 11, y: 78, width: 22, height: 30, rx: 2.5, class: 'escena__pila' }, scene);
   make('rect', { x: L - 5, y: 74, width: 10, height: 4, rx: 1, class: 'escena__pila-polo' }, scene);
@@ -428,7 +430,10 @@ function circuito(svg) {
   make('path', { d: `M${GAP1 + 6} ${Y2 + 6}Q${GAP1 + 3} ${Y2 - 7} ${GAP1 + 16} ${Y2 - 9}Q${GAP1 + 34} ${Y2 - 13} ${GAP2 - 16} ${Y2 - 8}Q${GAP2 - 4} ${Y2 - 6} ${GAP2 - 6} ${Y2 + 5}Q${GAP2 - 20} ${Y2 + 11} ${GAP1 + 20} ${Y2 + 10}Z`, class: 'escena__azufre' }, sulfur);
 
   // Recorrido de los electrones: del polo negativo, por fuera, al positivo.
-  const PATH = [[L, 108], [L, Y2], [R, Y2], [R, Y1], [L, Y1], [L, 74]];
+  // Por el foco: entra por el contacto, sube por el alambre derecho, cruza el
+  // filamento, baja por el izquierdo y sale por la rosca.
+  const PATH = [[L, 108], [L, Y2], [R, Y2], [R, Y1], [180, Y1], [182.4, Y1 - 11], [184.2, Y1 - 26.6],
+    [175.8, Y1 - 26.6], [177.6, Y1 - 11], [174.4, Y1 - 6.5], [171, Y1 - 6.5], [171, Y1], [L, Y1], [L, 74]];
   const lengths = PATH.slice(1).map((p, i) => Math.hypot(p[0] - PATH[i][0], p[1] - PATH[i][1]));
   const TOTAL = lengths.reduce((a, b) => a + b, 0);
   function punto(s) {
