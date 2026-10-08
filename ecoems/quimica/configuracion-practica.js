@@ -15,6 +15,7 @@
   var CAPACITY = { s: 2, p: 6, d: 10, f: 14 };
   var CORES = { he: 2, ne: 10, ar: 18, kr: 36, xe: 54, rn: 86 };
   var ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+  var NOBLE = [[86, 'Rn'], [54, 'Xe'], [36, 'Kr'], [18, 'Ar'], [10, 'Ne'], [2, 'He']];
   var SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹';
 
   var ELEMENTS = [
@@ -57,8 +58,12 @@
       levels.push(terms.filter(function (t) { return Number(t.sub[0]) === level; })
         .reduce(function (sum, t) { return sum + t.n; }, 0));
     }
+    var gas = NOBLE.filter(function (g) { return g[0] < element.z; })[0] || null;
+    var short = gas ? '[' + gas[1] + '] ' + terms.slice(fill(gas[0]).length)
+      .map(function (t) { return t.sub + sup(t.n); }).join(' ') : '';
     return {
       terms: terms,
+      short: short,
       period: period,
       valence: valence,
       valenceTerms: valenceTerms,
@@ -79,7 +84,9 @@
     var counts = {};
     var total = 0;
     var problem = null;
-    text = text.replace(/\[\s*(he|ne|ar|kr|xe|rn)\s*\]/g, function (_, core) {
+    // Kernel del gas noble: [Kr], (Kr) o «Kr» al principio.
+    text = text.replace(/^\s*(he|ne|ar|kr|xe|rn)\b/, '[$1]');
+    text = text.replace(/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]/g, function (_, core) {
       fill(CORES[core]).forEach(function (t) {
         counts[t.sub] = (counts[t.sub] || 0) + t.n;
         total += t.n;
@@ -125,6 +132,11 @@
       }
     }
     if (reading.total !== element.z) {
+      if (/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]|^\s*(he|ne|ar|kr|xe|rn)\b/i.test(value)) {
+        return 'Revisa el gas noble entre corchetes: debe ser el anterior al ' + element.name.toLowerCase() +
+          ', el que tiene menos electrones pero está más cerca de Z = ' + element.z + '. Tu configuración suma ' +
+          reading.total + ' electrones.';
+      }
       return 'Tu configuración suma ' + reading.total + ' electrones, pero el ' + element.name.toLowerCase() +
         ' tiene Z = ' + element.z + '.';
     }
@@ -149,7 +161,8 @@
     String(value).toLowerCase()
       .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, function (c) { return String(SUP.indexOf(c)); })
       .replace(/\^/g, '')
-      .replace(/\[\s*(he|ne|ar|kr|xe|rn)\s*\]|(\d)\s*([spdf])\s*(\d{1,2})/g, function (match, core, level, type, count) {
+      .replace(/^\s*(he|ne|ar|kr|xe|rn)\b/, '[$1]')
+      .replace(/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]|(\d)\s*([spdf])\s*(\d{1,2})/g, function (match, core, level, type, count) {
         parts.push(core ? '[' + core.charAt(0).toUpperCase() + core.charAt(1) + ']' : level + type + sup(count));
         return match;
       });
@@ -248,7 +261,8 @@
       var valenceText = info.valenceTerms.map(function (t) { return t.sub + sup(t.n); }).join(' + ');
       return {
         pista: hints.join(' · '),
-        porque: termsText(info.terms) + '. El nivel más alto es ' + info.period + ', así que está en el periodo ' +
+        porque: termsText(info.terms) + (info.short ? ' (abreviada: ' + info.short + ')' : '') +
+          '. El nivel más alto es ' + info.period + ', así que está en el periodo ' +
           info.period + '; en ese nivel hay ' + valenceText + ' = ' + info.valence + ' electrones de valencia → familia ' +
           info.family + '. Por niveles: ' + info.levels.join(', ') + '.'
       };

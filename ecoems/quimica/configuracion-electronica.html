@@ -31,14 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="./quimica-material.css?v=20261008-rutherford">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-kernel">
 <link rel="stylesheet" href="./selector-elemento.css?v=20261008-selector">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script type="module" src="./escenas-atomo.js?v=20261008-rutherford"></script>
+<script type="module" src="./escenas-atomo.js?v=20261008-kernel"></script>
 <script defer src="./practica-quimica.js?v=20261008-estructura"></script>
-<script defer src="./configuracion-practica.js?v=20261008-estructura"></script>
+<script defer src="./configuracion-practica.js?v=20261008-kernel"></script>
 </head>
 <body>
 
@@ -204,6 +204,7 @@
           <p class="diagonal-tool__kicker">Configuración</p>
           <p class="diagonal-tool__config" data-diagonal-config></p>
           <p class="diagonal-tool__count" data-diagonal-count></p>
+          <p class="diagonal-tool__kernel" data-diagonal-kernel></p>
           <dl class="diagonal-tool__facts">
             <div><dt>Periodo</dt><dd data-diagonal-period></dd></div>
             <div><dt>Electrones de valencia</dt><dd data-diagonal-valence></dd></div>
@@ -218,6 +219,58 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section aria-labelledby="configuracionAbreviada">
+    <header class="section-header">
+      <h2 class="section-header__title" id="configuracionAbreviada">
+        <span class="lesson-section__kicker">Atajo</span> La configuración abreviada con gas noble
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Los gases nobles resumen los niveles <em>llenos</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Los gases nobles —helio, neón, argón, kriptón, xenón y radón— tienen llenos todos sus
+          niveles. Por eso su configuración sirve como atajo: escribes entre corchetes el símbolo del
+          gas noble anterior al elemento y después sólo los electrones que faltan. A esta forma también
+          se le llama <strong>configuración kernel</strong>.</p>
+        <p>Por ejemplo, el bromo tiene 35 electrones y los primeros 18 son los del argón:
+          [Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup>.</p>
+      </div>
+    </article>
+    <figure class="atom-figure atom-figure--wide">
+      <svg class="escena escena--kernel" data-escena-atomo="kernel" viewBox="0 0 360 120" role="img" aria-labelledby="kernelTitle">
+        <title id="kernelTitle">Las configuraciones completas del sodio, el bromo y el plomo se abrevian: los subniveles que coinciden con el gas noble anterior se juntan en su símbolo entre corchetes</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Los subniveles del gas noble se juntan en un solo símbolo;
+        sólo quedan a la vista los últimos.</figcaption>
+    </figure>
+    <div class="reference-table-wrap" role="region" aria-labelledby="configuracionAbreviada" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Gases nobles que se usan para abreviar: electrones, último subnivel y subnivel con el que se continúa</caption>
+        <thead>
+          <tr>
+            <th scope="col">Gas noble</th>
+            <th scope="col">Electrones</th>
+            <th scope="col">Termina en</th>
+            <th scope="col">Después sigue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="reference-table__symbol">[He] helio</th><td>2</td><td>1s<sup>2</sup></td><td>2s</td></tr>
+          <tr><th scope="row" class="reference-table__symbol">[Ne] neón</th><td>10</td><td>2p<sup>6</sup></td><td>3s</td></tr>
+          <tr><th scope="row" class="reference-table__symbol">[Ar] argón</th><td>18</td><td>3p<sup>6</sup></td><td>4s</td></tr>
+          <tr><th scope="row" class="reference-table__symbol">[Kr] kriptón</th><td>36</td><td>4p<sup>6</sup></td><td>5s</td></tr>
+          <tr><th scope="row" class="reference-table__symbol">[Xe] xenón</th><td>54</td><td>5p<sup>6</sup></td><td>6s</td></tr>
+          <tr><th scope="row" class="reference-table__symbol">[Rn] radón</th><td>86</td><td>6p<sup>6</sup></td><td>7s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Usa el gas noble con menos electrones que el elemento y que esté más
+      cerca de él. La forma abreviada no cambia el periodo ni los electrones de valencia: sólo ahorra
+      escritura.</p>
   </section>
 
   <section aria-labelledby="leeConfiguracion">
@@ -250,6 +303,7 @@
           <div><dt>Valencia</dt><dd>1 electrón · 3s<sup>1</sup></dd></div>
           <div><dt>Familia</dt><dd>IA</dd></div>
           <div><dt>Por niveles</dt><dd>2 · 8 · 1</dd></div>
+          <div><dt>Abreviada</dt><dd>[Ne] 3s<sup>1</sup></dd></div>
         </dl>
       </article>
       <article class="config-example">
@@ -260,6 +314,7 @@
           <div><dt>Valencia</dt><dd>4s<sup>2</sup> + 4p<sup>5</sup> = 7 electrones</dd></div>
           <div><dt>Familia</dt><dd>VIIA</dd></div>
           <div><dt>Por niveles</dt><dd>2 · 8 · 18 · 7</dd></div>
+          <div><dt>Abreviada</dt><dd>[Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup></dd></div>
         </dl>
         <p class="config-example__note">Ojo: 3d<sup>10</sup> no cuenta para la valencia, porque es del nivel 3.</p>
       </article>
@@ -278,8 +333,9 @@
       <span class="section-header__count">10 elementos</span>
     </header>
     <p class="section-intro">Escribe la configuración de cada elemento con números normales
-      (1s2 2s2 2p6…) y elige su periodo, sus electrones de valencia y su familia. Hazlo sin la
-      herramienta de arriba: después úsala para revisar.</p>
+      (1s2 2s2 2p6…); en los elementos grandes puedes abreviarla con el gas noble, como
+      [Kr] 5s2 4d10 5p1. Después elige su periodo, sus electrones de valencia y su familia. Hazlo
+      sin la herramienta de arriba: úsala sólo para revisar.</p>
     <!-- Ejercicios: QUA-001 · p. 13 (el selenio se corrige: familia VIA, 6 electrones de valencia) -->
     <form data-practice-form autocomplete="off">
       <ol class="config-sheet" data-config-cards></ol>

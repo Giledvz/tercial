@@ -1226,6 +1226,7 @@ function diagonales(svg) {
   const noteOut = root.querySelector('[data-diagonal-note]');
   const levelsSvg = root.querySelector('[data-diagonal-levels]');
   const live = root.querySelector('[data-diagonal-live]');
+  const kernelOut = root.querySelector('[data-diagonal-kernel]');
   const X0 = 32, DX = 78, Y0 = 26, DY = 44;
   const center = sub => [X0 + 'spdf'.indexOf(sub[1]) * DX, Y0 + (Number(sub[0]) - 1) * DY];
   const rows = [['1s'], ['2s', '2p'], ['3s', '3p', '3d'], ['4s', '4p', '4d', '4f'], ['5s', '5p', '5d', '5f'], ['6s', '6p', '6d'], ['7s', '7p']];
@@ -1285,7 +1286,8 @@ function diagonales(svg) {
     const result = configurar(z);
     const raw = result.terms.length * PAUSA + z * POR_ELECTRON;
     const k = raw < MINIMO ? Math.min(MINIMO / raw, 3) : Math.min(1, LIMITE / raw);
-    state = { z, element, result, pause: PAUSA * k, per: POR_ELECTRON * k, duration: raw * k };
+    const short = abreviada(z);
+    state = { z, element, result, gas: short.gas, short: short.terms, pause: PAUSA * k, per: POR_ELECTRON * k, duration: raw * k };
   }
 
   // Electrones colocados tras `elapsed` segundos de animación.
@@ -1328,10 +1330,14 @@ function diagonales(svg) {
       if (!current && filled < term.n) current = term.sub;
     });
     const done = electronsPlaced >= z;
+    const inner = state.gas ? configurar(state.gas[0]).terms.map(term => term.sub) : [];
     cells.forEach((cell, sub) => {
       const pair = partialTerms.find(([term]) => term.sub === sub);
       const filled = pair ? pair[1] : 0;
       const valence = done && result.valenceTerms.some(term => term.sub === sub) && /[sp]/.test(result.block) && z > 2;
+      const kernelCell = done && inner.includes(sub);
+      cell.label.classList.toggle('es-kernel', kernelCell);
+      cell.slots.forEach(slot => slot.classList.toggle('es-kernel', kernelCell));
       cell.slots.forEach((slot, i) => {
         slot.classList.toggle('es-lleno', i < filled);
         slot.classList.toggle('es-valencia', valence && i < filled);
@@ -1376,13 +1382,20 @@ function diagonales(svg) {
     noteOut.textContent = notes.join(' ');
     noteOut.hidden = notes.length === 0;
     drawLevels(result.levels, z);
+    if (kernelOut) {
+      kernelOut.innerHTML = state.gas
+        ? `<span class="diagonal-tool__kernel-label">Abreviada</span> <span class="diagonal-tool__term">[${state.gas[1]}]</span> ` +
+          state.short.map(term => `<span class="diagonal-tool__term">${term.sub}${sup(term.n)}</span>`).join(' ')
+        : '<span class="diagonal-tool__kernel-label">Abreviada</span> no hay un gas noble antes: se escribe completa';
+    }
   }
 
   // Un solo aviso para lectores de pantalla, cuando la configuración termina.
   function announce() {
     if (!live) return;
     const { result, element } = state;
-    live.textContent = `${element.nombre}: ${result.terms.map(term => `${term.sub}${sup(term.n)}`).join(' ')}. ` +
+    const shortText = state.gas ? ` Abreviada: [${state.gas[1]}] ${state.short.map(term => `${term.sub}${sup(term.n)}`).join(' ')}.` : '';
+    live.textContent = `${element.nombre}: ${result.terms.map(term => `${term.sub}${sup(term.n)}`).join(' ')}.${shortText} ` +
       `Periodo ${periodOut.textContent}. Valencia ${valenceOut.textContent}. Familia ${familyOut.textContent}.`;
   }
 
@@ -1432,8 +1445,123 @@ function diagonales(svg) {
   };
 }
 
+
+/* ---------------- 9 · Configuración abreviada con gas noble ----------------
+   La configuración completa se abrevia: los subniveles que coinciden con el
+   gas noble anterior se juntan en su símbolo entre corchetes y sólo quedan a
+   la vista los últimos. Recorre sodio, bromo y plomo. */
+const GASES_NOBLES = [[2, 'He'], [10, 'Ne'], [18, 'Ar'], [36, 'Kr'], [54, 'Xe'], [86, 'Rn']];
+
+// Gas noble anterior a un elemento (el más grande con menos electrones).
+export function gasNobleAnterior(z) {
+  return [...GASES_NOBLES].reverse().find(([g]) => g < z) || null;
+}
+
+export function abreviada(z) {
+  const gas = gasNobleAnterior(z);
+  const { terms } = configurar(z);
+  if (!gas) return { gas: null, terms };
+  const inner = configurar(gas[0]).terms.length;
+  return { gas, terms: terms.slice(inner) };
+}
+
+function kernel(svg) {
+  const ELEMS = [11, 35, 82];
+  const FS = 15, CH = .6, SUP = .7;
+  const X0 = 14, MAXW = 332, ROWS = [50, 78], MID = 64;
+  const STEP = 6.6;
+  const tokenWidth = (sub, n) => (sub.length * CH + String(n).length * CH * SUP) * FS;
+  const GAP = CH * FS;
+
+  function token(parent, sub, n) {
+    const node = make('text', { class: 'escena__termino' }, parent);
+    const main = make('tspan', {}, node);
+    main.textContent = sub;
+    const up = make('tspan', { class: 'escena__termino-exp', dy: -6 }, node);
+    up.textContent = n;
+    return node;
+  }
+
+  const layers = ELEMS.map(z => {
+    const element = ELEMENTOS[z - 1];
+    const { terms } = configurar(z);
+    const [gasZ, gasSymbol] = gasNobleAnterior(z);
+    const inner = configurar(gasZ).terms.length;
+    const group = make('g', { opacity: 0 }, svg);
+    text(group, X0, 20, `${element.nombre.toLowerCase()} · Z = ${z}`, 'escena__clave');
+    const state = text(group, X0 + MAXW, 20, 'completa', 'escena__clave escena__clave--acento', { 'text-anchor': 'end' });
+
+    // Acomodo completo: renglones que no pasan del ancho disponible.
+    let x = X0, row = 0;
+    const tokens = terms.map((term, i) => {
+      const w = tokenWidth(term.sub, term.n);
+      if (x + w > X0 + MAXW) { row += 1; x = X0; }
+      const full = { x, y: ROWS[row] };
+      x += w + GAP;
+      return { node: token(group, term.sub, term.n), w, full, kernel: i < inner };
+    });
+    const rows = row + 1;
+
+    // Acomodo abreviado: [gas] y después lo que falta, en un solo renglón.
+    const gasText = `[${gasSymbol}]`;
+    const gasW = gasText.length * CH * FS;
+    const gasNode = text(group, X0, MID, gasText, 'escena__termino escena__termino--gas', { opacity: 0 });
+    let ax = X0 + gasW + GAP;
+    tokens.forEach(t => {
+      if (t.kernel) t.abbr = { x: X0 + gasW / 2 - t.w / 2, y: MID };
+      else { t.abbr = { x: ax, y: MID }; ax += t.w + GAP; }
+    });
+
+    // Corchete bajo los subniveles del gas noble, renglón por renglón.
+    const kernelTokens = tokens.filter(t => t.kernel);
+    const bracket = make('path', { class: 'escena__corchete', opacity: 0 }, group);
+    let d = '';
+    for (let r = 0; r < rows; r += 1) {
+      const inRow = kernelTokens.filter(t => t.full.y === ROWS[r]);
+      if (!inRow.length) continue;
+      const x1 = inRow[0].full.x, x2 = inRow[inRow.length - 1].full.x + inRow[inRow.length - 1].w, y = ROWS[r] + 7;
+      d += `M${round(x1)} ${y - 3}V${y}H${round(x2)}V${y - 3}`;
+    }
+    bracket.setAttribute('d', d);
+    const lastRow = Math.max(...kernelTokens.map(t => t.full.y));
+    const label = text(group, X0, lastRow + 26, `= [${gasSymbol}], los ${gasZ} electrones del ${ELEMENTOS[gasZ - 1].nombre.toLowerCase()}`,
+      'escena__clave', { opacity: 0 });
+    return { group, tokens, gasNode, bracket, label, state };
+  });
+
+  function render(t) {
+    const index = Math.floor(t / STEP) % layers.length;
+    const s = t - Math.floor(t / STEP) * STEP;
+    layers.forEach((layer, i) => {
+      if (i !== index) { layer.group.setAttribute('opacity', 0); return; }
+      const fade = Math.min(smooth(span(s, 0, .5)), 1 - smooth(span(s, STEP - .6, STEP)));
+      layer.group.setAttribute('opacity', round(fade));
+      const mark = smooth(span(s, 1.4, 2.1));
+      const collapse = smooth(span(s, 2.9, 4.0));
+      layer.tokens.forEach(tok => {
+        const x = mix(tok.full.x, tok.abbr.x, collapse), y = mix(tok.full.y, tok.abbr.y, collapse);
+        set(tok.node, { x, y });
+        tok.node.classList.toggle('es-kernel', tok.kernel && mark > .5);
+        if (tok.kernel) tok.node.setAttribute('opacity', round(1 - smooth(span(collapse, .35, .9))));
+      });
+      layer.gasNode.setAttribute('opacity', round(smooth(span(collapse, .55, 1))));
+      layer.bracket.setAttribute('opacity', round(mark * (1 - collapse)));
+      layer.label.setAttribute('opacity', round(mark * (1 - smooth(span(collapse, 0, .4)))));
+      layer.state.textContent = collapse > .5 ? 'abreviada' : 'completa';
+    });
+  }
+
+  let t = 0;
+  render(0);
+  return {
+    update(dt) { t = (t + dt) % (STEP * layers.length); render(t); },
+    // Fotograma fijo: el bromo ya abreviado.
+    still() { render(STEP + 5); }
+  };
+}
+
 /* ---------------- Reloj compartido ---------------- */
-const factories = { democrito, dalton, thomson, rutherford, bohr, nube, constructor, diagonales };
+const factories = { democrito, dalton, thomson, rutherford, bohr, nube, constructor, diagonales, kernel };
 const scenes = [...document.querySelectorAll('[data-escena-atomo]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaAtomo](svg)
 }));

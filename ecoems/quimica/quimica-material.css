@@ -4227,3 +4227,52 @@ select.particle-row__input {
   font-size: var(--font-size-11);
   letter-spacing: .04em;
 }
+
+/* Configuración abreviada con gas noble */
+.escena .escena__termino {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: 15px;
+}
+.escena .escena__termino-exp { font-size: 10.5px; }
+.escena .escena__termino.es-kernel { fill: var(--color-text-primary); }
+.escena .escena__termino--gas {
+  fill: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+.escena__corchete {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.escena__subnivel.es-lleno.es-kernel { fill: var(--color-text-meta); }
+.escena__hueco.es-lleno.es-kernel { fill: var(--color-text-meta); }
+
+.diagonal-tool__kernel {
+  margin-top: var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-14);
+  line-height: 1.6;
+  transition: opacity var(--motion-slow) var(--motion-ease-standard);
+}
+
+.diagonal-tool__kernel-label {
+  margin-right: var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.diagonal-tool.is-playing .diagonal-tool__kernel {
+  opacity: 0;
+}
+
+/* Los símbolos químicos distinguen mayúsculas: He no es HE. */
+.reference-table th.reference-table__symbol {
+  letter-spacing: 0;
+  text-transform: none;
+}
