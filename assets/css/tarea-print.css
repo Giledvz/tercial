@@ -139,6 +139,13 @@ body,
 
 .task-table td.is-blank { background: #fbf8f2; }
 
+/* Número atómico junto al nombre del elemento */
+.task-z {
+  color: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 8.5pt;
+}
+
 /* Afirmaciones con una casilla para escribir la respuesta corta (M, NM…) */
 .task-checks {
   display: grid;

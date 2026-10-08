@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Bloques s, p, d y f · Química ECOEMS · Tercial</title>
+<meta name="description" content="La forma de la tabla periódica sale de la regla de las diagonales: cada bloque reúne a los elementos cuyo último electrón entra en el mismo tipo de subnivel.">
+<meta name="tercial:resource-id" content="ecoems-quimica-bloques-periodicos">
+<meta name="tercial:resource-title" content="Bloques s, p, d y f">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="estructura-periodicidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./bloques-practica.js?v=20261008-tanda3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 02 · 9 de 11 · Aprende y practica</p>
+    <h1 class="hero__title">Bloques <em>s, p, d y f</em></h1>
+    <p class="hero__lede">La forma de la tabla periódica no es un capricho: sale de la regla de las
+      diagonales. Cada región, o bloque, reúne a los elementos cuyo último electrón entra en el mismo
+      tipo de subnivel.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=bloque%20s#courseIndex">bloque s</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=bloque%20d#courseIndex">bloque d</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./configuracion-electronica.html">configuración electrónica</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaBloques">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaBloques">
+        <span class="lesson-section__kicker">Idea central</span> La tabla se arma electrón por electrón
+      </h2>
+    </header>
+    <figure class="tabla-figure">
+      <div class="tabla-figure__scroll" role="region" aria-label="La tabla periódica se arma por bloques" tabindex="0">
+        <svg class="escena escena--tabla" data-escena-tabla="bloques" viewBox="0 0 380 236" role="img" aria-labelledby="bloquesTitle">
+          <title id="bloquesTitle">Los elementos aparecen uno por uno en orden de número atómico y cada uno se acomoda en el bloque de su último subnivel: el bloque s de 2 columnas a la izquierda, el bloque p de 6 columnas a la derecha, el bloque d de 10 columnas en medio y el bloque f de 14 columnas abajo</title>
+        </svg>
+      </div>
+      <figcaption class="atom-figure__caption">Arriba se ve qué subnivel se está llenando. Al final, cada
+        bloque tiene tantas columnas como electrones caben en su subnivel: 2, 6, 10 y 14.</figcaption>
+    </figure>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">El último subnivel decide <em>el bloque</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Escribe la configuración con la regla de las diagonales y mira el último subnivel que se llena:
+          su letra, s, p, d o f, es el bloque del elemento.</p>
+        <p>Por eso el bloque s tiene 2 columnas, el p 6, el d 10 y el f 14: son los electrones que caben en
+          cada tipo de subnivel.</p>
+        <p>El periodo es el nivel más alto que aparece en la configuración.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 18 (la plata se escribe con la regla de las diagonales; se aclara su configuración real) -->
+      <footer class="source-line">
+        <span>Lectura · 9 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="cuatroBloques">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuatroBloques">
+        <span class="lesson-section__kicker">Compara</span> Cuatro bloques, cuatro subniveles
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="cuatroBloques" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Último subnivel, columnas y lugar de cada bloque</caption>
+        <thead>
+          <tr>
+            <th scope="col">Bloque</th>
+            <th scope="col">Último subnivel</th>
+            <th scope="col">Columnas</th>
+            <th scope="col">Dónde está</th>
+            <th scope="col">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="reference-table__symbol">s</th><td>ns<sup>1</sup> o ns<sup>2</sup></td><td>2</td><td>Grupos IA y IIA, y el helio</td><td>Na · [Ne] 3s<sup>1</sup></td></tr>
+          <tr><th scope="row" class="reference-table__symbol">p</th><td>np<sup>1</sup> a np<sup>6</sup></td><td>6</td><td>Grupos IIIA a VIIIA</td><td>Cl · [Ne] 3s<sup>2</sup> 3p<sup>5</sup></td></tr>
+          <tr><th scope="row" class="reference-table__symbol">d</th><td>(n − 1)d<sup>1</sup> a (n − 1)d<sup>10</sup></td><td>10</td><td>Metales de transición, grupos B</td><td>Fe · [Ar] 4s<sup>2</sup> 3d<sup>6</sup></td></tr>
+          <tr><th scope="row" class="reference-table__symbol">f</th><td>(n − 2)f<sup>1</sup> a (n − 2)f<sup>14</sup></td><td>14</td><td>Lantánidos y actínidos</td><td>Nd · [Xe] 6s<sup>2</sup> 4f<sup>4</sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Ojo con el número del subnivel: en el periodo 4 el bloque d llena el 3d y en
+      el periodo 6 el bloque f llena el 4f. Los subniveles d van un nivel atrás del periodo, y los f, dos.
+      El helio, 1s<sup>2</sup>, es del bloque s, pero se coloca con los gases nobles porque su único nivel
+      está lleno.</p>
+  </section>
+
+  <section aria-labelledby="ubicarBloques">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ubicarBloques">
+        <span class="lesson-section__kicker">Encuentra</span> Ubica cualquier elemento
+      </h2>
+    </header>
+    <p class="section-intro">Elige un elemento: se enciende su casilla y su bloque, y arriba aparecen su
+      configuración, su último subnivel, su periodo y su columna.</p>
+    <div class="ubicar" data-ubicar>
+      <div class="ubicar__picker">
+        <span class="diagonal-tool__label" id="ubicarEtiqueta">Elemento</span>
+        <div class="element-picker" data-element-picker>
+          <button class="select element-picker__button" id="ubicarElemento" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="ubicarLista" aria-labelledby="ubicarEtiqueta ubicarElemento" data-picker-button>26 · Fe · Hierro</button>
+          <div class="element-picker__panel" data-picker-panel hidden>
+            <input class="input element-picker__search" type="text" role="combobox" aria-expanded="true" aria-autocomplete="list" aria-controls="ubicarLista" aria-label="Busca un elemento por nombre, símbolo o número" placeholder="Busca: hierro, Fe o 26" autocomplete="off" autocapitalize="off" spellcheck="false" data-picker-search>
+            <ul class="element-picker__list" id="ubicarLista" role="listbox" aria-label="Elementos de la tabla periódica" tabindex="-1" data-picker-list></ul>
+            <p class="element-picker__empty" data-picker-empty hidden>No hay elementos con ese nombre.</p>
+          </div>
+        </div>
+      </div>
+      <figure class="tabla-figure">
+        <div class="tabla-figure__scroll" role="region" aria-label="Tabla periódica con el elemento elegido" tabindex="0">
+          <svg class="escena escena--tabla" data-escena-tabla="ubicar" viewBox="0 0 380 236" role="img" aria-labelledby="ubicarTitle">
+            <title id="ubicarTitle">Tabla periódica por bloques con el elemento elegido señalado y su bloque resaltado</title>
+          </svg>
+        </div>
+      </figure>
+      <p class="visually-hidden" aria-live="polite" data-ubicar-live></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploBloques">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploBloques">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> ¿Dónde va el selenio?
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Configura</span><p><sup>34</sup>Se: [Ar] 4s<sup>2</sup>
+        3d<sup>10</sup> <strong>4p<sup>4</sup></strong>.</p></li>
+      <li><span class="worked-steps__label">Bloque</span><p>El último subnivel es 4p: bloque
+        <strong>p</strong>.</p></li>
+      <li><span class="worked-steps__label">Periodo</span><p>El nivel más alto es 4: periodo
+        <strong>4</strong>.</p></li>
+      <li><span class="worked-steps__label">Columna</span><p>En el bloque p, a 12 se le suman los electrones
+        p: 12 + 4 = <strong>16</strong>, la familia VIA.</p></li>
+    </ol>
+    <p class="editorial-note">En el bloque d se suman los electrones del último s y del d: el hierro,
+      4s<sup>2</sup> 3d<sup>6</sup>, va en la columna 2 + 6 = 8. La plata es un caso especial: la regla de
+      las diagonales da [Kr] 5s<sup>2</sup> 4d<sup>9</sup>, pero en la realidad es [Kr] 5s<sup>1</sup>
+      4d<sup>10</sup>, porque el 4d lleno la vuelve más estable. Para el bloque no cambia nada: es del
+      bloque d, columna 11.</p>
+    <p class="editorial-note">En estas tablas el lutecio (Lu) y el laurencio (Lr) quedan en el grupo 3, y
+      el bloque f tiene 14 columnas: del lantano al iterbio y del actinio al nobelio. Así sale de la regla
+      de las diagonales. Otras tablas, como la de la lección anterior, ponen a los lantánidos y a los
+      actínidos completos en las dos filas de abajo, de 15 en 15.</p>
+  </section>
+
+  <section aria-labelledby="practicaBloques">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaBloques">
+        <span class="lesson-section__kicker">Practica</span> Bloque y periodo
+      </h2>
+      <span class="section-header__count">10 elementos</span>
+    </header>
+    <p class="section-intro">Con la configuración de cada elemento, elige su bloque y su periodo. Hazlo sin
+      el ubicador: úsalo sólo para revisar.</p>
+    <form data-practice-form autocomplete="off">
+      <ol class="config-sheet" data-bloques-cards></ol>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-bloques-periodicos.pdf?v=20261008-tanda3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los elementos de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./metales-no-metales.html">← Metales y no metales</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

@@ -2035,6 +2035,10 @@
   line-height: var(--line-height-relaxed);
 }
 
+.editorial-note + .editorial-note {
+  margin-top: var(--space-3);
+}
+
 .source-note {
   margin: calc(var(--space-3) * -1) 0 var(--space-5);
   color: var(--color-text-meta);
@@ -4361,6 +4365,11 @@ select.particle-row__input {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.config-card__row--dos {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 30rem;
+}
+
 @media (max-width: 44rem) {
   .quantum-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4877,4 +4886,53 @@ select.particle-row__input {
 
 .rutas-oxidos + .editorial-note {
   margin-top: var(--space-6);
+}
+
+/* Bloques s, p, d y f: tonos distintos a los de metales y no metales, para
+   que ningún color signifique dos cosas en lecciones seguidas. */
+.escena__celda-relleno--s { fill: var(--cat-coral); fill-opacity: .5; }
+.escena__celda-relleno--p { fill: var(--cat-blue); fill-opacity: .45; }
+.escena__celda-relleno--d { fill: var(--e-ink); fill-opacity: .15; }
+.escena__celda-relleno--f { fill: var(--cat-purple); fill-opacity: .45; }
+
+.escena__insercion {
+  stroke: var(--color-text-meta);
+  stroke-width: .8;
+  stroke-dasharray: 2 2;
+}
+
+.escena__corchete {
+  stroke: var(--color-text-meta);
+  stroke-width: .8;
+}
+
+.escena .escena__subnivel-grande {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 22px;
+}
+
+.escena .escena__ubicar-nombre {
+  fill: var(--e-ink);
+  font-family: var(--font-family-display);
+  font-size: 12px;
+}
+
+.escena .escena__ubicar-config {
+  fill: var(--e-ink);
+  font-family: var(--font-family-mono);
+  font-size: 8px;
+}
+
+/* El ubicador: el buscador arriba de la tabla. */
+.ubicar__picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.ubicar__picker .element-picker {
+  width: min(100%, 20rem);
 }

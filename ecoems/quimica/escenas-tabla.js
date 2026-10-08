@@ -7,6 +7,7 @@
    metales en verde azulado; el terracota marca lo que hay que mirar (la
    escalera, el elemento señalado, lo que sí conduce). */
 import { ELEMENTOS } from './elementos.js';
+import { elementPicker } from './selector-elemento.js';
 
 const NS = 'http://www.w3.org/2000/svg';
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -416,6 +417,203 @@ function circuito(svg) {
   };
 }
 
+/* ---------------- Tabla por bloques (regla de las diagonales) ----------------
+   Aquí cada elemento se acomoda según su último subnivel, calculado con la
+   regla de las diagonales: el bloque f queda de 14 columnas (del La al Yb y
+   del Ac al No) y el Lu y el Lr van en el grupo 3. Así la forma de la tabla
+   sale tal cual del orden de llenado. */
+const ORDEN = ['1s', '2s', '2p', '3s', '3p', '4s', '3d', '4p', '5s', '4d', '5p', '6s', '4f', '5d', '6p', '7s', '5f', '6d', '7p'];
+const CAPACIDAD = { s: 2, p: 6, d: 10, f: 14 };
+const SUPER = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+const sup = n => String(n).split('').map(d => SUPER[Number(d)]).join('');
+const GASES_NOBLES = [[86, 'Rn'], [54, 'Xe'], [36, 'Kr'], [18, 'Ar'], [10, 'Ne'], [2, 'He']];
+// Elementos cuya configuración real no sigue la regla de las diagonales.
+const EXCEPCIONES = new Set([24, 29, 41, 42, 44, 45, 46, 47, 57, 58, 64, 78, 79, 89, 90, 91, 92, 93, 96, 103]);
+
+function llenar(z) {
+  let rest = z;
+  const terms = [];
+  for (const sub of ORDEN) {
+    if (rest <= 0) break;
+    const n = Math.min(CAPACIDAD[sub[1]], rest);
+    terms.push({ sub, n });
+    rest -= n;
+  }
+  return terms;
+}
+
+export function lugar(z) {
+  const terms = llenar(z);
+  const last = terms[terms.length - 1];
+  const tipo = last.sub[1];
+  const periodo = Math.max(...terms.map(term => Number(term.sub[0])));
+  let columna = null;
+  if (z === 2) columna = 18;
+  else if (tipo === 's') columna = last.n;
+  else if (tipo === 'p') columna = 12 + last.n;
+  else if (tipo === 'd') columna = 2 + last.n;
+  const gas = GASES_NOBLES.find(g => g[0] < z);
+  const corto = gas ? terms.slice(llenar(gas[0]).length) : terms;
+  const abreviada = (gas ? `[${gas[1]}] ` : '') + corto.map(term => term.sub + sup(term.n)).join(' ');
+  return { z, terms, last, tipo, periodo, columna, f: tipo === 'f' ? last.n : 0, abreviada };
+}
+
+const TOP_B = 30, GAP_B = 16;
+function posicionBloque(info) {
+  if (info.tipo === 'f') return { x: LEFT + (1 + info.f) * P, y: TOP_B + (info.periodo === 6 ? 7 : 8) * P + GAP_B };
+  return { x: LEFT + (info.columna - 1) * P, y: TOP_B + (info.periodo - 1) * P };
+}
+
+function tablaBloques(parent) {
+  const ejes = make('g', {}, parent);
+  for (let periodo = 1; periodo <= 7; periodo += 1) {
+    text(ejes, LEFT - 6, TOP_B + (periodo - 1) * P + CELL / 2 + 2.2, String(periodo), 'escena__tabla-periodo', { 'text-anchor': 'middle' });
+  }
+  // El bloque f se inserta entre los grupos 2 y 3: una línea punteada lo indica.
+  const x = LEFT + 2 * P - (P - CELL) / 2;
+  make('path', { d: `M${round(x)} ${TOP_B + 5 * P}V${TOP_B + 7 * P + GAP_B}`, class: 'escena__insercion' }, ejes);
+  const cells = new Map();
+  ELEMENTOS.forEach(element => {
+    const info = lugar(element.numero);
+    const { x: cx, y: cy } = posicionBloque(info);
+    const g = make('g', { transform: `translate(${cx} ${cy})` }, parent);
+    const base = make('rect', { width: CELL, height: CELL, rx: 2, class: 'escena__celda' }, g);
+    const fill = make('rect', { width: CELL, height: CELL, rx: 2, class: `escena__celda-relleno escena__celda-relleno--${info.tipo}`, opacity: 0 }, g);
+    const label = text(g, CELL / 2, CELL / 2 + 2.9, element.simbolo, 'escena__celda-simbolo', { 'text-anchor': 'middle' });
+    cells.set(element.numero, { element, info, g, base, fill, label, x: cx, y: cy });
+  });
+  return cells;
+}
+
+// Corchete con su letrero sobre un bloque: de la columna a a la b.
+function corchete(parent, x1, x2, y, label) {
+  const g = make('g', { opacity: 0 }, parent);
+  make('path', { d: `M${round(x1)} ${y + 3}V${y}H${round(x2)}V${y + 3}`, class: 'escena__corchete' }, g);
+  text(g, round((x1 + x2) / 2), y - 3, label, 'escena__leyenda', { 'text-anchor': 'middle' });
+  return g;
+}
+
+/* ---------------- 4 · Bloques: la tabla se arma electrón por electrón ----------------
+   Los elementos aparecen en orden de número atómico; cada uno en el bloque de
+   su último subnivel. Arriba se ve qué subnivel se está llenando. Al final,
+   cada bloque muestra cuántas columnas tiene: 2, 6, 10 y 14, lo mismo que caben
+   en s, p, d y f. */
+function bloques(svg) {
+  const T = 32, POR = .11, PAUSA = .35;
+  const board = make('g', {}, svg);
+  const cells = tablaBloques(board);
+  let time0 = .6, previous = null;
+  for (let z = 1; z <= ELEMENTOS.length; z += 1) {
+    const cell = cells.get(z);
+    if (cell.info.last.sub !== previous) { time0 += PAUSA; previous = cell.info.last.sub; }
+    cell.start = time0;
+    time0 += POR;
+  }
+  const FIN = time0;
+  cells.forEach(cell => { fade(cell.g, 0); });
+
+  // Lo que se está llenando, en el hueco de arriba.
+  const panel = make('g', {}, board);
+  const subLabel = text(panel, 62, TOP_B + 24, '', 'escena__subnivel-grande');
+  const zLabel = text(panel, 62, TOP_B + 40, '', 'escena__nota-tabla');
+  const resumen = text(panel, 62, TOP_B + 14, 'Cada bloque tiene tantas columnas', 'escena__leyenda', { opacity: 0 });
+  const resumen2 = text(panel, 62, TOP_B + 25, 'como electrones caben en su subnivel.', 'escena__leyenda', { opacity: 0 });
+
+  const col = c => LEFT + (c - 1) * P;
+  const brackets = [
+    [corchete(board, col(1), col(2) + CELL, TOP_B - 9, 's · 2 columnas'), FIN + .2],
+    [corchete(board, col(13), col(18) + CELL, TOP_B - 9, 'p · 6 columnas'), FIN + 1],
+    [corchete(board, col(3), col(12) + CELL, TOP_B + 3 * P - 7, 'd · 10 columnas'), FIN + 1.8],
+    [corchete(board, col(3), col(16) + CELL, TOP_B + 7 * P + GAP_B - 7, 'f · 14 columnas'), FIN + 2.6]
+  ];
+  const he = cells.get(2);
+  const ring = make('rect', { x: he.x - 2, y: he.y - 2, width: CELL + 4, height: CELL + 4, rx: 3, class: 'escena__celda-aro', opacity: 0 }, board);
+  const heNote = text(panel, 62, TOP_B + 39, 'He · 1s²: bloque s, pero va con los gases nobles', 'escena__nota-tabla escena__nota-tabla--acento', { opacity: 0 });
+
+  let t = 0, shown = 0;
+  function draw(time, final) {
+    fade(board, final ? 1 : time < .6 ? smooth(time / .6) : 1 - smooth((time - (T - 1.5)) / 1.5));
+    let current = null;
+    cells.forEach(cell => {
+      const a = final ? 1 : smooth((time - cell.start) / .25);
+      fade(cell.g, a);
+      fade(cell.fill, a);
+      if (!final && time >= cell.start) current = cell;
+    });
+    const building = !final && time < FIN + .2;
+    if (current && building && shown !== current.element.numero) {
+      shown = current.element.numero;
+      subLabel.textContent = current.info.last.sub;
+      zLabel.textContent = `Z = ${current.element.numero} · ${current.element.simbolo} · se llena el subnivel ${current.info.last.sub}`;
+    }
+    fade(subLabel, building && current ? 1 : 0);
+    fade(zLabel, building && current ? 1 : 0);
+    brackets.forEach(([g, at]) => fade(g, final ? 1 : (time - at) / .5));
+    const fin = final ? 1 : (time - (FIN + 3.2)) / .6;
+    fade(resumen, fin);
+    fade(resumen2, fin);
+    const nota = final ? 0 : ventana(time, FIN + 4.6, FIN + 8.6);
+    fade(ring, nota);
+    fade(heNote, nota);
+  }
+
+  return {
+    update(dt) { t = (t + dt) % T; draw(t, false); },
+    still() { draw(T, true); }
+  };
+}
+
+/* ---------------- 5 · Ubicar: dónde va cualquier elemento ----------------
+   Se elige un elemento con el buscador y se enciende su casilla: su bloque
+   queda resaltado y arriba aparecen su configuración, su último subnivel, el
+   bloque, el periodo y la columna. */
+function ubicar(svg) {
+  const root = svg.closest('[data-ubicar]');
+  const live = root.querySelector('[data-ubicar-live]');
+  const board = make('g', {}, svg);
+  const cells = tablaBloques(board);
+  const ring = make('rect', { width: CELL + 4, height: CELL + 4, rx: 3, class: 'escena__celda-aro' }, board);
+  const panel = make('g', {}, board);
+  const name = text(panel, 62, TOP_B + 14, '', 'escena__ubicar-nombre');
+  const config = text(panel, 62, TOP_B + 31, '', 'escena__ubicar-config');
+  const facts = text(panel, 62, TOP_B + 45, '', 'escena__nota-tabla');
+  const note = text(panel, 62, TOP_B + 57, '', 'escena__nota-tabla escena__nota-tabla--acento');
+  const picker = elementPicker(root, 26, z => show(z, true));
+  let pulse = 1;
+
+  function show(z, animate) {
+    const cell = cells.get(z);
+    const { info, element } = cell;
+    cells.forEach(other => {
+      fade(other.g, 1);
+      fade(other.fill, other.info.tipo === info.tipo ? .95 : .3);
+    });
+    set(ring, { x: cell.x - 2, y: cell.y - 2 });
+    name.textContent = `${element.numero} · ${element.simbolo} · ${element.nombre}`;
+    config.textContent = `${info.abreviada}`;
+    const columna = info.columna ? `columna ${info.columna}` : 'fila del bloque f';
+    facts.textContent = `último subnivel ${info.last.sub}${sup(info.last.n)} · bloque ${info.tipo} · periodo ${info.periodo} · ${columna}`;
+    // Un solo renglón: debajo empiezan las casillas del periodo 4.
+    note.textContent = z === 2 ? 'Bloque s, pero va con los gases nobles.'
+      : EXCEPCIONES.has(z) ? 'Ojo: excepción; su configuración real es otra.' : '';
+    if (live) live.textContent = `${element.nombre}: ${info.abreviada}. Último subnivel ${info.last.sub}${sup(info.last.n)}, bloque ${info.tipo}, periodo ${info.periodo}, ${columna}. ${note.textContent}`.trim();
+    pulse = animate && !reducedMotion.matches ? 0 : 1;
+    ring.setAttribute('opacity', pulse);
+  }
+
+  show(picker.value, false);
+  return {
+    update(dt) {
+      if (pulse >= 1) return;
+      pulse = Math.min(1, pulse + dt / .45);
+      ring.setAttribute('opacity', round(smooth(pulse)));
+      const grow = 1 + (1 - smooth(pulse)) * .5;
+      ring.setAttribute('stroke-width', round(1.6 * grow));
+    },
+    still() { pulse = 1; ring.setAttribute('opacity', 1); }
+  };
+}
+
 /* ---------------- Rutas con oxígeno (HTML) ----------------
    Los pasos de cada ruta aparecen uno tras otro la primera vez que la figura
    entra en pantalla; con movimiento reducido se muestran completos. */
@@ -430,7 +628,7 @@ document.querySelectorAll('[data-rutas]').forEach(node => {
 });
 
 /* ---------------- Reloj compartido ---------------- */
-const factories = { mapa, martillo, circuito };
+const factories = { mapa, martillo, circuito, bloques, ubicar };
 const scenes = [...document.querySelectorAll('[data-escena-tabla]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaTabla](svg)
 }));

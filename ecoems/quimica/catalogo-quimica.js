@@ -244,7 +244,8 @@ export const SEGMENTOS = [
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'consulta'],
     etiquetas: ['bloque s', 'bloque p', 'bloque d', 'bloque f'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './bloques-periodicos.html'
   },
   {
     id: 'tendencias-periodicas',
