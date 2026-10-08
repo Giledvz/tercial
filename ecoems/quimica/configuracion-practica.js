@@ -6,8 +6,10 @@
      configuración y se eligen periodo, electrones de valencia y familia.
      La configuración se acepta en cualquier orden y con números normales,
      superíndices o «^»; también con el kernel de un gas noble, como [Ne] 3s1.
-     El selenio se corrige respecto de la fuente: es VIA, con 6 electrones de
-     valencia (2, 8, 18, 6). */
+     Para no escribir tanto, cada tarjeta trae un atajo: tocar un gas noble
+     pone su kernel al principio de la respuesta (elegir cuál sigue siendo
+     tarea del alumno). El selenio se corrige respecto de la fuente: es VIA,
+     con 6 electrones de valencia (2, 8, 18, 6). */
   var list = document.querySelector('[data-config-cards]');
   if (!list || !window.TercialPractica) return;
 
@@ -16,6 +18,7 @@
   var CORES = { he: 2, ne: 10, ar: 18, kr: 36, xe: 54, rn: 86 };
   var ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
   var NOBLE = [[86, 'Rn'], [54, 'Xe'], [36, 'Kr'], [18, 'Ar'], [10, 'Ne'], [2, 'He']];
+  var KERNELS = [['He', 'helio', 2], ['Ne', 'neón', 10], ['Ar', 'argón', 18], ['Kr', 'kriptón', 36], ['Xe', 'xenón', 54], ['Rn', 'radón', 86]];
   var SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹';
 
   var ELEMENTS = [
@@ -84,19 +87,24 @@
     var counts = {};
     var total = 0;
     var problem = null;
+    var core = null;
+    var inCore = {};
     // Kernel del gas noble: [Kr], (Kr) o «Kr» al principio.
     text = text.replace(/^\s*(he|ne|ar|kr|xe|rn)\b/, '[$1]');
-    text = text.replace(/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]/g, function (_, core) {
-      fill(CORES[core]).forEach(function (t) {
+    text = text.replace(/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]/g, function (_, gas) {
+      core = gas;
+      fill(CORES[gas]).forEach(function (t) {
         counts[t.sub] = (counts[t.sub] || 0) + t.n;
         total += t.n;
+        inCore[t.sub] = true;
       });
       return ' ';
     });
     var leftover = text.replace(/(\d)\s*([spdf])\s*(\d{1,2})/g, function (_, level, type, count) {
       var sub = level + type;
       var n = Number(count);
-      if (counts[sub]) problem = problem || { kind: 'repetido', sub: sub };
+      // Si el subnivel ya venía dentro del kernel, se avisa del kernel, no de una repetición.
+      if (counts[sub]) problem = problem || { kind: 'repetido', sub: sub, core: inCore[sub] ? core : null };
       counts[sub] = (counts[sub] || 0) + n;
       total += n;
       return ' ';
@@ -111,6 +119,19 @@
     var counts = reading.counts;
     if (reading.problem && reading.problem.kind === 'formato') {
       return 'Escribe cada subnivel seguido de sus electrones, separados por espacios: 1s2 2s2 2p6…';
+    }
+    if (reading.problem && reading.problem.kind === 'repetido' && reading.problem.core) {
+      var gas = reading.problem.core.charAt(0).toUpperCase() + reading.problem.core.charAt(1);
+      var coreZ = CORES[reading.problem.core];
+      var name = element.name.toLowerCase();
+      if (coreZ > element.z) {
+        return 'El [' + gas + '] tiene ' + coreZ + ' electrones, más que los ' + element.z + ' del ' + name +
+          ': usa el gas noble anterior al ' + name + '.';
+      }
+      if (coreZ === element.z) {
+        return 'El [' + gas + '] tiene ' + coreZ + ' electrones, los mismos que el ' + name + ': usa el gas noble anterior.';
+      }
+      return 'El [' + gas + '] ya incluye el ' + reading.problem.sub + ': después del gas noble escribe sólo lo que sigue.';
     }
     if (reading.problem && reading.problem.kind === 'repetido') {
       return 'El subnivel ' + reading.problem.sub + ' aparece dos veces: cada subnivel se escribe una sola vez.';
@@ -169,6 +190,22 @@
     return parts.join(' ') + '  ·  suma: ' + reading.total + ' e⁻';
   }
 
+  // Atajo: el gas noble con el que empieza la respuesta, si hay uno.
+  function kernelOf(value) {
+    var match = String(value || '').match(/^\s*(?:[\[(]\s*)?(he|ne|ar|kr|xe|rn)\b/i);
+    return match ? match[1].toLowerCase() : null;
+  }
+
+  // Pone [gas] al principio y quita cualquier otro kernel; con gas = null, sólo lo quita.
+  function withKernel(value, gas) {
+    var rest = String(value || '')
+      .replace(/^\s*(he|ne|ar|kr|xe|rn)\b/i, ' ')
+      .replace(/[\[(]\s*(he|ne|ar|kr|xe|rn)\s*[\])]/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    return gas ? '[' + gas + '] ' + rest : rest;
+  }
+
   function options(select, values, labels) {
     select.innerHTML = '<option value="">Elige</option>';
     values.forEach(function (value, i) {
@@ -198,7 +235,15 @@
         '<span class="config-card__result" data-item-result></span>' +
       '</header>' +
       '<div class="config-card__field config-card__field--config" data-cell>' +
-        '<label class="config-card__label" for="config-' + element.id + '">Configuración electrónica</label>' +
+        '<div class="config-card__config-head">' +
+          '<label class="config-card__label" for="config-' + element.id + '">Configuración electrónica</label>' +
+          '<div class="config-card__kernels" role="group" aria-label="Atajo: empieza con un gas noble">' +
+            KERNELS.map(function (gas) {
+              return '<button class="config-card__kernel" type="button" aria-pressed="false" data-kernel="' + gas[0] + '" ' +
+                'aria-label="' + gas[0] + ', ' + gas[1] + ': ' + gas[2] + ' electrones">[' + gas[0] + ']</button>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
         '<input class="input config-card__input" id="config-' + element.id + '" name="config-' + element.id + '" type="text" ' +
           'autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="1s2 2s2 …" data-response>' +
         '<p class="config-card__preview" data-config-preview></p>' +
@@ -220,9 +265,27 @@
 
     var input = item.querySelector('[name="config-' + element.id + '"]');
     var note = item.querySelector('[data-config-preview]');
-    var refresh = function () { note.textContent = preview(input.value); };
+    var kernels = Array.prototype.slice.call(item.querySelectorAll('[data-kernel]'));
+    var refresh = function () {
+      var current = kernelOf(input.value);
+      note.textContent = preview(input.value);
+      kernels.forEach(function (button) {
+        button.setAttribute('aria-pressed', String(button.getAttribute('data-kernel').toLowerCase() === current));
+      });
+    };
     input.addEventListener('input', refresh);
-    input.addEventListener('tercial:reset', function () { note.textContent = ''; });
+    input.addEventListener('tercial:reset', refresh);
+    // Tocar un gas noble lo pone al principio; tocar el mismo otra vez lo quita.
+    kernels.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var gas = button.getAttribute('data-kernel');
+        input.value = withKernel(input.value, kernelOf(input.value) === gas.toLowerCase() ? null : gas);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      });
+    });
     // Al recargar, el motor restaura el valor antes de que exista la vista previa.
     setTimeout(refresh, 0);
 

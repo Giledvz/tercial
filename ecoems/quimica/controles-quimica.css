@@ -1,5 +1,5 @@
 /* Controles de Química con el diseño de Tercial: el selector de elemento
-   (con buscador) y el desplegable de las prácticas. Sustituyen a las listas
+   (con buscador), el desplegable de las prácticas y el atajo de gas noble. Sustituyen a las listas
    que dibuja el sistema operativo. Son controles, no parte de la retícula
    editorial: sus paneles flotan sobre el contenido y necesitan fondo opaco,
    por eso viven aparte de quimica-material.css, que no admite cajas ni
@@ -231,4 +231,62 @@
 .particle-row__cell .t-select__option {
   justify-content: center;
   font-family: var(--font-family-mono);
+}
+
+/* Atajo de gas noble (práctica de configuración): seis conmutadores que
+   ponen el kernel al principio de la respuesta. Son controles pequeños que
+   cambian un estado, por eso llevan forma de píldora; el elegido se marca
+   en terracota. Los símbolos no van en mayúsculas: He no es HE. */
+.config-card__kernels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.config-card__kernel {
+  min-width: 2.75rem;
+  min-height: 2.25rem;
+  padding: 0 var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  line-height: 1;
+  background-color: transparent;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.config-card__kernel:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.config-card__kernel[aria-pressed="true"] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .config-card__kernel:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-strong);
+  }
+
+  .config-card__kernel[aria-pressed="true"]:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+}
+
+@media (max-width: 44rem) {
+  .config-card__kernels {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .config-card__kernel {
+    min-width: 0;
+  }
 }
