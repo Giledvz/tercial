@@ -4763,7 +4763,9 @@ select.particle-row__input {
 }
 
 .escena__mango { fill: var(--e-mango); }
+.escena__mango-agarre { fill: var(--e-martillo); opacity: .78; }
 .escena__martillo { fill: var(--e-martillo); }
+.escena__martillo-cara { fill: var(--e-metal-sombra); }
 .escena__martillo-brillo { fill: var(--e-paper); opacity: .22; }
 
 .escena__chispa {

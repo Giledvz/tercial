@@ -188,7 +188,7 @@ function mapa(svg) {
    martillazo (su volumen no cambia: se hace más delgado y más ancho). El
    azufre, de un solo golpe, se rompe en pedazos que caen al piso. */
 function martillo(svg) {
-  const T = 12.6, FLOOR = 128, LX = 92, RX = 268, LIFT = 30;
+  const T = 12.6, FLOOR = 128, LX = 86, RX = 262;
   const HITS = [1, 2.3, 3.6], HIT_R = 6.4;
   make('path', { d: `M12 ${FLOOR}H348`, class: 'escena__piso' }, svg);
   make('path', { d: `M180 18V${FLOOR + 32}`, class: 'escena__divisor' }, svg);
@@ -249,33 +249,53 @@ function martillo(svg) {
     });
   }
 
-  // Martillos: bajan acelerando, golpean y rebotan hacia arriba.
+  /* Martillos: se mueven como en la mano. El brazo gira desde el codo (un
+     pivote invisible a la derecha) y la muñeca dobla el martillo un poco más.
+     Al bajar, el codo baja primero y la muñeca se suelta al final, como un
+     látigo; en el golpe el mango queda horizontal y la cara de la cabeza cae
+     plana sobre la pieza. Ángulos en grados, 0 en el golpe. */
+  const L = 50, A = 34, FACE = 15, CODO = 30, MUNECA = 40;
   function hammer(x) {
-    const g = make('g', {}, scene);
-    make('rect', { x: -2.6, y: -57, width: 5.2, height: 44, rx: 2, class: 'escena__mango' }, g);
-    make('rect', { x: -17, y: -15, width: 34, height: 15, rx: 2.5, class: 'escena__martillo' }, g);
-    make('rect', { x: -14, y: -12.6, width: 26, height: 2.6, rx: 1.2, class: 'escena__martillo-brillo' }, g);
+    const arm = make('g', {}, scene);
+    const hand = make('g', {}, arm);
+    make('rect', { x: -L + 4, y: -2.2, width: L + 4, height: 4.4, rx: 2.2, class: 'escena__mango' }, hand);
+    make('rect', { x: -12, y: -3.2, width: 16, height: 6.4, rx: 3, class: 'escena__mango-agarre' }, hand);
+    make('rect', { x: -L - 6, y: -11, width: 12, height: 21, rx: 2, class: 'escena__martillo' }, hand);
+    make('rect', { x: -L - 7, y: 10, width: 14, height: FACE - 10, rx: 1.2, class: 'escena__martillo-cara' }, hand);
+    make('rect', { x: -L - 4.2, y: -9, width: 2.2, height: 17, rx: 1, class: 'escena__martillo-brillo' }, hand);
     const sparks = make('g', { opacity: 0 }, scene);
-    // Rayitas de impacto que salen de los bordes de la cabeza, casi a ras.
-    [-170, -150, -30, -10].forEach(a => {
+    // Rayitas de impacto que salen de los bordes de la cara, casi a ras.
+    [-168, -150, -30, -12].forEach(a => {
       const r = a * Math.PI / 180;
       make('path', {
-        d: `M${round(x + Math.cos(r) * 21)} ${round(Math.sin(r) * 4)}L${round(x + Math.cos(r) * 30)} ${round(Math.sin(r) * 12)}`,
+        d: `M${round(x + Math.cos(r) * 10)} ${round(Math.sin(r) * 3)}L${round(x + Math.cos(r) * 19)} ${round(Math.sin(r) * 10)}`,
         class: 'escena__chispa'
       }, sparks);
     });
-    return { g, sparks, x };
+    return { arm, hand, sparks, x };
   }
   const left = hammer(LX), right = hammer(RX);
+  // [codo, muñeca]: arriba en reposo; baja acelerando y la muñeca se suelta al final.
   function golpe(t, hits) {
     for (const h of hits) {
-      if (t >= h - .55 && t < h) { const p = (t - (h - .55)) / .55; return -LIFT * (1 - p * p); }
-      if (t >= h && t < h + .5) return -LIFT * smooth((t - h) / .5);
+      if (t >= h - .62 && t < h) {
+        const p = (t - (h - .62)) / .62;
+        return [CODO * (1 - p * p), MUNECA * (1 - p * p * p)];
+      }
+      if (t >= h && t < h + .6) {
+        const q = smooth((t - h) / .6);
+        return [CODO * q, MUNECA * q * q];
+      }
     }
-    return -LIFT;
+    return [CODO, MUNECA];
   }
   function chispa(t, hits) {
     return hits.reduce((a, h) => Math.max(a, t >= h && t < h + .3 ? 1 - (t - h) / .3 : 0), 0);
+  }
+  // El codo queda a la derecha de la pieza, a la altura que deja la cara justo encima.
+  function pose(hammer, top, [codo, muneca]) {
+    hammer.arm.setAttribute('transform', `translate(${round(hammer.x + L + A)} ${round(top - FACE)}) rotate(${round(codo)})`);
+    hammer.hand.setAttribute('transform', `translate(${-A} 0) rotate(${round(muneca)})`);
   }
 
   const labels = [
@@ -292,11 +312,11 @@ function martillo(svg) {
     fade(scene, final ? 1 : time < .5 ? smooth(time / .5) : 1 - smooth((time - 11.2) / 1));
     const h = final ? ALTURAS[3] : altura(time);
     bloque(h);
-    left.g.setAttribute('transform', `translate(${LX} ${round(FLOOR - h + (final ? -LIFT : golpe(time, HITS)))})`);
+    pose(left, FLOOR - h, final ? [CODO, MUNECA] : golpe(time, HITS));
     left.sparks.setAttribute('transform', `translate(0 ${round(FLOOR - h)})`);
     fade(left.sparks, final ? 0 : chispa(time, HITS));
     const lumpTop = cy + Math.min(...outline.map(p => p[1]));
-    right.g.setAttribute('transform', `translate(${RX} ${round(lumpTop + (final ? -LIFT : golpe(time, [HIT_R])))})`);
+    pose(right, lumpTop, final ? [CODO, MUNECA] : golpe(time, [HIT_R]));
     right.sparks.setAttribute('transform', `translate(0 ${round(lumpTop)})`);
     fade(right.sparks, final ? 0 : chispa(time, [HIT_R]));
     romper(final ? HIT_R + 3 : time);
