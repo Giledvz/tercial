@@ -447,12 +447,22 @@ function circuito(svg) {
     }
     return PATH[PATH.length - 1];
   }
-  const N = 18, SPEED = 30;
+  /* Electrones: cada uno tiene su lugar s a lo largo del recorrido (0 en el
+     polo negativo). Con el cobre circulan parejos. Con el azufre el circuito
+     queda abierto: la pila sigue empujando, así que los del lado negativo
+     salen y avanzan hasta el azufre, donde se detienen amontonados; los del
+     otro lado se quedan quietos. Al volver el cobre retoman el paso parejo. */
+  const N = 24, SPEED = 30, PASO = 6.5;
+  const S1 = Math.abs(Y2 - 108) + (GAP1 - L);   // pinza izquierda del hueco
+  const S2 = S1 + (GAP2 - GAP1);                 // pinza derecha
   const electrons = Array.from({ length: N }, () => make('circle', { r: 2.3, class: 'escena__electron' }, scene));
+  const parejo = flowAt => Array.from({ length: N }, (_, i) => (((flowAt + i * TOTAL / N) % TOTAL) + TOTAL) % TOTAL);
+  let pos = parejo(0);
+  const diferencia = (a, b) => { let d = (a - b) % TOTAL; if (d > TOTAL / 2) d -= TOTAL; if (d < -TOTAL / 2) d += TOTAL; return d; };
 
   const status = [
     text(scene, 180, 162, 'cobre · metal: conduce, el foco enciende', 'escena__resultado', { 'text-anchor': 'middle' }),
-    text(scene, 180, 162, 'azufre · no metal: no conduce, el foco no enciende', 'escena__resultado escena__resultado--apagado', { 'text-anchor': 'middle', opacity: 0 })
+    text(scene, 180, 162, 'azufre · no metal: los electrones no pasan', 'escena__resultado escena__resultado--apagado', { 'text-anchor': 'middle', opacity: 0 })
   ];
 
   let t = 0, flow = 0;
@@ -462,6 +472,24 @@ function circuito(svg) {
     if (time < 5.9) return 1 - smooth((time - 5.6) / .3);
     if (time < 12.3) return 0;
     return smooth((time - 12.3) / .4);
+  }
+  function avanzar(dt, c) {
+    if (c > .01) {
+      flow += dt * SPEED * c;
+      const meta = parejo(flow);
+      pos = pos.map((p, i) => {
+        // Avanzan y, si venían amontonados, recuperan poco a poco el paso parejo.
+        const next = p + dt * SPEED * c + diferencia(meta[i], p) * Math.min(1, dt * 1.8);
+        return ((next % TOTAL) + TOTAL) % TOTAL;
+      });
+      return;
+    }
+    // Circuito abierto: los del lado negativo se forman frente al azufre.
+    pos.map((p, i) => [p, i]).filter(([p]) => p < S1).sort((a, b) => b[0] - a[0]).forEach(([p, i], rank) => {
+      const target = S1 - 3 - rank * PASO;
+      const step = Math.min(Math.abs(target - p), SPEED * dt);
+      pos[i] = p + Math.sign(target - p) * step;
+    });
   }
   // Cambio de muestra: la de cobre baja y sale; sube la de azufre (y al revés).
   function muestra(time) {
@@ -484,11 +512,11 @@ function circuito(svg) {
     filament.classList.toggle('es-encendido', on > .5);
     glass.classList.toggle('es-encendido', on > .5);
     electrons.forEach((dot, i) => {
-      const [x, y] = punto(flow + i * TOTAL / N);
+      const [x, y] = punto(pos[i]);
       set(dot, { cx: x, cy: y });
-      // En el hueco de la muestra sólo hay electrones que avanzan si conduce.
+      // Dentro del hueco sólo se ven los que van por el cobre.
       const inGap = y === Y2 && x > GAP1 && x < GAP2;
-      fade(dot, inGap ? on : .35 + .65 * on);
+      fade(dot, inGap ? m.copper : 1);
     });
     const copperShown = final || time < 5.9 || time >= 12.5;
     fade(status[0], copperShown ? 1 : 0);
@@ -498,10 +526,10 @@ function circuito(svg) {
   return {
     update(dt) {
       t = (t + dt) % T;
-      flow += dt * SPEED * conduce(t);
+      avanzar(dt, conduce(t));
       draw(t, false);
     },
-    still() { draw(0, true); }
+    still() { pos = parejo(0); draw(0, true); }
   };
 }
 
@@ -885,7 +913,7 @@ function radios(svg) {
       return { g, body, cx, r, symbol, start: from + i * .5 };
     });
   };
-  text(scene, 14, 16, 'Periodo 3, de izquierda a derecha', 'escena__radio-titulo');
+  text(scene, 180, 16, 'Periodo 3, de izquierda a derecha', 'escena__radio-titulo', { 'text-anchor': 'middle' });
   const periodo = fila(['Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar'], 50, 9, .5);
   periodo.forEach((atom, i) => {
     text(atom.g, atom.cx, 30, `+${11 + i}`, 'escena__radio-carga', { 'text-anchor': 'middle' });
@@ -894,7 +922,7 @@ function radios(svg) {
   const flechaA = flecha(scene, `M${round(periodo[0].cx)} 92H${round(periodo[7].cx - 6)}`, `M${round(periodo[7].cx)} 92l-7 -3.6v7.2Z`);
   const notaA = text(scene, 180, 107, 'un protón más en cada paso y el mismo nivel: el átomo se encoge', 'escena__radio-nota', { 'text-anchor': 'middle', opacity: 0 });
 
-  text(scene, 14, 126, 'Grupo IA, de arriba abajo', 'escena__radio-titulo');
+  text(scene, 180, 126, 'Grupo IA, de arriba abajo', 'escena__radio-titulo', { 'text-anchor': 'middle' });
   const grupo = fila(['Li', 'Na', 'K', 'Rb', 'Cs'], 164, 12, 5.5);
   grupo.forEach((atom, i) => {
     text(atom.g, atom.cx, 200, atom.symbol, 'escena__radio-simbolo', { 'text-anchor': 'middle' });

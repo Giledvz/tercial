@@ -3064,16 +3064,27 @@
 .escena__nube-punto { fill: var(--e-nube); }
 
 /* Línea del tiempo de los modelos atómicos */
+/* Las figuras ocupan la columna completa, como las tablas y las lecturas:
+   así su pie arranca en el mismo borde izquierdo que el resto del texto, y
+   las escenas se ven grandes en la tele. Pies y notas, a 68 caracteres. */
 .atom-figure {
-  max-width: 38rem;
-  margin: var(--space-6) auto 0;
+  margin: var(--space-6) 0 0;
 }
 
 .atom-figure__caption {
+  max-width: 68ch;
   margin-top: var(--space-2);
   color: var(--color-text-meta);
   font-size: var(--font-size-13);
   line-height: var(--line-height-relaxed);
+}
+
+/* Una nota después de una figura no es parte del pie: lleva aire. */
+.atom-figure + .editorial-note,
+.tabla-figure + .editorial-note,
+.atom-figure + .comparison-grid,
+.atom-figure + .reference-table-wrap {
+  margin-top: var(--space-5);
 }
 
 .atom-timeline {

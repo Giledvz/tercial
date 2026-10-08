@@ -290,11 +290,13 @@ function escala(svg) {
   const T = 15, X0 = 24, X1 = 340, MAX = 3.4, Y = 112;
   const sx = v => X0 + (X1 - X0) * v / MAX;
   const scene = make('g', {}, svg);
-  [[0, .4, 'no-polar', 'covalente'], [.4, 1.7, 'polar', 'covalente polar'], [1.7, MAX, 'ionico', 'iónico']].forEach(([a, b, kind, label]) => {
+  // Cada zona con sus dos renglones a la misma altura: tipo y apellido.
+  [[0, .4, 'no-polar', 'covalente', 'no polar'], [.4, 1.7, 'polar', 'covalente', 'polar'], [1.7, MAX, 'ionico', 'iónico', '']].forEach(([a, b, kind, l1, l2]) => {
     make('rect', { x: round(sx(a)), y: Y - 8, width: round(sx(b) - sx(a)), height: 16, class: `escena__zona escena__zona--${kind}` }, scene);
-    text(scene, round((sx(a) + sx(b)) / 2), Y + 30, label, 'escena__nota-enlace', { 'text-anchor': 'middle' });
+    const cx = round((sx(a) + sx(b)) / 2);
+    text(scene, cx, Y + 32, l1, 'escena__nota-enlace escena__nota-enlace--fuerte', { 'text-anchor': 'middle' });
+    if (l2) text(scene, cx, Y + 43, l2, 'escena__nota-enlace', { 'text-anchor': 'middle' });
   });
-  text(scene, round(sx(.2)), Y + 42, 'no polar', 'escena__nota-enlace', { 'text-anchor': 'middle' });
   make('path', { d: `M${X0} ${Y}H${X1}`, class: 'escena__escala-linea' }, scene);
   [0, .4, 1.7, 3].forEach(v => {
     make('path', { d: `M${round(sx(v))} ${Y + 8}v5`, class: 'escena__escala-linea' }, scene);
