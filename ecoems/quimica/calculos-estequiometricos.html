@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Cálculos estequiométricos · Química ECOEMS · Tercial</title>
+<meta name="description" content="Una ecuación balanceada es una receta en moles: con sus coeficientes y la masa molar se calcula cuánto reactivo se necesita, cuánto producto se forma y cuál reactivo se acaba primero.">
+<meta name="tercial:resource-id" content="ecoems-quimica-calculos-estequiometricos">
+<meta name="tercial:resource-title" content="Cálculos estequiométricos">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./estequiometria-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 9 de 9 · Para profundizar</p>
+    <h1 class="hero__title">Cálculos <em>estequiométricos</em></h1>
+    <p class="hero__lede">Una ecuación balanceada es una receta: sus coeficientes dicen en qué proporción
+      reaccionan y se forman las sustancias, en moléculas y en moles. Con esa proporción y la masa molar se
+      calcula cuánto se necesita y cuánto se produce.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=estequiometría#courseIndex">estequiometría</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=mol#courseIndex">mol</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=proporción#courseIndex">proporción</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaEstequiometria">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaEstequiometria">
+        <span class="lesson-section__kicker">Idea central</span> La ecuación es una receta
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Los coeficientes cuentan moléculas <em>y moles</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En 2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O, los coeficientes dicen que 2 moléculas de
+          hidrógeno reaccionan con 1 de oxígeno y forman 2 de agua. Un <a href="./mol-masa-molar.html">mol</a>
+          siempre tiene el mismo número de partículas, así que la proporción también vale en moles: 2 mol de
+          H<sub>2</sub> con 1 mol de O<sub>2</sub> dan 2 mol de H<sub>2</sub>O.</p>
+        <p>En gramos la proporción es otra, porque cada sustancia tiene su masa molar. Lo que sí se conserva es
+          la masa total, como en el <a href="./balanceo-tanteo.html">balanceo</a>.</p>
+        <p>Para pasar de una sustancia a otra siempre se va por los moles: <strong>gramos de A → moles de A →
+          moles de B → gramos de B</strong>. El paso del centro usa los coeficientes.</p>
+      </div>
+      <!-- Fuente: QUA-001 trae sólo el título (p. 33); la lección sigue a Mol y masa molar y a Balanceo. -->
+      <footer class="source-line">
+        <span>Lectura · 4 min</span>
+      </footer>
+    </article>
+    <div class="reference-table-wrap" role="region" aria-label="La receta del agua en moléculas, moles y gramos" tabindex="0">
+      <table class="reference-table reference-table--formulas">
+        <caption class="visually-hidden">2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O en moléculas, moles y gramos</caption>
+        <thead>
+          <tr><th scope="col">Receta</th><th scope="col">2H<sub>2</sub></th><th scope="col">O<sub>2</sub></th><th scope="col">2H<sub>2</sub>O</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Moléculas</th><td>2</td><td>1</td><td>2</td></tr>
+          <tr><th scope="row">Moles</th><td>2 mol</td><td>1 mol</td><td>2 mol</td></tr>
+          <tr><th scope="row">Gramos</th><td>2 × 2 = 4 g</td><td>32 g</td><td>2 × 18 = 36 g</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Entran 3 mol y salen 2: los moles no tienen por qué conservarse. La masa sí:
+      4 g + 32 g = 36 g.</p>
+  </section>
+
+  <section aria-labelledby="observaReceta">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaReceta">
+        <span class="lesson-section__kicker">Observa</span> ¿Quién se acaba primero?
+      </h2>
+    </header>
+    <p class="section-intro">En el recipiente hay hidrógeno y oxígeno. Elige las cantidades: cada receta toma
+      2 H<sub>2</sub> y 1 O<sub>2</sub> y forma 2 H<sub>2</sub>O.</p>
+    <div class="reacomodo" data-reacomodo>
+      <div class="pastillas" role="group" aria-label="Moléculas en el recipiente">
+        <button class="pastilla" type="button" aria-pressed="true" data-tipo-reaccion="receta-exacta">4 H<sub>2</sub> + 2 O<sub>2</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-tipo-reaccion="receta-hidrogeno">5 H<sub>2</sub> + 2 O<sub>2</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-tipo-reaccion="receta-oxigeno">4 H<sub>2</sub> + 3 O<sub>2</sub></button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="reacomodo" viewBox="0 0 400 214" role="img" aria-labelledby="recetaTitle">
+          <title id="recetaTitle">Moléculas de hidrógeno y oxígeno en un recipiente. Cada dos moléculas de hidrógeno se juntan con una de oxígeno: el oxígeno se abre y cada átomo se une a un hidrógeno para formar agua. La molécula que no completa la receta se queda sin reaccionar y aparece la palabra sobra.</title>
+        </svg>
+      </figure>
+      <div class="reacomodo__clave" aria-label="Clave de colores" data-reacomodo-clave></div>
+      <div class="reacomodo__texto" aria-live="polite" data-reacomodo-texto></div>
+      <div hidden>
+        <p data-texto-tipo="receta-exacta"><strong>4 H<sub>2</sub> y 2 O<sub>2</sub>: no sobra nada.</strong> La
+          receta pide 2 H<sub>2</sub> por cada O<sub>2</sub> y aquí hay justo esa proporción: se forman
+          4 H<sub>2</sub>O.</p>
+        <p data-texto-tipo="receta-hidrogeno"><strong>5 H<sub>2</sub> y 2 O<sub>2</sub>: sobra 1 H<sub>2</sub>.</strong>
+          Los 2 O<sub>2</sub> sólo alcanzan para 4 H<sub>2</sub>. El O<sub>2</sub> es el <strong>reactivo
+          limitante</strong>: se acaba primero y decide cuánta agua se forma.</p>
+        <p data-texto-tipo="receta-oxigeno"><strong>4 H<sub>2</sub> y 3 O<sub>2</sub>: sobra 1 O<sub>2</sub>.</strong>
+          Los 4 H<sub>2</sub> sólo usan 2 O<sub>2</sub>. Ahora el limitante es el H<sub>2</sub>, aunque hay más
+          oxígeno del que se necesita.</p>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-repetir>Repetir la reacción</button>
+      </div>
+    </div>
+    <p class="editorial-note">En el laboratorio no se cuentan moléculas, se pesan gramos; pero la receta es la
+      misma en moles: 5 mol de H<sub>2</sub> con 2 mol de O<sub>2</sub> también dejan 1 mol de H<sub>2</sub> sin
+      reaccionar.</p>
+  </section>
+
+  <section aria-labelledby="ejemploGramos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploGramos">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> De gramos a gramos
+      </h2>
+    </header>
+    <p class="section-intro">¿Cuántos gramos de agua se forman con 8 g de H<sub>2</sub>?
+      2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">A moles</span><p>8 g ÷ 2 g/mol = <strong>4 mol</strong> de
+        H<sub>2</sub>.</p></li>
+      <li><span class="worked-steps__label">Receta</span><p>2 mol de H<sub>2</sub> forman 2 mol de
+        H<sub>2</sub>O: 4 mol de H<sub>2</sub> forman <strong>4 mol</strong> de H<sub>2</sub>O.</p></li>
+      <li><span class="worked-steps__label">A gramos</span><p>4 mol × 18 g/mol = <strong>72 g</strong> de
+        agua.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p>Los 4 mol de H<sub>2</sub> usan 2 mol de
+        O<sub>2</sub>, 64 g: 8 g + 64 g = 72 g. La masa se conserva.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="ejemploLimitante">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploLimitante">
+        <span class="lesson-section__kicker">Reactivo limitante</span> Lo que se acaba primero manda
+      </h2>
+    </header>
+    <p class="section-intro">Se mezclan 10 g de H<sub>2</sub> con 64 g de O<sub>2</sub>. ¿Cuánta agua se
+      forma?</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Moles</span><p>H<sub>2</sub>: 10 ÷ 2 = 5 mol. O<sub>2</sub>:
+        64 ÷ 32 = 2 mol.</p></li>
+      <li><span class="worked-steps__label">Receta</span><p>2 mol de O<sub>2</sub> piden 4 mol de
+        H<sub>2</sub> y hay 5: sobra 1 mol de H<sub>2</sub>. El limitante es el <strong>O<sub>2</sub></strong>.</p></li>
+      <li><span class="worked-steps__label">Producto</span><p>2 mol de O<sub>2</sub> forman 4 mol de
+        H<sub>2</sub>O: 4 × 18 = <strong>72 g</strong>.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p>10 g + 64 g = 74 g: 72 g de agua y 2 g de
+        H<sub>2</sub> que sobran.</p></li>
+    </ol>
+    <p class="editorial-note">Masas atómicas que usamos: H 1, C 12, N 14, O 16, Mg 24, Cl 35.5, Ca 40,
+      Zn 65.4.</p>
+  </section>
+
+  <section aria-labelledby="practicaEstequiometria">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaEstequiometria">
+        <span class="lesson-section__kicker">Practica</span> Moles, gramos y limitante
+      </h2>
+      <span class="section-header__count">10 problemas</span>
+    </header>
+    <p class="section-intro">Usa la ecuación de cada problema y escribe sólo el resultado. Comprueba cada tanda:
+      verás una pista en los que debas revisar.</p>
+    <!-- Problemas propios: la fuente no trae ejercicios de este tema -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-estequiometria-problemas></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-calculos-estequiometricos.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los problemas de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./concentracion-disoluciones.html">← Concentración</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

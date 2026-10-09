@@ -373,11 +373,12 @@ export const SEGMENTOS = [
     tema: 'reaccion-quimica',
     titulo: 'Cálculos estequiométricos',
     descripcion: 'Relaciona masa, moles y proporciones dentro de una ecuación química.',
-    paginas: '33–35',
+    paginas: '33',
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'practica'],
-    etiquetas: ['estequiometría', 'mol', 'masa', 'proporción'],
-    estado: 'fuente'
+    etiquetas: ['estequiometría', 'mol', 'masa', 'proporción', 'reactivo limitante'],
+    estado: 'disponible',
+    href: './calculos-estequiometricos.html'
   },
 
   {

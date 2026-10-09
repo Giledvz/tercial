@@ -532,6 +532,13 @@ body,
 
 .task-tipos .task-blank { flex: none; min-width: 1.3in; }
 
+/* Problemas a todo lo ancho (varias respuestas en el renglón) */
+.task-problems--una { grid-template-columns: minmax(0, 1fr); }
+
+.task-problems--una .task-work { flex-basis: 0.95in; }
+
+.task-blank--larga { min-width: 3in; }
+
 /* Problemas con más cuentas: recuadro más alto */
 .task-problems--amplio .task-work { flex-basis: 0.7in; }
 
