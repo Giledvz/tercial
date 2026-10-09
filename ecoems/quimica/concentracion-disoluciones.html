@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Concentración de disoluciones · Química ECOEMS · Tercial</title>
+<meta name="description" content="Cuánto soluto hay en cuánta disolución: porcentaje en masa y en volumen, partes por millón y molaridad. Cómo se prepara una disolución de molaridad exacta en un matraz aforado.">
+<meta name="tercial:resource-id" content="ecoems-quimica-concentracion-disoluciones">
+<meta name="tercial:resource-title" content="Concentración de disoluciones">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./concentracion-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 8 de 9 · Para profundizar</p>
+    <h1 class="hero__title">Concentración de <em>disoluciones</em></h1>
+    <p class="hero__lede">La concentración dice cuánto soluto hay en cierta cantidad de disolución. Se puede
+      dar en porcentaje, en partes por millón o en molaridad, la forma que más se usa en química: moles de
+      soluto por litro de disolución.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=concentración#courseIndex">concentración</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=molaridad#courseIndex">molaridad</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=porcentaje#courseIndex">porcentaje</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaConcentracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaConcentracion">
+        <span class="lesson-section__kicker">Idea central</span> Soluto entre disolución
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Siempre se divide entre <em>la disolución</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En <a href="./disoluciones.html">Disoluciones</a> calculaste el porcentaje en masa. Todas las formas
+          de expresar la concentración hacen lo mismo: comparan el soluto con toda la disolución, no sólo con
+          el disolvente.</p>
+        <p>La disolución es el soluto más el disolvente. Si se disuelven 10 g de sal en 90 g de agua, hay
+          100 g de disolución y la concentración es 10 % m/m.</p>
+        <p>La <strong>molaridad</strong> (M) cuenta el soluto en moles: M = moles de soluto ÷ litros de
+          disolución. Una disolución 1 M de NaCl tiene 58.5 g de sal, un mol, en cada litro de disolución.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 33–35 -->
+      <footer class="source-line">
+        <span>Lectura · 5 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="observaAforo">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaAforo">
+        <span class="lesson-section__kicker">Observa</span> Preparar 250 mL de CuSO<sub>4</sub> 0.20 M
+      </h2>
+    </header>
+    <p class="section-intro">Para una molaridad exacta se usa un matraz aforado: tiene una sola marca, el
+      aforo, y contiene el volumen que dice cuando el líquido llega a ella.</p>
+    <div class="aforo" data-aforo>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="aforo" viewBox="0 0 400 260" role="img" aria-labelledby="aforoTitle">
+          <title id="aforoTitle">Un matraz aforado de 250 mL. El polvo blanco de sulfato de cobre cae por un embudo y forma un montón; con la piseta se llena hasta la mitad, se agita y el polvo se disuelve en azul; se completa con agua hasta la marca, las últimas gotas con gotero, y se tapa y se agita. A la derecha, el volumen y la molaridad: 0.40 M a la mitad y 0.20 M en la marca. Una lupa muestra el fondo del menisco tocando la marca.</title>
+        </svg>
+      </figure>
+      <ol class="aforo__pasos" aria-label="Pasos para preparar la disolución">
+        <li data-aforo-paso="1"><strong>Pesa el soluto.</strong> 0.050 mol × 159.5 g/mol = 7.98 g de
+          CuSO<sub>4</sub>. Se pasan al matraz con un embudo.</li>
+        <li data-aforo-paso="2"><strong>Disuelve.</strong> Se agrega agua hasta la mitad y se agita. El sulfato
+          de cobre sin agua es un polvo blanco; disuelto, el ion cobre(II) tiñe el agua de azul.</li>
+        <li data-aforo-paso="3"><strong>Afora.</strong> Se completa con agua hasta la marca; las últimas gotas,
+          con gotero, hasta que el fondo del menisco toque la marca vista a la altura de los ojos.</li>
+        <li data-aforo-paso="4"><strong>Tapa y mezcla.</strong> Se tapa y se agita o se invierte hasta que el
+          color quede parejo: 250 mL de disolución 0.20 M.</li>
+      </ol>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-repetir>Repetir la preparación</button>
+      </div>
+    </div>
+    <p class="editorial-note">No se miden 250 mL de agua: se agrega agua hasta que la disolución completa llega
+      a la marca. Por eso la molaridad se calcula con el volumen de la disolución.</p>
+  </section>
+
+  <section aria-labelledby="comparaConcentracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaConcentracion">
+        <span class="lesson-section__kicker">Compara</span> Cinco formas de decir cuánto
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="comparaConcentracion" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Formas de expresar la concentración de una disolución</caption>
+        <thead>
+          <tr><th scope="col">Forma</th><th scope="col">Cómo se calcula</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">% m/m</th><td>gramos de soluto ÷ gramos de disolución × 100</td><td>El agua de mar tiene unos 3.5 g de sales en cada 100 g</td></tr>
+          <tr><th scope="row">% m/v</th><td>gramos de soluto ÷ mL de disolución × 100</td><td>El suero fisiológico es NaCl al 0.9 % m/v: 0.9 g en cada 100 mL</td></tr>
+          <tr><th scope="row">% v/v</th><td>mL de soluto ÷ mL de disolución × 100</td><td>El alcohol para heridas es de 70 % v/v</td></tr>
+          <tr><th scope="row">ppm</th><td>mg de soluto ÷ kg de disolución; en agua, ÷ L</td><td>La OMS pide que el agua potable no pase de 1.5 ppm de flúor</td></tr>
+          <tr><th scope="row">Molaridad</th><td>moles de soluto ÷ litros de disolución</td><td>NaCl 1 M: 58.5 g en cada litro de disolución</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Las partes por millón sirven para cantidades muy pequeñas: 1 ppm es 1 mg en un
+      kilogramo, y un litro de agua pesa casi exactamente un kilogramo.</p>
+  </section>
+
+  <section aria-labelledby="ejemploMolaridad">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploMolaridad">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> De gramos a molaridad y de regreso
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Moles</span><p>40 g de NaOH en 500 mL de disolución. La masa molar es
+        23 + 16 + 1 = 40 g/mol: hay <strong>1 mol</strong>.</p></li>
+      <li><span class="worked-steps__label">Litros</span><p>500 mL = <strong>0.500 L</strong>: el volumen
+        siempre va en litros.</p></li>
+      <li><span class="worked-steps__label">Molaridad</span><p>1 mol ÷ 0.500 L = <strong>2 M</strong>.</p></li>
+      <li><span class="worked-steps__label">De regreso</span><p>Para 250 mL de KCl 0.4 M: 0.4 × 0.250 L =
+        0.1 mol, y 0.1 mol × 74.5 g/mol = <strong>7.45 g</strong> de KCl.</p></li>
+    </ol>
+    <p class="editorial-note">Masas atómicas que usamos: H 1, C 12, N 14, O 16, Na 23, S 32, Cl 35.5, K 39,
+      Fe 55.8, Cu 63.5.</p>
+  </section>
+
+  <section aria-labelledby="retoConcentracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="retoConcentracion">
+        <span class="lesson-section__kicker">Reto</span> Diluir un ácido concentrado
+      </h2>
+    </header>
+    <p class="section-intro">El ácido clorhídrico concentrado tiene 37 % de HCl en masa y una densidad de
+      1.14 g/mL. ¿Cuántos mililitros se miden para preparar 250 mL de HCl 1.4 M?</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Moles</span><p>1.4 mol/L × 0.250 L = <strong>0.35 mol</strong> de
+        HCl.</p></li>
+      <li><span class="worked-steps__label">Gramos</span><p>0.35 mol × 36.5 g/mol = <strong>12.78 g</strong> de
+        HCl puro.</p></li>
+      <li><span class="worked-steps__label">Del 37 %</span><p>Sólo 37 de cada 100 g son HCl: 12.78 ÷ 0.37 =
+        <strong>34.5 g</strong> de ácido concentrado.</p></li>
+      <li><span class="worked-steps__label">Mililitros</span><p>34.5 g ÷ 1.14 g/mL = <strong>30.3 mL</strong>.
+        Se ponen en agua y se afora a 250 mL.</p></li>
+    </ol>
+    <p class="editorial-note">En el laboratorio el ácido se vierte sobre el agua, nunca al revés: al mezclarse
+      se calienta, y si el agua cae sobre el ácido puede salpicar.</p>
+  </section>
+
+  <section aria-labelledby="practicaConcentracion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaConcentracion">
+        <span class="lesson-section__kicker">Practica</span> Porcentajes, ppm y molaridad
+      </h2>
+      <span class="section-header__count">10 problemas</span>
+    </header>
+    <p class="section-intro">Resuelve en tu cuaderno y escribe sólo el resultado. Comprueba cada tanda: verás
+      una pista en los que debas revisar.</p>
+    <!-- Problemas: QUA-001 · pp. 33–35 (los de molaridad); porcentajes y ppm, propios -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-concentracion-problemas></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-concentracion-disoluciones.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los problemas de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./balanceo-redox.html">← Balanceo redox</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

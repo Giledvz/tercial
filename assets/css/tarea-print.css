@@ -513,6 +513,28 @@ body,
   font-weight: var(--font-weight-regular);
 }
 
+/* Problemas que siguen en la página siguiente: la misma sangría que dentro del
+   ejercicio (las letras continúan con counter-reset en el propio marcado). */
+.task-problems--sigue {
+  margin: 0 0 var(--space-7) calc(0.42in + var(--space-4));
+}
+
+/* Datos cortos: el dato a la izquierda y su respuesta en un hueco a la derecha */
+.task-tipos > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.3in;
+}
+
+/* El hueco es más alto que el renglón: el dato y la letra se alinean abajo. */
+.task-tipos > li::before { top: auto; bottom: 0; }
+
+.task-tipos .task-blank { flex: none; min-width: 1.3in; }
+
+/* Problemas con más cuentas: recuadro más alto */
+.task-problems--amplio .task-work { flex-basis: 0.7in; }
+
 /* Renglones para una respuesta escrita */
 .task-lines {
   margin-top: 6pt;

@@ -365,7 +365,8 @@ export const SEGMENTOS = [
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['concentración', 'molaridad', 'porcentaje', 'disoluciones'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './concentracion-disoluciones.html'
   },
   {
     id: 'calculos-estequiometricos',
