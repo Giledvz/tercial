@@ -863,6 +863,7 @@ main section[id] { scroll-margin-top: 4.5rem; }
   .boton-proyectar { display: none; }
 }
 
+/* --u lo afina leccion.js según la pantalla; éste es el valor si el script no lo ha puesto. */
 html[data-proyeccion] {
   --u: min(1vw, 1.78vh);
   overflow: hidden;
@@ -941,9 +942,12 @@ html[data-proyeccion] .es-actual th {
   line-height: 1.45;
 }
 
+/* Nada en la tele se limita con medidas de la lectura: un 68ch calculado con la letra
+   de 16 px deja el texto en una columna angosta en una tele 4K. */
 html[data-proyeccion] .es-actual .section-intro,
 html[data-proyeccion] .es-actual .reading-block,
-html[data-proyeccion] .es-actual .reading-block__body p { max-width: none; }
+html[data-proyeccion] .es-actual .reading-block__body p,
+html[data-proyeccion] .es-actual .leccion-texto { max-width: none; }
 
 html[data-proyeccion] .es-actual .reading-block__title { font-size: calc(var(--u) * 2.6); }
 html[data-proyeccion] .es-actual .editorial-note { font-size: calc(var(--u) * 1.6); }

@@ -9,6 +9,8 @@
  * Lo marcado con [data-solo-proyeccion] (la pantalla «Ahora tú», con el código QR)
  * sólo existe en este modo. Cada pantalla que llega a la tele recibe el evento
  * «tercial:diapositiva»: las escenas lo usan para empezar desde el principio.
+ * Con #tele en la liga (…/signos.html#tele) la lección abre ya en este modo: sirve
+ * para el navegador de la propia tele o una compu conectada a ella, sin teclado.
  */
 (function () {
   'use strict';
@@ -20,6 +22,16 @@
   var actual = 0;
   var controles = null;
   var conPantallaCompleta = false;
+
+  // La unidad de la tele (--u). El diseño mide 100 × 56.25 unidades, un 16:9. En una pantalla
+  // más cuadrada (un iPad 4:3, una MacBook 16:10) sobra alto: la unidad crece hasta conservar
+  // el área del diseño, como mucho 15 %, y el texto se reacomoda en más renglones. En 16:9 o
+  // más ancha, la unidad es la de siempre.
+  function medir() {
+    var w = window.innerWidth, h = window.innerHeight;
+    var u = Math.min(h / 56.25, Math.sqrt(w * h / 5625), w / 100 * 1.15);
+    raiz.style.setProperty('--u', u.toFixed(2) + 'px');
+  }
 
   function crearControles() {
     controles = document.createElement('div');
@@ -64,6 +76,7 @@
     if (raiz.hasAttribute('data-proyeccion')) return;
     if (!controles) crearControles();
     var inicio = laQueSeVe();
+    medir();
     raiz.setAttribute('data-proyeccion', '');
     controles.hidden = false;
     ir(inicio);
@@ -77,12 +90,17 @@
     if (!raiz.hasAttribute('data-proyeccion')) return;
     var vista = diapositivas[actual];
     raiz.removeAttribute('data-proyeccion');
+    raiz.style.removeProperty('--u');
     diapositivas.forEach(function (d) { d.classList.remove('es-actual'); d.removeAttribute('aria-hidden'); });
     controles.hidden = true;
     if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
     conPantallaCompleta = false;
+    // Al salir, la liga deja de decir #tele: si se recarga, abre en lectura.
+    if (location.hash === '#tele' && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
     if (!vista.hasAttribute('data-solo-proyeccion')) vista.scrollIntoView({ block: 'start' });
   }
+
+  window.addEventListener('resize', function () { if (raiz.hasAttribute('data-proyeccion')) medir(); });
 
   // Si el navegador quita la pantalla completa (Esc en Safari), también se sale del modo.
   document.addEventListener('fullscreenchange', function () {
@@ -114,4 +132,9 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-proyectar]'), function (boton) {
     boton.addEventListener('click', entrar);
   });
+
+  if (location.hash === '#tele') {
+    window.scrollTo(0, 0);
+    entrar();
+  }
 })();
