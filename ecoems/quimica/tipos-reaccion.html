@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tipos de reacción química · Química ECOEMS · Tercial</title>
+<meta name="description" content="Síntesis, descomposición, sustitución simple y sustitución doble: cómo se reacomodan los átomos y los iones en cada tipo de reacción y cómo reconocerlos en una ecuación.">
+<meta name="tercial:resource-id" content="ecoems-quimica-tipos-reaccion">
+<meta name="tercial:resource-title" content="Tipos de reacción química">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./tipos-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 3 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Tipos de <em>reacción</em></h1>
+    <p class="hero__lede">En una reacción los átomos de los reactivos no desaparecen: se reacomodan para
+      formar los productos. Según cómo se reacomodan, la reacción es de síntesis, de descomposición o de
+      sustitución, simple o doble.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=reacciones#courseIndex">reacciones</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=síntesis#courseIndex">síntesis</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=sustitución#courseIndex">sustitución</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaTipos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaTipos">
+        <span class="lesson-section__kicker">Idea central</span> Los mismos átomos, otro acomodo
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Cómo se lee una <em>ecuación química</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>A la izquierda de la flecha van los <strong>reactivos</strong> y a la derecha los
+          <strong>productos</strong>. Los números grandes de adelante (coeficientes) dicen cuántas moléculas
+          o unidades reaccionan; los pequeños de abajo (subíndices) dicen cuántos átomos hay en cada una.</p>
+        <p>Entre paréntesis se indica el estado: (s) sólido, (l) líquido, (g) gas y (ac) disuelto en agua.
+          Como los átomos sólo se reacomodan, de cada elemento hay los mismos a la izquierda y a la derecha:
+          la ecuación está balanceada.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 26 -->
+      <footer class="source-line">
+        <span>Lectura · 5 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="observaTipos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaTipos">
+        <span class="lesson-section__kicker">Observa</span> Cuatro maneras de reacomodar
+      </h2>
+    </header>
+    <p class="section-intro">Elige un tipo. Las moléculas están a escala y los iones disueltos aparecen
+      sueltos dentro del vaso, como están en el agua. Toca otra vez el mismo tipo para repetirlo.</p>
+    <div class="reacomodo" data-reacomodo>
+      <div class="pastillas" role="group" aria-label="Elige un tipo de reacción">
+        <button class="pastilla" type="button" aria-pressed="true" data-tipo-reaccion="sintesis">Síntesis</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-tipo-reaccion="descomposicion">Descomposición</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-tipo-reaccion="simple">Sustitución simple</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-tipo-reaccion="doble">Sustitución doble</button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="reacomodo" viewBox="0 0 400 214" role="img" aria-labelledby="reacomodoTitle">
+          <title id="reacomodoTitle">Las partículas de los reactivos se reacomodan hasta formar los productos del tipo de reacción elegido; abajo, su ecuación.</title>
+        </svg>
+      </figure>
+      <div class="reacomodo__clave" aria-label="Clave de colores" data-reacomodo-clave></div>
+      <div class="reacomodo__texto" aria-live="polite" data-reacomodo-texto></div>
+      <div hidden>
+        <p data-texto-tipo="sintesis"><strong>Síntesis o combinación.</strong> Dos o más sustancias forman una
+          sola: A + B → AB. Dos moléculas de hidrógeno y una de oxígeno forman dos de agua.</p>
+        <p data-texto-tipo="descomposicion"><strong>Descomposición.</strong> Una sustancia se separa en dos o
+          más: AB → A + B. El agua oxigenada se descompone poco a poco en agua y oxígeno; en una herida
+          burbujea porque una enzima de la sangre acelera esa descomposición.</p>
+        <p data-texto-tipo="simple"><strong>Sustitución simple.</strong> Un elemento toma el lugar de otro en un
+          compuesto: A + BC → AC + B. Cada átomo de zinc entrega dos electrones y pasa a la disolución como
+          Zn<sup>2+</sup>; cada Cu<sup>2+</sup> los recibe y se deposita como cobre. El azul del sulfato de cobre se va perdiendo.</p>
+        <p data-texto-tipo="doble"><strong>Sustitución doble.</strong> Dos compuestos intercambian sus iones:
+          AB + CD → AD + CB. La plata y el cloruro forman cloruro de plata, que no se disuelve y cae al fondo
+          como un sólido blanco; Na<sup>+</sup> y NO<sub>3</sub><sup>−</sup> siguen disueltos.</p>
+      </div>
+    </div>
+    <p class="editorial-note">Los radios son reales: moléculas con radios de van der Waals y distancias de
+      enlace medidas; iones con sus radios iónicos. Por eso el Cu<sup>2+</sup> se ve tan pequeño junto al sulfato.</p>
+  </section>
+
+  <section aria-labelledby="comparaTipos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaTipos">
+        <span class="lesson-section__kicker">Compara</span> Los cuatro tipos, de un vistazo
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="comparaTipos" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Forma general, cómo reconocer cada tipo de reacción y un ejemplo</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Forma general</th>
+            <th scope="col">Cómo reconocerla</th>
+            <th scope="col">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Síntesis</th><td>A + B → AB</td><td>Un solo producto</td><td>2Mg + O<sub>2</sub> → 2MgO</td></tr>
+          <tr><th scope="row">Descomposición</th><td>AB → A + B</td><td>Un solo reactivo</td><td>CaCO<sub>3</sub> → CaO + CO<sub>2</sub></td></tr>
+          <tr><th scope="row">Sustitución simple</th><td>A + BC → AC + B</td><td>Un elemento solo de cada lado</td><td>Fe + CuSO<sub>4</sub> → FeSO<sub>4</sub> + Cu</td></tr>
+          <tr><th scope="row">Sustitución doble</th><td>AB + CD → AD + CB</td><td>Dos compuestos que intercambian iones</td><td>AgNO<sub>3</sub> + NaCl → AgCl + NaNO<sub>3</sub></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">La neutralización (ácido + base → sal + agua) es una sustitución doble; la
+      verás en ácidos y bases. Las sustituciones simples siempre son de óxido-reducción: un elemento pierde
+      electrones y otro los gana. Las dobles, como la del cloruro de plata, no lo son.</p>
+  </section>
+
+  <section aria-labelledby="practicaTipos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaTipos">
+        <span class="lesson-section__kicker">Practica</span> ¿Qué tipo de reacción es?
+      </h2>
+      <span class="section-header__count">10 reacciones</span>
+    </header>
+    <p class="section-intro">Cuenta los reactivos y los productos y fíjate si hay elementos solos. Comprueba
+      cada tanda: verás una pista en las que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · p. 27, ya balanceados -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-tipos-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-tipos-reaccion.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las reacciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./nomenclatura-inorganica.html">← Nomenclatura inorgánica</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

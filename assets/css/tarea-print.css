@@ -281,6 +281,12 @@ body,
 /* Fórmulas como encabezado de fila, un poco más grandes */
 .task-table--formulas tbody th { font-size: 13.5pt; }
 
+/* Reacciones: los reactivos en el encabezado de la fila, sin cortar la línea */
+.task-table--reacciones tbody th {
+  font-size: 12.5pt;
+  white-space: nowrap;
+}
+
 /* Número atómico junto al nombre del elemento */
 .task-z {
   color: var(--ink-500);
@@ -329,6 +335,14 @@ body,
 }
 
 .task-checks--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Una sola columna, para enunciados largos como las ecuaciones */
+.task-checks--una {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5pt;
+  font-family: var(--font-family-display);
+  font-size: 12pt;
+}
 
 .task-checks li {
   display: grid;

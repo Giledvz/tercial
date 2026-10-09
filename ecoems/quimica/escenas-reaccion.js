@@ -443,8 +443,174 @@ function lectura(svg) {
   };
 }
 
+/* ---------------- 4 · Cuatro tipos de reacción ----------------
+   Los átomos o iones de los reactivos se reacomodan en el mismo lugar hasta
+   formar los productos. Moléculas en modelo compacto, a escala (radios de van
+   der Waals y distancias de enlace reales); iones en disolución con sus radios
+   iónicos, dentro de un vaso. Las coreografías salen de reacomodos.py, que
+   comprueba con números que nada se encime ni atraviese la lámina o el vaso.
+   El texto de cada tipo vive en el HTML. */
+/* REACOMODOS:inicio */
+const REACOMODOS = {"sintesis":{"particulas":[{"el":"H","cls":"h","etiqueta":"H","claves":[[0,90.56,70,14.4],[0,90.56,70,14.4],[1,140.89,96.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,99.44,70,14.4],[0,99.44,70,14.4],[1,159.11,96.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,300.56,70,14.4],[0,300.56,70,14.4],[1,240.89,96.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,309.44,70,14.4],[0,309.44,70,14.4],[1,259.11,96.95,14.4]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,192.74,112,18.24],[0,192.74,112,18.24],[1,150,104,18.24]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,207.26,112,18.24],[0,207.26,112,18.24],[1,250,104,18.24]],"cambios":[]}],"unidos0":[[0,1],[2,3],[4,5]],"unidos1":[[0,4],[1,4],[2,5],[3,5]]},"descomposicion":{"particulas":[{"el":"H","cls":"h","etiqueta":"H","claves":[[0,102.22,80.52,14.4],[0,102.22,80.52,14.4],[1,108.89,116.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,121.78,103.48,14.4],[0,121.78,103.48,14.4],[1,127.11,116.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,278.22,80.52,14.4],[0,278.22,80.52,14.4],[1,272.89,116.95,14.4]],"cambios":[]},{"el":"H","cls":"h","etiqueta":"H","claves":[[0,297.78,103.48,14.4],[0,297.78,103.48,14.4],[1,291.11,116.95,14.4]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,103.18,92,18.24],[0,103.18,92,18.24],[1,118,124,18.24]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,120.82,92,18.24],[0,120.82,92,18.24],[1,192.74,52,18.24]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,279.18,92,18.24],[0,279.18,92,18.24],[1,207.26,52,18.24]],"cambios":[]},{"el":"O","cls":"o","etiqueta":"O","claves":[[0,296.82,92,18.24],[0,296.82,92,18.24],[1,282,124,18.24]],"cambios":[]}],"unidos0":[[0,4],[4,5],[5,1],[2,6],[6,7],[7,3]],"unidos1":[[0,4],[1,4],[2,7],[3,7],[5,6]]},"simple":{"particulas":[{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,181.62,78,9.38],[0.03,181.62,78,9.38],[0.21,146.97,62.5,5.18]],"cambios":[[0.1,"zn-ion"]]},{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,181.62,104,9.38]],"cambios":[]},{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,181.62,130,9.38],[0.31,181.62,130,9.38],[0.49,143.25,137.15,5.18]],"cambios":[[0.38,"zn-ion"]]},{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,218.38,92,9.38]],"cambios":[]},{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,218.38,118,9.38],[0.59,218.38,118,9.38],[0.77,265.93,97.21,5.18]],"cambios":[[0.66,"zn-ion"]]},{"el":"Zn","cls":"zn","etiqueta":"Zn","claves":[[0,218.38,144,9.38]],"cambios":[]},{"el":"Cu","cls":"cu-ion","etiqueta":"Cu","claves":[[0,131.53,116.01,5.11],[0.21,131.53,116.01,5.11],[0.43,181.62,78,8.96]],"cambios":[[0.41,"cu"]]},{"el":"Cu","cls":"cu-ion","etiqueta":"Cu","claves":[[0,144.85,159.65,5.11],[0.49,144.85,159.65,5.11],[0.71,181.62,130,8.96]],"cambios":[[0.69,"cu"]]},{"el":"Cu","cls":"cu-ion","etiqueta":"Cu","claves":[[0,263.82,118.12,5.11],[0.77,263.82,118.12,5.11],[0.99,218.38,118,8.96]],"cambios":[[0.97,"cu"]]},{"el":"SO4","cls":"sulfato","etiqueta":"SO₄²⁻","claves":[[0,123.7,84.17,18.06]],"cambios":[]},{"el":"SO4","cls":"sulfato","etiqueta":"SO₄²⁻","claves":[[0,298.28,110.98,18.06]],"cambios":[]},{"el":"SO4","cls":"sulfato","etiqueta":"SO₄²⁻","claves":[[0,110.95,138.24,18.06]],"cambios":[]}],"unidos0":[],"unidos1":[],"vaso":{"x0":80,"x1":320,"y0":34,"y1":170,"nivel":54},"lamina":{"x0":190,"x1":210,"y0":16,"y1":150},"iones":true},"doble":{"particulas":[{"el":"Ag","cls":"plata","etiqueta":"Ag⁺","claves":[[0,96.49,115.26,8.05],[0.04,96.49,115.26,8.05],[0.24,112.02,114.87,8.05],[0.38,148.2,161.95,8.05]],"cambios":[]},{"el":"Cl","cls":"cloruro","etiqueta":"Cl⁻","claves":[[0,152.07,116.67,12.67],[0.04,152.07,116.67,12.67],[0.24,132.74,114.87,12.67],[0.38,168.92,157.33,12.67]],"cambios":[]},{"el":"Ag","cls":"plata","etiqueta":"Ag⁺","claves":[[0,174.53,120.5,8.05],[0.34,174.53,120.5,8.05],[0.54,193.26,117.09,8.05],[0.68,189.64,161.95,8.05]],"cambios":[]},{"el":"Cl","cls":"cloruro","etiqueta":"Cl⁻","claves":[[0,230.01,123.51,12.67],[0.34,230.01,123.51,12.67],[0.54,213.98,117.09,12.67],[0.68,210.36,157.33,12.67]],"cambios":[]},{"el":"Ag","cls":"plata","etiqueta":"Ag⁺","claves":[[0,250.46,110.39,8.05],[0.64,250.46,110.39,8.05],[0.84,265.74,115.79,8.05],[0.98,231.08,161.95,8.05]],"cambios":[]},{"el":"Cl","cls":"cloruro","etiqueta":"Cl⁻","claves":[[0,302.91,121.04,12.67],[0.64,302.91,121.04,12.67],[0.84,286.46,115.79,12.67],[0.98,251.8,157.33,12.67]],"cambios":[]},{"el":"Na","cls":"sodio","etiqueta":"Na⁺","claves":[[0,114.42,82.87,7.14]],"cambios":[]},{"el":"Na","cls":"sodio","etiqueta":"Na⁺","claves":[[0,185.01,71.56,7.14]],"cambios":[]},{"el":"Na","cls":"sodio","etiqueta":"Na⁺","claves":[[0,279.29,73.86,7.14]],"cambios":[]},{"el":"NO3","cls":"nitrato","etiqueta":"NO₃⁻","claves":[[0,223.18,69.02,12.53]],"cambios":[]},{"el":"NO3","cls":"nitrato","etiqueta":"NO₃⁻","claves":[[0,143.32,75.52,12.53]],"cambios":[]},{"el":"NO3","cls":"nitrato","etiqueta":"NO₃⁻","claves":[[0,305.33,85.62,12.53]],"cambios":[]}],"unidos0":[],"unidos1":[[0,1],[1,2],[2,3],[3,4],[4,5]],"vaso":{"x0":80,"x1":320,"y0":34,"y1":170,"nivel":54},"iones":true}};
+/* REACOMODOS:fin */
+
+const ECUACIONES = {
+  sintesis: [['2H', null], ['2', 'sub'], [' + O', null], ['2', 'sub'], [' → 2H', null], ['2', 'sub'], ['O', null]],
+  descomposicion: [['2H', null], ['2', 'sub'], ['O', null], ['2', 'sub'], [' → 2H', null], ['2', 'sub'], ['O + O', null], ['2', 'sub']],
+  simple: [['Zn(s) + CuSO', null], ['4', 'sub'], ['(ac) → ZnSO', null], ['4', 'sub'], ['(ac) + Cu(s)', null]],
+  doble: [['AgNO', null], ['3', 'sub'], ['(ac) + NaCl(ac) → AgCl(s) + NaNO', null], ['3', 'sub'], ['(ac)', null]]
+};
+const DURACION = { sintesis: 3.6, descomposicion: 3.6, simple: 7, doble: 7 };
+const CLAVES = {
+  sintesis: [['h', 'hidrógeno'], ['o', 'oxígeno']],
+  descomposicion: [['h', 'hidrógeno'], ['o', 'oxígeno']],
+  simple: [['zn', 'zinc metálico'], ['zn-ion', 'Zn<sup>2+</sup>'], ['cu-ion', 'Cu<sup>2+</sup>'], ['cu', 'cobre metálico'], ['sulfato', 'SO<sub>4</sub><sup>2−</sup>']],
+  doble: [['plata', 'Ag<sup>+</sup>'], ['cloruro', 'Cl<sup>−</sup>'], ['sodio', 'Na<sup>+</sup>'], ['nitrato', 'NO<sub>3</sub><sup>−</sup>']]
+};
+
+/* Rótulo dentro de una partícula: los subíndices y las cargas van en tspan,
+   porque los caracteres Unicode de índice salen separados en la fuente mono. */
+const INDICE = { '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁺': '+', '⁻': '−' };
+function rotulo(parent, texto, cls) {
+  const node = make('text', { x: 0, y: 0, class: cls, 'text-anchor': 'middle' }, parent);
+  let tipo = null, actual = null, base = 0;
+  for (const ch of texto) {
+    const t = INDICE[ch] ? (/[₀-₉]/.test(ch) ? 'sub' : 'sup') : null;
+    if (t !== tipo || !actual) {
+      const shift = t === 'sub' ? 2.4 : t === 'sup' ? -3.4 : 0;
+      actual = make('tspan', { dy: shift - base }, node);
+      if (t) actual.setAttribute('class', 'escena__particula-indice');
+      base = shift;
+      tipo = t;
+    }
+    actual.textContent += INDICE[ch] || ch;
+  }
+  return node;
+}
+
+function posicionDe(q, t) {
+  const k = q.claves;
+  if (t <= k[0][0] || k.length === 1) return k[0].slice(1);
+  for (let i = 1; i < k.length; i += 1) {
+    const a = k[i - 1], b = k[i];
+    if (t <= b[0]) {
+      const u = b[0] > a[0] ? smooth((t - a[0]) / (b[0] - a[0])) : 1;
+      const ur = smooth((u - .65) / .35);
+      return [mix(a[1], b[1], u), mix(a[2], b[2], u), mix(a[3], b[3], ur)];
+    }
+  }
+  return k[k.length - 1].slice(1);
+}
+
+function claseDe(q, t) {
+  let cls = q.cls;
+  for (const [tc, nueva] of q.cambios) if (t >= tc) cls = nueva;
+  return cls;
+}
+
+function reacomodo(svg) {
+  const root = svg.closest('[data-reacomodo]');
+  const buttons = [...root.querySelectorAll('[data-tipo-reaccion]')];
+  const panel = root.querySelector('[data-reacomodo-texto]');
+  const leyenda = root.querySelector('[data-reacomodo-clave]');
+  const textos = {};
+  root.querySelectorAll('[data-texto-tipo]').forEach(node => { textos[node.dataset.textoTipo] = node.innerHTML; });
+  const capa = make('g', {}, svg);
+  let key = null, t = 0, nodos = [], azul = null, ecuacion = null, productos = null;
+
+  function armar(clave) {
+    const T = REACOMODOS[clave];
+    capa.innerHTML = '';
+    nodos = [];
+    azul = null;
+    if (T.vaso) {
+      const v = T.vaso;
+      make('rect', { x: v.x0, y: v.nivel, width: v.x1 - v.x0, height: v.y1 - v.nivel, class: 'escena__liquido' }, capa);
+      if (clave === 'simple') azul = make('rect', { x: v.x0, y: v.nivel, width: v.x1 - v.x0, height: v.y1 - v.nivel, class: 'escena__liquido-azul' }, capa);
+      make('path', { d: `M${v.x0} ${v.nivel}H${v.x1}`, class: 'escena__superficie' }, capa);
+    }
+    if (T.lamina) {
+      const L = T.lamina;
+      make('rect', { x: L.x0, y: L.y0, width: L.x1 - L.x0, height: L.y1 - L.y0, rx: 1.5, class: 'escena__lamina' }, capa);
+      text(capa, (L.x0 + L.x1) / 2, L.y0 - 4, 'zinc', 'escena__clave', { 'text-anchor': 'middle' });
+    }
+    // Los hidrógenos van encima del oxígeno para que siempre se vean, y todos los
+    // rótulos van en una capa aparte, encima de todas las partículas.
+    const orden = T.particulas.map((q, i) => i).sort((a, b) => (T.particulas[a].el === 'H' ? 1 : 0) - (T.particulas[b].el === 'H' ? 1 : 0));
+    const cuerpos = make('g', {}, capa);
+    const rotulos = make('g', {}, capa);
+    for (const i of orden) {
+      const q = T.particulas[i];
+      const g = make('g', {}, cuerpos);
+      const c = make('circle', { r: q.claves[0][3] }, g);
+      const gl = make('g', {}, rotulos);
+      // En las moléculas los átomos se enciman: H y O se reconocen por su color (clave de abajo).
+      const etq = q.etiqueta && q.el !== 'H' && q.el !== 'O' ? rotulo(gl, q.etiqueta, 'escena__particula-etiqueta') : null;
+      nodos.push({ q, g, c, gl, etq });
+    }
+    if (T.vaso) {
+      const v = T.vaso;
+      make('path', { d: `M${v.x0 - 6} ${v.y0}H${v.x0}V${v.y1 - 6}Q${v.x0} ${v.y1} ${v.x0 + 6} ${v.y1}H${v.x1 - 6}Q${v.x1} ${v.y1} ${v.x1} ${v.y1 - 6}V${v.y0}H${v.x1 + 6}`, class: 'escena__vidrio' }, capa);
+    }
+    ecuacion = formula(capa, 24, 202, ECUACIONES[clave], 'escena__ecuacion');
+    if (panel) panel.innerHTML = textos[clave] || '';
+    if (leyenda) {
+      // Cada muestra es un círculo de la misma escena: así toma sus colores en claro y en oscuro.
+      const radio = { 'zn-ion': 4, 'cu-ion': 4, sulfato: 7.5 };
+      leyenda.innerHTML = CLAVES[clave].map(([cls, nombre]) =>
+        `<span class="reacomodo__muestra"><svg class="escena escena--reaccion reacomodo__punto" viewBox="0 0 16 16" aria-hidden="true">` +
+        `<circle class="escena__p escena__p--${cls}" cx="8" cy="8" r="${radio[cls] || 6.5}"/></svg><span>${nombre}</span></span>`).join('');
+    }
+  }
+
+  function draw(time) {
+    const T = REACOMODOS[key];
+    const fase = clamp((time - .6) / DURACION[key]);
+    for (const n of nodos) {
+      const [x, y, r] = posicionDe(n.q, fase);
+      n.g.setAttribute('transform', `translate(${round(x)} ${round(y)})`);
+      n.gl.setAttribute('transform', `translate(${round(x)} ${round(y)})`);
+      set(n.c, { r });
+      const cls = claseDe(n.q, fase);
+      n.c.setAttribute('class', 'escena__p escena__p--' + cls);
+      if (n.etq) {
+        // Los iones pequeños (Cu²⁺, Zn²⁺) no llevan rótulo: se reconocen por la clave de abajo.
+        const visible = r >= 7;
+        fade(n.etq, visible ? 1 : 0);
+        if (visible) {
+          n.etq.setAttribute('class', 'escena__particula-etiqueta escena__particula-etiqueta--' + cls);
+          set(n.etq, { y: r > 12 ? 3.6 : 2.8 });
+        }
+      }
+    }
+    if (azul) {
+      // El azul del Cu²⁺ se pierde a medida que se deposita el cobre.
+      const quedan = nodos.filter(n => n.q.el === 'Cu' && claseDe(n.q, fase) === 'cu-ion').length;
+      fade(azul, quedan / 3);
+    }
+    ecuacion.setAttribute('class', 'escena__ecuacion' + (fase >= 1 ? ' es-completa' : ''));
+  }
+
+  function select(next, animate) {
+    if (!REACOMODOS[next]) return;
+    key = next;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tipoReaccion === key)));
+    armar(key);
+    t = animate && !reducedMotion.matches ? 0 : 99;
+    draw(t);
+  }
+
+  // Tocar otra vez el tipo elegido repite el reacomodo.
+  buttons.forEach(b => b.addEventListener('click', () => select(b.dataset.tipoReaccion, true)));
+  select(buttons.find(b => b.getAttribute('aria-pressed') === 'true')?.dataset.tipoReaccion || 'sintesis', false);
+  return {
+    update(dt) { if (t < DURACION[key] + 1) { t += dt; draw(t); } },
+    still() { t = 99; draw(t); }
+  };
+}
+
 /* ---------------- Reloj compartido ---------------- */
-const factories = { recta, sumacero, lectura };
+const factories = { recta, sumacero, lectura, reacomodo };
 const scenes = [...document.querySelectorAll('[data-escena-reaccion]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaReaccion](svg)
 }));

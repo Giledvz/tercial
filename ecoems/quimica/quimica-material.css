@@ -5409,3 +5409,87 @@ select.particle-row__input {
   letter-spacing: 0;
   text-transform: none;
 }
+
+/* Tipos de reacción: partículas a escala, vaso, lámina de zinc y clave de colores */
+.escena--reaccion {
+  --e-cobre: var(--cat-coral);
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena--reaccion { --e-cobre: color-mix(in oklab, var(--cat-coral) 72%, #e8a070); }
+  [data-theme="dark"] .escena--reaccion { --e-cobre: color-mix(in oklab, var(--cat-coral) 72%, black); }
+}
+
+.escena__p {
+  stroke: var(--e-paper);
+  stroke-width: 1;
+}
+
+.escena__p--h { fill: var(--e-h); }
+.escena__p--o { fill: var(--e-o); }
+.escena__p--zn { fill: var(--e-metal); }
+.escena__p--zn-ion { fill: var(--e-particula); }
+.escena__p--cu { fill: var(--e-cobre); }
+.escena__p--cu-ion { fill: var(--cat-blue); }
+.escena__p--sulfato { fill: var(--e-especie-b); }
+.escena__p--plata { fill: var(--e-particula); }
+.escena__p--cloruro { fill: var(--cat-teal); }
+.escena__p--sodio { fill: var(--cat-amber); }
+.escena__p--nitrato { fill: var(--cat-purple); }
+
+.escena .escena__particula-etiqueta {
+  fill: var(--e-paper);
+  font-family: var(--font-family-mono);
+  font-size: 8px;
+  pointer-events: none;
+}
+
+.escena .escena__particula-etiqueta--h { fill: var(--color-text-primary); font-size: 10px; }
+.escena .escena__particula-etiqueta--o { font-size: 11px; }
+.escena .escena__particula-etiqueta--plata,
+.escena .escena__particula-etiqueta--sodio { font-size: 6.5px; }
+
+.escena__liquido { fill: var(--e-agua); }
+.escena__liquido-azul { fill: var(--cat-blue); fill-opacity: .3; }
+
+.escena__lamina {
+  fill: var(--e-metal);
+  stroke: var(--e-metal-sombra);
+  stroke-width: 1;
+}
+
+.escena .escena__ecuacion.es-completa { fill: var(--color-text-primary); }
+
+.reacomodo__clave {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-3);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+}
+
+.reacomodo__muestra {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.escena.reacomodo__punto {
+  display: inline-block;
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  overflow: visible;
+}
+
+.reacomodo__texto {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-accent);
+}
+
+.escena .escena__particula-indice { font-size: 5.5px; }

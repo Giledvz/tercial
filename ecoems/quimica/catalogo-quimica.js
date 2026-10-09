@@ -305,7 +305,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['síntesis', 'descomposición', 'sustitución', 'ecuaciones'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './tipos-reaccion.html'
   },
   {
     id: 'acidos-bases',
