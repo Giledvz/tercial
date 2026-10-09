@@ -139,12 +139,48 @@ body,
 
 .task-table td.is-blank { background: #fbf8f2; }
 
+/* Tabla con una columna de texto (situaciones): el texto puede ocupar dos renglones */
+.task-table--texto td:first-child {
+  height: 0.42in;
+  padding: 3pt 8pt;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
 /* Número atómico junto al nombre del elemento */
 .task-z {
   color: var(--ink-500);
   font-family: var(--font-family-mono);
   font-size: 8.5pt;
 }
+
+/* Lista de opciones con letra para relacionar (a, b, c…) */
+.task-props {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4pt 0.28in;
+  margin: 8pt 0 10pt;
+  padding: 7pt 10pt;
+  border-top: 1px solid var(--ink-300);
+  border-bottom: 1px solid var(--ink-300);
+  color: var(--ink-700);
+  font-size: 10pt;
+}
+
+.task-props b {
+  margin-right: 4pt;
+  color: var(--accent-terracota);
+  font-family: var(--font-family-display);
+  font-size: 12pt;
+  font-style: italic;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Pasos numerados: filas un poco más altas para escribir método y resultado */
+.task-table--pasos td,
+.task-table--pasos tbody th { height: 0.46in; }
+
+.task-table--pasos tbody th { text-align: center; }
 
 /* Afirmaciones con una casilla para escribir la respuesta corta (M, NM…) */
 .task-checks {
@@ -157,6 +193,8 @@ body,
   font-size: 10pt;
   line-height: 1.3;
 }
+
+.task-checks--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .task-checks li {
   display: grid;
@@ -180,6 +218,71 @@ body,
   border-bottom: 1px solid var(--ink-300);
   vertical-align: -3pt;
   height: 0.26in;
+}
+
+/* Fórmula de referencia antes de los problemas */
+.task-formula {
+  margin: 0 0 0.1in;
+  padding: 5pt 10pt;
+  border: 1px solid var(--crema-500);
+  background: #fbf8f2;
+  color: var(--ink-500);
+  font-size: 9.5pt;
+  text-align: center;
+}
+
+.task-formula p { margin: 0; }
+
+.task-formula strong {
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 13pt;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Problemas en dos columnas: enunciado, recuadro para el procedimiento y resultado */
+.task-problems {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8pt 0.3in;
+}
+
+.task-problems > li {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-size: 10pt;
+  line-height: 1.35;
+  page-break-inside: avoid;
+}
+
+.task-work {
+  flex: 1 0 0.46in;
+  margin-top: 4pt;
+  border: 1px dashed var(--crema-500);
+}
+
+.task-answer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 6pt;
+  margin: 4pt 0 0;
+  color: var(--ink-500);
+  font-size: 9pt;
+}
+
+.task-answer > span {
+  display: inline-block;
+  width: 1.1in;
+  height: 0.24in;
+  border-bottom: 1px solid var(--ink-300);
+}
+
+.task-answer > span.task-answer__corta { width: 0.6in; }
+
+.task-answer b {
+  font-weight: var(--font-weight-regular);
 }
 
 /* Renglones para una respuesta escrita */
@@ -400,6 +503,173 @@ body,
 .task-lewis__box span {
   color: var(--ink-500);
   font-size: 8pt;
+}
+
+/* Modelos de partículas: frascos o recuadros para leer y clasificar */
+.task-models {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3in;
+  margin-top: 8pt;
+  page-break-inside: avoid;
+}
+
+.task-model {
+  margin: 0;
+  text-align: center;
+}
+
+.task-model svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 1.6in;
+  margin: 0 auto;
+}
+
+.task-model .tapa {
+  fill: var(--crema-300);
+  stroke: var(--ink-300);
+  stroke-width: 1.2;
+}
+
+.task-model .vidrio,
+.task-model .marco {
+  fill: none;
+  stroke: var(--ink-500);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.task-model .particle {
+  fill: var(--accent-terracota);
+  stroke: none;
+}
+
+.task-model .particle-alt {
+  fill: var(--color-bg-page);
+  stroke: var(--ink-700);
+  stroke-width: 1.6;
+}
+
+.task-model .bond {
+  stroke: var(--ink-500);
+  stroke-width: 2;
+}
+
+.task-model .flecha {
+  fill: var(--accent-terracota);
+  stroke: none;
+}
+
+.task-model .rotulo {
+  fill: var(--ink-500);
+  font-family: var(--font-family-body);
+  font-size: 9px;
+  text-anchor: middle;
+}
+
+.task-models--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.task-models--dos svg { max-height: none; }
+
+/* Un modelo por renglón, con la pregunta a la derecha */
+.task-model-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 0.3in;
+  align-items: end;
+  margin-top: 6pt;
+  page-break-inside: avoid;
+}
+
+.task-model-row__question {
+  color: var(--ink-700);
+  font-size: 10pt;
+  line-height: 1.4;
+}
+
+.task-model-row__question p { margin: 0; }
+
+.task-models--preguntas {
+  margin-top: 10pt;
+  color: var(--ink-700);
+  font-size: 10pt;
+  line-height: 1.4;
+}
+
+.task-models--preguntas p { margin: 0; }
+
+.task-model figcaption {
+  margin-bottom: 4pt;
+  color: var(--ink-700);
+  font-family: var(--font-family-display);
+  font-size: 13pt;
+  text-align: left;
+}
+
+.task-model__answer {
+  display: block;
+  height: 0.26in;
+  margin: 6pt 0.12in 0;
+  border-bottom: 1px solid var(--ink-300);
+}
+
+/* Recuadros de partículas en dos renglones de tres */
+.task-models--cajas { gap: 0.18in 0.3in; }
+
+.task-models--cajas svg { max-height: 1.25in; }
+
+/* Casilla más ancha para respuestas de dos o tres letras (MHo, MHe) */
+.task-checks--ancha li { grid-template-columns: 0.62in minmax(0, 1fr); }
+
+/* Esquema para completar: recuadros en blanco unidos por líneas */
+.task-esquema { margin: 8pt 0 0; }
+
+.task-esquema svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.esq-caja {
+  fill: #fbf8f2;
+  stroke: var(--ink-300);
+  stroke-width: 1;
+}
+
+.esq-caja--inicio { fill: var(--crema-300); }
+
+.esq-texto {
+  fill: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 17px;
+  text-anchor: middle;
+}
+
+.esq-linea {
+  fill: none;
+  stroke: var(--ink-500);
+  stroke-width: 1.2;
+}
+
+.esq-renglon {
+  fill: none;
+  stroke: var(--ink-300);
+  stroke-width: 1;
+}
+
+.esq-pregunta {
+  fill: var(--ink-700);
+  font-family: var(--font-family-body);
+  font-size: 13.5px;
+  font-style: italic;
+}
+
+.esq-nota {
+  fill: var(--ink-500);
+  font-family: var(--font-family-body);
+  font-size: 12.5px;
 }
 
 /* Filas altas para dibujar estructuras */
