@@ -290,6 +290,10 @@ body,
 /* Ecuaciones para balancear: un renglón corto antes de cada fórmula */
 .task-ecuaciones > li { margin-bottom: 10pt; }
 
+/* El hueco del coeficiente baja la línea base de la ecuación 7.5 pt: la letra
+   del inciso baja lo mismo para quedar en el mismo renglón (medido). */
+.task-ecuaciones > li::before { top: 7.5pt; }
+
 .task-ecuacion {
   display: flex;
   flex-wrap: wrap;
@@ -312,6 +316,55 @@ body,
 .task-ecuacion--dada {
   display: block;
   margin: 6pt 0 8pt;
+}
+
+/* Cada lado de la ecuación va entero; si no cabe, se parte en la flecha y los
+   productos siguen en la línea de abajo, sangrados. */
+.task-ecuacion__lado {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6pt;
+  white-space: nowrap;
+}
+
+.task-ecuacion--partida .task-ecuacion__lado + .task-ecuacion__lado {
+  flex-basis: 100%;
+  padding-left: 0.3in;
+}
+
+/* La flecha separa reactivos de productos: más grande y más oscura que el +. */
+.task-ecuacion__signo--flecha {
+  color: var(--ink-700);
+  font-size: 14pt;
+}
+
+/* Redox: aire encima de cada símbolo para escribir su número de oxidación.
+   Va como margen del renglón (no dentro), para que la letra del inciso siga
+   a la altura de la ecuación. */
+.task-ecuaciones--redox > li { margin-top: 0.17in; }
+
+.task-ecuacion--redox { row-gap: 0.2in; }
+
+/* Redox: tres datos cortos y un recuadro para el procedimiento */
+.task-redox {
+  display: grid;
+  grid-template-columns: 1.3fr 1.3fr 1fr;
+  gap: 0.2in;
+  margin: 6pt 0 0;
+  color: var(--ink-500);
+  font-size: 9.5pt;
+}
+
+.task-redox p { margin: 0; }
+
+.task-redox .task-blank { min-width: 1.2in; }
+
+.task-redox .task-blank--corta { min-width: 0.6in; }
+
+.task-work--redox {
+  height: 1in;
+  margin-top: 6pt;
+  border: 1px dashed var(--crema-500);
 }
 
 /* Número atómico junto al nombre del elemento */

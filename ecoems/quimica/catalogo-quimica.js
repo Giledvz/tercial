@@ -347,13 +347,14 @@ export const SEGMENTOS = [
   {
     id: 'balanceo-redox',
     tema: 'reaccion-quimica',
-    titulo: 'Balanceo por oxidación–reducción',
+    titulo: 'Balanceo por óxido-reducción',
     descripcion: 'Profundiza el balanceo mediante semirreacciones y transferencia de electrones.',
-    paginas: '30–32',
+    paginas: '29–32',
     alcance: 'ampliacion',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['redox', 'semirreacción', 'oxidante', 'reductor', 'balanceo'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './balanceo-redox.html'
   },
   {
     id: 'concentracion-disoluciones',

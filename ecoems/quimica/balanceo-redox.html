@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Balanceo por óxido-reducción · Química ECOEMS · Tercial</title>
+<meta name="description" content="Reacciones redox: oxidación y reducción, cómo reconocerlas y cómo balancearlas en siete pasos, igualando los electrones que se pierden y los que se ganan.">
+<meta name="tercial:resource-id" content="ecoems-quimica-balanceo-redox">
+<meta name="tercial:resource-title" content="Balanceo por óxido-reducción">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="./redox-pasos.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./redox-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 7 de 9 · Para profundizar</p>
+    <h1 class="hero__title">Balanceo por <em>óxido-reducción</em></h1>
+    <p class="hero__lede">En una reacción redox una sustancia pierde electrones y otra los gana. Para
+      balancearla se igualan los electrones que se pierden con los que se ganan; lo demás se termina por
+      tanteo.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=redox#courseIndex">redox</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=electrones#courseIndex">electrones</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=balanceo#courseIndex">balanceo</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaRedox">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaRedox">
+        <span class="lesson-section__kicker">Idea central</span> Electrones que pasan de uno a otro
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Si algún número de oxidación cambia, <em>es redox</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Para reconocer una reacción de óxido-reducción se escriben los números de oxidación de todos los
+          átomos: si alguno cambia, es redox. El que <strong>sube</strong> se oxida (pierde electrones) y el
+          que <strong>baja</strong> se reduce (los gana). Las dos cosas pasan al mismo tiempo.</p>
+        <p>También se dice que una sustancia se oxida cuando gana oxígeno o pierde hidrógeno, y que se reduce
+          cuando pierde oxígeno o gana hidrógeno. La sustancia que se reduce es el <strong>agente
+          oxidante</strong> y la que se oxida, el <strong>agente reductor</strong>.</p>
+        <p>Son redox la respiración, la combustión, la corrosión de un clavo y el oscurecimiento de una manzana.
+          Una neutralización como Mg(OH)<sub>2</sub> + 2HCl → MgCl<sub>2</sub> + 2H<sub>2</sub>O no lo es: ningún
+          número cambia.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 29–32 -->
+      <footer class="source-line">
+        <span>Lectura · 6 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="pasosRedox">
+    <header class="section-header">
+      <h2 class="section-header__title" id="pasosRedox">
+        <span class="lesson-section__kicker">Paso a paso</span> Siete pasos para balancear
+      </h2>
+    </header>
+    <p class="section-intro">Elige una ecuación y avanza con «Siguiente». Encima de cada símbolo va su número
+      de oxidación: en terracota el que se oxida y en tinta fuerte el que se reduce.</p>
+    <div class="redox" data-redox>
+      <div class="pastillas" role="group" aria-label="Elige una ecuación">
+        <button class="pastilla" type="button" aria-pressed="true" data-redox-ecuacion="hierro">Fe<sub>2</sub>O<sub>3</sub> + CO</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-redox-ecuacion="cobre">Cu + HNO<sub>3</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-redox-ecuacion="permanganato">KMnO<sub>4</sub> + HCl</button>
+      </div>
+      <p class="redox__paso" aria-live="polite" data-redox-paso></p>
+      <div class="redox__vista" data-redox-vista></div>
+      <div class="redox__texto" aria-live="polite" data-redox-texto></div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-redox-anterior>← Anterior</button>
+        <button class="practice-action" type="button" data-redox-siguiente>Siguiente →</button>
+      </div>
+      <noscript><p class="editorial-note">Hace falta JavaScript para recorrer los pasos.</p></noscript>
+    </div>
+  </section>
+
+  <section aria-labelledby="resumenRedox">
+    <header class="section-header">
+      <h2 class="section-header__title" id="resumenRedox">
+        <span class="lesson-section__kicker">Compara</span> Oxidación y reducción
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="resumenRedox" tabindex="0">
+      <table class="reference-table reference-table--ajustada">
+        <caption class="visually-hidden">Diferencias entre oxidación y reducción</caption>
+        <thead><tr><th scope="col">Se oxida</th><th scope="col">Se reduce</th></tr></thead>
+        <tbody>
+          <tr><td>Pierde electrones</td><td>Gana electrones</td></tr>
+          <tr><td>Su número de oxidación sube</td><td>Su número de oxidación baja</td></tr>
+          <tr><td>Gana oxígeno o pierde hidrógeno</td><td>Pierde oxígeno o gana hidrógeno</td></tr>
+          <tr><td>Es el agente reductor</td><td>Es el agente oxidante</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Al terminar siempre se comprueban dos cosas: los átomos de cada elemento y los
+      electrones. Si los perdidos no son los ganados, falta multiplicar alguna semirreacción.</p>
+  </section>
+
+  <section aria-labelledby="practicaRedox">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaRedox">
+        <span class="lesson-section__kicker">Practica</span> Quién se oxida, quién se reduce
+      </h2>
+      <span class="section-header__count">8 preguntas</span>
+    </header>
+    <p class="section-intro">Escribe en tu cuaderno los números de oxidación antes de elegir. Comprueba cada
+      tanda: verás una pista en las que debas revisar.</p>
+    <!-- Ejercicios propios; la lista 3.2.2 de QUA-001 (p. 30) va en la tarea 3.7 -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-redox-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 8 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-balanceo-redox.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las preguntas de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./balanceo-tanteo.html">← Balanceo por tanteo</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>
