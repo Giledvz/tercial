@@ -800,7 +800,6 @@
 .classification-sorter__result {
   color: var(--color-text-meta);
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-10);
   white-space: nowrap;
 }
 
@@ -1024,7 +1023,7 @@
   margin: 0 0 var(--space-2);
   color: var(--color-accent);
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-13);
   font-weight: var(--font-weight-medium);
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -1041,7 +1040,7 @@
 .magnet-option__copy > p:last-child {
   max-width: 24rem;
   margin: var(--space-4) 0 0;
-  color: var(--color-text-muted);
+  color: var(--color-text-meta);
 }
 
 .magnet-option__stage {
@@ -1128,7 +1127,7 @@
 }
 
 .magnet-study__metal {
-  fill: var(--color-text-muted);
+  fill: var(--color-text-meta);
   opacity: .7;
 }
 
@@ -1220,9 +1219,10 @@
   line-height: var(--line-height-heading);
 }
 
+/* Mismo tamaño que la sustancia en turno de Clasificación de la materia. */
 .method-workbench__case-title {
   max-width: 18ch;
-  font-size: clamp(var(--font-size-28), 3.4vw, var(--font-size-40));
+  font-size: var(--font-size-24);
 }
 
 .method-workbench__goal {
@@ -1269,7 +1269,6 @@
 .method-workbench__history-count,
 .method-workbench__history-result {
   font-family: var(--font-family-mono);
-  font-size: var(--font-size-10);
 }
 
 .method-workbench__method-number,
