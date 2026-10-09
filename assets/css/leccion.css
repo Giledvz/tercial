@@ -886,6 +886,8 @@ html[data-proyeccion] .es-actual {
   grid-auto-rows: min-content;
   align-content: center;
   row-gap: calc(var(--u) * 1.8);
+  /* La pantalla entera: nada del ancho máximo de la lectura (el encabezado mide 760 px). */
+  max-width: none;
   margin: 0;
   padding: calc(var(--u) * 4.5) calc(var(--u) * 6) calc(var(--u) * 6.5);
   background: var(--color-bg-page);
@@ -896,6 +898,11 @@ html[data-proyeccion] .es-actual[data-diapositiva="dos"] {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   column-gap: calc(var(--u) * 4);
   align-items: center;
+}
+
+/* Una escena ancha (una pista, una recta) se lleva más de la mitad de la tele. */
+html[data-proyeccion] .es-actual[data-diapositiva="dos"][data-figura="amplia"] {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr);
 }
 
 /* Una figura compacta (un cuadro, una tabla corta) ocupa sólo su ancho y deja el resto al texto. */
@@ -978,16 +985,22 @@ html[data-proyeccion] .es-actual .ejemplo__planteo--frase { font-size: calc(var(
 
 html[data-proyeccion] .es-actual .ejemplo .worked-steps li { grid-template-columns: calc(var(--u) * 9) minmax(0, 1fr); }
 
+/* Los botones de texto («Repetir») también se leen desde el fondo del salón. */
+html[data-proyeccion] .es-actual .practice-action {
+  min-height: calc(var(--u) * 3);
+  font-size: calc(var(--u) * 1.5);
+}
+
 html[data-proyeccion] .es-actual .pastilla {
   min-height: calc(var(--u) * 3.6);
   padding: 0 calc(var(--u) * 1.6);
   font-size: calc(var(--u) * 1.6);
 }
 
-/* Portada: título grande, entrada y nada más. */
+/* Portada: título grande, entrada y nada más; ocupa el ancho de la tele. */
 html[data-proyeccion] .hero.es-actual { align-content: center; }
-html[data-proyeccion] .hero.es-actual .hero__title { font-size: calc(var(--u) * 7); line-height: 1; }
-html[data-proyeccion] .hero.es-actual .hero__lede { max-width: 32ch; font-size: calc(var(--u) * 2.5); }
+html[data-proyeccion] .hero.es-actual .hero__title { font-size: calc(var(--u) * 8); line-height: 1; }
+html[data-proyeccion] .hero.es-actual .hero__lede { max-width: 46ch; font-size: calc(var(--u) * 2.6); }
 html[data-proyeccion] .hero.es-actual .material-meta,
 html[data-proyeccion] .hero.es-actual .boton-proyectar { display: none; }
 

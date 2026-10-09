@@ -100,6 +100,8 @@
   margin-top: var(--space-5);
   border-collapse: collapse;
   font-family: var(--font-family-display);
+  /* Fraunces adelgaza sus trazos en tamaños grandes; los signos conservan su grosor en la tele. */
+  font-variation-settings: "opsz" 30;
   font-size: var(--font-size-32);
   line-height: 1;
   text-align: center;

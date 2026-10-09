@@ -34,12 +34,22 @@ pantalla 16:9 que cabe en la ventana, así que no quedan franjas en ninguna tele
 | `data-diapositiva="una"` | Una columna |
 | `data-diapositiva="dos"` | Texto a la izquierda; el hijo con `data-lado="figura"` va a la derecha |
 | `data-figura="compacta"` | En «dos»: la figura ocupa sólo su ancho (un cuadro, una tabla corta) |
+| `data-figura="amplia"` | En «dos»: la figura se lleva más de la mitad (una escena ancha, como la pista) |
 | `data-diapositiva="ahora"` + `data-solo-proyeccion` | La pantalla «Ahora tú», con el código QR a la práctica |
 | `data-solo-lectura` | Se oculta en la tele (instrucciones para el alumno, notas largas) |
 
-Cada pantalla cabe en 1280 × 720 (una tele 1080p al 150 %). Si no cabe, se sale por
-abajo; nunca se encima, porque las filas miden lo que su contenido. Al llegar a una
+Cada pantalla cabe en 1280 × 720 (una tele 1080p al 150 %) y se ve igual en 4K: todo
+escala con `--u`, incluidos los botones. Las pantallas usan el ancho completo; nada hereda
+el ancho máximo de la lectura. Si una no cabe, se sale por abajo; nunca se encima, porque
+las filas miden lo que su contenido. Al llegar a una
 pantalla se dispara el evento `tercial:diapositiva`, y su escena vuelve a empezar.
+
+## Tipografía
+
+- Una operación dentro de un párrafo va en `<span class="expresion">`, que no se parte.
+- El número y su unidad se unen con un espacio que no se rompe: «5 m», «15 m/s». En la
+  práctica de Física lo hace `juntar()`; en las páginas y las tareas, un paso automático
+  sobre el texto (sin tocar los SVG).
 
 ## La práctica sin fin
 

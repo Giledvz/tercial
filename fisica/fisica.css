@@ -100,3 +100,13 @@
 }
 
 html[data-proyeccion] .es-actual .reference-table th.si__medida { font-size: calc(var(--u) * 2.2); }
+
+/* En la tele, las magnitudes de las tablas del SI son contenido, no etiquetas. */
+html[data-proyeccion] .es-actual .si-tabla tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: calc(var(--u) * 2);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}

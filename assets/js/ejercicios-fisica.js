@@ -32,8 +32,16 @@
   function numero(n) { return n < 0 ? MENOS + -n : String(n); }
   function opcion(html) { return { k: 't:' + html, h: html }; }
 
+  // El número y su unidad no se separan de renglón: 5 m, 15 m/s, 300 K.
+  var NUMERO_UNIDAD = /(\d) (?=(?:kg·m\/s²|m\/s²|m\/s|km\/h|kg\/m³|m²|m³|cm|km|kg|min|mol|cd|m|s|h|g|K|A|N|J|W)(?![\wáéíóúñ²³\/]))/g;
+  function juntar(html) { return String(html).replace(NUMERO_UNIDAD, '$1\u00a0'); }
+
   // La correcta y tres falsas distintas (al azar entre las que se ofrecen).
   function armar(enunciado, correcta, falsas, meta) {
+    enunciado = juntar(enunciado);
+    correcta = juntar(correcta);
+    falsas = falsas.map(function (f) { return { h: juntar(f.h), err: juntar(f.err) }; });
+    if (meta && meta.pasos) meta.pasos = meta.pasos.map(juntar);
     var vistas = {};
     vistas[correcta] = true;
     var elegidas = [];
