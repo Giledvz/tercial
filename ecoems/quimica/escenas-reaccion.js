@@ -714,8 +714,150 @@ function escalaph(svg) {
   };
 }
 
+/* ---------------- 6 · Mechero: combustión completa e incompleta ----------------
+   Mechero de Bunsen con metano. Con la entrada de aire abierta, el gas se
+   mezcla con oxígeno antes de arder: flama azul, corta, con su cono interior,
+   y combustión completa (CO₂ + H₂O). Con la entrada cerrada, el oxígeno sólo
+   llega por fuera: flama amarilla, alta y temblorosa; el amarillo es hollín
+   incandescente y parte de él escapa como humo negro (C y CO). */
+const MODOS_FLAMA = {
+  abierto: {
+    ecuacion: [['CH', null], ['4', 'sub'], [' + 2O', null], ['2', 'sub'], [' → CO', null], ['2', 'sub'], [' + 2H', null], ['2', 'sub'], ['O', null]],
+    rotulos: [['cono interior', 'interior'], ['flama azul', 'exterior']]
+  },
+  cerrado: {
+    ecuacion: [['2CH', null], ['4', 'sub'], [' + 3O', null], ['2', 'sub'], [' → 2CO + 4H', null], ['2', 'sub'], ['O', null]],
+    rotulos: [['base azul', 'base'], ['flama amarilla', 'exterior'], ['humo negro', 'humo']]
+  }
+};
+
+function ruidoSuave(seed) {
+  // Suma de senos con fases fijas: un temblor que no se repite a simple vista.
+  const f = [1.7, 2.9, 4.3, 6.1].map((w, i) => ({ w, p: seed * 1.37 + i * 2.1 }));
+  return t => f.reduce((acc, { w, p }, i) => acc + Math.sin(t * w + p) / (i + 1), 0) / 1.9;
+}
+
+function mechero(svg) {
+  const root = svg.closest('[data-mechero]');
+  const buttons = [...root.querySelectorAll('[data-aire]')];
+  const panel = root.querySelector('[data-mechero-texto]');
+  const textos = {};
+  root.querySelectorAll('[data-texto-aire]').forEach(node => { textos[node.dataset.textoAire] = node.innerHTML; });
+  const CX = 112, BOCA = 132;
+  // Degradados verticales: la flama no tiene bordes de color duros. El azul se
+  // aclara en el cono y se desvanece en la punta; el amarillo nace azul en la
+  // base y termina anaranjado arriba.
+  const defs = make('defs', {}, svg);
+  function degradado(id, paradas) {
+    const g = make('linearGradient', { id, x1: 0, y1: 1, x2: 0, y2: 0 }, defs);
+    paradas.forEach(([offset, cls, op]) => make('stop', { offset, class: cls, 'stop-opacity': op }, g));
+  }
+  degradado('flama-azul-g', [[0, 'escena__parada-azul', .95], [.75, 'escena__parada-azul', .85], [1, 'escena__parada-azul', .15]]);
+  degradado('flama-cono-g', [[0, 'escena__parada-cono', 1], [1, 'escena__parada-cono', .55]]);
+  degradado('flama-amarilla-g', [[0, 'escena__parada-azul', .9], [.1, 'escena__parada-amarilla', 1], [.62, 'escena__parada-amarilla', .95],
+    [.9, 'escena__parada-punta', .85], [1, 'escena__parada-punta', .2]]);
+  const suave = make('filter', { id: 'flama-borde', x: '-20%', y: '-10%', width: '140%', height: '120%' }, defs);
+  make('feGaussianBlur', { stdDeviation: .9 }, suave);
+  // Manguera, base, tubo y collarín de aire
+  make('path', { d: 'M86 212C60 212 46 216 24 226', class: 'escena__manguera' }, svg);
+  make('path', { d: `M70 222H154L146 210H78Z`, class: 'escena__mechero-base' }, svg);
+  make('rect', { x: CX - 8, y: BOCA, width: 16, height: 80, rx: 1.5, class: 'escena__mechero-tubo' }, svg);
+  const collar = make('g', {}, svg);
+  make('rect', { x: CX - 10, y: 182, width: 20, height: 14, rx: 2, class: 'escena__mechero-collar' }, collar);
+  const huecos = [CX - 6, CX + 1].map(x => make('rect', { x, y: 186, width: 5, height: 6, rx: 1, class: 'escena__mechero-hueco' }, collar));
+  text(svg, CX + 16, 193, 'entrada de aire', 'escena__clave escena__clave--chica');
+
+  const humo = make('g', {}, svg);
+  const flamaAmarilla = make('g', {}, svg);
+  const amarilla = make('path', { fill: 'url(#flama-amarilla-g)', filter: 'url(#flama-borde)' }, flamaAmarilla);
+  const flamaAzul = make('g', {}, svg);
+  const exterior = make('path', { fill: 'url(#flama-azul-g)', filter: 'url(#flama-borde)' }, flamaAzul);
+  const interior = make('path', { fill: 'url(#flama-cono-g)', filter: 'url(#flama-borde)' }, flamaAzul);
+  const rotulos = make('g', {}, svg);
+  let ecuacion = null;
+
+  const ruidoA = ruidoSuave(1), ruidoB = ruidoSuave(2), ruidoC = ruidoSuave(3);
+  // Partículas de hollín que suben desde la punta de la flama amarilla.
+  const hollin = Array.from({ length: 14 }, (_, i) => ({
+    c: make('circle', { r: 1.6 + (i % 3) * .5, class: 'escena__hollin' }, humo),
+    fase: i / 14, dx: ((i * 37) % 11 - 5) * .9
+  }));
+
+  function forma(h, w, sway, ondas, t, y0 = BOCA) {
+    // Contorno de flama: base en la boca del tubo (o más arriba) y punta que se mece.
+    const tipX = CX + sway, tipY = y0 - h;
+    const o1 = ondas * ruidoB(t * 1.3), o2 = ondas * ruidoC(t * 1.1);
+    return `M${round(CX - w)} ${y0}` +
+      `C${round(CX - w * 1.15 + o1)} ${round(y0 - h * .35)} ${round(CX - w * .55 + o2 + sway * .5)} ${round(y0 - h * .75)} ${round(tipX)} ${round(tipY)}` +
+      `C${round(CX + w * .55 - o1 + sway * .5)} ${round(y0 - h * .75)} ${round(CX + w * 1.15 - o2)} ${round(y0 - h * .35)} ${round(CX + w)} ${y0}Z`;
+  }
+
+  let modo = null, mezcla = 1, objetivo = 1, reloj = 0;
+  function armarRotulos(clave) {
+    rotulos.innerHTML = '';
+    const posiciones = clave === 'abierto'
+      ? { interior: [CX + 6, BOCA - 18], exterior: [CX + 12, BOCA - 52] }
+      : { base: [CX + 9, BOCA - 6], exterior: [CX + 18, BOCA - 70], humo: [CX + 14, BOCA - 118] };
+    MODOS_FLAMA[clave].rotulos.forEach(([texto, parte]) => {
+      const [x, y] = posiciones[parte];
+      make('path', { d: `M${x} ${y}H${x + 40}`, class: 'escena__guia' }, rotulos);
+      text(rotulos, x + 46, y + 4, texto, 'escena__clave');
+    });
+    if (ecuacion) ecuacion.remove();
+    ecuacion = formula(svg, 24, 246, MODOS_FLAMA[clave].ecuacion, 'escena__ecuacion');
+  }
+
+  function draw() {
+    const t = reloj;
+    const k = smooth(mezcla);           // 1 = abierto (azul), 0 = cerrado (amarillo)
+    // Collarín: los huecos se ven cuando la entrada está abierta.
+    huecos.forEach(hc => fade(hc, k));
+    // Flama azul: corta y firme, con un temblor pequeño.
+    const hAzul = 70 * (1 + .03 * ruidoA(t * 3));
+    exterior.setAttribute('d', forma(hAzul, 11, 1.2 * ruidoB(t * 2.4), 1, t * 2));
+    interior.setAttribute('d', forma(28 * (1 + .02 * ruidoC(t * 4)), 6.5, .4 * ruidoA(t * 3), .4, t * 3));
+    fade(flamaAzul, k);
+    // Flama amarilla: alta, ancha y temblorosa.
+    const hAm = 112 * (1 + .07 * ruidoA(t * 1.6));
+    const sway = 7 * ruidoB(t * .9);
+    amarilla.setAttribute('d', forma(hAm, 15, sway, 4, t));
+    fade(flamaAmarilla, 1 - k);
+    // Hollín: sube desde la punta y se desvanece.
+    hollin.forEach(p => {
+      const u = (t * .32 + p.fase) % 1;
+      const y = BOCA - hAm * .92 - u * 70;
+      const x = CX + sway + p.dx * (1 + u * 2.2) + 4 * ruidoC(t + p.fase * 6);
+      set(p.c, { cx: x, cy: y });
+      fade(p.c, (1 - k) * (1 - u) * smooth(u / .15) * .85);
+    });
+    fade(rotulos, Math.abs(k - (modo === 'abierto' ? 1 : 0)) < .02 ? 1 : 0);
+  }
+
+  function select(next, animate) {
+    if (!MODOS_FLAMA[next]) return;
+    modo = next;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.aire === modo)));
+    objetivo = modo === 'abierto' ? 1 : 0;
+    if (!animate || reducedMotion.matches) mezcla = objetivo;
+    armarRotulos(modo);
+    if (panel) panel.innerHTML = textos[modo] || '';
+    draw();
+  }
+
+  buttons.forEach(b => b.addEventListener('click', () => select(b.dataset.aire, true)));
+  select(buttons.find(b => b.getAttribute('aria-pressed') === 'true')?.dataset.aire || 'abierto', false);
+  return {
+    update(dt) {
+      reloj += dt;
+      if (mezcla !== objetivo) mezcla = objetivo > mezcla ? Math.min(objetivo, mezcla + dt / 1.2) : Math.max(objetivo, mezcla - dt / 1.2);
+      draw();
+    },
+    still() { reloj = 2.3; mezcla = objetivo; draw(); }
+  };
+}
+
 /* ---------------- Reloj compartido ---------------- */
-const factories = { recta, sumacero, lectura, reacomodo, escalaph };
+const factories = { recta, sumacero, lectura, reacomodo, escalaph, mechero };
 const scenes = [...document.querySelectorAll('[data-escena-reaccion]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaReaccion](svg)
 }));

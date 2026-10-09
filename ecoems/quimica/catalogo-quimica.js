@@ -329,7 +329,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['combustión', 'oxígeno', 'dióxido de carbono', 'monóxido'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './combustion.html'
   },
   {
     id: 'balanceo-tanteo',

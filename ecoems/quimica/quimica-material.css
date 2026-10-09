@@ -5547,3 +5547,50 @@ select.particle-row__input {
 .escena__p--hidroxido { fill: var(--cat-navy); }
 .escena__p--agua { fill: var(--e-particula); }
 .escena .escena__particula-etiqueta--proton { font-size: 5px; }
+
+/* Combustión: mechero de Bunsen, flamas y hollín */
+.escena--reaccion {
+  --e-flama-azul: #6f93d8;
+  --e-flama-cono: #b9cdf2;
+  --e-flama-amarilla: #f0b847;
+  --e-flama-punta: #e2763a;
+}
+
+@supports (color: color-mix(in oklab, red, blue)) {
+  .escena--reaccion {
+    --e-flama-azul: color-mix(in oklab, var(--cat-blue) 70%, #8fb3ff);
+    --e-flama-cono: color-mix(in oklab, var(--cat-blue) 35%, #cfe0ff);
+    --e-flama-amarilla: color-mix(in oklab, var(--cat-amber) 22%, #ffd060);
+    --e-flama-punta: color-mix(in oklab, var(--color-accent) 70%, #ff9a3c);
+  }
+}
+
+.escena__manguera {
+  stroke: var(--e-metal-sombra);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.escena__mechero-base,
+.escena__mechero-tubo { fill: var(--e-metal); }
+.escena__mechero-collar { fill: var(--e-metal-sombra); }
+.escena__mechero-hueco { fill: var(--e-ink); }
+
+.escena__parada-azul { stop-color: var(--e-flama-azul); }
+.escena__parada-cono { stop-color: var(--e-flama-cono); }
+.escena__parada-amarilla { stop-color: var(--e-flama-amarilla); }
+.escena__parada-punta { stop-color: var(--e-flama-punta); }
+.escena__hollin { fill: var(--e-ink); }
+
+.escena__guia {
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+}
+
+.mechero__texto {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-accent);
+}

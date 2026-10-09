@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Reacciones de combustión · Química ECOEMS · Tercial</title>
+<meta name="description" content="Combustible, comburente y energía: la combustión completa da dióxido de carbono y agua; la incompleta, monóxido de carbono y hollín. El triángulo del fuego y por qué la flama del mechero es azul o amarilla.">
+<meta name="tercial:resource-id" content="ecoems-quimica-combustion">
+<meta name="tercial:resource-title" content="Reacciones de combustión">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./combustion-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 5 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Reacciones de <em>combustión</em></h1>
+    <p class="hero__lede">Arder es reaccionar con oxígeno. Si el oxígeno alcanza, el combustible se
+      convierte en dióxido de carbono y agua; si falta, aparecen monóxido de carbono y hollín.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=combustión#courseIndex">combustión</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=oxígeno#courseIndex">oxígeno</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=energía#courseIndex">energía</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaCombustion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaCombustion">
+        <span class="lesson-section__kicker">Idea central</span> Combustible + comburente
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Lo que arde, el oxígeno y la <em>energía</em> que se libera</h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En una combustión, un <strong>combustible</strong> (gas, madera, gasolina, papel) reacciona con un
+          <strong>comburente</strong>, casi siempre el oxígeno del aire. Se libera energía como calor y luz:
+          es una reacción exotérmica.</p>
+        <p>Para que empiece hace falta también una chispa o calor. Combustible, comburente y calor son los tres
+          lados del <strong>triángulo del fuego</strong>: si se quita uno, el fuego se apaga.</p>
+        <p>Con los combustibles que tienen carbono e hidrógeno, como el gas de la estufa (metano o propano):</p>
+        <ul>
+          <li><strong>Completa</strong>, con oxígeno de sobra: combustible + O<sub>2</sub> → CO<sub>2</sub> +
+            H<sub>2</sub>O + energía.</li>
+          <li><strong>Incompleta</strong>, con poco oxígeno: además salen monóxido de carbono (CO) y carbono en
+            forma de hollín, el humo negro.</li>
+        </ul>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 26 y 29 -->
+      <footer class="source-line">
+        <span>Lectura · 5 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="observaCombustion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaCombustion">
+        <span class="lesson-section__kicker">Observa</span> El mismo gas, dos flamas
+      </h2>
+    </header>
+    <p class="section-intro">Un mechero de Bunsen quema metano. Abre o cierra la entrada de aire y mira la
+      flama.</p>
+    <div class="mechero" data-mechero>
+      <div class="pastillas" role="group" aria-label="Entrada de aire del mechero">
+        <button class="pastilla" type="button" aria-pressed="true" data-aire="abierto">Entrada de aire abierta</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-aire="cerrado">Entrada de aire cerrada</button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="mechero" viewBox="0 0 400 252" role="img" aria-labelledby="mecheroTitle">
+          <title id="mecheroTitle">Mechero de Bunsen encendido. Con la entrada de aire abierta, la flama es azul y corta, con un cono interior; con la entrada cerrada, es amarilla, alta y temblorosa, y suelta humo negro. Abajo, la ecuación de cada combustión.</title>
+        </svg>
+      </figure>
+      <div class="mechero__texto" aria-live="polite" data-mechero-texto></div>
+      <div hidden>
+        <p data-texto-aire="abierto"><strong>Combustión completa.</strong> El metano se mezcla con aire antes de
+          salir: cada molécula encuentra el oxígeno que necesita y todo el carbono termina como CO<sub>2</sub>.
+          La flama azul es la más caliente y no deja hollín.</p>
+        <p data-texto-aire="cerrado"><strong>Combustión incompleta.</strong> El oxígeno sólo llega por fuera de
+          la flama y no alcanza: se forma monóxido de carbono, tóxico, y partículas de carbono. Esas partículas,
+          calientes, brillan en amarillo; las que escapan son el humo negro.</p>
+      </div>
+    </div>
+    <p class="editorial-note">Por eso una estufa con flama amarilla ensucia las ollas y un calentador sin
+      ventilación es peligroso: el monóxido de carbono no tiene color ni olor.</p>
+  </section>
+
+  <section aria-labelledby="comparaCombustion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaCombustion">
+        <span class="lesson-section__kicker">Compara</span> Completa e incompleta
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="comparaCombustion" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Diferencias entre la combustión completa y la incompleta</caption>
+        <thead>
+          <tr><th scope="col">Combustión</th><th scope="col">Oxígeno</th><th scope="col">Productos</th><th scope="col">Flama</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Completa</th><td>Suficiente</td><td>CO<sub>2</sub> + H<sub>2</sub>O + energía</td><td>Azul, sin humo</td><td>CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O</td></tr>
+          <tr><th scope="row">Incompleta</th><td>Escaso</td><td>CO, C (hollín) y H<sub>2</sub>O; menos energía</td><td>Amarilla, con humo negro</td><td>2CH<sub>4</sub> + 3O<sub>2</sub> → 2CO + 4H<sub>2</sub>O</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">La respiración celular se parece a una combustión completa, pero sin flama:
+      C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub> → 6CO<sub>2</sub> + 6H<sub>2</sub>O + energía.
+      La célula guarda esa energía en moléculas de ATP.</p>
+  </section>
+
+  <section aria-labelledby="ejemploCombustion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploCombustion">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> El gas LP: propano
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Escribe</span><p>C<sub>3</sub>H<sub>8</sub> + O<sub>2</sub> →
+        CO<sub>2</sub> + H<sub>2</sub>O: combustión completa del propano.</p></li>
+      <li><span class="worked-steps__label">Carbono</span><p>3 carbonos a la izquierda: <strong>3CO<sub>2</sub></strong>.</p></li>
+      <li><span class="worked-steps__label">Hidrógeno</span><p>8 hidrógenos: <strong>4H<sub>2</sub>O</strong>.</p></li>
+      <li><span class="worked-steps__label">Oxígeno</span><p>A la derecha hay 3 × 2 + 4 = 10 oxígenos:
+        <strong>5O<sub>2</sub></strong>. Queda C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> → 3CO<sub>2</sub> + 4H<sub>2</sub>O.</p></li>
+    </ol>
+    <p class="editorial-note">El orden carbono, hidrógeno y al final oxígeno funciona con todas las
+      combustiones: el oxígeno queda al último porque está en los dos productos.</p>
+  </section>
+
+  <section aria-labelledby="practicaCombustion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaCombustion">
+        <span class="lesson-section__kicker">Practica</span> Combustibles, oxígeno y productos
+      </h2>
+      <span class="section-header__count">10 preguntas</span>
+    </header>
+    <p class="section-intro">Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · pp. 26 y 29 -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-combustion-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-combustion.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las preguntas de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./acidos-bases.html">← Ácidos y bases</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>
