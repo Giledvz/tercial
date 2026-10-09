@@ -339,3 +339,107 @@
     border-color: var(--color-accent);
   }
 }
+
+/* Balanza de átomos (balanceo por tanteo): coeficientes con − y +.
+   Botones pequeños que cambian un número: llevan el estilo de pastilla. */
+.balanza__ecuacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-3);
+  margin: var(--space-4) 0;
+}
+
+.balanza__especie {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.balanza__paso {
+  display: inline-flex;
+  align-items: center;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.balanza__boton {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-16);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.balanza__boton:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.balanza__boton:disabled {
+  color: var(--color-border);
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .balanza__boton:not(:disabled):hover { color: var(--color-accent); }
+}
+
+.balanza__coef {
+  min-width: 1.6rem;
+  color: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  text-align: center;
+}
+
+.balanza__formula {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+}
+
+.balanza__signo {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-18);
+}
+
+/* Práctica: casillas pequeñas para cada coeficiente, dentro de la ecuación */
+.balanceo__ecuacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin: 0;
+}
+
+.balanceo__especie {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.input.balanceo__coef {
+  width: 2.75rem;
+  min-height: 2.5rem;
+  padding: 0;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+  text-align: center;
+}
+
+.balanceo__formula {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+}
+
+.balanceo__signo {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+}

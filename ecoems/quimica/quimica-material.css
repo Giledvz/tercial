@@ -5594,3 +5594,95 @@ select.particle-row__input {
   color: var(--color-text-primary);
   border-left: var(--border-medium) solid var(--color-accent);
 }
+
+/* Balanza de átomos: cada elemento con su barra de la izquierda y de la derecha */
+.balanza__conteo {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 40rem;
+  margin-top: var(--space-4);
+}
+
+.balanza__fila {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1fr) 1.5rem;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.balanza__simbolo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+}
+
+.balanza__barra {
+  position: relative;
+  display: block;
+  height: 1.6rem;
+  background: var(--color-bg-subtle, color-mix(in oklab, var(--color-text-primary) 6%, transparent));
+  border-radius: 3px;
+}
+
+.balanza__barra i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: block;
+  border-radius: 3px;
+  transition: width .25s ease;
+}
+
+.balanza__barra--izq i { background: color-mix(in oklab, var(--color-text-primary) 40%, transparent); }
+.balanza__barra--der i { background: color-mix(in oklab, var(--color-accent) 70%, transparent); }
+
+.balanza__barra b {
+  position: absolute;
+  inset: 0 auto 0 var(--space-2);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.6rem;
+}
+
+.balanza__marca {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  text-align: center;
+}
+
+.balanza__fila.es-igual .balanza__marca { color: var(--color-accent); }
+
+.balanza__leyenda {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1fr) 1.5rem;
+  gap: var(--space-3);
+  max-width: 40rem;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.balanza__leyenda span:nth-child(2) { grid-column: 2; }
+
+.balanza__estado {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-border-strong);
+}
+
+.balanza.es-balanceada .balanza__estado { border-left-color: var(--color-accent); }
+
+.balanza__pista {
+  max-width: 68ch;
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .balanza__barra i { transition: none; }
+}

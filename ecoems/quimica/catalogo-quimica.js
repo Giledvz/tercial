@@ -341,7 +341,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['balanceo', 'tanteo', 'conservación de la materia', 'coeficientes'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './balanceo-tanteo.html'
   },
   {
     id: 'balanceo-redox',

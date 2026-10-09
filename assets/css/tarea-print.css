@@ -287,6 +287,33 @@ body,
   white-space: nowrap;
 }
 
+/* Ecuaciones para balancear: un renglón corto antes de cada fórmula */
+.task-ecuaciones > li { margin-bottom: 10pt; }
+
+.task-ecuacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4pt 6pt;
+  margin: 0;
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 14pt;
+}
+
+.task-ecuacion .task-blank--mini { min-width: 0.4in; }
+
+.task-ecuacion__signo {
+  color: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 11pt;
+}
+
+.task-ecuacion--dada {
+  display: block;
+  margin: 6pt 0 8pt;
+}
+
 /* Número atómico junto al nombre del elemento */
 .task-z {
   color: var(--ink-500);

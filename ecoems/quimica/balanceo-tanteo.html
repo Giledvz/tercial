@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Balanceo por tanteo · Química ECOEMS · Tercial</title>
+<meta name="description" content="La ley de conservación de la masa y cómo balancear ecuaciones por tanteo: coeficientes y no subíndices, en el orden metales, no metales, oxígeno e hidrógeno.">
+<meta name="tercial:resource-id" content="ecoems-quimica-balanceo-tanteo">
+<meta name="tercial:resource-title" content="Balanceo por tanteo">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="./balanza.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./balanceo-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 6 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Balanceo por <em>tanteo</em></h1>
+    <p class="hero__lede">En una reacción los átomos no se crean ni se destruyen: sólo se reacomodan. Una
+      ecuación balanceada tiene los mismos átomos de cada elemento a la izquierda y a la derecha, y por
+      tanteo se prueban coeficientes, en orden, hasta que todo cuadra.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=balanceo#courseIndex">balanceo</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=coeficientes#courseIndex">coeficientes</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=conservación#courseIndex">conservación de la masa</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaBalanceo">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaBalanceo">
+        <span class="lesson-section__kicker">Idea central</span> Los átomos se conservan
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Se cambian los coeficientes, <em>nunca los subíndices</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Es la <strong>ley de conservación de la masa</strong> de Lavoisier: la masa de los reactivos es igual
+          a la de los productos, porque los átomos que entran son los mismos que salen.</p>
+        <p>Para balancear se escriben <strong>coeficientes</strong>, los números de adelante, que dicen cuántas
+          moléculas o unidades hay. Los <strong>subíndices</strong> no se tocan: H<sub>2</sub>O es agua y
+          H<sub>2</sub>O<sub>2</sub> es agua oxigenada, otra sustancia.</p>
+        <p>Un orden que funciona: primero los <strong>metales</strong>, después los <strong>no metales</strong>,
+          luego el <strong>oxígeno</strong> y al final el <strong>hidrógeno</strong>. Al terminar se cuenta todo
+          otra vez y se usan los enteros más pequeños.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 30 -->
+      <footer class="source-line">
+        <span>Lectura · 5 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="balanzaAtomos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="balanzaAtomos">
+        <span class="lesson-section__kicker">Prueba</span> La balanza de átomos
+      </h2>
+    </header>
+    <p class="section-intro">Elige una ecuación y cambia los coeficientes con − y +. Cada barra cuenta los
+      átomos de un elemento: gris a la izquierda de la flecha, terracota a la derecha. Cuando miden lo
+      mismo, ese elemento cuadra.</p>
+    <div class="balanza" data-balanza>
+      <div class="pastillas" role="group" aria-label="Elige una ecuación">
+        <button class="pastilla" type="button" aria-pressed="true" data-ecuacion="alumina">Al<sub>2</sub>O<sub>3</sub> + HCl</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-ecuacion="amoniaco">NH<sub>3</sub> + O<sub>2</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-ecuacion="fosfato">Ca(OH)<sub>2</sub> + H<sub>3</sub>PO<sub>4</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-ecuacion="metanol">CH<sub>3</sub>OH + O<sub>2</sub></button>
+      </div>
+      <div class="balanza__ecuacion" data-balanza-ecuacion></div>
+      <div class="balanza__leyenda" aria-hidden="true"><span></span><span>izquierda</span><span>derecha</span></div>
+      <div class="balanza__conteo" data-balanza-conteo></div>
+      <p class="balanza__estado" aria-live="polite" data-balanza-estado></p>
+      <p class="balanza__pista" aria-live="polite" data-balanza-pista></p>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-balanza-pide-pista>Dame una pista</button>
+        <button class="practice-action" type="button" data-balanza-reinicio>Empezar de nuevo</button>
+      </div>
+      <noscript><p class="editorial-note">Hace falta JavaScript para usar la balanza.</p></noscript>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploBalanceo">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploBalanceo">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Al<sub>2</sub>O<sub>3</sub> + HCl → AlCl<sub>3</sub> + H<sub>2</sub>O
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Metal</span><p>Hay 2 aluminios a la izquierda y 1 a la derecha:
+        <strong>2AlCl<sub>3</sub></strong>.</p></li>
+      <li><span class="worked-steps__label">No metal</span><p>Ahora hay 6 cloros a la derecha:
+        <strong>6HCl</strong>.</p></li>
+      <li><span class="worked-steps__label">Oxígeno</span><p>3 oxígenos en el Al<sub>2</sub>O<sub>3</sub>:
+        <strong>3H<sub>2</sub>O</strong>.</p></li>
+      <li><span class="worked-steps__label">Hidrógeno</span><p>6 a la izquierda (6HCl) y 6 a la derecha
+        (3H<sub>2</sub>O): ya cuadra. Queda Al<sub>2</sub>O<sub>3</sub> + 6HCl → 2AlCl<sub>3</sub> + 3H<sub>2</sub>O.</p></li>
+    </ol>
+    <p class="editorial-note">Si un grupo como SO<sub>4</sub> o PO<sub>4</sub> pasa entero de un lado al otro,
+      se puede contar como una sola pieza: en 3Ca(OH)<sub>2</sub> + 2H<sub>3</sub>PO<sub>4</sub> hay dos
+      PO<sub>4</sub> de cada lado.</p>
+  </section>
+
+  <section aria-labelledby="practicaBalanceo">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaBalanceo">
+        <span class="lesson-section__kicker">Practica</span> Balancea por tanteo
+      </h2>
+      <span class="section-header__count">10 ecuaciones</span>
+    </header>
+    <p class="section-intro">Escribe los coeficientes más pequeños; pon 1 donde no haga falta otro número.
+      Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · p. 30 -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-balanceo-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-balanceo-tanteo.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las ecuaciones de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./combustion.html">← Combustión</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>
