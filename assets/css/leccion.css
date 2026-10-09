@@ -1,0 +1,1082 @@
+/* Molde de lección de Tercial: las piezas que comparten todas las materias.
+   Las reglas de componentes vienen tal cual de ecoems/quimica/quimica-material.css
+   y controles-quimica.css (se extrajeron con scratch/fundamentos/extrae-css.py),
+   para que Matemáticas y Física se vean idénticas a Química. Cuando Química cargue
+   esta hoja, esas reglas se quitarán de allá, comprobando estilo por estilo que
+   nada cambie. Después vienen lo nuevo: la práctica sin fin y el modo proyección. */
+
+/* ---------- Componentes (de quimica-material.css) ---------- */
+
+.material-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  margin-top: var(--space-5);
+  padding-top: var(--space-3);
+  border-top: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-12);
+}
+
+.material-meta a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.material-meta a:hover,
+.material-meta a:focus-visible {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.material-meta a.material-meta__back {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.material-meta__divider {
+  color: var(--color-border-strong);
+}
+
+.material-meta__status {
+  margin-left: auto;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.lesson-section__kicker {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-style: normal;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.reading-block {
+  max-width: 68ch;
+  padding-left: var(--space-5);
+  border-left: var(--border-thick) solid var(--color-accent);
+}
+
+.reading-block__header {
+  margin-bottom: var(--space-3);
+}
+
+.reading-block__kicker,
+.comparison-item__kicker {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+}
+
+.reading-block__title,
+.comparison-item__title {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}
+
+.reading-block__body,
+.comparison-item__body {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-loose);
+}
+
+.reading-block__body > * + *,
+.comparison-item__body > * + * {
+  margin-top: var(--space-3);
+}
+
+.source-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-5);
+  padding-top: 0;
+  color: var(--color-text-meta);
+  font-size: var(--font-size-12);
+}
+
+.reference-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reference-table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-relaxed);
+}
+
+.reference-table th,
+.reference-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  vertical-align: top;
+}
+
+.reference-table th {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.reference-table tbody tr + tr {
+  border-top: var(--border-thin) dotted var(--color-border);
+}
+
+.reference-table strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.reference-table__models th,
+.reference-table__models td {
+  vertical-align: middle;
+}
+
+.solution-drill__nav,
+.solution-drill__steps,
+.solution-drill__tools,
+.solution-drill > .practice-validation {
+  grid-column: 1 / -1;
+}
+
+.solution-drill__tools .practice-progress {
+  margin-right: auto;
+}
+
+.editorial-note {
+  max-width: 68ch;
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.editorial-note + .editorial-note {
+  margin-top: var(--space-3);
+}
+
+.practice-group__title {
+  margin: var(--space-8) 0 var(--space-3);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-heading);
+}
+
+.practice-group__title:first-of-type {
+  margin-top: var(--space-5);
+}
+
+.exercise__response {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  padding: 0 var(--space-3) var(--space-5);
+}
+
+.exercise__response > * {
+  grid-column: 2;
+}
+
+.exercise__response-label {
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.exercise__select {
+  max-width: 30rem;
+}
+
+.exercise__choices {
+  min-width: 0;
+  max-width: 38rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.exercise__choices-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-6);
+  margin-top: var(--space-2);
+}
+
+.exercise__choice {
+  display: grid;
+  grid-template-columns: 1.125rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+  cursor: pointer;
+}
+
+.exercise__choice-mark {
+  display: grid;
+  width: 1.125rem;
+  height: 1.125rem;
+  place-items: center;
+  color: var(--color-accent);
+  border: var(--border-thin) solid var(--color-border-strong);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+  line-height: 1;
+}
+
+.exercise__choice-mark::after {
+  content: '×';
+  opacity: 0;
+}
+
+.exercise__choice input:checked + .exercise__choice-mark {
+  border-color: var(--color-accent);
+}
+
+.exercise__choice input:checked + .exercise__choice-mark::after {
+  opacity: 1;
+}
+
+.exercise__choice input:checked ~ .exercise__choice-text {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.exercise__choice input:focus-visible + .exercise__choice-mark {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+.practice-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  align-items: baseline;
+  margin-top: var(--space-7);
+}
+
+.practice-progress {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .02em;
+}
+
+.practice-reset {
+  padding: 2px 0;
+  color: var(--color-accent);
+  border: 0;
+  border-bottom: var(--border-thin) solid currentColor;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-13);
+  cursor: pointer;
+}
+
+.practice-reset:disabled {
+  color: var(--color-text-meta);
+  cursor: default;
+  opacity: .5;
+}
+
+[data-practice-form] .exercise__summary {
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto auto;
+}
+
+.exercise__result {
+  align-self: start;
+  margin-top: var(--space-1);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .02em;
+}
+
+.exercise__result.is-review {
+  color: var(--color-accent);
+}
+
+.practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  margin-top: var(--space-6);
+}
+
+.practice-action {
+  min-height: 2.75rem;
+  padding: var(--space-3) 0 var(--space-2);
+  color: var(--color-accent);
+  border: 0;
+  border-bottom: var(--border-thin) solid currentColor;
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.practice-action:hover,
+.practice-action:focus-visible {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.practice-action:disabled {
+  color: var(--color-text-meta);
+  cursor: default;
+  opacity: .5;
+}
+
+.practice-validation {
+  margin-top: var(--space-4);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.practice-validation.has-result {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+}
+
+.practice-batch__status {
+  margin-top: var(--space-5);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.practice-feedback {
+  margin-top: var(--space-2);
+  padding-left: var(--space-3);
+  border-left: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.practice-feedback.is-hint {
+  border-left-color: var(--color-accent);
+}
+
+.practice-feedback__label {
+  margin-right: var(--space-2);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.practice-feedback.is-hint .practice-feedback__label {
+  color: var(--color-accent);
+}
+
+@media (max-width: 700px) {
+  .material-meta__status {
+        width: 100%;
+        margin-left: 0;
+        padding-top: 2px;
+  }
+  .exercise__response {
+        grid-template-columns: 1fr;
+  }
+  .exercise__response > * {
+        grid-column: 1;
+  }
+  .exercise__choices-list {
+        grid-template-columns: 1fr;
+  }
+}
+
+.atom-figure {
+  margin: var(--space-6) 0 0;
+}
+
+.atom-figure__caption {
+  max-width: 68ch;
+  margin-top: var(--space-2);
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.try-list strong,
+.worked-steps strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.worked-steps {
+  max-width: 46rem;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.worked-steps li {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-top: var(--border-thin) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-relaxed);
+}
+
+.worked-steps__label {
+  padding-top: .3em;
+  color: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+@media (max-width: 44rem) {
+  .worked-steps li {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-1);
+  }
+}
+
+.atom-figure__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: .04em;
+}
+
+.reference-table th.reference-table__symbol {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.reference-table--simbolos th {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.exercise__input {
+  max-width: 10rem;
+  font-family: var(--font-family-mono);
+}
+
+.molar-calc__examples .practice-reset {
+  margin-left: var(--space-2);
+}
+
+.exercise__input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.exercise__unit {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-15);
+}
+
+.reference-table.molar-calc__table,
+.reference-table.reference-table--ajustada {
+  min-width: 0;
+}
+
+.rutas-oxidos + .editorial-note {
+  margin-top: var(--space-6);
+}
+
+.reference-table--formulas tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ---------- Conmutadores pequeños (de controles-quimica.css) ---------- */
+
+.tendencias__tabs,
+.pastillas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.tendencias__tab,
+.pastilla {
+  min-height: 2.5rem;
+  padding: 0 var(--space-4);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  background-color: transparent;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.tendencias__tab:focus-visible,
+.pastilla:focus-visible {
+  outline: var(--border-medium) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.tendencias__tab[aria-pressed="true"],
+.pastilla[aria-pressed="true"] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .tendencias__tab:hover,
+      .pastilla:hover {
+        color: var(--color-text-primary);
+        border-color: var(--color-border-strong);
+  }
+  .tendencias__tab[aria-pressed="true"]:hover,
+      .pastilla[aria-pressed="true"]:hover {
+        color: var(--color-accent);
+        border-color: var(--color-accent);
+  }
+}
+
+/* ---------- Figuras de las lecciones ---------- */
+.leccion-figura { margin: var(--space-6) 0 0; }
+
+.leccion-figura + .editorial-note,
+.leccion-figura + .reference-table-wrap { margin-top: var(--space-5); }
+
+/* Escena con pastillas, figura, el texto del caso elegido y «Repetir». */
+.leccion-escena .pastillas { margin-bottom: var(--space-4); }
+
+.leccion-escena .practice-actions + .editorial-note { margin-top: var(--space-5); }
+
+.leccion-texto {
+  max-width: 68ch;
+  min-height: 3.2em;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-accent);
+}
+
+.leccion-texto p { margin: 0; }
+
+/* «Ahora tú» sólo existe en la tele: la sección que le sigue conserva su respiro (base.css lo da a section + section). */
+main > [data-solo-proyeccion] + section { padding-top: var(--space-9); }
+
+/* Las anclas (#practica, la liga del QR) no quedan debajo de la barra fija. */
+main section[id] { scroll-margin-top: 4.5rem; }
+
+/* Una operación dentro de un párrafo no se parte en dos renglones. */
+.expresion { white-space: nowrap; }
+
+/* Tabla que en el celular se lee fila por fila en vez de deslizarse de lado. */
+@media (max-width: 36rem) {
+  .reference-table--apilada { min-width: 0; }
+  .reference-table--apilada thead { display: none; }
+  .reference-table--apilada,
+  .reference-table--apilada tbody,
+  .reference-table--apilada tr,
+  .reference-table--apilada th,
+  .reference-table--apilada td { display: block; }
+  .reference-table--apilada tr { padding-block: var(--space-4); }
+  .reference-table--apilada th,
+  .reference-table--apilada td { padding: 0; }
+  /* Los datos cortos comparten renglón; uno largo baja solo al siguiente. */
+  .reference-table--apilada td {
+    display: inline-block;
+    margin: var(--space-2) var(--space-5) 0 0;
+    vertical-align: baseline;
+  }
+}
+
+/* ---------- Dos ejemplos resueltos: uno debajo del otro; en la tele, lado a lado ---------- */
+.ejemplos {
+  display: grid;
+  gap: var(--space-7);
+  margin-top: var(--space-5);
+}
+
+.ejemplo__planteo {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-regular);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Un planteo con palabras (un problema) va más chico que una operación sola. */
+.ejemplo__planteo--frase { font-size: var(--font-size-20); line-height: 1.35; }
+
+/* ---------- Fracciones apiladas (las escribe el motor de ejercicios) ---------- */
+.fr {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 .12em;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.fr__n {
+  padding: 0 .15em .1em;
+  border-bottom: .06em solid currentColor;
+}
+
+.fr__d { padding: .1em .15em 0; }
+
+/* ---------- Práctica sin fin: un ejercicio nuevo cada vez ---------- */
+.sin-fin {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.sin-fin__controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+
+.sin-fin__tarjeta {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.sin-fin__pregunta {
+  margin: 0;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.sin-fin__enunciado {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-40);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+
+.sin-fin__enunciado--texto {
+  font-size: var(--font-size-24);
+  line-height: 1.3;
+}
+
+.sin-fin__opciones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.sin-fin__opcion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sin-fin__letra {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-13);
+}
+
+.sin-fin__valor {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-variant-numeric: tabular-nums;
+}
+
+.sin-fin__opciones--texto .sin-fin__valor {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-18);
+}
+
+@media (hover: hover) {
+  .sin-fin__opcion:hover:not(:disabled) { border-color: var(--color-accent); }
+}
+
+.sin-fin__opcion:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.sin-fin__opcion:disabled { cursor: default; }
+.sin-fin__opcion:disabled:not(.es-correcta):not(.es-elegida) { opacity: .5; }
+
+.sin-fin__opcion.es-correcta {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+}
+
+.sin-fin__opcion.es-correcta .sin-fin__letra { color: var(--color-accent); }
+
+.sin-fin__opcion.es-elegida {
+  color: var(--color-text-meta);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.sin-fin__veredicto {
+  min-height: 1.6em;
+  padding-left: var(--space-4);
+  border-left: var(--border-medium) solid transparent;
+}
+
+.sin-fin__veredicto:empty { display: none; }
+
+.sin-fin__veredicto.es-bien,
+.sin-fin__veredicto.es-revisa { border-left-color: var(--color-accent); }
+
+.sin-fin__veredicto p {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.sin-fin__veredicto p > strong:first-child {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.sin-fin__pasos summary {
+  color: var(--color-accent);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.sin-fin__pasos ol {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding-left: 1.3em;
+  color: var(--color-text-secondary);
+}
+
+.sin-fin__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.sin-fin__marcador {
+  margin: 0;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-meta);
+}
+
+@media (max-width: 30rem) {
+  .sin-fin__opciones { grid-template-columns: minmax(0, 1fr); }
+  .sin-fin__tarjeta { padding: var(--space-4); }
+  .sin-fin__enunciado { font-size: var(--font-size-32); }
+  .sin-fin__enunciado--texto { font-size: var(--font-size-20); }
+}
+
+/* ---------- Modo proyección: la lección en la tele ----------
+   --u es el 1 % del ancho de una pantalla 16:9 que cabe en la ventana: en la tele
+   (1080p al 150 %, 1280 × 720) vale 12.8 px y el texto corrido mide 2u ≈ 26 px.
+   Todo se mide en u, así que llena cualquier pantalla sin franjas propias. */
+[data-solo-proyeccion],
+.proyeccion-controles { display: none; }
+
+.boton-proyectar {
+  justify-self: start;
+  margin-top: var(--space-5);
+}
+
+.boton-proyectar__tecla {
+  margin-left: var(--space-2);
+  padding: 0 .45em;
+  color: var(--color-text-meta);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+}
+
+/* En el celular no hay tele que proyectar ni teclado para avanzar. */
+@media (max-width: 44rem) {
+  .boton-proyectar { display: none; }
+}
+
+html[data-proyeccion] {
+  --u: min(1vw, 1.78vh);
+  overflow: hidden;
+}
+
+html[data-proyeccion] body { overflow: hidden; }
+
+html[data-proyeccion] site-nav,
+html[data-proyeccion] .site-footer,
+html[data-proyeccion] [data-solo-lectura],
+html[data-proyeccion] main > :not(.es-actual) { display: none !important; }
+
+/* Las filas miden siempre lo que su contenido: si una pantalla trae de más, se sale
+   por abajo (y la prueba de la tele lo detecta) en vez de encimarse. */
+html[data-proyeccion] .es-actual {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: min-content;
+  align-content: center;
+  row-gap: calc(var(--u) * 1.8);
+  margin: 0;
+  padding: calc(var(--u) * 4.5) calc(var(--u) * 6) calc(var(--u) * 6.5);
+  background: var(--color-bg-page);
+  overflow: hidden;
+}
+
+html[data-proyeccion] .es-actual[data-diapositiva="dos"] {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  column-gap: calc(var(--u) * 4);
+  align-items: center;
+}
+
+/* Una figura compacta (un cuadro, una tabla corta) ocupa sólo su ancho y deja el resto al texto. */
+html[data-proyeccion] .es-actual[data-diapositiva="dos"][data-figura="compacta"] {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+html[data-proyeccion] .es-actual[data-diapositiva="dos"] > .section-header { grid-column: 1 / -1; }
+
+/* Una tabla que hace de figura mide lo que su contenido, no las 42rem de la lectura. */
+html[data-proyeccion] .es-actual [data-lado="figura"] .reference-table { min-width: 0; }
+html[data-proyeccion] .es-actual[data-diapositiva="dos"] > [data-lado="figura"] { grid-column: 2; grid-row: 2 / span 4; }
+html[data-proyeccion] .es-actual[data-diapositiva="dos"] > :not(.section-header):not([data-lado="figura"]) { grid-column: 1; }
+
+html[data-proyeccion] .es-actual .section-header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html[data-proyeccion] .es-actual .section-header__title {
+  font-size: calc(var(--u) * 3.6);
+  line-height: 1.1;
+}
+
+html[data-proyeccion] .es-actual .lesson-section__kicker,
+html[data-proyeccion] .es-actual .eyebrow {
+  font-size: calc(var(--u) * 1.2);
+}
+
+html[data-proyeccion] .es-actual p,
+html[data-proyeccion] .es-actual li,
+html[data-proyeccion] .es-actual td,
+html[data-proyeccion] .es-actual th {
+  font-size: calc(var(--u) * 2);
+  line-height: 1.45;
+}
+
+html[data-proyeccion] .es-actual .section-intro,
+html[data-proyeccion] .es-actual .reading-block,
+html[data-proyeccion] .es-actual .reading-block__body p { max-width: none; }
+
+html[data-proyeccion] .es-actual .reading-block__title { font-size: calc(var(--u) * 2.6); }
+html[data-proyeccion] .es-actual .editorial-note { font-size: calc(var(--u) * 1.6); }
+
+html[data-proyeccion] .es-actual .reference-table th,
+html[data-proyeccion] .es-actual .reference-table td { padding: calc(var(--u) * .9) calc(var(--u) * 1.2); }
+
+html[data-proyeccion] .es-actual .reference-table th,
+html[data-proyeccion] .es-actual .reference-table td { vertical-align: baseline; }
+
+html[data-proyeccion] .es-actual .reference-table thead th { font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-actual .reference-table tbody th { font-size: calc(var(--u) * 1.3); }
+
+html[data-proyeccion] .es-actual .worked-steps { max-width: none; margin: 0; }
+
+html[data-proyeccion] .es-actual .worked-steps li {
+  grid-template-columns: calc(var(--u) * 12) minmax(0, 1fr);
+  gap: calc(var(--u) * 1.6);
+  padding-block: calc(var(--u) * .9);
+}
+
+html[data-proyeccion] .es-actual .worked-steps li p { margin: 0; }
+html[data-proyeccion] .es-actual .worked-steps__label { font-size: calc(var(--u) * 1.2); }
+
+html[data-proyeccion] .es-actual .leccion-figura { margin: 0; }
+
+html[data-proyeccion] .es-actual .ejemplos {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: calc(var(--u) * 4);
+  margin: 0;
+}
+
+html[data-proyeccion] .es-actual .ejemplo__planteo {
+  margin-bottom: calc(var(--u) * 1);
+  font-size: calc(var(--u) * 3);
+}
+
+html[data-proyeccion] .es-actual .ejemplo__planteo--frase { font-size: calc(var(--u) * 2.4); line-height: 1.3; }
+
+html[data-proyeccion] .es-actual .ejemplo .worked-steps li { grid-template-columns: calc(var(--u) * 9) minmax(0, 1fr); }
+
+html[data-proyeccion] .es-actual .pastilla {
+  min-height: calc(var(--u) * 3.6);
+  padding: 0 calc(var(--u) * 1.6);
+  font-size: calc(var(--u) * 1.6);
+}
+
+/* Portada: título grande, entrada y nada más. */
+html[data-proyeccion] .hero.es-actual { align-content: center; }
+html[data-proyeccion] .hero.es-actual .hero__title { font-size: calc(var(--u) * 7); line-height: 1; }
+html[data-proyeccion] .hero.es-actual .hero__lede { max-width: 32ch; font-size: calc(var(--u) * 2.5); }
+html[data-proyeccion] .hero.es-actual .material-meta,
+html[data-proyeccion] .hero.es-actual .boton-proyectar { display: none; }
+
+/* «Ahora tú»: qué hacer y el código para abrir la práctica. */
+html[data-proyeccion] .ahora-tu.es-actual {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  column-gap: calc(var(--u) * 5);
+  align-items: center;
+}
+
+.ahora-tu__texto {
+  display: grid;
+  gap: calc(var(--u) * 1.6);
+}
+
+.ahora-tu__titulo {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 6);
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+}
+
+.ahora-tu__titulo em { color: var(--color-accent); }
+
+.ahora-tu__liga {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  overflow-wrap: anywhere;
+}
+
+html[data-proyeccion] .es-actual .ahora-tu__liga { font-size: calc(var(--u) * 1.4); }
+
+/* El código va oscuro sobre claro en los dos temas: así lo lee cualquier cámara.
+   El SVG ya trae su margen de 4 módulos, el que piden los lectores. */
+.ahora-tu__qr {
+  justify-self: center;
+  width: min(100%, calc(var(--u) * 30));
+  color: #1f1a16;
+  background: #fdfbf6;
+  border-radius: var(--radius-md);
+}
+
+.ahora-tu__qr svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+html[data-proyeccion] .proyeccion-controles {
+  position: fixed;
+  right: calc(var(--u) * 2.5);
+  bottom: calc(var(--u) * 2);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 1);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.1);
+}
+
+.proyeccion-controles__boton,
+.proyeccion-controles__salir {
+  min-width: calc(var(--u) * 3.6);
+  min-height: calc(var(--u) * 3.2);
+  padding: 0 calc(var(--u) * 1);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  cursor: pointer;
+}
+
+.proyeccion-controles__boton:disabled { opacity: .35; cursor: default; }
+
+.proyeccion-controles__boton:focus-visible,
+.proyeccion-controles__salir:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-proyeccion] .es-actual { animation: proyeccion-entra .25s ease-out; }
+}
+
+@keyframes proyeccion-entra {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

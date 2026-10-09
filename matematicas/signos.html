@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Operaciones con signos · Matemáticas · Tercial</title>
+<meta name="description" content="Sumar, restar, multiplicar y dividir con signos: la recta numérica muestra por qué restar es sumar el contrario y por qué menos por menos da más. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-signos">
+<meta name="tercial:resource-title" content="Operaciones con signos">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="signos">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-fundamentos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-fundamentos">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-fundamentos"></script>
+<script type="module" src="./escenas-matematicas.js?v=20261009-fundamentos"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 1 · Matemáticas</p>
+    <h1 class="hero__title">Operaciones con <em>signos</em></h1>
+    <p class="hero__lede">Un número con signo dice cuánto y hacia dónde. En la recta numérica se ve por qué
+      restar es sumar el contrario y por qué menos por menos da más; luego las reglas se practican hasta que
+      salgan solas.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 1 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/magnitudes-unidades.html">En física: magnitudes y unidades</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaSignos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaSignos">
+        <span class="lesson-section__kicker">Idea central</span> Cuánto y hacia dónde
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">El signo dice <em>hacia dónde</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En la recta numérica el cero está en medio: los positivos quedan a la derecha y los negativos a la
+          izquierda. El número sin su signo es su <strong>valor absoluto</strong>, la distancia al cero: −5 y 5
+          están igual de lejos, cada uno de un lado.</p>
+        <p><strong>Sumar</strong> es caminar: cada número es un paso, a la derecha si es positivo y a la
+          izquierda si es negativo. <strong>Restar</strong> es sumar el contrario: <span class="expresion">7 − 3</span> es
+          <span class="expresion">7 + (−3)</span>, y restar un negativo es sumar un positivo.</p>
+        <p><strong>Multiplicar</strong> por un entero es repetir el paso. Multiplicar por un negativo, además,
+          voltea el resultado al otro lado del cero; por eso dos negativos multiplicados dan un positivo.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaRecta" data-diapositiva="dos" data-signos>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaRecta">
+        <span class="lesson-section__kicker">Observa</span> Los signos en la recta
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una operación. Cada número es un paso: a la derecha si es
+      positivo, a la izquierda si es negativo. El punto marca dónde vas.</p>
+    <div class="pastillas" role="group" aria-label="Elige una operación">
+      <button class="pastilla" type="button" aria-pressed="true" data-ejemplo="suma">4 + (−6)</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-ejemplo="resta">−3 − 5</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-ejemplo="resta-negativo">−2 − (−7)</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-ejemplo="producto">(−3) × 2</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-ejemplo="producto-negativo">(−3) × (−2)</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-mate="recta" viewBox="0 0 400 180" role="img" aria-labelledby="rectaTitulo">
+        <title id="rectaTitulo">Recta numérica del −10 al 10. Cada número de la operación es una flecha: hacia la
+          derecha si es positivo y hacia la izquierda si es negativo. En una resta, la flecha del número que se
+          resta aparece punteada y da la vuelta. Al multiplicar por un negativo, todo se voltea al otro lado
+          del cero.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-signos-texto></div>
+    <div hidden>
+      <p data-texto-ejemplo="suma"><strong class="expresion">4 + (−6) = −2.</strong> Cuatro pasos a la derecha
+        y luego seis a la izquierda. Los signos son distintos: se restan los valores absolutos,
+        <span class="expresion">6 − 4 = 2</span>, y gana el signo del −6, que pesa más porque está más lejos
+        del cero.</p>
+      <p data-texto-ejemplo="resta"><strong class="expresion">−3 − 5 = −8.</strong> Restar 5 es sumar −5: la flecha punteada del 5
+        da la vuelta y apunta a la izquierda. Son 3 pasos a la izquierda y luego otros 5.</p>
+      <p data-texto-ejemplo="resta-negativo"><strong class="expresion">−2 − (−7) = 5.</strong> Restar −7 es sumar 7: la flecha
+        punteada del −7 da la vuelta y apunta a la derecha. Desde el −2, siete pasos a la derecha llegan al 5.</p>
+      <p data-texto-ejemplo="producto"><strong class="expresion">(−3) × 2 = −6.</strong> Multiplicar por 2 es dar dos veces el
+        paso de −3: 3 a la izquierda y otros 3 a la izquierda.</p>
+      <p data-texto-ejemplo="producto-negativo"><strong class="expresion">(−3) × (−2) = 6.</strong> Dos pasos de −3 llegan al −6;
+        el signo del −2 voltea todo al otro lado del cero y el −6 se vuelve 6. Por eso menos por menos da
+        más.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En física el signo también es dirección: una velocidad de
+      −2 m/s es avanzar 2 metros cada segundo hacia el lado negativo de la pista. Lo verás en
+      <a href="../fisica/magnitudes-unidades.html">Magnitudes y unidades</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasSuma" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasSuma">
+        <span class="lesson-section__kicker">Reglas</span> Sumar y restar
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Reglas de los signos para sumar y restar" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Reglas de los signos para sumar y restar</caption>
+        <thead>
+          <tr><th scope="col">Cuándo</th><th scope="col">Regla</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Mismo signo</th><td>Se suman los valores absolutos y se deja el signo.</td><td class="signos__ejemplo">−4 + (−7) = −11</td></tr>
+          <tr><th scope="row">Signos distintos</th><td>Se restan los valores absolutos y gana el signo del que está más lejos del cero.</td><td class="signos__ejemplo">−9 + 4 = −5</td></tr>
+          <tr><th scope="row">Una resta</th><td>Se cambia por la suma del contrario: <span class="expresion">a − b = a + (−b)</span>.</td><td class="signos__ejemplo">3 − 8 = 3 + (−8) = −5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> ver <span class="expresion">−3 − 5</span> y pensar
+      «menos por menos, más». Ahí no se multiplica nada: son dos pasos a la izquierda,
+      <span class="expresion">−3 + (−5) = −8</span>. «Menos por menos da más» sólo vale al multiplicar o dividir, y
+      con un menos pegado a un paréntesis: <span class="expresion">−(−5) = 5</span>.</p>
+  </section>
+
+  <section aria-labelledby="reglasProducto" data-diapositiva="dos" data-figura="compacta">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasProducto">
+        <span class="lesson-section__kicker">Reglas</span> Multiplicar y dividir
+      </h2>
+    </header>
+    <p class="section-intro">Primero el signo y luego el número. Signos iguales dan positivo; signos distintos,
+      negativo.</p>
+    <table class="tabla-signos" data-lado="figura">
+      <caption class="visually-hidden">Ley de los signos: el signo del primer número va en cada fila y el del
+        segundo en cada columna</caption>
+      <thead>
+        <tr><th scope="col"><span aria-hidden="true">×</span><span class="visually-hidden">Primer número</span></th><th scope="col">+</th><th scope="col">−</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">+</th><td>+</td><td>−</td></tr>
+        <tr><th scope="row">−</th><td>−</td><td class="tabla-signos__ojo">+</td></tr>
+      </tbody>
+    </table>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Dividir</span><p>La misma regla: <span class="expresion">20 ÷ (−4) = −5</span>
+        y <span class="expresion">(−18) ÷ (−6) = 3</span>.</p></li>
+      <li><span class="worked-steps__label">Varios factores</span><p>Se cuentan los negativos: si son pares, el
+        resultado es positivo; si son impares, negativo. <span class="expresion">(−1)(−2)(−3) = −6</span>.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="parentesisSignos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="parentesisSignos">
+        <span class="lesson-section__kicker">Cuidado</span> Un menos delante de un paréntesis
+      </h2>
+    </header>
+    <p class="section-intro">Le cambia el signo a <strong>todo</strong> lo de adentro, no sólo al primer número.
+      Hay dos caminos y los dos dan lo mismo.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Abre</span><p><span class="expresion">10 − (4 − 7) = 10 − 4
+        <strong>+ 7</strong> = 13</span>. El −7 de adentro se vuelve +7.</p></li>
+      <li><span class="worked-steps__label">Adentro primero</span><p><span class="expresion">10 − (4 − 7) =
+        10 − (−3) = 10 + 3 = <strong>13</strong></span>.</p></li>
+      <li><span class="worked-steps__label">Con un número</span><p>Si delante hay un número, multiplica a cada
+        término: <span class="expresion">−2(5 − 8) = −10 <strong>+ 16</strong> = 6</span>.</p></li>
+    </ol>
+    <p class="editorial-note">El error típico es cambiar sólo el primer signo:
+      <span class="expresion">10 − 4 − 7 = −1</span>. Si dudas, resuelve por el otro camino y compara.</p>
+  </section>
+
+  <section aria-labelledby="ejemploSignos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploSignos">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">−7 + 4 − (−2) − 6</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Restas</span><p>Cada resta se vuelve suma del contrario:
+            <span class="expresion">−7 + 4 + 2 + (−6)</span>.</p></li>
+          <li><span class="worked-steps__label">Agrupa</span><p>Positivos: <span class="expresion">4 + 2 = 6</span>.
+            Negativos: <span class="expresion">−7 + (−6) = −13</span>.</p></li>
+          <li><span class="worked-steps__label">Junta</span><p><span class="expresion">6 + (−13) =
+            <strong>−7</strong></span>. Gana el signo del −13, que pesa más.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">(−2) × 3 × (−1) × (−5)</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Signo</span><p>Hay tres negativos, un número impar: el resultado
+            es negativo.</p></li>
+          <li><span class="worked-steps__label">Número</span><p>Sin los signos: <span class="expresion">2 × 3 × 1 × 5 = 30</span>.</p></li>
+          <li><span class="worked-steps__label">Junta</span><p>El signo y el número: <strong>−30</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Ahora tú">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Práctica</p>
+      <h2 class="ahora-tu__titulo">Ahora <em>tú</em></h2>
+      <p>Abre la práctica en tu compu o tableta. Cada ejercicio es nuevo y, si te equivocas, te dice en qué.</p>
+      <p>Empieza en «Sumas y restas», nivel 1, y sube de nivel cuando lleves cinco seguidos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>matematicas/<wbr>signos.html<wbr>#practica</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que abre la práctica"><path d="M4 4.5h7m1 0h6m2 0h1m2 0h2m1 0h2m6 0h7M4 5.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h4m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m2 0h6m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h3m1 0h4m4 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h2m1 0h1m2 0h1m6 0h2m4 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 11.5h3m3 0h4m2 0h1m1 0h4M4 12.5h1m2 0h7m2 0h1m2 0h1m5 0h4m1 0h1m1 0h2m2 0h1m1 0h3M5 13.5h2m1 0h1m2 0h3m2 0h2m2 0h3m2 0h1m2 0h1m2 0h3m1 0h2m1 0h2M5 14.5h3m1 0h2m2 0h5m1 0h3m1 0h2m1 0h2m1 0h1m1 0h1m2 0h2m2 0h1m1 0h1M5 15.5h4m3 0h2m2 0h1m3 0h2m1 0h2m2 0h2m1 0h1m4 0h2m1 0h3M4 16.5h3m1 0h1m1 0h1m5 0h1m1 0h3m3 0h1m2 0h2m5 0h2m1 0h1m2 0h1M7 17.5h1m3 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h3m1 0h4m3 0h2m1 0h1M5 18.5h2m3 0h1m2 0h1m3 0h4m1 0h3m3 0h1m2 0h2m1 0h1m1 0h5M5 19.5h1m1 0h3m1 0h3m10 0h4m2 0h2m1 0h1m1 0h1m1 0h4M4 20.5h2m2 0h7m1 0h4m1 0h2m2 0h2m1 0h2m1 0h1m1 0h2m3 0h3M4 21.5h1m4 0h1m1 0h2m1 0h1m1 0h3m2 0h1m4 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1M4 22.5h2m2 0h1m1 0h1m1 0h2m3 0h2m1 0h4m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m4 0h1M5 23.5h2m1 0h1m2 0h3m1 0h1m2 0h3m2 0h2m2 0h3m2 0h3m2 0h1m2 0h1M6 24.5h1m3 0h2m2 0h1m3 0h1m2 0h1m1 0h1m4 0h1m1 0h1m2 0h4M5 25.5h1m5 0h1m1 0h3m1 0h3m1 0h1m1 0h1m2 0h3m2 0h1m4 0h1m1 0h1M4 26.5h1m2 0h1m2 0h6m1 0h1m1 0h2m4 0h1m1 0h2m1 0h2m3 0h1m1 0h1m2 0h1M4 27.5h1m2 0h1m3 0h2m1 0h2m4 0h1m1 0h1m5 0h1m1 0h1m2 0h1m1 0h4M5 28.5h1m1 0h7m1 0h2m2 0h1m1 0h1m2 0h5m2 0h2m1 0h2m3 0h2M4 29.5h3m1 0h1m3 0h1m1 0h2m1 0h2m3 0h2m2 0h2m1 0h4m3 0h1M4 30.5h2m3 0h2m1 0h1m5 0h2m5 0h1m3 0h5m2 0h1m2 0h2M4 31.5h1m1 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m3 0h5M4 32.5h1m1 0h5m1 0h4m1 0h1m1 0h1m3 0h2m1 0h1m1 0h2m1 0h10M12 33.5h1m4 0h3m1 0h5m6 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h1m1 0h3m1 0h1m3 0h2m3 0h1m1 0h2m3 0h1m2 0h2M4 36.5h1m1 0h3m1 0h1m1 0h1m2 0h2m3 0h1m1 0h4m2 0h1m1 0h7M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m7 0h1m1 0h2m1 0h1m1 0h4m5 0h1M4 38.5h1m1 0h3m1 0h1m2 0h3m2 0h1m2 0h1m5 0h2m1 0h1m2 0h1m2 0h1m3 0h1M4 39.5h1m5 0h1m2 0h1m1 0h1m3 0h1m1 0h1m4 0h2m3 0h1m1 0h1m2 0h5M4 40.5h7m1 0h3m3 0h1m1 0h1m2 0h2m2 0h1m4 0h4m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaSignos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaSignos">
+        <span class="lesson-section__kicker">Practica</span> Ejercicios sin fin
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Las opciones falsas son errores de verdad: si eliges
+      una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-clave="matematicas:signos" data-modos='[
+      {"id":"suma","nombre":"Sumas y restas","generadores":["signos-suma"]},
+      {"id":"mul","nombre":"Multiplica y divide","generadores":["signos-mul"]},
+      {"id":"parentesis","nombre":"Paréntesis","generadores":["signos-parentesis"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["signos-suma","signos-mul","signos-parentesis"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-signos.pdf?v=20261009-fundamentos" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/magnitudes-unidades.html">En física: magnitudes y unidades →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

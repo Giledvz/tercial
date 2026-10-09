@@ -12,7 +12,7 @@
 
   Si no se pasa 'active', se infiere de location.pathname. El brand
   "Tercial" es clickeable al home en TODOS los breakpoints — única
-  vía de regreso al index cuando los 6 links están ocultos en mobile
+  vía de regreso al index cuando los links están ocultos en mobile
   (<760px). Hamburger menu queda para Fase 2.7.
 */
 (function () {
@@ -28,16 +28,20 @@
   const HOME = '/tercial/';
 
   const NAV_ITEMS = [
+    // Sólo la portada: el index.html de una carpeta (una materia) no es el inicio.
     { route: 'inicio',      label: 'Inicio',       href: HOME,
-      test: (p) => p === '' || p === 'index.html' },
+      test: (p, ruta) => ruta === HOME || ruta === HOME + 'index.html' },
     { route: 'examenes',    label: 'Exámenes',     href: HOME + 'uni.html#examenes',
       test: (p) => p.startsWith('examen') && p.endsWith('.html') },
     { route: 'tarjetas',    label: 'Tarjetas',     href: HOME + 'practicar.html',
       test: (p) => p === 'practicar.html' || p === 'flashcards.html' },
-    { route: 'fisica',      label: 'Física',       href: HOME + 'uni.html#fisica',
-      test: (p) => /^(fluidos|electricidad|cinematica|dinamica|trabajo_energia|cantidad_movimiento|termodinamica|optica|ondas|magnetismo|fisica_moderna)\.html$/.test(p) },
-    { route: 'matematicas', label: 'Matemáticas',  href: HOME + 'uni.html#matematicas',
-      test: (p) => /^(calculo|geometria|trigonometria)/.test(p) && p.endsWith('.html') },
+    // Cada materia tiene su casa (carpeta propia); sus temas sueltos de universidad también la marcan.
+    { route: 'fisica',      label: 'Física',       href: HOME + 'fisica/',
+      test: (p, ruta) => ruta.includes('/fisica/') || /^(fluidos|electricidad|cinematica|dinamica|trabajo_energia|cantidad_movimiento|termodinamica|optica|ondas|magnetismo|fisica_moderna)\.html$/.test(p) },
+    { route: 'matematicas', label: 'Matemáticas',  href: HOME + 'matematicas/',
+      test: (p, ruta) => ruta.includes('/matematicas/') || (/^(calculo|geometria|trigonometria)/.test(p) && p.endsWith('.html')) },
+    { route: 'quimica',     label: 'Química',      href: HOME + 'ecoems/quimica/',
+      test: (p, ruta) => ruta.includes('/quimica/') },
     { route: 'notas',       label: 'Notas',        href: HOME + 'repaso.html',
       test: (p) => p === 'repaso.html' || p === 'formulario.html' }
   ];
@@ -52,8 +56,9 @@
 
   function resolveActive(explicit) {
     if (explicit && NAV_ITEMS.some((i) => i.route === explicit)) return explicit;
-    const basename = (location.pathname.split('/').pop() || '').toLowerCase();
-    const match = NAV_ITEMS.find((item) => item.test(basename));
+    const ruta = location.pathname.toLowerCase();
+    const basename = ruta.split('/').pop() || '';
+    const match = NAV_ITEMS.find((item) => item.test(basename, ruta));
     return match ? match.route : null;
   }
 

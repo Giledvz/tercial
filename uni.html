@@ -17,6 +17,8 @@
     var r = document.documentElement;
     r.setAttribute('data-theme', d);
     r.setAttribute('data-theme-pref', p);
+    // Las lecciones de fundamentos (Matemáticas y Física) toman el color del nivel desde el que se llega.
+    try { localStorage.setItem('tercial-nivel', 'uni'); } catch (_) {}
   })();
 </script>
 

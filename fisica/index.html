@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Física · Tercial</title>
+<meta name="description" content="Física de Tercial para prepa y universidad: ocho semanas de fundamentos con práctica sin fin, las hojas de trabajo de clase, el formulario y los temas del examen.">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-fundamentos">
+<link rel="stylesheet" href="/tercial/assets/css/materia.css?v=20261009-fundamentos">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Prepa y universidad</p>
+    <h1 class="hero__title">Física, semana por <em>semana</em></h1>
+    <p class="hero__lede">Los fundamentos que usa todo lo demás, para prepa y universidad: una lección por semana, con práctica sin fin y tarea en PDF. Cada semana usa la herramienta de matemáticas que se vio el día anterior.</p>
+  </header>
+
+  <section aria-labelledby="rutaFisica">
+    <header class="section-header">
+      <h2 class="section-header__title" id="rutaFisica">
+        <span class="lesson-section__kicker">Fundamentos</span> Ocho semanas
+      </h2>
+      <span class="section-header__count">1 de 8 lista</span>
+    </header>
+    <p class="section-intro">Primero lo que se usa en todo: signos, fracciones, potencias, álgebra, gráficas y
+      ecuaciones. Las semanas se van abriendo una por una.</p>
+    <ol class="ruta">
+      <li class="ruta__semana ruta__semana--lista">
+        <span class="ruta__numero">Semana 1</span>
+        <div class="ruta__cuerpo">
+          <a class="ruta__tema" href="./magnitudes-unidades.html">Magnitudes y <em>unidades</em></a>
+          <p class="ruta__puente">En matemáticas: <a href="../matematicas/signos.html">Operaciones con signos</a>. El signo es dirección: <span class="expresion">−5 m/s</span> es ir hacia el otro lado.</p>
+        </div>
+        <span class="ruta__estado">Lección · práctica · tarea</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 2</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Conversiones de unidades</span>
+          <p class="ruta__puente">En matemáticas: Fracciones. Convertir es multiplicar por una fracción que vale 1.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 3</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Notación científica</span>
+          <p class="ruta__puente">En matemáticas: Potencias y radicales. 10ⁿ es la misma potencia, ahora para números enormes o diminutos.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 4</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Análisis dimensional</span>
+          <p class="ruta__puente">En matemáticas: Expresiones algebraicas. Las unidades se cancelan igual que las literales.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 5</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Gráficas I: leer pendiente, corte y área</span>
+          <p class="ruta__puente">En matemáticas: Productos notables. La recta <span class="expresion">y = mx + b</span> es <span class="expresion">x = x₀ + vt</span> con otros nombres.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 6</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Gráficas II: interpretar el movimiento</span>
+          <p class="ruta__puente">En matemáticas: Factorización. Una curva que se empina es un movimiento que acelera.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 7</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Despejes en fórmulas físicas</span>
+          <p class="ruta__puente">En matemáticas: Ecuaciones de primer grado. Despejar v de <span class="expresion">d = vt</span> es despejar x de <span class="expresion">3x = 12</span>.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+      <li class="ruta__semana">
+        <span class="ruta__numero">Semana 8</span>
+        <div class="ruta__cuerpo">
+          <span class="ruta__tema">Vectores y razonamiento proporcional</span>
+          <p class="ruta__puente">En matemáticas: Ecuaciones de segundo grado y sistemas. Un sistema <span class="expresion">2 × 2</span> se parece a las componentes de un vector.</p>
+        </div>
+        <span class="ruta__estado">Próximamente</span>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="hojasFisica">
+    <header class="section-header">
+      <h2 class="section-header__title" id="hojasFisica">
+        <span class="lesson-section__kicker">En clase</span> Hojas de trabajo
+      </h2>
+      <span class="section-header__count">11 hojas</span>
+    </header>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-1.html"><span class="topic-list__name">Física 1 — Preliminares <span class="topic-list__hint">— conversiones de unidades y despejes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-2.html"><span class="topic-list__name">Física 2 — MRU y MRUA <span class="topic-list__hint">— cinemática, caída libre y tiro vertical</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-3.html"><span class="topic-list__name">Física 3 — Vectores <span class="topic-list__hint">— conversión entre formas, escalares y suma</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-4.html"><span class="topic-list__name">Física 4 — Dinámica <span class="topic-list__hint">— leyes de Newton, fuerza, peso y masa</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-6.html"><span class="topic-list__name">Física 6 — Trabajo mecánico <span class="topic-list__hint">— trabajo: fuerza por distancia</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-8.html"><span class="topic-list__name">Física 8 — Energía <span class="topic-list__hint">— energía, potencia, cantidad de movimiento y calor</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-9.html"><span class="topic-list__name">Física 9 — Ondas <span class="topic-list__hint">— ondas mecánicas y sonido</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-10.html"><span class="topic-list__name">Física 10 — Electricidad y magnetismo <span class="topic-list__hint">— Coulomb, Ohm, potencia y electromagnetismo</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/fisica-11.html"><span class="topic-list__name">Física 11 — Densidad, presión y óptica <span class="topic-list__hint">— fluidos, Pascal, Arquímedes y luz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/conversiones-despejes.html"><span class="topic-list__name">Conversiones y despejes <span class="topic-list__hint">— unidades y despeje de fórmulas físicas</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/examenes-pdf/interpretacion-graficas.html"><span class="topic-list__name">Interpretación de gráficas <span class="topic-list__hint">— posición–tiempo y velocidad–tiempo</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="temasFisica">
+    <header class="section-header">
+      <h2 class="section-header__title" id="temasFisica">
+        <span class="lesson-section__kicker">Universidad</span> Temas del examen
+      </h2>
+      <span class="section-header__count">12 recursos</span>
+    </header>
+    <p class="section-intro">Los once temas de física del examen de universidad y el formulario para tener al lado.</p>
+    <ul class="topic-list">
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/formulario.html"><span class="topic-list__name">Formulario completo <span class="topic-list__hint">— diez unidades, más de cien fórmulas</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cinematica.html"><span class="topic-list__name">Cinemática <span class="topic-list__hint">— MRU · MRUA · caída libre</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/dinamica.html"><span class="topic-list__name">Dinámica <span class="topic-list__hint">— leyes de Newton · fricción</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/trabajo_energia.html"><span class="topic-list__name">Trabajo y energía <span class="topic-list__hint">— cinética, potencial, conservación</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/cantidad_movimiento.html"><span class="topic-list__name">Cantidad de movimiento <span class="topic-list__hint">— momento lineal · choques</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fluidos.html"><span class="topic-list__name">Fluidos <span class="topic-list__hint">— presión · principio de Arquímedes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/termodinamica.html"><span class="topic-list__name">Termodinámica <span class="topic-list__hint">— calor · gases · leyes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/optica.html"><span class="topic-list__name">Óptica <span class="topic-list__hint">— reflexión · refracción · lentes</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/ondas.html"><span class="topic-list__name">Ondas y sonido <span class="topic-list__hint">— propagación · frecuencia · MAS</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/electricidad.html"><span class="topic-list__name">Electricidad <span class="topic-list__hint">— Coulomb · Ohm · circuitos</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/magnetismo.html"><span class="topic-list__name">Magnetismo <span class="topic-list__hint">— campo · fuerza de Lorentz</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+      <li class="topic-list__item"><a class="topic-list__link" href="/tercial/fisica_moderna.html"><span class="topic-list__name">Física moderna <span class="topic-list__hint">— fotoeléctrico · átomo · cuántica</span></span><span class="topic-list__chevron" aria-hidden="true">→</span></a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Física</p>
+  <nav class="site-footer__links" aria-label="Otras materias">
+    <a href="../matematicas/index.html">← Matemáticas</a>
+  </nav>
+</footer>
+
+</body>
+</html>

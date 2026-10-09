@@ -1,0 +1,143 @@
+/* Matemáticas: estilos propios de sus escenas. El molde de la lección vive en
+   /assets/css/leccion.css. base.css le pone contorno y relleno vacío a todo
+   <svg>: aquí cada forma declara los suyos. */
+
+.escena-mate {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* La recta de los signos */
+.recta__eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+}
+
+.recta__punta-eje {
+  fill: var(--color-border-strong);
+  stroke: none;
+}
+
+.recta__marca {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+.recta__numero {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+}
+
+.recta__numero--cero {
+  fill: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.recta__salida {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.2;
+}
+
+.recta__flecha {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 2.2;
+  stroke-linecap: butt;
+}
+
+.recta__punta {
+  fill: var(--color-text-primary);
+  stroke: none;
+}
+
+.recta__etiqueta {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: 10.5px;
+}
+
+.recta__paso--fantasma .recta__flecha {
+  stroke: var(--color-text-meta);
+  stroke-width: 1.6;
+  stroke-dasharray: 4 3;
+}
+
+.recta__paso--fantasma .recta__punta { fill: var(--color-text-meta); }
+.recta__paso--fantasma .recta__salida { stroke: var(--color-text-meta); }
+.recta__paso--fantasma .recta__etiqueta { fill: var(--color-text-meta); }
+
+.recta__caminante {
+  fill: var(--color-accent);
+  stroke: var(--color-bg-page);
+  stroke-width: 1.5;
+}
+
+.recta__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 20px;
+}
+
+.recta__resultado { fill: var(--color-accent); }
+
+/* Los ejemplos de la tabla de reglas se leen como operaciones, no como texto. */
+.signos__ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* La ley de los signos para multiplicar y dividir, en su cuadro de siempre.
+   «Menos por menos», el caso que sorprende, va en el color del nivel. */
+.tabla-signos {
+  margin-top: var(--space-5);
+  border-collapse: collapse;
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-32);
+  line-height: 1;
+  text-align: center;
+}
+
+.tabla-signos th,
+.tabla-signos td {
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 0;
+  border: var(--border-thin) solid var(--color-border);
+}
+
+.tabla-signos th {
+  color: var(--color-text-meta);
+  font-weight: var(--font-weight-regular);
+}
+
+.tabla-signos thead th:first-child {
+  color: var(--color-text-meta);
+  font-size: var(--font-size-24);
+}
+
+.tabla-signos td { color: var(--color-text-primary); }
+.tabla-signos .tabla-signos__ojo { color: var(--color-accent); }
+
+html[data-proyeccion] .es-actual .tabla-signos {
+  margin: 0;
+  font-size: calc(var(--u) * 5);
+}
+
+html[data-proyeccion] .es-actual .tabla-signos th,
+html[data-proyeccion] .es-actual .tabla-signos td {
+  width: calc(var(--u) * 9);
+  height: calc(var(--u) * 9);
+  padding: 0;
+  font-size: inherit;
+  line-height: 1;
+}
+
+html[data-proyeccion] .es-actual .tabla-signos thead th:first-child { font-size: calc(var(--u) * 3.4); }

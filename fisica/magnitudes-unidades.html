@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Magnitudes y unidades · Física · Tercial</title>
+<meta name="description" content="Las siete unidades fundamentales del SI, cómo se arman las derivadas, cómo se escribe una medida y por qué el signo de una velocidad dice hacia dónde va. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-magnitudes-unidades">
+<meta name="tercial:resource-title" content="Magnitudes y unidades">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="magnitudes-unidades">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-fundamentos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-fundamentos">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-fundamentos"></script>
+<script type="module" src="./escenas-fisica.js?v=20261009-fundamentos"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 1 · Física</p>
+    <h1 class="hero__title">Magnitudes y <em>unidades</em></h1>
+    <p class="hero__lede">En física todo resultado es un número con su unidad: 5 m, 3 s, 70 kg. Aquí están las
+      siete unidades con las que se arma todo lo demás, cómo se escriben bien y por qué una velocidad puede ser
+      negativa.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 1 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/signos.html">En matemáticas: operaciones con signos</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaMedir" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaMedir">
+        <span class="lesson-section__kicker">Idea central</span> Medir es comparar
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Un número sin unidad <em>no dice nada</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Una <strong>magnitud</strong> es algo que se puede medir: la longitud de una mesa, la masa de una
+          mochila, el tiempo de una carrera. Medir es comparar con una <strong>unidad</strong>: si la mesa mide
+          2 m, el metro cabe dos veces en ella.</p>
+        <p>Por eso el resultado siempre lleva su unidad. «La distancia es 5» no dice nada: pueden ser 5 m o
+          5 km. Y en un examen la unidad descarta opciones: si buscas una velocidad y una respuesta viene en
+          kilogramos, no puede ser.</p>
+        <p>Algunas magnitudes sólo tienen tamaño, como la masa, el tiempo o la temperatura. Otras además apuntan
+          hacia algún lado, como la velocidad o la fuerza; cuando el movimiento va sobre una línea, eso se dice
+          con el signo.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="siFundamentales" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="siFundamentales">
+        <span class="lesson-section__kicker">El SI</span> Siete unidades fundamentales
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>El Sistema Internacional de Unidades (SI) es el acuerdo que usan
+      casi todos los países, México incluido. Tiene siete magnitudes fundamentales; todas las demás se arman con ellas.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Las siete magnitudes fundamentales del SI" tabindex="0">
+      <table class="reference-table reference-table--apilada si-tabla">
+        <caption class="visually-hidden">Las siete magnitudes fundamentales del SI, su unidad y su símbolo</caption>
+        <thead>
+          <tr><th scope="col">Magnitud</th><th scope="col">Unidad</th><th scope="col">Símbolo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Longitud</th><td>metro</td><td class="si__simbolo">m</td></tr>
+          <tr><th scope="row">Masa</th><td>kilogramo</td><td class="si__simbolo">kg</td></tr>
+          <tr><th scope="row">Tiempo</th><td>segundo</td><td class="si__simbolo">s</td></tr>
+          <tr><th scope="row">Corriente eléctrica</th><td>ampere</td><td class="si__simbolo">A</td></tr>
+          <tr><th scope="row">Temperatura</th><td>kelvin</td><td class="si__simbolo">K</td></tr>
+          <tr><th scope="row">Cantidad de sustancia</th><td>mol</td><td class="si__simbolo">mol</td></tr>
+          <tr><th scope="row">Intensidad luminosa</th><td>candela</td><td class="si__simbolo">cd</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
+      <li><span class="worked-steps__label">Mecánica</span><p>Casi todo se arma con las tres primeras: metro,
+        kilogramo y segundo.</p></li>
+      <li><span class="worked-steps__label">Kilogramo</span><p>Es la única fundamental con prefijo: la unidad de
+        masa es el kilogramo, no el gramo.</p></li>
+      <li><span class="worked-steps__label">Mol</span><p>Es el de Química: cuenta partículas, como en
+        <a href="../ecoems/quimica/mol-masa-molar.html">Mol y masa molar</a>.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="siDerivadas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="siDerivadas">
+        <span class="lesson-section__kicker">Derivadas</span> Las demás se arman
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Una magnitud derivada se calcula con otras, y su unidad se arma
+      con la misma operación: si la velocidad es distancia ÷ tiempo, su unidad es m ÷ s, que se escribe m/s.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Magnitudes derivadas" tabindex="0">
+      <table class="reference-table reference-table--apilada si-tabla">
+        <caption class="visually-hidden">Magnitudes derivadas: cómo se calculan y su unidad</caption>
+        <thead>
+          <tr><th scope="col">Magnitud</th><th scope="col">Se calcula</th><th scope="col">Unidad</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Área</th><td>largo × ancho</td><td class="si__simbolo">m²</td></tr>
+          <tr><th scope="row">Volumen</th><td>largo × ancho × alto</td><td class="si__simbolo">m³</td></tr>
+          <tr><th scope="row">Velocidad</th><td>distancia ÷ tiempo</td><td class="si__simbolo">m/s</td></tr>
+          <tr><th scope="row">Aceleración</th><td>cambio de velocidad ÷ tiempo</td><td class="si__simbolo">m/s²</td></tr>
+          <tr><th scope="row">Densidad</th><td>masa ÷ volumen</td><td class="si__simbolo">kg/m³</td></tr>
+          <tr><th scope="row">Fuerza</th><td>masa × aceleración</td><td class="si__simbolo">kg·m/s² = N</td></tr>
+          <tr><th scope="row">Energía</th><td>fuerza × distancia</td><td class="si__simbolo">N·m = J</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
+      <li><span class="worked-steps__label">Con nombre</span><p>Las que se usan mucho tienen nombre propio, casi
+        siempre de un científico: el newton (N), el joule (J), el watt (W).</p></li>
+      <li><span class="worked-steps__label">Mayúsculas</span><p>Su símbolo va con mayúscula, pero el nombre se
+        escribe con minúscula: 5 N son cinco newtons.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="siEscritura" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="siEscritura">
+        <span class="lesson-section__kicker">Escritura</span> Cómo se escribe una medida
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se escribe una medida" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Medidas bien escritas, errores comunes y la regla que corrigen</caption>
+        <thead>
+          <tr><th scope="col">Bien</th><th scope="col">Mal</th><th scope="col">Por qué</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="si__medida">5 m</th><td class="si__mal">5 mts · 5 m. · 5m</td><td>Número, un espacio y el símbolo, que no lleva plural ni punto.</td></tr>
+          <tr><th scope="row" class="si__medida">20 s</th><td class="si__mal">20 seg · 20 sg</td><td>Los símbolos no son abreviaturas: el del segundo es s.</td></tr>
+          <tr><th scope="row" class="si__medida">2 h</th><td class="si__mal">2 hrs</td><td>La hora es h, también sin plural.</td></tr>
+          <tr><th scope="row" class="si__medida">3 kg</th><td class="si__mal">3 Kg · 3 kgs</td><td>La k de kilo va con minúscula.</td></tr>
+          <tr><th scope="row" class="si__medida">300 K</th><td class="si__mal">300 °K</td><td>El kelvin no lleva el símbolo de grado.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Las mayúsculas cambian el significado: K es kelvin y k es kilo; M es mega, un
+      millón, y m es metro, o mili si va antes de otro símbolo, como en mm.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaSigno" data-diapositiva="dos" data-auto>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaSigno">
+        <span class="lesson-section__kicker">Observa</span> El signo es dirección
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una velocidad. Cada segundo queda una copia tenue del auto:
+      la distancia entre dos copias es lo que avanza en un segundo.</p>
+    <div class="pastillas" role="group" aria-label="Elige una velocidad">
+      <button class="pastilla" type="button" aria-pressed="true" data-movimiento="mas5">+5 m/s</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-movimiento="mas10">+10 m/s</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-movimiento="menos5">−5 m/s</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica" data-escena-fisica="auto" viewBox="0 0 400 180" role="img" aria-labelledby="autoTitulo">
+        <title id="autoTitulo">Un auto rueda sobre una pista de 25 metros con un eje x que crece hacia la
+          derecha. Arriba se leen el tiempo y la posición. Cada segundo queda una copia tenue del auto con su
+          tiempo: con velocidad positiva las copias avanzan hacia la derecha y con velocidad negativa, hacia la
+          izquierda.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-auto-texto></div>
+    <div hidden>
+      <p data-texto-movimiento="mas5"><strong class="expresion">v = +5 m/s.</strong> Cada segundo el auto avanza
+        5 m hacia la derecha, el lado positivo del eje: las copias quedan a 5 m una de otra. Eso quiere decir
+        m/s: metros en cada segundo.</p>
+      <p data-texto-movimiento="mas10"><strong class="expresion">v = +10 m/s.</strong> Al doble de velocidad, el
+        doble de distancia cada segundo: las copias quedan a 10 m y llega al mismo lugar en la mitad del
+        tiempo.</p>
+      <p data-texto-movimiento="menos5"><strong class="expresion">v = −5 m/s.</strong> La misma rapidez, 5 m cada
+        segundo, pero hacia la izquierda, el lado negativo: x baja de 23 m a 18, 13, 8 y 3. El signo no quiere
+        decir «más lento»: dice hacia dónde.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir el video</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Hacia dónde es positivo lo decides tú: si el eje apuntara a la
+      izquierda, este mismo auto iría a +5 m/s. Lo que importa es usar la misma convención en todo el problema.
+      Es la misma recta de <a href="../matematicas/signos.html">Operaciones con signos</a>.</p>
+  </section>
+
+  <section aria-labelledby="ejemploFisica" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploFisica">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un auto en <span class="expresion">x = 30 m</span> va a
+          <span class="expresion">−5 m/s</span>. ¿Dónde está 4 s después?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Cada segundo</span><p>x cambia −5 m: el auto va hacia la
+            izquierda.</p></li>
+          <li><span class="worked-steps__label">En 4 s</span><p><span class="expresion">4 × (−5 m) = −20 m</span>.</p></li>
+          <li><span class="worked-steps__label">Posición</span><p><span class="expresion">30 m + (−20 m) =
+            <strong>10 m</strong></span>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un salón mide <span class="expresion">8 m × 6 m × 3 m</span>.
+          ¿Cuánto aire cabe?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Fórmula</span><p>Volumen = largo × ancho × alto.</p></li>
+          <li><span class="worked-steps__label">Números</span><p><span class="expresion">8 × 6 × 3 = 144</span>.</p></li>
+          <li><span class="worked-steps__label">Unidades</span><p><span class="expresion">m × m × m = m³</span>. Caben
+            <strong>144 m³</strong> de aire.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Ahora tú">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Práctica</p>
+      <h2 class="ahora-tu__titulo">Ahora <em>tú</em></h2>
+      <p>Abre la práctica en tu compu o tableta. Cada pregunta es nueva y, si te equivocas, te dice en qué.</p>
+      <p>Empieza en «Unidades», nivel 1, y luego sigue con «Signo y dirección».</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>fisica/<wbr>magnitudes-unidades.html<wbr>#practica</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que abre la práctica"><path d="M4 4.5h7m1 0h1m4 0h1m2 0h1m2 0h2m5 0h1m3 0h7M4 5.5h1m5 0h1m1 0h1m1 0h1m3 0h2m1 0h1m1 0h1m1 0h2m1 0h1m5 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m4 0h2m1 0h1m2 0h3m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m4 0h4m4 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h3m2 0h3m4 0h3m2 0h1m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 11.5h4m1 0h1m1 0h3m4 0h2m1 0h1M4 12.5h1m2 0h9m2 0h1m8 0h1m2 0h1m1 0h2m2 0h1m1 0h3M5 13.5h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h1m1 0h1m2 0h3m3 0h1m4 0h2m1 0h1M4 14.5h1m4 0h2m1 0h2m3 0h4m2 0h2m1 0h2m1 0h1m1 0h2m1 0h2m1 0h2m1 0h1M6 15.5h3m2 0h1m1 0h1m2 0h3m1 0h5m3 0h1m1 0h1m1 0h1m4 0h4M4 16.5h2m1 0h1m2 0h1m5 0h1m2 0h2m3 0h1m2 0h2m2 0h1m2 0h2m1 0h1m2 0h1M6 17.5h2m3 0h3m1 0h1m2 0h3m1 0h1m3 0h2m1 0h4m3 0h2M7 18.5h1m2 0h2m3 0h1m1 0h3m2 0h5m1 0h1m2 0h3m2 0h5M4 19.5h1m1 0h3m5 0h2m3 0h1m4 0h1m2 0h1m3 0h1m1 0h3m1 0h3M4 20.5h1m3 0h5m1 0h4m3 0h2m1 0h1m1 0h1m1 0h4m2 0h2m2 0h1m1 0h1M4 21.5h1m8 0h1m12 0h1m1 0h2m1 0h1m3 0h1M4 22.5h3m1 0h1m1 0h3m7 0h4m1 0h1m1 0h7m2 0h1m1 0h1m1 0h1M4 23.5h4m3 0h1m1 0h1m1 0h6m2 0h2m4 0h1m2 0h3m1 0h2m2 0h1M4 24.5h3m3 0h2m3 0h1m1 0h2m1 0h2m1 0h1m3 0h2m1 0h2m1 0h4M5 25.5h3m1 0h1m1 0h2m2 0h2m2 0h3m1 0h1m2 0h4m1 0h1m4 0h1m1 0h1M6 26.5h1m1 0h6m1 0h1m1 0h4m6 0h3m1 0h1m2 0h2m1 0h1m2 0h1M4 27.5h1m3 0h2m1 0h1m2 0h4m2 0h1m1 0h1m5 0h1m5 0h5m1 0h1M4 28.5h1m1 0h1m1 0h3m1 0h2m2 0h1m2 0h1m1 0h1m2 0h1m2 0h2m2 0h2m1 0h2m3 0h2M4 29.5h1m1 0h1m2 0h1m1 0h1m4 0h1m1 0h1m3 0h1m3 0h2m1 0h4m3 0h2M4 30.5h2m2 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h5m3 0h3m1 0h1m1 0h1m1 0h4M4 31.5h1m1 0h2m1 0h1m3 0h1m2 0h1m1 0h1m1 0h1m2 0h2m5 0h1m1 0h1m1 0h5M4 32.5h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h2m2 0h5m1 0h2M12 33.5h1m4 0h3m1 0h4m4 0h1m2 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m1 0h2m3 0h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h2m1 0h3m1 0h1m4 0h1m4 0h4m3 0h1m2 0h2M4 36.5h1m1 0h3m1 0h1m1 0h1m5 0h3m1 0h2m4 0h1m1 0h7m2 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m3 0h2m3 0h1m1 0h1m2 0h2m1 0h1m1 0h4m2 0h2m1 0h1M4 38.5h1m1 0h3m1 0h1m2 0h2m6 0h2m4 0h2m1 0h1m2 0h1m2 0h1m3 0h1M4 39.5h1m5 0h1m5 0h1m2 0h1m1 0h1m4 0h2m8 0h5M4 40.5h7m1 0h2m4 0h1m1 0h1m3 0h1m2 0h1m4 0h2m1 0h1m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaFisica">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaFisica">
+        <span class="lesson-section__kicker">Practica</span> Preguntas sin fin
+      </h2>
+      <span class="section-header__count">Nuevas cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Las opciones falsas son confusiones de verdad: si
+      eliges una, te dice cuál fue.</p>
+    <div data-sin-fin data-clave="fisica:magnitudes-unidades" data-modos='[
+      {"id":"unidades","nombre":"Unidades","generadores":["si-unidades"]},
+      {"id":"derivadas","nombre":"Derivadas","generadores":["si-derivadas"]},
+      {"id":"escritura","nombre":"Escritura","generadores":["si-escritura"]},
+      {"id":"signo","nombre":"Signo y dirección","generadores":["si-signo"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["si-unidades","si-derivadas","si-escritura","si-signo"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-magnitudes-unidades.pdf?v=20261009-fundamentos" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/signos.html">← En matemáticas: operaciones con signos</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>

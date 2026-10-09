@@ -1,0 +1,73 @@
+/* Casa de una materia (Matemáticas, Física): la ruta de fundamentos semana por
+   semana y, debajo, el material que ya existe. Usa las piezas de leccion.css
+   (encabezados, kicker) y de components.css (topic-list). */
+
+.ruta {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ruta__semana {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+  gap: var(--space-2) var(--space-5);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-top: var(--border-thin) solid var(--color-border);
+}
+
+.ruta__semana:last-child { border-bottom: var(--border-thin) solid var(--color-border); }
+
+.ruta__numero {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.ruta__tema {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-snug);
+}
+
+.ruta__semana--lista .ruta__numero { color: var(--color-accent); }
+.ruta__semana--lista .ruta__tema { color: var(--color-text-primary); }
+
+a.ruta__tema { text-decoration: none; }
+
+a.ruta__tema:hover,
+a.ruta__tema:focus-visible { color: var(--color-accent); }
+
+.ruta__tema em {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.ruta__puente {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-meta);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-relaxed);
+}
+
+.ruta__estado {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-11);
+  letter-spacing: var(--tracking-meta);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ruta__semana--lista .ruta__estado { color: var(--color-accent); }
+
+@media (max-width: 36rem) {
+  .ruta__semana { grid-template-columns: minmax(0, 1fr) auto; }
+  .ruta__numero { grid-column: 1; }
+  .ruta__estado { grid-column: 2; grid-row: 1; }
+  .ruta__cuerpo { grid-column: 1 / -1; }
+}

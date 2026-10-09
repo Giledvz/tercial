@@ -40,6 +40,67 @@ body,
   padding-top: 8pt;
 }
 
+/* Fundamentos (Matemáticas y Física, para prepa y universidad): coñac, el color
+   por omisión del sitio. */
+.exam-pdf--fundamentos .exam-pdf__hero {
+  padding-top: 0.18in;
+  margin-bottom: 0.2in;
+  border-top-color: var(--accent-conac);
+}
+
+.exam-pdf--fundamentos .exam-pdf__title { font-size: 30pt; }
+
+.exam-pdf--fundamentos .exam-pdf__title em,
+.exam-pdf--fundamentos .exam-pdf__exercise::before,
+.exam-pdf--fundamentos .exam-pdf__total-value { color: var(--accent-conac); }
+
+.exam-pdf--fundamentos .exam-pdf__instructions {
+  margin-bottom: 0.2in;
+  border-left-color: var(--accent-conac);
+}
+
+/* Cuentas cortas: la operación y su resultado en un hueco, en tres columnas. */
+.task-cuentas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12pt 0.22in;
+}
+
+.task-cuentas--dos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.exam-pdf__sublist.task-cuentas > li {
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  padding-left: 0.3in;
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 12pt;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.exam-pdf__sublist.task-cuentas > li::before {
+  top: auto;
+  bottom: 1pt;
+  width: 0.22in;
+  font-size: 9.5pt;
+}
+
+.task-cuentas .task-blank {
+  flex: 1 1 auto;
+  min-width: 0.55in;
+  margin: 0 0 0 4pt;
+}
+
+/* Una operación escrita en el enunciado de un problema. */
+.task-operacion {
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 12pt;
+  white-space: nowrap;
+}
+
 /* Nombre y fecha */
 .task-student {
   display: grid;
@@ -531,6 +592,18 @@ body,
 .task-tipos > li::before { top: auto; bottom: 0; }
 
 .task-tipos .task-blank { flex: none; min-width: 1.3in; }
+
+/* Encuentra el error: la cuenta equivocada y, en un renglón, qué se hizo mal y el resultado correcto. */
+.task-errores > li { margin-bottom: 7pt; }
+
+.task-errores .task-answer-line { margin-top: 4pt; }
+
+.task-blank--error { min-width: 3.05in; }
+
+/* Tres problemas cortos lado a lado */
+.task-problems--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.task-problems--tres .task-work { flex-basis: 0.6in; }
 
 /* Problemas a todo lo ancho (varias respuestas en el renglón) */
 .task-problems--una { grid-template-columns: minmax(0, 1fr); }

@@ -1,0 +1,102 @@
+/* Física: estilos propios de sus escenas. El molde de la lección vive en
+   /assets/css/leccion.css. base.css le pone contorno y relleno vacío a todo
+   <svg>: aquí cada forma declara los suyos. */
+
+.escena-fisica {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* La pista: el piso donde ruedan las llantas y, abajo, el eje x como una regla. */
+.pista__piso {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.6;
+}
+
+.pista__eje,
+.pista__marca {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+.pista__punta { fill: var(--color-border-strong); stroke: none; }
+
+.pista__numero {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+}
+
+.pista__numero--eje { font-style: italic; }
+
+.pista__lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pista__tiempo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+}
+
+.pista__flecha {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.pista__flecha-punta { fill: var(--color-text-primary); stroke: none; }
+
+.pista__flecha-texto {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+}
+
+/* El auto: carrocería en el color del nivel, vidrios y llantas de verdad. */
+.auto__carroceria,
+.auto__poste { fill: var(--color-accent); stroke: none; }
+
+.auto__vidrio { fill: var(--color-bg-page); stroke: none; opacity: .85; }
+.auto__faro { fill: var(--crema-100); stroke: none; }
+.auto__calavera { fill: var(--color-bg-page); stroke: none; opacity: .55; }
+.auto__llanta { fill: var(--color-text-primary); stroke: none; }
+.auto__rin { fill: var(--color-border-strong); stroke: none; }
+
+.auto__rayos {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: .7;
+  stroke-linecap: round;
+}
+
+/* Las copias de cada segundo, tenues: son lo que el auto ya recorrió. */
+.auto--copia { opacity: .22; }
+
+/* Tablas del SI: los símbolos y las medidas se leen como en un libro de física. */
+.si__simbolo,
+.reference-table th.si__medida {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.1em;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.si__mal {
+  color: var(--color-text-meta);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
+}
+
+html[data-proyeccion] .es-actual .reference-table th.si__medida { font-size: calc(var(--u) * 2.2); }
