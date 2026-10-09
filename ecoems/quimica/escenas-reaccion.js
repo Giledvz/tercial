@@ -350,8 +350,101 @@ function sumacero(svg) {
   };
 }
 
+/* ---------------- 3 · Leer la fórmula por partes ----------------
+   La fórmula se separa en sus partes (metal, no metal, oxígeno, OH, H o un
+   ion con oxígeno); de las partes sale la familia, de la familia la receta y
+   de la receta el nombre. Todo sobre el mismo eje izquierdo. */
+const LECTURAS = {
+  cao: { partes: [['Ca', '', 'metal'], ['O', '', 'oxígeno']], familia: 'óxido metálico',
+    receta: 'óxido + de + metal', nombre: 'óxido de calcio' },
+  co2: { partes: [['C', '', 'no metal'], ['O', '2', 'oxígeno']], familia: 'óxido no metálico (anhídrido)',
+    receta: 'prefijo + óxido + de + no metal', nombre: 'dióxido de carbono', nota: 'El prefijo di- dice que hay 2 oxígenos. Con un solo carbono no se escribe mono-.' },
+  koh: { partes: [['K', '', 'metal'], ['OH', '', 'hidróxido']], familia: 'hidróxido (base)',
+    receta: 'hidróxido + de + metal', nombre: 'hidróxido de potasio' },
+  hcl: { partes: [['H', '', 'hidrógeno'], ['Cl', '', 'no metal']], familia: 'hidrácido',
+    receta: 'ácido + raíz del no metal + hídrico', nombre: 'ácido clorhídrico' },
+  h2so4: { partes: [['H', '2', 'hidrógeno'], ['SO', '4', 'ion sulfato']], familia: 'oxiácido',
+    receta: 'ácido + ion: -ato cambia a -ico', nombre: 'ácido sulfúrico' },
+  fecl3: { partes: [['Fe', '', 'metal'], ['Cl', '3', 'no metal']], familia: 'sal binaria',
+    receta: 'no metal + -uro + de + metal (número)', nombre: 'cloruro de hierro (III)', nota: 'El hierro tiene dos números de oxidación: aquí 3 cloros de −1 piden Fe = +3.' },
+  kno3: { partes: [['K', '', 'metal'], ['NO', '3', 'ion nitrato']], familia: 'oxisal',
+    receta: 'ion + de + metal', nombre: 'nitrato de potasio' },
+  nahco3: { partes: [['Na', '', 'metal'], ['H', '', 'hidrógeno'], ['CO', '3', 'ion carbonato']], familia: 'sal ácida',
+    receta: 'ion + ácido + de + metal', nombre: 'carbonato ácido de sodio', nota: 'Es el bicarbonato de sodio de la cocina.' }
+};
+
+function lectura(svg) {
+  const root = svg.closest('[data-lectura]');
+  const buttons = [...root.querySelectorAll('[data-formula]')];
+  const X = 24;
+  const capa = make('g', {}, svg);
+  let key = null, t = 0, piezas = [];
+
+  function armar(clave) {
+    const L = LECTURAS[clave];
+    capa.innerHTML = '';
+    piezas = [];
+    // Fórmula: cada parte es un grupo con su texto, su raya y su rótulo. La
+    // parte siguiente empieza después de la más ancha de las dos cosas (la
+    // fórmula o su rótulo), para que ningún rótulo se encime con el de al lado.
+    let x = X;
+    L.partes.forEach(([base, sub, rol], i) => {
+      const g = make('g', {}, capa);
+      const t1 = make('text', { x, y: 62, class: 'escena__lectura-formula' }, g);
+      t1.textContent = base;
+      if (sub) {
+        const s1 = make('tspan', { dy: 9, class: 'escena__lectura-sub' }, t1);
+        s1.textContent = sub;
+      }
+      const ancho = t1.getComputedTextLength() || base.length * 24;
+      const raya = make('path', { d: `M${round(x + 1)} 76H${round(x + ancho - 1)}`, class: 'escena__lectura-raya escena__lectura-raya--' + (i % 3) }, g);
+      const rotulo = text(g, x + 1, 92, rol, 'escena__clave');
+      const anchoRotulo = rotulo.getComputedTextLength() || rol.length * 7.5;
+      piezas.push({ nodos: [raya, rotulo], inicio: .25 + i * .35 });
+      fade(raya, 0); fade(rotulo, 0);
+      x += Math.max(ancho, anchoRotulo + 1) + 14;
+    });
+    const n = L.partes.length;
+    const familia = text(capa, X, 124, '', 'escena__lectura-familia');
+    familia.textContent = L.familia;
+    const receta = text(capa, X, 146, L.receta, 'escena__clave');
+    const nombre = text(capa, X, 180, L.nombre, 'escena__lectura-nombre');
+    piezas.push({ nodos: [familia], inicio: .45 + n * .35 });
+    piezas.push({ nodos: [receta], inicio: .85 + n * .35 });
+    piezas.push({ nodos: [nombre], inicio: 1.3 + n * .35 });
+    [familia, receta, nombre].forEach(node => fade(node, 0));
+    const panel = root.querySelector('[data-lectura-nota]');
+    if (panel) panel.textContent = L.nota || '';
+  }
+
+  function draw(time) {
+    piezas.forEach(p => p.nodos.forEach(node => fade(node, smooth((time - p.inicio) / .35))));
+  }
+
+  function select(next, animate) {
+    if (!LECTURAS[next] || next === key) return;
+    key = next;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.formula === key)));
+    armar(key);
+    t = animate && !reducedMotion.matches ? 0 : 10;
+    draw(t);
+  }
+
+  buttons.forEach(b => b.addEventListener('click', () => select(b.dataset.formula, true)));
+  // La fórmula se mide con la fuente ya cargada; si llega después, se vuelve a armar.
+  const inicial = buttons.find(b => b.getAttribute('aria-pressed') === 'true')?.dataset.formula || 'cao';
+  select(inicial, false);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => { const k = key; key = null; select(k, false); });
+  }
+  return {
+    update(dt) { if (t < 10) { t += dt; draw(t); } },
+    still() { t = 10; draw(t); }
+  };
+}
+
 /* ---------------- Reloj compartido ---------------- */
-const factories = { recta, sumacero };
+const factories = { recta, sumacero, lectura };
 const scenes = [...document.querySelectorAll('[data-escena-reaccion]')].map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaReaccion](svg)
 }));

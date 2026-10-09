@@ -278,6 +278,9 @@ body,
 
 .task-strip--iones { margin: 6pt 0 8pt; }
 
+/* Fórmulas como encabezado de fila, un poco más grandes */
+.task-table--formulas tbody th { font-size: 13.5pt; }
+
 /* Número atómico junto al nombre del elemento */
 .task-z {
   color: var(--ink-500);

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Nomenclatura inorgánica · Química ECOEMS · Tercial</title>
+<meta name="description" content="Cómo reconocer y nombrar óxidos, hidróxidos, ácidos, sales e hidruros: la familia se lee en la fórmula y cada familia tiene su receta.">
+<meta name="tercial:resource-id" content="ecoems-quimica-nomenclatura-inorganica">
+<meta name="tercial:resource-title" content="Nomenclatura inorgánica">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./nomenclatura-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 2 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Nomenclatura <em>inorgánica</em></h1>
+    <p class="hero__lede">Cada familia de compuestos se nombra con su propia receta. Primero lee en la
+      fórmula de qué familia es —óxido, hidróxido, ácido o sal— y después aplica su regla.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=nomenclatura#courseIndex">nomenclatura</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=óxidos#courseIndex">óxidos</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=sales#courseIndex">sales</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaNomenclatura">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaNomenclatura">
+        <span class="lesson-section__kicker">Idea central</span> Primero la familia, después el nombre
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">La fórmula dice de qué <em>familia</em> es</h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Mira qué hay en la fórmula. Un metal con oxígeno es un <strong>óxido metálico</strong>; un no metal con
+          oxígeno, un <strong>óxido no metálico</strong>. Si al metal lo acompaña OH es un
+          <strong>hidróxido</strong>. Si la fórmula empieza con H es un <strong>ácido</strong>: hidrácido si no
+          tiene oxígeno, oxiácido si lo tiene. Un metal con un no metal, o con un ion que lleva oxígeno, forma
+          una <strong>sal</strong>.</p>
+        <p>Cuando el metal puede tener varios números de oxidación, como el hierro (+2 o +3), el nombre lo dice
+          con un número romano: óxido de hierro (II) es FeO y óxido de hierro (III) es Fe<sub>2</sub>O<sub>3</sub>.
+          El número se calcula con la suma cero de la lección anterior.</p>
+      </div>
+      <!-- Fuente: QUA-001 · pp. 22–23 -->
+      <footer class="source-line">
+        <span>Lectura · 8 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="leerFormula">
+    <header class="section-header">
+      <h2 class="section-header__title" id="leerFormula">
+        <span class="lesson-section__kicker">Observa</span> De la fórmula al nombre
+      </h2>
+    </header>
+    <p class="section-intro">Elige una fórmula: primero se separa en sus partes, de las partes sale la
+      familia, de la familia su receta y de la receta, el nombre.</p>
+    <div class="lectura" data-lectura>
+      <div class="pastillas" role="group" aria-label="Elige una fórmula">
+        <button class="pastilla" type="button" aria-pressed="true" data-formula="cao">CaO</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="co2">CO<sub>2</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="koh">KOH</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="hcl">HCl</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="h2so4">H<sub>2</sub>SO<sub>4</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="fecl3">FeCl<sub>3</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="kno3">KNO<sub>3</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-formula="nahco3">NaHCO<sub>3</sub></button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="lectura" viewBox="0 0 400 196" role="img" aria-labelledby="lecturaTitle">
+          <title id="lecturaTitle">La fórmula elegida separada en sus partes, con el nombre de cada parte debajo; abajo, la familia del compuesto, la receta para nombrarlo y su nombre.</title>
+        </svg>
+      </figure>
+      <p class="editorial-note" aria-live="polite" data-lectura-nota></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="familiasNomenclatura">
+    <header class="section-header">
+      <h2 class="section-header__title" id="familiasNomenclatura">
+        <span class="lesson-section__kicker">Compara</span> Nueve familias, nueve recetas
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="familiasNomenclatura" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Cómo se reconoce y cómo se nombra cada familia de compuestos inorgánicos, con ejemplos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Familia</th>
+            <th scope="col">Se reconoce por</th>
+            <th scope="col">Se nombra</th>
+            <th scope="col">Ejemplos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Óxido metálico</th><td>metal + O</td><td>óxido de + metal (número romano si tiene varios)</td><td>CaO óxido de calcio · Fe<sub>2</sub>O<sub>3</sub> óxido de hierro (III)</td></tr>
+          <tr><th scope="row">Óxido no metálico (anhídrido)</th><td>no metal + O</td><td>prefijo + óxido de + prefijo + no metal</td><td>CO<sub>2</sub> dióxido de carbono · N<sub>2</sub>O<sub>5</sub> pentaóxido de dinitrógeno</td></tr>
+          <tr><th scope="row">Hidróxido (base)</th><td>metal + OH</td><td>hidróxido de + metal</td><td>KOH hidróxido de potasio · Al(OH)<sub>3</sub> hidróxido de aluminio</td></tr>
+          <tr><th scope="row">Hidrácido</th><td>H + no metal (halógeno o azufre)</td><td>ácido + raíz + -hídrico</td><td>HCl ácido clorhídrico · H<sub>2</sub>S ácido sulfhídrico</td></tr>
+          <tr><th scope="row">Oxiácido</th><td>H + ion con oxígeno</td><td>ácido + ion con -ato → -ico e -ito → -oso</td><td>H<sub>2</sub>SO<sub>4</sub> ácido sulfúrico · HNO<sub>2</sub> ácido nitroso</td></tr>
+          <tr><th scope="row">Sal binaria</th><td>metal + no metal</td><td>raíz del no metal + -uro de + metal</td><td>NaCl cloruro de sodio · KI yoduro de potasio</td></tr>
+          <tr><th scope="row">Oxisal</th><td>metal + ion con oxígeno</td><td>ion + de + metal</td><td>Na<sub>2</sub>SO<sub>4</sub> sulfato de sodio · Ca(NO<sub>2</sub>)<sub>2</sub> nitrito de calcio</td></tr>
+          <tr><th scope="row">Sal ácida</th><td>metal + H + ion con oxígeno</td><td>ion + (prefijo) ácido + de + metal</td><td>NaHCO<sub>3</sub> carbonato ácido de sodio · NaHSO<sub>4</sub> sulfato ácido de sodio</td></tr>
+          <tr><th scope="row">Hidruro metálico</th><td>metal + H</td><td>hidruro de + metal</td><td>NaH hidruro de sodio · CaH<sub>2</sub> hidruro de calcio</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Los prefijos son mono, di, tri, tetra, penta, hexa, hepta, octa, nona y deca.
+      Con un solo átomo del primer elemento no se escribe mono-: CO<sub>2</sub> es dióxido de carbono y CO,
+      monóxido de carbono.</p>
+  </section>
+
+  <section aria-labelledby="ionesNomenclatura">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ionesNomenclatura">
+        <span class="lesson-section__kicker">Consulta</span> Iones con oxígeno y sus ácidos
+      </h2>
+    </header>
+    <p class="section-intro">El nombre del ion da el de su ácido: -ato cambia a -ico e -ito a -oso. Con
+      cuatro iones del mismo elemento se agregan hipo- (el de menos oxígeno) y per- (el de más).</p>
+    <div class="reference-table-wrap" role="region" aria-labelledby="ionesNomenclatura" tabindex="0">
+      <table class="reference-table reference-table--ajustada reference-table--formulas">
+        <caption class="visually-hidden">Iones con oxígeno más comunes, su carga y el ácido que forman</caption>
+        <thead>
+          <tr><th scope="col">Ion</th><th scope="col">Nombre</th><th scope="col">Ácido</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">SO<sub>4</sub><sup>2−</sup></th><td>sulfato</td><td>H<sub>2</sub>SO<sub>4</sub> ácido sulfúrico</td></tr>
+          <tr><th scope="row">SO<sub>3</sub><sup>2−</sup></th><td>sulfito</td><td>H<sub>2</sub>SO<sub>3</sub> ácido sulfuroso</td></tr>
+          <tr><th scope="row">NO<sub>3</sub><sup>−</sup></th><td>nitrato</td><td>HNO<sub>3</sub> ácido nítrico</td></tr>
+          <tr><th scope="row">NO<sub>2</sub><sup>−</sup></th><td>nitrito</td><td>HNO<sub>2</sub> ácido nitroso</td></tr>
+          <tr><th scope="row">CO<sub>3</sub><sup>2−</sup></th><td>carbonato</td><td>H<sub>2</sub>CO<sub>3</sub> ácido carbónico</td></tr>
+          <tr><th scope="row">PO<sub>4</sub><sup>3−</sup></th><td>fosfato</td><td>H<sub>3</sub>PO<sub>4</sub> ácido fosfórico</td></tr>
+          <tr><th scope="row">ClO<sup>−</sup></th><td>hipoclorito</td><td>HClO ácido hipocloroso</td></tr>
+          <tr><th scope="row">ClO<sub>2</sub><sup>−</sup></th><td>clorito</td><td>HClO<sub>2</sub> ácido cloroso</td></tr>
+          <tr><th scope="row">ClO<sub>3</sub><sup>−</sup></th><td>clorato</td><td>HClO<sub>3</sub> ácido clórico</td></tr>
+          <tr><th scope="row">ClO<sub>4</sub><sup>−</sup></th><td>perclorato</td><td>HClO<sub>4</sub> ácido perclórico</td></tr>
+          <tr><th scope="row">MnO<sub>4</sub><sup>−</sup></th><td>permanganato</td><td>HMnO<sub>4</sub> ácido permangánico</td></tr>
+          <tr><th scope="row">CrO<sub>4</sub><sup>2−</sup></th><td>cromato</td><td>H<sub>2</sub>CrO<sub>4</sub> ácido crómico</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Las sales binarias usan la raíz del no metal con -uro: cloruro, bromuro,
+      yoduro, fluoruro, sulfuro (azufre) y nitruro (nitrógeno). El oxígeno no forma «oxuros»: con un metal da
+      un óxido.</p>
+  </section>
+
+  <section aria-labelledby="ejemploNomenclatura">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploNomenclatura">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">La familia</span><p>Hay un metal (Fe) y un ion con oxígeno
+        (SO<sub>4</sub>): es una <strong>oxisal</strong>. Su receta: ion + de + metal.</p></li>
+      <li><span class="worked-steps__label">El ion</span><p>SO<sub>4</sub><sup>2−</sup> es el ion
+        <strong>sulfato</strong>.</p></li>
+      <li><span class="worked-steps__label">El número</span><p>Tres sulfatos suman 3(−2) = −6; los dos hierros
+        suman +6: cada uno vale <strong>+3</strong>.</p></li>
+      <li><span class="worked-steps__label">El nombre</span><p><strong>Sulfato de hierro (III)</strong>.</p></li>
+    </ol>
+    <p class="editorial-note">Al revés también funciona: para escribir la fórmula del nitrato de calcio
+      junta Ca<sup>2+</sup> con NO<sub>3</sub><sup>−</sup>. Hacen falta dos nitratos para compensar el +2:
+      Ca(NO<sub>3</sub>)<sub>2</sub>.</p>
+  </section>
+
+  <section aria-labelledby="practicaNomenclatura">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaNomenclatura">
+        <span class="lesson-section__kicker">Practica</span> Nombra y escribe
+      </h2>
+      <span class="section-header__count">10 compuestos</span>
+    </header>
+    <p class="section-intro">Primero reconoce la familia; después elige el nombre o la fórmula. Comprueba
+      cada tanda: verás una pista en los que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · pp. 22–24, con compuestos distintos de los ejemplos de la fuente -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-nomenclatura-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-nomenclatura-inorganica.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los compuestos de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./numeros-oxidacion.html">← Números de oxidación</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

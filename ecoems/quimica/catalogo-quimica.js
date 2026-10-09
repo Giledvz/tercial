@@ -293,7 +293,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica', 'consulta'],
     etiquetas: ['óxidos', 'hidruros', 'ácidos', 'hidróxidos', 'sales'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './nomenclatura-inorganica.html'
   },
   {
     id: 'tipos-reaccion',

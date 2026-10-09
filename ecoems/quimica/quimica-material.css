@@ -5368,3 +5368,44 @@ select.particle-row__input {
   color: var(--color-text-primary);
   border-left: var(--border-medium) solid var(--color-accent);
 }
+
+/* Nomenclatura: la fórmula por partes, su familia, su receta y su nombre */
+.escena .escena__lectura-formula {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 40px;
+}
+
+.escena .escena__lectura-sub { font-size: 24px; }
+
+.escena__lectura-raya {
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.escena__lectura-raya--0 { stroke: var(--color-accent); }
+.escena__lectura-raya--1 { stroke: var(--color-text-secondary); }
+.escena__lectura-raya--2 { stroke: var(--e-metal); }
+
+.escena .escena__lectura-familia {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 19px;
+  font-style: italic;
+}
+
+.escena .escena__lectura-nombre {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 25px;
+}
+
+/* Fórmulas como encabezado de fila: en Fraunces y sin mayúsculas (ClO⁻ no es CLO⁻). */
+.reference-table--formulas tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}
