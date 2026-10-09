@@ -249,6 +249,35 @@ body,
 .task-table--frases td,
 .task-table--frases tbody th { height: 0.56in; }
 
+/* Dos tablas cortas, lado a lado */
+.task-tablas-dos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25in;
+}
+
+.task-table td.task-centro { text-align: center; }
+
+/* Tabla con las sustancias en el encabezado y una fila para escribir */
+.task-table--columnas thead th {
+  color: var(--ink-900);
+  font-family: var(--font-family-display);
+  font-size: 13pt;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: none;
+}
+
+/* Etiqueta pequeña dentro de una celda para escribir: «Fe =» */
+.task-celda-etiqueta {
+  color: var(--ink-500);
+  font-family: var(--font-family-mono);
+  font-size: 9pt;
+}
+
+.task-strip--iones { margin: 6pt 0 8pt; }
+
 /* Número atómico junto al nombre del elemento */
 .task-z {
   color: var(--ink-500);

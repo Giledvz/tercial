@@ -273,17 +273,6 @@ export const SEGMENTOS = [
   },
 
   {
-    id: 'nomenclatura-inorganica',
-    tema: 'reaccion-quimica',
-    titulo: 'Nomenclatura inorgánica',
-    descripcion: 'Nombra óxidos, hidruros, ácidos, hidróxidos y sales.',
-    paginas: '22–24',
-    alcance: 'nucleo',
-    usos: ['aprende', 'clase', 'practica', 'consulta'],
-    etiquetas: ['óxidos', 'hidruros', 'ácidos', 'hidróxidos', 'sales'],
-    estado: 'fuente'
-  },
-  {
     id: 'numeros-oxidacion',
     tema: 'reaccion-quimica',
     titulo: 'Números de oxidación',
@@ -292,6 +281,18 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['oxidación', 'reducción', 'electrones', 'iones'],
+    estado: 'disponible',
+    href: './numeros-oxidacion.html'
+  },
+  {
+    id: 'nomenclatura-inorganica',
+    tema: 'reaccion-quimica',
+    titulo: 'Nomenclatura inorgánica',
+    descripcion: 'Nombra óxidos, hidruros, ácidos, hidróxidos y sales.',
+    paginas: '22–24',
+    alcance: 'nucleo',
+    usos: ['aprende', 'clase', 'practica', 'consulta'],
+    etiquetas: ['óxidos', 'hidruros', 'ácidos', 'hidróxidos', 'sales'],
     estado: 'fuente'
   },
   {

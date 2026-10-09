@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Números de oxidación · Química ECOEMS · Tercial</title>
+<meta name="description" content="Qué significa el número de oxidación, las reglas para asignarlo, cómo usar la suma cero en compuestos e iones y cómo saber quién se oxida y quién se reduce.">
+<meta name="tercial:resource-id" content="ecoems-quimica-numeros-oxidacion">
+<meta name="tercial:resource-title" content="Números de oxidación">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./oxidacion-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 1 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Números de <em>oxidación</em></h1>
+    <p class="hero__lede">El número de oxidación dice cuántos electrones perdió o ganó un átomo, o cuántos
+      parece haber perdido o ganado dentro de un compuesto. Con unas cuantas reglas lo calculas y sabes
+      quién se oxida y quién se reduce en una reacción.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=oxidación#courseIndex">oxidación</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=reducción#courseIndex">reducción</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=electrones#courseIndex">electrones</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaOxidacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaOxidacion">
+        <span class="lesson-section__kicker">Idea central</span> Perder es subir; ganar es bajar
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Cada electrón que se va suma uno; cada uno que llega <em>resta uno</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Un átomo sin combinar tiene número de oxidación 0. Si <strong>pierde</strong> electrones queda con
+          carga positiva y su número sube: <strong>se oxida</strong>. Si <strong>gana</strong> electrones queda
+          con carga negativa y su número baja: <strong>se reduce</strong>.</p>
+        <p>Una frase para no confundirlas: <strong>se oxida, pierde electrones</strong>. Las dos cosas pasan
+          juntas: los electrones que pierde una sustancia los gana otra.</p>
+        <p>En un compuesto iónico, como el NaCl, el número de oxidación es la carga real de cada ion. En uno
+          covalente es una cuenta: se hace como si el átomo más electronegativo se quedara con los
+          electrones que comparte.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 25 -->
+      <footer class="source-line">
+        <span>Lectura · 6 min</span>
+      </footer>
+    </article>
+    <figure class="atom-figure">
+      <svg class="escena escena--reaccion" data-escena-reaccion="recta" viewBox="0 0 400 238" role="img" aria-labelledby="rectaTitle">
+        <title id="rectaTitle">A la izquierda, un átomo de cobre pierde dos electrones y queda como ion Cu²⁺, más pequeño; su número de oxidación sube de 0 a +2. A la derecha, un ion Fe³⁺ gana tres electrones y queda como hierro metálico, más grande; su número baja de +3 a 0. Abajo, la recta de los números de oxidación muestra los dos recorridos.</title>
+      </svg>
+      <figcaption class="atom-figure__caption">Radios a escala con valores medidos: el ion Cu<sup>2+</sup>
+        mide poco más de la mitad que el átomo de cobre y el hierro metálico, casi el doble que el ion Fe<sup>3+</sup>.
+        Sólo se dibujan los electrones que se van o que llegan.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="reglasOxidacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasOxidacion">
+        <span class="lesson-section__kicker">Compara</span> Las reglas para asignarlos
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="reglasOxidacion" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Reglas para asignar números de oxidación, con ejemplos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Caso</th>
+            <th scope="col">Número de oxidación</th>
+            <th scope="col">Ejemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Elemento sin combinar</th><td>0</td><td>Fe, O<sub>2</sub>, Cl<sub>2</sub></td></tr>
+          <tr><th scope="row">Ion de un solo átomo</th><td>Su carga</td><td>Na<sup>+</sup>: +1 · S<sup>2−</sup>: −2</td></tr>
+          <tr><th scope="row">Hidrógeno</th><td>+1; −1 en los hidruros metálicos</td><td>HCl: +1 · NaH: −1</td></tr>
+          <tr><th scope="row">Oxígeno</th><td>−2; −1 en los peróxidos</td><td>H<sub>2</sub>O: −2 · H<sub>2</sub>O<sub>2</sub>: −1</td></tr>
+          <tr><th scope="row">Metales del grupo IA</th><td>+1</td><td>K en KNO<sub>3</sub></td></tr>
+          <tr><th scope="row">Metales del grupo IIA</th><td>+2</td><td>Ca en CaCO<sub>3</sub></td></tr>
+          <tr><th scope="row">Aluminio (IIIA)</th><td>+3</td><td>Al en Al<sub>2</sub>O<sub>3</sub></td></tr>
+          <tr><th scope="row">Halógeno en una sal binaria con un metal</th><td>−1</td><td>Cl en NaCl · Br en CaBr<sub>2</sub></td></tr>
+          <tr><th scope="row">Compuesto</th><td>La suma es 0</td><td>H<sub>2</sub>O: 2(+1) + (−2) = 0</td></tr>
+          <tr><th scope="row">Ion de varios átomos</th><td>La suma es su carga</td><td>SO<sub>4</sub><sup>2−</sup>: +6 + 4(−2) = −2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Si dos reglas chocan, manda la que está más arriba en la tabla. En el NaH el
+      sodio es del grupo IA y vale +1; para que la suma dé 0, el hidrógeno tiene que valer −1. El flúor
+      vale −1 en todos sus compuestos.</p>
+  </section>
+
+  <section aria-labelledby="sumaCero">
+    <header class="section-header">
+      <h2 class="section-header__title" id="sumaCero">
+        <span class="lesson-section__kicker">Observa</span> La suma da cero
+      </h2>
+    </header>
+    <p class="section-intro">Elige una sustancia. Cada bloque es un átomo y mide tanto como su número de
+      oxidación: arriba los positivos, abajo los negativos. El bloque terracota es el que se calcula.</p>
+    <div class="suma" data-suma>
+      <div class="pastillas" role="group" aria-label="Elige una sustancia">
+        <button class="pastilla" type="button" aria-pressed="true" data-compuesto="h2so4">H<sub>2</sub>SO<sub>4</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="kmno4">KMnO<sub>4</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="k2cr2o7">K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="fe2o3">Fe<sub>2</sub>O<sub>3</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="nh3">NH<sub>3</sub></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="so4">SO<sub>4</sub><sup>2−</sup></button>
+        <button class="pastilla" type="button" aria-pressed="false" data-compuesto="nh4">NH<sub>4</sub><sup>+</sup></button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="sumacero" viewBox="0 0 400 184" role="img" aria-labelledby="sumaTitle">
+          <title id="sumaTitle">Bloques de números de oxidación: los positivos en una fila y los negativos en otra. El bloque del átomo desconocido crece hasta que las dos filas suman lo mismo; en un ion, hasta que la diferencia es su carga.</title>
+        </svg>
+      </figure>
+      <p class="suma__texto" aria-live="polite" data-suma-texto></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploOxidacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploOxidacion">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>: primero el ion
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">El metal</span><p>El calcio es del grupo IIA: vale +2. Hay tres:
+        3(+2) = <strong>+6</strong>.</p></li>
+      <li><span class="worked-steps__label">El ion</span><p>Para que el compuesto sume 0, los dos PO<sub>4</sub>
+        suman −6: cada ion fosfato tiene carga <strong>−3</strong>.</p></li>
+      <li><span class="worked-steps__label">El átomo</span><p>Dentro del ion la suma es su carga:
+        P + 4(−2) = −3, así que <strong>P = +5</strong>.</p></li>
+    </ol>
+    <p class="editorial-note">Con el mismo camino sale el Cr<sub>2</sub>(SeO<sub>3</sub>)<sub>3</sub> de la fuente:
+      el ion SeO<sub>3</sub> tiene carga −2, así que cada cromo vale +3 y el selenio, +4.</p>
+  </section>
+
+  <section aria-labelledby="practicaOxidacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaOxidacion">
+        <span class="lesson-section__kicker">Practica</span> Calcula y decide
+      </h2>
+      <span class="section-header__count">10 ejercicios</span>
+    </header>
+    <p class="section-intro">Escribe cada número con su signo, por ejemplo +3 o −2. Comprueba cada tanda:
+      verás una pista en los que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · pp. 25–26, con compuestos distintos de los resueltos en la fuente -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-oxidacion-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidos · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-numeros-oxidacion.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa los ejercicios de esta tanda para comprobarlos.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./enlaces-lewis.html">← Enlaces y estructuras de Lewis</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

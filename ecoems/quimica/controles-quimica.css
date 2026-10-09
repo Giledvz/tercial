@@ -293,14 +293,16 @@
 
 /* Pestañas de propiedades (tendencias periódicas): conmutadores pequeños,
    con forma de píldora; la elegida, en terracota. */
-.tendencias__tabs {
+.tendencias__tabs,
+.pastillas {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
-.tendencias__tab {
+.tendencias__tab,
+.pastilla {
   min-height: 2.5rem;
   padding: 0 var(--space-4);
   color: var(--color-text-secondary);
@@ -312,23 +314,27 @@
   cursor: pointer;
 }
 
-.tendencias__tab:focus-visible {
+.tendencias__tab:focus-visible,
+.pastilla:focus-visible {
   outline: var(--border-medium) solid var(--color-border-focus);
   outline-offset: 2px;
 }
 
-.tendencias__tab[aria-pressed="true"] {
+.tendencias__tab[aria-pressed="true"],
+.pastilla[aria-pressed="true"] {
   color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
 @media (hover: hover) {
-  .tendencias__tab:hover {
+  .tendencias__tab:hover,
+  .pastilla:hover {
     color: var(--color-text-primary);
     border-color: var(--color-border-strong);
   }
 
-  .tendencias__tab[aria-pressed="true"]:hover {
+  .tendencias__tab[aria-pressed="true"]:hover,
+  .pastilla[aria-pressed="true"]:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
   }

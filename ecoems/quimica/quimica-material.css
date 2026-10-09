@@ -5275,3 +5275,96 @@ select.particle-row__input {
   stroke-width: 1.2;
   stroke-linecap: round;
 }
+
+/* ============================================================
+   Tema 3 · La reacción química
+   ============================================================ */
+
+/* Números de oxidación: iones a escala, electrones y la recta */
+.escena__ion-cuerpo { fill: var(--e-metal); }
+
+.escena .escena__ion-simbolo {
+  fill: var(--e-paper);
+  font-family: var(--font-family-display);
+  font-size: 15px;
+}
+
+.escena .escena__ion-carga {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+}
+
+.escena .escena__ion-carga.es-positiva { fill: var(--color-accent); }
+
+.escena .escena__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+}
+
+.escena .escena__formula-indice { font-size: 11px; }
+.escena .escena__formula--grande { font-size: 28px; }
+.escena .escena__formula--grande .escena__formula-indice { font-size: 17px; }
+.escena .escena__formula-incognita { fill: var(--color-accent); }
+
+.escena .escena__clave--fuerte {
+  fill: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.escena__trazo {
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.escena__trazo--sube { stroke: var(--color-accent); }
+.escena__trazo--baja { stroke: var(--color-text-secondary); }
+.escena__punta--sube { fill: var(--color-accent); }
+.escena__punta--baja { fill: var(--color-text-secondary); }
+
+/* La suma es cero: un bloque por átomo, tan largo como su número de oxidación */
+.escena__bloque.es-positivo {
+  fill: var(--e-fondo);
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+.escena__bloque.es-negativo { fill: var(--e-disolvente); }
+.escena__bloque.es-incognita { fill: var(--color-accent); }
+
+.escena .escena__bloque-simbolo {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: 9px;
+}
+
+.escena .escena__bloque-valor {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+}
+
+.escena__bloque.es-negativo ~ .escena__bloque-simbolo,
+.escena__bloque.es-negativo ~ .escena__bloque-valor,
+.escena__bloque.es-incognita ~ .escena__bloque-simbolo,
+.escena__bloque.es-incognita ~ .escena__bloque-valor { fill: var(--e-paper); }
+
+.escena__igualdad {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+  stroke-linecap: round;
+}
+
+.escena__igualdad--carga { stroke-dasharray: 2 3; }
+
+.suma__texto {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-accent);
+}
