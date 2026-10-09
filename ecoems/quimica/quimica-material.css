@@ -3083,7 +3083,11 @@
 .atom-figure + .editorial-note,
 .tabla-figure + .editorial-note,
 .atom-figure + .comparison-grid,
-.atom-figure + .reference-table-wrap {
+.atom-figure + .reference-table-wrap,
+.suma + .editorial-note,
+.lectura + .editorial-note,
+.reacomodo + .editorial-note,
+.escala-ph + .editorial-note {
   margin-top: var(--space-5);
 }
 
@@ -5493,3 +5497,53 @@ select.particle-row__input {
 }
 
 .escena .escena__particula-indice { font-size: 5.5px; }
+
+/* Ácidos y bases: escala de pH, marcador y papel tornasol */
+.escena--reaccion {
+  --e-tornasol-rojo: var(--color-accent);
+  --e-tornasol-azul: var(--cat-blue);
+}
+
+.escena__ph-acido { stop-color: var(--color-accent); }
+.escena__ph-neutro { stop-color: var(--e-fondo); }
+.escena__ph-basico { stop-color: var(--cat-blue); }
+.escena .escena__ph-basico-texto { fill: var(--cat-blue); }
+
+.escena__ph-barra {
+  stroke: var(--color-border-strong);
+  stroke-width: .8;
+}
+
+.escena__ph-marca { fill: var(--color-text-primary); }
+
+.escena__ph-linea {
+  stroke: var(--color-text-primary);
+  stroke-width: 2;
+}
+
+.escena .escena__ph-nombre {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 22px;
+}
+
+.escena__tornasol {
+  stroke: var(--color-border-strong);
+  stroke-width: .6;
+}
+
+.escena__tornasol--azul { fill: var(--e-tornasol-azul); }
+.escena__tornasol--rojo { fill: var(--e-tornasol-rojo); }
+
+.escala-ph__texto {
+  max-width: 68ch;
+  margin-top: var(--space-4);
+  padding-left: var(--space-4);
+  color: var(--color-text-primary);
+  border-left: var(--border-medium) solid var(--color-accent);
+}
+
+.escena__p--proton { fill: var(--color-accent); }
+.escena__p--hidroxido { fill: var(--cat-navy); }
+.escena__p--agua { fill: var(--e-particula); }
+.escena .escena__particula-etiqueta--proton { font-size: 5px; }

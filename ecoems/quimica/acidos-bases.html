@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-nivel="prepa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ácidos, bases y neutralización · Química ECOEMS · Tercial</title>
+<meta name="description" content="Las teorías de Arrhenius, Brønsted-Lowry y Lewis, la escala de pH, el papel tornasol, ácidos y bases fuertes y débiles, y la neutralización: ácido + base → sal + agua.">
+<meta name="tercial:resource-id" content="ecoems-quimica-acidos-bases">
+<meta name="tercial:resource-title" content="Ácidos, bases y neutralización">
+<meta name="tercial:subject" content="quimica">
+<meta name="tercial:topic" content="reaccion-quimica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto';
+    try { p = localStorage.getItem('tercial-theme-pref') || 'auto'; } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
+<link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js"></script>
+<script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
+<script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
+<script defer src="./acidos-practica.js?v=20261009-tema3"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero">
+    <p class="eyebrow">Tema 03 · 4 de 9 · Aprende y practica</p>
+    <h1 class="hero__title">Ácidos, bases y <em>neutralización</em></h1>
+    <p class="hero__lede">Hay ácidos en el limón y en el estómago, y bases en el jabón y en los antiácidos.
+      Tres teorías los definen, la escala de pH dice qué tan ácida o básica es una disolución y, al
+      juntar un ácido con una base, se neutralizan.</p>
+    <nav class="material-meta" aria-label="Navegación y etiquetas del material">
+      <a class="material-meta__back" href="./index.html">← Química</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=pH#courseIndex">pH</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=ácidos#courseIndex">ácidos</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="./index.html?q=neutralización#courseIndex">neutralización</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="ideaAcidos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaAcidos">
+        <span class="lesson-section__kicker">Idea central</span> H<sup>+</sup> y OH<sup>−</sup>
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Un ácido aporta H<sup>+</sup>; una base aporta <em>OH<sup>−</sup></em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En agua, un <strong>ácido</strong> libera iones hidrógeno, H<sup>+</sup>, y una <strong>base</strong>
+          libera iones hidróxido, OH<sup>−</sup>. Cuando se juntan, el H<sup>+</sup> y el OH<sup>−</sup> forman
+          agua y los demás iones forman una sal: es la <strong>neutralización</strong>.</p>
+        <p>Un ácido o una base <strong>fuerte</strong> se ioniza por completo en el agua, como el HCl o el NaOH;
+          uno <strong>débil</strong> sólo en parte, como el ácido acético del vinagre o el amoniaco.</p>
+        <p>En el agua el H<sup>+</sup> no anda solo: viaja unido a una molécula de agua, como ion hidronio,
+          H<sub>3</sub>O<sup>+</sup>. En las ecuaciones de esta lección se escribe H<sup>+</sup> para simplificar.</p>
+      </div>
+      <!-- Fuente: QUA-001 · p. 28 -->
+      <footer class="source-line">
+        <span>Lectura · 6 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section aria-labelledby="teoriasAcidos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="teoriasAcidos">
+        <span class="lesson-section__kicker">Compara</span> Tres teorías, cada vez más amplias
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="teoriasAcidos" tabindex="0">
+      <table class="reference-table">
+        <caption class="visually-hidden">Definición de ácido y de base según Arrhenius, Brønsted-Lowry y Lewis</caption>
+        <thead>
+          <tr><th scope="col">Teoría</th><th scope="col">Ácido</th><th scope="col">Base</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Arrhenius</th><td>En agua libera iones H<sup>+</sup></td><td>En agua libera iones OH<sup>−</sup></td><td>HCl ácido · NaOH base</td></tr>
+          <tr><th scope="row">Brønsted-Lowry</th><td>Dona protones (H<sup>+</sup>)</td><td>Acepta protones</td><td>NH<sub>3</sub> acepta un H<sup>+</sup> del agua: es base</td></tr>
+          <tr><th scope="row">Lewis</th><td>Acepta un par de electrones</td><td>Dona un par de electrones</td><td>El NH<sub>3</sub> dona su par libre al H<sup>+</sup></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Mientras más fácil dona protones un ácido, más fuerte es; mientras más fácil
+      los acepta una base, más fuerte es ella.</p>
+  </section>
+
+  <section aria-labelledby="escalaPh">
+    <header class="section-header">
+      <h2 class="section-header__title" id="escalaPh">
+        <span class="lesson-section__kicker">Observa</span> La escala de pH y el tornasol
+      </h2>
+    </header>
+    <p class="section-intro">Elige una sustancia. Su pH va de 0 a 14: abajo de 7 es ácida, 7 es neutra y
+      arriba de 7 es básica. Los valores son típicos; cada muestra puede variar un poco.</p>
+    <div class="escala-ph" data-escala-ph>
+      <div class="pastillas" role="group" aria-label="Elige una sustancia">
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="gastrico">Jugo gástrico</button>
+        <button class="pastilla" type="button" aria-pressed="true" data-sustancia="limon">Limón</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="vinagre">Vinagre</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="cafe">Café</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="leche">Leche</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="agua">Agua pura</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="sangre">Sangre</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="bicarbonato">Bicarbonato</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="magnesia">Leche de magnesia</button>
+        <button class="pastilla" type="button" aria-pressed="false" data-sustancia="blanqueador">Blanqueador</button>
+      </div>
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="escalaph" viewBox="0 0 400 214" role="img" aria-labelledby="escalaTitle">
+          <title id="escalaTitle">Escala de pH de 0 a 14 con un marcador en el pH de la sustancia elegida; abajo, dos tiras de papel tornasol, azul y rojo, con su parte seca y su parte mojada en la sustancia.</title>
+        </svg>
+      </figure>
+      <p class="escala-ph__texto" aria-live="polite" data-escala-texto></p>
+    </div>
+    <p class="editorial-note">Cada unidad de pH es diez veces más o menos H<sup>+</sup>: el jugo de limón
+      (pH 2) tiene unas cien mil veces más iones H<sup>+</sup> que el agua pura (pH 7).</p>
+  </section>
+
+  <section aria-labelledby="propiedadesAcidos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="propiedadesAcidos">
+        <span class="lesson-section__kicker">Distingue</span> Cómo se comportan
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-labelledby="propiedadesAcidos" tabindex="0">
+      <table class="reference-table reference-table--ajustada">
+        <caption class="visually-hidden">Propiedades de los ácidos y de las bases</caption>
+        <thead><tr><th scope="col">Ácidos</th><th scope="col">Bases</th></tr></thead>
+        <tbody>
+          <tr><td>Cambian el tornasol azul a rojo</td><td>Cambian el tornasol rojo a azul</td></tr>
+          <tr><td>Producen iones H<sup>+</sup> en agua</td><td>Producen iones OH<sup>−</sup> en agua</td></tr>
+          <tr><td>Sabor agrio, como el limón</td><td>Sabor amargo y sensación jabonosa</td></tr>
+          <tr><td>Neutralizan a las bases</td><td>Neutralizan a los ácidos</td></tr>
+          <tr><td>Conducen la electricidad en agua: son electrolitos</td><td>También son electrolitos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">El sabor se menciona porque se reconoce en la cocina, pero en el laboratorio
+      nunca se prueba nada: muchos ácidos y bases queman la piel.</p>
+  </section>
+
+  <section aria-labelledby="neutralizacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="neutralizacion">
+        <span class="lesson-section__kicker">Observa</span> Ácido + base → sal + agua
+      </h2>
+    </header>
+    <p class="section-intro">Ácido clorhídrico con hidróxido de sodio: cada H<sup>+</sup> se junta con un
+      OH<sup>−</sup> y forman agua. El Na<sup>+</sup> y el Cl<sup>−</sup> siguen disueltos: son la sal.</p>
+    <div class="reacomodo" data-reacomodo="neutralizacion">
+      <figure class="atom-figure">
+        <svg class="escena escena--reaccion" data-escena-reaccion="reacomodo" viewBox="0 0 400 214" role="img" aria-labelledby="neutraTitle">
+          <title id="neutraTitle">Iones en agua: tres H⁺ se juntan, uno por uno, con tres OH⁻ y forman tres moléculas de agua; tres Na⁺ y tres Cl⁻ siguen disueltos.</title>
+        </svg>
+      </figure>
+      <div class="reacomodo__clave" aria-label="Clave de colores" data-reacomodo-clave></div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-repetir>Repetir la neutralización</button>
+      </div>
+    </div>
+    <p class="editorial-note">Si se evapora el agua queda la sal, cloruro de sodio. Con otros ácidos y bases
+      cambia la sal: HNO<sub>3</sub> + KOH → KNO<sub>3</sub> + H<sub>2</sub>O.</p>
+  </section>
+
+  <section aria-labelledby="practicaAcidos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaAcidos">
+        <span class="lesson-section__kicker">Practica</span> pH, teorías y neutralización
+      </h2>
+      <span class="section-header__count">10 preguntas</span>
+    </header>
+    <p class="section-intro">Comprueba cada tanda: verás una pista en las que debas revisar.</p>
+    <!-- Ejercicios: QUA-001 · p. 28 -->
+    <form data-practice-form autocomplete="off">
+      <div class="exercise-list" data-acidos-practica></div>
+
+      <div class="practice-tools">
+        <p class="practice-progress" data-practice-progress aria-live="polite">0 de 10 respondidas · guardado en este dispositivo</p>
+        <button class="practice-reset" type="button" data-practice-reset disabled>Borrar mis respuestas</button>
+      </div>
+      <div class="practice-actions">
+        <button class="practice-action" type="button" data-practice-check disabled>Comprobar esta tanda</button>
+        <a class="practice-action" href="../../output/pdf/tarea-acidos-bases.pdf?v=20261009-tema3" download>Generar tarea en PDF ↓</a>
+      </div>
+      <p class="practice-validation" data-practice-validation aria-live="polite">Completa las preguntas de esta tanda para comprobarlas.</p>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · ECOEMS · Química</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./tipos-reaccion.html">← Tipos de reacción</a>
+    <a href="./index.html">Índice de Química</a>
+  </nav>
+</footer>
+
+</body>
+</html>

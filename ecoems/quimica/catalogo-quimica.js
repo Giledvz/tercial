@@ -317,7 +317,8 @@ export const SEGMENTOS = [
     alcance: 'nucleo',
     usos: ['aprende', 'clase', 'practica'],
     etiquetas: ['ácido', 'base', 'neutralización', 'pH', 'Arrhenius'],
-    estado: 'fuente'
+    estado: 'disponible',
+    href: './acidos-bases.html'
   },
   {
     id: 'combustion',
