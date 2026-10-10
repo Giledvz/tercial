@@ -239,7 +239,8 @@ function recta(svg) {
 
 /* ---------------- Reloj compartido ---------------- */
 const factories = { recta };
-const scenes = [...document.querySelectorAll('[data-escena-mate]')].map(svg => ({
+// Sólo las escenas de este módulo: otra lección puede traer las suyas con el mismo atributo.
+const scenes = [...document.querySelectorAll('[data-escena-mate]')].filter(svg => factories[svg.dataset.escenaMate]).map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaMate](svg)
 }));
 let frame = 0, previous = 0;

@@ -203,7 +203,8 @@ function auto(svg) {
 
 /* ---------------- Reloj compartido ---------------- */
 const factories = { auto };
-const scenes = [...document.querySelectorAll('[data-escena-fisica]')].map(svg => ({
+// Sólo las escenas de este módulo: otra lección puede traer las suyas con el mismo atributo.
+const scenes = [...document.querySelectorAll('[data-escena-fisica]')].filter(svg => factories[svg.dataset.escenaFisica]).map(svg => ({
   svg, visible: false, ...factories[svg.dataset.escenaFisica](svg)
 }));
 let frame = 0, previous = 0;
