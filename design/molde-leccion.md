@@ -1,9 +1,21 @@
 # Molde de lección · lectura y tele
 
 Cómo está hecha una lección de Tercial y cómo se agrega la siguiente. El molde nació con los
-fundamentos (semana 1: `matematicas/signos.html` y `fisica/magnitudes-unidades.html`) y ya lo
-usan también las 25 lecciones de Química ECOEMS (`ecoems/quimica/`). La secuencia de las 8
-semanas de fundamentos está en `rediseno/FUNDAMENTOS.md` (rama de Codex).
+fundamentos (semana 1: `matematicas/signos.html` y `fisica/magnitudes-unidades.html`). Hoy lo
+usan las 16 lecciones de fundamentos (8 semanas, una de matemáticas y una de física en cada
+una) y las 25 de Química ECOEMS (`ecoems/quimica/`). La secuencia de las 8 semanas está en
+`rediseno/FUNDAMENTOS.md` (rama de Codex).
+
+| Semana | Matemáticas (`matematicas/`) | Física (`fisica/`) |
+|---|---|---|
+| 1 | `signos` | `magnitudes-unidades` |
+| 2 | `fracciones` | `conversiones-unidades` |
+| 3 | `potencias-radicales` | `notacion-cientifica` |
+| 4 | `expresiones-algebraicas` | `analisis-dimensional` |
+| 5 | `productos-notables` | `graficas-leer` |
+| 6 | `factorizacion` | `graficas-movimiento` |
+| 7 | `ecuaciones-primer-grado` | `despejes` |
+| 8 | `cuadraticas-sistemas` | `vectores-proporcionalidad` |
 
 ## Archivos
 
@@ -13,11 +25,12 @@ semanas de fundamentos está en `rediseno/FUNDAMENTOS.md` (rama de Codex).
 | `assets/js/leccion.js` | Modo tele: tecla P o botón, flechas, Esc, ajuste al alto, tablas por partes, `#tele` |
 | `assets/js/reto.js` | El reto relámpago: opción múltiple con cronómetro, sólo en la tele |
 | `assets/js/ejercicios-motor.js` | Copia publicada del motor de Codex, con generadores de signos; los cambios van listados en su encabezado |
-| `assets/js/ejercicios-fisica.js` | Generadores de Física (`si-unidades`, `si-derivadas`, `si-escritura`, `si-signo`) |
+| `assets/js/ejercicios-fisica.js` | Generadores de la semana 1 de Física (`si-unidades`, `si-derivadas`, `si-escritura`, `si-signo`) y, en `M.fisica`, las ayudas que usan los demás: `armar`, `juntar`, `azar`, `barajar`, `conSigno`, `numero`, `opcion` |
+| `assets/js/ejercicios-<lección>.js` | Los generadores de la práctica de esa lección (desde la semana 2) |
 | `assets/js/practica-sin-fin.js` | La práctica: modos, niveles, tandas de 10, opciones A–D y explicación del error |
 | `assets/css/materia.css` | Casa de cada materia: la ruta de 8 semanas |
-| `<materia>/escenas-<materia>.js` | Las escenas animadas (contrato `{ update(dt), still() }`) |
-| `<materia>/<materia>.css` | Estilos propios de esas escenas |
+| `<materia>/escenas-<materia>.js` | Las escenas de la semana 1 (contrato `{ update(dt), still() }`) |
+| `<materia>/escenas-<lección>.js` y `<materia>/<lección>.css` | Desde la semana 2, cada lección trae su escena y sus estilos |
 
 Química carga `leccion.css` antes de `quimica-material.css`; las reglas de la tele para sus
 piezas propias (tablas de fórmulas, modelos atómicos, herramientas) también viven en
@@ -115,6 +128,13 @@ o traerlas escritas (Química), en un JSON dentro del reto:
 </aside>
 ```
 
+El tiempo por pregunta va de 20 a 30 segundos, según lo que haya que pensar:
+- 20 para una cuenta de un paso (Signos);
+- 25 para una cuenta corta (Potencias, Conversiones);
+- 30 para leer una gráfica, factorizar o hacer dos pasos de cuenta mental (Gráficas, Despejes).
+
+Las preguntas escritas de Química usan 30.
+
 Al escribir un reto:
 - cuatro preguntas: la idea central, reconocer un ejemplo, aplicar, y una trampa que la
   lección advierte;
@@ -161,7 +181,11 @@ de macOS (Core Image) desde una captura de la tele, en claro y en oscuro.
 
 - La tarea pública va en `examenes-pdf/tarea-<lección>.html` y su PDF en `output/pdf/`.
 - Usa `exam-pdf--fundamentos`, en coñac, el color por omisión.
-- Ninguna cuenta de la tarea puede aparecer resuelta en la lección, en la práctica ni en el reto.
+- Ninguna cuenta de la tarea puede aparecer resuelta en la lección, en la práctica ni en el reto,
+  ni en la lección pareja de la otra materia: las dos de una semana comparten temas (Fracciones
+  resolvía «3/4 h = 45 min», que estaba en la tarea de Conversiones).
+- Una tarea con fracciones apiladas trae sus estilos `.fr` en su propio `<style>`:
+  `tarea-print.css` todavía no los tiene.
 - La clave nunca entra al repositorio: se arma fuera y queda en
   `~/Documents/Respuestas - <Tema>.pdf`.
 
@@ -184,9 +208,17 @@ Antes de dar por buena una lección:
 
 ## Siguiente semana
 
-1. Copia la lección de la semana anterior de la misma materia y cambia el contenido.
-2. Agrega el generador de la práctica, si hace falta, y pruébalo.
+1. Copia la lección de la semana anterior de la misma materia y cambia el contenido: la página,
+   su escena (`escenas-<lección>.js`) y sus estilos (`<lección>.css`).
+2. Escribe los generadores en `assets/js/ejercicios-<lección>.js` y pruébalos con miles de
+   ejercicios al azar.
 3. Arma el cierre: el reto y «Tu tarea» con su QR, comprobado.
-4. Haz la tarea y su clave.
-5. En la casa de la materia (`<materia>/index.html`), cambia la semana de «Próximamente» a lista.
+4. Haz la tarea y su clave, y revisa que no repita nada de las dos lecciones de la semana.
+5. Cuando las dos lecciones de la semana estén listas, ábrela en las dos casas
+   (`matematicas/index.html` y `fisica/index.html`):
+   - la tarjeta pasa a `ruta__semana--lista`;
+   - su tema se vuelve liga a la lección;
+   - en la frase puente, el nombre de la lección pareja se vuelve liga;
+   - «Próximamente» cambia a «Lección · práctica · tarea»;
+   - la cuenta sube («N de 8 listas»).
 6. Haz la revisión completa.
