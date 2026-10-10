@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 7 - Despejes en fórmulas físicas · Fundamentos · Física · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* Sólo en esta tarea: fracciones apiladas como en la lección, el nombre de cada fórmula y los
+       despejes de un paso en renglones, con su recuadro al lado. */
+    .fr { display: inline-flex; flex-direction: column; align-items: center; margin: 0 .12em; line-height: 1; vertical-align: middle; }
+    .fr__n { padding: 0 .15em .1em; border-bottom: .06em solid currentColor; }
+    .fr__d { padding: .1em .15em 0; }
+    .task-nombre { display: block; margin-top: 1pt; color: var(--ink-500); font-family: var(--font-family-body); font-size: 8.5pt; white-space: nowrap; }
+    .task-errores .task-nombre { display: inline; margin-left: 8pt; }
+    .task-table td.task-formula { font-family: var(--font-family-display); font-size: 12pt; }
+    .task-table--baja.task-table--despejes td { height: 0.27in; }
+    .task-problems--tres.task-problems--amplio .task-work { flex-basis: 0.62in; }
+    .task-problems--alto .task-work { flex-basis: 1.05in; }
+    .task-sinpartir { white-space: nowrap; }
+    .task-despejes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6pt 0.3in; }
+    .exam-pdf__sublist.task-despejes > li { display: flex; align-items: center; justify-content: space-between; gap: 8pt; margin: 0; }
+    .exam-pdf__sublist.task-despejes > li::before { top: 50%; transform: translateY(-50%); }
+    .task-despejes .task-work { flex: none; width: 1.4in; height: 0.48in; margin: 0; }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 7 · Fundamentos · Física</p>
+    <h1 class="exam-pdf__title"><em>Despejes</em> en fórmulas físicas</h1>
+    <p class="exam-pdf__meta">Deshacer las operaciones en orden inverso, encontrar errores y calcular con unidades</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve sin calculadora. Haz lo mismo en los dos lados del igual y deshaz las operaciones en orden
+      inverso. Al sustituir, escribe cada dato con su unidad.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> ¿Qué operación le hacen a la letra indicada y cómo se deshace?</p>
+      <table class="task-table task-table--baja task-table--despejes">
+        <colgroup><col style="width: 27%"><col style="width: 10%"><col style="width: 31.5%"><col style="width: 31.5%"></colgroup>
+        <thead><tr><th scope="col">Fórmula</th><th scope="col">Letra</th><th scope="col">Qué le hacen</th><th scope="col">Se deshace…</th></tr></thead>
+        <tbody>
+          <tr><td class="task-formula">p = m·v</td><td class="task-formula">v</td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          <tr><td class="task-formula">C = Q/V</td><td class="task-formula">Q</td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          <tr><td class="task-formula">P = P<sub>0</sub> + ρ·g·h</td><td class="task-formula">P<sub>0</sub></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          <tr><td class="task-formula">ΔU = Q − W</td><td class="task-formula">Q</td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          <tr><td class="task-formula">E = h·f</td><td class="task-formula">f</td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          <tr><td class="task-formula">A = ℓ²</td><td class="task-formula">ℓ</td><td class="is-blank"></td><td class="is-blank"></td></tr>
+        </tbody>
+      </table>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Despeja la letra indicada. Escribe el resultado en el recuadro.</p>
+      <ol class="exam-pdf__sublist task-despejes">
+        <li><span><span class="task-operacion">f de v = λ·f</span><span class="task-nombre">ondas</span></span><div class="task-work"></div></li>
+        <li><span><span class="task-operacion">x de F = k·x</span><span class="task-nombre">ley de Hooke</span></span><div class="task-work"></div></li>
+        <li><span><span class="task-operacion">t de E = P·t</span><span class="task-nombre">energía eléctrica</span></span><div class="task-work"></div></li>
+        <li><span><span class="task-operacion">W de P = <span class="fr"><span class="fr__n">W</span><span class="fr__d">t</span></span></span><span class="task-nombre">potencia</span></span><div class="task-work"></div></li>
+        <li><span><span class="task-operacion">t de I = <span class="fr"><span class="fr__n">q</span><span class="fr__d">t</span></span></span><span class="task-nombre">corriente eléctrica</span></span><div class="task-work"></div></li>
+        <li><span><span class="task-operacion">v de n = <span class="fr"><span class="fr__n">c</span><span class="fr__d">v</span></span></span><span class="task-nombre">índice de refracción</span></span><div class="task-work"></div></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Despeja en dos o más pasos: primero lo que suma o resta, luego lo
+        que multiplica o divide y, al final, la raíz. Escribe cada paso.</p>
+      <ol class="exam-pdf__sublist task-problems task-problems--tres task-problems--amplio">
+        <li><span><span class="task-operacion">v de x = x<sub>0</sub> + v·t</span><span class="task-nombre">posición en el MRU</span></span>
+          <div class="task-work"></div></li>
+        <li><span><span class="task-operacion">x de E<sub>e</sub> = ½·k·x²</span><span class="task-nombre">energía de un resorte</span></span>
+          <div class="task-work"></div></li>
+        <li><span><span class="task-operacion">d de v² = v<sub>0</sub>² + 2·a·d</span><span class="task-nombre">MRUA, sin el tiempo</span></span>
+          <div class="task-work"></div></li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Despejes en fórmulas físicas</strong>
+      <span>Tarea 7 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 3">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Cada despeje está mal: di qué se hizo mal y escribe el correcto.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span class="task-operacion">J = F·t &nbsp;→&nbsp; t = J − F</span> <span class="task-nombre">impulso</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">E = <span class="fr"><span class="fr__n">F</span><span class="fr__d">q</span></span> &nbsp;→&nbsp; q = <span class="fr"><span class="fr__n">E</span><span class="fr__d">F</span></span></span> <span class="task-nombre">campo eléctrico</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">A = π·r² &nbsp;→&nbsp; r = <span class="fr"><span class="fr__n">A</span><span class="fr__d">2·π</span></span></span> <span class="task-nombre">área de un círculo</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">12 pts</span> Despeja, sustituye y calcula. Escribe el resultado con su unidad.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--alto">
+          <li><span>Una pelota de 0.4&nbsp;kg tiene una cantidad de movimiento de 6&nbsp;kg·m/s <span class="task-sinpartir">(p = m·v)</span>. ¿Qué velocidad lleva?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>m/s</b></p></li>
+          <li><span>El sonido viaja en el aire a 340&nbsp;m/s <span class="task-sinpartir">(v = λ·f)</span>. ¿Qué longitud de onda tiene un sonido de 680&nbsp;Hz?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>m</b></p></li>
+          <li><span>Por un cable pasan 30&nbsp;C de carga con una corriente de 2&nbsp;A <span class="task-sinpartir">(I = q/t)</span>. ¿Cuánto tiempo tardan en pasar?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>s</b></p></li>
+          <li><span>Un auto va a 20&nbsp;m/s y frena con <span class="task-sinpartir">a = −5&nbsp;m/s²</span> hasta detenerse <span class="task-sinpartir">(v² = v<sub>0</sub>² + 2·a·d)</span>. ¿Qué distancia recorre mientras frena?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>m</b></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">36</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

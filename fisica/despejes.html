@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Despejes en fórmulas físicas · Física · Tercial</title>
+<meta name="description" content="Despejar v de d = v·t es lo mismo que despejar x de 3x = 12: lo que se hace de un lado del igual se hace del otro, y las operaciones se deshacen en orden inverso. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-despejes">
+<meta name="tercial:resource-title" content="Despejes en fórmulas físicas">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="despejes">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./despejes.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-tele"></script>
+<script defer src="/tercial/assets/js/ejercicios-despejes.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-despejes.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 7 · Física</p>
+    <h1 class="hero__title"><em>Despejes</em> en fórmulas físicas</h1>
+    <p class="hero__lede">Despejar v de <span class="expresion">d = v·t</span> es lo mismo que despejar x de
+      <span class="expresion">3x = 12</span>. Aquí ves por qué, en qué orden se deshacen las operaciones y cómo
+      sacar el resultado con su unidad.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 7 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/ecuaciones-primer-grado.html">En matemáticas: ecuaciones de primer grado</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaDespejar" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaDespejar">
+        <span class="lesson-section__kicker">Idea central</span> Una fórmula es una ecuación
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Lo de ayer, <em>con letras</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p><span class="expresion">d = v·t</span> dice que la distancia es igual a la velocidad por el tiempo, y
+          cada letra es un número que todavía no conoces. Si te dan dos, la fórmula te da el tercero, pero primero
+          hay que <strong>despejarlo</strong>: dejarlo solo de un lado del igual.</p>
+        <p>Se despeja igual que ayer se resolvía una ecuación: lo que haces de un lado del igual, lo haces del
+          otro. En <span class="expresion">3x = 12</span> divides los dos lados entre 3 y queda
+          <span class="expresion">x = 4</span>; en <span class="expresion">d = v·t</span> divides entre t y queda
+          <span class="expresion">v = <span class="fr"><span class="fr__n">d</span><span class="fr__d">t</span></span></span>.
+          Esto que hiciste ayer con x, hoy se llama despejar v.</p>
+        <p>Para dejar sola a la letra se deshace lo que se le hizo, en orden inverso, como cuando te quitas los
+          zapatos antes que los calcetines: lo último que se le hizo es lo primero que se deshace. Lo que suma se
+          resta, lo que multiplica divide, y un cuadrado se deshace con raíz.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3&nbsp;min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaDespeje" data-diapositiva="dos" data-figura="amplia" data-despejes>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaDespeje">
+        <span class="lesson-section__kicker">Observa</span> Con números y con letras
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una fórmula. Arriba va una ecuación como las de ayer;
+      abajo, la fórmula de física. Las dos dan los mismos pasos, en el mismo orden.</p>
+    <div class="pastillas" role="group" aria-label="Elige una fórmula">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="mru">d = v·t</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="presion">P = F/A</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="mrua">v = v<sub>0</sub> + a·t</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica escena-despeje" data-escena-fisica="despejes" viewBox="0 0 480 214" role="img" aria-labelledby="despejeTitulo">
+        <title id="despejeTitulo">Dos renglones hacen el mismo despeje, paso a paso. Arriba, una ecuación con
+          números, como 12 = 3x; abajo, la fórmula de física, como d = v·t. Si la letra que se busca está a la
+          derecha, la igualdad se voltea. Luego la operación aparece en los dos lados, lo que se cancela se tacha y
+          la letra queda sola: x = 4 arriba y v = d/t abajo. A la derecha quedan anotados los pasos.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-despejes-texto></div>
+    <div hidden>
+      <p data-texto-caso="mru"><strong class="expresion">v = <span class="fr"><span class="fr__n">d</span><span class="fr__d">t</span></span>.</strong>
+        Es la ecuación de ayer: en 3x = 12, el 3 multiplica a la x y se divide entre 3. En d = v·t, la t
+        multiplica a la v y se divide entre t. Con números sale un número; con letras, una fórmula.</p>
+      <p data-texto-caso="presion"><strong class="expresion">A = <span class="fr"><span class="fr__n">F</span><span class="fr__d">P</span></span>.</strong>
+        La A está abajo, dividiendo: primero se multiplican los dos lados por A para subirla, y luego se divide
+        entre P. Si te sale <span class="expresion">A = P/F</span>, la fracción quedó volteada.</p>
+      <p data-texto-caso="mrua"><strong class="expresion">t = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">a</span></span>.</strong>
+        A la t primero se le multiplicó por a y luego se le sumó v<sub>0</sub>. Se deshace al revés: primero se
+        resta v<sub>0</sub> y luego se divide entre a.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En matemáticas: es lo que hiciste en
+      <a href="../matematicas/ecuaciones-primer-grado.html">Ecuaciones de primer grado</a>. Allá la incógnita se
+      llamaba x; aquí se llama v, t o A, y los números llegan hasta el final, cuando sustituyes.</p>
+  </section>
+
+  <section aria-labelledby="reglasDeshacer" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasDeshacer">
+        <span class="lesson-section__kicker">Reglas</span> Cada operación se deshace con su contraria
+      </h2>
+    </header>
+    <p class="section-intro">Siempre en los dos lados del igual. «Lo que suma pasa restando» y «lo que multiplica
+      pasa dividiendo» son el atajo de esta tabla.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se deshace cada operación" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Qué le hacen a la letra que buscas, cómo se deshace y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Si a la letra…</th><th scope="col">se deshace…</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">le suman algo</th><td>restándolo</td><td><span class="despeje__formula">T = T<sub>0</sub> + ΔT</span><span class="despeje__flecha">→</span><span class="despeje__formula">T<sub>0</sub> = T − ΔT</span></td></tr>
+          <tr><th scope="row">le restan algo</th><td>sumándolo</td><td><span class="despeje__formula">Δx = x − x<sub>0</sub></span><span class="despeje__flecha">→</span><span class="despeje__formula">x = Δx + x<sub>0</sub></span></td></tr>
+          <tr><th scope="row">la multiplican</th><td>dividiendo</td><td><span class="despeje__formula">F = m·a</span><span class="despeje__flecha">→</span><span class="despeje__formula">a = <span class="fr"><span class="fr__n">F</span><span class="fr__d">m</span></span></span></td></tr>
+          <tr><th scope="row">la dividen</th><td>multiplicando</td><td><span class="despeje__formula">ρ = <span class="fr"><span class="fr__n">m</span><span class="fr__d">V</span></span></span><span class="despeje__flecha">→</span><span class="despeje__formula">m = ρ·V</span></td></tr>
+          <tr><th scope="row">la elevan al cuadrado</th><td>con raíz cuadrada</td><td><span class="despeje__formula">v² = 2·g·h</span><span class="despeje__flecha">→</span><span class="despeje__formula">v = <span class="raiz"><span class="visually-hidden">raíz cuadrada de </span><span class="raiz__signo" aria-hidden="true"><svg viewBox="0 0 10 32" preserveAspectRatio="none" focusable="false"><path d="M0.6 19.5L3.3 17.6L6.2 31L10 0.5"/></svg></span><span class="raiz__dentro">2·g·h</span></span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="despeje-error" data-diapositiva="una">
+      <p class="editorial-note"><strong>El error más común:</strong> pasar restando lo que multiplica. De
+        <span class="expresion">F = m·a</span> no sale <span class="expresion">a = F − m</span>: la m multiplica a la
+        a, así que pasa dividiendo. Antes de mover una letra, fíjate qué operación la une con la que buscas.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="cuidadoComprueba" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoComprueba">
+        <span class="lesson-section__kicker">Cuidado</span> Si dudas, comprueba con números
+      </h2>
+    </header>
+    <p class="section-intro">Las dos trampas de siempre son voltear la fracción y dividir sólo una parte. Las dos
+      se descubren con números fáciles.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Inventa</span><p>Números que cumplan la fórmula. En
+        <span class="expresion">ρ = m/V</span>, con <span class="expresion">m = 12</span> y
+        <span class="expresion">V = 3</span>, sale <span class="expresion">ρ = 4</span>.</p></li>
+      <li><span class="worked-steps__label">Prueba</span><p>Tu despeje debe devolver el número que inventaste:
+        <span class="expresion">V = m/ρ = 12 ÷ 4 = 3</span>, bien. En cambio, <span class="expresion">ρ/m = 4 ÷ 12</span>
+        no da 3: la fracción está volteada.</p></li>
+      <li><span class="worked-steps__label">Toda la resta</span><p>En
+        <span class="expresion">t = (v − v<sub>0</sub>) ÷ a</span> se divide toda la resta. Con los números de la
+        escena: <span class="expresion">(26 − 6) ÷ 4 = 5</span>; sin el paréntesis,
+        <span class="expresion">26 − 6 ÷ 4 = 24.5</span>.</p></li>
+    </ol>
+    <p class="editorial-note">Con la raya de la fracción no hay duda: abarca toda la resta. Cuando la escribes en un
+      renglón, la resta va entre paréntesis.</p>
+  </section>
+
+  <section aria-labelledby="ejemploDespeje" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploDespeje">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Despeja, sustituye y calcula
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un foco conectado a 127&nbsp;V, el voltaje de las casas en
+          México, deja pasar 0.5&nbsp;A. ¿Cuál es su resistencia?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Fórmula</span><p>Ley de Ohm: <span class="expresion">V = I·R</span>.</p></li>
+          <li><span class="worked-steps__label">Despeja</span><p>I multiplica a R, así que divide:
+            <span class="expresion">R = <span class="fr"><span class="fr__n">V</span><span class="fr__d">I</span></span></span>.</p></li>
+          <li><span class="worked-steps__label">Sustituye</span><p><span class="expresion">R = 127&nbsp;V ÷ 0.5&nbsp;A</span>.</p></li>
+          <li><span class="worked-steps__label">Calcula</span><p>Dividir entre 0.5 es multiplicar por 2:
+            <span class="expresion">127 × 2 = 254</span>, y V ÷ A = Ω. <strong class="expresion">R = 254&nbsp;Ω</strong>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un auto pasa de 12&nbsp;m/s a 30&nbsp;m/s en 6&nbsp;s. ¿Qué aceleración
+          tuvo?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Fórmula</span><p><span class="expresion">v = v<sub>0</sub> + a·t</span>.</p></li>
+          <li><span class="worked-steps__label">Despeja</span><p>Resta v<sub>0</sub> y divide entre t:
+            <span class="expresion">a = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">t</span></span></span>.</p></li>
+          <li><span class="worked-steps__label">Sustituye</span><p><span class="expresion">a = (30&nbsp;m/s − 12&nbsp;m/s) ÷ 6&nbsp;s</span>.</p></li>
+          <li><span class="worked-steps__label">Calcula</span><p><span class="expresion">18 ÷ 6 = 3</span>, y
+            (m/s) ÷ s = m/s². <strong class="expresion">a = 3&nbsp;m/s²</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["despeje-formula", "despeje-calcula"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-despejes.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m2 0h2m2 0h2m1 0h3m1 0h1m1 0h1m1 0h3m1 0h1m1 0h7M4 5.5h1m5 0h1m3 0h1m1 0h3m1 0h2m1 0h1m2 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m5 0h4m1 0h1m2 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h3m1 0h3m1 0h2m1 0h1m4 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h1m2 0h2m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m5 0h1m2 0h1m3 0h1m2 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h4m1 0h1m4 0h1m3 0h1m1 0h1M4 12.5h1m1 0h5m2 0h2m1 0h1m5 0h8m4 0h5M7 13.5h1m1 0h1m2 0h1m1 0h2m2 0h4m10 0h1m2 0h1m2 0h2M4 14.5h1m4 0h9m3 0h1m2 0h1m1 0h6m1 0h3m2 0h3M8 15.5h2m3 0h1m3 0h2m1 0h1m4 0h3m2 0h1m2 0h1m1 0h2m3 0h1M5 16.5h3m2 0h5m5 0h2m4 0h5m1 0h3m1 0h1m1 0h3M4 17.5h2m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1m1 0h2m1 0h5m1 0h1m2 0h1m2 0h1M5 18.5h2m2 0h2m1 0h2m2 0h6m2 0h2m2 0h4m1 0h5m2 0h1M4 19.5h1m3 0h1m2 0h8m1 0h3m2 0h3m4 0h1m1 0h3M4 20.5h2m2 0h4m2 0h1m5 0h1m4 0h1m1 0h1m1 0h3m1 0h2m1 0h1m1 0h3M5 21.5h2m4 0h1m5 0h3m2 0h1m1 0h3m1 0h3m1 0h1m6 0h1M6 22.5h2m2 0h1m4 0h2m1 0h3m2 0h1m1 0h2m4 0h2m2 0h1m1 0h1m1 0h2M8 23.5h2m2 0h5m1 0h2m3 0h3m2 0h1m1 0h5m5 0h1M4 24.5h1m1 0h1m1 0h1m1 0h3m6 0h1m1 0h1m1 0h1m2 0h1m1 0h7m1 0h3M4 25.5h4m1 0h1m5 0h3m5 0h2m2 0h2m1 0h1m1 0h1m4 0h1M4 26.5h1m5 0h1m1 0h2m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h5m1 0h2M8 27.5h1m5 0h1m2 0h1m1 0h2m6 0h2m2 0h6m3 0h1M6 28.5h1m1 0h5m1 0h1m4 0h1m2 0h5m1 0h4m1 0h2m1 0h1m1 0h3M4 29.5h3m1 0h1m4 0h2m1 0h1m2 0h2m4 0h1m6 0h2m1 0h1m1 0h1M4 30.5h1m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m6 0h5m1 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2m2 0h1m1 0h1m2 0h3m3 0h1m2 0h2m3 0h1M4 32.5h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h2m1 0h2m4 0h11m1 0h2M12 33.5h1m3 0h1m1 0h1m1 0h2m1 0h5m3 0h2m3 0h2M4 34.5h7m4 0h1m3 0h3m2 0h2m4 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m3 0h8m1 0h2m5 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m4 0h1m2 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h4m1 0h3m2 0h1m1 0h3m1 0h2m3 0h2m1 0h2m1 0h1M4 38.5h1m1 0h3m1 0h1m1 0h1m3 0h2m1 0h2m1 0h2m4 0h1m8 0h2m1 0h1M4 39.5h1m5 0h1m5 0h4m2 0h4m1 0h1m4 0h1m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h1m1 0h8m1 0h1m2 0h1m2 0h2m2 0h1m2 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaDespejes">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaDespejes">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:despejes" data-modos='[
+      {"id":"despeja","nombre":"Despeja","generadores":["despeje-formula"]},
+      {"id":"calcula","nombre":"Despeja y calcula","generadores":["despeje-calcula"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["despeje-formula","despeje-calcula"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-despejes.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/ecuaciones-primer-grado.html">← En matemáticas: ecuaciones de primer grado</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>
