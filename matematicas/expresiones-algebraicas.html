@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Expresiones algebraicas · Matemáticas · Tercial</title>
+<meta name="description" content="Términos semejantes, multiplicar y dividir monomios, quitar paréntesis y valor numérico: con fichas algebraicas se ve qué se junta, de dónde sale el x² y qué pasa al sustituir. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-expresiones-algebraicas">
+<meta name="tercial:resource-title" content="Expresiones algebraicas">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="expresiones-algebraicas">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./expresiones-algebraicas.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-expresiones-algebraicas.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-matematicas.js?v=20261010-escenas"></script>
+<script type="module" src="./escenas-expresiones-algebraicas.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 4 · Matemáticas</p>
+    <h1 class="hero__title">Expresiones <em>algebraicas</em></h1>
+    <p class="hero__lede">Una letra guarda un número que todavía no conoces. Con fichas se ve qué términos se pueden
+      juntar y cuáles no, de dónde sale el x², cómo se quita un paréntesis y qué pasa cuando la letra se cambia por
+      su número.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 4 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/analisis-dimensional.html">En física: análisis dimensional</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaExpresiones" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaExpresiones">
+        <span class="lesson-section__kicker">Idea central</span> Números que todavía no conoces
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">La letra guarda <em>un número</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Una <strong>expresión algebraica</strong> junta números y letras con operaciones, como
+          <span class="expresion">3x² − 5x + 2</span>. La letra, la <strong>variable</strong>, es un número que todavía
+          no conoces o que puede cambiar. Cada parte separada por un + o un − es un <strong>término</strong>, y el
+          signo va con él: aquí los términos son 3x², −5x y 2.</p>
+        <p>En un término, el número es el <strong>coeficiente</strong> y las letras con sus exponentes son la
+          <strong>parte literal</strong>: en −5x, el coeficiente es −5 y la parte literal es x. Dos términos son
+          <strong>semejantes</strong> si tienen la misma parte literal: 4x y −9x lo son; 4x y 4x² no.</p>
+        <p>Al sumar y restar sólo se juntan los semejantes, como <span class="expresion">3&nbsp;m + 5&nbsp;m = 8&nbsp;m</span>:
+          se suman los coeficientes y la parte literal no cambia. Al multiplicar, en cambio, todo se combina:
+          <span class="expresion">x · x = x²</span>. Y cuando ya sabes cuánto vale la letra, la cambias por su número
+          y haces la cuenta: eso es el <strong>valor numérico</strong>.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaFichas" data-diapositiva="dos" data-figura="amplia" data-fichas>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaFichas">
+        <span class="lesson-section__kicker">Observa</span> Cada ficha con sus semejantes
+      </h2>
+    </header>
+    <p class="section-intro">El cuadrado es x², la tira es x y el cuadrito es 1. Rellenas y arriba, positivas; huecas
+      y abajo, negativas.</p>
+    <div class="pastillas" role="group" aria-label="Elige una expresión">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="suma-producto">x + x y x · x</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="corto">4x + 3 − x − 5</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="largo">2x² + 3x − 4 − x² − 5x + 6</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-mate="fichas" viewBox="0 0 400 190" role="img" aria-labelledby="fichasTitulo">
+        <title id="fichasTitulo">Fichas algebraicas sobre una línea del cero: el cuadrado de lado x es x², la tira de
+          1 por x es x y el cuadrito es 1. Las fichas positivas van rellenas y arriba de la línea; las negativas, huecas
+          y abajo. Cada término pone sus fichas en el lugar de su forma; en cada lugar, una ficha de arriba y una de
+          abajo se cancelan, y lo que queda es la expresión reducida. Dos tiras juntas son 2x; el cuadrado de x por x
+          es otra ficha, x².</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-escena-texto></div>
+    <div hidden>
+      <p data-texto-caso="suma-producto"><strong><span class="expresion">x + x = 2x</span></strong> y
+        <strong><span class="expresion">x · x = x²</span></strong> no son lo mismo. Dos tiras juntas son dos x: al sumar,
+        la x no cambia. Multiplicar x por x da un cuadrado de lado x: otra ficha.</p>
+      <p data-texto-caso="corto"><strong class="expresion">4x + 3 − x − 5 = 3x − 2.</strong> Las tiras van con las tiras
+        y los cuadritos con los cuadritos. Una ficha de arriba y una de abajo se cancelan: la −x se lleva una de las
+        cuatro x, porque −x es −1x. Con los números, <span class="expresion">3 − 5 = −2</span>.</p>
+      <p data-texto-caso="largo"><strong><span class="expresion">2x² + 3x − 4 − x² − 5x + 6</span>
+        <span class="expresion">= x² − 2x + 2.</span></strong> El x² y la x tienen forma distinta: no son semejantes y
+        cada uno va en su lugar. Ahí, cada par de arriba y abajo se cancela: <span class="expresion">2x² − x² = x²</span>,
+        <span class="expresion">3x − 5x = −2x</span> y <span class="expresion">−4 + 6 = 2</span>.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En física las unidades se juntan igual: <span class="expresion">3&nbsp;m + 5&nbsp;m = 8&nbsp;m</span>,
+      pero 3&nbsp;m + 5&nbsp;s no se puede juntar; y <span class="expresion">m · m = m²</span>, como x · x = x². Lo verás en
+      <a href="../fisica/analisis-dimensional.html">Análisis dimensional</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasReducir" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasReducir">
+        <span class="lesson-section__kicker">Reglas</span> Reducir términos semejantes
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Reglas para reducir términos semejantes" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Cuándo se juntan dos términos, la regla y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Cuándo</th><th scope="col">Regla</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Semejantes</th><td>Misma parte literal: mismas letras con los mismos exponentes. Se suman los
+            coeficientes y la parte literal se queda igual.</td><td class="expr-ejemplo">7a²b − 3a²b = 4a²b</td></tr>
+          <tr><th scope="row">No semejantes</th><td>Su parte literal es distinta: no se juntan, se quedan como están.</td><td class="expr-ejemplo">4x² + 3x − 1</td></tr>
+          <tr><th scope="row">Coeficiente 1</th><td>Una letra sola tiene coeficiente 1: x es 1x y −x es −1x.</td><td class="expr-ejemplo">9y − y = 8y</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> sumar los exponentes al reducir,
+      <span class="expresion">x + x = x²</span>. Al sumar sólo se cuentan fichas iguales:
+      <span class="expresion">x + x = 2x</span> y <span class="expresion">3x² + 4x² = 7x²</span>, no 7x⁴. El x² sale al
+      multiplicar: <span class="expresion">x · x = x²</span>.</p>
+  </section>
+
+  <section aria-labelledby="reglasMultiplicar" data-diapositiva="dos" data-figura="compacta">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasMultiplicar">
+        <span class="lesson-section__kicker">Reglas</span> Multiplicar y dividir monomios
+      </h2>
+    </header>
+    <p class="section-intro">Al multiplicar sí se combina todo: los coeficientes con los coeficientes y cada letra con
+      la misma letra.</p>
+    <figure class="expande" data-lado="figura">
+      <p class="expande__fila">x³ · x²</p>
+      <p class="expande__fila"><span class="expande__grupo">x · x · x<span class="expande__cuenta">3</span></span><span class="expande__por">·</span><span class="expande__grupo">x · x<span class="expande__cuenta">2</span></span></p>
+      <p class="expande__fila expande__fila--total">= x⁵</p>
+      <figcaption class="expande__pie">Tres equis por dos equis: cinco equis multiplicadas.</figcaption>
+    </figure>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Coeficientes</span><p>Se multiplican, con la ley de los signos:
+        <span class="expresion">(−4x³)(3x²) = −12x⁵</span>.</p></li>
+      <li><span class="worked-steps__label">Misma letra</span><p>Los exponentes se suman: <span class="expresion">x³ · x² = x⁵</span>,
+        no x⁶.</p></li>
+      <li><span class="worked-steps__label">Letra sola</span><p>Pasa igual:
+        <span class="expresion">(2a²)(5ab) = 10a³b</span>.</p></li>
+      <li><span class="worked-steps__label">Dividir</span><p>Los coeficientes se dividen y los exponentes se restan:
+        <span class="expresion">(20x⁷) ÷ (4x³) = 5x⁴</span>. Si se restan a cero, la letra se va:
+        <span class="expresion">x⁴ ÷ x⁴ = 1</span>.</p></li>
+    </ul>
+    <p class="editorial-note" data-solo-lectura>Multiplicar los exponentes es otra regla, la de una potencia de potencia:
+      <span class="expresion">(x³)² = x⁶</span>. Las unidades de física se multiplican como las letras:
+      <span class="expresion">m · m = m²</span>.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoParentesis" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoParentesis">
+        <span class="lesson-section__kicker">Cuidado</span> Lo de afuera multiplica a todo lo de adentro
+      </h2>
+    </header>
+    <p class="section-intro">Es la <strong>propiedad distributiva</strong>: el número o el término de afuera multiplica a
+      <strong>cada</strong> término del paréntesis. Un menos solo es un −1 delante.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Un número</span><p><span class="expresion">4(2x − 3) = 8x − 12</span>.</p></li>
+      <li><span class="worked-steps__label">Un menos</span><p><span class="expresion">−(x² − 6x + 2) = −x² + 6x − 2</span>:
+        cada término cambia de signo.</p></li>
+      <li><span class="worked-steps__label">Negativo</span><p><span class="expresion">−5(2x − 3) = −10x <strong>+ 15</strong></span>,
+        porque <span class="expresion">(−5)(−3) = 15</span>.</p></li>
+      <li><span class="worked-steps__label">Un monomio</span><p><span class="expresion">x(3x + 4) = 3x² + 4x</span>: la x
+        también multiplica al 4.</p></li>
+    </ol>
+    <p class="editorial-note">El error típico es multiplicar sólo el primer término:
+      <span class="expresion">−5(2x − 3) = −10x − 3</span>. Lo de afuera llega a todos. Si dudas, da un valor a x y
+      compara las dos versiones.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaSustituir" data-diapositiva="dos" data-figura="amplia" data-sustituir>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaSustituir">
+        <span class="lesson-section__kicker">Observa</span> Sustituir es medir la x
+      </h2>
+    </header>
+    <p class="section-intro">Dar un valor a x es decir cuánto mide. Cada tira y cada cuadrado se encogen hasta medir ese
+      número de cuadritos.</p>
+    <div class="pastillas" role="group" aria-label="Elige un valor de x">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="mas2">Si x = 2</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="menos2">Si x = −2</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="menos-cuadrado">−x² si x = −3</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-mate="sustituir" viewBox="0 0 400 190" role="img" aria-labelledby="sustituirTitulo">
+        <title id="sustituirTitulo">Las fichas de 2x² − 3x + 1 sobre la línea del cero. Al dar un valor a x, cada tira y
+          cada cuadrado se encogen hasta medir ese número de cuadritos: con x = 2, la tira es de dos cuadritos y el
+          cuadrado, de cuatro. Si x es negativa, cada tira da media vuelta y pasa al otro lado de la línea, y cada
+          cuadrado da dos medias vueltas y queda como estaba. Abajo de cada lugar se lee cuánto vale.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-escena-texto></div>
+    <div hidden>
+      <p data-texto-caso="mas2"><strong><span class="expresion">Si x = 2:</span>
+        <span class="expresion">2(2)² − 3(2) + 1 = 3.</span></strong> Cada tira mide 2 cuadritos y cada cuadrado,
+        <span class="expresion">2 × 2 = 4</span>. Los dos cuadrados son 8, las tres tiras de abajo son −6 y queda el +1:
+        <span class="expresion">8 − 6 + 1 = 3</span>.</p>
+      <p data-texto-caso="menos2"><strong><span class="expresion">Si x = −2:</span>
+        <span class="expresion">2(−2)² − 3(−2) + 1 = 15.</span></strong> Ahora la x mide 2 hacia el lado negativo:
+        las tiras del −3x dan media vuelta y suben, <span class="expresion">−3(−2) = 6</span>. Cada cuadrado da dos medias
+        vueltas, una por cada −2, y queda arriba: <span class="expresion">(−2)² = 4</span>. Todo suma:
+        <span class="expresion">8 + 6 + 1 = 15</span>.</p>
+      <p data-texto-caso="menos-cuadrado"><strong><span class="expresion">Si x = −3:</span>
+        <span class="expresion">−x² = −(−3)² = −9.</span></strong> Primero la potencia: <span class="expresion">(−3)² = 9</span>, dos medias vueltas, y
+        el cuadrado regresa abajo, donde lo puso el menos de adelante. Ese menos no está elevado al cuadrado: el
+        resultado es −9, no 9.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="comparaCuadrado" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaCuadrado">
+        <span class="lesson-section__kicker">Compara</span> (−3)² no es −3²
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="El cuadrado de un negativo, con y sin paréntesis" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Qué se eleva al cuadrado en cada caso y cuánto vale</caption>
+        <thead>
+          <tr><th scope="col">Escrito</th><th scope="col">Qué se eleva</th><th scope="col">Vale</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="expr-celda">(−3)²</th><td>El −3 completo: <span class="expresion">(−3)(−3)</span>.</td><td class="expr-ejemplo">9</td></tr>
+          <tr><th scope="row" class="expr-celda">−3²</th><td>Sólo el 3; el menos va después: <span class="expresion">−(3 · 3)</span>.</td><td class="expr-ejemplo">−9</td></tr>
+          <tr><th scope="row" class="expr-celda">x² si x = −3</th><td>Se sustituye con paréntesis: <span class="expresion">(−3)²</span>.</td><td class="expr-ejemplo">9</td></tr>
+          <tr><th scope="row" class="expr-celda">−x² si x = −3</th><td>Primero la potencia y luego el menos: <span class="expresion">−(−3)²</span>.</td><td class="expr-ejemplo">−9</td></tr>
+          <tr><th scope="row" class="expr-celda">2x² si x = −3</th><td>Sólo la x está elevada: <span class="expresion">2 · 9</span>, no (2 · −3)².</td><td class="expr-ejemplo">18</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Al sustituir, el número entra con su paréntesis, siempre: así el exponente y el signo quedan
+      donde deben. Con un exponente impar el signo se queda: <span class="expresion">(−3)³ = −27</span>.</p>
+  </section>
+
+  <section aria-labelledby="ejemploExpresiones" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploExpresiones">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">5x² − 2x(3x − 4) + x</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Paréntesis</span><p>El −2x multiplica a los dos:
+            <span class="expresion">−2x(3x − 4) = −6x² + 8x</span>.</p></li>
+          <li><span class="worked-steps__label">Agrupa</span><p>Sin paréntesis:
+            <span class="expresion">(5x² − 6x²) + (8x + x)</span>.</p></li>
+          <li><span class="worked-steps__label">Reduce</span><p>5 − 6 = −1 y 8 + 1 = 9:
+            <strong class="expresion">−x² + 9x</strong>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">a² − 3ab <span class="expr-si">si a = −2 y b = 5</span></h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Sustituye</span><p>Con paréntesis:
+            <span class="expresion">(−2)² − 3(−2)(5)</span>.</p></li>
+          <li><span class="worked-steps__label">Calcula</span><p><span class="expresion">(−2)² = 4</span> y
+            <span class="expresion">−3(−2)(5) = 30</span>: dos negativos, positivo.</p></li>
+          <li><span class="worked-steps__label">Suma</span><p><span class="expresion">4 + 30 = <strong>34</strong></span>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["expr-semejantes", "expr-monomios", "expr-parentesis", "expr-valor"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-expresiones-algebraicas.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m3 0h1m3 0h1m3 0h7M4 5.5h1m5 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h4m5 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m4 0h4m2 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h3m3 0h3m2 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h5m2 0h1m1 0h5m3 0h2m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m3 0h3m1 0h1m2 0h1m3 0h3m1 0h2m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M15 11.5h3m1 0h2m1 0h2m4 0h2m1 0h1M4 12.5h1m2 0h7m2 0h1m1 0h1m2 0h1m2 0h1m2 0h2m1 0h1m1 0h2m2 0h1m1 0h3M4 13.5h1m2 0h2m2 0h1m2 0h2m4 0h4m1 0h1m1 0h1m2 0h2m3 0h3m1 0h1M4 14.5h1m1 0h2m1 0h2m1 0h4m1 0h1m1 0h2m3 0h1m1 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1M4 15.5h3m1 0h1m3 0h2m4 0h1m1 0h2m1 0h2m5 0h3m2 0h6M4 16.5h1m2 0h2m1 0h2m1 0h1m1 0h2m1 0h2m4 0h1m2 0h2m2 0h1m2 0h2m4 0h1M4 17.5h1m2 0h2m2 0h1m3 0h2m1 0h3m5 0h2m2 0h3m3 0h2M4 18.5h3m3 0h3m3 0h4m1 0h1m1 0h2m1 0h1m1 0h1m1 0h5m1 0h3m1 0h1M4 19.5h4m1 0h1m2 0h1m4 0h1m1 0h1m2 0h1m1 0h1m1 0h2m2 0h2m1 0h3m1 0h2M5 20.5h4m1 0h4m1 0h1m1 0h2m2 0h2m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m3 0h1m1 0h1M4 21.5h1m1 0h3m2 0h1m2 0h1m1 0h1m4 0h3m2 0h1m2 0h1m1 0h1m5 0h2M7 22.5h2m1 0h1m2 0h3m4 0h2m1 0h1m1 0h1m1 0h5m1 0h1m2 0h3m1 0h1M6 23.5h4m2 0h2m1 0h1m1 0h4m3 0h1m4 0h1m2 0h6m2 0h1M5 24.5h3m2 0h3m3 0h3m1 0h2m1 0h1m3 0h2m1 0h2m1 0h5M4 25.5h3m2 0h1m1 0h1m2 0h2m3 0h3m1 0h1m2 0h3m2 0h1m4 0h1m1 0h1M4 26.5h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h2m5 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h1m2 0h1M8 27.5h1m2 0h1m2 0h2m2 0h1m3 0h1m5 0h1m1 0h1m2 0h8M5 28.5h8m2 0h2m1 0h2m1 0h1m5 0h2m2 0h2m1 0h2m4 0h1M4 29.5h1m4 0h1m3 0h1m1 0h4m3 0h1m4 0h1m1 0h1m1 0h3m2 0h1M4 30.5h2m4 0h3m1 0h1m1 0h1m1 0h2m3 0h3m3 0h5m4 0h3M4 31.5h1m1 0h4m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m1 0h1m3 0h1m1 0h3m1 0h5M4 32.5h1m1 0h1m3 0h2m3 0h1m1 0h4m3 0h1m1 0h4m1 0h6m1 0h1M12 33.5h1m1 0h1m3 0h2m1 0h1m1 0h3m6 0h1m3 0h1m1 0h2M4 34.5h7m1 0h4m1 0h1m1 0h1m1 0h3m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h2m3 0h1m2 0h1m3 0h1m1 0h1m2 0h1m1 0h2m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h2m1 0h2m4 0h1m2 0h6m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m10 0h1m2 0h2m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m3 0h1m1 0h2m3 0h2m4 0h1m2 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m3 0h1m1 0h1m2 0h1m1 0h3m2 0h2m3 0h1m1 0h2m1 0h5M4 40.5h7m1 0h3m1 0h2m5 0h2m7 0h4m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaExpresiones">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaExpresiones">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones falsas
+      son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:expresiones-algebraicas" data-modos='[
+      {"id":"semejantes","nombre":"Reduce","generadores":["expr-semejantes"]},
+      {"id":"monomios","nombre":"Monomios","generadores":["expr-monomios"]},
+      {"id":"parentesis","nombre":"Paréntesis","generadores":["expr-parentesis"]},
+      {"id":"valor","nombre":"Valor numérico","generadores":["expr-valor"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["expr-semejantes","expr-monomios","expr-parentesis","expr-valor"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-expresiones-algebraicas.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/analisis-dimensional.html">En física: análisis dimensional →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

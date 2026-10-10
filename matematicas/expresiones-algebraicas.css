@@ -1,0 +1,172 @@
+/* Expresiones algebraicas (Fundamentos, semana 4): las fichas de sus escenas, sus piezas
+   nuevas y su letra en la tele. El molde de la lección vive en /assets/css/leccion.css y la
+   caja de las escenas (.escena-mate), en matematicas.css. base.css le pone contorno y
+   relleno vacío a todo <svg>: aquí cada forma declara los suyos. */
+
+/* ---------- Las fichas ----------
+   Positivas: rellenas del color del nivel. Negativas: huecas, sólo con su borde. Así se
+   distinguen en claro, en oscuro, impresas y sin depender del color. */
+.ficha {
+  stroke-width: 1.4;
+  stroke-linejoin: miter;
+}
+
+.ficha--mas { fill: var(--color-accent); stroke: var(--color-accent); }
+.ficha--menos { fill: var(--color-bg-page); stroke: var(--color-accent); }
+
+.ficha__celdas {
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: butt;
+}
+
+.ficha__celdas--mas { stroke: var(--color-bg-page); }
+.ficha__celdas--menos { stroke: var(--color-accent); }
+
+.ficha__nombre {
+  fill: var(--color-bg-page);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+}
+
+/* La línea del cero: arriba lo positivo, abajo lo negativo. */
+.fichas__cero {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.3;
+  stroke-linecap: butt;
+}
+
+.fichas__lado {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+}
+
+.fichas__lugar {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+}
+
+.fichas__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fichas__termino--activo,
+.fichas__igual { fill: var(--color-accent); }
+
+.fichas__dato {
+  fill: var(--color-text-secondary);
+  font-size: 16px;
+}
+
+.fichas__resultado {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 19px;
+}
+
+.fichas__medida {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* ---------- Operaciones dentro de tablas: se leen como álgebra, no como etiquetas ---------- */
+.expr-ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Una expresión en la cabeza de una fila: sin las mayúsculas de las etiquetas, que harían X de la x. */
+.reference-table th.expr-celda {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.15em;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+/* ---------- x³ · x²: las equis, contadas ---------- */
+.expande {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
+  padding: var(--space-5) var(--space-7) var(--space-4);
+  color: var(--color-text-primary);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-display);
+}
+
+.expande__fila {
+  margin: 0;
+  font-size: var(--font-size-32);
+  font-variation-settings: "opsz" 30;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* Cada grupo de equis con su llave abajo y cuántas son. */
+.expande__grupo {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.15em;
+  padding: 0 .12em .1em;
+  border: 2px solid var(--color-accent);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.expande__cuenta {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: .12em;
+  color: var(--color-accent);
+  font-size: .55em;
+  line-height: 1.2;
+  transform: translateX(-50%);
+}
+
+.expande__por { margin: 0 .2em; }
+.expande__fila--total { color: var(--color-accent); }
+
+.expande__pie {
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-13);
+  text-align: center;
+}
+
+/* ---------- «si x = −2» en la práctica y el reto: el dato, un poco más chico ---------- */
+.expr-si {
+  color: var(--color-text-secondary);
+  font-size: .62em;
+  white-space: nowrap;
+}
+
+/* ---------- En la tele ---------- */
+html[data-proyeccion] .es-proyectada .reference-table th.expr-celda { font-size: calc(var(--u) * 2.3); }
+html[data-proyeccion] .es-proyectada .expr-ejemplo { font-size: calc(var(--u) * 2.2); }
+
+html[data-proyeccion] .es-proyectada .expande {
+  gap: calc(var(--u) * 1);
+  margin: 0;
+  padding: calc(var(--u) * 2.4) calc(var(--u) * 3.2) calc(var(--u) * 1.8);
+}
+
+html[data-proyeccion] .es-proyectada .expande__fila { font-size: calc(var(--u) * 4.2); line-height: 1.25; }
+html[data-proyeccion] .es-proyectada .expande__grupo { border-width: max(2px, calc(var(--u) * .2)); }
+html[data-proyeccion] .es-proyectada .expande__pie { font-size: calc(var(--u) * 1.5); }
