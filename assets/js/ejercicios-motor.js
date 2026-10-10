@@ -13,7 +13,10 @@
      de dividir; en + y −, confundir la regla de signos iguales con la de signos
      distintos;
    - generador nuevo, signos-parentesis: un menos o un factor delante de un
-     paréntesis. */
+     paréntesis;
+   - en los pasos y los errores de ecuaciones, productos notables, factorización,
+     sistemas y cuadráticas, los negativos también llevan «−» (num) y, donde se
+     eleva o multiplica un negativo, van entre paréntesis (par): (−2)², no (-2)². */
 /* ejercicios-motor.js · Motor de generación de ejercicios (Tercial)
    Aritmética exacta (fracciones + polinomios), los generadores y el
    ensamblado de opciones. Sin DOM. Expone window.TercialMotor con un
@@ -355,14 +358,14 @@ window.TercialMotor = (function () {
     var enun = ax + ' ' + (b < 0 ? MIN : '+') + ' ' + Math.abs(b) + ' = ' + tex(ent(c));
 
     var cand = [
-      { val: fr(c + b, a), err: 'Al pasar el <strong>' + b + '</strong> al otro lado <strong>no le cambiaste el signo</strong>.' },
-      { val: ent(c - b), err: 'Despejaste bien pero <strong>te faltó dividir</strong> entre ' + a + '.' },
+      { val: fr(c + b, a), err: 'Al pasar el <strong>' + num(b) + '</strong> al otro lado <strong>no le cambiaste el signo</strong>.' },
+      { val: ent(c - b), err: 'Despejaste bien pero <strong>te faltó dividir</strong> entre ' + num(a) + '.' },
       { val: fr(-(c - b), a), err: 'Signo del resultado cambiado.' },
       { val: fr(c - b, b || 1), err: 'Dividiste entre el número equivocado.' }
     ];
     var pasos = [
-      'Pasa el <b>' + b + '</b> al otro lado cambiándole el signo: ' + ax + ' = ' + tex(ent(c)) + ' ' + (b < 0 ? '+ ' + Math.abs(b) : MIN + ' ' + b) + ' = ' + tex(ent(c - b)) + '.',
-      'Divide ambos lados entre <b>' + a + '</b>.',
+      'Pasa el <b>' + num(b) + '</b> al otro lado cambiándole el signo: ' + ax + ' = ' + tex(ent(c)) + ' ' + (b < 0 ? '+ ' + Math.abs(b) : MIN + ' ' + b) + ' = ' + tex(ent(c - b)) + '.',
+      'Divide ambos lados entre <b>' + num(a) + '</b>.',
       'x = <b>' + tex(correcta) + '</b>.'
     ];
     return finish(enun, correcta, cand, { tema: 'Ecuaciones de 1er grado', pasos: pasos });
@@ -381,13 +384,13 @@ window.TercialMotor = (function () {
       correcta = ansP(A);
       cand = [
         { val: ansP([a * a, 0, 1]),      err: 'Te faltó el <strong>doble producto</strong>. (x ± a)² = x² <strong>± 2ax</strong> + a², no solo x² + a².' },
-        { val: ansP([a * a, a, 1]),      err: 'El término de en medio lleva el <strong>2</strong>: 2·x·(' + a + ') = ' + (2 * a) + 'x.' },
-        { val: ansP([-a * a, 2 * a, 1]), err: 'El último término es un <strong>cuadrado</strong>: (' + a + ')² = ' + (a * a) + ', siempre <strong>positivo</strong>.' },
+        { val: ansP([a * a, a, 1]),      err: 'El término de en medio lleva el <strong>2</strong>: 2·x·' + par(a) + ' = ' + num(2 * a) + 'x.' },
+        { val: ansP([-a * a, 2 * a, 1]), err: 'El último término es un <strong>cuadrado</strong>: ' + par(a) + '² = ' + (a * a) + ', siempre <strong>positivo</strong>.' },
         { val: ansP([a * a, -2 * a, 1]), err: 'El signo del término de en medio <strong>sigue al del binomio</strong>.' }
       ];
       pasos = ['Cuadrado del primero: <b>x²</b>.',
-               'Doble producto: <b>2·x·(' + a + ') = ' + (2 * a) + 'x</b>.',
-               'Cuadrado del segundo: <b>(' + a + ')² = ' + (a * a) + '</b> (positivo).',
+               'Doble producto: <b>2·x·' + par(a) + ' = ' + num(2 * a) + 'x</b>.',
+               'Cuadrado del segundo: <b>' + par(a) + '² = ' + (a * a) + '</b> (positivo).',
                'Queda: <b>' + pstr(A) + '</b>.'];
 
     } else if (tipo === 'conj') {                           // (x + a)(x − a)
@@ -412,14 +415,14 @@ window.TercialMotor = (function () {
       enun = '(x ' + sg(p) + ')(x ' + sg(q) + ')';
       correcta = ansP(A);
       cand = [
-        { val: ansP([p + q, p * q, 1]), err: 'Los <strong>invertiste</strong>: en medio va la <strong>suma</strong> (' + (p + q) + ') y al final el <strong>producto</strong> (' + (p * q) + ').' },
+        { val: ansP([p + q, p * q, 1]), err: 'Los <strong>invertiste</strong>: en medio va la <strong>suma</strong> (' + num(p + q) + ') y al final el <strong>producto</strong> (' + num(p * q) + ').' },
         { val: ansP([p * q, p * q, 1]), err: 'El término de en medio es la <strong>suma</strong> de los dos números, no el producto.' },
         { val: ansP([p + q, p + q, 1]), err: 'El término independiente es el <strong>producto</strong> de los dos números.' },
-        { val: ansP([-p * q, p + q, 1]), err: 'Cuida el <strong>signo</strong> del producto: (' + p + ')(' + q + ') = ' + (p * q) + '.' }
+        { val: ansP([-p * q, p + q, 1]), err: 'Cuida el <strong>signo</strong> del producto: (' + num(p) + ')(' + num(q) + ') = ' + num(p * q) + '.' }
       ];
       pasos = ['Término común x: <b>x²</b>.',
-               'Término de en medio = <b>suma</b>: (' + p + ') + (' + q + ') = <b>' + (p + q) + '</b>.',
-               'Independiente = <b>producto</b>: (' + p + ')(' + q + ') = <b>' + (p * q) + '</b>.',
+               'Término de en medio = <b>suma</b>: ' + num(p) + ' + ' + par(q) + ' = <b>' + num(p + q) + '</b>.',
+               'Independiente = <b>producto</b>: (' + num(p) + ')(' + num(q) + ') = <b>' + num(p * q) + '</b>.',
                'Queda: <b>' + pstr(A) + '</b>.'];
 
     } else {                                                // (cx ± a)²
@@ -428,13 +431,13 @@ window.TercialMotor = (function () {
       enun = '(' + c + 'x ' + sg(d) + ')²';
       correcta = ansP(A);
       cand = [
-        { val: ansP([d * d, 0, c * c]),         err: 'Te faltó el <strong>doble producto</strong>: 2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x.' },
-        { val: ansP([d * d, 2 * d, c * c]),     err: 'En el doble producto también entra el <strong>' + c + '</strong>: 2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x.' },
+        { val: ansP([d * d, 0, c * c]),         err: 'Te faltó el <strong>doble producto</strong>: 2·(' + c + 'x)·' + par(d) + ' = ' + num(2 * c * d) + 'x.' },
+        { val: ansP([d * d, 2 * d, c * c]),     err: 'En el doble producto también entra el <strong>' + c + '</strong>: 2·(' + c + 'x)·' + par(d) + ' = ' + num(2 * c * d) + 'x.' },
         { val: ansP([d * d, 2 * c * d, c]),     err: 'El coeficiente también se <strong>eleva al cuadrado</strong>: (' + c + 'x)² = ' + (c * c) + 'x².' },
         { val: ansP([-d * d, 2 * c * d, c * c]), err: 'El último término es un cuadrado → <strong>positivo</strong>.' }
       ];
       pasos = ['Cuadrado del primero: <b>(' + c + 'x)² = ' + (c * c) + 'x²</b> (el coeficiente también se eleva).',
-               'Doble producto: <b>2·(' + c + 'x)·(' + d + ') = ' + (2 * c * d) + 'x</b>.',
+               'Doble producto: <b>2·(' + c + 'x)·' + par(d) + ' = ' + num(2 * c * d) + 'x</b>.',
                'Cuadrado del segundo: <b>' + (d * d) + '</b>.',
                'Queda: <b>' + pstr(A) + '</b>.'];
     }
@@ -469,10 +472,10 @@ window.TercialMotor = (function () {
       cand = [
         { val: ansF([{ a: 1, b: 2 * t }, { a: 1, b: 2 * t }]), err: 'Usaste el término de en medio completo. Va su <strong>mitad</strong>: √' + (t * t) + ' = ' + Math.abs(t) + '.' },
         { val: ansF([{ a: 1, b: t }, { a: 1, b: -t }]),        err: 'Eso es una <strong>diferencia de cuadrados</strong>. Aquí hay término de en medio → <strong>cuadrado perfecto</strong>.' },
-        { val: ansF([{ a: 1, b: -t }, { a: 1, b: -t }]),       err: 'El binomio lleva el <strong>mismo signo</strong> que el término de en medio (' + (2 * t) + 'x).' }
+        { val: ansF([{ a: 1, b: -t }, { a: 1, b: -t }]),       err: 'El binomio lleva el <strong>mismo signo</strong> que el término de en medio (' + num(2 * t) + 'x).' }
       ];
       pasos = ['Checa si es <b>cuadrado perfecto</b>: √x² = x y √' + (t * t) + ' = ' + Math.abs(t) + '.',
-               'Verifica el de en medio: 2·x·(' + t + ') = <b>' + (2 * t) + 'x</b> ✓.',
+               'Verifica el de en medio: 2·x·' + par(t) + ' = <b>' + num(2 * t) + 'x</b> ✓.',
                'Queda: <b>(x ' + sg(t) + ')²</b>.'];
 
     } else {                                                // x² + (p+q)x + pq
@@ -483,12 +486,12 @@ window.TercialMotor = (function () {
       enun = pstr(P);
       correcta = ansF([{ a: 1, b: p }, { a: 1, b: q }]);
       cand = [
-        { val: ansF([{ a: 1, b: -p }, { a: 1, b: -q }]),   err: 'Signos al revés: deben <strong>multiplicar</strong> ' + (p * q) + ' y <strong>sumar</strong> ' + (p + q) + '.' },
-        { val: ansF([{ a: 1, b: p * q }, { a: 1, b: 1 }]), err: 'Esos <strong>multiplican</strong> bien, pero <strong>no suman</strong> el término de en medio (' + (p + q) + ').' },
-        { val: ansF([{ a: 1, b: p }, { a: 1, b: -q }]),    err: 'Revisa signos: el producto debe dar ' + (p * q) + '.' }
+        { val: ansF([{ a: 1, b: -p }, { a: 1, b: -q }]),   err: 'Signos al revés: deben <strong>multiplicar</strong> ' + num(p * q) + ' y <strong>sumar</strong> ' + num(p + q) + '.' },
+        { val: ansF([{ a: 1, b: p * q }, { a: 1, b: 1 }]), err: 'Esos <strong>multiplican</strong> bien, pero <strong>no suman</strong> el término de en medio (' + num(p + q) + ').' },
+        { val: ansF([{ a: 1, b: p }, { a: 1, b: -q }]),    err: 'Revisa signos: el producto debe dar ' + num(p * q) + '.' }
       ];
-      pasos = ['Busca dos números que <b>multiplicados</b> den ' + (p * q) + ' y <b>sumados</b> ' + (p + q) + '.',
-               'Son <b>' + p + '</b> y <b>' + q + '</b>.',
+      pasos = ['Busca dos números que <b>multiplicados</b> den ' + num(p * q) + ' y <b>sumados</b> ' + num(p + q) + '.',
+               'Son <b>' + num(p) + '</b> y <b>' + num(q) + '</b>.',
                'Queda: <b>(x ' + sg(p) + ')(x ' + sg(q) + ')</b>.'];
     }
     return finish(enun, correcta, cand, { tema: 'Factorización', pasos: pasos, ask: 'Factoriza' });
@@ -533,8 +536,8 @@ window.TercialMotor = (function () {
     ];
     return finish(enun, ansPair(x0, y0), cand, { tema: 'Sistema 2×2', ask: 'Resuelve',
       pasos: ['Resuélvelo por sustitución o por eliminación.',
-              'Comprueba: sustituye x = ' + x0 + ', y = ' + y0 + ' en las dos ecuaciones y deben cumplirse.',
-              'Solución: <b>x = ' + x0 + ', y = ' + y0 + '</b>.'] });
+              'Comprueba: sustituye x = ' + num(x0) + ', y = ' + num(y0) + ' en las dos ecuaciones y deben cumplirse.',
+              'Solución: <b>x = ' + num(x0) + ', y = ' + num(y0) + '</b>.'] });
   }
 
   /* — ecuación de 2º grado (x² + bx + c = 0, factorizable) — */
@@ -559,18 +562,18 @@ window.TercialMotor = (function () {
 
     var cand = [
       { val: ansRoots(-r1, -r2), tipo: 'signo-ambas',
-        err: 'Signo cambiado en las dos. El factor (x ' + sg(-r1) + ') se hace cero cuando x = ' + r1 + ', no ' + (-r1) + '.' },
+        err: 'Signo cambiado en las dos. El factor (x ' + sg(-r1) + ') se hace cero cuando x = ' + num(r1) + ', no ' + num(-r1) + '.' },
       { val: ansRoots(-r1, r2), tipo: 'signo-una',
         err: 'Una raíz con el signo al revés. Iguala cada factor a cero por separado y despeja.' },
       { val: ansRoots(r1, -r2), tipo: 'signo-una',
         err: 'Una raíz con el signo al revés. Iguala cada factor a cero por separado y despeja.' },
       { val: ansRoots(b, c), tipo: 'coeficientes',
-        err: 'Esos son los coeficientes (' + b + ' y ' + c + '), no las raíces.' }
+        err: 'Esos son los coeficientes (' + num(b) + ' y ' + num(c) + '), no las raíces.' }
     ];
     return finish(enun, ansRoots(r1, r2), cand, { tema: 'Ecuación de 2º grado', ask: 'Resuelve',
-      pasos: ['Busca dos números que multiplicados den ' + c + ' y sumados ' + (r1 + r2) + ': son ' + r1 + ' y ' + r2 + '.',
+      pasos: ['Busca dos números que multiplicados den ' + num(c) + ' y sumados ' + num(r1 + r2) + ': son ' + num(r1) + ' y ' + num(r2) + '.',
               'Factoriza: (x ' + sg(-r1) + ')(x ' + sg(-r2) + ') = 0.',
-              'Cada factor a cero: x ' + sg(-r1) + ' = 0 → x = ' + r1 + '; x ' + sg(-r2) + ' = 0 → x = ' + r2 + '.'] });
+              'Cada factor a cero: x ' + sg(-r1) + ' = 0 → x = ' + num(r1) + '; x ' + sg(-r2) + ' = 0 → x = ' + num(r2) + '.'] });
   }
 
   /* — potencias y radicales — */

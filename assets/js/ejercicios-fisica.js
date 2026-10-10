@@ -11,6 +11,9 @@
  *   si-derivadas  cómo se arma la unidad de una magnitud derivada
  *   si-escritura  cómo se escribe una medida (5 m, no 5 mts)
  *   si-signo      el signo de la velocidad dice hacia dónde
+ *
+ * Los ayudantes (armar, juntar, azar…) quedan en M.fisica para los generadores de las
+ * otras semanas, que viven en su propio archivo (ejercicios-<tema>.js) y se cargan después.
  */
 (function () {
   'use strict';
@@ -336,4 +339,7 @@
   M.GENERADORES['si-derivadas'] = genDerivadas;
   M.GENERADORES['si-escritura'] = genEscritura;
   M.GENERADORES['si-signo'] = genSigno;
+
+  M.fisica = { armar: armar, juntar: juntar, azar: azar, barajar: barajar, conSigno: conSigno,
+    numero: numero, opcion: opcion, MENOS: MENOS };
 })();
