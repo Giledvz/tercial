@@ -1,0 +1,198 @@
+/* Ecuaciones de segundo grado y sistemas: sus dos escenas (la parábola y las rectas), la
+   fórmula general, las tablas de formas y de discriminante, los sistemas que escriben sus
+   generadores y su letra en la tele. base.css le pone contorno y relleno vacío a todo <svg>:
+   aquí cada forma declara los suyos. */
+
+/* ---------- Las dos gráficas: cuadrícula, ejes y números en los bordes ---------- */
+.cs-rejilla {
+  fill: none;
+  stroke: var(--color-border-subtle);
+  stroke-width: .8;
+}
+
+.cs-eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+}
+
+.cs-punta-eje { fill: var(--color-border-strong); stroke: none; }
+
+.cs-numero {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+}
+
+.cs-nombre-eje {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+}
+
+/* ---------- La parábola y sus raíces ---------- */
+.cs-ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 19px;
+}
+
+/* El factor que se hace cero en la raíz a la que llegó el punto. */
+.cs-factor { transition: fill .4s ease-out; }
+.cs-factor.es-cero { fill: var(--color-accent); }
+
+.cs-ecuacion--nota {
+  fill: var(--color-text-meta);
+  font-size: 16px;
+  font-style: italic;
+}
+
+.cs-curva {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* La altura del punto: de la curva al eje. En una raíz mide cero. */
+.cs-altura {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+}
+
+/* Lo que le falta a la curva para llegar al eje, cuando no lo toca. */
+.cs-hueco {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 3;
+}
+
+.cs-punto,
+.cs-raiz {
+  fill: var(--color-accent);
+  stroke: var(--color-bg-page);
+  stroke-width: 1.5;
+}
+
+/* Los valores sobre la cuadrícula llevan un borde del color del fondo: la línea de atrás no los cruza. */
+.cs-raiz-etiqueta,
+.cs-cruce-etiqueta {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+  paint-order: stroke;
+  stroke: var(--color-bg-page);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+/* ---------- Dos rectas que se cruzan ---------- */
+.cs-recta {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.cs-recta--1 { stroke: var(--color-text-primary); }
+.cs-recta--2 { stroke: var(--color-accent); }
+
+/* «La misma recta»: la segunda va punteada encima de la primera. */
+.cs-recta--encima {
+  stroke-dasharray: 7 6;
+  stroke-linecap: butt;
+}
+
+.cs-par--1 { fill: var(--color-text-primary); stroke: var(--color-bg-page); stroke-width: 1; }
+.cs-par--2 { fill: var(--color-accent); stroke: var(--color-bg-page); stroke-width: 1; }
+.cs-par--anillo { fill: none; stroke: var(--color-accent); stroke-width: 1.6; }
+
+.cs-cruce {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+}
+
+.cs-leyenda {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+}
+
+.cs-resultado {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 18px;
+}
+
+.cs-nota {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+}
+
+/* ---------- Tablas: la forma de la ecuación y sus ejemplos se leen como matemáticas ---------- */
+.reference-table tbody th.cs-forma {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.cs-ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* En el celular, cuando la tabla se apila, el ejemplo va en su propio renglón. */
+@media (max-width: 36rem) {
+  .reference-table--apilada td.cs-ejemplo {
+    display: block;
+    margin-right: 0;
+  }
+}
+
+/* ---------- La fórmula general ---------- */
+.cs-formula {
+  margin: var(--space-6) 0 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-32);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.cs-formula .fr__n { padding-bottom: .16em; }
+.cs-formula .fr__d { padding-top: .12em; }
+
+/* La raíz con su techo: abarca todo b² − 4ac. */
+.rad { white-space: nowrap; }
+
+.rad__dentro {
+  padding: .04em .08em 0 .06em;
+  border-top: .055em solid currentColor;
+}
+
+/* ---------- Un sistema en dos renglones (lo escriben los generadores) ---------- */
+.cs-sistema {
+  display: inline-block;
+  padding-left: .45em;
+  border-left: max(1px, .045em) solid currentColor;
+  font-size: .72em;
+  line-height: 1.4;
+  text-align: left;
+  vertical-align: middle;
+}
+
+/* ---------- En la tele ---------- */
+html[data-proyeccion] .es-proyectada .reference-table tbody th.cs-forma { font-size: calc(var(--u) * 2.2); }
+html[data-proyeccion] .es-proyectada .cs-formula { margin: 0; font-size: calc(var(--u) * 4.4); }

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ecuaciones de segundo grado y sistemas · Matemáticas · Tercial</title>
+<meta name="description" content="Ecuaciones de segundo grado (incompletas, por factorización y con la fórmula general), cuántas soluciones tienen y sistemas de dos ecuaciones: la parábola y dos rectas muestran dónde están las soluciones. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-cuadraticas-sistemas">
+<meta name="tercial:resource-title" content="Ecuaciones de segundo grado y sistemas">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="cuadraticas-sistemas">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./cuadraticas-sistemas.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-cuadraticas-sistemas.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-cuadraticas-sistemas.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 8 · Matemáticas</p>
+    <h1 class="hero__title">Ecuaciones de segundo grado y <em>sistemas</em></h1>
+    <p class="hero__lede">Una ecuación de segundo grado puede tener dos soluciones, una o ninguna, y un sistema pide
+      dos números que cumplan dos ecuaciones a la vez. En una gráfica se ven igual: las soluciones están donde se
+      cruzan las líneas.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 8 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/vectores-proporcionalidad.html">En física: vectores y razonamiento proporcional</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaCS" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaCS">
+        <span class="lesson-section__kicker">Idea central</span> Los números que cumplen
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Si un producto da cero, <em>algún factor es cero</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Una ecuación es de <strong>segundo grado</strong> cuando la incógnita aparece al cuadrado, como
+          <span class="expresion">x² − x − 6 = 0</span>. Puede tener dos soluciones: la cumple
+          <span class="expresion">x = 3</span>, porque <span class="expresion">9 − 3 − 6 = 0</span>, y también
+          <span class="expresion">x = −2</span>, porque <span class="expresion">4 + 2 − 6 = 0</span>.</p>
+        <p>Para encontrarlas se factoriza: <span class="expresion">(x + 2)(x − 3) = 0</span>. Si un producto vale
+          cero, alguno de sus factores vale cero, así que <span class="expresion">x + 2 = 0</span> o
+          <span class="expresion">x − 3 = 0</span>. Cada factor da una solución.</p>
+        <p>Un <strong>sistema 2 × 2</strong> son dos ecuaciones con dos incógnitas, x y y. Una sola, como
+          <span class="expresion">x + y = 5</span>, la cumplen muchos pares: 1 y 4, 2 y 3, 6 y −1… La solución
+          del sistema es el par que cumple <strong>las dos a la vez</strong>.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaParabola" data-diapositiva="dos" data-figura="amplia" data-parabola>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaParabola">
+        <span class="lesson-section__kicker">Observa</span> Dónde la parábola cruza el eje
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Cada x da una altura, <span class="expresion">y = x² + bx + c</span>.
+      Las soluciones de la ecuación son las x donde esa altura es cero: donde la curva toca el eje. Elige una
+      ecuación.</p>
+    <div class="pastillas" role="group" aria-label="Elige una ecuación">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="dos">x² − x − 6 = 0</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="incompleta">x² − 9 = 0</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="una">x² − 4x + 4 = 0</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="ninguna">x² − 2x + 3 = 0</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-cs="parabola" viewBox="0 0 400 262" role="img" aria-labelledby="parabolaTitulo">
+        <title id="parabolaTitulo">Cuadrícula con el eje x de −5 a 5 y el eje y de −10 a 8. Arriba, la ecuación y su
+          forma factorizada. Un punto recorre la parábola de izquierda a derecha con una línea punteada que mide su
+          altura hasta el eje; cada vez que la curva toca el eje, el punto se detiene, aparece la raíz y se ilumina el
+          factor que se hizo cero.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-parabola-texto></div>
+    <div hidden>
+      <p data-texto-caso="dos"><strong class="expresion">(x + 2)(x − 3) = 0.</strong> La curva corta el eje en
+        <span class="expresion">x = −2</span> y en <span class="expresion">x = 3</span>. En <span class="expresion">x = −2</span> se hace cero el primer factor, y en <span class="expresion">x = 3</span>, el segundo: dos cortes, dos
+        soluciones.</p>
+      <p data-texto-caso="incompleta"><strong class="expresion">x² = 9.</strong> La curva corta el eje en −3 y en 3,
+        porque <span class="expresion">(−3)² = 9</span> también: <span class="expresion">x = ±3</span>. Si sólo sacas
+        la raíz positiva, pierdes el corte de la izquierda.</p>
+      <p data-texto-caso="una"><strong class="expresion">(x − 2)² = 0.</strong> Los dos factores son el mismo, así
+        que sólo <span class="expresion">x = 2</span> da cero. La curva baja hasta el eje, lo toca en un punto y vuelve a subir: una solución.</p>
+      <p data-texto-caso="ninguna"><strong class="expresion">x² − 2x + 3 = 0.</strong> Lo más bajo de la curva queda
+        2 arriba del eje: ninguna x da altura cero. No tiene solución real, y por eso no se puede factorizar.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="reglasFormas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasFormas">
+        <span class="lesson-section__kicker">Reglas</span> Cada forma, su camino
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se resuelve cada forma de ecuación de segundo grado" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Las tres formas de una ecuación de segundo grado, cómo se resuelve cada
+          una y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Forma</th><th scope="col">Cómo se resuelve</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="cs-forma">ax² + c = 0</th><td><strong>Sin término en x.</strong> Despeja x² y saca
+            raíz. Salen dos, una positiva y una negativa: ±4 se lee «más o menos 4».</td><td class="cs-ejemplo">x² − 16 = 0<br>x² = 16<br>x = ±4</td></tr>
+          <tr><th scope="row" class="cs-forma">ax² + bx = 0</th><td><strong>Sin número solo.</strong> Saca x de factor
+            común. Una solución siempre es <span class="expresion">x = 0</span>.</td><td class="cs-ejemplo">x² + 5x = 0<br>x(x + 5) = 0<br>x = 0, x = −5</td></tr>
+          <tr><th scope="row" class="cs-forma">ax² + bx + c = 0</th><td><strong>Completa.</strong> Busca dos números
+            que multiplicados den c y sumados den b. Cada factor da una solución, con el signo cambiado. Si no salen,
+            usa la fórmula general.</td><td class="cs-ejemplo">x² + x − 12 = 0<br>(x + 4)(x − 3) = 0<br>x = −4, x = 3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> perder una raíz. De
+      <span class="expresion">x² = 16</span> no sale sólo 4: <span class="expresion">(−4)² = 16</span> también. Y en
+      <span class="expresion">x² + 5x = 0</span> no dividas entre x, porque se pierde <span class="expresion">x = 0</span>:
+      saca factor común.</p>
+  </section>
+
+  <section aria-labelledby="reglasFormula" data-diapositiva="dos" data-figura="compacta">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasFormula">
+        <span class="lesson-section__kicker">Reglas</span> La fórmula general
+      </h2>
+    </header>
+    <p class="section-intro">Sirve para cualquier ecuación de segundo grado, se pueda factorizar o no. Primero se
+      acomoda como <span class="expresion">ax² + bx + c = 0</span>.</p>
+    <figure class="leccion-figura" data-lado="figura">
+      <div class="cs-formula" role="math" aria-label="x es igual a menos b, más o menos la raíz cuadrada de b al cuadrado
+        menos 4 a c, todo entre 2 a">x = <span class="fr"><span class="fr__n">−b ± <span class="rad">√<span class="rad__dentro">b² − 4ac</span></span></span><span class="fr__d">2a</span></span></div>
+    </figure>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Acomoda</span><p>Todo de un lado, igualado a cero. Lee a, b y c con su
+        signo: en <span class="expresion">x² − x − 6 = 0</span>, <span class="expresion">a = 1</span>, <span class="expresion">b = −1</span> y <span class="expresion">c = −6</span>.</p></li>
+      <li><span class="worked-steps__label">Sustituye</span><p>Cada letra con su valor y entre paréntesis si es
+        negativo: <span class="expresion">−b = 1</span> y <span class="expresion">b² − 4ac = (−1)² − 4(1)(−6) = 25</span>.</p></li>
+      <li><span class="worked-steps__label">Separa</span><p>El ± son dos cuentas, una sumando la raíz y otra
+        restándola: <span class="expresion">(1 + 5) ÷ 2 = 3</span> y <span class="expresion">(1 − 5) ÷ 2 = −2</span>.</p></li>
+    </ol>
+    <p class="editorial-note">La raya de la fracción abarca todo: también el −b se divide entre 2a. Y si
+      <span class="expresion">b² − 4ac</span> es negativo, la raíz no existe: no hay solución real.</p>
+  </section>
+
+  <section aria-labelledby="comparaDiscriminante" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaDiscriminante">
+        <span class="lesson-section__kicker">Compara</span> ¿Cuántas soluciones?
+      </h2>
+    </header>
+    <p class="section-intro">Lo que va dentro de la raíz, <span class="expresion">b² − 4ac</span>, se llama
+      <strong>discriminante</strong>. Sin resolver, dice cuántas soluciones hay: es lo que viste en la parábola.</p>
+    <div class="reference-table-wrap" role="region" aria-label="El discriminante y el número de soluciones" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Según el signo del discriminante: cuántas soluciones hay, qué hace la parábola
+          y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Discriminante</th><th scope="col">Soluciones</th><th scope="col">La parábola</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Positivo</th><td>Dos</td><td>Corta el eje dos veces</td><td class="cs-ejemplo">x² − x − 6 = 0<br>1 + 24 = 25</td></tr>
+          <tr><th scope="row">Cero</th><td>Una</td><td>Lo toca en un solo punto</td><td class="cs-ejemplo">x² − 4x + 4 = 0<br>16 − 16 = 0</td></tr>
+          <tr><th scope="row">Negativo</th><td>Ninguna real</td><td>No llega al eje</td><td class="cs-ejemplo">x² − 2x + 3 = 0<br>4 − 12 = −8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Cuida los signos: con c negativo, <span class="expresion">−4ac</span> se suma, porque
+      menos por menos da más; y si b es negativo, b² es positivo: <span class="expresion">(−4)² = 16</span>.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaRectas" data-diapositiva="dos" data-figura="amplia" data-rectas>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaRectas">
+        <span class="lesson-section__kicker">Observa</span> Dónde se cruzan dos rectas
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Cada ecuación con x y y es una recta: sus puntos son los pares que la
+      cumplen. La solución del sistema es el punto que está en las dos. Elige un sistema.</p>
+    <div class="pastillas" role="group" aria-label="Elige un sistema">
+      <button class="pastilla" type="button" aria-pressed="true" data-sistema="cruzan">Se cruzan</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-sistema="paralelas">Paralelas</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-sistema="misma">La misma recta</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-cs="rectas" viewBox="0 0 400 248" role="img" aria-labelledby="rectasTitulo">
+        <title id="rectasTitulo">Cuadrícula de −1 a 6 en los dos ejes, con la misma escala. Aparecen uno por uno los
+          pares enteros que cumplen la primera ecuación y la recta que los une; luego los de la segunda, de otro color.
+          A la derecha, las dos ecuaciones y el resultado: el punto donde se cruzan, que ningún punto está en las dos
+          rectas paralelas, o que las dos son la misma recta.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-rectas-texto></div>
+    <div hidden>
+      <p data-texto-sistema="cruzan"><strong class="expresion">x = 3, y = 2.</strong> Los puntos de la primera recta
+        cumplen <span class="expresion">x + y = 5</span>, y los de la segunda, <span class="expresion">x − y = 1</span>. Sólo uno está en las dos: <span class="expresion">(3, 2)</span>, el único par que cumple
+        las dos ecuaciones.</p>
+      <p data-texto-sistema="paralelas"><strong>Sin solución.</strong> <span class="expresion">x + y</span> no puede valer 5 y 2 a la vez: las rectas
+        van paralelas y nunca se cruzan, así que ningún par cumple las dos.</p>
+      <p data-texto-sistema="misma"><strong>Infinitas soluciones.</strong> <span class="expresion">2x + 2y = 10</span> es <span class="expresion">x + y = 5</span> multiplicada por
+        2: es la misma recta, y todos sus puntos cumplen las dos ecuaciones.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En física, una flecha en el plano se describe con dos números, cuánto
+      avanza a lo ancho y cuánto a lo alto: sus componentes, igual que el par <span class="expresion">(x, y)</span> que resuelve un sistema. Lo verás
+      en <a href="../fisica/vectores-proporcionalidad.html">Vectores y razonamiento proporcional</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasSistemas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasSistemas">
+        <span class="lesson-section__kicker">Reglas</span> Resolver un sistema 2 × 2
+      </h2>
+    </header>
+    <p class="section-intro">La idea es quedarte con una sola incógnita. Con <span class="expresion">x + y = 5</span>
+      y <span class="expresion">x − y = 1</span>:</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Elimina</span><p>Suma o resta las ecuaciones para que una letra se
+        cancele. Al sumarlas, +y y −y se van: <span class="expresion">2x = 6</span>, así que
+        <span class="expresion">x = 3</span>.</p></li>
+      <li><span class="worked-steps__label">Sustituye</span><p>Lleva ese valor a cualquiera de las dos:
+        <span class="expresion">3 + y = 5</span>, así que <span class="expresion">y = 2</span>.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p>En la otra ecuación: <span class="expresion">3 − 2 = 1</span> ✓.
+        Si no se cumple, hay un error.</p></li>
+      <li><span class="worked-steps__label">Multiplica</span><p>Si ninguna letra se cancela, multiplica una ecuación
+        completa, los dos lados. En <span class="expresion">2x + 3y = 13</span> y <span class="expresion">x + y = 5</span>,
+        la segunda por 2 da <span class="expresion">2x + 2y = 10</span>; al restar, <span class="expresion">y = 3</span>
+        y <span class="expresion">x = 2</span>.</p></li>
+    </ol>
+    <p class="editorial-note"><strong>El error más común:</strong> al restar ecuaciones, olvidar que también se resta
+      el número de la derecha. Se resta todo: <span class="expresion">(2x + 3y) − (2x + 2y) = 13 − 10</span>.</p>
+  </section>
+
+  <section aria-labelledby="ejemploCS" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploCS">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">2x² − 3x − 2 = 0</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Lee</span><p><span class="expresion">a = 2</span>,
+            <span class="expresion">b = −3</span> y <span class="expresion">c = −2</span>.</p></li>
+          <li><span class="worked-steps__label">Cuántas</span><p><span class="expresion">(−3)² − 4(2)(−2) = 9 + 16 = 25</span>,
+            positivo: dos soluciones.</p></li>
+          <li><span class="worked-steps__label">Fórmula</span><p><span class="expresion">x = <span class="fr"><span class="fr__n">3 ± 5</span><span class="fr__d">4</span></span></span>:
+            con +, <span class="expresion">x = 2</span>; con −, <span class="expresion">x = −<span class="fr"><span class="fr__n">2</span><span class="fr__d">4</span></span>
+            = −<span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span></span>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">En un estacionamiento hay 18 vehículos entre autos y motos,
+          con 56 llantas. ¿Cuántos autos hay?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Plantea</span><p><span class="expresion">a + m = 18</span> (vehículos) y
+            <span class="expresion">4a + 2m = 56</span> (llantas).</p></li>
+          <li><span class="worked-steps__label">Elimina</span><p>La primera por 2: <span class="expresion">2a + 2m = 36</span>.
+            Réstala de la segunda: <span class="expresion">2a = 20</span>, <span class="expresion">a = 10</span>.</p></li>
+          <li><span class="worked-steps__label">Comprueba</span><p><span class="expresion">m = 18 − 10 = 8</span> y
+            <span class="expresion">4(10) + 2(8) = 56</span> ✓. Hay <strong>10 autos</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["cs-incompleta", "cs-factoriza", "cs-discriminante", "cs-sistema"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-cuadraticas-sistemas.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h3m1 0h5m1 0h2m2 0h1m3 0h1m3 0h7M4 5.5h1m5 0h1m1 0h1m2 0h2m4 0h1m2 0h3m1 0h1m5 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m2 0h1m2 0h1m3 0h2m3 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h4m1 0h4m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m1 0h4m1 0h6m3 0h2m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m3 0h2m2 0h5m4 0h1m4 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M15 11.5h1m2 0h2m3 0h1m2 0h1m1 0h2m1 0h1M4 12.5h1m2 0h6m3 0h1m1 0h1m1 0h1m1 0h1m4 0h1m2 0h1m2 0h1m2 0h1m1 0h3M4 13.5h1m2 0h2m5 0h1m2 0h1m3 0h1m2 0h4m2 0h2m3 0h3m1 0h1M4 14.5h3m1 0h7m3 0h1m5 0h1m1 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1M4 15.5h1m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m1 0h1m2 0h6M5 16.5h2m2 0h5m3 0h2m4 0h2m2 0h2m2 0h1m2 0h2m4 0h1M4 17.5h2m1 0h1m6 0h1m2 0h1m1 0h3m3 0h3m1 0h4m3 0h2M4 18.5h3m3 0h3m1 0h2m1 0h1m1 0h1m1 0h1m1 0h3m2 0h1m2 0h2m1 0h1m1 0h3m1 0h1M6 19.5h4m1 0h1m1 0h2m3 0h2m1 0h2m1 0h1m2 0h1m3 0h1m1 0h1m1 0h1m1 0h2M5 20.5h1m2 0h1m1 0h4m1 0h1m1 0h1m2 0h2m2 0h1m1 0h1m2 0h1m1 0h1m2 0h1m3 0h1m1 0h1M5 21.5h3m1 0h1m1 0h3m2 0h1m3 0h5m1 0h1m2 0h1m1 0h1m5 0h2M5 22.5h3m1 0h2m1 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h5m2 0h3m1 0h1M4 23.5h3m5 0h3m2 0h1m5 0h1m4 0h2m1 0h1m1 0h5m2 0h1M9 24.5h2m1 0h1m3 0h6m1 0h1m3 0h2m1 0h2m1 0h5M8 25.5h2m1 0h1m3 0h2m1 0h3m2 0h1m2 0h3m2 0h1m4 0h1m1 0h1M5 26.5h1m1 0h1m1 0h2m1 0h1m1 0h4m1 0h1m1 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h1m2 0h1M4 27.5h1m2 0h2m3 0h1m1 0h1m2 0h2m2 0h1m6 0h1m1 0h1m3 0h7M4 28.5h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m2 0h4m1 0h1m2 0h2m2 0h1m2 0h2m4 0h1M4 29.5h1m2 0h1m3 0h3m1 0h1m1 0h1m2 0h1m5 0h2m1 0h1m1 0h2m3 0h1M4 30.5h4m1 0h2m3 0h1m1 0h1m3 0h1m2 0h1m1 0h1m3 0h5m4 0h3M4 31.5h1m4 0h1m1 0h2m5 0h2m2 0h1m1 0h1m2 0h2m1 0h1m3 0h6M4 32.5h1m1 0h3m1 0h1m1 0h1m2 0h1m4 0h1m3 0h1m1 0h4m1 0h6m1 0h2M12 33.5h2m3 0h3m3 0h2m7 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m1 0h1m1 0h2m1 0h1m3 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h3m3 0h2m1 0h1m4 0h6m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h2m2 0h2m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m4 0h2m1 0h5m1 0h1m2 0h1m2 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m3 0h1m1 0h1m1 0h1m1 0h5m1 0h2m5 0h2m1 0h5M4 40.5h7m1 0h2m1 0h1m2 0h2m4 0h1m7 0h1m1 0h2m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaCS">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaCS">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:cuadraticas-sistemas" data-modos='[
+      {"id":"segundo","nombre":"Segundo grado","generadores":["cs-incompleta","cs-factoriza","cs-formula"]},
+      {"id":"cuantas","nombre":"¿Cuántas soluciones?","generadores":["cs-discriminante"]},
+      {"id":"sistemas","nombre":"Sistemas","generadores":["cs-sistema","cs-problema"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["cs-incompleta","cs-factoriza","cs-formula","cs-discriminante","cs-sistema","cs-problema"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-cuadraticas-sistemas.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/vectores-proporcionalidad.html">En física: vectores y razonamiento proporcional →</a>
+  </nav>
+</footer>
+
+</body>
+</html>
