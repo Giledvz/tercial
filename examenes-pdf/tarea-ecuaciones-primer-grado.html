@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 7 - Ecuaciones de primer grado · Fundamentos · Matemáticas · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* La ecuación, «x =» y el renglón, centrados: así una fracción no baja el renglón. */
+    .task-cuentas--centro > li { align-items: center; }
+    .task-x {
+      margin: 0 0 0 0.24in;
+      color: var(--ink-500);
+      font-family: var(--font-family-display);
+      font-size: 11pt;
+    }
+    /* Fracciones apiladas, como en la lección (leccion.css no se carga en las tareas). */
+    .fr {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 .12em;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    .fr__n { padding: 0 .15em .1em; border-bottom: .06em solid currentColor; }
+    .fr__d { padding: .1em .15em 0; }
+    /* Tres ecuaciones por renglón, con un recuadro alto para los pasos. */
+    .task-problems--tres.task-problems--ecuaciones .task-work { flex-basis: 0.9in; }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 7 · Fundamentos · Matemáticas</p>
+    <h1 class="exam-pdf__title">Ecuaciones de primer <em>grado</em></h1>
+    <p class="exam-pdf__meta">Despejar x, x en los dos lados, paréntesis, fracciones y problemas</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve sin calculadora. Lo que haces de un lado lo haces del otro: lo que suma pasa restando y lo que
+      multiplica pasa dividiendo. Si la respuesta no es entera, déjala como fracción. Comprueba cada resultado
+      poniéndolo en lugar de la x.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">8 pts</span> Resuelve. Escribe el valor de x.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--dos task-cuentas--centro">
+        <li><span class="task-operacion">x + 9 = 4</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">x − 6 = 11</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">5x = −35</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion"><span class="fr"><span class="fr__n">x</span><span class="fr__d">3</span></span> = −5</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">3x + 4 = 19</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">6x + 5 = −13</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">10 − 3x = 1</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+        <li><span class="task-operacion">14 = 5x − 6</span><span class="task-x">x =</span><span class="task-blank"></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Pasa las x a un lado y los números al otro, y resuelve.</p>
+      <ol class="exam-pdf__sublist task-problems task-problems--tres task-problems--ecuaciones">
+        <li><span class="task-operacion">5x + 3 = 2x + 18</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+        <li><span class="task-operacion">7x − 4 = 3x + 12</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+        <li><span class="task-operacion">4 − 3x = 2x + 19</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Quita los paréntesis y resuelve.</p>
+      <ol class="exam-pdf__sublist task-problems task-problems--tres task-problems--ecuaciones">
+        <li><span class="task-operacion">4(x − 3) = 20</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+        <li><span class="task-operacion">5 − (x + 2) = 9</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+        <li><span class="task-operacion">3(2x + 1) = 5x + 9</span>
+          <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Ecuaciones de primer grado</strong>
+      <span>Tarea 7 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 3">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">8 pts</span> Quita las fracciones y resuelve.</p>
+        <ol class="exam-pdf__sublist task-problems">
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">x</span><span class="fr__d">5</span></span> − 2 = 4</span>
+            <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">x + 6</span><span class="fr__d">4</span></span> = 5</span>
+            <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">x</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">x</span><span class="fr__d">6</span></span> = 8</span>
+            <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">x − 1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">x + 3</span><span class="fr__d">5</span></span></span>
+            <div class="task-work"></div><p class="task-answer">x = <span></span></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Cada solución tiene un error: di cuál es y escribe el valor
+          correcto de x.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span class="task-operacion">x + 8 = 2 → x = 2 + 8 = 10</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">4x = 28 → x = 28 − 4 = 24</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">3(x + 2) = 21 → 3x + 2 = 21 → 3x = 19 → x = 19/3</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">9 pts</span> Plantea una ecuación y resuélvela.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--tres">
+          <li><span>Si al doble de un número le restas 9, obtienes 25. ¿Cuál es el número?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span></p></li>
+          <li><span>La suma de tres números consecutivos es 57. ¿Cuáles son?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span></p></li>
+          <li><span>Un taxi cobra $14 al subir y $9 por km. Pagaste $122. ¿Cuántos km fueron?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>km</b></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">43</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

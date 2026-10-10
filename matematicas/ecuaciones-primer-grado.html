@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ecuaciones de primer grado · Matemáticas · Tercial</title>
+<meta name="description" content="Una ecuación es una balanza en equilibrio: lo que haces de un lado lo haces del otro. Despejar x, x en los dos lados, paréntesis, fracciones y problemas con palabras. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-ecuaciones-primer-grado">
+<meta name="tercial:resource-title" content="Ecuaciones de primer grado">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="ecuaciones-primer-grado">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./ecuaciones-primer-grado.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-ecuaciones-primer-grado.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-ecuaciones-primer-grado.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 7 · Matemáticas</p>
+    <h1 class="hero__title">Ecuaciones de primer <em>grado</em></h1>
+    <p class="hero__lede">Una ecuación es una balanza en equilibrio: lo que haces de un lado lo haces del otro,
+      hasta que la x queda sola. Aquí se ve por qué funciona, cómo se resuelve con paréntesis y con fracciones, y
+      cómo se plantea un problema con palabras.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 7 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/despejes.html">En física: despejes en fórmulas físicas</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaEcuacion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaEcuacion">
+        <span class="lesson-section__kicker">Idea central</span> Una balanza en equilibrio
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Lo que haces de un lado, <em>hazlo del otro</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Una <strong>ecuación</strong> es una igualdad con un número que todavía no conoces, la
+          <strong>incógnita</strong>, que casi siempre se llama x. <strong>Resolverla</strong> es encontrar el valor
+          de x que la hace cierta: en <span class="expresion">2x + 1 = 9</span>, x vale 4, porque
+          <span class="expresion">2 × 4 + 1 = 9</span>.</p>
+        <p>Piensa en una <strong>balanza en equilibrio</strong>: los dos lados pesan lo mismo. Si quitas lo mismo de
+          los dos lados, o partes los dos en partes iguales, sigue en equilibrio. Resolver es eso, paso a paso,
+          hasta que la x queda sola.</p>
+        <p>«Pasar al otro lado» es la forma corta de escribirlo: lo que suma pasa restando y lo que multiplica pasa
+          dividiendo. Es de <strong>primer grado</strong> porque la x no lleva exponente: hay x, pero no x².</p>
+        <p>Al final se <strong>comprueba</strong>: pon el valor en lugar de la x y los dos lados deben dar lo mismo.
+          En el examen no hay calculadora, y comprobar también sirve para descartar opciones.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaBalanza" data-diapositiva="dos" data-figura="amplia" data-balanza>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaBalanza">
+        <span class="lesson-section__kicker">Observa</span> La ecuación es una balanza
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una ecuación. Cada cubo pesa 1 y cada caja pesa x, lo que se
+      busca. Mira qué hace la balanza con cada paso.</p>
+    <div class="pastillas" role="group" aria-label="Elige una ecuación">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="un-lado">3x + 2 = 11</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="dos-lados">5x + 1 = 2x + 7</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="parentesis">2(x + 3) = 14</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate" data-escena-ecuacion="balanza" viewBox="0 0 400 240" role="img" aria-labelledby="balanzaTitulo">
+        <title id="balanzaTitulo">Una balanza de dos platos en equilibrio. En cada plato hay cajas, que pesan x, y
+          cubos, que pesan 1; arriba se lee la ecuación. Paso a paso se quita lo mismo de los dos lados y luego se
+          parte cada lado en partes iguales, hasta que queda una caja frente a los cubos que pesa. Si se quita algo
+          de un solo lado, la balanza se inclina hacia el lado que pesa más.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-balanza-texto></div>
+    <div hidden>
+      <p data-texto-caso="un-lado"><strong class="expresion">3x + 2 = 11.</strong> Si quitas 2 sólo de un lado, la
+        balanza se inclina. Quitando 2 de los dos lados queda <span class="expresion">3x = 9</span>, y al partir en
+        3, <strong class="expresion">x = 3</strong>.</p>
+      <p data-texto-caso="dos-lados"><strong class="expresion">5x + 1 = 2x + 7.</strong> Se quitan 2 cajas de cada
+        lado y luego 1 cubo: <span class="expresion">3x = 6</span>. Al partir en 3, <strong class="expresion">x =
+        2</strong>. Como todo se hace de los dos lados, la balanza no se mueve.</p>
+      <p data-texto-caso="parentesis"><strong class="expresion">2(x + 3) = 14.</strong> Son dos paquetes iguales:
+        el 2 multiplica a la x y también al 3, <span class="expresion">2x + 6 = 14</span>. Se quitan 6 de cada lado,
+        <span class="expresion">2x = 8</span>, y <strong class="expresion">x = 4</strong>.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>La balanza sólo muestra números positivos, pero las reglas valen
+      igual con negativos y con fracciones: lo que se hace de un lado se hace del otro.</p>
+    <p class="editorial-note" data-solo-lectura>En física, la incógnita cambia de letra, pero se despeja igual:
+      despejar v de <span class="expresion">d = vt</span> es despejar x de <span class="expresion">3x = 12</span>. Lo
+      verás en <a href="../fisica/despejes.html">Despejes en fórmulas físicas</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasPasar" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasPasar">
+        <span class="lesson-section__kicker">Reglas</span> Pasar al otro lado
+      </h2>
+    </header>
+    <p class="section-intro">Cada paso de la balanza, escrito: el número cambia de lado con la operación
+      contraria.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo pasa un número al otro lado" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Cómo pasa un número al otro lado de la ecuación, según lo que le hace a la x</caption>
+        <thead>
+          <tr><th scope="col">Junto a la x hay</th><th scope="col">Pasa</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Un número que suma</th><td>restando</td><td class="ecuacion__ejemplo">x + 5 = 12 → x = 12 − 5 = 7</td></tr>
+          <tr><th scope="row">Un número que resta</th><td>sumando</td><td class="ecuacion__ejemplo">x − 4 = 9 → x = 9 + 4 = 13</td></tr>
+          <tr><th scope="row">Uno que multiplica a la x</th><td>dividiendo</td><td class="ecuacion__ejemplo">3x = 21 → x = 21 ÷ 3 = 7</td></tr>
+          <tr><th scope="row">Uno que divide a la x</th><td>multiplicando</td><td class="ecuacion__ejemplo"><span class="fr"><span class="fr__n">x</span><span class="fr__d">2</span></span> = 6 → x = 6 × 2 = 12</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> pasar un número sin cambiarle la operación. En
+      <span class="expresion">x + 5 = 12</span> el 5 suma, así que pasa restando: <span class="expresion">x = 12 − 5
+      = 7</span>, no 12 + 5. Y el 3 de <span class="expresion">3x = 21</span> multiplica: pasa dividiendo, no
+      restando.</p>
+  </section>
+
+  <section aria-labelledby="reglasOrden" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasOrden">
+        <span class="lesson-section__kicker">Reglas</span> En orden, cinco pasos
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Paréntesis</span><p>Quítalos: el número de afuera multiplica a
+        <strong>cada</strong> término de adentro.</p></li>
+      <li><span class="worked-steps__label">Fracciones</span><p>Multiplica los dos lados por el denominador (si hay
+        varios, por su mínimo común múltiplo): las fracciones desaparecen.</p></li>
+      <li><span class="worked-steps__label">Agrupa</span><p>Las x de un lado y los números del otro, cada uno con
+        la operación contraria; luego junta los términos semejantes.</p></li>
+      <li><span class="worked-steps__label">Despeja</span><p>Divide entre el número que multiplica a la x, con
+        todo y su signo.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p>Pon el resultado en la ecuación original: los dos
+        lados deben dar lo mismo.</p></li>
+    </ol>
+    <p class="editorial-note">No siempre hacen falta los cinco: si no hay paréntesis ni fracciones, se empieza en
+      el tercero.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoAgrupa" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoAgrupa">
+        <span class="lesson-section__kicker">Cuidado</span> Paréntesis y fracciones
+      </h2>
+    </header>
+    <p class="section-intro">Lo de afuera multiplica a <strong>todo</strong> lo de adentro, y la raya de una
+      fracción agrupa a todo su numerador.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Distribuye</span><p><span class="expresion">5(x − 2) = 5x
+        <strong>− 10</strong></span>, no 5x − 2.</p></li>
+      <li><span class="worked-steps__label">Un menos</span><p><span class="expresion">−(x − 6) = −x
+        <strong>+ 6</strong></span>: el menos le cambia el signo a todo lo de adentro.</p></li>
+      <li><span class="worked-steps__label">Fracciones</span><p>En <span class="expresion"><span class="fr"><span
+        class="fr__n">x</span><span class="fr__d">3</span></span> + 2 = 7</span>, por 3 los dos lados:
+        <span class="expresion">x <strong>+ 6</strong> = 21</span>, así que x = 15. El 2 también se
+        multiplica.</p></li>
+      <li><span class="worked-steps__label">La raya agrupa</span><p><span class="expresion"><span class="fr"><span
+        class="fr__n">x + 4</span><span class="fr__d">2</span></span> = 9</span> se vuelve
+        <span class="expresion">x + 4 = 18</span>, así que x = 14.</p></li>
+    </ol>
+    <p class="editorial-note">El error típico es multiplicar o dividir un solo término: de
+      <span class="expresion"><span class="fr"><span class="fr__n">x</span><span class="fr__d">3</span></span> + 2
+      = 7</span> no sale <span class="expresion">x + 2 = 21</span>. Cada término de cada lado se multiplica por 3.</p>
+  </section>
+
+  <section aria-labelledby="plantear" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="plantear">
+        <span class="lesson-section__kicker">Plantear</span> Del enunciado a la ecuación
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Llama x a lo que te preguntan, traduce cada frase y resuelve. Al final, contesta con
+      la unidad y revisa que el resultado tenga sentido.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Frases y cómo se escriben" tabindex="0">
+      <table class="reference-table reference-table--apilada plantear-tabla">
+        <caption class="visually-hidden">Frases de un problema y cómo se escriben con x</caption>
+        <thead>
+          <tr><th scope="col">Dice</th><th scope="col">Se escribe</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Un número</th><td class="ecuacion__ejemplo">x</td></tr>
+          <tr><th scope="row">El doble de un número</th><td class="ecuacion__ejemplo">2x</td></tr>
+          <tr><th scope="row">Un número aumentado en 5</th><td class="ecuacion__ejemplo">x + 5</td></tr>
+          <tr><th scope="row">El triple de un número, menos 4</th><td class="ecuacion__ejemplo">3x − 4</td></tr>
+          <tr><th scope="row">La mitad de un número</th><td class="ecuacion__ejemplo"><span class="fr"><span class="fr__n">x</span><span class="fr__d">2</span></span></td></tr>
+          <tr><th scope="row">Dos números consecutivos</th><td class="ecuacion__ejemplo">x y x + 1</td></tr>
+          <tr><th scope="row">Es, da, obtienes</th><td class="ecuacion__ejemplo">=</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploEcuacion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploEcuacion">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">3(x − 2) = x + 8</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Paréntesis</span><p><span class="expresion">3x − 6 = x + 8</span>.</p></li>
+          <li><span class="worked-steps__label">Agrupa</span><p><span class="expresion">3x − x = 8 + 6</span>, es
+            decir, <span class="expresion">2x = 14</span>.</p></li>
+          <li><span class="worked-steps__label">Despeja</span><p><span class="expresion">x = 14 ÷ 2 =
+            <strong>7</strong></span>.</p></li>
+          <li><span class="worked-steps__label">Comprueba</span><p><span class="expresion">3(7 − 2) = 15</span> y
+            <span class="expresion">7 + 8 = 15</span>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">El largo de un terreno mide 8&nbsp;m más que el ancho, y
+          su perímetro es de 64&nbsp;m. ¿Cuánto mide el ancho?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Nombra</span><p>Ancho: x. Largo: x + 8.</p></li>
+          <li><span class="worked-steps__label">Plantea</span><p><span class="expresion">2x + 2(x + 8) = 64</span>.</p></li>
+          <li><span class="worked-steps__label">Resuelve</span><p><span class="expresion">4x + 16 = 64</span>, así
+            que <span class="expresion">4x = 48</span> y <span class="expresion">x = 12</span>.</p></li>
+          <li><span class="worked-steps__label">Contesta</span><p>El ancho mide <strong>12&nbsp;m</strong> y el
+            largo, 20&nbsp;m: <span class="expresion">2 × 12 + 2 × 20 = 64</span>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 25, "cuantas": 4, "nivel": 2, "generadores": ["ec-un-lado", "ec-dos-lados", "ec-parentesis", "ec-fracciones"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-ecuaciones-<wbr>primer-grado.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h1m4 0h1m1 0h4m1 0h2m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m4 0h1m1 0h5m4 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m6 0h2m5 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m5 0h2m1 0h1m6 0h3m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m2 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m2 0h1m2 0h2m8 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h4m2 0h1m1 0h1m1 0h2m2 0h1M4 12.5h1m1 0h5m6 0h2m1 0h2m1 0h2m2 0h4m3 0h5M4 13.5h2m6 0h3m3 0h2m1 0h4m2 0h1m4 0h1m2 0h1m2 0h2M4 14.5h1m5 0h1m1 0h4m1 0h5m4 0h1m2 0h7m2 0h3M4 15.5h4m1 0h1m1 0h2m1 0h2m2 0h2m3 0h4m3 0h2m1 0h1m1 0h2m3 0h1M4 16.5h2m1 0h1m1 0h9m1 0h3m1 0h1m2 0h5m1 0h3m1 0h1m1 0h3M5 17.5h2m1 0h1m3 0h2m1 0h2m3 0h1m2 0h2m1 0h2m4 0h1m2 0h1M4 18.5h3m3 0h1m1 0h2m2 0h1m2 0h3m2 0h3m1 0h1m1 0h2m1 0h5m2 0h1M8 19.5h2m4 0h1m2 0h1m2 0h1m1 0h1m2 0h3m2 0h1m1 0h5M7 20.5h6m1 0h1m2 0h1m4 0h1m3 0h6m1 0h2m1 0h1m1 0h3M4 21.5h1m1 0h2m4 0h2m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1m6 0h1M5 22.5h2m2 0h3m1 0h1m3 0h2m5 0h3m4 0h2m2 0h1m1 0h1m1 0h2M5 23.5h5m1 0h2m3 0h1m3 0h1m2 0h3m2 0h1m1 0h1m2 0h2m5 0h1M6 24.5h3m1 0h3m1 0h3m1 0h1m2 0h1m1 0h1m2 0h9m1 0h3M5 25.5h1m1 0h1m1 0h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m4 0h1M6 26.5h2m1 0h5m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m1 0h2m1 0h1m2 0h4m1 0h2M4 27.5h2m1 0h1m3 0h1m1 0h2m4 0h4m2 0h4m1 0h4m1 0h2m3 0h1M5 28.5h1m1 0h4m6 0h1m1 0h2m2 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h3M4 29.5h3m9 0h1m1 0h2m2 0h6m4 0h2m1 0h1m1 0h1M4 30.5h1m1 0h3m1 0h1m6 0h4m4 0h2m1 0h1m1 0h4m1 0h1m3 0h2M4 31.5h1m1 0h1m2 0h1m4 0h1m4 0h1m2 0h1m1 0h5m2 0h1m2 0h2M4 32.5h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h3m4 0h1m1 0h9m1 0h2M12 33.5h2m1 0h1m2 0h1m1 0h1m2 0h5m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h2m3 0h3m1 0h1m1 0h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m3 0h4m2 0h1m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h1m2 0h1m3 0h1m2 0h8m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h2m5 0h2m2 0h3m1 0h1m1 0h2m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h1m3 0h1m8 0h4M4 39.5h1m5 0h1m2 0h1m2 0h1m3 0h1m1 0h1m2 0h1m2 0h1m2 0h4m1 0h1m3 0h1M4 40.5h7m1 0h2m2 0h1m1 0h1m1 0h2m4 0h1m2 0h2m2 0h2m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaEcuaciones">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaEcuaciones">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:ecuaciones-primer-grado" data-modos='[
+      {"id":"despeja","nombre":"Despeja x","generadores":["ec-un-lado","ec-dos-lados"]},
+      {"id":"agrupa","nombre":"Paréntesis y fracciones","generadores":["ec-parentesis","ec-fracciones"]},
+      {"id":"problemas","nombre":"Problemas","generadores":["ec-problemas"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["ec-un-lado","ec-dos-lados","ec-parentesis","ec-fracciones","ec-problemas"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-ecuaciones-primer-grado.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/despejes.html">En física: despejes en fórmulas físicas →</a>
+  </nav>
+</footer>
+
+</body>
+</html>

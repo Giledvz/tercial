@@ -1,0 +1,129 @@
+/* Ecuaciones de primer grado: estilos propios de la lección. El molde vive en
+   /assets/css/leccion.css y la escena usa .escena-mate de matematicas.css. base.css le
+   pone contorno y relleno vacío a todo <svg>: aquí cada forma declara los suyos, con los
+   colores de los tokens, así que la balanza se ve igual de clara en claro y en oscuro. */
+
+/* ---------- La balanza ---------- */
+.platillos__base {
+  fill: var(--color-border-strong);
+  stroke: none;
+}
+
+.platillos__barra,
+.platillos__poste,
+.platillos__brazo {
+  fill: var(--color-text-meta);
+  stroke: none;
+}
+
+.platillos__perno {
+  fill: var(--color-bg-page);
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+}
+
+.platillos__plato {
+  fill: var(--color-text-secondary);
+  stroke: none;
+}
+
+/* Cada cubo pesa 1; cada caja pesa x. */
+.platillos__cubo {
+  fill: var(--color-bg-raised);
+  stroke: var(--color-text-primary);
+  stroke-width: 1.2;
+}
+
+.platillos__caja {
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.platillos__caja-x {
+  fill: var(--color-bg-page);
+  font-family: var(--font-family-display);
+  font-size: 17px;
+}
+
+.platillos__caja-x--chica { font-size: 11px; }
+
+/* Lo que se va a quitar (o lo que se cuenta) se marca antes de moverse. */
+.es-marcado .platillos__cubo {
+  stroke: var(--color-accent);
+  stroke-width: 2.2;
+}
+
+.es-marcado .platillos__caja {
+  stroke: var(--color-text-primary);
+  stroke-width: 2;
+}
+
+.platillos__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+}
+
+.platillos__acento { fill: var(--color-accent); }
+
+.platillos__nota {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 12.5px;
+}
+
+/* La operación que se hace en cada lado: «− 2», «÷ 3». */
+.platillos__op {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 18px;
+}
+
+.platillos__divisor {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 3;
+  stroke-linecap: butt;
+}
+
+.platillos__paquete {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 3;
+  stroke-linecap: butt;
+}
+
+.platillos__leyenda text {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 11px;
+}
+
+.platillos__leyenda .platillos__caja-x { fill: var(--color-bg-page); }
+
+/* ---------- Tablas ---------- */
+/* Las ecuaciones de las tablas se leen como operaciones, no como texto. */
+.ecuacion__ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* En la tele, la regla y su ejemplo se leen en el mismo renglón que el texto. */
+html[data-proyeccion] .es-proyectada .ecuacion__ejemplo { font-size: calc(var(--u) * 2.1); }
+
+/* En «Plantear», la frase es lo que se lee: va como texto, no como etiqueta. */
+.plantear-tabla tbody th {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+html[data-proyeccion] .es-proyectada .plantear-tabla tbody th { font-size: calc(var(--u) * 2); }
