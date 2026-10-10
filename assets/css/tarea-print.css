@@ -80,6 +80,14 @@ body,
   white-space: nowrap;
 }
 
+/* El renglón de una cuenta es flexible: un exponente suelto sería un elemento más, pegado
+   abajo como subíndice. Se sube a la parte alta del renglón, como en un texto normal. */
+.exam-pdf__sublist.task-cuentas > li > sup {
+  align-self: flex-start;
+  font-size: 0.68em;
+  line-height: 1;
+}
+
 .exam-pdf__sublist.task-cuentas > li::before {
   top: auto;
   bottom: 1pt;
