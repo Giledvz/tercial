@@ -2,10 +2,14 @@
  * leccion.js — lo que comparten las lecciones de Tercial.
  *
  * Modo proyección: cada elemento con [data-diapositiva] se vuelve una pantalla
- * que llena la tele. Se entra con el botón [data-proyectar] o con la tecla P; se
- * avanza con las flechas, Avance/Retroceso de página (lo que manda un control de
- * presentaciones) o la barra espaciadora, y se sale con Esc o P. Arranca en la
- * sección que estaba a la vista y, al salir, regresa a la que quedó en pantalla.
+ * que llena la tele. Se entra con el botón [data-proyectar] («Proyectar») o con la tecla P;
+ * se avanza con las flechas → y ←, Avance/Retroceso de página (lo que manda un control de
+ * presentaciones) o la barra espaciadora, y se sale con «Salir», Esc o P. Las flechas ↑ y ↓
+ * no cambian de pantalla: son de los controles (un desplegable, una lista), y ninguna tecla
+ * que un control ya atendió llega aquí. Si el navegador quita la pantalla completa (Esc en
+ * la Mac, el teclado o un gesto en el iPad), la proyección sigue y aparece «Pantalla
+ * completa» para volver a ella. Arranca en la sección que estaba a la vista y, al salir,
+ * regresa a la que quedó en pantalla.
  * Lo marcado con [data-solo-proyeccion] (la pantalla «Ahora tú», con el código QR)
  * sólo existe en este modo. Cada pantalla que llega a la tele recibe el evento
  * «tercial:diapositiva» (las escenas lo usan para empezar desde el principio) y la que
@@ -31,7 +35,6 @@
 
   var actual = 0;
   var controles = null;
-  var conPantallaCompleta = false;
 
   // La unidad de la tele (--u). El diseño mide 100 × 56.25 unidades, un 16:9. En una pantalla
   // más cuadrada (un iPad 4:3, una MacBook 16:10) sobra alto: la unidad crece hasta conservar
@@ -51,11 +54,24 @@
       '<span class="proyeccion-controles__cuenta" aria-live="polite"></span>' +
       '<button class="proyeccion-controles__boton" type="button" data-proyeccion-anterior aria-label="Pantalla anterior">←</button>' +
       '<button class="proyeccion-controles__boton" type="button" data-proyeccion-siguiente aria-label="Pantalla siguiente">→</button>' +
+      '<button class="proyeccion-controles__salir" type="button" data-proyeccion-completa hidden>Pantalla completa</button>' +
       '<button class="proyeccion-controles__salir" type="button" data-proyeccion-salir>Salir</button>';
     document.body.appendChild(controles);
     controles.querySelector('[data-proyeccion-anterior]').addEventListener('click', function () { avanza(-1); });
     controles.querySelector('[data-proyeccion-siguiente]').addEventListener('click', function () { avanza(1); });
     controles.querySelector('[data-proyeccion-salir]').addEventListener('click', salir);
+    controles.querySelector('[data-proyeccion-completa]').addEventListener('click', pantallaCompleta);
+  }
+
+  // La pantalla completa es un extra: si el navegador no la da o la quita, la proyección sigue.
+  function pantallaCompleta() {
+    if (!raiz.requestFullscreen || document.fullscreenElement) return;
+    raiz.requestFullscreen().catch(function () {}).then(botonCompleta);
+  }
+  function botonCompleta() {
+    if (!controles) return;
+    controles.querySelector('[data-proyeccion-completa]').hidden =
+      !raiz.hasAttribute('data-proyeccion') || !raiz.requestFullscreen || !!document.fullscreenElement;
   }
 
   function ir(indice, direccion) {
@@ -237,10 +253,8 @@
     raiz.setAttribute('data-proyeccion', '');
     controles.hidden = false;
     ir(inicio);
-    conPantallaCompleta = false;
-    if (raiz.requestFullscreen && !document.fullscreenElement) {
-      raiz.requestFullscreen().then(function () { conPantallaCompleta = true; }).catch(function () {});
-    }
+    botonCompleta();
+    pantallaCompleta();
   }
 
   function salir() {
@@ -254,7 +268,6 @@
     diapositivas.forEach(function (d) { d.classList.remove('es-proyectada'); d.removeAttribute('aria-hidden'); });
     controles.hidden = true;
     if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
-    conPantallaCompleta = false;
     // Al salir, la liga deja de decir #tele: si se recarga, abre en lectura.
     if (location.hash === '#tele' && history.replaceState) history.replaceState(null, '', location.pathname + location.search);
     if (!vista.hasAttribute('data-solo-proyeccion')) vista.scrollIntoView({ block: 'start' });
@@ -275,15 +288,18 @@
     ajusta(diapositivas[actual]);
   });
 
-  // Si el navegador quita la pantalla completa (Esc en Safari), también se sale del modo.
+  // Si el navegador quita la pantalla completa, la proyección sigue: sólo se ofrece volver.
   document.addEventListener('fullscreenchange', function () {
-    if (!document.fullscreenElement && conPantallaCompleta) salir();
+    botonCompleta();
+    if (raiz.hasAttribute('data-proyeccion')) { medir(); ajusta(diapositivas[actual]); }
   });
 
   document.addEventListener('keydown', function (evento) {
     var t = evento.target;
-    if (evento.metaKey || evento.ctrlKey || evento.altKey) return;
+    if (evento.defaultPrevented || evento.metaKey || evento.ctrlKey || evento.altKey) return;
     if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    // Dentro de un control con teclas propias (un desplegable, una lista), las teclas son suyas.
+    if (t && t.closest && t.closest('[role="listbox"], [role="combobox"], [role="menu"], [role="slider"], [aria-haspopup]')) return;
     var proyectando = raiz.hasAttribute('data-proyeccion');
     if (!proyectando) {
       if (evento.key === 'p' || evento.key === 'P') { entrar(); evento.preventDefault(); }
@@ -292,8 +308,8 @@
     // La barra espaciadora sobre un botón lo oprime; no avanza la pantalla.
     if (evento.key === ' ' && t && t.tagName === 'BUTTON') return;
     switch (evento.key) {
-      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': avanza(1); break;
-      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': avanza(-1); break;
+      case 'ArrowRight': case 'PageDown': case ' ': avanza(1); break;
+      case 'ArrowLeft': case 'PageUp': avanza(-1); break;
       case 'Home': ir(0); break;
       case 'End': ir(diapositivas.length - 1); break;
       case 'Escape': case 'p': case 'P': salir(); break;

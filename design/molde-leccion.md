@@ -31,7 +31,7 @@ La misma página sirve para leer en la compu o la tableta y para proyectar en la
 práctica y la tarea en PDF. Nada de lo que se agrega para la tele cambia la lectura: se
 comprueba comparando capturas pixel por pixel contra el último commit (ver «Revisión»).
 
-**Tele.** Con P, con el botón «Proyectar en la tele» o con `#tele` en la liga, cada elemento
+**Tele.** Con P, con el botón «Proyectar» o con `#tele` en la liga, cada elemento
 con `data-diapositiva` llena una pantalla 16:9. Todo se mide en `--u`, el 1 % del ancho de
 la pantalla 16:9 que cabe en la ventana, así que no quedan franjas en ninguna tele. La letra
 base (1 rem) vale 1.25u: lo que el sistema mide en rem crece con la pantalla.
@@ -68,6 +68,12 @@ tocar algo dentro y con el evento `tercial:cambia`:
 - si le sobra más de un tercio, crecen (hasta 130 %);
 - si ni así cabe, se puede desplazar (último recurso: hay que repartirla).
 Una tabla por partes usa el zoom de su parte más alta, para que la letra no cambie entre partes.
+
+**Teclas.** → y ← (o Avance y Retroceso de página, lo que manda un control de presentaciones)
+cambian de pantalla; ↑ y ↓ no, porque son de los controles: un desplegable, una lista. Una
+tecla que un control ya atendió no llega al modo tele. Se sale con «Salir», Esc o P. La
+pantalla completa es un extra: si el navegador la quita (Esc en la Mac; en el iPad, el
+teclado o un gesto), la proyección sigue y los controles ofrecen «Pantalla completa».
 
 **Pasos dentro de una pantalla.** El reto y las tablas por partes exponen
 `__pasos.siguiente()` y `__pasos.anterior()`: la flecha les pregunta primero a ellos. Al
