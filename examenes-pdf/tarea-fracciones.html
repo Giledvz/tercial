@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 2 - Operaciones con fracciones · Fundamentos · Matemáticas · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* Piezas propias de esta tarea (tarea-print.css no trae fracciones): fracciones apiladas,
+       recuadros para escribirlas a mano y barras para leer lo pintado. Los selectores llevan
+       .exam-pdf para que la clave (que agrega sus propios estilos al final) no los deshaga. */
+    .exam-pdf .fr {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 .1em;
+      line-height: 1.02;
+      vertical-align: middle;
+    }
+    .exam-pdf .fr__n { padding: 0 .14em .07em; border-bottom: .07em solid currentColor; }
+    .exam-pdf .fr__d { padding: .07em .14em 0; }
+    /* Cuentas con fracciones: renglones más altos y el inciso a media altura. */
+    .exam-pdf .task-cuentas--fr { row-gap: 9pt; }
+    .exam-pdf .exam-pdf__sublist.task-cuentas--fr > li { align-items: center; column-gap: 4pt; }
+    .exam-pdf .task-exercises .exam-pdf__exercise { margin-bottom: 0.2in; }
+    .exam-pdf .task-igual { margin-left: 6pt; color: var(--ink-900); font-family: var(--font-family-display); font-size: 12pt; }
+    .exam-pdf .exam-pdf__sublist.task-cuentas--fr > li::before { top: 50%; bottom: auto; transform: translateY(-50%); }
+    .exam-pdf .task-cuentas--cuatro { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .exam-pdf .task-cuentas--fr .task-blank { min-width: 0.5in; }
+    /* Recuadro para escribir una fracción a mano, y el del número que falta dentro de una fracción. */
+    .exam-pdf .task-box--fr,
+    .exam-pdf .task-answer > span.task-box--fr {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      width: 0.58in;
+      height: 0.44in;
+      margin: 0 0 0 5pt;
+      border: 1px solid var(--ink-300);
+      background: #fbf8f2;
+      vertical-align: middle;
+    }
+    .exam-pdf .task-box--num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 0.4in;
+      height: 0.3in;
+      margin: 0 0 2pt;
+      vertical-align: middle;
+    }
+    /* Barras: la fracción pintada se lee contando partes. */
+    .exam-pdf .task-barras {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0 0.3in;
+    }
+    .exam-pdf .task-barras > li { margin: 0; padding-left: 0.3in; }
+    .exam-pdf .task-barras > li::before { width: 0.2in; }
+    .exam-pdf .task-barras svg { display: block; width: 100%; height: auto; margin: 2pt 0 5pt; }
+    .exam-pdf .task-barras .task-answer-line { justify-content: center; }
+    .tb-parte { fill: #fbf8f2; stroke: var(--ink-500); stroke-width: 1; }
+    .tb-parte--pintada { fill: var(--accent-conac); fill-opacity: .5; }
+    .exam-pdf .task-barras .task-answer-line { display: flex; align-items: center; gap: 2pt; margin: 0; }
+    /* Sumas con procedimiento: cuatro lado a lado. */
+    /* Dos cuentas con procedimiento: la operación y su resultado arriba, el recuadro para trabajar abajo. */
+    .exam-pdf .task-problems--pasos .task-fila { display: flex; justify-content: space-between; align-items: center; }
+    .exam-pdf .task-problems--pasos .task-answer { margin: 0; }
+    .exam-pdf .task-problems--pasos .task-work { flex-basis: 0.8in; }
+    /* Problemas en renglones: el enunciado, el recuadro para trabajar y el resultado, lado a lado. */
+    .exam-pdf .task-problems--filas { grid-template-columns: minmax(0, 1fr); gap: 8pt; }
+    .exam-pdf .task-problems--filas > li {
+      display: grid;
+      grid-template-columns: 2.75in minmax(0, 1fr) 1.62in;
+      align-items: center;
+      column-gap: 10pt;
+    }
+    .exam-pdf .task-problems--filas > li > span:first-child { line-height: 1.35; }
+    .exam-pdf .task-problems--filas .task-work { align-self: stretch; min-height: 0.6in; margin-top: 0; }
+    .exam-pdf .task-problems--filas .task-answer { margin: 0; justify-content: flex-end; }
+    .exam-pdf .task-problems--filas .task-answer { gap: 4pt; }
+    /* Sólo en la clave: el procedimiento escrito ocupa poco alto en su recuadro. */
+    .exam-pdf .task-problems--filas .task-work .task-procedure { margin: 3pt 5pt; line-height: 1.35; }
+    .exam-pdf .task-problems--filas .task-answer b { flex: none; width: 0.28in; }
+    .exam-pdf .task-problems--filas > li::before { top: 50%; transform: translateY(-50%); }
+    .exam-pdf .task-problems .task-operacion .fr { font-size: 1em; }
+    .exam-pdf .task-answer { align-items: center; }
+    /* Encuentra el error: la cuenta, qué se hizo mal y el resultado correcto, en un solo renglón. */
+    .exam-pdf .task-errores > li { display: flex; align-items: center; gap: 10pt; margin-bottom: 6pt; }
+    .exam-pdf .task-errores > li::before { top: 50%; transform: translateY(-50%); }
+    .exam-pdf .task-errores .task-operacion { flex: none; width: 1.3in; }
+    .exam-pdf .task-errores .task-answer-line { display: flex; flex: 1; align-items: center; gap: 4pt; margin: 0; }
+    .exam-pdf .task-errores .task-blank--error { flex: 1; min-width: 0; }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 2 · Fundamentos · Matemáticas</p>
+    <h1 class="exam-pdf__title">Operaciones con <em>fracciones</em></h1>
+    <p class="exam-pdf__meta">Equivalentes, la fracción de una cantidad, sumar, restar, multiplicar y dividir</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Sin calculadora. Simplifica cada resultado hasta que ya no se pueda. Para sumar o restar, primero un común
+      denominador; para dividir, se voltea la segunda.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Escribe qué fracción de cada barra está pintada y, después del =, simplifícala.</p>
+      <ol class="exam-pdf__sublist task-barras">
+        <li><svg viewBox="0 0 302 32" role="img" aria-label="Barra partida en 9 partes iguales con 6 pintadas"><rect x="1.0" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="34.33" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="67.67" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="101.0" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="134.33" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="167.67" y="1" width="33.33" height="30" class="tb-parte tb-parte--pintada"/><rect x="201.0" y="1" width="33.33" height="30" class="tb-parte"/><rect x="234.33" y="1" width="33.33" height="30" class="tb-parte"/><rect x="267.67" y="1" width="33.33" height="30" class="tb-parte"/></svg><p class="task-answer-line"><span class="task-box task-box--fr"></span> <span class="task-igual">=</span> <span class="task-box task-box--fr"></span></p></li>
+        <li><svg viewBox="0 0 302 32" role="img" aria-label="Barra partida en 10 partes iguales con 4 pintadas"><rect x="1.0" y="1" width="30.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="31.0" y="1" width="30.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="61.0" y="1" width="30.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="91.0" y="1" width="30.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="121.0" y="1" width="30.0" height="30" class="tb-parte"/><rect x="151.0" y="1" width="30.0" height="30" class="tb-parte"/><rect x="181.0" y="1" width="30.0" height="30" class="tb-parte"/><rect x="211.0" y="1" width="30.0" height="30" class="tb-parte"/><rect x="241.0" y="1" width="30.0" height="30" class="tb-parte"/><rect x="271.0" y="1" width="30.0" height="30" class="tb-parte"/></svg><p class="task-answer-line"><span class="task-box task-box--fr"></span> <span class="task-igual">=</span> <span class="task-box task-box--fr"></span></p></li>
+        <li><svg viewBox="0 0 302 32" role="img" aria-label="Barra partida en 12 partes iguales con 10 pintadas"><rect x="1.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="26.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="51.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="76.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="101.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="126.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="151.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="176.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="201.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="226.0" y="1" width="25.0" height="30" class="tb-parte tb-parte--pintada"/><rect x="251.0" y="1" width="25.0" height="30" class="tb-parte"/><rect x="276.0" y="1" width="25.0" height="30" class="tb-parte"/></svg><p class="task-answer-line"><span class="task-box task-box--fr"></span> <span class="task-igual">=</span> <span class="task-box task-box--fr"></span></p></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">4 pts</span> Completa para que sean equivalentes.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--fr task-cuentas--cuatro">
+        <li><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="fr"><span class="fr__n"><span class="task-box task-box--num"></span></span><span class="fr__d">20</span></span></li>
+        <li><span class="fr"><span class="fr__n">2</span><span class="fr__d">7</span></span> = <span class="fr"><span class="fr__n"><span class="task-box task-box--num"></span></span><span class="fr__d">21</span></span></li>
+        <li><span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">25</span><span class="fr__d"><span class="task-box task-box--num"></span></span></span></li>
+        <li><span class="fr"><span class="fr__n">4</span><span class="fr__d">9</span></span> = <span class="fr"><span class="fr__n"><span class="task-box task-box--num"></span></span><span class="fr__d">45</span></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">4 pts</span> Simplifica hasta que ya no se pueda.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--fr task-cuentas--cuatro">
+        <li><span class="fr"><span class="fr__n">12</span><span class="fr__d">16</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">15</span><span class="fr__d">25</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">24</span><span class="fr__d">36</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">42</span><span class="fr__d">56</span></span> = <span class="task-box task-box--fr"></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Calcula: reparte entre el denominador y toma el numerador.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--fr">
+        <li><span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span>&nbsp;de 27 =<span class="task-blank"></span></li>
+        <li><span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span>&nbsp;de 40 =<span class="task-blank"></span></li>
+        <li><span class="fr"><span class="fr__n">5</span><span class="fr__d">8</span></span>&nbsp;de 48 =<span class="task-blank"></span></li>
+        <li><span class="fr"><span class="fr__n">2</span><span class="fr__d">9</span></span>&nbsp;de 63 =<span class="task-blank"></span></li>
+        <li><span class="fr"><span class="fr__n">7</span><span class="fr__d">10</span></span>&nbsp;de 150 =<span class="task-blank"></span></li>
+        <li><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span>&nbsp;de 36 =<span class="task-blank"></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Suma y resta. Simplifica el resultado.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--fr task-cuentas--dos">
+        <li><span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">8</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">7</span><span class="fr__d">9</span></span> − <span class="fr"><span class="fr__n">4</span><span class="fr__d">9</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> − <span class="fr"><span class="fr__n">1</span><span class="fr__d">6</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li>1 − <span class="fr"><span class="fr__n">3</span><span class="fr__d">7</span></span> = <span class="task-box task-box--fr"></span></li>
+        <li>3 + <span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> = <span class="task-box task-box--fr"></span></li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Operaciones con fracciones</strong>
+      <span>Tarea 2 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 5">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Suma y resta paso a paso: busca el común denominador,
+          convierte y simplifica.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--pasos">
+          <li><div class="task-fila"><span class="task-operacion"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> + <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></span><p class="task-answer">Resultado <span class="task-box task-box--fr"></span></p></div>
+            <div class="task-work"></div></li>
+          <li><div class="task-fila"><span class="task-operacion"><span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span> − <span class="fr"><span class="fr__n">2</span><span class="fr__d">9</span></span></span><p class="task-answer">Resultado <span class="task-box task-box--fr"></span></p></div>
+            <div class="task-work"></div></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Multiplica y divide. Simplifica el resultado.</p>
+        <ol class="exam-pdf__sublist task-cuentas task-cuentas--fr">
+          <li><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> × <span class="fr"><span class="fr__n">5</span><span class="fr__d">7</span></span> = <span class="task-box task-box--fr"></span></li>
+          <li><span class="fr"><span class="fr__n">6</span><span class="fr__d">7</span></span> × <span class="fr"><span class="fr__n">7</span><span class="fr__d">12</span></span> = <span class="task-box task-box--fr"></span></li>
+          <li>5 × <span class="fr"><span class="fr__n">3</span><span class="fr__d">10</span></span> = <span class="task-box task-box--fr"></span></li>
+          <li><span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> ÷ <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="task-box task-box--fr"></span></li>
+          <li>4 ÷ <span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> = <span class="task-box task-box--fr"></span></li>
+          <li><span class="fr"><span class="fr__n">9</span><span class="fr__d">10</span></span> ÷ 3 = <span class="task-box task-box--fr"></span></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Cada cuenta está mal: di qué se hizo mal y escribe el
+          resultado correcto.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span></span>
+            <span class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-box task-box--fr"></span></span></li>
+          <li><span class="task-operacion">4 × <span class="fr"><span class="fr__n">2</span><span class="fr__d">9</span></span> = <span class="fr"><span class="fr__n">8</span><span class="fr__d">36</span></span></span>
+            <span class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-box task-box--fr"></span></span></li>
+          <li><span class="task-operacion"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> ÷ <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span></span>
+            <span class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-box task-box--fr"></span></span></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Resuelve. Escribe el resultado con su unidad.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--filas">
+          <li><span>¿Cuántos minutos son <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> de una hora?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span class="task-box task-box--fr"></span> <b>min</b></p></li>
+          <li><span>Tenías <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> de litro de leche y usaste <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> de litro. ¿Cuánta te queda?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span class="task-box task-box--fr"></span> <b>L</b></p></li>
+          <li><span>Un terreno de <span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> de hectárea tiene maíz en <span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> de él. ¿Cuántas hectáreas de maíz hay?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span class="task-box task-box--fr"></span> <b>ha</b></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">50</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

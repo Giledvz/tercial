@@ -1,0 +1,152 @@
+/* Fracciones (Fundamentos, semana 2): estilos propios de la lección. El molde vive en
+   /assets/css/leccion.css y lo común de Matemáticas en ./matematicas.css (de ahí sale
+   .escena-mate). base.css le pone contorno y relleno vacío a todo <svg>: aquí cada forma
+   declara los suyos. Sólo tokens: se ve igual de bien en claro y en oscuro. */
+
+/* ---------- Las barras ----------
+   Cada parte es un mosaico y las rayas son huecos del color de la página: así se ven igual
+   sobre lo pintado (oscuro en claro, claro en oscuro) que sobre lo vacío. */
+.barra__fondo { fill: var(--color-border-subtle); stroke: none; }
+.barra__pintada { fill: var(--color-accent); stroke: none; }
+
+/* Lo pintado de la segunda fracción (o de una fracción de lo pintado): el mismo color, más tenue. */
+.barra__clara { fill: var(--color-accent); fill-opacity: .32; stroke: none; }
+[data-theme="dark"] .barra__clara { fill-opacity: .48; }
+
+.barra__raya {
+  fill: none;
+  stroke: var(--color-bg-page);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+
+/* Una raya nueva crece punteada y luego se vuelve firme: es un corte. */
+.barra__raya--nueva { stroke-dasharray: 3 2.5; }
+
+/* La guía: lo pintado termina en el mismo lugar en todas las barras. */
+.barra__guia {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.3;
+  stroke-dasharray: 3 3;
+  stroke-linecap: butt;
+}
+
+.barra__llave {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+}
+
+/* Las bolitas de «3/4 de 20»: sobre lo pintado se vuelven del color de la página. */
+.barra__bolita { fill: var(--color-text-primary); stroke: none; }
+.barra__bolita--sobre { fill: var(--color-bg-page); }
+
+.barra__cifra {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+}
+
+.barra__cifra--chica { fill: var(--color-text-meta); font-size: 12px; }
+.barra__cifra--acento { fill: var(--color-accent); }
+
+.barra__nota {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+}
+
+.barra__nota--acento { fill: var(--color-accent); }
+
+/* Las fracciones dentro del dibujo: numerador, raya y denominador (el tamaño lo pone la escena). */
+.fr-svg__num {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+}
+
+.fr-svg__raya { fill: none; stroke: var(--color-text-primary); stroke-linecap: butt; }
+
+/* «×2» junto al numerador y al denominador: lo que se multiplica arriba y abajo. */
+.fr-svg__por {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+}
+
+.fr-svg--acento .fr-svg__num,
+.ec__resultado .fr-svg__num,
+text.ec__resultado { fill: var(--color-accent); }
+
+.fr-svg--acento .fr-svg__raya,
+.ec__resultado .fr-svg__raya { stroke: var(--color-accent); }
+
+/* La operación arriba del dibujo. */
+.ec__signo {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+}
+
+/* «Sumar de frente»: la barra del resultado equivocado va en gris, con su tache; la buena, con su palomita. */
+.barra__mal { fill: var(--color-text-meta); fill-opacity: .55; stroke: none; }
+
+.barra__marca {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.barra__rotulo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+}
+
+/* ---------- Fracciones en el texto ----------
+   Las apila .fr (leccion.css). Dentro de una pastilla, más juntas, para que la pastilla
+   no crezca de alto. */
+.pastilla .fr { font-size: .92em; }
+.pastilla .fr__n { padding-bottom: .05em; }
+.pastilla .fr__d { padding-top: .05em; }
+
+/* El número que falta en «Completa» (lo escribe el generador): en el color del nivel. */
+.fr-falta {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Los ejemplos de las tablas se leen como operaciones, no como texto. */
+.fracciones__ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Una fracción apilada en una nota (13 px) quedaría con cifras de 9 px: un poco más grande. */
+.editorial-note .fr { font-size: 1.1em; }
+
+/* En una tabla de reglas, el renglón crece con las fracciones apiladas: todo se centra en su renglón. */
+.fracciones-tabla td,
+.fracciones-tabla th { vertical-align: middle; }
+
+/* ---------- Tele ---------- */
+html[data-proyeccion] .es-proyectada .fracciones-tabla th,
+html[data-proyeccion] .es-proyectada .fracciones-tabla td { vertical-align: middle; }
+
+html[data-proyeccion] .es-proyectada .fracciones__ejemplo { font-size: calc(var(--u) * 2.2); }
+
+/* El puente con física es una nota, pero en la tele tiene su propia pantalla: se lee como párrafo. */
+.fracciones-puente { margin-top: var(--space-5); }
+html[data-proyeccion] .es-proyectada.fracciones-puente .editorial-note {
+  max-width: none;
+  font-size: calc(var(--u) * 2.2);
+  line-height: 1.5;
+}
+
+/* Un punto justo después de una fracción no se despega de ella. */
+.leccion-texto strong > .fr:last-child { margin-right: 0; }
