@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Factorización · Matemáticas · Tercial</title>
+<meta name="description" content="Factorizar es multiplicar al revés: con fichas de área se ve por qué x² + 5x + 6 es (x + 2)(x + 3). Factor común, diferencia de cuadrados, trinomios y la tijera. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-factorizacion">
+<meta name="tercial:resource-title" content="Factorización">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="factorizacion">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./factorizacion.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-factorizacion.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-factorizacion.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 6 · Matemáticas</p>
+    <h1 class="hero__title"><em>Factorización</em></h1>
+    <p class="hero__lede">Factorizar es el camino de regreso de los productos notables: te dan el resultado y buscas
+      qué se multiplicó. Con fichas de área se ve por qué <span class="expresion">x² + 5x + 6</span> es
+      <span class="expresion">(x + 2)(x + 3)</span>; luego, cada caso se practica hasta reconocerlo a la primera.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 6 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/graficas-movimiento.html">En física: gráficas II: interpretar el movimiento</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaFactorizar" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaFactorizar">
+        <span class="lesson-section__kicker">Idea central</span> Multiplicar al revés
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Del producto a sus <em>factores</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p><strong>Factorizar</strong> es escribir una expresión como una multiplicación. Con números ya lo haces:
+          <span class="expresion">12 = 3 × 4</span>, y el 3 y el 4 son sus <strong>factores</strong>. Con álgebra es
+          igual: <span class="expresion">x² + 5x + 6 = (x + 2)(x + 3)</span>.</p>
+        <p>Es el camino de regreso de los <a href="./productos-notables.html">productos notables</a>: allá te daban
+          <span class="expresion">(x + 2)(x + 3)</span> y lo desarrollabas; aquí te dan el resultado y buscas qué se
+          multiplicó. Por eso siempre se puede comprobar: multiplica tus factores y debe salir lo que te dieron.</p>
+        <p>Se empieza por lo que se <strong>repite</strong> en todos los términos, el factor común. Luego se mira la
+          forma de lo que queda: dos cuadrados que se restan, un trinomio cuadrado perfecto o un trinomio que sale
+          con dos números. Y se factoriza <strong>por completo</strong>: hasta que ningún factor se pueda partir más.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaFichas" data-diapositiva="dos" data-fichas>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaFichas">
+        <span class="lesson-section__kicker">Observa</span> Las fichas arman un rectángulo
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una expresión. Cada ficha es un pedazo de área: el cuadro mide x
+      por x y vale x², cada tira mide x por 1 y vale x, y cada cuadrito vale 1. Si las fichas forman un rectángulo,
+      sus dos lados son los factores.</p>
+    <div class="pastillas" role="group" aria-label="Elige una expresión">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="trinomio">x² + 5x + 6</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="comun">2x² + 6x</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="cuadrado">x² + 6x + 9</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="diferencia">x² − 4</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate escena-fichas" data-escena-mate="fichas" viewBox="0 0 440 300" role="img" aria-labelledby="fichasTitulo">
+        <title id="fichasTitulo">Fichas de área: un cuadro de x por x, tiras de x por 1 y cuadritos de 1 por 1. Las
+          fichas de la expresión se acomodan hasta formar un rectángulo, y sus lados son los factores. En x² + 5x + 6,
+          primero se prueban cuatro tiras a la derecha del cuadro y una abajo, pero en la esquina caben 4 cuadritos y
+          hay 6; con tres a la derecha y dos abajo caben justo los 6, y el rectángulo mide x + 3 de ancho por x + 2 de
+          alto. En x² − 4, al cuadro se le quita uno de 2 por 2 y el pedazo de abajo pasa a la derecha.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-fichas-texto></div>
+    <div hidden>
+      <p data-texto-caso="trinomio"><strong class="expresion">x² + 5x + 6 = (x + 2)(x + 3).</strong> Las 5 tiras se
+        reparten a la derecha y abajo del cuadro, y en la esquina que queda deben caber justo los 6 cuadritos. Con 4
+        y 1, la esquina es de <span class="expresion">4 × 1</span>: no caben. Con 3 y 2, es de
+        <span class="expresion">3 × 2 = 6</span>. Son dos números que sumados dan 5 y multiplicados dan 6.</p>
+      <p data-texto-caso="comun"><strong class="expresion">2x² + 6x = 2x(x + 3).</strong> Cada x² va con tres tiras y
+        salen dos filas iguales. Todo el rectángulo mide 2x de alto, porque <span class="expresion">2x² = 2x · x</span>
+        y <span class="expresion">6x = 2x · 3</span>: el 2x se repite en los dos términos, es el factor común. Lo que
+        queda, x + 3, va adentro del paréntesis.</p>
+      <p data-texto-caso="cuadrado"><strong class="expresion">x² + 6x + 9 = (x + 3)².</strong> Las 6 tiras se reparten
+        3 y 3, y la esquina de <span class="expresion">3 × 3</span> se llena con los 9 cuadritos. Sale un cuadrado de lado x + 3: por eso se llama
+        trinomio cuadrado perfecto.</p>
+      <p data-texto-caso="diferencia"><strong class="expresion">x² − 4 = (x + 2)(x − 2).</strong> Al cuadro de x por x
+        se le quita uno de 2 por 2, que vale 4. El pedazo de abajo de lo que queda da vuelta y pasa a la derecha: sale
+        un rectángulo de x + 2 de largo por x − 2 de alto.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En física, la altura de una pelota que lanzas hacia arriba a
+      10&nbsp;m/s es <span class="expresion">h = 10t − 5t²</span>, con h en metros, t en segundos y la gravedad
+      redondeada a 10&nbsp;m/s². Con el factor común, <span class="expresion">h = 5t(2 − t)</span>, se ve cuándo está
+      en el suelo: cuando un factor vale cero, en <span class="expresion">t = 0&nbsp;s</span> y en
+      <span class="expresion">t = 2&nbsp;s</span>. En la gráfica son los dos puntos donde la curva toca el eje. Lo
+      verás en <a href="../fisica/graficas-movimiento.html">Gráficas II: interpretar el movimiento</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasCasos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasCasos">
+        <span class="lesson-section__kicker">Reglas</span> Cuatro formas que se reconocen
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Los cuatro casos de factorización" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Los cuatro casos de factorización: cómo se reconoce cada uno y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Caso</th><th scope="col">Cómo se reconoce</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="factor__caso">Factor común</th><td>Algo se repite en todos los términos: sale una
+            vez y adentro queda lo que sobra de cada uno.</td><td class="factor__ejemplo">6x² − 9x = 3x(2x − 3)</td></tr>
+          <tr><th scope="row" class="factor__caso">Diferencia de cuadrados</th><td>Dos cuadrados que se restan, como x² y
+            25, o 9x², que es (3x)²: <span class="expresion">a² − b² = (a + b)(a − b)</span>.</td><td class="factor__ejemplo">x² − 25 = (x + 5)(x − 5)</td></tr>
+          <tr><th scope="row" class="factor__caso">Trinomio cuadrado perfecto</th><td>El primero y el último son cuadrados
+            y el de en medio es el doble del producto de sus raíces: <span class="expresion">a² ± 2ab + b² = (a ± b)²</span>.</td><td class="factor__ejemplo">x² − 10x + 25 = (x − 5)²</td></tr>
+          <tr><th scope="row" class="factor__caso">Trinomio <span class="expresion">x² + bx + c</span></th><td>Dos números que multiplicados den c y
+            sumados den b.</td><td class="factor__ejemplo">x² + 7x + 10 = (x + 2)(x + 5)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> ver <span class="expresion">x² + 9</span> y escribir
+      <span class="expresion">(x + 3)²</span> o <span class="expresion">(x + 3)(x − 3)</span>. Multiplica y verás: el
+      primero da <span class="expresion">x² + 6x + 9</span> y el segundo, <span class="expresion">x² − 9</span>. Una
+      suma de dos cuadrados no se factoriza; una diferencia, sí.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoComun" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoComun">
+        <span class="lesson-section__kicker">Cuidado</span> Primero lo que se repite
+      </h2>
+    </header>
+    <p class="section-intro">Se factoriza por completo. Si todos los términos traen algo en común, sácalo primero: lo
+      que queda casi siempre es uno de los cuatro casos.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Lo común</span><p><span class="expresion">3x² − 27 = 3(x² − 9)</span>: los
+        dos términos son múltiplos de 3.</p></li>
+      <li><span class="worked-steps__label">El caso</span><p><span class="expresion">x² − 9</span> es una diferencia de
+        cuadrados: <span class="expresion">3(x² − 9) = <strong>3(x + 3)(x − 3)</strong></span>.</p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p><span class="expresion">(x + 3)(x − 3) = x² − 9</span>,
+        y por 3 regresa a <span class="expresion">3x² − 27</span>.</p></li>
+    </ol>
+    <p class="editorial-note">Dos descuidos típicos: quedarse en <span class="expresion">3(x² − 9)</span>, que todavía se
+      parte, y perder el 1 cuando un término es justo lo que se repite: <span class="expresion">4x² + 2x =
+      2x(2x + 1)</span>, no <span class="expresion">2x(2x)</span>.</p>
+  </section>
+
+  <section aria-labelledby="ejemploFactorizar" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploFactorizar">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">x² − 2x − 15</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Busca</span><p>Dos números que multiplicados den −15 y sumados den
+            −2.</p></li>
+          <li><span class="worked-steps__label">Prueba</span><p>Dan −15: 1 y −15, −1 y 15, 3 y −5, −3 y 5. Sólo
+            3 y −5 suman −2.</p></li>
+          <li><span class="worked-steps__label">Escribe</span><p><strong class="expresion">(x + 3)(x − 5)</strong>.
+            Comprueba: <span class="expresion">x² − 5x + 3x − 15 = x² − 2x − 15</span>.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">2x² + 7x + 3</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Extremos</span><p><span class="expresion">2x² = 2x · x</span> y
+            <span class="expresion">3 = 1 · 3</span>: se acomodan en <span class="expresion">(2x …)(x …)</span>.</p></li>
+          <li><span class="worked-steps__label">En cruz</span><p>Es la tijera. En <span class="expresion">(2x + 1)(x + 3)</span>,
+            los productos cruzados dan <span class="expresion">2x · 3 + 1 · x = 7x</span>. Al revés,
+            <span class="expresion">(2x + 3)(x + 1)</span> daría 5x.</p></li>
+          <li><span class="worked-steps__label">Queda</span><p><strong class="expresion">(2x + 1)(x + 3)</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["fact-comun", "factorizacion", "fact-completa"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-factorizacion.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h1m1 0h1m1 0h2m5 0h2m1 0h1m7 0h7M4 5.5h1m5 0h1m1 0h1m1 0h4m2 0h2m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h3m2 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m4 0h1m1 0h1m2 0h2m2 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h2m1 0h4m3 0h2m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m3 0h3m1 0h3m4 0h1m1 0h1m1 0h1m2 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 11.5h1m1 0h1m3 0h4m4 0h4M4 12.5h1m2 0h6m1 0h6m5 0h4m1 0h1m1 0h2m2 0h1m1 0h3M6 13.5h1m1 0h1m2 0h2m4 0h2m1 0h3m2 0h3m2 0h2m3 0h3m1 0h1M6 14.5h3m1 0h2m1 0h3m2 0h3m2 0h2m1 0h4m1 0h1m2 0h3m1 0h1m1 0h1M5 15.5h1m1 0h1m3 0h1m1 0h3m1 0h2m1 0h2m1 0h2m2 0h2m1 0h3m2 0h6M5 16.5h1m2 0h3m4 0h5m4 0h1m2 0h2m2 0h1m2 0h2m4 0h1M4 17.5h1m1 0h1m1 0h1m3 0h1m4 0h1m1 0h2m4 0h3m1 0h4m3 0h2M7 18.5h2m1 0h4m1 0h1m1 0h3m2 0h3m3 0h2m1 0h4m1 0h3m1 0h1M5 19.5h3m1 0h1m4 0h2m3 0h1m4 0h4m3 0h1m3 0h1m1 0h2M4 20.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m2 0h2m2 0h2m2 0h1m1 0h2m1 0h1m3 0h1m1 0h1M13 21.5h1m1 0h1m1 0h1m3 0h1m4 0h1m2 0h1m1 0h1m1 0h1m3 0h2M4 22.5h1m1 0h2m1 0h2m1 0h1m3 0h2m2 0h2m1 0h1m1 0h1m1 0h5m1 0h1m2 0h3m1 0h1M6 23.5h1m1 0h2m1 0h1m2 0h1m1 0h5m2 0h2m2 0h1m1 0h1m1 0h7m2 0h1M4 24.5h1m1 0h2m1 0h3m1 0h2m3 0h1m1 0h2m1 0h1m3 0h2m1 0h1m2 0h5M4 25.5h1m2 0h1m3 0h2m2 0h3m1 0h3m1 0h1m2 0h3m2 0h1m4 0h1m1 0h1M4 26.5h1m2 0h1m1 0h2m3 0h1m1 0h1m1 0h2m5 0h1m1 0h5m1 0h3m1 0h1m2 0h1M4 27.5h1m4 0h1m2 0h1m1 0h4m4 0h1m5 0h1m1 0h1m3 0h7M5 28.5h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h2m1 0h1m2 0h5m2 0h2m1 0h2m4 0h1M4 29.5h2m1 0h3m1 0h4m1 0h1m5 0h2m2 0h7m3 0h1M4 30.5h2m4 0h3m1 0h2m2 0h2m5 0h1m2 0h6m4 0h3M4 31.5h1m1 0h3m2 0h1m1 0h2m1 0h3m1 0h1m1 0h2m3 0h1m2 0h1m3 0h5m1 0h1M4 32.5h1m3 0h4m1 0h1m3 0h1m1 0h2m2 0h2m1 0h1m1 0h2m1 0h6m1 0h1m1 0h1M12 33.5h3m2 0h3m1 0h1m1 0h3m3 0h1m2 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m2 0h5m1 0h3m3 0h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m2 0h4m1 0h1m3 0h2m3 0h1m1 0h2m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h2m5 0h2m1 0h4m2 0h1m1 0h7m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h2m1 0h4m5 0h1m1 0h2m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m3 0h3m1 0h1m2 0h2m4 0h1m2 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m2 0h2m2 0h1m1 0h1m1 0h2m3 0h1m4 0h1m1 0h2m1 0h5M4 40.5h7m1 0h1m1 0h1m1 0h1m1 0h1m4 0h2m7 0h1m2 0h1m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaFactorizar">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaFactorizar">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos. En el nivel 3 de «Por
+      completo» aparecen trinomios como <span class="expresion">2x² + 7x + 3</span>, que salen con la tijera.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:factorizacion" data-modos='[
+      {"id":"comun","nombre":"Factor común","generadores":["fact-comun"]},
+      {"id":"casos","nombre":"Trinomios y diferencias","generadores":["factorizacion"]},
+      {"id":"completa","nombre":"Por completo","generadores":["fact-completa"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["fact-comun","factorizacion","fact-completa"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-factorizacion.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/graficas-movimiento.html">En física: gráficas II: interpretar el movimiento →</a>
+  </nav>
+</footer>
+
+</body>
+</html>
