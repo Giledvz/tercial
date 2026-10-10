@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Gráficas I: leer pendiente, corte y área · Física · Tercial</title>
+<meta name="description" content="Cómo se lee una gráfica de un movimiento: el corte es la posición inicial, la pendiente de una gráfica posición–tiempo es la velocidad y el área bajo una velocidad–tiempo es el desplazamiento. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-graficas-leer">
+<meta name="tercial:resource-title" content="Gráficas I: leer pendiente, corte y área">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="graficas-leer">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./graficas-leer.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-tele"></script>
+<script defer src="/tercial/assets/js/ejercicios-graficas-leer.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-graficas-leer.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 5 · Física</p>
+    <h1 class="hero__title">Leer una <em>gráfica</em></h1>
+    <p class="hero__lede">En el examen muchas preguntas no piden fórmulas: te dan la gráfica de un movimiento y preguntan.
+      Aquí aprendes a leer en ella tres cosas, el corte, la pendiente y el área, y qué dice cada una del movimiento.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 5 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/productos-notables.html">En matemáticas: productos notables</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaGraficas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaGraficas">
+        <span class="lesson-section__kicker">Idea central</span> Una gráfica cuenta un movimiento
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Corte, pendiente y <em>área</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Una gráfica de posición contra tiempo (x–t) es la tabla de un movimiento hecha dibujo: cada punto dice
+          dónde estaba el móvil (en el eje vertical) en cada instante (en el horizontal). Antes de leer nada, mira
+          qué hay en cada eje y en qué unidades.</p>
+        <p>El <strong>corte</strong> es donde la recta toca el eje vertical, en t = 0: en una x–t, la posición
+          inicial. La <strong>pendiente</strong> es qué tan inclinada está: cuánto sube o baja por cada segundo. En
+          una x–t es la velocidad; si la recta baja, la velocidad es negativa.</p>
+        <p>En una gráfica de velocidad contra tiempo (v–t), la pendiente es la aceleración y el <strong>área</strong>
+          entre la recta y el eje del tiempo es el desplazamiento: velocidad por tiempo da metros. El área que queda
+          debajo del eje cuenta negativa.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaPendiente" data-diapositiva="dos" data-figura="amplia">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaPendiente">
+        <span class="lesson-section__kicker">Observa</span> La pendiente es la velocidad
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un movimiento. La pista está de pie junto a la gráfica: el auto
+      y su punto en la gráfica siempre van a la misma altura, y el tiempo corre hacia la derecha.</p>
+    <div class="pastillas" role="group" aria-label="Elige un movimiento">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="sube">+3 m/s</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="baja">−4 m/s</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="quieto">En reposo</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-graficas" data-escena-fisica="pendiente" viewBox="0 0 460 300" role="img" aria-labelledby="pendienteTitulo">
+        <title id="pendienteTitulo">A la izquierda, una pista vertical con su regla de 0 a 20 metros y un auto visto
+          desde arriba; a la derecha, la gráfica de posición contra tiempo del auto, de 0 a 4 segundos. Una línea
+          punteada une al auto con su punto de la gráfica: siempre están a la misma altura. Al final aparece el
+          triángulo de la pendiente: cuánto cambió el tiempo, cuánto cambió la posición y la velocidad que
+          resulta.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
+    <div hidden>
+      <p data-texto-caso="sube"><strong>Corte: 4 m. Pendiente: +3 m/s.</strong> El auto sale de x = 4 m: ahí toca la
+        recta el eje vertical. Cada segundo sube 3 m; en 4 s, 12 m. La pendiente es
+        <span class="expresion">Δx ÷ Δt = 12 m ÷ 4 s = +3 m/s</span>: su velocidad.</p>
+      <p data-texto-caso="baja"><strong>Corte: 18 m. Pendiente: −4 m/s.</strong> Sale de x = 18 m y cada segundo baja
+        4 m: va hacia el origen. <span class="expresion">Δx = 2 m − 18 m = −16 m</span>, así que
+        <span class="expresion">v = −16 m ÷ 4 s = −4 m/s</span>. Si la recta baja, la velocidad es negativa.</p>
+      <p data-texto-caso="quieto"><strong>Corte: 10 m. Pendiente: 0.</strong> Pasan los segundos y x no cambia: la
+        recta es horizontal. Está a 10 m de altura, pero esa altura dice dónde está, no qué tan rápido va: su
+        velocidad es cero.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>La pista está de pie a propósito: el eje vertical de la gráfica es la
+      misma pista, con la misma escala. Por eso una gráfica x–t no es el dibujo del camino: una recta que sube no es
+      una cuesta, es un auto que avanza mientras pasa el tiempo.</p>
+  </section>
+
+  <section aria-labelledby="reglasPendiente" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasPendiente">
+        <span class="lesson-section__kicker">Reglas</span> Corte y pendiente, paso a paso
+      </h2>
+    </header>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Corte</span><p>Donde la recta toca el eje vertical, en t = 0. En una x–t es
+        la posición inicial, x₀.</p></li>
+      <li><span class="worked-steps__label">Dos puntos</span><p>Elige dos puntos de la recta que caigan en cruces de la
+        cuadrícula, y léelos con los números de los ejes, no contando cuadritos.</p></li>
+      <li><span class="worked-steps__label">Cuánto cambia</span><p><span class="expresion">Δx = x₂ − x₁</span> y
+        <span class="expresion">Δt = t₂ − t₁</span>: siempre el final menos el inicial. Si la recta baja, Δx sale
+        negativo.</p></li>
+      <li><span class="worked-steps__label">Divide</span><p>Pendiente <span class="expresion">= Δx ÷ Δt</span>. La unidad
+        sale sola: <span class="expresion">m ÷ s = m/s</span>, una velocidad.</p></li>
+    </ol>
+    <p class="editorial-note"><strong>El error más común:</strong> leer la altura en vez de la inclinación. Si a los
+      4 s la recta está en 20 m, eso no dice que vaya a 20 m/s: dice dónde está. Dos rectas paralelas llevan la misma
+      velocidad aunque una vaya más arriba; sólo empezaron en lugares distintos.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaArea" data-diapositiva="dos" data-figura="amplia">
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaArea">
+        <span class="lesson-section__kicker">Observa</span> El área es el desplazamiento
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un movimiento. Mientras el auto avanza, se sombrea el área bajo la
+      recta de la gráfica v–t, y arriba la flecha marca cuánto se ha movido. Compara los dos números.</p>
+    <div class="pastillas" role="group" aria-label="Elige un movimiento">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="constante">Constante</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="arranca">Desde el reposo</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="negativa">Velocidad negativa</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-graficas" data-escena-fisica="area" viewBox="0 0 460 304" role="img" aria-labelledby="areaTitulo">
+        <title id="areaTitulo">Arriba, una pista de 24 metros vista desde arriba, con su regla y un auto; una flecha
+          marca cuánto se ha movido. Abajo, la gráfica de velocidad contra tiempo del auto. Mientras avanza, se
+          sombrea el área entre la recta y el eje del tiempo: su valor es el mismo que el de la flecha. Al final
+          aparece la cuenta del área y, si el auto acelera, la pendiente de la recta.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
+    <div hidden>
+      <p data-texto-caso="constante"><strong>Área: 5 m/s × 4 s = 20 m.</strong> A velocidad constante la gráfica v–t
+        es horizontal y el área es un rectángulo: base × altura. Es el <span class="expresion">d = v × t</span> de
+        siempre, y es justo lo que avanzó el auto.</p>
+      <p data-texto-caso="arranca"><strong>Área: 4 s × 8 m/s ÷ 2 = 16 m.</strong> Sale del reposo y acelera: el área
+        es un triángulo, la mitad del rectángulo. Del mismo triángulo sale la aceleración, su pendiente:
+        <span class="expresion">8 m/s ÷ 4 s = 2 m/s²</span>.</p>
+      <p data-texto-caso="negativa"><strong>Área: −5 m/s × 3 s = −15 m.</strong> La velocidad es negativa: la recta va
+        debajo del eje y el área cuenta negativa. El auto se mueve 15 m hacia el lado negativo: su desplazamiento es
+        −15 m.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>El área se mide con los números de los ejes, no en cuadritos:
+      <span class="expresion">(m/s) × s = m</span>. Por eso el área de una gráfica v–t sale en metros: es el
+      desplazamiento.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoArea" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoArea">
+        <span class="lesson-section__kicker">Cuidado</span> El área depende de la figura
+      </h2>
+    </header>
+    <p class="section-intro">Lo que queda entre la recta y el eje del tiempo casi siempre es una de estas figuras.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Rectángulo</span><p>Velocidad constante: base × altura, es decir,
+        <span class="expresion">t × v</span>. Es el <span class="expresion">d = vt</span> de siempre.</p></li>
+      <li><span class="worked-steps__label">Triángulo</span><p>Sale del reposo o termina detenido: base × altura ÷ 2,
+        la mitad del rectángulo.</p></li>
+      <li><span class="worked-steps__label">Trapecio</span><p>Ya traía velocidad y acelera: pártelo en un rectángulo y
+        un triángulo, y suma las dos áreas.</p></li>
+      <li><span class="worked-steps__label">Bajo el eje</span><p>Velocidad negativa: esa área cuenta negativa y se
+        resta. La distancia recorrida, en cambio, suma todo como positivo.</p></li>
+    </ol>
+    <p class="editorial-note">El error típico es tomar el triángulo como rectángulo: base × altura sin dividir entre
+      2, y el desplazamiento sale al doble. Si dudas, dibuja el rectángulo completo: el triángulo ocupa justo la
+      mitad.</p>
+  </section>
+
+  <section aria-labelledby="comparaGraficas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaGraficas">
+        <span class="lesson-section__kicker">Compara</span> Lo que dice cada gráfica
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Lo que se lee en una gráfica x–t y en una v–t" tabindex="0">
+      <table class="reference-table reference-table--apilada graficas-tabla">
+        <caption class="visually-hidden">Qué dicen el corte, la pendiente, el área y una recta horizontal en una
+          gráfica de posición contra tiempo y en una de velocidad contra tiempo</caption>
+        <thead>
+          <tr><th scope="col">Qué lees</th><th scope="col">En una x–t</th><th scope="col">En una v–t</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">El corte, en t = 0</th><td>la posición inicial, x₀ (m)</td><td>la velocidad inicial, v₀ (m/s)</td></tr>
+          <tr><th scope="row">La pendiente</th><td>la velocidad, v (m/s)</td><td>la aceleración, a (m/s²)</td></tr>
+          <tr><th scope="row">El área bajo la recta</th><td>no se usa</td><td>el desplazamiento, Δx (m)</td></tr>
+          <tr><th scope="row">Una recta horizontal</th><td>está en reposo</td><td>va a velocidad constante</td></tr>
+          <tr><th scope="row">Su recta</th><td class="graficas-tabla__ecuacion">x = x₀ + vt</td><td class="graficas-tabla__ecuacion">v = v₀ + at</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>En <a href="../matematicas/productos-notables.html">matemáticas</a></strong> una
+      recta se escribe <span class="expresion">y = mx + b</span>: m es su pendiente y b, el corte con el eje vertical.
+      Aquí es la misma recta con otros nombres: <span class="expresion">x = x₀ + vt</span>, con la velocidad como
+      pendiente y la posición inicial como corte.</p>
+  </section>
+
+  <section aria-labelledby="ejemploGraficas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploGraficas">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <p class="section-intro">Antes de hacer cuentas, tres preguntas.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">¿Qué gráfica?</span><p>Lee los ejes: si el vertical dice x (m), es de
+        posición; si dice v (m/s), de velocidad.</p></li>
+      <li><span class="worked-steps__label">¿Qué piden?</span><p>Un valor se lee en el eje; una velocidad o una
+        aceleración es una pendiente; un desplazamiento, en una v–t, es un área.</p></li>
+      <li><span class="worked-steps__label">¿Qué puntos?</span><p>Los que caen en cruces de la cuadrícula, leídos con
+        los números de los ejes.</p></li>
+    </ol>
+    <div class="ejemplos">
+      <div class="ejemplo" data-diapositiva="dos">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un ciclista va por una ciclovía recta. ¿Dónde empezó y
+          cuál es su velocidad?</h3>
+        <figure class="ejemplo__grafica" data-lado="figura"><svg class="leer-grafica" viewBox="0 0 300 192" role="img" aria-label="Gráfica de posición contra tiempo: una recta de (0 s, 30 m) a (5 s, 5 m)."><path class="leer-grafica__rejilla" d="M82.4 26V158M124.8 26V158M167.2 26V158M209.6 26V158M252 26V158M40 141.5H252M40 125H252M40 108.5H252M40 92H252M40 75.5H252M40 59H252M40 42.5H252M40 26H252"/><path class="leer-grafica__eje" d="M40 158V18M40 158H264"/><path class="leer-grafica__punta" d="M40 12L36.5 19H43.5ZM270 158L263 154.5V161.5Z"/><path class="leer-grafica__guia" d="M40 59L252 59"/><path class="leer-grafica__guia" d="M252 59L252 141.5"/><text class="leer-grafica__num" x="34" y="161.8" text-anchor="end">0</text><text class="leer-grafica__num" x="34" y="128.8" text-anchor="end">10</text><text class="leer-grafica__num" x="34" y="95.8" text-anchor="end">20</text><text class="leer-grafica__num" x="34" y="62.8" text-anchor="end">30</text><text class="leer-grafica__num" x="34" y="29.8" text-anchor="end">40</text><text class="leer-grafica__num" x="40" y="174" text-anchor="middle">0</text><text class="leer-grafica__num" x="82.4" y="174" text-anchor="middle">1</text><text class="leer-grafica__num" x="124.8" y="174" text-anchor="middle">2</text><text class="leer-grafica__num" x="167.2" y="174" text-anchor="middle">3</text><text class="leer-grafica__num" x="209.6" y="174" text-anchor="middle">4</text><text class="leer-grafica__num" x="252" y="174" text-anchor="middle">5</text><text class="leer-grafica__titulo" x="48" y="16">x (m)</text><text class="leer-grafica__titulo" x="296" y="174" text-anchor="end">t (s)</text><path class="leer-grafica__linea" d="M40 59L252 141.5"/><circle class="leer-grafica__punto" cx="40" cy="59" r="3"/><circle class="leer-grafica__punto" cx="252" cy="141.5" r="3"/><text class="leer-grafica__nota" x="146" y="53.7" text-anchor="middle">Δt = 5 s</text><text class="leer-grafica__nota" x="246.1" y="96.6" text-anchor="end">Δx = −25 m</text></svg></figure>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Corte</span><p>En t = 0 la recta está en 30 m: empezó en
+            <span class="expresion">x₀ = 30 m</span>.</p></li>
+          <li><span class="worked-steps__label">Dos puntos</span><p>(0 s, 30 m) y (5 s, 5 m).</p></li>
+          <li><span class="worked-steps__label">Cuánto cambia</span><p><span class="expresion">Δx = 5 m − 30 m = −25 m</span>
+            y <span class="expresion">Δt = 5 s − 0 s = 5 s</span>.</p></li>
+          <li><span class="worked-steps__label">Divide</span><p><span class="expresion">v = −25 m ÷ 5 s =
+            <strong>−5 m/s</strong></span>: negativa, porque va hacia el origen.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo" data-diapositiva="dos">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un auto ya iba a 4 m/s y acelera parejo. ¿Cuál es su
+          aceleración y cuánto avanza en 3 s?</h3>
+        <figure class="ejemplo__grafica" data-lado="figura"><svg class="leer-grafica" viewBox="0 0 300 192" role="img" aria-label="Gráfica de velocidad contra tiempo: una recta de (0 s, 4 m/s) a (3 s, 10 m/s)."><path class="leer-grafica__rejilla" d="M110.7 26V158M181.3 26V158M252 26V158M40 147H252M40 136H252M40 125H252M40 114H252M40 103H252M40 92H252M40 81H252M40 70H252M40 59H252M40 48H252M40 37H252M40 26H252"/><path class="leer-grafica__area" d="M40 158L252 158L252 114L40 114Z"/><path class="leer-grafica__area" d="M40 114L252 114L252 48Z"/><path class="leer-grafica__eje" d="M40 158V18M40 158H264"/><path class="leer-grafica__punta" d="M40 12L36.5 19H43.5ZM270 158L263 154.5V161.5Z"/><path class="leer-grafica__guia" d="M40 114L252 114"/><text class="leer-grafica__num" x="34" y="161.8" text-anchor="end">0</text><text class="leer-grafica__num" x="34" y="139.8" text-anchor="end">2</text><text class="leer-grafica__num" x="34" y="117.8" text-anchor="end">4</text><text class="leer-grafica__num" x="34" y="95.8" text-anchor="end">6</text><text class="leer-grafica__num" x="34" y="73.8" text-anchor="end">8</text><text class="leer-grafica__num" x="34" y="51.8" text-anchor="end">10</text><text class="leer-grafica__num" x="34" y="29.8" text-anchor="end">12</text><text class="leer-grafica__num" x="40" y="174" text-anchor="middle">0</text><text class="leer-grafica__num" x="110.7" y="174" text-anchor="middle">1</text><text class="leer-grafica__num" x="181.3" y="174" text-anchor="middle">2</text><text class="leer-grafica__num" x="252" y="174" text-anchor="middle">3</text><text class="leer-grafica__titulo" x="48" y="16">v (m/s)</text><text class="leer-grafica__titulo" x="296" y="174" text-anchor="end">t (s)</text><path class="leer-grafica__linea" d="M40 114L252 48"/><circle class="leer-grafica__punto" cx="40" cy="114" r="3"/><circle class="leer-grafica__punto" cx="252" cy="48" r="3"/><text class="leer-grafica__nota" x="146" y="140.4" text-anchor="middle">12 m</text><text class="leer-grafica__nota" x="199" y="96.4" text-anchor="middle">9 m</text></svg></figure>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Pendiente</span><p><span class="expresion">a = (10 m/s − 4 m/s) ÷ 3 s</span>
+            <span class="expresion">= 6 ÷ 3 = <strong>2 m/s²</strong></span>.</p></li>
+          <li><span class="worked-steps__label">Rectángulo</span><p>El área es un trapecio. Abajo,
+            <span class="expresion">3 s × 4 m/s = 12 m</span>.</p></li>
+          <li><span class="worked-steps__label">Triángulo</span><p>Encima, de 4 a 10 m/s:
+            <span class="expresion">3 s × 6 m/s ÷ 2 = 9 m</span>.</p></li>
+          <li><span class="worked-steps__label">Suma</span><p>Avanza <span class="expresion">12 m + 9 m =
+            <strong>21 m</strong></span>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["leer-velocidad", "leer-corte", "leer-area", "leer-aceleracion"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-graficas-leer.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h2m3 0h5m1 0h3m1 0h1m3 0h2m1 0h7M4 5.5h1m5 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m4 0h1m1 0h6m2 0h1m1 0h2m2 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1m1 0h1m3 0h2m1 0h4m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h1m3 0h3m1 0h1m2 0h1m1 0h3m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h4m3 0h1m3 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m2 0h2m4 0h4m2 0h1m1 0h1M4 12.5h1m3 0h1m1 0h3m2 0h2m3 0h1m3 0h1m2 0h2m1 0h2m1 0h5m2 0h1M5 13.5h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m2 0h3m1 0h1m1 0h1m1 0h4m3 0h4M4 14.5h1m2 0h1m2 0h2m1 0h1m1 0h1m3 0h1m2 0h2m3 0h1m1 0h3m3 0h1M4 15.5h4m3 0h1m2 0h1m2 0h9m1 0h1m2 0h1m1 0h1m1 0h3m1 0h2M5 16.5h3m2 0h1m2 0h2m1 0h3m1 0h2m2 0h3m1 0h1m3 0h4m1 0h4M6 17.5h1m1 0h1m3 0h1m4 0h1m1 0h2m4 0h3m2 0h3m3 0h2M7 18.5h4m1 0h3m1 0h2m1 0h1m1 0h1m2 0h1m2 0h1m2 0h3m2 0h5M9 19.5h1m2 0h3m1 0h1m4 0h2m3 0h1m1 0h1m1 0h1m3 0h3m1 0h3M5 20.5h3m2 0h2m2 0h1m1 0h1m2 0h1m2 0h2m2 0h2m5 0h3m1 0h4M5 21.5h5m1 0h6m1 0h1m1 0h1m2 0h2m2 0h1m2 0h4m1 0h3m1 0h1M5 22.5h1m1 0h1m1 0h4m2 0h1m2 0h1m1 0h3m1 0h2m1 0h1m3 0h1m1 0h3m1 0h2M4 23.5h2m1 0h1m3 0h3m1 0h1m5 0h2m2 0h2m1 0h1m1 0h3m5 0h2M4 24.5h1m1 0h1m1 0h3m1 0h1m2 0h1m3 0h1m1 0h1m1 0h6m2 0h5m2 0h1M4 25.5h2m1 0h2m3 0h6m1 0h1m1 0h1m5 0h2m2 0h2m2 0h2M6 26.5h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h4m2 0h4m1 0h4M4 27.5h1m2 0h1m4 0h1m2 0h1m1 0h1m1 0h1m5 0h1m5 0h1m1 0h4m1 0h2M4 28.5h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m3 0h1m3 0h1m4 0h3m1 0h4M4 29.5h2m1 0h2m4 0h4m1 0h1m3 0h2m2 0h7m3 0h1M9 30.5h3m2 0h2m1 0h3m1 0h3m1 0h1m1 0h1m2 0h3m1 0h2m2 0h1M7 31.5h3m4 0h4m1 0h3m1 0h3m7 0h1m1 0h1m2 0h2M4 32.5h5m1 0h1m4 0h1m4 0h2m2 0h3m1 0h1m3 0h9M12 33.5h1m2 0h1m3 0h2m4 0h3m1 0h2m1 0h1m3 0h1M4 34.5h7m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1M4 35.5h1m5 0h1m2 0h2m2 0h1m1 0h1m1 0h3m2 0h3m1 0h1m1 0h1m3 0h4M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2m2 0h1m5 0h7m1 0h1M4 37.5h1m1 0h3m1 0h1m2 0h3m2 0h1m1 0h1m2 0h2m2 0h1m2 0h2m1 0h3m4 0h1M4 38.5h1m1 0h3m1 0h1m9 0h2m2 0h1m1 0h3m3 0h3m2 0h1M4 39.5h1m5 0h1m3 0h4m3 0h1m3 0h4m2 0h1m1 0h1m2 0h1m1 0h2M4 40.5h7m1 0h2m1 0h2m1 0h4m1 0h4m4 0h1m1 0h3m2 0h3" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaGraficas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaGraficas">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevas cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 gráficas nuevas; las opciones falsas
+      son errores de verdad al leer gráficas: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:graficas-leer" data-modos='[
+      {"id":"pendiente","nombre":"Pendiente","generadores":["leer-velocidad","leer-aceleracion"]},
+      {"id":"corte","nombre":"Corte y valores","generadores":["leer-corte","leer-valor"]},
+      {"id":"area","nombre":"Área","generadores":["leer-area"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["leer-velocidad","leer-corte","leer-area","leer-aceleracion","leer-valor"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-graficas-leer.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/productos-notables.html">← En matemáticas: productos notables</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>

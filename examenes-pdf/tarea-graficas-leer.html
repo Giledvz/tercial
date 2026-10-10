@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 5 - Gráficas I · Fundamentos · Física · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* Las gráficas de esta tarea: el viewBox está en puntos y se imprimen a ese tamaño, así que la
+       letra mide lo que dice (7.5 pt). Cada vértice cae en un cruce de la cuadrícula. */
+    .tg { display: block; overflow: visible; }
+    .tg__rejilla { fill: none; stroke: var(--crema-500); stroke-width: .45; }
+    .tg__eje { fill: none; stroke: var(--ink-500); stroke-width: .75; stroke-linecap: butt; }
+    .tg__punta { fill: var(--ink-500); stroke: none; }
+    .tg__num, .tg__titulo { fill: var(--ink-500); font-family: var(--font-family-mono); font-size: 7.5px; }
+    .tg__titulo { font-style: italic; }
+    .tg__linea { fill: none; stroke: var(--accent-conac); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .tg__punto { fill: var(--accent-conac); stroke: none; }
+    /* (En la clave, lo que se dibuja va en el color de las respuestas.) */
+    .tarea-respuesta .tg__linea { stroke: var(--accent-terracota); }
+    .tarea-respuesta .tg__punto { fill: var(--accent-terracota); }
+
+    .tarea-grafica,
+    .tarea-mini { margin: 0; }
+
+    .tarea-grafica figcaption,
+    .tarea-mini figcaption {
+      margin: 0;
+      color: var(--ink-700);
+      font-family: var(--font-family-display);
+      font-size: 10pt;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    /* La gráfica a la izquierda y sus preguntas a la derecha. */
+    .tarea-fila {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.3in;
+      align-items: center;
+      margin-top: 2pt;
+    }
+
+    .tarea-fila .task-tipos { margin-top: 0; }
+    .tarea-fila .task-tipos > li { margin-bottom: 1pt; }
+    .tarea-fila .task-tipos { gap: 0; }
+    .tarea-fila .task-tipos > li { gap: 0.12in; }
+    .tarea-fila .task-tipos .task-blank { min-width: 0.75in; height: 0.23in; }
+
+    /* Tres gráficas chicas en un renglón, cada una con sus dos respuestas. */
+    .tarea-minis {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      justify-content: space-between;
+      margin-top: 2pt;
+      page-break-inside: avoid;
+    }
+
+    .tarea-mini__resp {
+      display: flex;
+      align-items: flex-end;
+      gap: 4pt;
+      margin: 0;
+      color: var(--ink-500);
+      font-size: 9.5pt;
+    }
+
+    .exam-pdf__body .tarea-mini__resp { margin: 0; }
+
+    .tarea-mini__resp .task-blank {
+      flex: 1 1 auto;
+      min-width: 0;
+      height: 0.22in;
+      margin: 0;
+    }
+
+    /* Problemas: la gráfica entre el enunciado y la respuesta. */
+    .task-problems .tg { margin-top: 4pt; }
+    .task-problems .task-answer { margin-top: 2pt; }
+    .task-problems--grafica .task-work { flex-basis: 0.44in; }
+    /* La hoja 2 trae tres gráficas grandes: los ejercicios van un poco más juntos. */
+    .task-page-break .task-exercises .exam-pdf__exercise { margin-bottom: 0.2in; }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 5 · Fundamentos · Física</p>
+    <h1 class="exam-pdf__title">Leer una <em>gráfica</em></h1>
+    <p class="exam-pdf__meta">Corte, pendiente y área en gráficas de posición y de velocidad contra tiempo</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Lee primero los ejes. La pendiente es lo que cambia el eje vertical entre lo que cambia el tiempo, con su
+      signo; el área bajo el eje del tiempo cuenta negativa. Escribe cada resultado con su unidad.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">5 pts</span> La gráfica A es la posición de una corredora en una pista recta.</p>
+      <div class="tarea-fila">
+        <figure class="tarea-grafica"><figcaption>Gráfica A</figcaption><svg class="tg" viewBox="0 0 190 96" width="190pt" height="96pt" role="img" aria-label="Gráfica A de posición contra tiempo: pasa por (0 s, 15 m), (8 s, 55 m)."><path class="tg__rejilla" d="M41.8 14V81M58.5 14V81M75.3 14V81M92 14V81M108.8 14V81M125.5 14V81M142.3 14V81M159 14V81M25 75.4H159M25 69.8H159M25 64.3H159M25 58.7H159M25 53.1H159M25 47.5H159M25 41.9H159M25 36.3H159M25 30.8H159M25 25.2H159M25 19.6H159M25 14H159"/><path class="tg__eje" d="M25 81V8M25 81H166"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM170 81L165 78.5V83.5Z"/><text class="tg__num" x="21" y="83.6" text-anchor="end">0</text><text class="tg__num" x="21" y="72.4" text-anchor="end">10</text><text class="tg__num" x="21" y="61.3" text-anchor="end">20</text><text class="tg__num" x="21" y="50.1" text-anchor="end">30</text><text class="tg__num" x="21" y="38.9" text-anchor="end">40</text><text class="tg__num" x="21" y="27.8" text-anchor="end">50</text><text class="tg__num" x="21" y="16.6" text-anchor="end">60</text><text class="tg__num" x="25" y="91" text-anchor="middle">0</text><text class="tg__num" x="41.8" y="91" text-anchor="middle">1</text><text class="tg__num" x="58.5" y="91" text-anchor="middle">2</text><text class="tg__num" x="75.3" y="91" text-anchor="middle">3</text><text class="tg__num" x="92" y="91" text-anchor="middle">4</text><text class="tg__num" x="108.8" y="91" text-anchor="middle">5</text><text class="tg__num" x="125.5" y="91" text-anchor="middle">6</text><text class="tg__num" x="142.3" y="91" text-anchor="middle">7</text><text class="tg__num" x="159" y="91" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">x (m)</text><text class="tg__titulo" x="189" y="91" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 64.3L159 19.6"/><circle class="tg__punto" cx="25" cy="64.3" r="1.7"/><circle class="tg__punto" cx="159" cy="19.6" r="1.7"/></svg></figure>
+        <ol class="exam-pdf__sublist task-tipos">
+          <li><span>¿Dónde empezó?</span><span class="task-blank"></span></li>
+          <li><span>¿Dónde está en t = 4 s?</span><span class="task-blank"></span></li>
+          <li><span>¿Cuándo pasa por 45 m?</span><span class="task-blank"></span></li>
+          <li><span>¿Cuánto avanza en 8 s?</span><span class="task-blank"></span></li>
+          <li><span>¿Cuál es su velocidad?</span><span class="task-blank"></span></li>
+        </ol>
+      </div>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> En cada gráfica x–t, escribe el corte y la pendiente, con su signo.</p>
+      <div class="tarea-minis">
+        <figure class="tarea-mini"><figcaption>Gráfica B</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica B de posición contra tiempo: pasa por (0 s, 10 m), (8 s, 30 m)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 58.6H106M25 52.3H106M25 45.9H106M25 39.5H106M25 33.1H106M25 26.8H106M25 20.4H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 65H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 65L112 62.5V67.5Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">0</text><text class="tg__num" x="21" y="54.9" text-anchor="end">10</text><text class="tg__num" x="21" y="42.1" text-anchor="end">20</text><text class="tg__num" x="21" y="29.4" text-anchor="end">30</text><text class="tg__num" x="21" y="16.6" text-anchor="end">40</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">x (m)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 52.3L106 26.8"/><circle class="tg__punto" cx="25" cy="52.3" r="1.7"/><circle class="tg__punto" cx="106" cy="26.8" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Corte <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Pendiente <span class="task-blank task-blank--corta"></span></p></figure>
+        <figure class="tarea-mini"><figcaption>Gráfica C</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica C de posición contra tiempo: pasa por (0 s, 21 m), (8 s, −3 m)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 65H106M25 59.9H106M25 49.7H106M25 44.6H106M25 39.5H106M25 34.4H106M25 29.3H106M25 24.2H106M25 19.1H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 54.8H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 54.8L112 52.3V57.3Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">−6</text><text class="tg__num" x="21" y="57.4" text-anchor="end">0</text><text class="tg__num" x="21" y="47.2" text-anchor="end">6</text><text class="tg__num" x="21" y="37" text-anchor="end">12</text><text class="tg__num" x="21" y="26.8" text-anchor="end">18</text><text class="tg__num" x="21" y="16.6" text-anchor="end">24</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">x (m)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 19.1L106 59.9"/><circle class="tg__punto" cx="25" cy="19.1" r="1.7"/><circle class="tg__punto" cx="106" cy="59.9" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Corte <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Pendiente <span class="task-blank task-blank--corta"></span></p></figure>
+        <figure class="tarea-mini"><figcaption>Gráfica D</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica D de posición contra tiempo: pasa por (0 s, 25 m), (8 s, 25 m)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 56.5H106M25 48H106M25 39.5H106M25 31H106M25 22.5H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 65H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 65L112 62.5V67.5Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">0</text><text class="tg__num" x="21" y="50.6" text-anchor="end">10</text><text class="tg__num" x="21" y="33.6" text-anchor="end">20</text><text class="tg__num" x="21" y="16.6" text-anchor="end">30</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">x (m)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 22.5L106 22.5"/><circle class="tg__punto" cx="25" cy="22.5" r="1.7"/><circle class="tg__punto" cx="106" cy="22.5" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Corte <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Pendiente <span class="task-blank task-blank--corta"></span></p></figure>
+      </div>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> En cada gráfica v–t, escribe la aceleración y el desplazamiento.</p>
+      <div class="tarea-minis">
+        <figure class="tarea-mini"><figcaption>Gráfica E</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica E de velocidad contra tiempo: pasa por (0 s, 3 m/s), (8 s, 3 m/s)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 52.3H106M25 39.5H106M25 26.8H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 65H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 65L112 62.5V67.5Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">0</text><text class="tg__num" x="21" y="42.1" text-anchor="end">2</text><text class="tg__num" x="21" y="16.6" text-anchor="end">4</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">v (m/s)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 26.8L106 26.8"/><circle class="tg__punto" cx="25" cy="26.8" r="1.7"/><circle class="tg__punto" cx="106" cy="26.8" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Aceleración <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Desplazamiento <span class="task-blank task-blank--corta"></span></p></figure>
+        <figure class="tarea-mini"><figcaption>Gráfica F</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica F de velocidad contra tiempo: pasa por (0 s, 0 m/s), (8 s, 12 m/s)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 57.7H106M25 50.4H106M25 43.1H106M25 35.9H106M25 28.6H106M25 21.3H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 65H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 65L112 62.5V67.5Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">0</text><text class="tg__num" x="21" y="53" text-anchor="end">4</text><text class="tg__num" x="21" y="38.5" text-anchor="end">8</text><text class="tg__num" x="21" y="23.9" text-anchor="end">12</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">v (m/s)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 65L106 21.3"/><circle class="tg__punto" cx="25" cy="65" r="1.7"/><circle class="tg__punto" cx="106" cy="21.3" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Aceleración <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Desplazamiento <span class="task-blank task-blank--corta"></span></p></figure>
+        <figure class="tarea-mini"><figcaption>Gráfica G</figcaption><svg class="tg" viewBox="0 0 137 80" width="137pt" height="80pt" role="img" aria-label="Gráfica G de velocidad contra tiempo: pasa por (0 s, 9 m/s), (8 s, 1 m/s)."><path class="tg__rejilla" d="M35.1 14V65M45.3 14V65M55.4 14V65M65.5 14V65M75.6 14V65M85.8 14V65M95.9 14V65M106 14V65M25 59.9H106M25 54.8H106M25 49.7H106M25 44.6H106M25 39.5H106M25 34.4H106M25 29.3H106M25 24.2H106M25 19.1H106M25 14H106"/><path class="tg__eje" d="M25 65V8M25 65H113"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM117 65L112 62.5V67.5Z"/><text class="tg__num" x="21" y="67.6" text-anchor="end">0</text><text class="tg__num" x="21" y="57.4" text-anchor="end">2</text><text class="tg__num" x="21" y="47.2" text-anchor="end">4</text><text class="tg__num" x="21" y="37" text-anchor="end">6</text><text class="tg__num" x="21" y="26.8" text-anchor="end">8</text><text class="tg__num" x="21" y="16.6" text-anchor="end">10</text><text class="tg__num" x="25" y="75" text-anchor="middle">0</text><text class="tg__num" x="35.1" y="75" text-anchor="middle">1</text><text class="tg__num" x="45.3" y="75" text-anchor="middle">2</text><text class="tg__num" x="55.4" y="75" text-anchor="middle">3</text><text class="tg__num" x="65.5" y="75" text-anchor="middle">4</text><text class="tg__num" x="75.6" y="75" text-anchor="middle">5</text><text class="tg__num" x="85.8" y="75" text-anchor="middle">6</text><text class="tg__num" x="95.9" y="75" text-anchor="middle">7</text><text class="tg__num" x="106" y="75" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">v (m/s)</text><text class="tg__titulo" x="136" y="75" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 19.1L106 59.9"/><circle class="tg__punto" cx="25" cy="19.1" r="1.7"/><circle class="tg__punto" cx="106" cy="59.9" r="1.7"/></svg>
+          <p class="tarea-mini__resp">Aceleración <span class="task-blank task-blank--corta"></span></p>
+          <p class="tarea-mini__resp">Desplazamiento <span class="task-blank task-blank--corta"></span></p></figure>
+      </div>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Gráficas I</strong>
+      <span>Tarea 5 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 3">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Cada alumno leyó mal una gráfica: di qué hizo mal y escribe lo correcto.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span>Gráfica C. Luis: «La posición inicial es 7 m, porque ahí la recta toca un eje».</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span>Gráfica F. Sofía: «El desplazamiento es 8 s × 12 m/s = 96 m».</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span>Gráfica B. Pedro: «Su velocidad es 30 m/s, porque la recta llega a 30 m».</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">4 pts</span> Un autobús va a 3 m/s constantes; en t = 0 pasa por x = 12 m.</p>
+        <div class="tarea-fila">
+          <figure class="tarea-grafica"><svg class="tg" viewBox="0 0 190 96" width="190pt" height="96pt" role="img" aria-label="Cuadrícula vacía de posición contra tiempo, de 0 a 8 s."><path class="tg__rejilla" d="M41.8 14V81M58.5 14V81M75.3 14V81M92 14V81M108.8 14V81M125.5 14V81M142.3 14V81M159 14V81M25 75.4H159M25 69.8H159M25 64.3H159M25 58.7H159M25 53.1H159M25 47.5H159M25 41.9H159M25 36.3H159M25 30.8H159M25 25.2H159M25 19.6H159M25 14H159"/><path class="tg__eje" d="M25 81V8M25 81H166"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM170 81L165 78.5V83.5Z"/><text class="tg__num" x="21" y="83.6" text-anchor="end">0</text><text class="tg__num" x="21" y="72.4" text-anchor="end">6</text><text class="tg__num" x="21" y="61.3" text-anchor="end">12</text><text class="tg__num" x="21" y="50.1" text-anchor="end">18</text><text class="tg__num" x="21" y="38.9" text-anchor="end">24</text><text class="tg__num" x="21" y="27.8" text-anchor="end">30</text><text class="tg__num" x="21" y="16.6" text-anchor="end">36</text><text class="tg__num" x="25" y="91" text-anchor="middle">0</text><text class="tg__num" x="41.8" y="91" text-anchor="middle">1</text><text class="tg__num" x="58.5" y="91" text-anchor="middle">2</text><text class="tg__num" x="75.3" y="91" text-anchor="middle">3</text><text class="tg__num" x="92" y="91" text-anchor="middle">4</text><text class="tg__num" x="108.8" y="91" text-anchor="middle">5</text><text class="tg__num" x="125.5" y="91" text-anchor="middle">6</text><text class="tg__num" x="142.3" y="91" text-anchor="middle">7</text><text class="tg__num" x="159" y="91" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">x (m)</text><text class="tg__titulo" x="189" y="91" text-anchor="end">t (s)</text><g class="tarea-respuesta"></g></svg></figure>
+          <ol class="exam-pdf__sublist task-tipos">
+            <li><span>Dibuja su gráfica x–t de 0 a 6 s.</span></li>
+            <li><span>¿Dónde está en t = 6 s?</span><span class="task-blank"></span></li>
+            <li><span>¿Cuándo pasa por 24 m?</span><span class="task-blank"></span></li>
+          </ol>
+        </div>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">8 pts</span> Resuelve con las gráficas.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--grafica">
+          <li><span>Gráfica H. Un auto arranca y luego sigue a velocidad constante. ¿Cuál es su aceleración en
+            los primeros 4 s? ¿Cuánto avanza en 8 s?</span><svg class="tg" viewBox="0 0 190 90" width="190pt" height="90pt" role="img" aria-label="Gráfica H de velocidad contra tiempo: pasa por (0 s, 0 m/s), (4 s, 12 m/s), (8 s, 12 m/s)."><path class="tg__rejilla" d="M41.8 14V75M58.5 14V75M75.3 14V75M92 14V75M108.8 14V75M125.5 14V75M142.3 14V75M159 14V75M25 66.3H159M25 57.6H159M25 48.9H159M25 40.1H159M25 31.4H159M25 22.7H159M25 14H159"/><path class="tg__eje" d="M25 75V8M25 75H166"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM170 75L165 72.5V77.5Z"/><text class="tg__num" x="21" y="77.6" text-anchor="end">0</text><text class="tg__num" x="21" y="60.2" text-anchor="end">4</text><text class="tg__num" x="21" y="42.7" text-anchor="end">8</text><text class="tg__num" x="21" y="25.3" text-anchor="end">12</text><text class="tg__num" x="25" y="85" text-anchor="middle">0</text><text class="tg__num" x="41.8" y="85" text-anchor="middle">1</text><text class="tg__num" x="58.5" y="85" text-anchor="middle">2</text><text class="tg__num" x="75.3" y="85" text-anchor="middle">3</text><text class="tg__num" x="92" y="85" text-anchor="middle">4</text><text class="tg__num" x="108.8" y="85" text-anchor="middle">5</text><text class="tg__num" x="125.5" y="85" text-anchor="middle">6</text><text class="tg__num" x="142.3" y="85" text-anchor="middle">7</text><text class="tg__num" x="159" y="85" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">v (m/s)</text><text class="tg__titulo" x="189" y="85" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 75L92 22.7L159 22.7"/><circle class="tg__punto" cx="25" cy="75" r="1.7"/><circle class="tg__punto" cx="92" cy="22.7" r="1.7"/><circle class="tg__punto" cx="159" cy="22.7" r="1.7"/></svg>
+            <div class="task-work"></div>
+            <p class="task-answer">Aceleración <span></span> <b>m/s²</b></p>
+            <p class="task-answer">Desplazamiento <span></span> <b>m</b></p></li>
+          <li><span>Gráfica I. Una pelota sube por una rampa y regresa. ¿Cuál es su desplazamiento en 8 s? ¿Qué
+            distancia recorrió?</span><svg class="tg" viewBox="0 0 190 90" width="190pt" height="90pt" role="img" aria-label="Gráfica I de velocidad contra tiempo: pasa por (0 s, 4 m/s), (8 s, −4 m/s)."><path class="tg__rejilla" d="M41.8 14V75M58.5 14V75M75.3 14V75M92 14V75M108.8 14V75M125.5 14V75M142.3 14V75M159 14V75M25 75H159M25 69.9H159M25 64.8H159M25 59.8H159M25 54.7H159M25 49.6H159M25 39.4H159M25 34.3H159M25 29.3H159M25 24.2H159M25 19.1H159M25 14H159"/><path class="tg__eje" d="M25 75V8M25 44.5H166"/><path class="tg__punta" d="M25 4L22.5 9H27.5ZM170 44.5L165 42V47Z"/><text class="tg__num" x="21" y="77.6" text-anchor="end">−6</text><text class="tg__num" x="21" y="67.4" text-anchor="end">−4</text><text class="tg__num" x="21" y="57.3" text-anchor="end">−2</text><text class="tg__num" x="21" y="47.1" text-anchor="end">0</text><text class="tg__num" x="21" y="36.9" text-anchor="end">2</text><text class="tg__num" x="21" y="26.8" text-anchor="end">4</text><text class="tg__num" x="21" y="16.6" text-anchor="end">6</text><text class="tg__num" x="25" y="85" text-anchor="middle">0</text><text class="tg__num" x="41.8" y="85" text-anchor="middle">1</text><text class="tg__num" x="58.5" y="85" text-anchor="middle">2</text><text class="tg__num" x="75.3" y="85" text-anchor="middle">3</text><text class="tg__num" x="92" y="85" text-anchor="middle">4</text><text class="tg__num" x="108.8" y="85" text-anchor="middle">5</text><text class="tg__num" x="125.5" y="85" text-anchor="middle">6</text><text class="tg__num" x="142.3" y="85" text-anchor="middle">7</text><text class="tg__num" x="159" y="85" text-anchor="middle">8</text><text class="tg__titulo" x="30" y="9">v (m/s)</text><text class="tg__titulo" x="189" y="85" text-anchor="end">t (s)</text><path class="tg__linea" d="M25 24.2L159 64.8"/><circle class="tg__punto" cx="25" cy="24.2" r="1.7"/><circle class="tg__punto" cx="159" cy="64.8" r="1.7"/></svg>
+            <div class="task-work"></div>
+            <p class="task-answer">Desplazamiento <span></span> <b>m</b></p>
+            <p class="task-answer">Distancia <span></span> <b>m</b></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">35</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

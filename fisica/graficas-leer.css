@@ -1,0 +1,268 @@
+/* Gráficas I: leer pendiente, corte y área. Estilos propios de sus escenas y de las gráficas
+   pequeñas de los ejercicios (práctica, reto y ejemplos). El molde vive en
+   /assets/css/leccion.css y el auto (sus colores) en fisica.css. base.css le pone contorno y
+   relleno vacío a todo <svg>: aquí cada forma declara los suyos. Sólo colores de los tokens. */
+
+/* ---------- Las escenas: la pista y su gráfica ---------- */
+.escena-graficas {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gl-pista { fill: var(--crema-400); stroke: none; }
+
+.gl-pista__borde {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+/* Las rayas de la pista, cada 2 m: son los mismos renglones de la gráfica. */
+.gl-pista__raya {
+  fill: none;
+  stroke: var(--color-bg-page);
+  stroke-width: .9;
+  stroke-linecap: butt;
+}
+
+.gl-regla,
+.gl-eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+}
+
+.gl-punta { fill: var(--color-border-strong); stroke: none; }
+
+.gl-rejilla {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: .7;
+  stroke-linecap: butt;
+}
+
+.gl-num,
+.gl-titulo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+}
+
+.gl-titulo { font-style: italic; }
+
+.gl-traza {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gl-punto { fill: var(--color-accent); stroke: none; }
+
+.gl-punto--ahora {
+  stroke: var(--color-bg-page);
+  stroke-width: 1.5;
+}
+
+/* La guía une al auto con su punto de la gráfica: están a la misma altura. */
+.gl-guia {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  stroke-linecap: butt;
+}
+
+.gl-corte {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.4;
+  stroke-linecap: butt;
+}
+
+.gl-lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-lectura--chica { font-size: 15px; }
+
+/* El triángulo de la pendiente y sus catetos. */
+.gl-triangulo { fill: var(--color-accent); fill-opacity: .1; stroke: none; }
+
+.gl-cateto {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.8;
+  stroke-linecap: butt;
+}
+
+.gl-etiqueta {
+  fill: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+}
+
+.gl-formula {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.gl-formula__resultado { fill: var(--color-accent); }
+
+/* El área bajo la recta y la flecha del desplazamiento, del mismo color: son el mismo número. */
+.gl-area { fill: var(--color-accent); fill-opacity: .18; stroke: none; }
+
+.gl-flecha {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-linecap: butt;
+}
+
+.gl-flecha-punta { fill: var(--color-accent); stroke: none; }
+
+/* ---------- Las gráficas pequeñas de los ejercicios ---------- */
+.leer-grafica {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  overflow: visible;
+}
+
+.leer-grafica__rejilla {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: .7;
+  stroke-linecap: butt;
+}
+
+.leer-grafica__eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+}
+
+.leer-grafica__punta { fill: var(--color-border-strong); stroke: none; }
+
+.leer-grafica__num,
+.leer-grafica__titulo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+}
+
+.leer-grafica__titulo { font-style: italic; }
+
+.leer-grafica__linea {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.leer-grafica__punto { fill: var(--color-accent); stroke: none; }
+
+/* Sólo en los ejemplos resueltos: el área partida, los catetos y sus rótulos. */
+.leer-grafica__area { fill: var(--color-accent); fill-opacity: .16; stroke: none; }
+
+.leer-grafica__guia {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 3;
+  stroke-linecap: butt;
+}
+
+.leer-grafica__nota {
+  fill: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: 11.5px;
+}
+
+/* En la práctica: la pregunta arriba y la gráfica debajo, sin que se separen de renglón. */
+.leer-pregunta { display: block; }
+
+.sin-fin__enunciado .leer-grafica { margin-top: var(--space-4); }
+
+/* Al final de la tanda, cada pregunta fallada trae su gráfica, en chico. */
+.sin-fin__falla .leer-grafica {
+  max-width: 16rem;
+  margin: var(--space-2) 0 var(--space-1);
+}
+
+/* Los ejemplos resueltos: la gráfica entre el planteo y los pasos. */
+.ejemplo__grafica { margin: var(--space-4) 0 0; }
+
+.ejemplo__grafica .leer-grafica { max-width: 24rem; }
+
+/* La tabla de «Compara»: cada fila se nombra con una frase, no con una etiqueta, y x–t, v–t y
+   t = 0 no se pasan a mayúsculas (t y T son cosas distintas). */
+.graficas-tabla thead th { text-transform: none; }
+
+.graficas-tabla tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.graficas-tabla__ecuacion {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.1em;
+  white-space: nowrap;
+}
+
+/* ---------- La tele ---------- */
+html[data-proyeccion] .es-proyectada .graficas-tabla tbody th { font-size: calc(var(--u) * 2); }
+html[data-proyeccion] .es-proyectada .graficas-tabla thead th { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .graficas-tabla td.graficas-tabla__ecuacion { font-size: calc(var(--u) * 2.3); }
+
+/* Un ejemplo resuelto es su propia pantalla: el planteo y los pasos a la izquierda y la
+   gráfica a la derecha, grande. */
+html[data-proyeccion] .es-proyectada .ejemplo__grafica { margin: 0; }
+
+/* Como en los ejemplos lado a lado del molde, la etiqueta de cada paso ocupa menos. */
+html[data-proyeccion] .ejemplo.es-proyectada .worked-steps li { grid-template-columns: calc(var(--u) * 9.5) minmax(0, 1fr); }
+
+html[data-proyeccion] .es-proyectada .ejemplo__grafica .leer-grafica {
+  max-width: none;
+  max-height: calc(var(--u) * 34);
+}
+
+/* Reto con gráfica: la pregunta a la izquierda, la gráfica a la derecha y las cuatro opciones
+   en un renglón (son cortas: un número con su unidad). */
+html[data-proyeccion] .es-proyectada .reto__enunciado:has(> .leer-grafica) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  column-gap: calc(var(--u) * 4);
+  margin-top: calc(var(--u) * .6);
+  font-size: calc(var(--u) * 3);
+}
+
+html[data-proyeccion] .es-proyectada .reto__enunciado > .leer-grafica {
+  width: 100%;
+  max-width: none;
+  max-height: calc(var(--u) * 22);
+}
+
+html[data-proyeccion] .reto.es-proyectada:has(.leer-grafica) .reto__opciones {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+html[data-proyeccion] .reto.es-proyectada:has(.leer-grafica) .reto__opcion { min-height: calc(var(--u) * 5.4); }
