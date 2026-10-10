@@ -31,10 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-madera-hielo">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./propiedades-escenas.js?v=20261008-madera-hielo"></script>
 </head>
 <body>
@@ -42,7 +45,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 01 · 1 de 6 · Aprende</p>
     <h1 class="hero__title">Materia y sus <em>propiedades</em></h1>
     <p class="hero__lede">Reconoce qué es la materia y distingue las propiedades que podemos
@@ -56,9 +59,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=propiedades%20químicas#courseIndex">propiedades químicas</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaCentral">
+  <section aria-labelledby="ideaCentral" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaCentral">
         <span class="lesson-section__kicker">Comienza aquí</span> Idea central
@@ -81,7 +86,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="tiposPropiedad">
+  <section aria-labelledby="tiposPropiedad" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="tiposPropiedad">
         <span class="lesson-section__kicker">Compara</span> Dos maneras de describirla
@@ -128,7 +133,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="cantidadMateria">
+  <section aria-labelledby="cantidadMateria" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="cantidadMateria">
         <span class="lesson-section__kicker">Afina la idea</span> ¿Dependen de la cantidad?
@@ -158,6 +163,40 @@
       </article>
     </div>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "¿Cuándo se puede observar una propiedad química de una sustancia?",
+         "opciones": ["Cuando se calienta hasta derretirse", "Cuando se mide en el laboratorio", "Cuando se transforma en otra sustancia", "Cuando cambia de tamaño o de forma"],
+         "correcta": 2,
+         "porque": "Sólo se manifiesta cuando la sustancia se convierte en una nueva. Derretirse, medirse o cambiar de forma no la convierten en otra sustancia."},
+        {"pregunta": "¿Cuál de estas frases describe una propiedad química?",
+         "opciones": ["La piedra pómez está llena de poros", "Un metal se gasta en ácido y suelta gas", "La canela tiene un olor muy intenso", "La mantequilla se derrite con poco calor"],
+         "correcta": 1,
+         "porque": "Al tocar el ácido, el metal se convierte en sustancias nuevas, como el gas de las burbujas. Tener poros u olor, o derretirse, no forma otra sustancia."},
+        {"pregunta": "Unes dos varillas iguales de 30 cm, una tras otra. ¿Cuánto mide el conjunto y qué tipo de propiedad es la longitud?",
+         "opciones": ["30 cm; es una propiedad intensiva", "60 cm; es una propiedad intensiva", "30 cm; es una propiedad extensiva", "60 cm; es una propiedad extensiva"],
+         "correcta": 3,
+         "porque": "Al unirlas, la longitud se suma: 30 cm + 30 cm = 60 cm. Como cambia con la cantidad de materia, es una propiedad extensiva."},
+        {"pregunta": "¿Qué tipo de propiedad es el sabor y qué regla hay sobre él en el laboratorio?",
+         "opciones": ["Física; en el laboratorio nunca se prueba", "Química; se prueba sólo una gota pequeña", "Física; se prueba sólo una gota pequeña", "Química; en el laboratorio nunca se prueba"],
+         "correcta": 0,
+         "porque": "El sabor se percibe sin formar otra sustancia, por eso es física. Aun así, en el laboratorio nunca se prueba nada, ni una gota."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-materia-propiedades.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h4m3 0h1m5 0h1m1 0h1m4 0h7M4 5.5h1m5 0h1m2 0h2m3 0h1m2 0h1m2 0h1m1 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h5m2 0h1m5 0h2m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m6 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m2 0h3m1 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m2 0h1m3 0h2m3 0h2m3 0h2m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m2 0h1m3 0h1m1 0h2m1 0h2m2 0h1m1 0h1M4 12.5h1m1 0h5m2 0h2m3 0h3m2 0h1m2 0h5m3 0h5M4 13.5h1m9 0h1m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h2M4 14.5h1m1 0h1m1 0h1m1 0h1m8 0h3m1 0h1m2 0h1m1 0h8m2 0h3M4 15.5h1m2 0h2m3 0h2m1 0h5m3 0h4m3 0h2m1 0h1m1 0h2m3 0h1M4 16.5h1m4 0h2m1 0h1m3 0h1m1 0h4m1 0h1m2 0h1m1 0h3m1 0h3m1 0h1m1 0h3M7 17.5h1m6 0h1m5 0h1m2 0h5m4 0h1m2 0h1M4 18.5h1m2 0h5m2 0h2m2 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m2 0h1M4 19.5h2m1 0h3m1 0h2m1 0h2m2 0h1m1 0h1m4 0h3m4 0h5M5 20.5h1m2 0h1m1 0h2m1 0h4m1 0h1m3 0h1m3 0h6m1 0h2m1 0h1m1 0h3M5 21.5h1m6 0h2m1 0h6m4 0h3m1 0h2m1 0h1m6 0h1M4 22.5h1m2 0h4m1 0h1m1 0h1m10 0h2m4 0h1m3 0h1m1 0h1m1 0h2M5 23.5h3m3 0h2m2 0h1m4 0h1m2 0h3m4 0h1m2 0h2m5 0h1M5 24.5h2m3 0h1m2 0h1m1 0h1m1 0h1m3 0h1m4 0h1m1 0h7m1 0h3M5 25.5h1m2 0h1m2 0h2m5 0h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m4 0h1M4 26.5h1m1 0h5m2 0h1m3 0h3m1 0h1m2 0h1m3 0h2m1 0h1m2 0h4m1 0h2M4 27.5h2m1 0h1m3 0h1m2 0h4m1 0h4m2 0h4m2 0h6m3 0h1M5 28.5h1m1 0h2m1 0h5m4 0h2m2 0h1m4 0h7m1 0h1m1 0h3M4 29.5h1m1 0h1m2 0h1m1 0h5m3 0h1m2 0h4m1 0h1m4 0h2m1 0h1m1 0h1M4 30.5h1m1 0h5m1 0h9m4 0h2m3 0h4m1 0h1m3 0h2M4 31.5h1m2 0h2m2 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1m2 0h2m1 0h2M4 32.5h1m1 0h1m3 0h5m2 0h1m1 0h3m4 0h11m1 0h1M12 33.5h3m5 0h1m2 0h2m1 0h2m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h1m2 0h1m2 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m1 0h1m3 0h3m2 0h1m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h8m2 0h1m3 0h1m1 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h3m2 0h5m1 0h2m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h2m1 0h2m5 0h1m5 0h1m8 0h4M4 39.5h1m5 0h1m2 0h5m2 0h1m1 0h1m2 0h1m2 0h1m2 0h4m1 0h1m3 0h1M4 40.5h7m1 0h1m1 0h3m3 0h2m4 0h1m2 0h2m3 0h1m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaPropiedades">
     <header class="section-header">

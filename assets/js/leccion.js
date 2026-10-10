@@ -8,7 +8,17 @@
  * sección que estaba a la vista y, al salir, regresa a la que quedó en pantalla.
  * Lo marcado con [data-solo-proyeccion] (la pantalla «Ahora tú», con el código QR)
  * sólo existe en este modo. Cada pantalla que llega a la tele recibe el evento
- * «tercial:diapositiva»: las escenas lo usan para empezar desde el principio.
+ * «tercial:diapositiva» (las escenas lo usan para empezar desde el principio) y la que
+ * se va, «tercial:sale». Una pantalla con pasos propios (el reto relámpago) expone
+ * __pasos.siguiente() y __pasos.anterior(): las flechas le preguntan primero a ella.
+ * Si una pantalla trae más de lo que cabe, sus piezas se encogen lo justo (zoom, hasta
+ * 65 %), como hace un programa de presentaciones; si trae poco, crecen (hasta 130 %) para
+ * no dejar media tele vacía. Se vuelve a medir al llegar, cuando la
+ * escena termina de cargar, al tocar algo dentro y con el evento «tercial:cambia».
+ * Una tabla larga se ve por partes: <table data-filas-por-pantalla="5"> muestra 5 filas a la
+ * vez, con su encabezado; las flechas recorren las partes (todas con la misma letra) antes de
+ * cambiar de pantalla. Al llegar de regreso (←), se ve la última parte. Una pantalla dentro de
+ * otra lleva arriba, en pequeño, el título de su sección.
  * Con #tele en la liga (…/signos.html#tele) la lección abre ya en este modo: sirve
  * para el navegador de la propia tele o una compu conectada a ella, sin teclado.
  */
@@ -43,23 +53,170 @@
       '<button class="proyeccion-controles__boton" type="button" data-proyeccion-siguiente aria-label="Pantalla siguiente">→</button>' +
       '<button class="proyeccion-controles__salir" type="button" data-proyeccion-salir>Salir</button>';
     document.body.appendChild(controles);
-    controles.querySelector('[data-proyeccion-anterior]').addEventListener('click', function () { ir(actual - 1); });
-    controles.querySelector('[data-proyeccion-siguiente]').addEventListener('click', function () { ir(actual + 1); });
+    controles.querySelector('[data-proyeccion-anterior]').addEventListener('click', function () { avanza(-1); });
+    controles.querySelector('[data-proyeccion-siguiente]').addEventListener('click', function () { avanza(1); });
     controles.querySelector('[data-proyeccion-salir]').addEventListener('click', salir);
   }
 
-  function ir(indice) {
+  function ir(indice, direccion) {
+    var antes = actual;
     actual = Math.max(0, Math.min(diapositivas.length - 1, indice));
+    if (antes !== actual) { diapositivas[antes].dispatchEvent(new CustomEvent('tercial:sale')); suelta(diapositivas[antes]); }
     diapositivas.forEach(function (d, k) {
       var esta = k === actual;
-      d.classList.toggle('es-actual', esta);
+      d.classList.toggle('es-proyectada', esta);
       if (esta) d.removeAttribute('aria-hidden'); else d.setAttribute('aria-hidden', 'true');
     });
-    diapositivas[actual].dispatchEvent(new CustomEvent('tercial:diapositiva'));
+    diapositivas[actual].dispatchEvent(new CustomEvent('tercial:diapositiva', { detail: { direccion: direccion || 0 } }));
+    ajusta(diapositivas[actual]);
+    vigila(diapositivas[actual]);
     controles.querySelector('.proyeccion-controles__cuenta').textContent = (actual + 1) + ' de ' + diapositivas.length;
     controles.querySelector('[data-proyeccion-anterior]').disabled = actual === 0;
     controles.querySelector('[data-proyeccion-siguiente]').disabled = actual === diapositivas.length - 1;
   }
+
+  // Avanza o regresa: primero los pasos de la pantalla actual, si los tiene; luego, de pantalla.
+  function avanza(direccion) {
+    var pasos = diapositivas[actual].__pasos;
+    if (pasos && (direccion > 0 ? pasos.siguiente() : pasos.anterior())) return;
+    ir(actual + direccion, direccion);
+  }
+
+  // Las piezas que acomoda la pantalla: sus hijos, y los de cada herramienta abierta.
+  function piezas(d) {
+    var lista = [];
+    Array.prototype.forEach.call(d.children, function (h) {
+      if (h.hasAttribute('data-abre')) lista = lista.concat(piezas(h));
+      else lista.push(h);
+    });
+    return lista;
+  }
+
+  // Alto que ocupan las piezas, y alto disponible dentro de los márgenes de la pantalla.
+  function altoPiezas(lista) {
+    var arriba = Infinity, abajo = -Infinity;
+    lista.forEach(function (n) {
+      var b = n.getBoundingClientRect();
+      if (!b.height) return;
+      arriba = Math.min(arriba, b.top); abajo = Math.max(abajo, b.bottom);
+    });
+    return abajo > arriba ? abajo - arriba : 0;
+  }
+  function altoUtil(d) {
+    var cs = getComputedStyle(d);
+    return d.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  }
+
+  // Ajuste: si la pantalla se pasa de alto, todas sus piezas se encogen por igual, lo justo;
+  // si le sobra más de un tercio, crecen hasta llenar 9 de cada 10 partes del alto.
+  function zoomJusto(d, lista) {
+    var tipo = d.getAttribute('data-diapositiva');
+    lista.forEach(function (n) { n.style.zoom = ''; });
+    if (d.scrollHeight <= d.clientHeight + 2) {
+      if (tipo !== 'una' && tipo !== 'dos') return 1;
+      var util = altoUtil(d), ocupado = altoPiezas(lista);
+      if (!ocupado || ocupado > util * 0.66) return 1;
+      var menos = 1, mas = 1.3;
+      for (var j = 0; j < 7; j++) {
+        var z = (menos + mas) / 2;
+        lista.forEach(function (n) { n.style.zoom = z; });
+        if (d.scrollHeight <= d.clientHeight + 2 && altoPiezas(lista) <= util * 0.9) menos = z; else mas = z;
+      }
+      return menos > 1.01 ? menos : 1;
+    }
+    var bajo = 0.65, alto = 1;
+    for (var k = 0; k < 7; k++) {
+      var medio = (bajo + alto) / 2;
+      lista.forEach(function (n) { n.style.zoom = medio; });
+      if (d.scrollHeight <= d.clientHeight + 2) bajo = medio; else alto = medio;
+    }
+    // Con el mismo zoom, el texto no siempre se reacomoda igual: un borde que se redondea distinto
+    // cambia un pixel el ancho y baja un renglón que apenas cabía. Se deja un 3 % de holgura y se
+    // confirma; si ya no cabe, se baja un poco más.
+    bajo = Math.max(0.65, bajo * 0.97);
+    for (var paso = 0; paso < 8 && bajo > 0.65; paso++) {
+      lista.forEach(function (n) { n.style.zoom = bajo.toFixed(3); });
+      if (d.scrollHeight <= d.clientHeight + 2) break;
+      bajo = Math.max(0.65, bajo - 0.015);
+    }
+    return bajo;
+  }
+  var esperas = [];
+  function ajusta(d) {
+    if (!d || !d.classList.contains('es-proyectada')) return;
+    var lista = piezas(d);
+    d.classList.remove('es-larga');
+    var z = d.__partes ? d.__partes.menor(function () { return zoomJusto(d, lista); }) : zoomJusto(d, lista);
+    lista.forEach(function (n) { n.style.zoom = z !== 1 ? z.toFixed(3) : ''; });
+    // Ni así cabe: se puede desplazar, en vez de cortarse.
+    if (d.scrollHeight > d.clientHeight + 2) d.classList.add('es-larga');
+  }
+  // Las escenas y las letras terminan de cargar un poco después: se mide otra vez.
+  function vigila(d) {
+    esperas.forEach(clearTimeout);
+    esperas = [400, 1500].map(function (ms) { return setTimeout(function () { ajusta(d); }, ms); });
+  }
+  function suelta(d) {
+    piezas(d).forEach(function (n) { n.style.zoom = ''; });
+    d.classList.remove('es-larga');
+  }
+
+  // Una tabla larga, por partes: las flechas las recorren antes de cambiar de pantalla.
+  function partes(d) {
+    var tabla = Array.prototype.filter.call(d.querySelectorAll('table[data-filas-por-pantalla]'), function (t) {
+      return t.closest('[data-diapositiva]') === d;
+    })[0];
+    if (!tabla || !tabla.tBodies.length) return;
+    var porParte = parseInt(tabla.getAttribute('data-filas-por-pantalla'), 10) || 6;
+    var filas = Array.prototype.slice.call(tabla.tBodies[0].rows);
+    var total = Math.ceil(filas.length / porParte);
+    if (total < 2) return;
+    var parte = 0;
+    var cuenta = document.createElement('p');
+    cuenta.className = 'tabla-partes';
+    (tabla.closest('.reference-table-wrap') || tabla).insertAdjacentElement('afterend', cuenta);
+    function muestra(n) {
+      parte = n;
+      filas.forEach(function (f, k) { f.classList.toggle('es-otra-parte', Math.floor(k / porParte) !== n); });
+      cuenta.textContent = 'Filas ' + (n * porParte + 1) + ' a ' + Math.min(filas.length, (n + 1) * porParte) +
+        ' de ' + filas.length + (n < total - 1 ? ' →' : '');
+    }
+    // El zoom de la pantalla es el que deja caber a la parte más alta: la letra no cambia entre partes.
+    d.__partes = {
+      menor: function (medida) {
+        var vista = parte, z = Infinity;
+        for (var k = 0; k < total; k++) { muestra(k); z = Math.min(z, medida()); }
+        muestra(vista);
+        return z;
+      }
+    };
+    d.__pasos = {
+      siguiente: function () { if (parte >= total - 1) return false; muestra(parte + 1); d.scrollTop = 0; return true; },
+      anterior: function () { if (parte <= 0) return false; muestra(parte - 1); d.scrollTop = 0; return true; }
+    };
+    d.addEventListener('tercial:diapositiva', function (evento) {
+      muestra(evento.detail && evento.detail.direccion < 0 ? total - 1 : 0);
+    });
+    muestra(0);
+  }
+  diapositivas.forEach(partes);
+
+  // Una pantalla dentro de otra (una figura, un ejemplo, una nota) lleva arriba, en pequeño, el
+  // título de su sección: se lee como continuación. Sólo se ve en la tele.
+  function contexto(d) {
+    if (d.querySelector('.section-header')) return;
+    var padre = d, titulo = null;
+    while (!titulo && (padre = padre.parentElement && padre.parentElement.closest('[data-diapositiva]'))) {
+      titulo = padre.querySelector(':scope > .section-header .section-header__title');
+    }
+    if (!titulo) return;
+    var cabeza = document.createElement('span');
+    cabeza.className = 'pantalla-contexto';
+    cabeza.setAttribute('aria-hidden', 'true');
+    Array.prototype.forEach.call(titulo.childNodes, function (n) { cabeza.appendChild(n.cloneNode(true)); });
+    d.insertBefore(cabeza, d.firstChild);
+  }
+  diapositivas.forEach(contexto);
 
   // La sección cuyo borde superior está más cerca de la parte de arriba de la ventana.
   function laQueSeVe() {
@@ -89,9 +246,12 @@
   function salir() {
     if (!raiz.hasAttribute('data-proyeccion')) return;
     var vista = diapositivas[actual];
+    vista.dispatchEvent(new CustomEvent('tercial:sale'));
+    suelta(vista);
+    esperas.forEach(clearTimeout);
     raiz.removeAttribute('data-proyeccion');
     raiz.style.removeProperty('--u');
-    diapositivas.forEach(function (d) { d.classList.remove('es-actual'); d.removeAttribute('aria-hidden'); });
+    diapositivas.forEach(function (d) { d.classList.remove('es-proyectada'); d.removeAttribute('aria-hidden'); });
     controles.hidden = true;
     if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
     conPantallaCompleta = false;
@@ -100,7 +260,20 @@
     if (!vista.hasAttribute('data-solo-proyeccion')) vista.scrollIntoView({ block: 'start' });
   }
 
-  window.addEventListener('resize', function () { if (raiz.hasAttribute('data-proyeccion')) medir(); });
+  // Algo cambió dentro de la pantalla (un botón, la pregunta del reto): se mide otra vez.
+  function cambio(evento) {
+    var d = diapositivas[actual];
+    if (!raiz.hasAttribute('data-proyeccion') || !d.contains(evento.target)) return;
+    setTimeout(function () { ajusta(d); }, 60);
+  }
+  document.addEventListener('click', cambio);
+  document.addEventListener('tercial:cambia', cambio);
+
+  window.addEventListener('resize', function () {
+    if (!raiz.hasAttribute('data-proyeccion')) return;
+    medir();
+    ajusta(diapositivas[actual]);
+  });
 
   // Si el navegador quita la pantalla completa (Esc en Safari), también se sale del modo.
   document.addEventListener('fullscreenchange', function () {
@@ -119,8 +292,8 @@
     // La barra espaciadora sobre un botón lo oprime; no avanza la pantalla.
     if (evento.key === ' ' && t && t.tagName === 'BUTTON') return;
     switch (evento.key) {
-      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': ir(actual + 1); break;
-      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': ir(actual - 1); break;
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': avanza(1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': avanza(-1); break;
       case 'Home': ir(0); break;
       case 'End': ir(diapositivas.length - 1); break;
       case 'Escape': case 'p': case 'P': salir(); break;

@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-kernel"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./particulas-practica.js?v=20261008-desplegables"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 2 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Partículas <em>subatómicas</em></h1>
     <p class="hero__lede">Todo átomo está hecho de protones, neutrones y electrones. Contarlos te dice
@@ -61,9 +64,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=número%20atómico#courseIndex">número atómico</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="tresParticulas">
+  <section aria-labelledby="tresParticulas" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="tresParticulas">
         <span class="lesson-section__kicker">Idea central</span> Tres partículas, tres papeles
@@ -123,16 +128,16 @@
     </div>
   </section>
 
-  <section aria-labelledby="construyeAtomo">
+  <section aria-labelledby="construyeAtomo" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="construyeAtomo">
         <span class="lesson-section__kicker">Experimenta</span> Construye un átomo
       </h2>
     </header>
-    <p class="section-intro">Agrega o quita partículas y observa qué cambia. Empiezas con un átomo de
+    <p class="section-intro" data-solo-lectura>Agrega o quita partículas y observa qué cambia. Empiezas con un átomo de
       carbono: 6 protones, 6 neutrones y 6 electrones.</p>
-    <div class="atom-builder" data-constructor>
-      <figure class="atom-builder__stage">
+    <div class="atom-builder" data-constructor data-abre>
+      <figure class="atom-builder__stage" data-lado="figura">
         <svg class="escena escena--constructor" data-escena-atomo="constructor" viewBox="0 0 280 280" role="img" aria-labelledby="builderTitle">
           <title id="builderTitle">Átomo armado con los protones, neutrones y electrones elegidos: los protones y neutrones forman el núcleo y los electrones giran en capas a su alrededor</title>
         </svg>
@@ -176,14 +181,14 @@
         <button class="practice-reset atom-builder__reset" type="button" data-builder-reset>Volver al carbono</button>
       </div>
     </div>
-    <ol class="try-list">
+    <ol class="try-list" data-solo-lectura>
       <li><strong>Agrega un protón.</strong> ¿Sigue siendo carbono? Cambiar los protones cambia el elemento.</li>
       <li><strong>Agrega un neutrón.</strong> El elemento no cambia; sólo aumenta la masa.</li>
       <li><strong>Quita un electrón.</strong> El elemento y la masa siguen igual, pero ahora el átomo tiene carga.</li>
     </ol>
   </section>
 
-  <section aria-labelledby="reglasParticulas">
+  <section aria-labelledby="reglasParticulas" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="reglasParticulas">
         <span class="lesson-section__kicker">Lee la notación</span> Tres números para contar partículas
@@ -225,7 +230,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="ejemploParticulas">
+  <section aria-labelledby="ejemploParticulas" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploParticulas">
         <span class="lesson-section__kicker">Ejemplo resuelto</span> El ion aluminio, <sup>27</sup>Al<sup>3+</sup>
@@ -242,6 +247,40 @@
         13 − 10 = 3+ ✓</p></li>
     </ol>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "¿Qué partículas forman el núcleo y guardan casi toda la masa del átomo?",
+         "opciones": ["Protones y electrones", "Protones y neutrones", "Neutrones y electrones", "Sólo los protones"],
+         "correcta": 1,
+         "porque": "Protones y neutrones están en el núcleo y tienen casi la misma masa, 1 uma. Los electrones están fuera: un protón tiene unas 1,800 veces más masa que un electrón."},
+        {"pregunta": "Al carbono (6 p<sup>+</sup>, 6 n<sup>0</sup>, 6 e<sup>−</sup>) le agregas un neutrón. ¿Qué obtienes?",
+         "opciones": ["Nitrógeno: otro elemento", "Carbono con carga negativa", "Carbono con carga positiva", "Carbono con más masa"],
+         "correcta": 3,
+         "porque": "Sigue con 6 protones, así que sigue siendo carbono. El neutrón no tiene carga: sólo aumenta la masa. Ahora A = 6 + 7 = 13."},
+        {"pregunta": "¿Cuántos neutrones y cuántos electrones tiene el ion <sup>39</sup><sub>19</sub>K<sup>+</sup>?",
+         "opciones": ["20 neutrones y 18 electrones", "20 neutrones y 20 electrones", "39 neutrones y 18 electrones", "19 neutrones y 18 electrones"],
+         "correcta": 0,
+         "porque": "Neutrones: A − Z = 39 − 19 = 20. La carga 1+ indica que perdió un electrón: 19 − 1 = 18. Comprueba: carga = 19 − 18 = 1+."},
+        {"pregunta": "Un átomo neutro pierde 2 electrones. ¿Qué carga queda y cómo se llama ese ion?",
+         "opciones": ["Carga 2−: es un anión", "Carga 2+: es un anión", "Carga 2+: es un catión", "Carga 2−: es un catión"],
+         "correcta": 2,
+         "porque": "Carga = p<sup>+</sup> − e<sup>−</sup>. Al perder 2 electrones le sobran 2 protones: queda 2+, un catión. El que gana electrones queda negativo: anión."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-particulas-subatomicas.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h6m1 0h4m2 0h1m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m2 0h2m4 0h3m4 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m2 0h1m6 0h3m4 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m4 0h4m6 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m3 0h4m2 0h2m3 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m2 0h5m4 0h1m3 0h2m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h3m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1M4 12.5h1m1 0h5m2 0h1m2 0h1m2 0h1m2 0h2m2 0h2m1 0h2m1 0h1m1 0h5M5 13.5h1m3 0h1m1 0h7m1 0h6m2 0h1m4 0h2m1 0h1m2 0h2M4 14.5h2m1 0h1m2 0h1m2 0h4m1 0h1m2 0h1m4 0h1m2 0h7m2 0h3M4 15.5h2m1 0h1m6 0h1m3 0h1m1 0h1m4 0h2m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1M8 16.5h3m4 0h2m3 0h2m4 0h1m1 0h7m1 0h1m1 0h3M4 17.5h2m1 0h2m3 0h3m2 0h1m2 0h2m1 0h2m1 0h2m4 0h1m2 0h1M4 18.5h1m2 0h1m2 0h1m1 0h1m2 0h1m2 0h4m2 0h3m1 0h1m2 0h1m2 0h4m2 0h1M4 19.5h5m2 0h1m2 0h5m1 0h3m2 0h3m2 0h1m1 0h1m1 0h3M5 20.5h1m1 0h1m1 0h4m1 0h3m3 0h1m3 0h1m1 0h6m1 0h2m1 0h1m1 0h3M4 21.5h1m1 0h1m2 0h1m4 0h1m1 0h4m2 0h4m1 0h1m1 0h2m1 0h1m6 0h1M10 22.5h3m4 0h1m1 0h2m4 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h2M4 23.5h2m2 0h1m3 0h1m2 0h1m3 0h1m3 0h3m1 0h2m1 0h2m1 0h2m5 0h1M4 24.5h1m2 0h4m4 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h3M4 25.5h1m1 0h4m2 0h1m2 0h4m4 0h2m2 0h2m1 0h1m1 0h1m4 0h1M7 26.5h1m1 0h5m1 0h2m1 0h2m2 0h1m1 0h2m2 0h2m1 0h1m2 0h4m1 0h2M4 27.5h2m7 0h5m1 0h2m4 0h4m1 0h7m3 0h1M5 28.5h3m2 0h2m1 0h1m3 0h1m1 0h1m2 0h2m2 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h3M4 29.5h2m1 0h1m4 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h1m1 0h1m4 0h2m1 0h1m1 0h1M4 30.5h1m1 0h1m3 0h3m3 0h2m6 0h3m3 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h2m1 0h2m4 0h2m1 0h2m3 0h2M4 32.5h1m2 0h1m1 0h6m1 0h2m2 0h2m4 0h1m1 0h9m1 0h2M12 33.5h1m1 0h1m5 0h2m1 0h5m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h1m5 0h3m2 0h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m1 0h9m1 0h2m3 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h4m2 0h3m3 0h1m1 0h1m2 0h8m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h2m2 0h4m1 0h1m1 0h2m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h3m1 0h1m1 0h1m12 0h4M4 39.5h1m5 0h1m4 0h3m1 0h1m2 0h1m2 0h1m1 0h2m3 0h1m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h2m5 0h3m4 0h1m2 0h2m5 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaParticulas">
     <header class="section-header">

@@ -9,6 +9,10 @@
  * Un generador puede marcar meta.texto: la pregunta es una frase y las opciones son
  * palabras, así que se escriben más chicas que una operación.
  *
+ * Con data-tanda="10" la práctica va por tandas, como en Química: al terminar se ve
+ * la calificación y los ejercicios que fallaste con su respuesta, y se puede pedir
+ * otra tanda. Se guarda la mejor tanda.
+ *
  * Marcado:
  *   <div data-sin-fin data-clave="matematicas:signos"
  *        data-modos='[{"id":"suma","nombre":"Sumas y restas","generadores":["signos-suma"]}, …]'></div>
@@ -32,13 +36,15 @@
     var modos;
     try { modos = JSON.parse(raiz.getAttribute('data-modos')); } catch (_) { return; }
     if (!modos || !modos.length) return;
-    var claveGuardado = 'tercial:sin-fin:' + (raiz.getAttribute('data-clave') || 'general');
+    var tamanoTanda = parseInt(raiz.getAttribute('data-tanda'), 10) || 0;
+    // Por tandas, «mejor» es la mejor tanda; sin tandas, la mejor racha: se guardan aparte.
+    var claveGuardado = 'tercial:sin-fin:' + (raiz.getAttribute('data-clave') || 'general') + (tamanoTanda ? ':tanda' : '');
     var memoria = leer(claveGuardado);
     var estado = {
       modo: modos.some(function (m) { return m.id === memoria.modo; }) ? memoria.modo : modos[0].id,
       nivel: NIVELES.indexOf(memoria.nivel) !== -1 ? memoria.nivel : 1,
       bien: 0, total: 0, racha: 0, mejor: memoria.mejor || 0,
-      ejercicio: null, contestado: false
+      ejercicio: null, contestado: false, fallas: []
     };
 
     raiz.classList.add('sin-fin');
@@ -63,6 +69,7 @@
         '<details class="sin-fin__pasos" data-pasos hidden><summary>Ver los pasos</summary><ol></ol></details>' +
         '<div class="sin-fin__acciones"><button class="practice-action" type="button" data-otro disabled>Otro ejercicio →</button></div>' +
       '</div>' +
+      '<div class="sin-fin__resumen" aria-live="polite" data-resumen hidden></div>' +
       '<p class="sin-fin__marcador" aria-live="polite" data-marcador></p>';
 
     var zonaPregunta = raiz.querySelector('[data-pregunta]');
@@ -72,6 +79,8 @@
     var zonaPasos = raiz.querySelector('[data-pasos]');
     var botonOtro = raiz.querySelector('[data-otro]');
     var zonaMarcador = raiz.querySelector('[data-marcador]');
+    var tarjeta = raiz.querySelector('.sin-fin__tarjeta');
+    var zonaResumen = raiz.querySelector('[data-resumen]');
 
     function marcarControles() {
       raiz.querySelectorAll('[data-modo]').forEach(function (b) {
@@ -83,6 +92,12 @@
     }
 
     function marcador() {
+      if (tamanoTanda) {
+        var n = Math.min(tamanoTanda, estado.contestado ? estado.total : estado.total + 1);
+        zonaMarcador.textContent = 'Ejercicio ' + n + ' de ' + tamanoTanda + ' · ' + estado.bien + ' bien' +
+          (estado.mejor ? ' · tu mejor tanda: ' + estado.mejor + ' de ' + tamanoTanda : '') + '.';
+        return;
+      }
       if (!estado.total) {
         zonaMarcador.textContent = 'Cada ejercicio es nuevo. Tu marcador se guarda sólo en este dispositivo.';
         return;
@@ -99,6 +114,9 @@
       var ejercicio = M.GENERADORES[id](estado.nivel);
       estado.ejercicio = ejercicio;
       estado.contestado = false;
+      tarjeta.hidden = false;
+      zonaResumen.hidden = true;
+      botonOtro.textContent = 'Otro ejercicio →';
       zonaPregunta.textContent = (ejercicio.meta && ejercicio.meta.ask) ? ejercicio.meta.ask + ':' : '¿Cuánto es?';
       zonaEnunciado.innerHTML = ejercicio.enunciado;
       var esTexto = !!(ejercicio.meta && ejercicio.meta.texto);
@@ -135,11 +153,12 @@
       if (elegida.ok) {
         estado.bien++;
         estado.racha++;
-        if (estado.racha > estado.mejor) estado.mejor = estado.racha;
+        if (!tamanoTanda && estado.racha > estado.mejor) estado.mejor = estado.racha;
         zonaVeredicto.className = 'sin-fin__veredicto es-bien';
         zonaVeredicto.innerHTML = '<p><strong>Correcto.</strong>' + (estado.racha >= 3 ? ' Llevas ' + estado.racha + ' seguidos.' : '') + '</p>';
       } else {
         estado.racha = 0;
+        estado.fallas.push({ enunciado: ejercicio.enunciado, correcta: M.tex(ejercicio.correcta) });
         botones[i].classList.add('es-elegida');
         zonaVeredicto.className = 'sin-fin__veredicto es-revisa';
         zonaVeredicto.innerHTML = '<p><strong>Revisa.</strong> ' + (elegida.err || 'Ese resultado no es.') + '</p>';
@@ -147,8 +166,38 @@
       }
       zonaPasos.hidden = !zonaPasos.querySelector('li');
       botonOtro.disabled = false;
+      if (tamanoTanda && estado.total >= tamanoTanda) botonOtro.textContent = 'Ver cómo te fue →';
       botonOtro.focus({ preventScroll: true });
       guardar(claveGuardado, { modo: estado.modo, nivel: estado.nivel, mejor: estado.mejor });
+      marcador();
+    }
+
+    // Fin de la tanda: la calificación, lo que hay que repasar y otra tanda.
+    function resumen() {
+      if (estado.bien > estado.mejor) estado.mejor = estado.bien;
+      guardar(claveGuardado, { modo: estado.modo, nivel: estado.nivel, mejor: estado.mejor });
+      tarjeta.hidden = true;
+      zonaResumen.hidden = false;
+      zonaResumen.innerHTML =
+        '<p class="sin-fin__pregunta">Tanda terminada</p>' +
+        '<p class="sin-fin__resultado"><strong>' + estado.bien + '</strong> de ' + tamanoTanda + ' bien</p>' +
+        (estado.fallas.length
+          ? '<p class="sin-fin__repasa">Repasa éstos:</p><ol class="sin-fin__fallas">' + estado.fallas.map(function (f) {
+              return '<li><span class="sin-fin__falla">' + f.enunciado + '</span> <span class="sin-fin__flecha" aria-hidden="true">→</span> <strong>' + f.correcta + '</strong></li>';
+            }).join('') + '</ol>'
+          : '<p class="sin-fin__repasa">Todos bien. Sube de nivel o cambia de tema.</p>') +
+        '<div class="sin-fin__acciones"><button class="practice-action" type="button" data-otra-tanda>Otra tanda →</button></div>';
+      zonaResumen.querySelector('[data-otra-tanda]').addEventListener('click', empiezaTanda);
+      marcador();
+      zonaResumen.querySelector('[data-otra-tanda]').focus({ preventScroll: true });
+    }
+
+    function empiezaTanda() {
+      estado.bien = 0;
+      estado.total = 0;
+      estado.racha = 0;
+      estado.fallas = [];
+      nuevo();
       marcador();
     }
 
@@ -157,7 +206,7 @@
         estado.modo = b.getAttribute('data-modo');
         marcarControles();
         guardar(claveGuardado, { modo: estado.modo, nivel: estado.nivel, mejor: estado.mejor });
-        nuevo();
+        if (tamanoTanda) empiezaTanda(); else nuevo();
       });
     });
     raiz.querySelectorAll('[data-nivel-ejercicio]').forEach(function (b) {
@@ -165,10 +214,13 @@
         estado.nivel = Number(b.getAttribute('data-nivel-ejercicio'));
         marcarControles();
         guardar(claveGuardado, { modo: estado.modo, nivel: estado.nivel, mejor: estado.mejor });
-        nuevo();
+        if (tamanoTanda) empiezaTanda(); else nuevo();
       });
     });
-    botonOtro.addEventListener('click', nuevo);
+    botonOtro.addEventListener('click', function () {
+      if (tamanoTanda && estado.total >= tamanoTanda) resumen();
+      else { nuevo(); marcador(); }
+    });
 
     marcarControles();
     marcador();

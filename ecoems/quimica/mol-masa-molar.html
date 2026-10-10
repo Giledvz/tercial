@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-tanda2"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./mol-practica.js?v=20261008-tanda2"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 6 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Mol y masa <em>molar</em></h1>
     <p class="hero__lede">Los átomos son tan pequeños que se cuentan por montones. El mol es ese montón:
@@ -59,9 +62,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=Avogadro#courseIndex">Avogadro</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaMol">
+  <section aria-labelledby="ideaMol" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaMol">
         <span class="lesson-section__kicker">Idea central</span> El mol es una docena gigante
@@ -85,7 +90,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="balanzaMol">
+  <section aria-labelledby="balanzaMol" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="balanzaMol">
         <span class="lesson-section__kicker">Observa</span> Mismo número de partículas, distinta masa
@@ -101,7 +106,7 @@
     </figure>
   </section>
 
-  <section aria-labelledby="masaMolar">
+  <section aria-labelledby="masaMolar" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="masaMolar">
         <span class="lesson-section__kicker">Calcula</span> La masa molar
@@ -114,7 +119,7 @@
       <p class="formula-block__note">El subíndice dice cuántos átomos hay de cada elemento; si no hay
         subíndice, es uno.</p>
     </div>
-    <div class="molar-calc" data-masa-molar>
+    <div class="molar-calc" data-masa-molar data-lado="figura">
       <label class="diagonal-tool__label" for="formulaMasa">Desglosa una fórmula</label>
       <input class="input molar-calc__input" id="formulaMasa" type="text" value="C12H22O11" autocomplete="off" autocapitalize="off" spellcheck="false" data-masa-input>
       <p class="molar-calc__examples">Prueba con
@@ -136,15 +141,15 @@
         </table>
       </div>
     </div>
-    <p class="editorial-note">Masas atómicas que usamos, redondeadas como en la fuente (g/mol):</p>
-    <ul class="mass-list" aria-label="Masas atómicas redondeadas">
+    <p class="editorial-note" data-solo-lectura>Masas atómicas que usamos, redondeadas como en la fuente (g/mol):</p>
+    <ul class="mass-list" aria-label="Masas atómicas redondeadas" data-solo-lectura>
       <li><span>H</span> 1</li><li><span>C</span> 12</li><li><span>N</span> 14</li><li><span>O</span> 16</li>
       <li><span>Na</span> 23</li><li><span>S</span> 32</li><li><span>Cl</span> 35.5</li><li><span>Ni</span> 58.7</li>
       <li><span>Zn</span> 65.4</li><li><span>Ag</span> 108</li>
     </ul>
   </section>
 
-  <section aria-labelledby="convierte">
+  <section aria-labelledby="convierte" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="convierte">
         <span class="lesson-section__kicker">Convierte</span> Partículas, moles y gramos
@@ -167,7 +172,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="ejemplosMol">
+  <section aria-labelledby="ejemplosMol" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemplosMol">
         <span class="lesson-section__kicker">Ejemplos resueltos</span> Dos conversiones de la fuente
@@ -188,6 +193,40 @@
       </article>
     </div>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "¿Qué indica el número de Avogadro, 6.022 × 10<sup>23</sup>?",
+         "opciones": ["Los gramos que pesa un mol", "Las partículas que hay en un mol", "Las moléculas que hay en un gramo", "Los átomos que tiene una molécula"],
+         "correcta": 1,
+         "porque": "Un mol son 6.022 × 10<sup>23</sup> partículas (átomos, moléculas o iones): una docena gigante. Los gramos de un mol cambian con cada sustancia."},
+        {"pregunta": "¿Qué muestra tiene 6.022 × 10<sup>23</sup> átomos de sodio (Na)?",
+         "opciones": ["1 g de sodio", "6.022 g de sodio", "11 g de sodio", "23 g de sodio"],
+         "correcta": 3,
+         "porque": "Esos átomos son un mol, y un mol pesa la masa atómica en gramos: Na = 23, así que son 23 g. Igual que 12 g de carbono son un mol."},
+        {"pregunta": "¿Cuál es la masa molar del amoniaco, NH<sub>3</sub>?",
+         "opciones": ["14 g/mol", "15 g/mol", "17 g/mol", "43 g/mol"],
+         "correcta": 2,
+         "porque": "1 × 14 + 3 × 1 = 17 g/mol. El 3 es sólo del hidrógeno: con 15 no lo multiplicaste; con 43 se lo pusiste al nitrógeno."},
+        {"pregunta": "Un mol de carbono pesa 12 g y uno de NaCl, 58.5 g. ¿Cuál tiene más partículas?",
+         "opciones": ["Los dos tienen las mismas", "El de NaCl, porque pesa más", "El de NaCl, casi 5 veces más", "El de carbono, por ser más ligero"],
+         "correcta": 0,
+         "porque": "Un mol siempre es 6.022 × 10<sup>23</sup> partículas. El NaCl pesa más porque cada partícula suya pesa más, no porque tenga más."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-mol-masa-molar.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h5m5 0h2m2 0h1m3 0h1m3 0h7M4 5.5h1m5 0h1m1 0h1m6 0h1m1 0h1m2 0h3m1 0h1m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h3m3 0h2m2 0h2m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m6 0h2m1 0h4m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m2 0h5m1 0h5m4 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m4 0h1m2 0h2m1 0h2m4 0h1m4 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h2m1 0h5m2 0h1m4 0h2m1 0h1M4 12.5h1m2 0h10m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m5 0h1m2 0h1m1 0h3M6 13.5h3m3 0h2m4 0h1m2 0h1m2 0h4m2 0h2m3 0h3m1 0h1M5 14.5h4m1 0h2m4 0h1m1 0h1m7 0h4m1 0h2m1 0h3m1 0h1m1 0h1M5 15.5h4m2 0h1m1 0h1m1 0h3m1 0h1m1 0h1m8 0h1m1 0h1m2 0h6M4 16.5h3m3 0h1m1 0h3m2 0h1m5 0h2m3 0h1m2 0h1m2 0h2m4 0h1M4 17.5h1m2 0h2m2 0h1m5 0h5m4 0h2m2 0h3m3 0h2M5 18.5h2m3 0h1m3 0h2m3 0h1m1 0h1m1 0h2m3 0h6m2 0h3m1 0h1M6 19.5h1m6 0h1m3 0h1m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1m1 0h3m1 0h2M4 20.5h1m2 0h1m1 0h2m3 0h1m2 0h2m1 0h2m2 0h2m2 0h2m1 0h1m2 0h1m3 0h1m1 0h1M6 21.5h3m5 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m3 0h2M6 22.5h1m3 0h3m6 0h1m1 0h1m2 0h2m1 0h5m1 0h1m2 0h3m1 0h1M4 23.5h2m2 0h2m7 0h1m9 0h3m2 0h6m2 0h1M4 24.5h1m2 0h2m1 0h1m1 0h1m2 0h3m1 0h3m6 0h1m1 0h1m2 0h5M5 25.5h2m2 0h1m1 0h4m2 0h4m2 0h1m1 0h5m1 0h1m4 0h1m1 0h1M5 26.5h1m1 0h1m2 0h1m7 0h2m1 0h2m3 0h3m2 0h1m3 0h1m1 0h1m2 0h1M4 27.5h1m2 0h2m2 0h1m2 0h2m1 0h1m3 0h1m3 0h2m1 0h1m1 0h1m4 0h6M4 28.5h1m4 0h2m3 0h1m1 0h2m1 0h4m2 0h1m1 0h1m3 0h2m1 0h2m4 0h1M4 29.5h1m2 0h2m3 0h1m1 0h1m3 0h1m1 0h1m2 0h2m2 0h1m1 0h4m3 0h1M4 30.5h3m3 0h4m2 0h1m3 0h1m2 0h3m3 0h3m1 0h1m4 0h3M4 31.5h1m1 0h4m1 0h1m1 0h1m2 0h4m2 0h1m1 0h1m3 0h1m1 0h1m3 0h7M4 32.5h1m1 0h2m2 0h1m1 0h1m1 0h2m2 0h1m1 0h1m3 0h1m1 0h4m2 0h5m1 0h1m1 0h1M12 33.5h1m1 0h2m1 0h1m1 0h1m3 0h2m4 0h1m2 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m1 0h1m1 0h4m3 0h1m1 0h3m4 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h6m3 0h1m1 0h2m1 0h1m1 0h7m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m4 0h1m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m2 0h4m1 0h7m2 0h2m1 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m2 0h1m2 0h1m1 0h1m1 0h5m1 0h2m8 0h5M4 40.5h7m1 0h4m1 0h3m4 0h1m6 0h5m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaMol">
     <header class="section-header">

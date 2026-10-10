@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./balanza.js?v=20261009-tema3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./balanceo-practica.js?v=20261009-tema3"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 6 de 9 · Aprende y practica</p>
     <h1 class="hero__title">Balanceo por <em>tanteo</em></h1>
     <p class="hero__lede">En una reacción los átomos no se crean ni se destruyen: sólo se reacomodan. Una
@@ -60,9 +63,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=conservación#courseIndex">conservación de la masa</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaBalanceo">
+  <section aria-labelledby="ideaBalanceo" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaBalanceo">
         <span class="lesson-section__kicker">Idea central</span> Los átomos se conservan
@@ -89,7 +94,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="balanzaAtomos">
+  <section aria-labelledby="balanzaAtomos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="balanzaAtomos">
         <span class="lesson-section__kicker">Prueba</span> La balanza de átomos
@@ -118,7 +123,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="ejemploBalanceo">
+  <section aria-labelledby="ejemploBalanceo" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploBalanceo">
         <span class="lesson-section__kicker">Ejemplo resuelto</span> Al<sub>2</sub>O<sub>3</sub> + HCl → AlCl<sub>3</sub> + H<sub>2</sub>O
@@ -138,6 +143,40 @@
       se puede contar como una sola pieza: en 3Ca(OH)<sub>2</sub> + 2H<sub>3</sub>PO<sub>4</sub> hay dos
       PO<sub>4</sub> de cada lado.</p>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "Una ecuación está balanceada cuando a cada lado de la flecha hay…",
+         "opciones": ["El mismo número de moléculas", "Coeficientes que suman lo mismo", "Los mismos átomos de cada elemento", "El mismo número de sustancias"],
+         "correcta": 2,
+         "porque": "Los átomos no se crean ni se destruyen; el número de moléculas o unidades sí cambia: en el ejemplo del Al<sub>2</sub>O<sub>3</sub> son 1 + 6 contra 2 + 3."},
+        {"pregunta": "En Mg + N<sub>2</sub> → Mg<sub>3</sub>N<sub>2</sub>, ¿qué elemento falta por cuadrar?",
+         "opciones": ["El magnesio", "El nitrógeno", "Los dos", "Ya está balanceada"],
+         "correcta": 0,
+         "porque": "El N ya cuadra: 2 de cada lado. El Mg no: 1 a la izquierda y 3 a la derecha. Con 3Mg queda 3Mg + N<sub>2</sub> → Mg<sub>3</sub>N<sub>2</sub>."},
+        {"pregunta": "Para balancear O<sub>3</sub> → 3O<sub>2</sub>, ¿qué coeficiente va antes del O<sub>3</sub>?",
+         "opciones": ["1", "2", "3", "6"],
+         "correcta": 1,
+         "porque": "A la derecha hay 3 × 2 = 6 átomos de O. Con 2O<sub>3</sub> también hay 6 a la izquierda (2 × 3): 2O<sub>3</sub> → 3O<sub>2</sub>."},
+        {"pregunta": "¿Cómo balanceas K + Br<sub>2</sub> → KBr?",
+         "opciones": ["Cambias KBr por KBr<sub>2</sub>", "Cambias Br<sub>2</sub> por Br", "Pones 2KBr y ya terminaste", "Pones 2KBr y también 2K"],
+         "correcta": 3,
+         "porque": "Los subíndices no se tocan: KBr<sub>2</sub> ya no sería bromuro de potasio. Con 2KBr cuadra el Br; al contar otra vez falta 2K: 2K + Br<sub>2</sub> → 2KBr."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-balanceo-tanteo.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m2 0h1m1 0h1m2 0h1m2 0h1m4 0h2m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m3 0h3m4 0h1m2 0h1m1 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m5 0h1m5 0h3m3 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h3m3 0h4m5 0h5m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m3 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h3m1 0h1m2 0h2m1 0h2m2 0h1m1 0h1M4 12.5h1m1 0h5m2 0h1m1 0h1m3 0h2m2 0h1m2 0h4m4 0h5M4 13.5h1m1 0h2m3 0h1m2 0h2m1 0h1m1 0h1m1 0h2m1 0h1m2 0h2m3 0h1m2 0h1m2 0h2M8 14.5h5m2 0h3m1 0h3m1 0h1m2 0h1m2 0h7m2 0h3M5 15.5h1m1 0h1m3 0h2m1 0h1m2 0h1m1 0h1m3 0h5m2 0h1m2 0h1m1 0h2m3 0h1M5 16.5h3m1 0h4m1 0h1m2 0h5m1 0h1m2 0h9m1 0h1m1 0h3M4 17.5h2m1 0h1m4 0h5m3 0h1m2 0h5m1 0h1m2 0h1m2 0h1M4 18.5h1m2 0h2m1 0h2m2 0h1m1 0h1m2 0h2m1 0h1m1 0h3m1 0h1m1 0h2m2 0h4m2 0h1M4 19.5h1m1 0h1m1 0h1m2 0h2m2 0h3m2 0h1m4 0h1m1 0h1m2 0h1m1 0h1m2 0h2M6 20.5h1m2 0h2m1 0h3m1 0h2m4 0h1m1 0h1m1 0h6m1 0h2m1 0h1m1 0h3M11 21.5h2m2 0h6m4 0h1m1 0h1m1 0h2m1 0h1m6 0h1M7 22.5h2m1 0h6m1 0h1m6 0h3m4 0h1m3 0h1m1 0h1m1 0h2M8 23.5h1m3 0h2m1 0h2m1 0h1m1 0h1m4 0h1m4 0h1m1 0h3m5 0h1M5 24.5h1m1 0h1m1 0h2m5 0h1m1 0h1m2 0h1m4 0h1m1 0h3m1 0h3m1 0h3M4 25.5h1m1 0h2m1 0h1m6 0h2m3 0h1m1 0h3m1 0h2m1 0h1m1 0h1m4 0h1M4 26.5h2m1 0h4m1 0h1m1 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m2 0h4m1 0h2M5 27.5h1m1 0h1m1 0h1m3 0h1m1 0h2m2 0h4m2 0h1m1 0h2m2 0h6m3 0h1M5 28.5h1m1 0h1m2 0h1m1 0h1m2 0h1m3 0h2m2 0h1m1 0h1m2 0h4m1 0h2m1 0h1m1 0h3M4 29.5h1m2 0h2m2 0h1m1 0h2m3 0h2m2 0h1m1 0h2m1 0h1m4 0h1m2 0h1m1 0h1M4 30.5h1m2 0h1m2 0h1m1 0h3m1 0h5m2 0h1m1 0h2m1 0h1m1 0h4m1 0h1m3 0h2M4 31.5h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1m2 0h5m4 0h1m2 0h2M4 32.5h1m4 0h3m1 0h1m2 0h1m2 0h3m1 0h1m2 0h1m1 0h9m1 0h3M12 33.5h4m1 0h2m1 0h1m2 0h2m1 0h2m3 0h2m3 0h2M4 34.5h7m2 0h5m1 0h2m1 0h1m1 0h1m1 0h1m5 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m2 0h1m2 0h3m2 0h1m6 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h2m5 0h1m2 0h1m1 0h3m2 0h8m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m4 0h1m1 0h1m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m4 0h1m1 0h1m3 0h1m8 0h4M4 39.5h1m5 0h1m2 0h2m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m3 0h3m2 0h1m3 0h1M4 40.5h7m1 0h2m2 0h1m1 0h1m1 0h2m4 0h2m1 0h2m3 0h1m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaBalanceo">
     <header class="section-header">

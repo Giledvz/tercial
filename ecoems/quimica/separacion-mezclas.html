@@ -31,10 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css?v=20260826-svg-text">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./separacion-practica.js?v=20261008-tandas"></script>
 </head>
 <body>
@@ -42,7 +45,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 01 · 5 de 6 · Aprende y practica</p>
     <h1 class="hero__title">Separación de <em>mezclas</em></h1>
     <p class="hero__lede">No existe un método universal. Para elegir bien, primero identifica los
@@ -58,9 +61,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=cromatografía#courseIndex">cromatografía</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="criterioSeparacion">
+  <section aria-labelledby="criterioSeparacion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="criterioSeparacion">
         <span class="lesson-section__kicker">Idea central</span> Separar sin transformar
@@ -83,7 +88,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="rutaMetodo">
+  <section aria-labelledby="rutaMetodo" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="rutaMetodo">
         <span class="lesson-section__kicker">Elige</span> Tres preguntas antes de elegir
@@ -96,7 +101,7 @@
     </ol>
   </section>
 
-  <section aria-labelledby="metodosReferencia">
+  <section aria-labelledby="metodosReferencia" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="metodosReferencia">
         <span class="lesson-section__kicker">Consulta</span> Mapa de métodos
@@ -104,7 +109,7 @@
       <span class="section-header__count">10 métodos</span>
     </header>
     <div class="reference-table-wrap">
-      <table class="reference-table">
+      <table class="reference-table" data-filas-por-pantalla="5">
         <thead><tr><th>Método</th><th>Sirve principalmente para</th><th>Propiedad que aprovecha</th><th>Ejemplo</th></tr></thead>
         <tbody>
           <tr><td><strong>Filtración</strong></td><td>sólido insoluble + líquido</td><td>tamaño de partícula</td><td>café; arena y agua</td></tr>
@@ -122,7 +127,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="imantacionVisual">
+  <section aria-labelledby="imantacionVisual" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="imantacionVisual">
         <span class="lesson-section__kicker">Observa</span> Sólo los objetos de hierro responden al imán
@@ -210,6 +215,40 @@
       </div>
     </figure>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "Al separar una mezcla, ¿qué pasa con las sustancias que la forman?",
+         "opciones": ["Se transforman en sustancias nuevas", "Siguen siendo las mismas sustancias", "Se descomponen en sus elementos", "Se combinan en un solo compuesto"],
+         "correcta": 1,
+         "porque": "Los métodos de separación aprovechan diferencias físicas y no producen sustancias nuevas: al final tienes las mismas que había."},
+        {"pregunta": "Dejas reposar agua con tierra; la tierra se asienta y vacías el agua con cuidado. ¿Qué método usaste?",
+         "opciones": ["Filtración", "Centrifugación", "Evaporación", "Decantación"],
+         "correcta": 3,
+         "porque": "Dejar que el sólido se asiente en el fondo y vaciar el líquido con cuidado es decantar. No usaste filtro ni un giro rápido."},
+        {"pregunta": "Los líquidos que forman el petróleo se mezclan en una sola fase. ¿Con qué método los separas?",
+         "opciones": ["Destilación", "Decantación", "Filtración", "Centrifugación"],
+         "correcta": 0,
+         "porque": "Son líquidos que se mezclan: no forman capas para decantar ni hay un sólido que filtrar. Por eso se separan por destilación."},
+        {"pregunta": "Revuelves aserrín con clavos de hierro, trocitos de aluminio y de cobre. ¿Qué levanta el imán?",
+         "opciones": ["Los clavos y el aluminio", "Los tres, porque son metales", "Sólo los clavos de hierro", "Los clavos y el cobre"],
+         "correcta": 2,
+         "porque": "Sólo los objetos de hierro responden al imán. El aluminio y el cobre son metales, pero el imán no los atrae: se quedan en el aserrín."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-separacion-mezclas.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h1m2 0h1m1 0h2m3 0h2m2 0h1m3 0h1m3 0h7M4 5.5h1m5 0h1m1 0h2m4 0h4m2 0h3m1 0h1m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m4 0h2m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m1 0h7m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h6m3 0h5m3 0h2m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m3 0h2m3 0h1m1 0h2m3 0h2m4 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m3 0h1m2 0h1m2 0h1m2 0h1m1 0h2m1 0h1M4 12.5h1m2 0h8m2 0h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h2m2 0h1m1 0h3M6 13.5h4m3 0h1m1 0h4m2 0h1m2 0h2m1 0h1m2 0h2m1 0h1m1 0h3m1 0h1M4 14.5h3m1 0h3m4 0h1m1 0h2m7 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1M4 15.5h1m2 0h1m6 0h1m1 0h4m1 0h1m6 0h1m1 0h1m1 0h1m2 0h6M6 16.5h2m2 0h1m1 0h2m1 0h2m6 0h2m2 0h2m2 0h1m2 0h2m4 0h1M4 17.5h2m1 0h1m3 0h3m1 0h2m1 0h4m4 0h2m2 0h3m3 0h2M4 18.5h3m3 0h1m2 0h1m2 0h4m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h1M4 19.5h1m2 0h2m4 0h2m1 0h1m2 0h1m1 0h2m1 0h1m2 0h1m3 0h1m1 0h1m1 0h1m1 0h2M4 20.5h1m1 0h1m1 0h9m1 0h1m1 0h2m2 0h1m3 0h2m1 0h1m2 0h1m3 0h1m1 0h1M5 21.5h2m1 0h1m4 0h1m6 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2M4 22.5h1m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h7m2 0h3m1 0h1M4 23.5h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m8 0h3m1 0h1m1 0h5m2 0h1M4 24.5h1m3 0h3m1 0h2m4 0h4m5 0h2m1 0h2m1 0h5M7 25.5h2m4 0h2m1 0h1m2 0h2m2 0h1m1 0h5m1 0h1m4 0h1m1 0h1M6 26.5h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m3 0h4m1 0h1m2 0h2m1 0h1m2 0h1M7 27.5h2m4 0h3m5 0h1m4 0h1m1 0h1m5 0h7M4 28.5h1m2 0h1m2 0h2m3 0h1m3 0h4m1 0h1m2 0h1m2 0h2m2 0h2m4 0h1M4 29.5h2m5 0h2m2 0h1m2 0h1m1 0h1m2 0h2m1 0h2m1 0h5m2 0h1M4 30.5h2m1 0h4m2 0h1m2 0h1m3 0h1m2 0h1m1 0h1m3 0h3m1 0h1m4 0h3M4 31.5h1m2 0h3m2 0h1m1 0h1m1 0h4m2 0h2m6 0h1m1 0h1m1 0h7M4 32.5h1m2 0h1m1 0h3m4 0h3m1 0h1m3 0h1m1 0h4m1 0h6m1 0h2M12 33.5h1m1 0h1m2 0h3m3 0h2m4 0h1m2 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m2 0h3m1 0h1m3 0h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h4m2 0h3m1 0h1m4 0h1m1 0h2m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m4 0h1m1 0h7m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h2m4 0h1m1 0h2m2 0h2m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m2 0h2m1 0h7m1 0h1m2 0h1m2 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m2 0h1m6 0h3m1 0h1m1 0h2m5 0h2m1 0h5M4 40.5h7m1 0h1m4 0h1m1 0h1m3 0h2m7 0h4m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaSeparacion">
     <header class="section-header">

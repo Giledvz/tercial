@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./bloques-practica.js?v=20261008-tanda3"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 9 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Bloques <em>s, p, d y f</em></h1>
     <p class="hero__lede">La forma de la tabla periódica no es un capricho: sale de la regla de las
@@ -60,15 +63,17 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./configuracion-electronica.html">configuración electrónica</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaBloques">
+  <section aria-labelledby="ideaBloques" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaBloques">
         <span class="lesson-section__kicker">Idea central</span> La tabla se arma electrón por electrón
       </h2>
     </header>
-    <figure class="tabla-figure">
+    <figure class="tabla-figure" data-lado="figura">
       <div class="tabla-figure__scroll" role="region" aria-label="La tabla periódica se arma por bloques" tabindex="0">
         <svg class="escena escena--tabla" data-escena-tabla="bloques" viewBox="0 0 380 236" role="img" aria-labelledby="bloquesTitle">
           <title id="bloquesTitle">Los elementos aparecen uno por uno en orden de número atómico y cada uno se acomoda en el bloque de su último subnivel: el bloque s de 2 columnas a la izquierda, el bloque p de 6 columnas a la derecha, el bloque d de 10 columnas en medio y el bloque f de 14 columnas abajo</title>
@@ -95,7 +100,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="cuatroBloques">
+  <section aria-labelledby="cuatroBloques" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="cuatroBloques">
         <span class="lesson-section__kicker">Compara</span> Cuatro bloques, cuatro subniveles
@@ -127,15 +132,15 @@
       está lleno.</p>
   </section>
 
-  <section aria-labelledby="ubicarBloques">
+  <section aria-labelledby="ubicarBloques" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="ubicarBloques">
         <span class="lesson-section__kicker">Encuentra</span> Ubica cualquier elemento
       </h2>
     </header>
-    <p class="section-intro">Elige un elemento: se enciende su casilla y su bloque, y arriba aparecen su
+    <p class="section-intro" data-solo-lectura>Elige un elemento: se enciende su casilla y su bloque, y arriba aparecen su
       configuración, su último subnivel, su periodo y su columna.</p>
-    <div class="ubicar" data-ubicar>
+    <div class="ubicar" data-ubicar data-abre>
       <div class="ubicar__picker">
         <span class="diagonal-tool__label" id="ubicarEtiqueta">Elemento</span>
         <div class="element-picker" data-element-picker>
@@ -147,7 +152,7 @@
           </div>
         </div>
       </div>
-      <figure class="tabla-figure">
+      <figure class="tabla-figure" data-lado="figura">
         <div class="tabla-figure__scroll" role="region" aria-label="Tabla periódica con el elemento elegido" tabindex="0">
           <svg class="escena escena--tabla" data-escena-tabla="ubicar" viewBox="0 0 380 236" role="img" aria-labelledby="ubicarTitle">
             <title id="ubicarTitle">Tabla periódica por bloques con el elemento elegido señalado y su bloque resaltado</title>
@@ -158,7 +163,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="ejemploBloques">
+  <section aria-labelledby="ejemploBloques" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploBloques">
         <span class="lesson-section__kicker">Ejemplo resuelto</span> ¿Dónde va el selenio?
@@ -184,6 +189,40 @@
       de las diagonales. Otras tablas, como la de la lección anterior, ponen a los lantánidos y a los
       actínidos completos en las dos filas de abajo, de 15 en 15.</p>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "¿Qué decide si un elemento es del bloque s, p, d o f?",
+         "opciones": ["La letra de su último subnivel", "El nivel más alto de su configuración", "Cuántos electrones de valencia tiene", "El gas noble con que se abrevia"],
+         "correcta": 0,
+         "porque": "Manda la letra del último subnivel que se llena. El nivel más alto da el periodo, no el bloque."},
+        {"pregunta": "La configuración del oxígeno es 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>4</sup>. ¿De qué bloque es?",
+         "opciones": ["Bloque s", "Bloque p", "Bloque d", "Bloque f"],
+         "correcta": 1,
+         "porque": "Manda el último subnivel que se llena, el 2p: bloque p. No importa que antes aparezcan el 1s y el 2s."},
+        {"pregunta": "Un elemento termina en 6p<sup>1</sup>. ¿En qué columna de la tabla está?",
+         "opciones": ["Columna 1", "Columna 6", "Columna 7", "Columna 13"],
+         "correcta": 3,
+         "porque": "En el bloque p, a 12 se le suman los electrones p: 12 + 1 = 13, la familia IIIA. El 6 es el nivel: dice el periodo, no la columna."},
+        {"pregunta": "El último subnivel de un elemento es el 5d. ¿En qué periodo está?",
+         "opciones": ["Periodo 4", "Periodo 5", "Periodo 6", "Periodo 7"],
+         "correcta": 2,
+         "porque": "Ojo: los subniveles d van un nivel atrás del periodo. El 5d se llena en el periodo 6; el 5 de 5d no es el periodo."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-bloques-periodicos.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h1m4 0h4m1 0h2m2 0h1m3 0h1m1 0h1m1 0h7M4 5.5h1m5 0h1m1 0h2m1 0h1m2 0h1m1 0h2m2 0h3m5 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h3m3 0h2m1 0h3m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m1 0h4m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h3m4 0h4m4 0h2m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h3m2 0h2m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M13 11.5h1m6 0h1m2 0h1m2 0h1m1 0h2m1 0h1M4 12.5h1m2 0h8m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m2 0h1m1 0h3M8 13.5h1m2 0h4m2 0h1m3 0h1m2 0h2m1 0h1m3 0h1m3 0h3m1 0h1M4 14.5h2m1 0h6m3 0h3m7 0h2m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1M4 15.5h1m7 0h1m1 0h1m2 0h3m1 0h1m5 0h2m1 0h1m4 0h6M6 16.5h2m2 0h1m1 0h2m1 0h2m6 0h2m3 0h1m2 0h1m2 0h2m4 0h1M5 17.5h1m1 0h2m2 0h2m2 0h2m1 0h4m4 0h2m1 0h4m3 0h2M4 18.5h3m2 0h2m3 0h1m1 0h4m1 0h1m1 0h2m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M7 19.5h1m8 0h4m1 0h2m1 0h1m2 0h1m2 0h2m3 0h1m1 0h2M6 20.5h2m1 0h3m3 0h1m1 0h2m1 0h2m2 0h1m3 0h2m1 0h1m2 0h1m3 0h1m1 0h1M8 21.5h2m3 0h4m1 0h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2M4 22.5h1m1 0h1m2 0h5m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m1 0h5m1 0h1m2 0h3m1 0h1M4 23.5h1m4 0h1m3 0h1m2 0h3m10 0h1m2 0h6m2 0h1M4 24.5h1m1 0h1m1 0h3m1 0h2m1 0h1m2 0h4m6 0h1m1 0h2m1 0h5M4 25.5h1m2 0h2m5 0h1m1 0h1m2 0h2m2 0h1m1 0h4m2 0h1m4 0h1m1 0h1M4 26.5h5m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2m3 0h3m2 0h1m3 0h1m1 0h1m2 0h1M4 27.5h1m2 0h1m7 0h1m1 0h1m3 0h1m4 0h1m1 0h1m1 0h1m2 0h8M4 28.5h2m1 0h2m1 0h4m1 0h8m1 0h1m2 0h2m2 0h1m2 0h2m4 0h1M4 29.5h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m1 0h2m3 0h1M4 30.5h2m1 0h4m1 0h2m6 0h1m2 0h1m1 0h1m3 0h3m1 0h1m4 0h3M4 31.5h1m1 0h4m1 0h2m1 0h1m2 0h3m2 0h2m3 0h1m2 0h1m1 0h1m1 0h7M4 32.5h1m1 0h2m1 0h3m4 0h3m1 0h1m3 0h1m1 0h1m1 0h2m1 0h6m1 0h2M12 33.5h1m1 0h1m3 0h2m3 0h2m7 0h1m3 0h1m1 0h2M4 34.5h7m1 0h8m3 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h2m1 0h2m3 0h3m1 0h1m4 0h4m3 0h1m3 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h1m3 0h1m4 0h1m1 0h7m3 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h2m3 0h1m1 0h2m2 0h2m1 0h6m3 0h1m1 0h1M4 38.5h1m1 0h3m1 0h1m2 0h10m1 0h1m2 0h1m2 0h1m2 0h1m2 0h3m1 0h1M4 39.5h1m5 0h1m2 0h1m2 0h1m3 0h3m1 0h1m1 0h3m2 0h1m4 0h5M4 40.5h7m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2m7 0h1m2 0h1m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaBloques">
     <header class="section-header">

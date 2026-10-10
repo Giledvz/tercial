@@ -609,6 +609,10 @@
 /* «Ahora tú» sólo existe en la tele: la sección que le sigue conserva su respiro (base.css lo da a section + section). */
 main > [data-solo-proyeccion] + section { padding-top: var(--space-9); }
 
+/* Una nota que en la tele es pantalla propia va envuelta en un contenedor (un párrafo no puede
+   ser pantalla: la rejilla partiría su texto); al leer conserva el aire que llevaba. */
+.rutas-oxidos + [data-diapositiva] { margin-top: var(--space-6); }
+
 /* Las anclas (#practica, la liga del QR) no quedan debajo de la barra fija. */
 main section[id] { scroll-margin-top: 4.5rem; }
 
@@ -829,6 +833,55 @@ main section[id] { scroll-margin-top: 4.5rem; }
   letter-spacing: var(--tracking-meta);
 }
 
+/* Fin de la tanda */
+.sin-fin [hidden] { display: none !important; }
+
+.sin-fin__resumen {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--color-bg-raised);
+  border: var(--border-thin) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.sin-fin__resumen > p { margin: 0; }
+
+.sin-fin__resultado {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+}
+
+.sin-fin__resultado strong {
+  color: var(--color-accent);
+  font-size: var(--font-size-48);
+  font-weight: var(--font-weight-regular);
+}
+
+.sin-fin__repasa { color: var(--color-text-secondary); }
+
+.sin-fin__fallas {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: 1.3em;
+  color: var(--color-text-secondary);
+}
+
+.sin-fin__falla {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+}
+
+.sin-fin__flecha { color: var(--color-text-meta); }
+
+.sin-fin__fallas strong {
+  color: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-regular);
+}
+
 @media (max-width: 30rem) {
   .sin-fin__opciones { grid-template-columns: minmax(0, 1fr); }
   .sin-fin__tarjeta { padding: var(--space-4); }
@@ -863,22 +916,30 @@ main section[id] { scroll-margin-top: 4.5rem; }
   .boton-proyectar { display: none; }
 }
 
-/* --u lo afina leccion.js según la pantalla; éste es el valor si el script no lo ha puesto. */
+/* --u lo afina leccion.js según la pantalla; éste es el valor si el script no lo ha puesto.
+   La letra base (1 rem) vale 1.25u: 16 px en la tele de referencia (1280 × 720), así que todo
+   lo que el sistema de diseño mide en rem (espacios, las piezas de Química) crece con la
+   pantalla en la misma proporción que lo medido en u. Cualquier tele es la de referencia
+   en grande. */
 html[data-proyeccion] {
   --u: min(1vw, 1.78vh);
+  font-size: calc(var(--u) * 1.25);
   overflow: hidden;
 }
 
 html[data-proyeccion] body { overflow: hidden; }
 
+/* Se ve sólo la pantalla actual. Una pantalla puede ser parte de una sección (una figura
+   de una secuencia larga): entonces se conservan sus contenedores y se ocultan sus vecinos. */
 html[data-proyeccion] site-nav,
 html[data-proyeccion] .site-footer,
 html[data-proyeccion] [data-solo-lectura],
-html[data-proyeccion] main > :not(.es-actual) { display: none !important; }
+html[data-proyeccion] main :has(.es-proyectada) > :not(.es-proyectada):not(:has(.es-proyectada)),
+html[data-proyeccion] main > :not(.es-proyectada):not(:has(.es-proyectada)) { display: none !important; }
 
 /* Las filas miden siempre lo que su contenido: si una pantalla trae de más, se sale
    por abajo (y la prueba de la tele lo detecta) en vez de encimarse. */
-html[data-proyeccion] .es-actual {
+html[data-proyeccion] .es-proyectada {
   position: fixed;
   inset: 0;
   z-index: 20;
@@ -887,129 +948,419 @@ html[data-proyeccion] .es-actual {
   grid-auto-rows: min-content;
   align-content: center;
   row-gap: calc(var(--u) * 1.8);
-  /* La pantalla entera: nada del ancho máximo de la lectura (el encabezado mide 760 px). */
+  /* La pantalla entera: nada del ancho máximo de la lectura (el encabezado mide 760 px),
+     ni los bordes con que una pieza se separaba de sus vecinas al leer. */
   max-width: none;
+  border: 0;
   margin: 0;
   padding: calc(var(--u) * 4.5) calc(var(--u) * 6) calc(var(--u) * 6.5);
   background: var(--color-bg-page);
   overflow: hidden;
 }
 
-html[data-proyeccion] .es-actual[data-diapositiva="dos"] {
+/* Una pantalla dentro de otra (una figura de una secuencia larga) se ve sólo cuando le toca. */
+html[data-proyeccion] .es-proyectada [data-diapositiva]:not(.es-proyectada) { display: none !important; }
+
+/* Una tabla larga se ve por partes (leccion.js): sólo las filas de la parte actual, y cuáles son. */
+html[data-proyeccion] .es-otra-parte { display: none !important; }
+.tabla-partes { display: none; }
+
+html[data-proyeccion] .es-proyectada .tabla-partes {
+  display: block;
+  margin: 0;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.2);
+  letter-spacing: var(--tracking-eyebrow);
+  text-align: right;
+}
+
+/* Último recurso: lo que no cabe ni con el ajuste se puede desplazar, en vez de cortarse. */
+html[data-proyeccion] .es-proyectada.es-larga {
+  align-content: start;
+  overflow-y: auto;
+}
+
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   column-gap: calc(var(--u) * 4);
   align-items: center;
 }
 
 /* Una escena ancha (una pista, una recta) se lleva más de la mitad de la tele. */
-html[data-proyeccion] .es-actual[data-diapositiva="dos"][data-figura="amplia"] {
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"][data-figura="amplia"] {
   grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr);
 }
 
 /* Una figura compacta (un cuadro, una tabla corta) ocupa sólo su ancho y deja el resto al texto. */
-html[data-proyeccion] .es-actual[data-diapositiva="dos"][data-figura="compacta"] {
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"][data-figura="compacta"] {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
-html[data-proyeccion] .es-actual[data-diapositiva="dos"] > .section-header { grid-column: 1 / -1; }
+/* La figura abarca varias filas; sin separación entre filas (las vacías también la sumarían),
+   cada pieza lleva su propio margen abajo. */
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] { row-gap: 0; }
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] > *,
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] [data-abre] > * { margin-bottom: calc(var(--u) * 1.8); }
 
-/* Una tabla que hace de figura mide lo que su contenido, no las 42rem de la lectura. */
-html[data-proyeccion] .es-actual [data-lado="figura"] .reference-table { min-width: 0; }
-html[data-proyeccion] .es-actual[data-diapositiva="dos"] > [data-lado="figura"] { grid-column: 2; grid-row: 2 / span 4; }
-html[data-proyeccion] .es-actual[data-diapositiva="dos"] > :not(.section-header):not([data-lado="figura"]) { grid-column: 1; }
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] > .section-header { grid-column: 1 / -1; margin-bottom: calc(var(--u) * 1.8); }
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] > :not(.section-header):not([data-lado="figura"]) { grid-column: 1; }
 
-html[data-proyeccion] .es-actual .section-header {
+/* Una herramienta envuelta (la escena con sus botones y su texto) se abre en la tele: sus
+   piezas se acomodan en las dos columnas, la figura a la derecha y lo demás a la izquierda. */
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] [data-abre] { display: contents; }
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] [data-abre] > :not([data-lado="figura"]):not([data-abre]) { grid-column: 1; }
+
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"] [data-lado="figura"] {
+  grid-column: 2;
+  grid-row: 2 / span 12;
+  margin: 0;
+}
+
+/* Una figura no pasa de 60 % del alto de la tele: el dibujo se reduce y se centra en su caja
+   (el viewBox conserva la proporción), así cabe junto a su título y su texto. */
+html[data-proyeccion] .es-proyectada svg[viewBox] { max-height: calc(var(--u) * 34); }
+
+/* En la tele, una tabla mide lo que su pantalla, no las 42rem de la lectura. */
+html[data-proyeccion] .es-proyectada .reference-table { min-width: 0; }
+/* Tampoco la tabla periódica de Química: en la tele cabe entera, sin desplazarse de lado. */
+html[data-proyeccion] .es-proyectada .tabla-figure__scroll > .escena { min-width: 0; }
+
+html[data-proyeccion] .es-proyectada .section-header {
   margin: 0;
   padding: 0;
   border: 0;
 }
 
-html[data-proyeccion] .es-actual .section-header__title {
+html[data-proyeccion] .es-proyectada .section-header__title {
   font-size: calc(var(--u) * 3.6);
   line-height: 1.1;
 }
 
-html[data-proyeccion] .es-actual .lesson-section__kicker,
-html[data-proyeccion] .es-actual .eyebrow {
+html[data-proyeccion] .es-proyectada .lesson-section__kicker,
+html[data-proyeccion] .es-proyectada .eyebrow {
   font-size: calc(var(--u) * 1.2);
 }
 
-html[data-proyeccion] .es-actual p,
-html[data-proyeccion] .es-actual li,
-html[data-proyeccion] .es-actual td,
-html[data-proyeccion] .es-actual th {
+html[data-proyeccion] .es-proyectada p,
+html[data-proyeccion] .es-proyectada li,
+html[data-proyeccion] .es-proyectada td,
+html[data-proyeccion] .es-proyectada th {
   font-size: calc(var(--u) * 2);
   line-height: 1.45;
 }
 
 /* Nada en la tele se limita con medidas de la lectura: un 68ch calculado con la letra
    de 16 px deja el texto en una columna angosta en una tele 4K. */
-html[data-proyeccion] .es-actual .section-intro,
-html[data-proyeccion] .es-actual .reading-block,
-html[data-proyeccion] .es-actual .reading-block__body p,
-html[data-proyeccion] .es-actual .leccion-texto { max-width: none; }
+html[data-proyeccion] .es-proyectada .section-intro,
+html[data-proyeccion] .es-proyectada .reading-block,
+html[data-proyeccion] .es-proyectada .reading-block__body p,
+html[data-proyeccion] .es-proyectada .leccion-texto { max-width: none; }
 
-html[data-proyeccion] .es-actual .reading-block__title { font-size: calc(var(--u) * 2.6); }
-html[data-proyeccion] .es-actual .editorial-note { font-size: calc(var(--u) * 1.6); }
+html[data-proyeccion] .es-proyectada .reading-block__title { font-size: calc(var(--u) * 2.6); }
+html[data-proyeccion] .es-proyectada .editorial-note { font-size: calc(var(--u) * 1.6); }
 
-html[data-proyeccion] .es-actual .reference-table th,
-html[data-proyeccion] .es-actual .reference-table td { padding: calc(var(--u) * .9) calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .reference-table th,
+html[data-proyeccion] .es-proyectada .reference-table td { padding: calc(var(--u) * .9) calc(var(--u) * 1.2); }
 
-html[data-proyeccion] .es-actual .reference-table th,
-html[data-proyeccion] .es-actual .reference-table td { vertical-align: baseline; }
+html[data-proyeccion] .es-proyectada .reference-table th,
+html[data-proyeccion] .es-proyectada .reference-table td { vertical-align: baseline; }
 
-html[data-proyeccion] .es-actual .reference-table thead th { font-size: calc(var(--u) * 1.2); }
-html[data-proyeccion] .es-actual .reference-table tbody th { font-size: calc(var(--u) * 1.3); }
+html[data-proyeccion] .es-proyectada .reference-table thead th { font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .reference-table tbody th { font-size: calc(var(--u) * 1.3); }
+/* En una tabla de fórmulas, la fila se nombra con una fórmula (SO₄²⁻): se lee como el resto. */
+html[data-proyeccion] .es-proyectada .reference-table--formulas tbody th { font-size: calc(var(--u) * 2); }
+html[data-proyeccion] .es-proyectada .reference-table--formulas thead th { font-size: calc(var(--u) * 1.5); }
 
-html[data-proyeccion] .es-actual .worked-steps { max-width: none; margin: 0; }
+html[data-proyeccion] .es-proyectada .worked-steps { max-width: none; margin: 0; }
 
-html[data-proyeccion] .es-actual .worked-steps li {
+html[data-proyeccion] .es-proyectada .worked-steps li {
   grid-template-columns: calc(var(--u) * 12) minmax(0, 1fr);
   gap: calc(var(--u) * 1.6);
   padding-block: calc(var(--u) * .9);
 }
 
-html[data-proyeccion] .es-actual .worked-steps li p { margin: 0; }
-html[data-proyeccion] .es-actual .worked-steps__label { font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .worked-steps li p { margin: 0; }
+html[data-proyeccion] .es-proyectada .worked-steps__label { font-size: calc(var(--u) * 1.2); }
 
-html[data-proyeccion] .es-actual .leccion-figura { margin: 0; }
+html[data-proyeccion] .es-proyectada .leccion-figura { margin: 0; }
 
-html[data-proyeccion] .es-actual .ejemplos {
+html[data-proyeccion] .es-proyectada .ejemplos {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: calc(var(--u) * 4);
   margin: 0;
 }
 
-html[data-proyeccion] .es-actual .ejemplo__planteo {
+html[data-proyeccion] .es-proyectada .ejemplo__planteo {
   margin-bottom: calc(var(--u) * 1);
   font-size: calc(var(--u) * 3);
 }
 
-html[data-proyeccion] .es-actual .ejemplo__planteo--frase { font-size: calc(var(--u) * 2.4); line-height: 1.3; }
+html[data-proyeccion] .es-proyectada .ejemplo__planteo--frase { font-size: calc(var(--u) * 2.4); line-height: 1.3; }
 
-html[data-proyeccion] .es-actual .ejemplo .worked-steps li { grid-template-columns: calc(var(--u) * 9) minmax(0, 1fr); }
+html[data-proyeccion] .es-proyectada .ejemplo .worked-steps li { grid-template-columns: calc(var(--u) * 9) minmax(0, 1fr); }
 
 /* Los botones de texto («Repetir») también se leen desde el fondo del salón. */
-html[data-proyeccion] .es-actual .practice-action {
+html[data-proyeccion] .es-proyectada .practice-actions { margin-top: calc(var(--u) * 1); }
+
+html[data-proyeccion] .es-proyectada .practice-action {
   min-height: calc(var(--u) * 3);
   font-size: calc(var(--u) * 1.5);
 }
 
-html[data-proyeccion] .es-actual .pastilla {
+html[data-proyeccion] .es-proyectada .pastilla {
   min-height: calc(var(--u) * 3.6);
   padding: 0 calc(var(--u) * 1.6);
   font-size: calc(var(--u) * 1.6);
 }
 
+/* Pies de figura y leyendas: al leer miden 13 px; en la tele se leen desde el fondo del salón. */
+html[data-proyeccion] .es-proyectada figcaption,
+html[data-proyeccion] .es-proyectada .atom-figure__caption {
+  max-width: none;
+  font-size: calc(var(--u) * 1.5);
+  line-height: 1.45;
+}
+
+html[data-proyeccion] .es-proyectada .atom-figure__legend { font-size: calc(var(--u) * 1.2); }
+
+/* Los botones de texto pequeños: «Reiniciar», los ejemplos de una herramienta. */
+html[data-proyeccion] .es-proyectada .practice-reset { font-size: calc(var(--u) * 1.5); }
+
+/* El título de la sección sobre una pantalla de continuación (leccion.js lo pone), en pequeño. */
+.pantalla-contexto { display: none; }
+
+html[data-proyeccion] .es-proyectada > .pantalla-contexto {
+  display: block;
+  grid-column: 1 / -1;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 1.8);
+  line-height: 1.2;
+}
+
+html[data-proyeccion] .es-proyectada > .pantalla-contexto .lesson-section__kicker {
+  margin-bottom: calc(var(--u) * .5);
+  font-size: calc(var(--u) * 1.1);
+}
+
+/* Química · la letra de las herramientas: al leer, sus textos y etiquetas miden 11 a 16 px;
+   en la tele, lo que explica una escena se lee como un párrafo y ninguna etiqueta baja de 1.2u. */
+html[data-proyeccion] .es-proyectada .escala-ph__texto,
+html[data-proyeccion] .es-proyectada .mechero__texto,
+html[data-proyeccion] .es-proyectada .reacomodo__texto,
+html[data-proyeccion] .es-proyectada .redox__texto,
+html[data-proyeccion] .es-proyectada .suma__texto,
+html[data-proyeccion] .es-proyectada .tendencias__texto {
+  font-size: calc(var(--u) * 2);
+  line-height: 1.45;
+}
+
+html[data-proyeccion] .es-proyectada .reacomodo__muestra,
+html[data-proyeccion] .es-proyectada .balanza__leyenda,
+html[data-proyeccion] .es-proyectada .tendencias__aumenta span,
+html[data-proyeccion] .es-proyectada .isotope-notation__tag,
+html[data-proyeccion] .es-proyectada .diagonal-tool__label,
+html[data-proyeccion] .es-proyectada .diagonal-tool__kicker,
+html[data-proyeccion] .es-proyectada .diagonal-tool__kernel-label,
+html[data-proyeccion] .es-proyectada .config-card__label,
+html[data-proyeccion] .es-proyectada .change-comparison-table th span,
+html[data-proyeccion] .es-proyectada .change-comparison-table__label,
+html[data-proyeccion] .es-proyectada .classification-route__root span,
+html[data-proyeccion] .es-proyectada .classification-route__answer,
+html[data-proyeccion] .es-proyectada .classification-route__next,
+html[data-proyeccion] .es-proyectada .ruta__nombre,
+html[data-proyeccion] .es-proyectada .section-header__count { font-size: calc(var(--u) * 1.2); }
+
+html[data-proyeccion] .es-proyectada .classification-route__outcomes dt { font-size: calc(var(--u) * 2.2); }
+html[data-proyeccion] .es-proyectada .classification-route__outcomes dd { font-size: calc(var(--u) * 1.6); }
+html[data-proyeccion] .es-proyectada .atom-builder__label { font-size: calc(var(--u) * 1.6); }
+html[data-proyeccion] .es-proyectada .atom-builder__facts dt { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .atom-builder__facts dd { font-size: calc(var(--u) * 1.8); }
+html[data-proyeccion] .es-proyectada .calculator__field label { font-size: calc(var(--u) * 1.4); }
+
+html[data-proyeccion] .es-proyectada .calculator__field .input,
+html[data-proyeccion] .es-proyectada .calculator .btn {
+  min-height: calc(var(--u) * 4.2);
+  font-size: calc(var(--u) * 1.8);
+}
+
+/* La regla de las diagonales: el diagrama es lo que se mira; el conteo y los niveles, al leer. */
+html[data-proyeccion] .es-proyectada .diagonal-tool__count { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .diagonal-tool__levels-wrap { display: none; }
+
+html[data-proyeccion] .es-proyectada .element-picker__button {
+  min-height: calc(var(--u) * 3.6);
+  font-size: calc(var(--u) * 1.6);
+}
+
+/* El balanceo redox: la ecuación es lo que se mira; el paso, una etiqueta. */
+html[data-proyeccion] .es-proyectada .redox__paso { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .redox__vista { font-size: calc(var(--u) * 4); }
+html[data-proyeccion] .es-proyectada .redox__ox { font-size: calc(var(--u) * 1.5); }
+
+/* «Lectura · 4 min» sirve al que lee, no al salón. */
+html[data-proyeccion] .es-proyectada .source-line { display: none; }
+
+/* Química · «Dos transformaciones»: en la tele van lado a lado, como una comparación; las dos
+   escenas comparten caja, así las conclusiones quedan a la misma altura. */
+html[data-proyeccion] .es-proyectada .transformation-sequence {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--u) * 5);
+  max-width: none;
+}
+
+html[data-proyeccion] .es-proyectada .transformation-example {
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: calc(var(--u) * 1.4);
+  padding-top: 0;
+}
+
+html[data-proyeccion] .es-proyectada .transformation-example__kicker { margin-bottom: calc(var(--u) * .6); font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .transformation-example__title { font-size: calc(var(--u) * 2.6); }
+html[data-proyeccion] .es-proyectada .transformation-example__conclusion { grid-column: 1; }
+html[data-proyeccion] .es-proyectada .transformation-example svg[viewBox] { width: 100%; height: calc(var(--u) * 20); }
+
+/* Química · Estados: en la tele, los frascos de la tabla tienen su propia pantalla, en grande. */
+.estados-tele__frascos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(var(--u) * 4);
+}
+
+.estados-tele__frasco {
+  display: grid;
+  justify-items: center;
+  gap: calc(var(--u) * 1.2);
+  margin: 0;
+}
+
+.estados-tele__frasco svg { width: auto; height: calc(var(--u) * 24); }
+
+html[data-proyeccion] .es-proyectada .estados-tele__frasco figcaption {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 2.8);
+}
+
+/* Química · Cambios de estado: cada ejemplo con su escena a la izquierda y, a la derecha, el
+   nombre del cambio en grande, su recorrido y el ejemplo. */
+html[data-proyeccion] .es-proyectada.phase-change-example {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto auto auto 1fr;
+  column-gap: calc(var(--u) * 5);
+  row-gap: calc(var(--u) * 1.2);
+}
+
+html[data-proyeccion] .es-proyectada.phase-change-example > .pantalla-contexto { grid-row: 1; }
+
+html[data-proyeccion] .es-proyectada.phase-change-example > svg {
+  grid-column: 1;
+  grid-row: 2 / -1;
+  align-self: center;
+  width: 100%;
+  height: auto;
+}
+
+html[data-proyeccion] .es-proyectada.phase-change-example > .phase-change-example__name {
+  grid-column: 2;
+  grid-row: 3;
+  margin: 0;
+  font-size: calc(var(--u) * 4.4);
+  line-height: 1.05;
+}
+
+html[data-proyeccion] .es-proyectada.phase-change-example > .phase-change-example__route { grid-column: 2; grid-row: 4; margin: 0; }
+html[data-proyeccion] .es-proyectada.phase-change-example > .phase-change-example__text { grid-column: 2; grid-row: 5; margin: 0; }
+
+/* Química · Modelos atómicos: cada modelo con sus ideas a la izquierda y su figura a la derecha;
+   el de Rutherford, que al leer va a lo ancho, también. */
+html[data-proyeccion] .es-proyectada.atom-model {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-areas:
+    "contexto contexto"
+    "head figure"
+    "ideas figure";
+  column-gap: calc(var(--u) * 4);
+  border-top: 0;
+}
+
+html[data-proyeccion] .es-proyectada.atom-model > .pantalla-contexto { grid-area: contexto; }
+html[data-proyeccion] .es-proyectada.atom-model .atom-model__head { align-self: end; }
+html[data-proyeccion] .es-proyectada.atom-model .atom-model__ideas { align-self: start; }
+
+html[data-proyeccion] .es-proyectada.atom-model .atom-model__figure {
+  align-self: center;
+  width: 100%;
+  max-width: none;
+}
+
+html[data-proyeccion] .es-proyectada .atom-model__year { font-size: calc(var(--u) * 1.6); }
+html[data-proyeccion] .es-proyectada .atom-model__name { font-size: calc(var(--u) * 3); }
+html[data-proyeccion] .es-proyectada .atom-model__nick { font-size: calc(var(--u) * 2.2); }
+
+/* Química · Una comparación (dos tarjetas, dos moléculas) que es pantalla propia conserva sus
+   dos columnas: la regla de la pantalla (una columna) no la deshace. */
+html[data-proyeccion] .es-proyectada.comparison-grid,
+html[data-proyeccion] .es-proyectada.molecule-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: calc(var(--u) * 5);
+}
+
+html[data-proyeccion] .es-proyectada.comparison-grid .comparison-item + .comparison-item {
+  margin-left: 0;
+  padding-left: calc(var(--u) * 4);
+}
+
+html[data-proyeccion] .es-proyectada .comparison-item__title { font-size: calc(var(--u) * 2.6); }
+/* La notación de un isótopo (¹²₆C) es lo que se mira. */
+html[data-proyeccion] .es-proyectada .comparison-item__title:has(> sup + sub) { font-size: calc(var(--u) * 4.4); }
+html[data-proyeccion] .es-proyectada .molecule-pair__svg { width: 100%; max-width: calc(var(--u) * 22); height: auto; }
+
+/* Química · Metales y no metales: las rutas «con oxígeno» tienen su pantalla; se leen en grande. */
+html[data-proyeccion] .es-proyectada .ruta__titulo { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .ruta__formula { font-size: calc(var(--u) * 3.4); }
+html[data-proyeccion] .es-proyectada .ruta__nombre { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .ruta__flecha { font-size: calc(var(--u) * 2.4); }
+
+/* Química · Letras que al leer son grandes (n, l, m, s; s, p, d, f): la regla de los párrafos de
+   la tele (2u) no las achica. */
+html[data-proyeccion] .es-proyectada .quantum-card__symbol { font-size: calc(var(--u) * 4.4); line-height: 1; }
+html[data-proyeccion] .es-proyectada .quantum-card__name { font-size: calc(var(--u) * 2.2); }
+html[data-proyeccion] .es-proyectada .quantum-card__values { font-size: calc(var(--u) * 1.6); }
+html[data-proyeccion] .es-proyectada .orbital-type__name { font-size: calc(var(--u) * 3.2); }
+
+/* Química · Configuración: los dos ejemplos lado a lado, con sus datos (periodo, valencia, familia). */
+html[data-proyeccion] .es-proyectada.config-examples {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: calc(var(--u) * 5);
+}
+
+html[data-proyeccion] .es-proyectada .config-example__element { font-size: calc(var(--u) * 2.8); }
+html[data-proyeccion] .es-proyectada .config-example__config { font-size: calc(var(--u) * 2.4); }
+
+html[data-proyeccion] .es-proyectada .config-example__facts dt,
+html[data-proyeccion] .es-proyectada .diagonal-tool__facts dt { font-size: calc(var(--u) * 1.5); }
+
+html[data-proyeccion] .es-proyectada .config-example__facts dd,
+html[data-proyeccion] .es-proyectada .diagonal-tool__facts dd { font-size: calc(var(--u) * 2); }
+
+/* Química · Masa molar: la fórmula que se desglosa se lee en la tele. */
+html[data-proyeccion] .es-proyectada .molar-calc__input {
+  min-height: calc(var(--u) * 4.4);
+  font-size: calc(var(--u) * 2.2);
+}
+
 /* Portada: título grande, entrada y nada más; ocupa el ancho de la tele. */
-html[data-proyeccion] .hero.es-actual { align-content: center; }
-html[data-proyeccion] .hero.es-actual .hero__title { font-size: calc(var(--u) * 8); line-height: 1; }
-html[data-proyeccion] .hero.es-actual .hero__lede { max-width: 46ch; font-size: calc(var(--u) * 2.6); }
-html[data-proyeccion] .hero.es-actual .material-meta,
-html[data-proyeccion] .hero.es-actual .boton-proyectar { display: none; }
+html[data-proyeccion] .hero.es-proyectada { align-content: center; }
+html[data-proyeccion] .hero.es-proyectada .hero__title { font-size: calc(var(--u) * 8); line-height: 1; }
+html[data-proyeccion] .hero.es-proyectada .hero__lede { max-width: 46ch; font-size: calc(var(--u) * 2.6); }
+html[data-proyeccion] .hero.es-proyectada .material-meta,
+html[data-proyeccion] .hero.es-proyectada .boton-proyectar { display: none; }
 
 /* «Ahora tú»: qué hacer y el código para abrir la práctica. */
-html[data-proyeccion] .ahora-tu.es-actual {
+html[data-proyeccion] .ahora-tu.es-proyectada {
   grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
   column-gap: calc(var(--u) * 5);
   align-items: center;
@@ -1037,7 +1388,136 @@ html[data-proyeccion] .ahora-tu.es-actual {
   overflow-wrap: anywhere;
 }
 
-html[data-proyeccion] .es-actual .ahora-tu__liga { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .ahora-tu__liga { font-size: calc(var(--u) * 1.4); }
+
+/* ---------- Reto relámpago: opción múltiple con cronómetro, sólo en la tele ---------- */
+html[data-proyeccion] .reto.es-proyectada { row-gap: calc(var(--u) * 2.4); }
+
+.reto__cabeza {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: calc(var(--u) * 2.5);
+}
+
+html[data-proyeccion] .es-proyectada .reto__titulo {
+  margin: 0;
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.2);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.reto__titulo .lesson-section__kicker { display: inline; }
+.reto__cuenta { margin-left: calc(var(--u) * .8); }
+
+.reto__reloj {
+  height: calc(var(--u) * .45);
+  overflow: hidden;
+  background: var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+}
+
+.reto__barra {
+  display: block;
+  height: 100%;
+  background: var(--color-text-meta);
+  transform-origin: left center;
+}
+
+.reto.es-tiempo .reto__barra { background: var(--color-accent); }
+
+.reto__segundos {
+  min-width: calc(var(--u) * 8);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.6);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.reto.es-tiempo .reto__segundos { color: var(--color-accent); }
+
+html[data-proyeccion] .es-proyectada .reto__pregunta {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 3.4);
+  line-height: 1.2;
+}
+
+.reto__pide {
+  display: block;
+  margin-bottom: calc(var(--u) * .8);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.3);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.reto__enunciado { font-size: calc(var(--u) * 5); font-variant-numeric: tabular-nums; }
+.reto__enunciado--texto { font-size: calc(var(--u) * 3.4); }
+
+.reto__opciones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: calc(var(--u) * 1.4) calc(var(--u) * 3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reto__opcion {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 1.6);
+  min-height: calc(var(--u) * 6);
+  padding: calc(var(--u) * .9) calc(var(--u) * 2);
+  border: max(1px, calc(var(--u) * .1)) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.reto__letra {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.6);
+}
+
+.reto__valor {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 3);
+  line-height: 1.2;
+}
+
+.reto__opciones.es-texto .reto__valor {
+  font-family: var(--font-family-body);
+  font-size: calc(var(--u) * 2.2);
+}
+
+.reto.es-revelada .reto__opcion:not(.es-correcta) { opacity: .35; }
+
+.reto__opcion.es-correcta {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 max(1px, calc(var(--u) * .12)) var(--color-accent);
+}
+
+.reto__opcion.es-correcta .reto__letra { color: var(--color-accent); }
+
+html[data-proyeccion] .es-proyectada .reto__porque {
+  min-height: calc(var(--u) * 5.6);
+  margin: 0;
+  padding-left: calc(var(--u) * 1.6);
+  color: var(--color-text-secondary);
+  font-size: calc(var(--u) * 1.9);
+  line-height: 1.45;
+  border-left: max(2px, calc(var(--u) * .2)) solid transparent;
+}
+
+.reto.es-revelada .reto__porque { border-left-color: var(--color-accent); }
 
 /* El código va oscuro sobre claro en los dos temas: así lo lee cualquier cámara.
    El SVG ya trae su margen de 4 módulos, el que piden los lectores. */
@@ -1090,7 +1570,7 @@ html[data-proyeccion] .proyeccion-controles {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  html[data-proyeccion] .es-actual { animation: proyeccion-entra .25s ease-out; }
+  html[data-proyeccion] .es-proyectada { animation: proyeccion-entra .25s ease-out; }
 }
 
 @keyframes proyeccion-entra {

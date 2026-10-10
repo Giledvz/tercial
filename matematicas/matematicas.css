@@ -139,13 +139,13 @@
 .tabla-signos td { color: var(--color-text-primary); }
 .tabla-signos .tabla-signos__ojo { color: var(--color-accent); }
 
-html[data-proyeccion] .es-actual .tabla-signos {
+html[data-proyeccion] .es-proyectada .tabla-signos {
   margin: 0;
   font-size: calc(var(--u) * 5);
 }
 
-html[data-proyeccion] .es-actual .tabla-signos th,
-html[data-proyeccion] .es-actual .tabla-signos td {
+html[data-proyeccion] .es-proyectada .tabla-signos th,
+html[data-proyeccion] .es-proyectada .tabla-signos td {
   width: calc(var(--u) * 9);
   height: calc(var(--u) * 9);
   padding: 0;
@@ -153,4 +153,4 @@ html[data-proyeccion] .es-actual .tabla-signos td {
   line-height: 1;
 }
 
-html[data-proyeccion] .es-actual .tabla-signos thead th:first-child { font-size: calc(var(--u) * 3.4); }
+html[data-proyeccion] .es-proyectada .tabla-signos thead th:first-child { font-size: calc(var(--u) * 3.4); }

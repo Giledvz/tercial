@@ -36,14 +36,15 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-tele2">
-<link rel="stylesheet" href="./matematicas.css?v=20261009-arcoiris">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261009-tele2"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-matematicas.js?v=20261009-arcoiris"></script>
 </head>
 <body>
@@ -244,27 +245,30 @@
     </div>
   </section>
 
-  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Ahora tú">
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 20, "cuantas": 4, "nivel": 2, "conNegativos": true, "generadores": ["signos-suma", "signos-mul", "signos-parentesis"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
     <div class="ahora-tu__texto">
-      <p class="eyebrow">Práctica</p>
-      <h2 class="ahora-tu__titulo">Ahora <em>tú</em></h2>
-      <p>Abre la práctica en tu compu o tableta. Cada ejercicio es nuevo y, si te equivocas, te dice en qué.</p>
-      <p>Empieza en «Sumas y restas», nivel 1, y sube de nivel cuando lleves cinco seguidos.</p>
-      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>matematicas/<wbr>signos.html<wbr>#practica</p>
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-signos.pdf</p>
     </div>
-    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que abre la práctica"><path d="M4 4.5h7m1 0h6m2 0h1m2 0h2m1 0h2m6 0h7M4 5.5h1m5 0h1m1 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h4m3 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m2 0h6m2 0h1m1 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h3m1 0h4m4 0h1m3 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m2 0h2m1 0h1m2 0h1m6 0h2m4 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M14 11.5h3m3 0h4m2 0h1m1 0h4M4 12.5h1m2 0h7m2 0h1m2 0h1m5 0h4m1 0h1m1 0h2m2 0h1m1 0h3M5 13.5h2m1 0h1m2 0h3m2 0h2m2 0h3m2 0h1m2 0h1m2 0h3m1 0h2m1 0h2M5 14.5h3m1 0h2m2 0h5m1 0h3m1 0h2m1 0h2m1 0h1m1 0h1m2 0h2m2 0h1m1 0h1M5 15.5h4m3 0h2m2 0h1m3 0h2m1 0h2m2 0h2m1 0h1m4 0h2m1 0h3M4 16.5h3m1 0h1m1 0h1m5 0h1m1 0h3m3 0h1m2 0h2m5 0h2m1 0h1m2 0h1M7 17.5h1m3 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h3m1 0h4m3 0h2m1 0h1M5 18.5h2m3 0h1m2 0h1m3 0h4m1 0h3m3 0h1m2 0h2m1 0h1m1 0h5M5 19.5h1m1 0h3m1 0h3m10 0h4m2 0h2m1 0h1m1 0h1m1 0h4M4 20.5h2m2 0h7m1 0h4m1 0h2m2 0h2m1 0h2m1 0h1m1 0h2m3 0h3M4 21.5h1m4 0h1m1 0h2m1 0h1m1 0h3m2 0h1m4 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1M4 22.5h2m2 0h1m1 0h1m1 0h2m3 0h2m1 0h4m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m4 0h1M5 23.5h2m1 0h1m2 0h3m1 0h1m2 0h3m2 0h2m2 0h3m2 0h3m2 0h1m2 0h1M6 24.5h1m3 0h2m2 0h1m3 0h1m2 0h1m1 0h1m4 0h1m1 0h1m2 0h4M5 25.5h1m5 0h1m1 0h3m1 0h3m1 0h1m1 0h1m2 0h3m2 0h1m4 0h1m1 0h1M4 26.5h1m2 0h1m2 0h6m1 0h1m1 0h2m4 0h1m1 0h2m1 0h2m3 0h1m1 0h1m2 0h1M4 27.5h1m2 0h1m3 0h2m1 0h2m4 0h1m1 0h1m5 0h1m1 0h1m2 0h1m1 0h4M5 28.5h1m1 0h7m1 0h2m2 0h1m1 0h1m2 0h5m2 0h2m1 0h2m3 0h2M4 29.5h3m1 0h1m3 0h1m1 0h2m1 0h2m3 0h2m2 0h2m1 0h4m3 0h1M4 30.5h2m3 0h2m1 0h1m5 0h2m5 0h1m3 0h5m2 0h1m2 0h2M4 31.5h1m1 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m3 0h5M4 32.5h1m1 0h5m1 0h4m1 0h1m1 0h1m3 0h2m1 0h1m1 0h2m1 0h10M12 33.5h1m4 0h3m1 0h5m6 0h1m3 0h1m1 0h2M4 34.5h7m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m3 0h1m2 0h1m1 0h1m1 0h1m1 0h1m3 0h1M4 35.5h1m5 0h1m1 0h1m1 0h1m1 0h3m1 0h1m3 0h2m3 0h1m1 0h2m3 0h1m2 0h2M4 36.5h1m1 0h3m1 0h1m1 0h1m2 0h2m3 0h1m1 0h4m2 0h1m1 0h7M4 37.5h1m1 0h3m1 0h1m1 0h1m1 0h3m7 0h1m1 0h2m1 0h1m1 0h4m5 0h1M4 38.5h1m1 0h3m1 0h1m2 0h3m2 0h1m2 0h1m5 0h2m1 0h1m2 0h1m2 0h1m3 0h1M4 39.5h1m5 0h1m2 0h1m1 0h1m3 0h1m1 0h1m4 0h2m3 0h1m1 0h1m2 0h5M4 40.5h7m1 0h3m3 0h1m1 0h1m2 0h2m2 0h1m4 0h4m1 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 41 41" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h2m1 0h8m2 0h3m2 0h7M4 5.5h1m5 0h1m11 0h2m1 0h2m1 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h3m4 0h3m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h2m1 0h1m4 0h1m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h9m1 0h1m3 0h3m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h3m3 0h1m2 0h3m1 0h2m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h1M4 12.5h1m3 0h1m1 0h3m2 0h2m3 0h4m1 0h2m1 0h6m2 0h1M5 13.5h3m1 0h1m1 0h1m1 0h4m1 0h3m1 0h1m3 0h2m1 0h1m3 0h3M5 14.5h1m2 0h1m1 0h2m3 0h1m1 0h3m2 0h1m2 0h1m1 0h3m3 0h1M4 15.5h4m3 0h1m5 0h1m1 0h1m1 0h2m2 0h5M4 16.5h1m3 0h1m1 0h2m1 0h2m2 0h1m3 0h1m3 0h2m1 0h1m1 0h4M4 17.5h2m2 0h1m2 0h1m4 0h1m1 0h5m2 0h1m1 0h1m3 0h1m1 0h1M9 18.5h5m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h4m1 0h2M4 19.5h2m2 0h1m2 0h1m4 0h6m2 0h9M4 20.5h1m1 0h1m3 0h4m1 0h1m5 0h1m2 0h2m2 0h1m1 0h1m1 0h1m2 0h1M6 21.5h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h1m3 0h3M5 22.5h2m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m1 0h1m2 0h3m1 0h1m1 0h1m1 0h1m1 0h1M4 23.5h2m1 0h1m1 0h1m1 0h1m4 0h1m2 0h1m1 0h1m2 0h2m1 0h2m2 0h1m3 0h1M7 24.5h1m1 0h2m1 0h2m1 0h1m4 0h2m1 0h11m1 0h2M4 25.5h3m1 0h1m2 0h1m4 0h7m1 0h4m1 0h1m1 0h1m1 0h1m1 0h1M7 26.5h2m1 0h3m5 0h4m2 0h1m2 0h1m1 0h1m1 0h2m1 0h2M6 27.5h4m2 0h1m2 0h3m3 0h2m2 0h3m1 0h2m1 0h1m2 0h1M4 28.5h2m4 0h1m2 0h5m1 0h3m1 0h1m1 0h2m1 0h6M12 29.5h2m2 0h1m1 0h5m5 0h1m3 0h1m1 0h2M4 30.5h7m1 0h2m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1M4 31.5h1m5 0h1m2 0h1m1 0h1m2 0h1m2 0h2m2 0h2m1 0h1m3 0h1m2 0h1M4 32.5h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h1m2 0h3m1 0h6m1 0h1M4 33.5h1m1 0h3m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m5 0h2m1 0h5M4 34.5h1m1 0h3m1 0h1m4 0h1m1 0h3m2 0h1m1 0h1m2 0h2m1 0h3M4 35.5h1m5 0h1m3 0h1m5 0h3m1 0h2m2 0h3M4 36.5h7m1 0h2m3 0h2m2 0h8m4 0h1m2 0h1" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
   </aside>
 
   <section id="practica" aria-labelledby="practicaSignos">
     <header class="section-header">
       <h2 class="section-header__title" id="practicaSignos">
-        <span class="lesson-section__kicker">Practica</span> Ejercicios sin fin
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
       </h2>
       <span class="section-header__count">Nuevos cada vez</span>
     </header>
-    <p class="section-intro">Elige qué practicar y el nivel. Las opciones falsas son errores de verdad: si eliges
-      una, te dice cuál fue y te enseña los pasos.</p>
-    <div data-sin-fin data-clave="matematicas:signos" data-modos='[
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:signos" data-modos='[
       {"id":"suma","nombre":"Sumas y restas","generadores":["signos-suma"]},
       {"id":"mul","nombre":"Multiplica y divide","generadores":["signos-mul"]},
       {"id":"parentesis","nombre":"Paréntesis","generadores":["signos-parentesis"]},

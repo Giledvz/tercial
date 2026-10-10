@@ -1,48 +1,121 @@
-# Molde de lección · Fundamentos (Matemáticas y Física)
+# Molde de lección · lectura y tele
 
-Cómo está hecha una lección de fundamentos y cómo se agrega la siguiente semana.
-El piloto es la semana 1: `matematicas/signos.html` y `fisica/magnitudes-unidades.html`.
-La secuencia de las 8 semanas está en `rediseno/FUNDAMENTOS.md` (rama de Codex).
+Cómo está hecha una lección de Tercial y cómo se agrega la siguiente. El molde nació con los
+fundamentos (semana 1: `matematicas/signos.html` y `fisica/magnitudes-unidades.html`) y ya lo
+usan también las 25 lecciones de Química ECOEMS (`ecoems/quimica/`). La secuencia de las 8
+semanas de fundamentos está en `rediseno/FUNDAMENTOS.md` (rama de Codex).
 
 ## Archivos
 
 | Archivo | Qué hace |
 |---|---|
-| `assets/css/leccion.css` | Componentes de lección (copiados de Química), práctica sin fin y modo proyección |
-| `assets/js/leccion.js` | Modo proyección: tecla P o botón, flechas, Esc |
+| `assets/css/leccion.css` | Componentes de lección (copiados de Química), práctica sin fin, modo tele y reto |
+| `assets/js/leccion.js` | Modo tele: tecla P o botón, flechas, Esc, ajuste al alto, tablas por partes, `#tele` |
+| `assets/js/reto.js` | El reto relámpago: opción múltiple con cronómetro, sólo en la tele |
 | `assets/js/ejercicios-motor.js` | Copia publicada del motor de Codex, con generadores de signos; los cambios van listados en su encabezado |
 | `assets/js/ejercicios-fisica.js` | Generadores de Física (`si-unidades`, `si-derivadas`, `si-escritura`, `si-signo`) |
-| `assets/js/practica-sin-fin.js` | La práctica: modos, niveles, opciones A–D y explicación del error |
+| `assets/js/practica-sin-fin.js` | La práctica: modos, niveles, tandas de 10, opciones A–D y explicación del error |
 | `assets/css/materia.css` | Casa de cada materia: la ruta de 8 semanas |
 | `<materia>/escenas-<materia>.js` | Las escenas animadas (contrato `{ update(dt), still() }`) |
 | `<materia>/<materia>.css` | Estilos propios de esas escenas |
+
+Química carga `leccion.css` antes de `quimica-material.css`; las reglas de la tele para sus
+piezas propias (tablas de fórmulas, modelos atómicos, herramientas) también viven en
+`leccion.css`, en su sección de proyección.
 
 ## Una lección, dos modos
 
 La misma página sirve para leer en la compu o la tableta y para proyectar en la tele.
 
 **Lectura.** Arriba lo que se proyecta (idea, escena, reglas, ejemplo) y abajo la
-práctica sin fin y la tarea en PDF.
+práctica y la tarea en PDF. Nada de lo que se agrega para la tele cambia la lectura: se
+comprueba comparando capturas pixel por pixel contra el último commit (ver «Revisión»).
 
-**Tele.** Con P o con el botón «Proyectar en la tele», cada elemento con
-`data-diapositiva` llena una pantalla 16:9. Todo se mide en `--u`, el 1 % del ancho de la
-pantalla 16:9 que cabe en la ventana, así que no quedan franjas en ninguna tele.
+**Tele.** Con P, con el botón «Proyectar en la tele» o con `#tele` en la liga, cada elemento
+con `data-diapositiva` llena una pantalla 16:9. Todo se mide en `--u`, el 1 % del ancho de
+la pantalla 16:9 que cabe en la ventana, así que no quedan franjas en ninguna tele. La letra
+base (1 rem) vale 1.25u: lo que el sistema mide en rem crece con la pantalla.
 
 | Atributo | Efecto en la tele |
 |---|---|
 | `data-diapositiva="portada"` | El encabezado: título grande y entrada |
 | `data-diapositiva="una"` | Una columna |
 | `data-diapositiva="dos"` | Texto a la izquierda; el hijo con `data-lado="figura"` va a la derecha |
-| `data-figura="compacta"` | En «dos»: la figura ocupa sólo su ancho (un cuadro, una tabla corta) |
-| `data-figura="amplia"` | En «dos»: la figura se lleva más de la mitad (una escena ancha, como la pista) |
-| `data-diapositiva="ahora"` + `data-solo-proyeccion` | La pantalla «Ahora tú», con el código QR a la práctica |
+| `data-figura="compacta"` / `"amplia"` | En «dos»: la figura ocupa sólo su ancho, o más de la mitad |
+| `data-abre` | Una herramienta envuelta se abre: sus piezas se reparten en las dos columnas |
+| `data-diapositiva="reto"` + `data-solo-proyeccion` | El reto relámpago |
+| `data-diapositiva="ahora"` + `data-solo-proyeccion` | «Tu tarea»: el QR que descarga el PDF de la tarea |
+| `data-solo-proyeccion` en otra pantalla | Una pantalla que sólo existe en la tele (los frascos de Estados) |
 | `data-solo-lectura` | Se oculta en la tele (instrucciones para el alumno, notas largas) |
+| `<table data-filas-por-pantalla="5">` | Una tabla larga se ve por partes, con su encabezado en cada una |
 
-Cada pantalla cabe en 1280 × 720 (una tele 1080p al 150 %) y se ve igual en 4K: todo
-escala con `--u`, incluidos los botones. Las pantallas usan el ancho completo; nada hereda
-el ancho máximo de la lectura. Si una no cabe, se sale por abajo; nunca se encima, porque
-las filas miden lo que su contenido. Al llegar a una
-pantalla se dispara el evento `tercial:diapositiva`, y su escena vuelve a empezar.
+La pantalla que está en la tele lleva la clase `es-proyectada`. Ninguna pieza de una lección
+debe usar ese nombre para otra cosa (el paso actual de una animación, por ejemplo).
+
+**Pantallas dentro de otras.** Un elemento con `data-diapositiva` dentro de una sección es su
+propia pantalla y no se ve mientras se proyecta la sección: así una secuencia larga (la
+historia de los modelos atómicos, los ejemplos de cambios de estado) se reparte en varias.
+- Debe ser un contenedor (`div`, `figure`, `article`, `li`, `aside`), nunca un párrafo: la
+  pantalla es una rejilla y partiría su texto. Una nota se envuelve en un `div`.
+- `leccion.js` le pone arriba, en pequeño, el título de su sección, para que se lea como
+  continuación.
+- Si al leer era una rejilla de varias columnas (dos tarjetas, dos moléculas), su regla en la
+  tele le devuelve las columnas: la de la pantalla es de una sola.
+
+**Ajuste al alto.** Cada pantalla se mide al llegar, cuando la escena termina de cargar, al
+tocar algo dentro y con el evento `tercial:cambia`:
+- si se pasa de alto, sus piezas se encogen por igual, lo justo (hasta 65 %);
+- si le sobra más de un tercio, crecen (hasta 130 %);
+- si ni así cabe, se puede desplazar (último recurso: hay que repartirla).
+Una tabla por partes usa el zoom de su parte más alta, para que la letra no cambie entre partes.
+
+**Pasos dentro de una pantalla.** El reto y las tablas por partes exponen
+`__pasos.siguiente()` y `__pasos.anterior()`: la flecha les pregunta primero a ellos. Al
+llegar de regreso (←) a una tabla por partes se ve la última parte.
+
+**Eventos.** La pantalla que llega recibe `tercial:diapositiva` (con `detail.direccion`) y su
+escena vuelve a empezar; la que se va recibe `tercial:sale`.
+
+**Letra en la tele.** Párrafos 2u, notas 1.6u, pies de figura 1.5u, etiquetas al menos 1.2u.
+Una pieza nueva con letra propia (un texto que explica una escena, una etiqueta mono) lleva su
+regla en `leccion.css`; si no, se queda con los 11–13 px de la lectura.
+
+## Cierre de la lección
+
+En la tele, la lección termina con dos pantallas:
+
+1. **Reto relámpago.** Cuatro preguntas de opción múltiple con cronómetro. El grupo contesta
+   en voz alta (A, B, C o D); la flecha revela la respuesta con su «porque» y luego pasa a la
+   siguiente pregunta.
+2. **Tu tarea.** El QR descarga directo el PDF de la tarea (`…/output/pdf/tarea-<lección>.pdf`).
+
+El reto puede generar preguntas nuevas cada vez, con los generadores de la práctica
+(fundamentos):
+
+```html
+<aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+  data-reto='{"segundos": 20, "cuantas": 4, "nivel": 2, "generadores": ["signos-suma", "signos-mul"]}'></aside>
+```
+
+o traerlas escritas (Química), en un JSON dentro del reto:
+
+```html
+<aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+  <script type="application/json">
+    {"segundos": 30, "preguntas": [
+      {"pregunta": "…", "opciones": ["…", "…", "…", "…"], "correcta": 2, "porque": "…"}
+    ]}
+  </script>
+</aside>
+```
+
+Al escribir un reto:
+- cuatro preguntas: la idea central, reconocer un ejemplo, aplicar, y una trampa que la
+  lección advierte;
+- pregunta de hasta 120 caracteres, opciones de hasta 45, «porque» de hasta 170;
+- los distractores son errores reales; la respuesta correcta cambia de letra;
+- ninguna pregunta repite un ejercicio de la tarea ni adelanta su respuesta;
+- se permiten `<sub>`, `<sup>`, `<strong>` y `<em>`.
 
 ## Tipografía
 
@@ -54,9 +127,13 @@ pantalla se dispara el evento `tercial:diapositiva`, y su escena vuelve a empeza
 ## La práctica sin fin
 
 ```html
-<div data-sin-fin data-clave="matematicas:signos" data-modos='[
+<div data-sin-fin data-clave="matematicas:signos" data-tanda="10" data-modos='[
   {"id":"suma","nombre":"Sumas y restas","generadores":["signos-suma"]}, …]'></div>
 ```
+
+Con `data-tanda="10"` la práctica va en tandas de 10: marcador «Ejercicio N de 10 · X bien ·
+tu mejor tanda» y, al final, la calificación, los errores con su respuesta correcta y «Otra
+tanda».
 
 Cada generador devuelve `{ enunciado, correcta, opciones: [{ val, ok, err }], meta }`:
 - las opciones falsas son errores reales, y cada una explica el suyo;
@@ -70,7 +147,7 @@ Antes de publicar un generador, se prueba con miles de ejercicios al azar. Se re
 
 ## El código QR
 
-Va dentro del SVG, con un margen de 4 módulos, y apunta a `…/<lección>.html#practica`. Se genera con
+Va dentro del SVG, con un margen de 4 módulos, y apunta al PDF de la tarea. Se genera con
 el paquete `qrcode` en nivel M. Antes de pegarlo se comprueba leyéndolo con el lector
 de macOS (Core Image) desde una captura de la tele, en claro y en oscuro.
 
@@ -78,7 +155,7 @@ de macOS (Core Image) desde una captura de la tele, en claro y en oscuro.
 
 - La tarea pública va en `examenes-pdf/tarea-<lección>.html` y su PDF en `output/pdf/`.
 - Usa `exam-pdf--fundamentos`, en coñac, el color por omisión.
-- Ninguna cuenta de la tarea puede aparecer resuelta en la lección ni en la práctica.
+- Ninguna cuenta de la tarea puede aparecer resuelta en la lección, en la práctica ni en el reto.
 - La clave nunca entra al repositorio: se arma fuera y queda en
   `~/Documents/Respuestas - <Tema>.pdf`.
 
@@ -86,13 +163,24 @@ de macOS (Core Image) desde una captura de la tele, en claro y en oscuro.
 
 Los fundamentos son de prepa y de universidad. La página toma el color del nivel desde
 el que se llegó: `prepa.html` y `uni.html` guardan `tercial-nivel` en el navegador. Sin
-ese dato, el acento es coñac, el de la universidad.
+ese dato, el acento es coñac, el de la universidad. Química ECOEMS es de prepa: terracota.
+
+## Revisión
+
+Antes de dar por buena una lección:
+- **Tele.** Recorrer todas las pantallas (con sus pasos) en 1280 × 720: nada se sale, nada
+  queda bajo los controles, y ninguna pantalla baja de unos 70 % de zoom; si baja, se reparte
+  (una pieza a su propia pantalla, una tabla por partes, dos columnas). Revisar también 4K y 4:3.
+- **Letra.** Ningún texto que importe se ve a menos de unos 13 px en la tele de referencia.
+- **Lectura.** Capturas de la página completa, en 1280 y 390 de ancho, idénticas a las del
+  último commit salvo lo que se cambió a propósito.
+- En celular, en claro y en oscuro, y también en WebKit.
 
 ## Siguiente semana
 
 1. Copia la lección de la semana anterior de la misma materia y cambia el contenido.
 2. Agrega el generador de la práctica, si hace falta, y pruébalo.
-3. Genera el QR y compruébalo.
+3. Arma el cierre: el reto y «Tu tarea» con su QR, comprobado.
 4. Haz la tarea y su clave.
 5. En la casa de la materia (`<materia>/index.html`), cambia la semana de «Próximamente» a lista.
-6. Revisa la lección en lectura, en celular y en la tele, en claro y en oscuro, y también en WebKit.
+6. Haz la revisión completa.

@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./acidos-practica.js?v=20261009-tema3"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 4 de 9 · Aprende y practica</p>
     <h1 class="hero__title">Ácidos, bases y <em>neutralización</em></h1>
     <p class="hero__lede">Hay ácidos en el limón y en el estómago, y bases en el jabón y en los antiácidos.
@@ -60,9 +63,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=neutralización#courseIndex">neutralización</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaAcidos">
+  <section aria-labelledby="ideaAcidos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaAcidos">
         <span class="lesson-section__kicker">Idea central</span> H<sup>+</sup> y OH<sup>−</sup>
@@ -88,7 +93,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="teoriasAcidos">
+  <section aria-labelledby="teoriasAcidos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="teoriasAcidos">
         <span class="lesson-section__kicker">Compara</span> Tres teorías, cada vez más amplias
@@ -111,15 +116,15 @@
       los acepta una base, más fuerte es ella.</p>
   </section>
 
-  <section aria-labelledby="escalaPh">
+  <section aria-labelledby="escalaPh" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="escalaPh">
         <span class="lesson-section__kicker">Observa</span> La escala de pH y el tornasol
       </h2>
     </header>
-    <p class="section-intro">Elige una sustancia. Su pH va de 0 a 14: abajo de 7 es ácida, 7 es neutra y
+    <p class="section-intro" data-solo-lectura>Elige una sustancia. Su pH va de 0 a 14: abajo de 7 es ácida, 7 es neutra y
       arriba de 7 es básica. Los valores son típicos; cada muestra puede variar un poco.</p>
-    <div class="escala-ph" data-escala-ph>
+    <div class="escala-ph" data-escala-ph data-abre>
       <div class="pastillas" role="group" aria-label="Elige una sustancia">
         <button class="pastilla" type="button" aria-pressed="false" data-sustancia="gastrico">Jugo gástrico</button>
         <button class="pastilla" type="button" aria-pressed="true" data-sustancia="limon">Limón</button>
@@ -132,7 +137,7 @@
         <button class="pastilla" type="button" aria-pressed="false" data-sustancia="magnesia">Leche de magnesia</button>
         <button class="pastilla" type="button" aria-pressed="false" data-sustancia="blanqueador">Blanqueador</button>
       </div>
-      <figure class="atom-figure">
+      <figure class="atom-figure" data-lado="figura">
         <svg class="escena escena--reaccion" data-escena-reaccion="escalaph" viewBox="0 0 400 214" role="img" aria-labelledby="escalaTitle">
           <title id="escalaTitle">Escala de pH de 0 a 14 con un marcador en el pH de la sustancia elegida; abajo, dos tiras de papel tornasol, azul y rojo, con su parte seca y su parte mojada en la sustancia.</title>
         </svg>
@@ -143,7 +148,7 @@
       (pH 2) tiene unas cien mil veces más iones H<sup>+</sup> que el agua pura (pH 7).</p>
   </section>
 
-  <section aria-labelledby="propiedadesAcidos">
+  <section aria-labelledby="propiedadesAcidos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="propiedadesAcidos">
         <span class="lesson-section__kicker">Distingue</span> Cómo se comportan
@@ -166,16 +171,16 @@
       nunca se prueba nada: muchos ácidos y bases queman la piel.</p>
   </section>
 
-  <section aria-labelledby="neutralizacion">
+  <section aria-labelledby="neutralizacion" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="neutralizacion">
         <span class="lesson-section__kicker">Observa</span> Ácido + base → sal + agua
       </h2>
     </header>
-    <p class="section-intro">Ácido clorhídrico con hidróxido de sodio: cada H<sup>+</sup> se junta con un
+    <p class="section-intro" data-solo-lectura>Ácido clorhídrico con hidróxido de sodio: cada H<sup>+</sup> se junta con un
       OH<sup>−</sup> y forman agua. El Na<sup>+</sup> y el Cl<sup>−</sup> siguen disueltos: son la sal.</p>
-    <div class="reacomodo" data-reacomodo="neutralizacion">
-      <figure class="atom-figure">
+    <div class="reacomodo" data-reacomodo="neutralizacion" data-abre>
+      <figure class="atom-figure" data-lado="figura">
         <svg class="escena escena--reaccion" data-escena-reaccion="reacomodo" viewBox="0 0 400 214" role="img" aria-labelledby="neutraTitle">
           <title id="neutraTitle">Iones en agua: tres H⁺ se juntan, uno por uno, con tres OH⁻ y forman tres moléculas de agua; tres Na⁺ y tres Cl⁻ siguen disueltos.</title>
         </svg>
@@ -188,6 +193,40 @@
     <p class="editorial-note">Si se evapora el agua queda la sal, cloruro de sodio. Con otros ácidos y bases
       cambia la sal: HNO<sub>3</sub> + KOH → KNO<sub>3</sub> + H<sub>2</sub>O.</p>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "En una neutralización, ¿qué forman el H<sup>+</sup> del ácido y el OH<sup>−</sup> de la base?",
+         "opciones": ["Una sal, como el NaCl", "Iones hidronio, H<sub>3</sub>O<sup>+</sup>", "Moléculas de agua, H<sub>2</sub>O", "Gas hidrógeno, H<sub>2</sub>"],
+         "correcta": 2,
+         "porque": "Cada H<sup>+</sup> se junta con un OH<sup>−</sup> y forman agua. La sal la forman los otros iones, como el Na<sup>+</sup> y el Cl<sup>−</sup>."},
+        {"pregunta": "La sangre tiene pH 7.4. ¿Cómo la clasificas?",
+         "opciones": ["Ligeramente básica", "Neutra, como el agua pura", "Ligeramente ácida", "Fuertemente básica"],
+         "correcta": 0,
+         "porque": "Arriba de 7 es básica, aunque sea por poco: la sangre es ligeramente básica. El cuerpo la mantiene entre 7.35 y 7.45."},
+        {"pregunta": "El jugo de limón tiene pH 2 y el agua pura, pH 7. ¿Cuántas veces más iones H<sup>+</sup> tiene el limón?",
+         "opciones": ["5 veces", "50 veces", "10 veces", "100 mil veces"],
+         "correcta": 3,
+         "porque": "Cada unidad de pH es diez veces más H<sup>+</sup>. De 7 a 2 hay 5 unidades: 10 × 10 × 10 × 10 × 10 = 100 mil veces más."},
+        {"pregunta": "En el laboratorio, ¿cómo averiguas si una disolución es ácida?",
+         "opciones": ["Probándola: si es agria, es ácida", "Con tornasol azul: si enrojece, es ácida", "Con un foco: si enciende, es ácida", "Tocándola: si es jabonosa, es ácida"],
+         "correcta": 1,
+         "porque": "Los ácidos ponen rojo el tornasol azul. Nunca se prueba nada: muchos ácidos y bases queman la piel. Y las bases también conducen la electricidad."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-acidos-bases.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h1m1 0h1m4 0h2m1 0h1m3 0h2m2 0h1m1 0h7M4 5.5h1m5 0h1m2 0h2m1 0h1m4 0h1m1 0h1m2 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h5m3 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m1 0h1m4 0h2m1 0h1m4 0h3m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h2m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m2 0h3m2 0h1m3 0h1m2 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m1 0h2m1 0h1m3 0h1m3 0h1M4 12.5h1m1 0h5m3 0h4m1 0h1m2 0h9m3 0h5M4 13.5h3m11 0h4m5 0h1m7 0h1m2 0h2M5 14.5h2m2 0h2m1 0h1m5 0h1m2 0h1m2 0h1m1 0h1m1 0h8m2 0h3M6 15.5h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m4 0h2m3 0h1m2 0h1m1 0h2m3 0h1M4 16.5h1m3 0h1m1 0h1m3 0h1m1 0h1m1 0h1m1 0h2m4 0h1m1 0h7m1 0h1m1 0h3M7 17.5h2m2 0h2m4 0h2m1 0h2m1 0h5m4 0h1m2 0h1M5 18.5h1m1 0h5m2 0h2m1 0h5m2 0h2m2 0h1m2 0h1m2 0h4m2 0h1M4 19.5h1m1 0h1m1 0h1m4 0h1m1 0h4m1 0h3m2 0h3m2 0h1m1 0h5M4 20.5h2m4 0h1m2 0h1m3 0h2m1 0h1m4 0h1m1 0h8m1 0h1m1 0h3M4 21.5h2m1 0h3m1 0h3m2 0h4m2 0h1m1 0h4m1 0h2m1 0h1m6 0h1M5 22.5h1m1 0h1m1 0h3m3 0h1m1 0h4m2 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h2M4 23.5h2m1 0h1m1 0h1m1 0h1m1 0h2m4 0h1m3 0h3m2 0h1m1 0h1m1 0h3m5 0h1M10 24.5h1m4 0h2m1 0h2m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h3M5 25.5h1m1 0h3m3 0h2m3 0h1m4 0h2m2 0h2m1 0h1m1 0h1m4 0h1M7 26.5h1m2 0h2m2 0h1m2 0h3m2 0h1m1 0h1m1 0h1m1 0h2m1 0h1m2 0h4m1 0h2M11 27.5h4m1 0h1m2 0h2m6 0h2m1 0h4m1 0h2m3 0h1M4 28.5h2m1 0h2m1 0h2m7 0h1m2 0h5m2 0h3m1 0h2m1 0h1m1 0h3M4 29.5h1m2 0h3m1 0h3m2 0h1m1 0h3m4 0h1m1 0h1m4 0h1m2 0h1m1 0h1M4 30.5h1m2 0h1m1 0h3m1 0h3m1 0h1m6 0h3m1 0h1m1 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m6 0h6m3 0h1m1 0h1m2 0h3m3 0h2m1 0h2m3 0h1M4 32.5h1m1 0h8m2 0h3m1 0h2m4 0h11m1 0h1m1 0h1M12 33.5h2m1 0h1m1 0h2m1 0h2m1 0h5m3 0h2m3 0h2M4 34.5h7m3 0h1m4 0h3m2 0h2m4 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m3 0h1m1 0h5m1 0h2m3 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h2m4 0h1m2 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h5m2 0h1m1 0h7m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h3m1 0h2m13 0h4M4 39.5h1m5 0h1m2 0h3m1 0h1m1 0h1m2 0h4m1 0h2m2 0h2m3 0h1m3 0h1M4 40.5h7m1 0h4m1 0h1m1 0h3m1 0h1m2 0h1m2 0h2m2 0h2m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaAcidos">
     <header class="section-header">

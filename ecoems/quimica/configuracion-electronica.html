@@ -31,11 +31,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-atajo-gas">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-atajo-gas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-kernel"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
 <script defer src="./configuracion-practica.js?v=20261008-atajo-gas"></script>
@@ -45,7 +48,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 3 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Configuración <em>electrónica</em></h1>
     <p class="hero__lede">Los electrones de un átomo no están en cualquier lugar: ocupan niveles y
@@ -60,9 +63,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=valencia#courseIndex">valencia</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="ideaConfiguracion">
+  <section aria-labelledby="ideaConfiguracion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ideaConfiguracion">
         <span class="lesson-section__kicker">Idea central</span> Primero se llenan los lugares de menor energía
@@ -86,7 +91,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="notacionConfiguracion">
+  <section aria-labelledby="notacionConfiguracion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="notacionConfiguracion">
         <span class="lesson-section__kicker">Lee la notación</span> Tres datos en cada término
@@ -107,7 +112,7 @@
     </figure>
   </section>
 
-  <section aria-labelledby="tiposOrbital">
+  <section aria-labelledby="tiposOrbital" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="tiposOrbital">
         <span class="lesson-section__kicker">Observa</span> Cuatro tipos de orbital
@@ -168,16 +173,16 @@
       6; uno d, 10, y uno f, 14. El punto del centro es el núcleo.</p>
   </section>
 
-  <section aria-labelledby="reglaDiagonales">
+  <section aria-labelledby="reglaDiagonales" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="reglaDiagonales">
         <span class="lesson-section__kicker">Sigue el orden</span> La regla de las diagonales
       </h2>
     </header>
-    <p class="section-intro">Para saber qué subnivel se llena primero, sigue las flechas diagonales de
+    <p class="section-intro" data-solo-lectura>Para saber qué subnivel se llena primero, sigue las flechas diagonales de
       arriba hacia abajo: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p… Elige un elemento y observa cómo se
       acomodan sus electrones.</p>
-    <div class="diagonal-tool" data-diagonales>
+    <div class="diagonal-tool" data-diagonales data-abre>
       <div class="diagonal-tool__picker">
         <label class="diagonal-tool__label" for="diagonalElemento">Elemento</label>
         <div class="diagonal-tool__select-row">
@@ -194,8 +199,8 @@
         </div>
         <button class="practice-action diagonal-tool__replay" type="button" data-diagonal-replay>Repetir la animación</button>
       </div>
-      <div class="diagonal-tool__body">
-        <figure class="diagonal-tool__figure">
+      <div class="diagonal-tool__body" data-abre>
+        <figure class="diagonal-tool__figure" data-lado="figura">
           <svg class="escena escena--diagonales" data-escena-atomo="diagonales" viewBox="0 0 320 330" role="img" aria-labelledby="diagonalTitle">
             <title id="diagonalTitle">Diagrama de la regla de las diagonales: los subniveles de 1s a 7p con un hueco por cada electrón que cabe; las flechas diagonales marcan el orden de llenado</title>
           </svg>
@@ -221,7 +226,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="configuracionAbreviada">
+  <section aria-labelledby="configuracionAbreviada" data-diapositiva="dos">
     <header class="section-header">
       <h2 class="section-header__title" id="configuracionAbreviada">
         <span class="lesson-section__kicker">Atajo</span> La configuración abreviada con gas noble
@@ -240,14 +245,14 @@
           [Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup>.</p>
       </div>
     </article>
-    <figure class="atom-figure atom-figure--wide">
+    <figure class="atom-figure atom-figure--wide" data-lado="figura">
       <svg class="escena escena--kernel" data-escena-atomo="kernel" viewBox="0 0 360 120" role="img" aria-labelledby="kernelTitle">
         <title id="kernelTitle">Las configuraciones completas del sodio, el bromo y el plomo se abrevian: los subniveles que coinciden con el gas noble anterior se juntan en su símbolo entre corchetes</title>
       </svg>
       <figcaption class="atom-figure__caption">Los subniveles del gas noble se juntan en un solo símbolo;
         sólo quedan a la vista los últimos.</figcaption>
     </figure>
-    <div class="reference-table-wrap" role="region" aria-labelledby="configuracionAbreviada" tabindex="0">
+    <div class="reference-table-wrap" role="region" aria-labelledby="configuracionAbreviada" tabindex="0" data-diapositiva="una">
       <table class="reference-table">
         <caption class="visually-hidden">Gases nobles que se usan para abreviar: electrones, último subnivel y subnivel con el que se continúa</caption>
         <thead>
@@ -273,7 +278,7 @@
       escritura.</p>
   </section>
 
-  <section aria-labelledby="leeConfiguracion">
+  <section aria-labelledby="leeConfiguracion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="leeConfiguracion">
         <span class="lesson-section__kicker">Interpreta</span> Lo que te dice la configuración
@@ -294,7 +299,7 @@
       </article>
     </div>
 
-    <div class="config-examples">
+    <div class="config-examples" data-diapositiva="una">
       <article class="config-example">
         <p class="config-example__element"><sup>11</sup>Na · sodio</p>
         <p class="config-example__config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> <strong>3s<sup>1</sup></strong></p>
@@ -324,6 +329,40 @@
       El helio es la excepción: tiene 2 electrones de valencia, pero va con los gases nobles (VIIIA)
       porque su único nivel está lleno.</p>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "Al escribir una configuración electrónica, ¿en qué orden se llenan los subniveles?",
+         "opciones": ["De la mayor a la menor energía", "Nivel por nivel: todo el 3 antes del 4", "De la menor a la mayor energía", "Primero todos los s, luego los p"],
+         "correcta": 2,
+         "porque": "Primero se ocupan los subniveles de menor energía. Por eso el 4s se llena antes que el 3d, aunque el 4s sea de un nivel mayor."},
+        {"pregunta": "En 2p<sup>4</sup> («dos pe cuatro»), ¿qué te dice el 4?",
+         "opciones": ["Cuántos electrones hay en el 2p", "Cuál es el nivel de energía", "Cuántos orbitales tiene el 2p", "En qué periodo está el elemento"],
+         "correcta": 0,
+         "porque": "El número de arriba cuenta los electrones del subnivel: en el 2p hay 4. El 2 es el nivel, y un subnivel p tiene 3 orbitales."},
+        {"pregunta": "La configuración de un elemento es [Rn] 7s<sup>2</sup>. ¿En qué periodo y en qué familia está?",
+         "opciones": ["Periodo 6, familia IIA", "Periodo 7, familia VIIA", "Periodo 2, familia VIIA", "Periodo 7, familia IIA"],
+         "correcta": 3,
+         "porque": "El nivel más alto es el 7: periodo 7. Sus 2 electrones de valencia, los del 7s, dan la familia IIA. El [Rn] sólo resume los niveles llenos."},
+        {"pregunta": "El plomo: [Xe] 6s<sup>2</sup> 4f<sup>14</sup> 5d<sup>10</sup> 6p<sup>2</sup>. ¿Cuántos electrones de valencia tiene?",
+         "opciones": ["2 electrones", "4 electrones", "14 electrones", "28 electrones"],
+         "correcta": 1,
+         "porque": "Sólo cuentan los del último nivel, el 6: 6s<sup>2</sup> + 6p<sup>2</sup> = 4. El 4f<sup>14</sup> y el 5d<sup>10</sup> son de niveles anteriores: no cuentan."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-configuracion-electronica.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m2 0h2m2 0h1m1 0h5m3 0h1m1 0h2m1 0h1m1 0h7M4 5.5h1m5 0h1m3 0h2m1 0h2m2 0h1m2 0h1m1 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m1 0h2m2 0h1m5 0h2m4 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m5 0h1m1 0h1m5 0h5m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m1 0h3m1 0h1m1 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h8m3 0h2m2 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m1 0h4m3 0h1m1 0h3m1 0h1M4 12.5h1m1 0h5m3 0h2m2 0h4m1 0h1m2 0h5m1 0h1m1 0h5M6 13.5h1m5 0h2m5 0h1m1 0h1m1 0h2m2 0h1m4 0h1m2 0h1m2 0h2M4 14.5h1m3 0h1m1 0h1m1 0h1m1 0h2m1 0h5m2 0h1m1 0h1m2 0h7m2 0h3M4 15.5h1m2 0h1m1 0h1m3 0h2m1 0h1m2 0h1m3 0h1m1 0h2m3 0h1m1 0h2m1 0h2m3 0h1M5 16.5h4m1 0h1m1 0h1m1 0h3m1 0h4m4 0h1m1 0h7m1 0h1m1 0h3M6 17.5h1m1 0h1m2 0h2m7 0h1m2 0h5m4 0h1m2 0h1M4 18.5h2m4 0h1m3 0h2m2 0h3m1 0h1m1 0h1m3 0h1m2 0h1m2 0h4m2 0h1M5 19.5h3m1 0h1m5 0h3m2 0h1m1 0h1m2 0h3m2 0h1m1 0h2m1 0h2M5 20.5h1m2 0h1m1 0h2m1 0h2m1 0h1m1 0h1m2 0h1m4 0h6m1 0h2m1 0h1m1 0h3M4 21.5h3m1 0h1m2 0h1m1 0h2m4 0h2m1 0h6m1 0h1m2 0h1m6 0h1M5 22.5h3m1 0h3m4 0h1m1 0h1m5 0h3m4 0h2m2 0h1m1 0h1m1 0h2M4 23.5h2m1 0h3m1 0h1m1 0h1m1 0h3m2 0h1m4 0h1m4 0h2m1 0h2m5 0h1M7 24.5h2m1 0h3m2 0h2m4 0h1m1 0h1m2 0h5m1 0h3m1 0h3M4 25.5h1m1 0h4m2 0h3m1 0h2m5 0h3m1 0h2m1 0h1m1 0h1m4 0h1M4 26.5h4m2 0h2m1 0h1m1 0h2m1 0h2m4 0h3m1 0h2m1 0h1m1 0h1m1 0h3m1 0h2M4 27.5h1m1 0h1m9 0h2m1 0h2m1 0h1m2 0h1m1 0h2m1 0h4m1 0h2m3 0h1M8 28.5h1m1 0h1m1 0h2m1 0h3m1 0h3m1 0h1m2 0h1m1 0h4m1 0h2m1 0h1m1 0h3M4 29.5h4m1 0h1m2 0h1m1 0h6m2 0h7m3 0h1m2 0h1m1 0h1M4 30.5h1m1 0h1m3 0h4m2 0h1m2 0h2m4 0h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m3 0h1m3 0h1m1 0h2m3 0h1m2 0h6m4 0h1m1 0h2m4 0h1M4 32.5h1m2 0h2m1 0h1m1 0h2m4 0h4m1 0h1m2 0h11m1 0h1m1 0h1M12 33.5h1m1 0h2m1 0h1m2 0h1m2 0h5m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h1m2 0h2m1 0h3m2 0h1m7 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h3m2 0h1m1 0h2m1 0h2m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m1 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h3m2 0h4m1 0h4m1 0h1m1 0h1m3 0h2m1 0h2m1 0h2M4 38.5h1m1 0h3m1 0h1m1 0h1m3 0h2m4 0h1m1 0h1m12 0h4M4 39.5h1m5 0h1m3 0h2m4 0h1m1 0h4m1 0h1m3 0h3m2 0h1m3 0h1M4 40.5h7m1 0h2m1 0h3m2 0h2m1 0h1m2 0h2m1 0h2m5 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaConfiguracion">
     <header class="section-header">

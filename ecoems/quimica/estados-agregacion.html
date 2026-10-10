@@ -31,10 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-hielo-naftalina">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./escenas-particulas.js?v=20261008-hielo-naftalina"></script>
 <script defer src="./estados-practica.js?v=20261008-tandas"></script>
 </head>
@@ -43,7 +46,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 01 · 2 de 6 · Aprende y practica</p>
     <h1 class="hero__title">Estados de <em>agregación</em></h1>
     <p class="hero__lede">La sustancia puede ser la misma y, aun así, verse y comportarse de forma
@@ -59,9 +62,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=cambios%20de%20estado#courseIndex">cambios de estado</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="modeloParticulas">
+  <section aria-labelledby="modeloParticulas" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="modeloParticulas">
         <span class="lesson-section__kicker">Idea central</span> Una sustancia, distintas organizaciones
@@ -83,7 +88,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="tresEstados">
+  <section aria-labelledby="tresEstados" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="tresEstados">
         <span class="lesson-section__kicker">Compara</span> Estados de agregación de la materia
@@ -137,7 +142,7 @@
             <td>Prácticamente incompresible</td>
             <td>Compresible: su volumen se reduce con facilidad</td>
           </tr>
-          <tr class="reference-table__models">
+          <tr class="reference-table__models" data-solo-lectura>
             <th scope="row">Representación</th>
             <td>
               <svg class="escena escena--estado" data-escena="estado" data-tipo="solido" viewBox="48 30 104 188" role="img" aria-labelledby="solidTitle">
@@ -167,13 +172,52 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Los tres frascos tienen las mismas partículas; la de color deja un rastro para
+    <p class="editorial-note" data-solo-lectura>Los tres frascos tienen las mismas partículas; la de color deja un rastro para
       seguir cómo se mueve en cada estado.</p>
-    <p class="editorial-note">El plasma es un gas ionizado con partículas cargadas; aparece, por
+    <p class="editorial-note" data-solo-lectura>El plasma es un gas ionizado con partículas cargadas; aparece, por
       ejemplo, en las estrellas y en algunas descargas eléctricas. Es un cuarto estado de la materia.</p>
   </section>
 
-  <section aria-labelledby="cambiosEstado">
+  <aside class="estados-tele" data-diapositiva="una" data-solo-proyeccion aria-labelledby="estadosTele">
+    <header class="section-header">
+      <h2 class="section-header__title" id="estadosTele">
+        <span class="lesson-section__kicker">Observa</span> Las mismas partículas, tres estados
+      </h2>
+    </header>
+    <div class="estados-tele__frascos">
+      <figure class="estados-tele__frasco">
+        <svg class="escena escena--estado" data-escena="estado" data-tipo="solido" viewBox="48 30 104 188" role="img" aria-labelledby="solidTitleTele">
+          <title id="solidTitleTele">Frasco cerrado con un bloque de partículas que vibran en su sitio sin cambiar de forma</title>
+          <rect class="escena__tapa" x="52" y="34" width="96" height="10" rx="2"/>
+          <path class="escena__vidrio" d="M55 44V206Q55 214 63 214H137Q145 214 145 206V44"/>
+          <g data-capa="particulas"></g>
+        </svg>
+        <figcaption>Sólido</figcaption>
+      </figure>
+      <figure class="estados-tele__frasco">
+        <svg class="escena escena--estado" data-escena="estado" data-tipo="liquido" viewBox="48 30 104 188" role="img" aria-labelledby="liquidTitleTele">
+          <title id="liquidTitleTele">Frasco cerrado con las mismas partículas acomodadas en el fondo, en contacto y deslizándose unas sobre otras</title>
+          <rect class="escena__tapa" x="52" y="34" width="96" height="10" rx="2"/>
+          <path class="escena__vidrio" d="M55 44V206Q55 214 63 214H137Q145 214 145 206V44"/>
+          <g data-capa="particulas"></g>
+        </svg>
+        <figcaption>Líquido</figcaption>
+      </figure>
+      <figure class="estados-tele__frasco">
+        <svg class="escena escena--estado" data-escena="estado" data-tipo="gas" viewBox="48 30 104 188" role="img" aria-labelledby="gasTitleTele">
+          <title id="gasTitleTele">Frasco cerrado con las mismas partículas separadas que recorren todo el frasco y rebotan</title>
+          <rect class="escena__tapa" x="52" y="34" width="96" height="10" rx="2"/>
+          <path class="escena__vidrio" d="M55 44V206Q55 214 63 214H137Q145 214 145 206V44"/>
+          <g data-capa="particulas"></g>
+        </svg>
+        <figcaption>Gas</figcaption>
+      </figure>
+    </div>
+    <p class="editorial-note">Los tres frascos tienen las mismas partículas; la de color deja un rastro para
+      seguir cómo se mueve en cada estado.</p>
+  </aside>
+
+  <section aria-labelledby="cambiosEstado" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="cambiosEstado">
         <span class="lesson-section__kicker">Sigue el cambio</span> Cómo se llama cada cambio
@@ -257,12 +301,12 @@
       </svg>
       <figcaption class="phase-change-diagram__legend"><span class="phase-change-diagram__key phase-change-diagram__key--calor">Al calentar: el material absorbe calor.</span> <span class="phase-change-diagram__key">Al enfriar o comprimir: el material libera calor.</span></figcaption>
     </figure>
-    <div class="phase-change-examples" aria-labelledby="phaseChangeExamplesTitle">
+    <div class="phase-change-examples" aria-labelledby="phaseChangeExamplesTitle" data-diapositiva="una">
       <h3 class="phase-change-examples__title" id="phaseChangeExamplesTitle">Ejemplos para reconocerlos</h3>
       <p class="phase-change-examples__intro">Cada cambio tiene su inverso, por eso los verás en pareja: primero el que
         ocurre al calentar y después el que ocurre al enfriar.</p>
       <ul class="phase-change-examples__grid">
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="fusion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioFusion">
             <title id="cambioFusion">Un cubo de hielo se derrite poco a poco sobre un plato y forma un charco de agua</title>
             <path class="escena__piso" d="M14 140.5H226"/>
@@ -287,7 +331,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key phase-change-diagram__key--calor">sólido → líquido · absorbe calor</span></p>
           <p class="phase-change-example__text">Un cubo de hielo se derrite.</p>
         </li>
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="solidificacion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioSolidificacion">
             <title id="cambioSolidificacion">Una vela se apaga; la cera derretida de arriba y una gota que escurre se enfrían y se endurecen</title>
             <path class="escena__piso" d="M14 140.5H226"/>
@@ -315,7 +359,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key">líquido → sólido · libera calor</span></p>
           <p class="phase-change-example__text">La cera de una vela se endurece al enfriarse.</p>
         </li>
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="evaporacion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioEvaporacion">
             <title id="cambioEvaporacion">Una camiseta mojada cuelga de un tendedero; gotea, suelta vapor y se va secando</title>
             <defs><clipPath id="cambioCamiseta"><path d="M92 47L74 58L82 74L93 68V122H147V68L158 74L166 58L148 47Q141 56 120 56Q99 56 92 47Z"/></clipPath></defs>
@@ -335,7 +379,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key phase-change-diagram__key--calor">líquido → gas · absorbe calor</span></p>
           <p class="phase-change-example__text">La ropa mojada se seca al aire. Cuando el líquido hierve, también se evapora: eso es la ebullición.</p>
         </li>
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="condensacion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioCondensacion">
             <title id="cambioCondensacion">Un vaso con una bebida fría y hielo: en su pared exterior aparecen gotitas de agua que crecen y escurren</title>
             <path class="escena__piso" d="M14 134.5H226"/>
@@ -358,7 +402,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key">gas → líquido · libera calor</span></p>
           <p class="phase-change-example__text">Aparecen gotitas de agua sobre una bebida fría.</p>
         </li>
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="sublimacion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioSublimacion">
             <title id="cambioSublimacion">Naftalina en una cuchara sobre un mechero encendido: al calentarse suavemente se hace más pequeña y suelta vapor, sin derretirse</title>
             <defs><filter id="cambioVaporNaftalina" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="1.6"/></filter></defs>
@@ -389,7 +433,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key phase-change-diagram__key--calor">sólido → gas · absorbe calor</span></p>
           <p class="phase-change-example__text">Al calentar suavemente naftalina en una cuchara, pasa directo a gas sin derretirse: se hace más pequeña y suelta vapor.</p>
         </li>
-        <li class="phase-change-example">
+        <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="deposicion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioDeposicion">
             <title id="cambioDeposicion">En el vidrio de una ventana helada crece escarcha desde las orillas: el vapor del aire pasa directamente a hielo</title>
             <defs><clipPath id="cambioVidrios"><rect x="60" y="20" width="56" height="52"/><rect x="124" y="20" width="56" height="52"/><rect x="60" y="80" width="56" height="52"/><rect x="124" y="80" width="56" height="52"/></clipPath></defs>
@@ -406,7 +450,7 @@
           <p class="phase-change-example__route"><span class="phase-change-diagram__key">gas → sólido · libera calor</span></p>
           <p class="phase-change-example__text">Se forma escarcha en una ventana helada: el vapor pasa directamente a hielo.</p>
         </li>
-        <li class="phase-change-example phase-change-example--solo">
+        <li class="phase-change-example phase-change-example--solo" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="licuefaccion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioLicuefaccion">
             <title id="cambioLicuefaccion">Un pistón comprime un gas dentro de un cilindro; sus partículas se juntan hasta formar un líquido en el fondo</title>
             <path class="escena__piso" d="M14 140.5H226"/>
@@ -433,6 +477,40 @@
       </ul>
     </div>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "Al calentar yodo sólido se forma un vapor. ¿Qué sustancia es ese vapor?",
+         "opciones": ["Vapor de agua que tenía dentro", "Humo, como cuando algo se quema", "Aire caliente que estaba atrapado", "Yodo, ahora en estado gaseoso"],
+         "correcta": 3,
+         "porque": "Calentarlo no lo convirtió en otra cosa: el vapor sigue siendo yodo, sólo que en estado gaseoso. Humo o vapor de agua serían otras sustancias."},
+        {"pregunta": "La lava de un volcán se enfría y se vuelve roca dura. ¿Qué cambio de estado ocurrió?",
+         "opciones": ["Solidificación", "Condensación", "Deposición", "Fusión"],
+         "correcta": 0,
+         "porque": "La lava estaba líquida y quedó sólida al enfriarse. El paso de líquido a sólido se llama solidificación."},
+        {"pregunta": "Según la tabla de estados, ¿en qué orden baja la atracción entre partículas, de mayor a menor?",
+         "opciones": ["Gas, líquido, sólido", "Líquido, sólido, gas", "Sólido, líquido, gas", "Sólido, gas, líquido"],
+         "correcta": 2,
+         "porque": "En el sólido la atracción es muy alta y mantiene juntas las partículas; en el gas es prácticamente nula. El líquido queda en medio."},
+        {"pregunta": "¿Qué estados toman la forma del recipiente que los contiene?",
+         "opciones": ["Sólo el líquido", "Líquido y gas", "Sólido y líquido", "Sólo el gas"],
+         "correcta": 1,
+         "porque": "En la tabla, líquido y gas comparten esa fila: los dos adoptan la forma del recipiente. Es fácil olvidar que el gas también lo hace."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-estados-agregacion.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1m2 0h1m1 0h1m4 0h7M4 5.5h1m5 0h1m1 0h2m1 0h1m1 0h2m3 0h8m2 0h1m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m3 0h1m1 0h1m4 0h1m1 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m3 0h5m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3m2 0h4m2 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m3 0h1m1 0h2m1 0h1m3 0h1m1 0h1m2 0h3m1 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m2 0h4m1 0h3m3 0h2m3 0h1M4 12.5h1m1 0h2m1 0h3m1 0h2m1 0h1m1 0h3m3 0h2m1 0h1m2 0h2m2 0h1m2 0h1m1 0h2M5 13.5h2m2 0h1m4 0h1m2 0h1m1 0h3m5 0h1m4 0h1m2 0h1m2 0h2M5 14.5h9m2 0h4m2 0h1m2 0h5m2 0h1m2 0h4M5 15.5h1m3 0h1m4 0h1m1 0h1m1 0h2m2 0h2m3 0h1m1 0h3m1 0h2m1 0h3M5 16.5h1m1 0h5m1 0h6m1 0h2m4 0h1m1 0h3m1 0h3m1 0h1m1 0h3M4 17.5h1m2 0h1m1 0h1m2 0h1m4 0h4m1 0h2m1 0h2m1 0h1m1 0h8m1 0h2M4 18.5h4m1 0h2m2 0h2m2 0h2m2 0h5m3 0h1m2 0h2m2 0h1m1 0h1M5 19.5h2m2 0h1m2 0h1m1 0h1m1 0h1m3 0h3m2 0h1m1 0h1m2 0h1m1 0h5M4 20.5h3m3 0h6m3 0h4m1 0h2m3 0h1m7 0h2M4 21.5h1m1 0h4m1 0h3m1 0h1m1 0h1m2 0h1m2 0h2m1 0h3m2 0h1m1 0h3m1 0h4M4 22.5h2m2 0h1m1 0h1m2 0h4m1 0h3m2 0h1m1 0h2m4 0h1m3 0h1m1 0h1m1 0h2M5 23.5h3m5 0h1m1 0h2m1 0h1m2 0h3m3 0h1m4 0h1m3 0h2m1 0h1M6 24.5h7m3 0h1m1 0h1m1 0h3m2 0h1m4 0h1m2 0h1m1 0h2m3 0h1M4 25.5h1m1 0h1m5 0h1m3 0h1m1 0h1m4 0h2m2 0h2m1 0h1m1 0h1m4 0h1M4 26.5h1m1 0h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m3 0h3m1 0h1m3 0h1m1 0h1M7 27.5h1m3 0h1m1 0h2m1 0h2m4 0h2m2 0h2m1 0h2m2 0h2m1 0h3M4 28.5h1m1 0h1m2 0h2m1 0h3m1 0h2m1 0h1m2 0h2m2 0h1m1 0h4m1 0h2m1 0h1m1 0h3M11 29.5h2m1 0h1m2 0h2m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m1 0h3m2 0h2M5 30.5h8m2 0h1m3 0h2m1 0h2m4 0h3m2 0h2m2 0h3M4 31.5h1m2 0h1m1 0h1m1 0h3m1 0h3m2 0h1m1 0h6m3 0h1m2 0h2m3 0h2M9 32.5h3m1 0h1m1 0h1m1 0h4m1 0h1m1 0h4m1 0h1m2 0h9M12 33.5h1m1 0h3m1 0h2m1 0h2m1 0h1m2 0h3m2 0h1m3 0h1m1 0h1m1 0h1M4 34.5h7m1 0h1m3 0h2m1 0h3m2 0h2m3 0h1m2 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m1 0h1m2 0h2m1 0h1m2 0h2m2 0h2m1 0h3m3 0h1m2 0h1M4 36.5h1m1 0h3m1 0h1m2 0h2m1 0h3m3 0h2m1 0h1m4 0h1m1 0h6M4 37.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h2m2 0h4m1 0h1m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m1 0h2m2 0h2m1 0h2m1 0h2m1 0h2m1 0h1m1 0h1M4 39.5h1m5 0h1m2 0h1m2 0h2m2 0h1m2 0h2m1 0h1m1 0h2m3 0h1m1 0h4M4 40.5h7m1 0h1m1 0h2m2 0h4m4 0h1m2 0h2m3 0h1m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaEstados">
     <header class="section-header">

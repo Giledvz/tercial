@@ -31,10 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css?v=20260826-svg-text">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./escenas-particulas.js?v=20261008-escenas-particulas"></script>
 <script defer src="./disoluciones.js?v=20260826-navegacion"></script>
 </head>
@@ -43,7 +46,7 @@
 <site-nav></site-nav>
 
 <main class="container container--base">
-  <header class="hero">
+  <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 01 · 6 de 6 · Aprende y practica</p>
     <h1 class="hero__title">Disoluciones: soluto y <em>disolvente</em></h1>
     <p class="hero__lede">Una disolución es una mezcla en la que no puedes ver sus partes. Aprende a reconocer
@@ -59,9 +62,11 @@
       <span class="material-meta__divider" aria-hidden="true">·</span>
       <a href="./index.html?q=mezcla%20homogénea#courseIndex">mezcla homogénea</a>
     </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar en la tele
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
   </header>
 
-  <section aria-labelledby="queEsDisolucion">
+  <section aria-labelledby="queEsDisolucion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="queEsDisolucion">
         <span class="lesson-section__kicker">Idea central</span> Una sola fase, dos funciones
@@ -84,7 +89,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="formacionDisolucion">
+  <section aria-labelledby="formacionDisolucion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="formacionDisolucion">
         <span class="lesson-section__kicker">Observa</span> Disolverse no es desaparecer
@@ -118,7 +123,7 @@
     </figure>
   </section>
 
-  <section aria-labelledby="partesDisolucion">
+  <section aria-labelledby="partesDisolucion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="partesDisolucion">
         <span class="lesson-section__kicker">Distingue</span> Qué se disuelve y en qué
@@ -148,7 +153,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="concentracionCualitativa">
+  <section aria-labelledby="concentracionCualitativa" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="concentracionCualitativa">
         <span class="lesson-section__kicker">Compara</span> Hablar de concentración sin calcular
@@ -168,7 +173,7 @@
     </div>
   </section>
 
-  <section aria-labelledby="porcentajeMasa">
+  <section aria-labelledby="porcentajeMasa" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="porcentajeMasa">
         <span class="lesson-section__kicker">Calcula</span> Concentración masa a masa
@@ -190,7 +195,7 @@
     </article>
   </section>
 
-  <section aria-labelledby="calculadoraDisolucion">
+  <section aria-labelledby="calculadoraDisolucion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="calculadoraDisolucion">
         <span class="lesson-section__kicker">Comprueba</span> Tu procedimiento, paso a paso
@@ -212,6 +217,40 @@
       <p class="calculator__result" id="solutionResult" role="status" aria-live="polite"></p>
     </form>
   </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
+    <script type="application/json">
+      {"segundos": 30, "preguntas": [
+        {"pregunta": "¿Qué es una disolución?",
+         "opciones": ["Una mezcla donde se distinguen sus partes", "Una sustancia pura con un solo componente", "Una mezcla homogénea, de una sola fase", "Un compuesto nuevo de soluto y disolvente"],
+         "correcta": 2,
+         "porque": "Es una mezcla homogénea: soluto y disolvente se reparten de manera uniforme y forman una sola fase. Por eso no distingues sus partes a simple vista."},
+        {"pregunta": "El vinagre tiene un poco de ácido acético, que es líquido, disuelto en mucha agua. ¿Cuál es el soluto?",
+         "opciones": ["El agua", "El vinagre", "El ácido y el agua", "El ácido acético"],
+         "correcta": 3,
+         "porque": "El soluto es lo que se disuelve y casi siempre está en menor cantidad: el ácido acético. Un soluto también puede ser líquido; el agua es el disolvente."},
+        {"pregunta": "Tomas una cucharada de una disolución al 6 % m/m. ¿Qué concentración tiene esa cucharada?",
+         "opciones": ["Menos del 6 % m/m", "El mismo 6 % m/m", "Más del 6 % m/m", "La mitad: 3 % m/m"],
+         "correcta": 1,
+         "porque": "Es homogénea: el soluto está repartido igual en toda la disolución. La cucharada tiene menos soluto, pero también menos disolución: la proporción no cambia."},
+        {"pregunta": "Disuelves 12 g de glucosa en 48 g de agua. ¿Cuál es la concentración en % m/m?",
+         "opciones": ["20 % m/m", "25 % m/m", "80 % m/m", "60 % m/m"],
+         "correcta": 0,
+         "porque": "Primero la masa de la disolución: 12 g + 48 g = 60 g. Luego 12 ÷ 60 × 100 = 20 %. Si divides entre 48 g, que es sólo el agua, sale 25 %: ese es el error."}
+      ]}
+    </script>
+  </aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-disoluciones.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m8 0h4m1 0h1m3 0h2m2 0h1m1 0h7M4 5.5h1m5 0h1m2 0h3m4 0h2m1 0h1m2 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h3m2 0h5m6 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m5 0h3m1 0h1m4 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h3m1 0h1m1 0h2m3 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h3m2 0h1m1 0h1m2 0h1m3 0h1m4 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m2 0h1m1 0h1m3 0h1m3 0h1m1 0h1M4 12.5h1m1 0h5m2 0h3m1 0h3m2 0h9m3 0h5M4 13.5h4m10 0h4m5 0h1m4 0h1m2 0h1m2 0h2M5 14.5h2m2 0h4m2 0h1m2 0h1m2 0h1m2 0h1m1 0h1m1 0h8m2 0h3M9 15.5h1m1 0h1m1 0h3m2 0h1m1 0h1m4 0h2m3 0h4m1 0h2m3 0h1M4 16.5h1m3 0h1m1 0h2m2 0h3m1 0h1m1 0h2m4 0h1m1 0h7m1 0h1m1 0h3M7 17.5h2m2 0h2m4 0h2m1 0h2m1 0h5m1 0h1m2 0h1m2 0h1M7 18.5h1m2 0h2m2 0h2m2 0h4m2 0h2m2 0h4m1 0h5m2 0h1M6 19.5h1m1 0h1m4 0h6m1 0h3m2 0h3m2 0h1m1 0h1m1 0h3M4 20.5h1m2 0h4m2 0h2m1 0h2m2 0h1m4 0h1m1 0h8m1 0h1m1 0h3M4 21.5h2m1 0h2m3 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h4m1 0h1m2 0h1m6 0h1M5 22.5h1m1 0h1m1 0h3m3 0h6m2 0h1m1 0h2m1 0h1m2 0h1m3 0h1m1 0h1m1 0h2M4 23.5h3m2 0h1m1 0h1m1 0h2m1 0h1m2 0h1m3 0h3m2 0h1m1 0h5m5 0h1M10 24.5h2m3 0h2m1 0h2m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h3M5 25.5h1m1 0h3m4 0h1m3 0h1m4 0h2m2 0h4m1 0h1m4 0h1M7 26.5h1m1 0h3m5 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h4m3 0h3m1 0h2M4 27.5h1m3 0h2m1 0h2m3 0h1m2 0h2m6 0h2m2 0h6m3 0h1M4 28.5h2m3 0h3m2 0h1m1 0h4m2 0h5m2 0h3m1 0h2m1 0h1m1 0h3M4 29.5h1m3 0h1m2 0h4m1 0h1m1 0h3m4 0h1m1 0h1m4 0h2m1 0h1m1 0h1M4 30.5h1m1 0h1m2 0h3m1 0h2m1 0h2m6 0h3m1 0h1m1 0h4m1 0h1m3 0h2M4 31.5h1m6 0h1m1 0h2m5 0h1m1 0h1m2 0h3m4 0h1m1 0h2m3 0h1M4 32.5h1m2 0h4m1 0h2m1 0h4m1 0h2m4 0h5m1 0h5m1 0h1m1 0h1M12 33.5h1m2 0h1m2 0h1m1 0h2m1 0h5m3 0h2m3 0h2M4 34.5h7m2 0h1m3 0h1m1 0h3m2 0h2m4 0h1m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m1 0h1m4 0h5m1 0h2m3 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h3m4 0h1m2 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h3m2 0h1m1 0h7m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h3m1 0h2m13 0h4M4 39.5h1m5 0h1m2 0h3m1 0h1m1 0h1m2 0h4m1 0h2m2 0h2m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1m2 0h2m2 0h1m2 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
 
   <section aria-labelledby="practicaDisoluciones">
     <header class="section-header">
