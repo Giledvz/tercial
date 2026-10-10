@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Vectores y razonamiento proporcional · Física · Tercial</title>
+<meta name="description" content="Sumar vectores sin senos ni cosenos: en línea, cabeza-cola, con el paralelogramo y por componentes; y el razonamiento proporcional del examen: si la distancia se duplica, la fuerza cae a la cuarta parte. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-vectores-proporcionalidad">
+<meta name="tercial:resource-title" content="Vectores y razonamiento proporcional">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="vectores-proporcionalidad">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./vectores-proporcionalidad.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
+<script defer src="/tercial/assets/js/ejercicios-vectores-proporcionalidad.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-vectores-proporcionalidad.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 8 · Física</p>
+    <h1 class="hero__title">Vectores y razonamiento <em>proporcional</em></h1>
+    <p class="hero__lede">Una fuerza o un desplazamiento no se suman como números: importa hacia dónde apuntan. Aquí se
+      suman con flechas, sin senos ni cosenos, y se contesta «¿qué pasa si duplico…?» sin hacer la cuenta completa.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 8 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/cuadraticas-sistemas.html">En matemáticas: ecuaciones de segundo grado y sistemas</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaVector" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaVector">
+        <span class="lesson-section__kicker">Idea central</span> Sumar con flechas
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Un vector dice <em>cuánto y hacia dónde</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Un <strong>vector</strong> es una magnitud con tamaño y dirección, como un desplazamiento, una velocidad o una
+          fuerza. Se dibuja como una flecha: su largo es el tamaño y la punta dice hacia dónde.</p>
+        <p>Para sumar vectores se ponen <strong>cabeza-cola</strong>: la cola de la segunda flecha en la punta de la
+          primera. La <strong>resultante</strong> va del inicio de la primera a la punta de la última.</p>
+        <p>Si las flechas van sobre una recta, basta con los signos: 5&nbsp;m al este y 2&nbsp;m al oeste dan 3&nbsp;m al este. Si no,
+          los tamaños no se suman: 3&nbsp;m al este y luego 4&nbsp;m al norte te dejan a 5&nbsp;m del inicio, no a 7.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaSuma" data-diapositiva="dos" data-figura="amplia" data-suma>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaSuma">
+        <span class="lesson-section__kicker">Observa</span> Cuatro maneras de juntar flechas
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un caso. Las flechas están a escala sobre la cuadrícula: puedes
+      contar los cuadros.</p>
+    <div class="pastillas" role="group" aria-label="Elige un caso">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="linea">En línea</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="cabeza">Cabeza-cola</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="paralelogramo">Paralelogramo</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="componentes">Componentes</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica" data-escena-fisica="suma" viewBox="0 0 400 250" role="img" aria-labelledby="sumaTitulo">
+        <title id="sumaTitulo">Vectores dibujados como flechas a escala. En línea: 5 metros al este y 2 al oeste dejan
+          al caminante a 3 metros del inicio. Cabeza-cola: 3 metros al este y 4 al norte lo dejan a 5; una copia de la
+          resultante gira como compás hasta el eje y mide 5 cuadros. Paralelogramo: dos cuerdas de 50 newtons jalan una
+          caja; sus copias cierran el paralelogramo y la diagonal mide 80. Componentes: una flecha de 13 metros es 12 de
+          lado y 5 hacia arriba; al pararse, la horizontal se achica y la vertical crece.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-suma-texto></div>
+    <div hidden>
+      <p data-texto-caso="linea"><strong class="expresion">5&nbsp;m + (−2&nbsp;m) = +3&nbsp;m.</strong> En una recta, sumar vectores es
+        sumar con signo. Caminaste 7&nbsp;m, pero quedaste a 3&nbsp;m del inicio: ése es tu desplazamiento.</p>
+      <p data-texto-caso="cabeza"><strong>3&nbsp;m al este y luego 4&nbsp;m al norte.</strong> Caminaste 7&nbsp;m, pero quedaste a 5&nbsp;m.
+        La resultante, girada con un compás hasta el eje, mide 5 cuadros: <span class="expresion">3² + 4² = 5²</span>.</p>
+      <p data-texto-caso="paralelogramo"><strong>Dos cuerdas de 50&nbsp;N jalan la caja.</strong> Las copias cierran el
+        paralelogramo y su diagonal es la resultante: 80&nbsp;N, no 100&nbsp;N. Lo que cada cuerda jala de lado se cancela.</p>
+      <p data-texto-caso="componentes"><strong>13&nbsp;m son 12&nbsp;m de lado y 5&nbsp;m hacia arriba:</strong> sus componentes,
+        cabeza-cola al revés. Si la flecha se para, la horizontal se achica y la vertical crece; a 45°, son iguales.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Una flecha se puede mover sin cambiar su largo ni su dirección: sigue
+      siendo el mismo vector. Por eso, en el paralelogramo, la copia de cada cuerda puede salir de la punta de la otra.</p>
+  </section>
+
+  <section aria-labelledby="reglasSuma" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasSuma">
+        <span class="lesson-section__kicker">Reglas</span> Cómo se suman dos vectores
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="La resultante de dos vectores según hacia dónde apuntan" tabindex="0">
+      <table class="reference-table reference-table--apilada vp-tabla">
+        <caption class="visually-hidden">La resultante de dos vectores según hacia dónde apuntan, con un ejemplo de 3&nbsp;N y 4&nbsp;N</caption>
+        <thead>
+          <tr><th scope="col">Si apuntan…</th><th scope="col">La resultante</th><th scope="col">Con 3&nbsp;N y 4&nbsp;N</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Hacia el mismo lado</th><td>Se suman los tamaños: es la más grande posible.</td><td class="vp__formula">3 + 4 = 7&nbsp;N</td></tr>
+          <tr><th scope="row">En sentidos contrarios</th><td>Se restan, y gana el sentido del más grande.</td><td class="vp__formula">4 − 3 = 1&nbsp;N</td></tr>
+          <tr><th scope="row">Perpendiculares</th><td>Pitágoras: forman un triángulo rectángulo y la resultante es la hipotenusa.</td><td class="vp__formula">√(9 + 16) = 5&nbsp;N</td></tr>
+          <tr><th scope="row">Con otro ángulo</th><td>Queda entre la resta y la suma; se dibuja con el paralelogramo.</td><td class="vp__formula">entre 1 y 7&nbsp;N</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> sumar los tamaños de dos vectores perpendiculares,
+      <span class="expresion">3 + 4 = 7</span>. Eso sólo vale si apuntan hacia el mismo lado. Perpendiculares dan 5: la
+      hipotenusa siempre es más corta que los dos catetos juntos.</p>
+  </section>
+
+  <section aria-labelledby="ternas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ternas">
+        <span class="lesson-section__kicker">Sin calculadora</span> Las ternas de Pitágoras
+      </h2>
+    </header>
+    <p class="section-intro">En el examen no hay calculadora: los números se escogen para que la raíz salga exacta.
+      Conviene reconocer estas ternas y sus múltiplos: 30 y 40 dan 50, porque es la terna 3-4-5 por 10.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Ternas de Pitágoras" tabindex="0">
+      <table class="reference-table reference-table--apilada vp-tabla vp-ternas">
+        <caption class="visually-hidden">Tres ternas de Pitágoras: los dos catetos, la hipotenusa y la comprobación</caption>
+        <thead>
+          <tr><th scope="col">Catetos</th><th scope="col">Hipotenusa</th><th scope="col">Comprobación</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">3 y 4</th><td class="vp__factor">5</td><td class="vp__formula">9 + 16 = 25 = 5²</td></tr>
+          <tr><th scope="row">5 y 12</th><td class="vp__factor">13</td><td class="vp__formula">25 + 144 = 169 = 13²</td></tr>
+          <tr><th scope="row">8 y 15</th><td class="vp__factor">17</td><td class="vp__formula">64 + 225 = 289 = 17²</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>En matemáticas</strong> esto es una ecuación de segundo grado. Si una flecha de
+      13&nbsp;m tiene una componente de 5&nbsp;m, la otra cumple <span class="expresion">x² + 25 = 169</span>, o sea
+      <span class="expresion">x² = 144</span>: x = 12 o x = −12. La solución negativa es la misma componente, apuntando
+      al revés. Lo viste en <a href="../matematicas/cuadraticas-sistemas.html">Ecuaciones de segundo grado y sistemas</a>.</p>
+  </section>
+
+  <section aria-labelledby="componentesReglas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="componentesReglas">
+        <span class="lesson-section__kicker">Componentes</span> Qué componente es mayor
+      </h2>
+    </header>
+    <p class="section-intro">Toda flecha es la suma de una horizontal y una vertical puestas cabeza-cola: son sus
+      componentes. Para compararlas no hacen falta senos ni cosenos.</p>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Menos de 45°</span><p>La flecha está más acostada que parada: la componente
+        horizontal es la mayor.</p></li>
+      <li><span class="worked-steps__label">Más de 45°</span><p>Está más parada que acostada: la mayor es la vertical.</p></li>
+      <li><span class="worked-steps__label">A 45°</span><p>Avanza lo mismo de lado que hacia arriba: son iguales.</p></li>
+      <li><span class="worked-steps__label">Nunca más</span><p>Una componente nunca mide más que la flecha: es un cateto
+        y la flecha es la hipotenusa. Una flecha horizontal tiene componente vertical cero.</p></li>
+    </ul>
+    <p class="editorial-note"><strong>En matemáticas</strong> un sistema de 2 × 2 tiene dos incógnitas, x y y. Un vector
+      en el plano también trae dos números, sus componentes, y se suman por separado: lo horizontal con lo horizontal y
+      lo vertical con lo vertical. En el paralelogramo, hacia adelante <span class="expresion">40 + 40 = 80</span> y de
+      lado <span class="expresion">30 − 30 = 0</span>.</p>
+  </section>
+
+  <section aria-labelledby="ideaProporcion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaProporcion">
+        <span class="lesson-section__kicker">Idea central</span> ¿Qué pasa si duplico?
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Lo que importa es <em>el factor</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Muchas preguntas del examen no piden un número: preguntan qué le pasa a una cantidad si otra se duplica o se
+          triplica. Se contesta sin calculadora, viendo dónde está esa variable en la fórmula.</p>
+        <p>Si está <strong>multiplicando</strong>, cambia igual: en <span class="expresion">d = v·t</span>, el doble de
+          tiempo es el doble de distancia. Si está <strong>dividiendo</strong>, cambia al revés: en
+          <span class="expresion">t = d / v</span>, el doble de velocidad es la mitad del tiempo.</p>
+        <p>Si además está <strong>al cuadrado</strong>, el cambio también se eleva al cuadrado: el doble se vuelve 4
+          veces y el triple, 9. Por eso, si la distancia entre dos cargas se duplica, la fuerza cae a la cuarta parte.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaLuz" data-diapositiva="dos" data-figura="amplia" data-luz>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaLuz">
+        <span class="lesson-section__kicker">Observa</span> La luz se reparte
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Los puntos son la luz que sale del foco hacia un cuadro. Fíjate cuántos
+      caen en cada cuadro a la distancia d, al doble y al triple.</p>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica" data-escena-fisica="luz" viewBox="0 0 400 250" role="img" aria-labelledby="luzTitulo">
+        <title id="luzTitulo">Un foco y, a las distancias d, 2d y 3d, tres marcos cuadrados en perspectiva: el de 2d mide
+          el doble de lado y el de 3d el triple, divididos en 4 y en 9 cuadros iguales. Treinta y seis puntos de luz
+          salen del foco en línea recta: a la distancia d caen todos en 1 cuadro; a 2d quedan 9 en cada cuadro y a 3d,
+          4 en cada cuadro. Los marcos más lejanos se ven más tenues.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite">
+      <p><strong>Al doble de distancia, la cuarta parte.</strong> La luz que a la distancia d cabe en 1 cuadro, a 2d se
+        reparte en 4 y a 3d en 9: en cada cuadro caen <span class="expresion">36 ÷ 4 = 9</span> puntos y luego
+        <span class="expresion">36 ÷ 9 = 4</span>.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>El lado del cuadro crece igual que la distancia y su área, con el
+      cuadrado: por eso la luz en cada cuadro baja con el cuadrado de la distancia. La gravedad y la fuerza entre dos
+      cargas bajan igual: al doble de distancia, la cuarta parte.</p>
+  </section>
+
+  <section aria-labelledby="comparaProporcion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaProporcion">
+        <span class="lesson-section__kicker">Compara</span> Cuatro maneras de cambiar
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Qué le pasa a y cuando x se duplica o se triplica" tabindex="0">
+      <table class="reference-table reference-table--apilada vp-tabla">
+        <caption class="visually-hidden">Las cuatro proporciones: su fórmula, qué le pasa a y si x se duplica o se triplica, y un ejemplo de física</caption>
+        <thead>
+          <tr><th scope="col">Proporción</th><th scope="col">Fórmula</th><th scope="col">Si x × 2</th><th scope="col">Si x × 3</th><th scope="col">En física</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Directa</th><td class="vp__formula">y = k·x</td><td class="vp__factor">y × 2</td><td class="vp__factor">y × 3</td><td class="vp__formula">d = v·t</td></tr>
+          <tr><th scope="row">Inversa</th><td class="vp__formula">y = k / x</td><td class="vp__factor">y ÷ 2</td><td class="vp__factor">y ÷ 3</td><td class="vp__formula">t = d / v</td></tr>
+          <tr><th scope="row">Al cuadrado</th><td class="vp__formula">y = k·x²</td><td class="vp__factor">y × 4</td><td class="vp__factor">y × 9</td><td class="vp__formula">E = ½·m·v²</td></tr>
+          <tr><th scope="row">Inversa al cuadrado</th><td class="vp__formula">y = k / x²</td><td class="vp__factor vp__factor--ojo">y ÷ 4</td><td class="vp__factor vp__factor--ojo">y ÷ 9</td><td class="vp__formula">F = G·m<sub>1</sub>·m<sub>2</sub> / r²</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> confundir la mitad con la cuarta parte. Si r se
+      duplica en <span class="expresion">F = k·q<sub>1</sub>·q<sub>2</sub> / r²</span>, la fuerza no queda a la mitad:
+      <span class="expresion">2² = 4</span>, cae a la cuarta parte. Y como r está dividiendo, al alejar las cargas la
+      fuerza baja; aplicar la regla al revés la haría subir.</p>
+  </section>
+
+  <section aria-labelledby="ejemploVectores" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploVectores">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un dron vuela <span class="expresion">8&nbsp;km</span> al norte y
+          luego <span class="expresion">6&nbsp;km</span> al este. ¿A qué distancia quedó del punto de partida?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Dibuja</span><p>Cabeza-cola: el norte y el este forman un ángulo recto,
+            y la resultante es la hipotenusa.</p></li>
+          <li><span class="worked-steps__label">Pitágoras</span><p><span class="expresion">8² + 6² = 64 + 36 = 100</span>.</p></li>
+          <li><span class="worked-steps__label">Raíz</span><p><span class="expresion">√100 = <strong>10&nbsp;km</strong></span>.
+            Voló 14&nbsp;km, pero quedó a 10&nbsp;km.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Dos cargas se atraen con <span class="expresion">36&nbsp;N</span>.
+          Si la distancia entre ellas se triplica, ¿con qué fuerza se atraen?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Fórmula</span><p>En <span class="expresion">F = k·q<sub>1</sub>·q<sub>2</sub> / r²</span>,
+            r está dividiendo y al cuadrado.</p></li>
+          <li><span class="worked-steps__label">Factor</span><p><span class="expresion">r × 3</span>, así que
+            <span class="expresion">r² × 9</span>: la fuerza queda entre 9.</p></li>
+          <li><span class="worked-steps__label">Resultado</span><p><span class="expresion">36&nbsp;N ÷ 9 = <strong>4&nbsp;N</strong></span>.
+            No 12&nbsp;N: eso sería olvidar el cuadrado.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["vec-recta", "vec-pitagoras", "vec-componentes", "prop-factor"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-vectores-proporcionalidad.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m2 0h2m2 0h3m1 0h3m3 0h1m1 0h2m1 0h1m1 0h7M4 5.5h1m5 0h1m3 0h5m2 0h1m4 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h2m3 0h5m2 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h2m5 0h1m1 0h1m6 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m1 0h3m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m1 0h2m1 0h4m3 0h1m3 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h4m4 0h1m1 0h3m1 0h1m1 0h1M4 12.5h1m1 0h5m3 0h4m1 0h3m1 0h1m2 0h4m4 0h5M5 13.5h2m6 0h1m4 0h2m1 0h1m1 0h2m2 0h1m4 0h2m1 0h1m2 0h2M4 14.5h1m3 0h1m1 0h3m1 0h1m2 0h5m2 0h1m1 0h1m1 0h4m1 0h3m2 0h3M4 15.5h1m4 0h1m1 0h1m1 0h2m4 0h1m5 0h4m1 0h1m2 0h1m1 0h2m3 0h1M5 16.5h4m1 0h1m1 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h7m1 0h1m1 0h3M6 17.5h1m4 0h2m7 0h1m2 0h2m1 0h2m1 0h1m2 0h1m2 0h1M8 18.5h1m1 0h1m2 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h5m2 0h1M5 19.5h3m5 0h5m2 0h1m1 0h1m2 0h3m2 0h1m1 0h1m2 0h2M7 20.5h2m1 0h2m6 0h1m2 0h1m4 0h2m1 0h6m1 0h1m1 0h3M4 21.5h3m1 0h2m1 0h1m1 0h1m1 0h2m1 0h3m1 0h4m1 0h1m1 0h2m1 0h1m6 0h1M5 22.5h3m1 0h3m6 0h1m6 0h2m4 0h2m2 0h1m1 0h1m1 0h2M4 23.5h2m2 0h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m3 0h2m1 0h1m2 0h1m1 0h3m5 0h1M6 24.5h3m1 0h3m2 0h2m4 0h1m4 0h5m1 0h3m1 0h3M4 25.5h1m1 0h4m2 0h3m1 0h2m5 0h2m2 0h2m1 0h1m1 0h1m4 0h1M4 26.5h8m2 0h3m1 0h2m4 0h1m1 0h1m1 0h1m2 0h1m1 0h5m1 0h2M4 27.5h3m2 0h1m3 0h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h2m2 0h6m3 0h1M7 28.5h1m1 0h2m1 0h1m1 0h2m1 0h5m1 0h1m2 0h1m1 0h4m1 0h2m1 0h1m1 0h3M4 29.5h3m4 0h1m5 0h3m2 0h4m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1M4 30.5h1m5 0h2m1 0h1m1 0h2m2 0h2m3 0h3m1 0h1m1 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m1 0h3m2 0h2m1 0h1m4 0h1m2 0h1m2 0h2m1 0h1m2 0h2m1 0h2m4 0h1M4 32.5h1m2 0h2m1 0h1m1 0h2m4 0h4m1 0h1m2 0h1m1 0h9m1 0h1m1 0h1M12 33.5h1m1 0h2m1 0h1m2 0h1m2 0h5m3 0h2m3 0h2M4 34.5h7m2 0h1m2 0h1m2 0h3m2 0h2m3 0h1m2 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m4 0h1m1 0h2m1 0h2m1 0h2m5 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m2 0h1m3 0h1m2 0h8m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h2m1 0h4m1 0h1m1 0h1m3 0h2m1 0h2m1 0h2M4 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m4 0h1m14 0h4M4 39.5h1m5 0h1m3 0h2m4 0h1m1 0h1m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h2m2 0h2m2 0h2m1 0h1m2 0h2m1 0h2m2 0h1m2 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaVectores">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaVectores">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones falsas
+      son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:vectores-proporcionalidad" data-modos='[
+      {"id":"sumar","nombre":"Sumar vectores","generadores":["vec-recta","vec-pitagoras"]},
+      {"id":"componentes","nombre":"Componentes","generadores":["vec-componentes"]},
+      {"id":"proporciones","nombre":"Proporciones","generadores":["prop-factor"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["vec-recta","vec-pitagoras","vec-componentes","prop-factor"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-vectores-proporcionalidad.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/cuadraticas-sistemas.html">← En matemáticas: ecuaciones de segundo grado y sistemas</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>

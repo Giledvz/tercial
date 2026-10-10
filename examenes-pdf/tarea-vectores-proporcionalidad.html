@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 8 - Vectores y razonamiento proporcional · Fundamentos · Física · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* Recorrido y desplazamiento: dos respuestas por problema. En una columna de 1.4 in
+       «Desplazamiento» no deja lugar a la raya, así que cada rótulo va arriba y la raya,
+       con su unidad, ocupa el ancho completo. */
+    .task-answer--doble {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1pt 5pt;
+    }
+    .task-answer--doble > span { flex: 1 0 70%; width: auto; }
+    .task-problems--camino .task-work { flex-basis: 0.6in; }
+    .task-problems--cuentas .task-work { flex-basis: 0.5in; }
+    /* Siete ejercicios en dos hojas: un poco menos de aire entre uno y otro. */
+    .task-exercises .exam-pdf__exercise { margin-bottom: 0.2in; }
+    /* La cuadrícula para dibujar el paralelogramo, a la izquierda, y lo que se contesta, a la derecha. */
+    .task-dibujo {
+      display: grid;
+      grid-template-columns: 2.1in minmax(0, 1fr);
+      gap: 0.3in;
+      align-items: center;
+      margin-top: 6pt;
+      page-break-inside: avoid;
+    }
+    .task-dibujo svg { display: block; width: 100%; height: auto; }
+    .dib-cuadro { fill: none; stroke: var(--crema-500); stroke-width: .8; }
+    .dib-flecha { fill: none; stroke: var(--ink-900); stroke-width: 2.2; stroke-linecap: butt; }
+    .dib-punta { fill: var(--ink-900); stroke: none; }
+    .dib-origen { fill: var(--ink-900); stroke: none; }
+    .dib-letra { fill: var(--ink-900); font-family: var(--font-family-display); font-size: 15px; font-style: italic; }
+    .dib-nota { fill: var(--ink-500); font-family: var(--font-family-mono); font-size: 9.5px; }
+    .task-dibujo__preguntas { margin: 0; color: var(--ink-700); font-size: 10pt; line-height: 2.1; }
+    .task-dibujo__preguntas .task-blank { min-width: 0.55in; }
+    .task-dibujo__preguntas .task-blank--corta { min-width: 1.05in; }
+    /* Las filas de la tabla de proporciones se nombran con palabras y su fórmula. */
+    .task-table--proporciones td,
+    .task-table--proporciones thead th { height: 0.28in; }
+    .task-table--proporciones td:first-child { font-size: 10pt; line-height: 1.25; }
+    .task-table--proporciones td:first-child b { color: var(--ink-900); font-family: var(--font-family-display); font-size: 11.5pt; font-weight: var(--font-weight-regular); }
+    .task-table--proporciones thead th:nth-child(n + 2) { text-align: center; text-transform: none; font-family: var(--font-family-display); font-size: 11pt; letter-spacing: 0; }
+    .task-table--proporciones col.task-table__que { width: 52%; }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 8 · Fundamentos · Física</p>
+    <h1 class="exam-pdf__title">Vectores y razonamiento <em>proporcional</em></h1>
+    <p class="exam-pdf__meta">Sumar con signo, cabeza-cola y Pitágoras; componentes; qué pasa si duplico</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve sin calculadora. Sobre una recta, la derecha (o el este) es positiva. Si dos vectores son
+      perpendiculares, usa Pitágoras; para «qué pasa si…», fíjate dónde está la variable en la fórmula.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">8 pts</span> Cada número es un vector sobre una recta: su signo dice hacia dónde.
+        Escribe la resultante con su signo.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--dos">
+        <li>12&nbsp;N + (−7&nbsp;N) =<span class="task-blank"></span></li>
+        <li>−6&nbsp;m + (−9&nbsp;m) =<span class="task-blank"></span></li>
+        <li>25&nbsp;N + (−25&nbsp;N) =<span class="task-blank"></span></li>
+        <li>−40&nbsp;N + 15&nbsp;N =<span class="task-blank"></span></li>
+        <li>8&nbsp;m + (−3&nbsp;m) + 6&nbsp;m =<span class="task-blank"></span></li>
+        <li>−10&nbsp;N + 4&nbsp;N + (−2&nbsp;N) =<span class="task-blank"></span></li>
+        <li>18&nbsp;m/s + (−30&nbsp;m/s) =<span class="task-blank"></span></li>
+        <li>−5&nbsp;N + (−5&nbsp;N) + 12&nbsp;N =<span class="task-blank"></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> ¿Cuánto recorrió y cuál es su desplazamiento?</p>
+      <ol class="exam-pdf__sublist task-problems task-problems--tres task-problems--camino">
+        <li><span>Un repartidor camina 40&nbsp;m al este, regresa 25&nbsp;m al oeste y avanza otros 10&nbsp;m al este.</span>
+          <div class="task-work"></div>
+          <p class="task-answer task-answer--doble">Recorrido <span></span> <b>m</b> Desplazamiento <span></span> <b>m</b></p></li>
+        <li><span>Una corredora avanza 9&nbsp;km al norte y luego 12&nbsp;km al oeste.</span>
+          <div class="task-work"></div>
+          <p class="task-answer task-answer--doble">Recorrido <span></span> <b>km</b> Desplazamiento <span></span> <b>km</b></p></li>
+        <li><span>Un dron sube 15&nbsp;m en vertical y luego avanza 20&nbsp;m en horizontal.</span>
+          <div class="task-work"></div>
+          <p class="task-answer task-answer--doble">Recorrido <span></span> <b>m</b> Desplazamiento <span></span> <b>m</b></p></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Los vectores A y B son perpendiculares. Calcula su resultante R o
+        el que falta.</p>
+      <ol class="exam-pdf__sublist task-cuentas task-cuentas--dos">
+        <li>A = 12&nbsp;N, B = 16&nbsp;N → R =<span class="task-blank"></span></li>
+        <li>A = 18&nbsp;m, B = 24&nbsp;m → R =<span class="task-blank"></span></li>
+        <li>A = 10&nbsp;km, B = 24&nbsp;km → R =<span class="task-blank"></span></li>
+        <li>A = 20&nbsp;N, B = 21&nbsp;N → R =<span class="task-blank"></span></li>
+        <li>R = 41&nbsp;N, A = 9&nbsp;N → B =<span class="task-blank"></span></li>
+        <li>R = 35&nbsp;m, A = 21&nbsp;m → B =<span class="task-blank"></span></li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Vectores y razonamiento proporcional</strong>
+      <span>Tarea 8 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 3">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">5 pts</span> Las fuerzas A y B salen del mismo punto. Completa el paralelogramo,
+          dibuja la resultante R y contesta.</p>
+        <div class="task-dibujo">
+          <svg viewBox="0 0 262 178" role="img" aria-label="Cuadrícula de 8 por 5 cuadros. Desde el punto O salen dos flechas: A avanza 5 cuadros a la derecha y 1 hacia arriba; B avanza 1 cuadro a la derecha y 3 hacia arriba.">
+            <path class="dib-cuadro" d="M12 10V160M42 10V160M72 10V160M102 10V160M132 10V160M162 10V160M192 10V160M222 10V160M252 10V160M12 10H252M12 40H252M12 70H252M12 100H252M12 130H252M12 160H252"/>
+            <g class="dib-respuesta"></g>
+            <path class="dib-flecha" d="M12 160L152.2 132"/>
+            <path class="dib-punta" d="M162 130L153.1 136.4L151.3 127.5Z"/>
+            <path class="dib-flecha" d="M12 160L38.8 79.5"/>
+            <path class="dib-punta" d="M42 70L43.1 80.9L34.6 78.1Z"/>
+            <circle class="dib-origen" cx="12" cy="160" r="3"/>
+            <text class="dib-letra" x="168" y="132">A</text>
+            <text class="dib-letra" x="32" y="66">B</text>
+            <text class="dib-letra" x="2" y="176">O</text>
+            <text class="dib-nota" x="252" y="174" text-anchor="end">cada cuadro: 10 N</text>
+          </svg>
+          <p class="task-dibujo__preguntas">R avanza <span class="task-blank task-blank--mini"></span> cuadros a la
+            derecha y <span class="task-blank task-blank--mini"></span> hacia arriba.<br>Su componente mayor es la
+            <span class="task-blank task-blank--corta"></span>.</p>
+        </div>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">8 pts</span> Completa: ¿qué le pasa a y? Escribe el factor, como × 2 o ÷ 2.</p>
+        <table class="task-table task-table--proporciones">
+          <colgroup><col class="task-table__que"><col><col></colgroup>
+          <thead><tr><th scope="col">Si y es…</th><th scope="col">x × 4</th><th scope="col">x ÷ 3</th></tr></thead>
+          <tbody>
+            <tr><td>directamente proporcional a x: <b>y = k·x</b></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+            <tr><td>inversamente proporcional a x: <b>y = k / x</b></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+            <tr><td>proporcional a x²: <b>y = k·x²</b></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+            <tr><td>inversamente proporcional a x²: <b>y = k / x²</b></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+          </tbody>
+        </table>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Resuelve sin calculadora. Escribe el resultado con su unidad.</p>
+        <ol class="exam-pdf__sublist task-problems task-problems--tres task-problems--cuentas">
+          <li><span>Un foco da 180&nbsp;lx sobre una mesa a 1&nbsp;m. ¿Cuánta luz le llega a 3&nbsp;m?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>lx</b></p></li>
+          <li><span>Un auto a 30&nbsp;km/h tiene 50&nbsp;kJ de energía cinética. ¿Cuánta tiene a 90&nbsp;km/h?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>kJ</b></p></li>
+          <li><span>Con la misma fuerza, un carrito de 15&nbsp;kg acelera 1.2&nbsp;m/s². ¿Y uno de 45&nbsp;kg?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>m/s²</b></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">4 pts</span> Cada afirmación está mal: di qué se hizo mal y escribe lo correcto.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span>Dos fuerzas perpendiculares de 16&nbsp;N y 30&nbsp;N dan una resultante de 46&nbsp;N.</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span>Si un auto va a la mitad de velocidad, su energía cinética también queda en la mitad.</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">43</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>
