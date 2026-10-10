@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Notación científica · Física · Tercial</title>
+<meta name="description" content="Números enormes y diminutos con una potencia de 10: el punto que salta, los prefijos, multiplicar y dividir sin calculadora y comparar órdenes de magnitud. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-notacion-cientifica">
+<meta name="tercial:resource-title" content="Notación científica">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="notacion-cientifica">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./notacion-cientifica.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-tele"></script>
+<script defer src="/tercial/assets/js/ejercicios-notacion-cientifica.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-notacion-cientifica.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 3 · Física</p>
+    <h1 class="hero__title">Notación <em>científica</em></h1>
+    <p class="hero__lede">La luz recorre 300,000,000&nbsp;m cada segundo y un protón tiene una carga de
+      0.00000000000000000016&nbsp;C. Con potencias de 10 se escriben <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span>
+      y <span class="expresion">1.6 × 10<sup>−19</sup>&nbsp;C</span>, y se multiplican y se comparan de cabeza, sin
+      calculadora, como en el examen.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 3 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/potencias-radicales.html">En matemáticas: potencias y radicales</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaNotacion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaNotacion">
+        <span class="lesson-section__kicker">Idea central</span> Un coeficiente y una potencia de 10
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">El exponente <em>cuenta lugares</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Un número en <strong>notación científica</strong> tiene dos partes: un <strong>coeficiente</strong>, de 1 a
+          menos de 10, y una <strong>potencia de 10</strong>. El radio de la Tierra mide unos
+          <span class="expresion">6.4 × 10<sup>6</sup>&nbsp;m</span>: el coeficiente es 6.4 y la potencia,
+          <span class="expresion">10<sup>6</sup> = 1,000,000</span>.</p>
+        <p>Multiplicar por 10 corre el punto un lugar a la derecha. Por eso el exponente dice cuántos lugares salta
+          el punto: si el número es grande, el exponente es positivo, <span class="expresion">3,200,000 = 3.2 × 10<sup>6</sup></span>;
+          si es menor que 1, es negativo, <span class="expresion">0.0045 = 4.5 × 10<sup>−3</sup></span>.</p>
+        <p>Cada vez que el exponente sube 1, la cantidad se hace 10 veces más grande. Por eso
+          <span class="expresion">10<sup>7</sup></span> no es «un poco más» que <span class="expresion">10<sup>6</sup></span>:
+          es diez veces más, un <strong>orden de magnitud</strong> arriba.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaPunto" data-diapositiva="dos" data-figura="amplia" data-salto>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaPunto">
+        <span class="lesson-section__kicker">Observa</span> El punto que salta
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un número. El punto brinca de lugar en lugar hasta quedar
+      después de la primera cifra que no es cero; cada brinco se cuenta, y la cuenta es el exponente.</p>
+    <div class="pastillas" role="group" aria-label="Elige un número">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="luz">300,000,000&nbsp;m</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="tierra">12,700,000&nbsp;m</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="globulo">0.0000075&nbsp;m</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-nc" data-escena-nc="salto" viewBox="0 0 400 170" role="img" aria-labelledby="saltoTitulo">
+        <title id="saltoTitulo">Las cifras del número, cada una en su lugar, con una raya debajo. El punto decimal
+          brinca por arriba de las cifras, un lugar a la vez, y cada brinco lleva su número. Al terminar, las cifras
+          que ya no cuentan se apagan y abajo aparece el número en notación científica: el exponente es el número de
+          brincos, positivo si el punto fue a la izquierda y negativo si fue a la derecha.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-salto-texto></div>
+    <div hidden>
+      <p data-texto-caso="luz"><strong class="expresion">300,000,000&nbsp;m = 3 × 10<sup>8</sup>&nbsp;m.</strong> Es lo
+        que recorre la luz en un segundo. En un número entero el punto está al final, aunque no se escriba: salta
+        8 lugares a la izquierda, hasta después del 3. El número es grande, así que el exponente es positivo.</p>
+      <p data-texto-caso="tierra"><strong class="expresion">12,700,000&nbsp;m = 1.27 × 10<sup>7</sup>&nbsp;m.</strong> Es
+        el diámetro de la Tierra. El punto salta 7 lugares, hasta después del 1: el 2 y el 7 se quedan en el
+        coeficiente, y los ceros del final ya no hacen falta.</p>
+      <p data-texto-caso="globulo"><strong class="expresion">0.0000075&nbsp;m = 7.5 × 10<sup>−6</sup>&nbsp;m.</strong> Es
+        el ancho de un glóbulo rojo. Ahora el punto salta a la derecha, 6 lugares, hasta después del 7, la primera
+        cifra que no es cero. El número es menor que 1, así que el exponente es negativo.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Para regresar a número decimal se hace al revés: con
+      <span class="expresion">10<sup>8</sup></span> el punto se corre 8 lugares a la derecha y con
+      <span class="expresion">10<sup>−6</sup></span>, 6 a la izquierda; los lugares vacíos se llenan con ceros.</p>
+  </section>
+
+  <section aria-labelledby="reglasEscribir" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasEscribir">
+        <span class="lesson-section__kicker">Reglas</span> Escribir y leer
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Para escribir un número en notación científica, el punto va después de
+      la primera cifra que no es cero y el exponente cuenta los lugares que saltó. Para leerlo, el punto regresa.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Números escritos en notación científica" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Números escritos en notación científica y cuántos lugares salta el punto</caption>
+        <thead>
+          <tr><th scope="col">Número</th><th scope="col">Notación científica</th><th scope="col">El punto</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="nc-numero">45,000</th><td class="nc-numero">4.5 × 10<sup>4</sup></td><td>Salta 4 lugares a la izquierda.</td></tr>
+          <tr><th scope="row" class="nc-numero">3,200,000</th><td class="nc-numero">3.2 × 10<sup>6</sup></td><td>Salta 6 lugares a la izquierda.</td></tr>
+          <tr><th scope="row" class="nc-numero">8</th><td class="nc-numero">8 × 10<sup>0</sup></td><td>No se mueve: <span class="expresion">10<sup>0</sup> = 1</span>.</td></tr>
+          <tr><th scope="row" class="nc-numero">0.06</th><td class="nc-numero">6 × 10<sup>−2</sup></td><td>Salta 2 lugares a la derecha.</td></tr>
+          <tr><th scope="row" class="nc-numero">0.00072</th><td class="nc-numero">7.2 × 10<sup>−4</sup></td><td>Salta 4 lugares a la derecha.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> contar los ceros en vez de los lugares. 45,000 tiene
+      tres ceros, pero el punto salta cuatro lugares: también pasa sobre el 5. Y el signo va con el tamaño:
+      <span class="expresion">4.5 × 10<sup>4</sup> = 45,000</span>; el número menor que 1 es
+      <span class="expresion">4.5 × 10<sup>−4</sup> = 0.00045</span>.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaEscala" data-diapositiva="dos" data-figura="amplia" data-escala>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaEscala">
+        <span class="lesson-section__kicker">Observa</span> Cada paso es ×10
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>En esta escala, entre dos marcas vecinas hay un paso de ×10, y cada
+      objeto está en el lugar de su tamaño. Elige uno: el punto sale de 1&nbsp;m y cuenta los pasos hasta llegar.</p>
+    <div class="pastillas" role="group" aria-label="Elige un objeto">
+      <button class="pastilla" type="button" aria-pressed="true" data-objeto="tierra">La Tierra</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-objeto="celula">Una célula</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-objeto="virus">Un virus</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-objeto="atomo">Un átomo</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-nc" data-escena-nc="escala" viewBox="0 0 400 175" role="img" aria-labelledby="escalaTitulo">
+        <title id="escalaTitulo">Una escala de tamaños en metros, de 10 a la menos 10 hasta 10 a la 8, con una marca
+          por cada potencia de 10. Sobre ella, en el lugar de su tamaño: un átomo, un virus, una célula, una persona
+          y la Tierra. Un punto sale de 1 metro y avanza marca por marca hasta el objeto elegido; cada paso dice ×10
+          hacia la derecha o ÷10 hacia la izquierda, y arriba se lee la potencia a la que va llegando.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-escala-texto></div>
+    <div hidden>
+      <p data-texto-objeto="tierra"><strong class="expresion">La Tierra: 1.27 × 10<sup>7</sup>&nbsp;m.</strong> Desde
+        1&nbsp;m, siete pasos de ×10 llegan a 10<sup>7</sup>&nbsp;m, diez millones de metros; el 1.27 dice que la Tierra mide
+        un poco más. Una persona, con 1.7&nbsp;m, casi no se separa de 1&nbsp;m.</p>
+      <p data-texto-objeto="celula"><strong class="expresion">Una célula: unos 10<sup>−5</sup>&nbsp;m.</strong> Cinco
+        pasos de ÷10: 0.00001&nbsp;m, una centésima de milímetro. Los pasos hacia lo pequeño se cuentan con exponente
+        negativo.</p>
+      <p data-texto-objeto="virus"><strong class="expresion">Un virus: unos 10<sup>−7</sup>&nbsp;m.</strong> Siete pasos
+        de ÷10. De la célula al virus hay dos pasos más: la célula es <span class="expresion">10<sup>2</sup> = 100</span>
+        veces más grande.</p>
+      <p data-texto-objeto="atomo"><strong class="expresion">Un átomo: unos 10<sup>−10</sup>&nbsp;m.</strong> Diez pasos
+        de ÷10. Del átomo a la Tierra hay unos 17 pasos: la Tierra es unas 10<sup>17</sup> veces más grande, un número que
+        sin potencias de 10 no cabe en un renglón.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="comparaOrdenes" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaOrdenes">
+        <span class="lesson-section__kicker">Compara</span> ¿Cuál es más grande?
+      </h2>
+    </header>
+    <p class="section-intro">Primero se miran los exponentes; los coeficientes sólo deciden si los exponentes empatan.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Exponentes</span><p><span class="expresion">2 × 10<sup>7</sup> &gt; 9 × 10<sup>6</sup></span>,
+        aunque 9 &gt; 2: un paso de ×10 pesa más que cualquier coeficiente.</p></li>
+      <li><span class="worked-steps__label">Negativos</span><p><span class="expresion">10<sup>−3</sup> &gt; 10<sup>−6</sup></span>:
+        entre negativos, el mayor es el más cercano al cero, como en la recta.</p></li>
+      <li><span class="worked-steps__label">Empate</span><p>Con el mismo exponente decide el coeficiente:
+        <span class="expresion">7 × 10<sup>−4</sup> &gt; 3 × 10<sup>−4</sup></span>.</p></li>
+      <li><span class="worked-steps__label">Cuántas veces</span><p>Se divide, y los exponentes se restan:
+        <span class="expresion">10<sup>9</sup> ÷ 10<sup>3</sup> = 10<sup>6</sup></span>, un millón de veces.</p></li>
+    </ol>
+    <p class="editorial-note"><strong>Primero ajusta, luego compara:</strong> <span class="expresion">25 × 10<sup>3</sup></span>
+      parece mayor que <span class="expresion">3 × 10<sup>4</sup></span> porque 25 &gt; 3, pero
+      <span class="expresion">25 × 10<sup>3</sup> = 2.5 × 10<sup>4</sup></span>, que es menor.</p>
+  </section>
+
+  <section aria-labelledby="reglasPrefijos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasPrefijos">
+        <span class="lesson-section__kicker">Prefijos</span> Una letra que vale una potencia
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Un prefijo es una potencia de 10 escrita con una letra, pegada a la
+      unidad: km es <span class="expresion">10<sup>3</sup>&nbsp;m</span>. Van de mil en mil, salvo centi.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Prefijos del SI" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Prefijos del SI: su símbolo, la potencia de 10 que valen y un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Prefijo</th><th scope="col">Símbolo</th><th scope="col">Vale</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="nc-prefijo">giga</th><td class="nc-numero">G</td><td class="nc-numero">10<sup>9</sup></td><td class="nc-numero">3&nbsp;GHz = 3 × 10<sup>9</sup>&nbsp;Hz</td></tr>
+          <tr><th scope="row" class="nc-prefijo">mega</th><td class="nc-numero">M</td><td class="nc-numero">10<sup>6</sup></td><td class="nc-numero">5&nbsp;MJ = 5 × 10<sup>6</sup>&nbsp;J</td></tr>
+          <tr><th scope="row" class="nc-prefijo">kilo</th><td class="nc-numero">k</td><td class="nc-numero">10<sup>3</sup></td><td class="nc-numero">2&nbsp;km = 2 × 10<sup>3</sup>&nbsp;m</td></tr>
+          <tr><th scope="row" class="nc-prefijo">centi</th><td class="nc-numero">c</td><td class="nc-numero">10<sup>−2</sup></td><td class="nc-numero">5&nbsp;cm = 5 × 10<sup>−2</sup>&nbsp;m</td></tr>
+          <tr><th scope="row" class="nc-prefijo">mili</th><td class="nc-numero">m</td><td class="nc-numero">10<sup>−3</sup></td><td class="nc-numero">3&nbsp;ms = 3 × 10<sup>−3</sup>&nbsp;s</td></tr>
+          <tr><th scope="row" class="nc-prefijo">micro</th><td class="nc-numero">µ</td><td class="nc-numero">10<sup>−6</sup></td><td class="nc-numero">6&nbsp;µm = 6 × 10<sup>−6</sup>&nbsp;m</td></tr>
+          <tr><th scope="row" class="nc-prefijo">nano</th><td class="nc-numero">n</td><td class="nc-numero">10<sup>−9</sup></td><td class="nc-numero">4&nbsp;ns = 4 × 10<sup>−9</sup>&nbsp;s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>Ojo con las mayúsculas:</strong> M es mega, un millón; m es mili, una milésima.</p>
+  </section>
+
+  <section aria-labelledby="reglasOperar" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasOperar">
+        <span class="lesson-section__kicker">Reglas</span> Multiplicar y dividir sin calculadora
+      </h2>
+    </header>
+    <p class="section-intro">Los coeficientes se operan por un lado y las potencias de 10 por otro; al final, el
+      coeficiente se ajusta para que quede entre 1 y 10. Así se hace <span class="expresion">(6 × 10<sup>5</sup>) × (4 × 10<sup>−2</sup>)</span>:</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Coeficientes</span><p><span class="expresion">6 × 4 = 24</span>.</p></li>
+      <li><span class="worked-steps__label">Potencias</span><p>Al multiplicar se suman los exponentes:
+        <span class="expresion">10<sup>5</sup> × 10<sup>−2</sup> = 10<sup>5 + (−2)</sup> = 10<sup>3</sup></span>. Al dividir, se restan.</p></li>
+      <li><span class="worked-steps__label">Ajusta</span><p><span class="expresion">24 × 10<sup>3</sup> = 2.4 × 10<sup>4</sup></span>:
+        el coeficiente se hizo 10 veces más chico y el exponente sube 1. Si queda menor que 1, baja:
+        <span class="expresion">0.5 × 10<sup>3</sup> = 5 × 10<sup>2</sup></span>.</p></li>
+    </ol>
+    <p class="editorial-note"><strong>El error más común:</strong> multiplicar los exponentes.
+      <span class="expresion">10<sup>5</sup> × 10<sup>−2</sup></span> no es <span class="expresion">10<sup>−10</sup></span>,
+      es <span class="expresion">10<sup>3</sup></span>. Y no dejar el resultado sin ajustar:
+      <span class="expresion">24 × 10<sup>3</sup></span> vale lo mismo, pero no está en notación científica.</p>
+    <p class="editorial-note" data-solo-lectura>En matemáticas son las leyes de los exponentes de
+      <a href="../matematicas/potencias-radicales.html">Potencias y radicales</a>:
+      <span class="expresion">a<sup>m</sup> × a<sup>n</sup> = a<sup>m + n</sup></span> y
+      <span class="expresion">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span>, ahora con base 10.</p>
+  </section>
+
+  <section aria-labelledby="ejemploNotacion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploNotacion">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">La luz del Sol tarda unos 500&nbsp;s en llegar y viaja a
+          <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span>. ¿A qué distancia está el Sol?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Distancia</span><p>Velocidad × tiempo:
+            <span class="expresion">(3 × 10<sup>8</sup>&nbsp;m/s)(500&nbsp;s)</span>, y <span class="expresion">500 = 5 × 10<sup>2</sup></span>.</p></li>
+          <li><span class="worked-steps__label">Opera</span><p><span class="expresion">3 × 5 = 15</span> y
+            <span class="expresion">10<sup>8</sup> × 10<sup>2</sup> = 10<sup>10</sup></span>.</p></li>
+          <li><span class="worked-steps__label">Ajusta</span><p><span class="expresion">15 × 10<sup>10</sup>&nbsp;m =
+            <strong>1.5 × 10<sup>11</sup>&nbsp;m</strong></span>, unos 150 millones de kilómetros.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un cabello mide <span class="expresion">8 × 10<sup>−5</sup>&nbsp;m</span>
+          de grueso y una bacteria, <span class="expresion">2 × 10<sup>−6</sup>&nbsp;m</span>. ¿Cuántas bacterias caben a lo
+          ancho del cabello?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Divide</span><p><span class="expresion">(8 × 10<sup>−5</sup>) ÷ (2 × 10<sup>−6</sup>)</span>:
+            <span class="expresion">8 ÷ 2 = 4</span>.</p></li>
+          <li><span class="worked-steps__label">Potencias</span><p>Se restan: <span class="expresion">−5 − (−6) = −5 + 6 = 1</span>;
+            restar un negativo es sumar.</p></li>
+          <li><span class="worked-steps__label">Resultado</span><p><span class="expresion">4 × 10<sup>1</sup> =
+            <strong>40</strong></span> bacterias, una junto a otra.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 25, "cuantas": 4, "nivel": 2, "generadores": ["nc-escribir", "nc-operar", "nc-prefijos", "nc-comparar"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-notacion-cientifica.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h1m2 0h2m1 0h2m5 0h1m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m2 0h2m1 0h1m1 0h4m2 0h1m1 0h1m1 0h5m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m10 0h3m4 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m6 0h3m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m3 0h3m2 0h3m3 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m2 0h1m1 0h1m1 0h2m3 0h1m3 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m1 0h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h1M4 12.5h1m1 0h5m2 0h2m3 0h3m2 0h1m2 0h4m4 0h5M4 13.5h1m1 0h2m1 0h1m1 0h1m2 0h2m2 0h2m1 0h2m1 0h1m2 0h1m4 0h1m2 0h1m2 0h2M4 14.5h1m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m2 0h3m1 0h1m2 0h1m2 0h7m2 0h3M4 15.5h1m2 0h2m4 0h1m3 0h3m3 0h4m1 0h1m1 0h2m1 0h1m1 0h2m3 0h1M4 16.5h1m1 0h1m2 0h4m2 0h2m1 0h4m1 0h1m2 0h5m1 0h3m1 0h1m1 0h3M7 17.5h1m5 0h2m5 0h1m2 0h5m1 0h1m2 0h1m2 0h1M4 18.5h1m2 0h1m2 0h2m1 0h3m1 0h4m1 0h1m1 0h1m3 0h1m1 0h2m1 0h1m1 0h3m2 0h1M4 19.5h2m1 0h2m2 0h2m2 0h1m4 0h1m4 0h3m2 0h1m1 0h1m2 0h2M5 20.5h1m1 0h2m1 0h2m1 0h1m1 0h1m6 0h1m3 0h6m1 0h2m1 0h1m1 0h3M5 21.5h3m1 0h1m1 0h4m2 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h1m6 0h1M4 22.5h1m1 0h6m2 0h2m9 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h2M5 23.5h1m1 0h1m3 0h2m2 0h1m4 0h1m2 0h3m4 0h1m2 0h2m5 0h1M5 24.5h1m4 0h2m1 0h1m1 0h1m1 0h1m3 0h1m4 0h1m1 0h7m1 0h3M4 25.5h2m2 0h1m2 0h3m4 0h1m2 0h1m1 0h3m1 0h2m1 0h1m1 0h1m4 0h1M6 26.5h2m1 0h2m3 0h1m3 0h2m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m1 0h3m1 0h2M4 27.5h1m2 0h1m1 0h1m1 0h1m2 0h3m1 0h5m2 0h4m1 0h4m1 0h2m3 0h1M4 28.5h2m1 0h5m6 0h3m2 0h1m5 0h3m1 0h2m1 0h1m1 0h3M4 29.5h1m7 0h2m1 0h2m1 0h2m2 0h4m1 0h1m4 0h2m1 0h1m1 0h1M4 30.5h1m1 0h1m1 0h3m1 0h3m1 0h5m4 0h2m1 0h1m1 0h4m1 0h1m3 0h2M4 31.5h1m3 0h1m4 0h1m2 0h1m2 0h1m2 0h1m1 0h4m3 0h1m2 0h2M4 32.5h1m1 0h1m3 0h1m1 0h4m1 0h1m1 0h3m4 0h11m1 0h1M12 33.5h1m1 0h1m5 0h1m2 0h2m1 0h2m1 0h1m1 0h2m3 0h2M4 34.5h7m5 0h5m1 0h1m1 0h1m1 0h1m5 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m4 0h3m2 0h1m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h3m2 0h5m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h2m1 0h2m5 0h1m14 0h4M4 39.5h1m5 0h1m2 0h5m2 0h1m1 0h1m2 0h1m5 0h4m1 0h1m3 0h1M4 40.5h7m1 0h1m1 0h1m1 0h1m3 0h2m4 0h1m2 0h2m3 0h1m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaNotacion">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaNotacion">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevas cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 preguntas nuevas, para resolver sin
+      calculadora; las opciones falsas son errores de verdad: si eliges una, te dice cuál fue.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:notacion-cientifica" data-modos='[
+      {"id":"escribir","nombre":"Escribir y leer","generadores":["nc-escribir"]},
+      {"id":"prefijos","nombre":"Prefijos","generadores":["nc-prefijos"]},
+      {"id":"operar","nombre":"Multiplica y divide","generadores":["nc-operar"]},
+      {"id":"comparar","nombre":"Compara","generadores":["nc-comparar"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["nc-escribir","nc-prefijos","nc-operar","nc-comparar"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-notacion-cientifica.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/potencias-radicales.html">← En matemáticas: potencias y radicales</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>

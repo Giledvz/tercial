@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-theme-pref="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Tarea 2 - Conversiones de unidades · Fundamentos · Física · Tercial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/exam-print.css">
+  <link rel="stylesheet" href="../assets/css/tarea-print.css">
+  <style>
+    /* Sólo esta tarea: un factor de conversión para escribir a mano (numerador sobre la raya,
+       denominador abajo) y las fracciones impresas de los errores, como en la lección. */
+    .task-factores {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12pt 0.22in;
+    }
+    .exam-pdf__sublist.task-factores > li {
+      display: flex;
+      align-items: center;
+      gap: 6pt;
+      margin: 0;
+      padding-left: 0.3in;
+      color: var(--ink-900);
+      font-family: var(--font-family-display);
+      font-size: 12pt;
+      white-space: nowrap;
+    }
+    .exam-pdf__sublist.task-factores > li::before {
+      top: 50%;
+      width: 0.22in;
+      font-size: 9.5pt;
+      transform: translateY(-50%);
+    }
+    .task-factor {
+      display: inline-flex;
+      flex-direction: column;
+    }
+    /* Dos casillas, una arriba y otra abajo, separadas por la raya de la fracción. */
+    .task-factor .task-blank {
+      display: block;
+      min-width: 0.72in;
+      height: 0.3in;
+      margin: 0;
+      border: 1px dashed var(--crema-500);
+      vertical-align: middle;
+    }
+    .task-factor .task-blank--num { border-bottom: 1.4px solid var(--ink-700); }
+    .task-factor .task-blank--den { border-top: 0; }
+    .task-factor .task-blank > span { font-size: 11pt; }
+    .fr {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 .12em;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    .fr__n {
+      padding: 0 .15em .1em;
+      border-bottom: .06em solid currentColor;
+    }
+    .fr__d { padding: .1em .15em 0; }
+    /* Seis ejercicios en dos hojas: un poco menos de aire entre uno y otro. */
+    .task-exercises .exam-pdf__exercise { margin-bottom: 0.22in; }
+    /* «2,300 m = ___ km» es la cuenta más ancha: su renglón puede ser un poco más corto. */
+    .task-cuentas .task-blank { min-width: 0.5in; }
+    /* La tabla de velocidades: cada columna es una misma velocidad en km/h y en m/s. */
+    .task-velocidades { margin-top: 6pt; }
+    .task-velocidades tbody th { width: 0.75in; text-align: center; }
+    .task-velocidades td {
+      font-family: var(--font-family-display);
+      font-size: 12pt;
+      text-align: center;
+    }
+    .exam-pdf__body .task-tabla-pie {
+      margin: 9pt 0 0;
+      color: var(--ink-700);
+      font-size: 10.5pt;
+    }
+  </style>
+</head>
+<body>
+<main class="exam-pdf exam-pdf--fundamentos">
+  <header class="exam-pdf__hero">
+    <p class="exam-pdf__eyebrow">Tarea 2 · Fundamentos · Física</p>
+    <h1 class="exam-pdf__title"><em>Conversiones</em> de unidades</h1>
+    <p class="exam-pdf__meta">Factores de conversión, prefijos, tiempo, km/h y m/s, áreas y volúmenes</p>
+  </header>
+
+  <div class="task-student">
+    <p>Nombre <span></span></p>
+    <p>Fecha <span></span></p>
+  </div>
+
+  <div class="exam-pdf__instructions">
+    <span class="exam-pdf__instructions-label">Instrucciones</span>
+    <p>Resuelve sin calculadora. Para convertir, multiplica por un factor que valga 1, con la unidad que quieres quitar
+      abajo, y tacha las unidades que se cancelan. Escribe cada resultado con su unidad.</p>
+  </div>
+
+  <ol class="exam-pdf__exercises task-exercises">
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">9 pts</span> Completa las equivalencias.</p>
+      <ol class="exam-pdf__sublist task-cuentas">
+        <li>1 km =<span class="task-blank"></span>m</li>
+        <li>1 m =<span class="task-blank"></span>cm</li>
+        <li>1 m =<span class="task-blank"></span>mm</li>
+        <li>1 cm =<span class="task-blank"></span>mm</li>
+        <li>1 kg =<span class="task-blank"></span>g</li>
+        <li>1 L =<span class="task-blank"></span>mL</li>
+        <li>1 min =<span class="task-blank"></span>s</li>
+        <li>1 h =<span class="task-blank"></span>min</li>
+        <li>1 h =<span class="task-blank"></span>s</li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">6 pts</span> Escribe el factor de conversión que usarías: la unidad que quieres
+        quitar va abajo.</p>
+      <ol class="exam-pdf__sublist task-factores">
+        <li>cm → m<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+        <li>mm → cm<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+        <li>m → mm<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+        <li>s → min<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+        <li>mL → L<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+        <li>mg → g<span class="task-factor"><span class="task-blank task-blank--num"></span><span class="task-blank task-blank--den"></span></span></li>
+      </ol>
+    </div></li>
+    <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+      <p><span class="exam-pdf__points">12 pts</span> Convierte.</p>
+      <ol class="exam-pdf__sublist task-cuentas">
+        <li>4.5 km =<span class="task-blank"></span>m</li>
+        <li>0.8 km =<span class="task-blank"></span>m</li>
+        <li>2,300 m =<span class="task-blank"></span>km</li>
+        <li>175 cm =<span class="task-blank"></span>m</li>
+        <li>0.6 m =<span class="task-blank"></span>cm</li>
+        <li>45 mm =<span class="task-blank"></span>cm</li>
+        <li>2.5 m =<span class="task-blank"></span>mm</li>
+        <li>3.2 kg =<span class="task-blank"></span>g</li>
+        <li>750 g =<span class="task-blank"></span>kg</li>
+        <li>1.5 L =<span class="task-blank"></span>mL</li>
+        <li>600 mL =<span class="task-blank"></span>L</li>
+        <li>250 mg =<span class="task-blank"></span>g</li>
+      </ol>
+    </div></li>
+  </ol>
+
+  <div class="task-page-break">
+    <header class="task-page-heading">
+      <strong>Conversiones de unidades</strong>
+      <span>Tarea 2 · página 2</span>
+    </header>
+    <ol class="exam-pdf__exercises task-exercises" style="counter-reset: exercise 3">
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">12 pts</span> Convierte tiempos y velocidades. El tiempo va de 60 en 60.</p>
+        <ol class="exam-pdf__sublist task-cuentas">
+          <li>3.5 h =<span class="task-blank"></span>min</li>
+          <li>45 min =<span class="task-blank"></span>h</li>
+          <li>4 min =<span class="task-blank"></span>s</li>
+          <li>2 h =<span class="task-blank"></span>s</li>
+          <li>900 s =<span class="task-blank"></span>min</li>
+          <li>1.2 h =<span class="task-blank"></span>min</li>
+        </ol>
+        <p class="task-tabla-pie">Completa la tabla: en cada columna va la misma velocidad, en km/h y en m/s.</p>
+        <table class="task-table task-table--baja task-velocidades">
+          <tbody>
+            <tr><th scope="row">km/h</th><td>36</td><td>108</td><td>18</td><td class="is-blank"></td><td class="is-blank"></td><td class="is-blank"></td></tr>
+            <tr><th scope="row">m/s</th><td class="is-blank"></td><td class="is-blank"></td><td class="is-blank"></td><td>12</td><td>40</td><td>2</td></tr>
+          </tbody>
+        </table>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">8 pts</span> Resuelve. Escribe el resultado con su unidad.</p>
+        <ol class="exam-pdf__sublist task-problems">
+          <li><span>Un corredor da 7 vueltas a una pista de 400 m. ¿Cuántos kilómetros recorre?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>km</b></p></li>
+          <li><span>Una mesa mide 1.2 m × 0.8 m. ¿Cuál es su área en centímetros cuadrados?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>cm²</b></p></li>
+          <li><span>Una pecera mide 50 cm × 30 cm × 40 cm. ¿Cuántos litros le caben?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>L</b></p></li>
+          <li><span>Un autobús va a 45 km/h. ¿Cuántos metros avanza en 10 s?</span>
+            <div class="task-work"></div><p class="task-answer">Resultado <span></span> <b>m</b></p></li>
+        </ol>
+      </div></li>
+      <li class="exam-pdf__exercise"><div class="exam-pdf__body">
+        <p><span class="exam-pdf__points">6 pts</span> Cada conversión está mal: di qué se hizo mal y escribe el resultado
+          correcto.</p>
+        <ol class="exam-pdf__sublist task-errores">
+          <li><span class="task-operacion">3 km × <span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 m</span></span> = 0.003 m</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">2 m² = 200 cm²</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+          <li><span class="task-operacion">126 km/h = 126 × 3.6 = 453.6 m/s</span>
+            <p class="task-answer-line">Qué se hizo mal <span class="task-blank task-blank--error"></span> Correcto <span class="task-blank task-blank--corta"></span></p></li>
+        </ol>
+      </div></li>
+    </ol>
+
+    <div class="exam-pdf__total">
+      <span class="exam-pdf__total-label">Total de puntos</span>
+      <span class="exam-pdf__total-value">53</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>

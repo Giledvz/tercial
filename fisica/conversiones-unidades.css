@@ -1,0 +1,253 @@
+/* Conversiones de unidades: la cuenta que se arma sobre la escena, las piezas de la escena,
+   la tabla de equivalencias y su letra en la tele. El molde de la lección vive en
+   /assets/css/leccion.css; el auto y la pista, en fisica.css. base.css le pone contorno y
+   relleno vacío a todo <svg>: aquí cada forma declara los suyos. */
+
+/* ---------- La figura: la cuenta arriba y el dibujo abajo ---------- */
+.conv-figura {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.conv-cuenta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .3em .45em;
+  min-height: 3.4em;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-24);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+.conv-pieza {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.conv-op { color: var(--color-text-meta); }
+.conv-resultado { color: var(--color-accent); }
+
+/* Una unidad que se cancela: la raya se dibuja de izquierda a derecha (--tacha va de 0 a 1). */
+.conv-u {
+  position: relative;
+  display: inline-block;
+}
+
+.conv-u--tachada { --tacha: 1; }
+
+.conv-u::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  right: -.1em;
+  left: -.1em;
+  border-top: .09em solid var(--color-accent);
+  transform: rotate(-24deg) scaleX(var(--tacha, 0));
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Un factor al cuadrado o al cubo: paréntesis tan altos como la fracción y el exponente arriba.
+   También en las opciones de la práctica y del reto, que escribe el generador. */
+.conv-pot {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.conv-par {
+  font-size: 1.9em;
+  font-weight: var(--font-weight-regular);
+  line-height: 1;
+  transform: translateY(-.05em);
+}
+
+.conv-exp {
+  align-self: flex-start;
+  margin-left: .05em;
+  font-size: .6em;
+  line-height: 1;
+}
+
+/* ---------- La escena ---------- */
+/* Dos reglas alineadas: la de la unidad de partida arriba y la de llegada abajo. */
+.conv-regla__eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+}
+
+.conv-regla__marca {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+.conv-regla__numero {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+}
+
+/* 1 km y 1,000 m: la misma marca en las dos reglas. */
+.conv-regla__numero.es-igual {
+  fill: var(--color-accent);
+  font-weight: var(--font-weight-medium);
+}
+
+.conv-regla__unidad {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-style: italic;
+}
+
+.conv-barra {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 6;
+  stroke-linecap: butt;
+}
+
+.conv-guia {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.conv-marca-fin {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.conv-lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.conv-lectura--nueva { fill: var(--color-accent); }
+
+/* El auto: el tiempo, lo recorrido y la cota de un segundo. */
+.conv-reloj {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.conv-nota {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+}
+
+.conv-cota {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+}
+
+.conv-cota__texto {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+}
+
+/* El centímetro cuadrado, partido en milímetros cuadrados. */
+.conv-cuadro {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.6;
+}
+
+.conv-cuadro__linea {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: .8;
+}
+
+.conv-cuadro__uno {
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.conv-cuadro__guia {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+}
+
+.conv-cuadro__texto {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+}
+
+.conv-cuadro__nuevo { fill: var(--color-accent); }
+
+.conv-cuadro__cuenta {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- La tabla de equivalencias ---------- */
+/* El prefijo es un símbolo: k no es K. Las filas no van en mayúsculas. */
+.reference-table.conv-tabla tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.conv-tabla__prefijo {
+  margin-right: .35em;
+  color: var(--color-accent);
+}
+
+.conv-tabla__equivalencias {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.conv-tabla__punto {
+  margin: 0 .35em;
+  color: var(--color-text-meta);
+}
+
+/* En un renglón de texto, las fracciones de la lección no separan tanto las líneas. */
+.reading-block__body .fr,
+.worked-steps .fr,
+.editorial-note .fr,
+.leccion-texto .fr { font-size: .92em; }
+
+/* ---------- En el celular ---------- */
+@media (max-width: 30rem) {
+  .conv-cuenta { font-size: var(--font-size-18); }
+}
+
+/* ---------- En la tele ---------- */
+html[data-proyeccion] .es-proyectada .conv-cuenta {
+  min-height: calc(var(--u) * 8);
+  font-size: calc(var(--u) * 2.9);
+}
+
+html[data-proyeccion] .es-proyectada .conv-figura { gap: calc(var(--u) * 1.6); }
+
+html[data-proyeccion] .es-proyectada .reference-table.conv-tabla tbody th { font-size: calc(var(--u) * 2.2); }

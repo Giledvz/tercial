@@ -1,0 +1,220 @@
+/* Notación científica (Física, semana 3): sus dos escenas y sus tablas. El molde de la
+   lección vive en /assets/css/leccion.css y lo común de Física en fisica.css. base.css le
+   pone contorno y relleno vacío a todo <svg>: aquí cada forma declara los suyos. */
+
+.escena-nc {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Un exponente no separa los renglones de un párrafo. */
+main sup {
+  position: relative;
+  top: -0.42em;
+  font-size: 0.68em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+/* ---------- El punto que salta ---------- */
+.salto__rotulo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 12.5px;
+}
+
+.salto__cifra {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 34px;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.salto__lugar {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+}
+
+.salto__unidad {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-display);
+  font-size: 17px;
+}
+
+.salto__punto { fill: var(--color-accent); stroke: none; }
+
+.salto__arco {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.3;
+  stroke-linecap: butt;
+  opacity: .75;
+}
+
+.salto__cuenta {
+  fill: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: 13px;
+}
+
+.salto__resultado {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 30px;
+  font-variant-numeric: lining-nums;
+}
+
+.salto__exponente { fill: var(--color-accent); }
+
+/* ---------- La escala de potencias de 10 ---------- */
+.escala__eje,
+.escala__marca {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-linecap: butt;
+}
+
+.escala__eje { stroke-width: 1.4; }
+.escala__marca--uno { stroke: var(--color-text-secondary); stroke-width: 1.4; }
+.escala__punta { fill: var(--color-border-strong); stroke: none; }
+
+/* Las potencias del eje son lo que se lee: su exponente no baja de 7 unidades. */
+.escala__potencia {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10.5px;
+}
+
+.escala__metro,
+.escala__titulo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 8.5px;
+}
+
+.escala__titulo { font-style: italic; }
+
+.escala__nombre {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 10.5px;
+}
+
+.escala__nube { fill: var(--color-text-secondary); stroke: none; }
+.escala__nucleo { fill: var(--color-text-primary); stroke: none; }
+
+.escala__contorno {
+  fill: var(--color-bg-raised);
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.1;
+}
+
+.escala__espiga {
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 1;
+  stroke-linecap: butt;
+}
+
+.escala__perilla { fill: var(--color-text-secondary); stroke: none; }
+.escala__nucleo-celula { fill: var(--color-text-meta); fill-opacity: .5; stroke: none; }
+.escala__cuerpo-relleno { fill: var(--color-text-secondary); stroke: none; }
+
+.escala__cuerpo {
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-linecap: round;
+}
+
+.escala__cuerpo--tronco { stroke-width: 3.4; }
+.escala__cuerpo--brazos { stroke-width: 1.5; }
+.escala__cuerpo--piernas { stroke-width: 1.9; }
+
+.escala__globo {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: .8;
+}
+
+.escala__lugar { fill: var(--color-text-secondary); stroke: none; }
+
+.escala__salto {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.3;
+  stroke-linecap: butt;
+}
+
+.escala__veces {
+  fill: var(--color-accent);
+  font-family: var(--font-family-mono);
+  font-size: 8.5px;
+}
+
+.escala__marcador {
+  fill: var(--color-accent);
+  stroke: var(--color-bg-page);
+  stroke-width: 1.5;
+}
+
+.escala__lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 21px;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.escala__lectura-exp { fill: var(--color-accent); }
+
+.escala__cuenta {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10.5px;
+}
+
+/* El objeto al que llega el punto se marca en el color del nivel. */
+.escala__objeto.es-destino .escala__nombre,
+.escala__objeto.es-destino .escala__nube,
+.escala__objeto.es-destino .escala__perilla,
+.escala__objeto.es-destino .escala__cuerpo-relleno { fill: var(--color-accent); }
+
+.escala__objeto.es-destino .escala__contorno,
+.escala__objeto.es-destino .escala__espiga,
+.escala__objeto.es-destino .escala__cuerpo { stroke: var(--color-accent); }
+
+/* En la tele, la escala se lleva más ancho que una escena amplia: sus potencias se leen desde el fondo. */
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"][data-figura="amplia"][data-escala] {
+  grid-template-columns: minmax(0, .7fr) minmax(0, 1.5fr);
+}
+
+/* ---------- Tablas: los números se leen como en un libro de física ---------- */
+.nc-numero,
+.reference-table th.nc-numero {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.1em;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.reference-table th.nc-prefijo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* En la tele, los números y los prefijos de las tablas son contenido, no etiquetas. */
+html[data-proyeccion] .es-proyectada .nc-numero,
+html[data-proyeccion] .es-proyectada .reference-table th.nc-numero { font-size: calc(var(--u) * 2.2); }
+
+html[data-proyeccion] .es-proyectada .reference-table th.nc-prefijo { font-size: calc(var(--u) * 2); }
