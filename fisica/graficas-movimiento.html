@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Gráficas II: interpretar el movimiento · Física · Tercial</title>
+<meta name="description" content="Leer un movimiento en sus gráficas sin hacer cuentas: horizontal en x–t es estar quieto, una recta es velocidad constante, una curva que se empina acelera y una que se aplana frena; en v–t, cruzar el cero es darse la vuelta. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-graficas-movimiento">
+<meta name="tercial:resource-title" content="Gráficas II: interpretar el movimiento">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="graficas-movimiento">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./graficas-movimiento.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-tele"></script>
+<script defer src="/tercial/assets/js/ejercicios-graficas-movimiento.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-graficas-movimiento.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 6 · Física</p>
+    <h1 class="hero__title">Lo que cuenta una <em>gráfica</em></h1>
+    <p class="hero__lede">Una gráfica de movimiento cuenta una historia sin palabras: si el objeto está quieto, si
+      va rápido o lento, si frena o si se regresa. Aquí aprendes a leerla de un vistazo, en posición y en
+      velocidad, sin hacer una sola cuenta.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 6 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/factorizacion.html">En matemáticas: factorización</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaForma" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaForma">
+        <span class="lesson-section__kicker">Idea central</span> Mira la forma
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">La forma cuenta <em>la historia</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En <a href="./graficas-leer.html">Gráficas I</a> leíste números en una gráfica: el corte, la pendiente y
+          el área. Muchas preguntas de examen ni siquiera piden eso: te enseñan una gráfica y preguntan qué hace el
+          objeto. Para contestar basta con mirar su forma.</p>
+        <p>En la gráfica de <strong>posición contra tiempo</strong> (x–t), la altura dice dónde está y la
+          inclinación, qué tan rápido va. Horizontal: está quieto. Recta inclinada: velocidad constante. Si se
+          empina, acelera; si se aplana, frena; si baja, va de regreso.</p>
+        <p>En la de <strong>velocidad contra tiempo</strong> (v–t), la altura ya es la velocidad. Sobre el eje:
+          quieto. Horizontal fuera del eje: velocidad constante. Si se aleja del cero, acelera; si se acerca,
+          frena; si cruza el cero, se da la vuelta.</p>
+        <p>En las dos, el eje de abajo es el tiempo: una gráfica no es el dibujo del camino.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaHistoria" data-diapositiva="dos" data-historia>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaHistoria">
+        <span class="lesson-section__kicker">Observa</span> Una historia, dos gráficas
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Un auto busca dónde estacionarse: arranca, avanza parejo, frena, se
+      queda quieto y se regresa en reversa porque se pasó del lugar. Mientras se mueve se dibujan sus dos gráficas,
+      y la franja marca el tramo que se está contando. Elige un tramo para verlo otra vez.</p>
+    <div class="pastillas" role="group" aria-label="Elige un tramo de la historia">
+      <button class="pastilla" type="button" aria-pressed="true" data-tramo="todo">Toda la historia</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-tramo="1">Acelera</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-tramo="2">Constante</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-tramo="3">Frena</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-tramo="4">Detenido</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-tramo="5">Se regresa</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica escena-historia" data-escena-fisica="historia" viewBox="0 0 440 328" role="img" aria-labelledby="historiaTitulo">
+        <title id="historiaTitulo">Arriba, un auto sobre una pista de 30 metros con su regla; se leen el tiempo, la
+          posición y la velocidad, y una flecha sobre el auto marca hacia dónde va. Abajo, sus dos gráficas con el
+          mismo eje de tiempo, de 0 a 15 segundos: posición contra tiempo y velocidad contra tiempo. Se dibujan
+          mientras el auto se mueve, en cinco tramos de 3 segundos: acelera (la curva de posición se empina y la
+          velocidad sube desde cero), velocidad constante (recta inclinada; horizontal arriba del eje), frena (la
+          curva se aplana; la velocidad baja hasta cero), detenido (horizontal; sobre el eje) y se regresa en
+          reversa (la posición baja; la velocidad pasa abajo del eje). Una franja marca el tramo actual en las dos
+          gráficas.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-historia-texto></div>
+    <div hidden>
+      <p data-texto-tramo="todo"><strong>Toda la historia.</strong> El auto arranca, avanza parejo, frena, se queda
+        quieto y se regresa en reversa. Arriba, su gráfica de posición (x–t); abajo, la de velocidad (v–t). Las dos
+        cuentan lo mismo, cada una a su modo, y la franja marca el mismo tramo en las dos.</p>
+      <p data-texto-tramo="1"><strong>Acelera.</strong> Cada segundo avanza más que en el anterior. En x–t la curva
+        <strong>se empina</strong>; en v–t la velocidad <strong>sube</strong> desde el cero.</p>
+      <p data-texto-tramo="2"><strong>Velocidad constante.</strong> Avanza lo mismo cada segundo. En x–t es una
+        <strong>recta inclinada</strong>; en v–t, una <strong>horizontal arriba del eje</strong>: no en el cero,
+        porque sí se mueve.</p>
+      <p data-texto-tramo="3"><strong>Frena.</strong> Cada segundo avanza menos. En x–t la curva <strong>se
+        aplana</strong>; en v–t la velocidad <strong>baja hacia el cero</strong>. Todavía avanza: frenar no es
+        regresarse.</p>
+      <p data-texto-tramo="4"><strong>Detenido.</strong> Pasa el tiempo y x no cambia: en x–t la gráfica es
+        <strong>horizontal</strong>. En v–t la velocidad está <strong>sobre el eje</strong>, en cero.</p>
+      <p data-texto-tramo="5"><strong>Se regresa.</strong> Va en reversa: x disminuye y la gráfica x–t
+        <strong>baja</strong>. En v–t la velocidad <strong>pasa abajo del eje</strong>: es negativa. Como se aleja
+        del cero, se regresa cada vez más rápido.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En los exámenes las gráficas se dibujan con esquinas, como si el
+      auto cambiara de velocidad de golpe. Un auto de verdad tarda en arrancar y en frenar: aquí la velocidad nunca
+      brinca, así que la gráfica x–t no tiene esquinas y la v–t sube o baja en rampa.</p>
+  </section>
+
+  <section aria-labelledby="reglasPosicion" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasPosicion">
+        <span class="lesson-section__kicker">Reglas</span> Posición contra tiempo
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>La inclinación es la velocidad: entre más inclinada, más rápido. Si
+      sube, avanza; si baja, va de regreso.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se lee una gráfica de posición contra tiempo" tabindex="0">
+      <table class="reference-table reference-table--apilada formas-tabla">
+        <caption class="visually-hidden">Formas de una gráfica de posición contra tiempo y lo que quieren decir</caption>
+        <thead>
+          <tr><th scope="col">Se ve así</th><th scope="col">La gráfica x–t</th><th scope="col">Quiere decir</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta horizontal"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,22H62"/></svg></td><th scope="row">Horizontal</th><td>Está <strong>detenido</strong>: pasa el tiempo y x no cambia.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que sube"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,36L62,10"/></svg></td><th scope="row">Recta que sube</th><td>Avanza a <strong>velocidad constante</strong>: entre más inclinada, más rápido.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que baja"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,10L62,36"/></svg></td><th scope="row">Recta que baja</th><td><strong>Se regresa</strong> a velocidad constante: x disminuye.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Curva que sube y se empina"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,36Q35,36,62,8"/></svg></td><th scope="row">Curva que se empina</th><td><strong>Acelera</strong>: cada segundo avanza más.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Curva que sube y se aplana"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,36Q35,8,62,8"/></svg></td><th scope="row">Curva que se aplana</th><td><strong>Frena</strong>: cada segundo avanza menos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="reglasVelocidad" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasVelocidad">
+        <span class="lesson-section__kicker">Reglas</span> Velocidad contra tiempo
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>La altura es la velocidad: arriba del eje avanza, abajo se regresa y
+      sobre el eje está quieto. Qué tan rápido va es qué tan lejos del cero está.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se lee una gráfica de velocidad contra tiempo" tabindex="0">
+      <table class="reference-table reference-table--apilada formas-tabla">
+        <caption class="visually-hidden">Formas de una gráfica de velocidad contra tiempo y lo que quieren decir</caption>
+        <thead>
+          <tr><th scope="col">Se ve así</th><th scope="col">La gráfica v–t</th><th scope="col">Quiere decir</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Sobre el eje"><path class="gm-eje" d="M6,40V5M6,22H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,22L63,19.5V24.5Z"/><path class="gm-curva" d="M8,22H62"/></svg></td><th scope="row">Sobre el eje</th><td>Está <strong>detenido</strong>: velocidad cero.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Horizontal arriba del eje"><path class="gm-eje" d="M6,40V5M6,22H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,22L63,19.5V24.5Z"/><path class="gm-curva" d="M8,12H62"/></svg></td><th scope="row">Horizontal fuera del eje</th><td>Va a <strong>velocidad constante</strong>: arriba del eje, de ida; abajo, de regreso.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que se aleja del eje"><path class="gm-eje" d="M6,40V5M6,22H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,22L63,19.5V24.5Z"/><path class="gm-curva" d="M8,20L62,6"/></svg></td><th scope="row">Se aleja del cero</th><td><strong>Acelera</strong>: cada vez más rápido, de ida o de regreso.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que se acerca al eje"><path class="gm-eje" d="M6,40V5M6,22H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,22L63,19.5V24.5Z"/><path class="gm-curva" d="M8,6L62,20"/></svg></td><th scope="row">Se acerca al cero</th><td><strong>Frena</strong>: cada vez más lento.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que cruza el eje"><path class="gm-eje" d="M6,40V5M6,22H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,22L63,19.5V24.5Z"/><path class="gm-curva" d="M8,8L62,36"/></svg></td><th scope="row">Cruza el eje</th><td><strong>Se da la vuelta</strong>: la velocidad cambia de signo, de ida a regreso o al revés.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="comparaFormas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaFormas">
+        <span class="lesson-section__kicker">Compara</span> La misma forma, otra historia
+      </h2>
+    </header>
+    <p class="section-intro">Antes de leer, mira qué dice el eje vertical: la misma raya cuenta otra cosa en x–t y
+      en v–t.</p>
+    <div class="reference-table-wrap" role="region" aria-label="La misma forma en x–t y en v–t" tabindex="0">
+      <table class="reference-table reference-table--apilada formas-tabla formas-tabla--compara">
+        <caption class="visually-hidden">Tres formas y lo que quieren decir en una gráfica de posición y en una de velocidad</caption>
+        <thead>
+          <tr><th scope="col">Se ve así</th><th scope="col">La forma</th><th scope="col">En x–t</th><th scope="col">En v–t</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta horizontal arriba del eje"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,20H62"/></svg></td><th scope="row">Horizontal</th><td><span class="formas-tabla__eje">x–t: </span>Está <strong>detenido</strong>.</td><td><span class="formas-tabla__eje">v–t: </span>Va a <strong>velocidad constante</strong>.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que sube"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,36L62,10"/></svg></td><th scope="row">Recta que sube</th><td><span class="formas-tabla__eje">x–t: </span>Avanza a <strong>velocidad constante</strong>.</td><td><span class="formas-tabla__eje">v–t: </span><strong>Acelera</strong>.</td></tr>
+          <tr><td class="formas-tabla__figura"><svg class="gm-graf gm-mini" viewBox="0 0 72 44" role="img" aria-label="Recta que baja sin llegar al eje"><path class="gm-eje" d="M6,40V5M6,40H64"/><path class="gm-punta" d="M6,1L3.5,6H8.5ZM68,40L63,37.5V42.5Z"/><path class="gm-curva" d="M8,10L62,34"/></svg></td><th scope="row">Recta que baja</th><td><span class="formas-tabla__eje">x–t: </span><strong>Se regresa</strong> a velocidad constante.</td><td><span class="formas-tabla__eje">v–t: </span><strong>Frena</strong>, todavía hacia adelante.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> leer la gráfica como si fuera el camino, o como si
+      fuera la otra gráfica. Si una gráfica x–t baja, el auto no va de bajada: va de regreso. Y una horizontal en v–t
+      no es un auto quieto: es un auto que va siempre igual de rápido.</p>
+  </section>
+
+  <section aria-labelledby="ejemploGraficas" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploGraficas">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <p class="section-intro">Antes de contestar, tres preguntas.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">¿Qué gráfica?</span><p>Lee el eje vertical: si dice x, es de posición; si
+        dice v, de velocidad.</p></li>
+      <li><span class="worked-steps__label">¿Qué forma?</span><p>Parte la gráfica en tramos: horizontal, recta que sube
+        o que baja, curva que se empina o que se aplana.</p></li>
+      <li><span class="worked-steps__label">¿Qué dice?</span><p>Lee cada forma con la tabla de su gráfica: la misma
+        raya no dice lo mismo en x–t que en v–t.</p></li>
+    </ol>
+    <div class="ejemplos">
+      <div class="ejemplo" data-diapositiva="dos">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Mariana va a la papelería y regresa a su casa. ¿Cuándo
+          está detenida? ¿Cuándo camina más rápido?</h3>
+        <figure class="ejemplo__grafica" data-lado="figura"><svg class="gm-graf gm-ejemplo" viewBox="0 0 280 170" role="img" aria-label="Gráfica de posición contra tiempo: de 0 a 4 minutos sube de 0 a 200 metros; de 4 a 7 minutos se queda en 200 metros; de 7 a 9 minutos baja de 200 a 0 metros."><path class="gm-rejilla" d="M66.9,18V136M89.8,18V136M112.7,18V136M135.6,18V136M158.4,18V136M181.3,18V136M204.2,18V136M227.1,18V136M250,18V136M44,88.8H250M44,41.6H250"/><path class="gm-eje" d="M44,136V12M44,136H256"/><path class="gm-punta" d="M44,7L40.5,14H47.5ZM261,136L254,132.5V139.5Z"/><text class="gm-marca" x="38" y="140" text-anchor="end">0</text><text class="gm-marca" x="38" y="92.8" text-anchor="end">100</text><text class="gm-marca" x="38" y="45.6" text-anchor="end">200</text><text class="gm-marca" x="44" y="152" text-anchor="middle">0</text><text class="gm-marca" x="66.9" y="152" text-anchor="middle">1</text><text class="gm-marca" x="89.8" y="152" text-anchor="middle">2</text><text class="gm-marca" x="112.7" y="152" text-anchor="middle">3</text><text class="gm-marca" x="135.6" y="152" text-anchor="middle">4</text><text class="gm-marca" x="158.4" y="152" text-anchor="middle">5</text><text class="gm-marca" x="181.3" y="152" text-anchor="middle">6</text><text class="gm-marca" x="204.2" y="152" text-anchor="middle">7</text><text class="gm-marca" x="227.1" y="152" text-anchor="middle">8</text><text class="gm-marca" x="250" y="152" text-anchor="middle">9</text><text class="gm-letra" x="38" y="14" text-anchor="end">x</text><text class="gm-unidad" x="50" y="14">(m)</text><text class="gm-letra" x="264" y="140.5">t</text><text class="gm-unidad" x="250" y="166" text-anchor="end">tiempo (min)</text><path class="gm-curva" d="M44,136L135.6,41.6L204.2,41.6L250,136"/></svg></figure>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Detenida</span><p>De 4 a 7 min la gráfica es horizontal: x no cambia.
+            Está en la papelería.</p></li>
+          <li><span class="worked-steps__label">Ida y vuelta</span><p>De 0 a 4 min sube: se aleja de su casa. De 7 a
+            9 min baja: regresa.</p></li>
+          <li><span class="worked-steps__label">Más rápido</span><p>El regreso está más inclinado: los mismos 200 m
+            en la mitad del tiempo. <strong>Regresa más rápido.</strong></p></li>
+        </ol>
+      </div>
+      <div class="ejemplo" data-diapositiva="dos">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un carrito sube por una rampa y regresa (rampa arriba es
+          positivo). ¿Cuándo llega a lo más alto? ¿Frena o acelera?</h3>
+        <figure class="ejemplo__grafica" data-lado="figura"><svg class="gm-graf gm-ejemplo" viewBox="0 0 280 170" role="img" aria-label="Gráfica de velocidad contra tiempo: una recta que empieza en 4 metros por segundo, cruza el cero en t igual a 4 segundos y llega a menos 4 metros por segundo en t igual a 8 segundos."><path class="gm-rejilla" d="M69.8,18V136M95.5,18V136M121.3,18V136M147,18V136M172.8,18V136M198.5,18V136M224.3,18V136M250,18V136M44,124.2H250M44,29.8H250"/><path class="gm-eje" d="M44,136V12M44,77H256"/><path class="gm-punta" d="M44,7L40.5,14H47.5ZM261,77L254,73.5V80.5Z"/><text class="gm-marca" x="38" y="128.2" text-anchor="end">−4</text><text class="gm-marca" x="38" y="81" text-anchor="end">0</text><text class="gm-marca" x="38" y="33.8" text-anchor="end">4</text><text class="gm-marca" x="44" y="152" text-anchor="middle">0</text><text class="gm-marca" x="69.8" y="152" text-anchor="middle">1</text><text class="gm-marca" x="95.5" y="152" text-anchor="middle">2</text><text class="gm-marca" x="121.3" y="152" text-anchor="middle">3</text><text class="gm-marca" x="147" y="152" text-anchor="middle">4</text><text class="gm-marca" x="172.8" y="152" text-anchor="middle">5</text><text class="gm-marca" x="198.5" y="152" text-anchor="middle">6</text><text class="gm-marca" x="224.3" y="152" text-anchor="middle">7</text><text class="gm-marca" x="250" y="152" text-anchor="middle">8</text><text class="gm-letra" x="38" y="14" text-anchor="end">v</text><text class="gm-unidad" x="50" y="14">(m/s)</text><text class="gm-letra" x="264" y="81.5">t</text><text class="gm-unidad" x="250" y="166" text-anchor="end">tiempo (s)</text><path class="gm-curva" d="M44,29.8L250,124.2"/></svg></figure>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Al subir</span><p>De 0 a 4 s la velocidad es positiva y se acerca al
+            cero: sube <strong>frenando</strong>.</p></li>
+          <li><span class="worked-steps__label">Arriba</span><p>En <span class="expresion">t = 4 s</span> la gráfica
+            cruza el eje: se detiene un instante y se da la vuelta. Ahí está <strong>lo más alto</strong>.</p></li>
+          <li><span class="worked-steps__label">Al bajar</span><p>De 4 a 8 s la velocidad es negativa y se aleja del
+            cero: baja <strong>acelerando</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En <a href="../matematicas/factorizacion.html">Factorización</a>
+      buscaste dónde vale cero una expresión: un producto vale cero cuando uno de sus factores vale cero. En una
+      gráfica, ésos son los puntos donde la curva toca el eje. Si la velocidad de un objeto fuera
+      <span class="expresion">v = t² − 6t + 8 = (t − 2)(t − 4)</span>, con v en m/s y t en s, su gráfica v–t
+      cruzaría el eje en <span class="expresion">t = 2 s</span> y en <span class="expresion">t = 4 s</span>: en
+      cada uno se da la vuelta.</p>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["gm-detenido", "gm-rapido", "gm-regresa", "gm-acelera", "gm-historia"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-graficas-movimiento.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m3 0h2m1 0h3m1 0h1m5 0h1m1 0h2m1 0h1m1 0h7M4 5.5h1m5 0h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h1m5 0h2m4 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h4m1 0h1m3 0h1m6 0h4m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m2 0h3m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h3m1 0h3m1 0h2m4 0h1m2 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m1 0h1m3 0h1m1 0h2m1 0h2m2 0h1m1 0h1M4 12.5h1m1 0h5m2 0h2m1 0h2m1 0h2m2 0h1m2 0h4m4 0h5M4 13.5h1m2 0h1m1 0h1m4 0h1m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2m4 0h1m2 0h1m2 0h2M4 14.5h1m3 0h1m1 0h2m3 0h2m2 0h3m1 0h1m2 0h1m2 0h7m2 0h3M4 15.5h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h3m3 0h4m1 0h1m1 0h1m2 0h1m1 0h2m3 0h1M4 16.5h1m1 0h1m2 0h2m1 0h1m3 0h1m1 0h4m1 0h1m2 0h9m1 0h1m1 0h3M7 17.5h1m6 0h1m2 0h1m2 0h1m2 0h5m1 0h1m2 0h1m2 0h1M4 18.5h1m2 0h1m1 0h3m3 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h2m1 0h5m2 0h1M7 19.5h1m1 0h1m1 0h5m1 0h2m1 0h1m4 0h1m1 0h1m2 0h1m1 0h2m1 0h2M4 20.5h1m2 0h2m1 0h4m1 0h1m6 0h1m3 0h6m1 0h2m1 0h1m1 0h3M5 21.5h3m4 0h3m2 0h1m1 0h2m4 0h1m1 0h1m1 0h1m2 0h2m5 0h1M4 22.5h1m1 0h5m3 0h3m8 0h2m4 0h2m2 0h1m1 0h1m1 0h2M5 23.5h1m1 0h1m3 0h2m2 0h2m3 0h1m2 0h3m4 0h2m1 0h2m5 0h1M5 24.5h2m3 0h1m2 0h1m1 0h1m1 0h1m3 0h1m4 0h5m1 0h3m1 0h3M4 25.5h2m2 0h1m2 0h3m4 0h1m2 0h1m1 0h2m2 0h4m1 0h1m4 0h1M6 26.5h2m1 0h2m3 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m2 0h4m1 0h2M4 27.5h2m1 0h2m2 0h1m1 0h10m2 0h4m1 0h3m2 0h2m3 0h1M7 28.5h1m2 0h2m5 0h4m2 0h1m4 0h4m1 0h2m1 0h1m1 0h3M4 29.5h2m1 0h1m3 0h3m1 0h2m1 0h2m2 0h4m1 0h1m4 0h1m2 0h1m1 0h1M4 30.5h1m1 0h1m1 0h3m2 0h2m2 0h4m4 0h2m3 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m1 0h3m4 0h1m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1m3 0h1m1 0h2M4 32.5h1m1 0h1m3 0h6m1 0h1m1 0h3m4 0h11m1 0h1M12 33.5h1m1 0h1m5 0h1m2 0h2m1 0h2m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h1m2 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h1m3 0h1m1 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h2m2 0h2m2 0h5m1 0h2m2 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h2m2 0h1m5 0h1m5 0h1m8 0h4M4 39.5h1m5 0h1m2 0h2m1 0h2m2 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h1m1 0h3m3 0h2m4 0h1m2 0h2m2 0h2m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaGraficas">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaGraficas">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevas cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 gráficas nuevas; las opciones falsas
+      son confusiones de verdad: si eliges una, te dice cuál fue.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:graficas-movimiento" data-modos='[
+      {"id":"rapido","nombre":"Rápido, lento o quieto","generadores":["gm-rapido","gm-detenido"]},
+      {"id":"cambios","nombre":"Acelera, frena o se regresa","generadores":["gm-acelera","gm-regresa"]},
+      {"id":"historias","nombre":"Historias y gráficas","generadores":["gm-historia"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["gm-rapido","gm-detenido","gm-acelera","gm-regresa","gm-historia"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-graficas-movimiento.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/factorizacion.html">← En matemáticas: factorización</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>

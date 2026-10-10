@@ -1,0 +1,291 @@
+/* Gráficas II · estilos propios de la lección: la escena del auto con sus dos gráficas,
+   las gráficas pequeñas de las tablas, de los ejemplos y de los ejercicios, y su letra en
+   la tele. El molde vive en /assets/css/leccion.css y el auto en ./fisica.css. base.css le
+   pone contorno y relleno vacío a todo <svg>: aquí cada forma declara los suyos. */
+
+/* ---------- La escena: una historia, dos gráficas ---------- */
+.historia__lectura {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.historia__numero {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 10.5px;
+}
+
+.historia__numero--eje,
+.historia__titulo-eje { font-style: italic; }
+
+.historia__titulo-eje {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+}
+
+.historia__rejilla {
+  fill: none;
+  stroke: var(--color-border-subtle);
+  stroke-width: .8;
+}
+
+.historia__eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.2;
+  stroke-linecap: butt;
+}
+
+/* El tramo que se está contando: la misma franja en las dos gráficas. */
+.historia__banda {
+  fill: var(--color-accent);
+  stroke: none;
+  opacity: .1;
+}
+
+/* En oscuro el acento es claro: la franja necesita un poco más para notarse. */
+[data-theme="dark"] .historia__banda { opacity: .16; }
+
+.historia__separador {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.historia__tramo {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 10.5px;
+}
+
+.historia__tramo--actual {
+  fill: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.historia__curva {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Lo que ya pasó se queda, tenue; el tramo actual va en el color del nivel. */
+.historia__curva--pasada {
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.8;
+  opacity: .6;
+}
+
+.historia__curva--actual {
+  stroke: var(--color-accent);
+  stroke-width: 2.8;
+}
+
+.historia__cursor {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.historia__punto {
+  fill: var(--color-accent);
+  stroke: var(--color-bg-page);
+  stroke-width: 1.5;
+}
+
+/* ---------- Gráficas de los ejercicios, las tablas y los ejemplos ----------
+   Las de la práctica las dibuja ejercicios-graficas-movimiento.js; las de la lección son
+   fijas, con las mismas clases: ejes en el color de los bordes, la curva en el del nivel. */
+.gm-graf {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gm-graf text {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  stroke: none;
+}
+
+.gm-graf--grande text { font-size: 12px; }
+.gm-graf--chica text { font-size: 13px; }
+.gm-ejemplo text { font-size: 11px; }
+
+.gm-eje {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.3;
+  stroke-linecap: butt;
+}
+
+.gm-punta { fill: var(--color-border-strong); stroke: none; }
+
+.gm-curva {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.gm-graf--chica .gm-curva { stroke-width: 3; }
+.gm-mini .gm-curva { stroke-width: 2.4; }
+.gm-mini .gm-eje { stroke-width: 1.1; }
+
+/* Un brinco de la velocidad (escalones): punteado, para no leerse como parte del movimiento. */
+.gm-salto {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.3;
+  stroke-dasharray: 2 3;
+  stroke-linecap: butt;
+  opacity: .75;
+}
+
+.gm-sep {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: .7;
+}
+
+.gm-rejilla {
+  fill: none;
+  stroke: var(--color-border-subtle);
+  stroke-width: 1;
+}
+
+.gm-graf .gm-num {
+  fill: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.gm-graf .gm-letra {
+  fill: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.gm-graf .gm-unidad { font-size: 10px; }
+
+/* En la práctica: la pregunta arriba y la gráfica debajo; las opciones, gráficas chicas. */
+.gm-pregunta { display: block; }
+
+.sin-fin__enunciado .gm-graf--grande {
+  max-width: 26rem;
+  margin-top: var(--space-4);
+}
+
+.sin-fin__valor .gm-graf--chica {
+  width: 11rem;
+  max-width: 100%;
+}
+
+/* Al final de la tanda, lo que hay que repasar, con su gráfica más chica. */
+.sin-fin__falla .gm-pregunta { display: inline; }
+
+.sin-fin__falla .gm-graf--grande {
+  width: 15rem;
+  max-width: 100%;
+  margin: var(--space-2) 0;
+}
+
+.sin-fin__fallas strong .gm-graf--chica {
+  width: 8rem;
+  margin-top: var(--space-1);
+}
+
+/* ---------- Tablas de formas: la gráfica pequeña, su nombre y lo que quiere decir ---------- */
+.formas-tabla td,
+.formas-tabla th { vertical-align: middle; }
+
+.formas-tabla thead th {
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.formas-tabla tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.formas-tabla__figura { width: 6rem; }
+
+/* En el celular la tabla se apila y pierde su encabezado: cada lectura dice de qué gráfica es. */
+.formas-tabla__eje { display: none; }
+
+@media (max-width: 36rem) {
+  .formas-tabla__eje {
+    display: inline;
+    color: var(--color-text-meta);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-12);
+  }
+}
+
+.gm-mini { width: 4.5rem; }
+
+/* Los ejemplos resueltos: la gráfica entre el planteo y los pasos. */
+.ejemplo__grafica { margin: var(--space-4) 0 0; }
+
+.ejemplo__grafica .gm-ejemplo { max-width: 24rem; }
+
+/* ---------- La tele ---------- */
+html[data-proyeccion] .es-proyectada .escena-historia { max-height: calc(var(--u) * 36); }
+
+html[data-proyeccion] .es-proyectada .formas-tabla thead th { font-size: calc(var(--u) * 1.4); }
+html[data-proyeccion] .es-proyectada .formas-tabla tbody th { font-size: calc(var(--u) * 2); }
+html[data-proyeccion] .es-proyectada .formas-tabla__figura { width: calc(var(--u) * 10); }
+html[data-proyeccion] .es-proyectada .gm-mini { width: calc(var(--u) * 7.5); }
+
+html[data-proyeccion] .es-proyectada .formas-tabla th,
+html[data-proyeccion] .es-proyectada .formas-tabla td { vertical-align: middle; }
+
+/* Un ejemplo resuelto es su propia pantalla: el planteo y los pasos a la izquierda y la
+   gráfica a la derecha, grande. */
+html[data-proyeccion] .es-proyectada .ejemplo__grafica { margin: 0; }
+html[data-proyeccion] .ejemplo.es-proyectada[data-diapositiva="dos"] { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+html[data-proyeccion] .ejemplo.es-proyectada .worked-steps li { grid-template-columns: calc(var(--u) * 11) minmax(0, 1fr); }
+
+html[data-proyeccion] .es-proyectada .ejemplo__grafica .gm-ejemplo {
+  max-width: none;
+  max-height: calc(var(--u) * 34);
+}
+
+/* Reto con una gráfica en la pregunta: el texto a la izquierda y la gráfica a la derecha. */
+html[data-proyeccion] .es-proyectada .reto__enunciado:has(> .gm-graf) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  align-items: center;
+  column-gap: calc(var(--u) * 4);
+  margin-top: calc(var(--u) * .6);
+  font-size: calc(var(--u) * 3);
+}
+
+html[data-proyeccion] .es-proyectada .reto__enunciado > .gm-graf {
+  width: 100%;
+  max-height: calc(var(--u) * 17);
+}
+
+/* Reto con gráficas en las opciones: las cuatro en un renglón, grandes. */
+html[data-proyeccion] .reto.es-proyectada:has(.reto__valor .gm-graf) .reto__opciones {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+html[data-proyeccion] .es-proyectada .reto__valor .gm-graf {
+  width: 100%;
+  max-height: calc(var(--u) * 14);
+}
+
+html[data-proyeccion] .es-proyectada .reto__opcion:has(.gm-graf) { align-items: flex-start; }
