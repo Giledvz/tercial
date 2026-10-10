@@ -1,0 +1,150 @@
+/* Física · Análisis dimensional: las dos escenas y las piezas propias de la lección.
+   El molde vive en /assets/css/leccion.css y lo común de Física en fisica.css. base.css le
+   pone contorno y relleno vacío a todo <svg>: aquí cada forma declara los suyos.
+   Los textos de las escenas se miden en unidades del viewBox (crecen con el dibujo en la
+   tele); los de HTML, en em, para que la tele los escale con su letra. */
+
+/* ---------- Las unidades se cancelan ---------- */
+.escena-ad__paso {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+
+/* Cada pieza de la operación: número, unidad o signo. Su ancho está medido en Fraunces de
+   24 px (escenas-analisis-dimensional.js, ANCHO): no se le cambia la letra ni el tamaño. */
+.cancela__pieza {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 24px;
+}
+
+.cancela__pieza.es-numero { fill: var(--color-accent); }
+
+.cancela__raya {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.6;
+  stroke-linecap: butt;
+}
+
+/* El tache que cancela una unidad: una diagonal en el color del nivel. */
+.cancela__tache {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.cancela__resultado {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 24px;
+}
+
+.escena-ad__nota {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-body);
+  font-size: 11px;
+}
+
+.escena-ad__algebra {
+  fill: var(--color-text-secondary);
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* ---------- Sólo se suma lo que es igual: la cinta métrica ---------- */
+.suma__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 20px;
+}
+
+.suma__resultado { fill: var(--color-accent); }
+
+.suma__regla {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+}
+
+.suma__marca {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+}
+
+.suma__numero,
+.suma__nombre {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+}
+
+.suma__nombre { font-style: italic; }
+
+/* Las tablas que se miden: en el color del nivel, con una raya del fondo entre una y otra
+   para que se vea dónde acaba cada una. El tiempo va en otro color: es otra magnitud. */
+.suma__tabla {
+  fill: var(--color-accent);
+  stroke: var(--color-bg-page);
+  stroke-width: 1;
+}
+
+.suma__tabla--tiempo { fill: var(--cat-blue); }
+
+.suma__rotulo {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+}
+
+.suma__cota-linea {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+}
+
+.suma__cota-punta { fill: var(--color-text-meta); stroke: none; }
+
+.suma__total {
+  fill: var(--color-accent);
+  font-family: var(--font-family-display);
+  font-size: 15px;
+}
+
+/* ---------- Tablas de la lección ---------- */
+/* Las operaciones de la tabla de reglas se leen como cuentas, no como texto. */
+.ad__expr {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* La letra que es magnitud (cursiva) o unidad (derecha), en grande. */
+.reference-table th.ad__letra {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 1.6em;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+html[data-proyeccion] .es-proyectada .reference-table th.ad__letra { font-size: calc(var(--u) * 3.2); }
+
+/* En la tele, las magnitudes de la tabla de reglas son contenido, no etiquetas. */
+html[data-proyeccion] .es-proyectada .ad-reglas tbody th {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+  font-size: calc(var(--u) * 1.8);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+}

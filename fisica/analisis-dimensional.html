@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Análisis dimensional · Física · Tercial</title>
+<meta name="description" content="Las unidades se operan como las literales del álgebra: se multiplican, se dividen y se cancelan. Dimensiones L, M y T, cómo revisar si una fórmula puede ser correcta y cómo descartar opciones sin hacer cuentas. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-fisica-analisis-dimensional">
+<meta name="tercial:resource-title" content="Análisis dimensional">
+<meta name="tercial:subject" content="fisica">
+<meta name="tercial:topic" content="analisis-dimensional">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="./analisis-dimensional.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261009-tele"></script>
+<script defer src="/tercial/assets/js/ejercicios-analisis-dimensional.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-analisis-dimensional.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 4 · Física</p>
+    <h1 class="hero__title">Análisis <em>dimensional</em></h1>
+    <p class="hero__lede">Las unidades se operan como las literales del álgebra: se multiplican, se dividen y se
+      cancelan. Con eso sabes qué unidad debe salir, revisas si una fórmula puede estar bien y, en el examen,
+      descartas opciones sin hacer una sola cuenta.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Física</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 4 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../matematicas/expresiones-algebraicas.html">En matemáticas: expresiones algebraicas</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaUnidades" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaUnidades">
+        <span class="lesson-section__kicker">Idea central</span> Las unidades son literales
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Se operan <em>como letras</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En álgebra, <span class="expresion">3<i>x</i> + 2<i>x</i> = 5<i>x</i></span>, pero
+          <span class="expresion">3<i>x</i> + 2<i>y</i></span> ya no se junta; <span class="expresion"><i>x</i> · <i>x</i> = <i>x</i>²</span>,
+          y en una fracción la <i>x</i> de arriba se cancela con la de abajo. Las unidades hacen lo mismo:
+          <span class="expresion">3 m + 2 m = 5 m</span>, <span class="expresion">m × m = m²</span>, y en
+          <span class="expresion">(km/h) × h</span> la hora de arriba se cancela con la de abajo: quedan km.</p>
+        <p>Hacer <strong>análisis dimensional</strong> es seguirles la pista a las unidades en cada cuenta. Así
+          sabes qué unidad debe tener el resultado; si sale otra, hubo un error. En mecánica todo se arma con
+          tres <strong>dimensiones</strong>: longitud (L), masa (M) y tiempo (T).</p>
+        <p>Y es un arma de examen: si buscas una velocidad y una opción viene en kilogramos, se descarta sin
+          hacer cuentas.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaCancela" data-diapositiva="dos" data-figura="amplia" data-cancela>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaCancela">
+        <span class="lesson-section__kicker">Observa</span> Las unidades se cancelan
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una operación. Primero todo se escribe como una sola
+      fracción; luego se tacha lo que se repite arriba y abajo, y los números se operan aparte.</p>
+    <div class="pastillas" role="group" aria-label="Elige una operación">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="km-h">km/h × h</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="km-kmh">km ÷ km/h</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="kg-ms2">kg × m/s²</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="ms2-s">m/s² × s</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica escena-ad" data-escena-ad="cancela" viewBox="0 0 400 180" role="img" aria-labelledby="cancelaTitulo">
+        <title id="cancelaTitulo">Una operación con unidades se escribe como una sola fracción. Las unidades
+          que se repiten arriba y abajo se tachan con una diagonal, los números se operan aparte y a la derecha
+          queda el resultado con su unidad. Abajo, la misma cuenta con letras.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-cancela-texto></div>
+    <div hidden>
+      <p data-texto-caso="km-h"><strong class="expresion">90 km/h × 2 h = 180 km.</strong> En una sola fracción,
+        la h de 2 h queda arriba y la de km/h, abajo: se cancelan. Los números van aparte,
+        <span class="expresion">90 × 2 = 180</span>, y queda una distancia.</p>
+      <p data-texto-caso="km-kmh"><strong class="expresion">150 km ÷ 60 km/h = 2.5 h.</strong> Dividir entre una
+        fracción es multiplicar por su inversa: km/h se voltea y la h sube. Los km de arriba y de abajo se
+        cancelan, y queda un tiempo.</p>
+      <p data-texto-caso="kg-ms2"><strong class="expresion">5 kg × 4 m/s² = 20 N.</strong> Aquí nada se repite
+        arriba y abajo: no se cancela nada y las unidades se juntan, kg·m/s². Se usa tanto que tiene nombre:
+        el newton.</p>
+      <p data-texto-caso="ms2-s"><strong class="expresion">10 m/s² × 3 s = 30 m/s.</strong> s² es s · s, y la s
+        que multiplica cancela sólo una de las dos: queda m/s, una velocidad. Es la de una piedra que lleva 3 s
+        cayendo, con <span class="expresion"><i>g</i> ≈ 10 m/s²</span>.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En matemáticas es la misma operación: en
+      <span class="expresion">12<i>ab</i>² ÷ 4<i>b</i> = 3<i>ab</i></span> los números se dividen aparte y cada letra
+      se cancela con su igual, como las unidades. Lo ves en
+      <a href="../matematicas/expresiones-algebraicas.html">Expresiones algebraicas</a>.</p>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="comparaSuma" data-diapositiva="dos" data-figura="amplia" data-suma>
+    <header class="section-header">
+      <h2 class="section-header__title" id="comparaSuma">
+        <span class="lesson-section__kicker">Compara</span> Sólo se suma lo que es igual
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una suma. Sumar longitudes es poner una tras otra sobre
+      la misma cinta métrica; la cota de abajo mide el total.</p>
+    <div class="pastillas" role="group" aria-label="Elige una suma">
+      <button class="pastilla" type="button" aria-pressed="true" data-suma-caso="m-m">3 m + 2 m</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-suma-caso="m-cm">2 m + 60 cm</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-suma-caso="m-s">3 m + 2 s</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-fisica escena-ad" data-escena-ad="suma" viewBox="0 0 400 180" role="img" aria-labelledby="sumaTitulo">
+        <title id="sumaTitulo">Una cinta métrica de 0 a 5 metros. Las longitudes que se suman son tablas que se
+          ponen una tras otra sobre la cinta, y una cota abajo mide el total. Un tiempo no cabe en la cinta:
+          tiene su propia regla, en segundos.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-suma-texto></div>
+    <div hidden>
+      <p data-texto-suma="m-m"><strong class="expresion">3 m + 2 m = 5 m.</strong> Dos longitudes en la misma
+        unidad: se ponen una tras otra y la cinta marca 5 m. Como <span class="expresion">3<i>x</i> + 2<i>x</i> = 5<i>x</i></span>,
+        se suman los números y la unidad se queda.</p>
+      <p data-texto-suma="m-cm"><strong class="expresion">2 m + 60 cm = 2.6 m.</strong> Las dos son longitudes:
+        sí se ponen una tras otra. Pero para escribir el total hace falta una sola unidad,
+        <span class="expresion">60 cm = 0.6 m</span>. Sumar 2 + 60 = 62 no dice nada: ¿62 qué?</p>
+      <p data-texto-suma="m-s"><strong class="expresion">3 m + 2 s no tiene sentido.</strong> Una longitud y un
+        tiempo no caben en la misma regla. En álgebra, <span class="expresion">3<i>x</i> + 2<i>y</i></span> se queda
+        así; en física, una suma así avisa que la fórmula está mal.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="reglasUnidades" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasUnidades">
+        <span class="lesson-section__kicker">Reglas</span> Lo que vale para las letras vale para las unidades
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Cómo se operan las unidades" tabindex="0">
+      <table class="reference-table reference-table--apilada ad-reglas">
+        <caption class="visually-hidden">Cómo se operan las unidades, junto a la misma operación con literales</caption>
+        <thead>
+          <tr><th scope="col">Operación</th><th scope="col">Con literales</th><th scope="col">Con unidades</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Sumar o restar</th>
+            <td class="ad__expr"><span class="expresion">3<i>x</i> + 2<i>x</i> = 5<i>x</i></span><br><span class="expresion">3<i>x</i> + 2<i>y</i></span> no se junta</td>
+            <td class="ad__expr"><span class="expresion">4 kg + 1 kg = 5 kg</span><br><span class="expresion">4 kg + 1 m</span> no tiene sentido</td></tr>
+          <tr><th scope="row">Multiplicar</th>
+            <td class="ad__expr"><span class="expresion"><i>x</i> · <i>x</i> = <i>x</i>²</span><br><span class="expresion"><i>a</i> · <i>b</i> = <i>ab</i></span></td>
+            <td class="ad__expr"><span class="expresion">m × m = m²</span><br><span class="expresion">N × m = N·m</span></td></tr>
+          <tr><th scope="row">Dividir</th>
+            <td class="ad__expr"><span class="expresion"><i>x</i> ÷ <i>y</i> = <i>x</i>/<i>y</i></span></td>
+            <td class="ad__expr"><span class="expresion">m ÷ s = m/s</span></td></tr>
+          <tr><th scope="row">Cancelar</th>
+            <td class="ad__expr"><span class="expresion">(<i>a</i>/<i>b</i>) · <i>b</i> = <i>a</i></span></td>
+            <td class="ad__expr"><span class="expresion">(m/s) × s = m</span></td></tr>
+          <tr><th scope="row">Elevar</th>
+            <td class="ad__expr"><span class="expresion">(<i>x</i>/<i>y</i>)² = <i>x</i>²/<i>y</i>²</span></td>
+            <td class="ad__expr"><span class="expresion">(m/s)² = m²/s²</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> cancelar un cuadrado completo. En
+      <span class="expresion">m/s² × s</span> se va una sola s, porque s² es s × s: queda m/s. Igual que
+      <span class="expresion"><i>x</i>² ÷ <i>x</i> = <i>x</i></span>, y no 1.</p>
+  </section>
+
+  <section aria-labelledby="dimensionesLMT" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="dimensionesLMT">
+        <span class="lesson-section__kicker">Dimensiones</span> Todo se arma con L, M y T
+      </h2>
+    </header>
+    <p class="section-intro">La dimensión dice qué tipo de cantidad es, sin importar la unidad: 5 m y 3 km son
+      longitudes, L. Los corchetes se leen «dimensiones de»: <span class="expresion">[<i>v</i>] = L/T</span>.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Unidades y dimensiones" tabindex="0">
+      <table class="reference-table reference-table--apilada si-tabla" data-filas-por-pantalla="4">
+        <caption class="visually-hidden">Magnitudes de la mecánica: su unidad en el SI, escrita en kg, m y s, y sus dimensiones</caption>
+        <thead>
+          <tr><th scope="col">Magnitud</th><th scope="col">Unidad</th><th scope="col">Dimensiones</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Longitud</th><td class="si__simbolo">m</td><td class="si__simbolo">L</td></tr>
+          <tr><th scope="row">Masa</th><td class="si__simbolo">kg</td><td class="si__simbolo">M</td></tr>
+          <tr><th scope="row">Tiempo</th><td class="si__simbolo">s</td><td class="si__simbolo">T</td></tr>
+          <tr><th scope="row">Área</th><td class="si__simbolo">m²</td><td class="si__simbolo">L²</td></tr>
+          <tr><th scope="row">Volumen</th><td class="si__simbolo">m³</td><td class="si__simbolo">L³</td></tr>
+          <tr><th scope="row">Velocidad</th><td class="si__simbolo">m/s</td><td class="si__simbolo">L/T</td></tr>
+          <tr><th scope="row">Aceleración</th><td class="si__simbolo">m/s²</td><td class="si__simbolo">L/T²</td></tr>
+          <tr><th scope="row">Densidad</th><td class="si__simbolo">kg/m³</td><td class="si__simbolo">M/L³</td></tr>
+          <tr><th scope="row">Fuerza</th><td class="si__simbolo">N = kg·m/s²</td><td class="si__simbolo">M·L/T²</td></tr>
+          <tr><th scope="row">Energía, trabajo</th><td class="si__simbolo">J = N·m = kg·m²/s²</td><td class="si__simbolo">M·L²/T²</td></tr>
+          <tr><th scope="row">Potencia</th><td class="si__simbolo">W = J/s = kg·m²/s³</td><td class="si__simbolo">M·L²/T³</td></tr>
+          <tr><th scope="row">Presión</th><td class="si__simbolo">Pa = N/m² = kg/(m·s²)</td><td class="si__simbolo">M/(L·T²)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
+      <li><span class="worked-steps__label">Exponentes</span><p>Como en la semana 3, <span class="expresion">1/T = T⁻¹</span>.
+        Muchos libros y exámenes escriben así las dimensiones: L/T es L·T⁻¹ y M·L/T² es M·L·T⁻².</p></li>
+      <li><span class="worked-steps__label">Los números</span><p>Un número como ½, 2 o π no tiene dimensiones:
+        no cambia nada en el análisis.</p></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="cuidadoLetras" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoLetras">
+        <span class="lesson-section__kicker">Cuidado</span> La misma letra, dos cosas
+      </h2>
+    </header>
+    <p class="section-intro">En una fórmula, la letra es una magnitud y se escribe en cursiva; junto a un número,
+      es una unidad y va derecha. Al sustituir, cada letra se cambia por su valor con su unidad.</p>
+    <div class="reference-table-wrap" role="region" aria-label="Letras que son magnitud o unidad" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Letras que en una fórmula son una magnitud y junto a un número son una unidad</caption>
+        <thead>
+          <tr><th scope="col">Letra</th><th scope="col">En una fórmula: magnitud</th><th scope="col">Junto a un número: unidad</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="ad__letra">m</th><td>En <span class="expresion"><i>F</i> = <i>m</i>·<i>a</i></span>, <i>m</i> es la masa, en kg.</td><td><span class="expresion">5 m</span> son cinco metros.</td></tr>
+          <tr><th scope="row" class="ad__letra">g</th><td>En <span class="expresion"><i>P</i> = <i>m</i>·<i>g</i></span>, <i>g</i> es la gravedad, 9.8 m/s².</td><td><span class="expresion">250 g</span> son gramos.</td></tr>
+          <tr><th scope="row" class="ad__letra">h</th><td>En <span class="expresion"><i>E</i> = <i>m</i>·<i>g</i>·<i>h</i></span>, <i>h</i> es la altura, en m.</td><td><span class="expresion">2 h</span> son dos horas.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note">Si en <span class="expresion"><i>F</i> = <i>m</i>·<i>a</i></span> la <i>m</i> se toma
+      por metros, sale m²/s², que no es una fuerza: la masa va en kg, y la fuerza, en kg·m/s².</p>
+  </section>
+
+  <section aria-labelledby="armaExamen" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="armaExamen">
+        <span class="lesson-section__kicker">Arma de examen</span> Descarta sin hacer cuentas
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Antes de calcular, revisa las unidades: una fórmula o una respuesta
+      con la unidad equivocada no puede ser correcta. En el examen no hay calculadora, y esto ahorra tiempo.</p>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un carrito parte del reposo con aceleración <i>a</i>
+          durante un tiempo <i>t</i>. ¿Recorre <span class="expresion"><i>d</i> = ½<i>at</i></span> o
+          <span class="expresion"><i>d</i> = ½<i>at</i>²</span>?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">La primera</span><p><span class="expresion">(m/s²) × s = m/s</span>:
+            es una velocidad. Se descarta.</p></li>
+          <li><span class="worked-steps__label">La segunda</span><p><span class="expresion">(m/s²) × s² = m</span>:
+            son metros. <strong>Puede ser.</strong></p></li>
+          <li><span class="worked-steps__label">Ojo</span><p>El ½ no tiene unidad: las unidades dicen qué fórmula
+            no puede ser, pero no ven si falta un 2.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Piden la rapidez de un ciclista. Las opciones son
+          6 m, 6 m/s, 6 m/s² y 6 s.</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">La unidad</span><p>Una rapidez va en m/s o en km/h.</p></li>
+          <li><span class="worked-steps__label">Descarta</span><p>6 m es una distancia; 6 m/s², una aceleración, y
+            6 s, un tiempo.</p></li>
+          <li><span class="worked-steps__label">Queda</span><p><strong>6 m/s</strong>, sin hacer una sola
+            cuenta.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ejemploDimensional" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploDimensional">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Qué unidad tiene la energía cinética,
+          <span class="expresion"><i>E</i> = ½<i>mv</i>²</span>?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Sustituye</span><p>Cada letra por su unidad:
+            <span class="expresion">kg × (m/s)²</span>. El ½ no tiene unidad.</p></li>
+          <li><span class="worked-steps__label">El cuadrado</span><p>Afecta a todo el paréntesis:
+            <span class="expresion">(m/s)² = m²/s²</span>.</p></li>
+          <li><span class="worked-steps__label">Junta</span><p><span class="expresion">kg·m²/s² = N·m</span>: es el
+            joule, <strong>J</strong>, la unidad de una energía.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un autobús va a <span class="expresion">80 km/h</span>
+          durante <span class="expresion">45 min</span>. ¿Cuánto avanza?</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Las unidades</span><p><span class="expresion">km/h × min</span> no se
+            cancela: h y min son unidades distintas. Hay que convertir.</p></li>
+          <li><span class="worked-steps__label">Convierte</span><p><span class="expresion">45 min = 0.75 h</span>,
+            porque 45 de 60 son ¾.</p></li>
+          <li><span class="worked-steps__label">Calcula</span><p><span class="expresion">80 km/h × 0.75 h =
+            <strong>60 km</strong></span>: la h se cancela.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 30, "cuantas": 4, "nivel": 2, "generadores": ["ad-operacion", "ad-fundamentales", "ad-dimensiones", "ad-formula", "ad-descarta"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-analisis-dimensional.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m2 0h4m1 0h5m1 0h1m2 0h1m1 0h2m1 0h1m1 0h7M4 5.5h1m5 0h1m2 0h1m3 0h3m1 0h1m1 0h1m2 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h2m5 0h2m2 0h4m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m3 0h4m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h1m3 0h1m1 0h2m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m4 0h2m3 0h1m3 0h1m2 0h1m1 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h1m1 0h2m2 0h1m5 0h3m1 0h1m1 0h1M4 12.5h1m1 0h5m2 0h2m1 0h1m1 0h1m3 0h2m2 0h4m4 0h5M4 13.5h2m6 0h2m1 0h7m5 0h1m4 0h1m2 0h1m2 0h2M4 14.5h2m2 0h1m1 0h1m2 0h3m5 0h1m4 0h1m2 0h7m2 0h3M4 15.5h1m6 0h1m1 0h2m2 0h1m2 0h1m2 0h6m1 0h1m2 0h1m1 0h2m3 0h1M6 16.5h1m1 0h1m1 0h1m2 0h3m4 0h2m4 0h1m1 0h7m1 0h1m1 0h3M6 17.5h1m1 0h1m2 0h4m3 0h1m1 0h2m1 0h2m1 0h2m1 0h1m2 0h1m2 0h1M5 18.5h2m1 0h3m1 0h1m1 0h2m1 0h5m2 0h1m1 0h1m1 0h1m1 0h2m2 0h4m2 0h1M11 19.5h3m3 0h2m1 0h3m2 0h1m1 0h1m2 0h1m1 0h5M6 20.5h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m5 0h2m1 0h6m1 0h1m1 0h3M5 21.5h4m2 0h2m2 0h1m2 0h2m2 0h4m1 0h1m1 0h1m2 0h1m6 0h1M6 22.5h3m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m4 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h2M4 23.5h1m2 0h1m4 0h1m1 0h2m2 0h2m4 0h2m1 0h1m2 0h2m1 0h2m5 0h1M5 24.5h2m1 0h5m1 0h1m1 0h1m1 0h2m1 0h1m4 0h5m1 0h3m1 0h3M6 25.5h4m1 0h7m5 0h3m1 0h2m1 0h1m1 0h1m4 0h1M5 26.5h4m1 0h1m2 0h1m2 0h1m2 0h1m2 0h1m1 0h2m2 0h1m1 0h2m1 0h1m1 0h3m1 0h2M4 27.5h1m3 0h2m2 0h2m1 0h1m3 0h2m4 0h4m2 0h2m2 0h2m3 0h1M9 28.5h3m2 0h4m1 0h1m2 0h2m2 0h1m1 0h4m1 0h2m1 0h1m1 0h3M4 29.5h3m2 0h1m5 0h1m3 0h2m2 0h3m1 0h1m4 0h1m2 0h1m1 0h1M4 30.5h1m3 0h3m4 0h3m7 0h2m3 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m2 0h3m1 0h1m1 0h3m4 0h1m1 0h1m2 0h2m4 0h2m1 0h2m3 0h1M4 32.5h1m2 0h5m6 0h1m1 0h2m4 0h1m1 0h3m1 0h5m1 0h1M12 33.5h1m1 0h2m2 0h1m1 0h2m1 0h2m1 0h2m1 0h1m1 0h2m3 0h2M4 34.5h7m2 0h1m1 0h2m1 0h4m2 0h3m5 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m1 0h1m2 0h6m1 0h1m4 0h1m1 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h3m3 0h1m3 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h1m2 0h4m1 0h1m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h1m3 0h1m2 0h2m1 0h1m14 0h4M4 39.5h1m5 0h1m2 0h1m1 0h2m1 0h2m2 0h4m5 0h2m1 0h1m1 0h1m3 0h1M4 40.5h7m1 0h4m1 0h1m1 0h3m1 0h1m2 0h2m1 0h2m2 0h2m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaDimensional">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaDimensional">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="fisica:analisis-dimensional" data-modos='[
+      {"id":"operaciones","nombre":"Operaciones","generadores":["ad-operacion"]},
+      {"id":"dimensiones","nombre":"Unidades y dimensiones","generadores":["ad-fundamentales","ad-dimensiones"]},
+      {"id":"descarta","nombre":"Descarta","generadores":["ad-formula","ad-descarta"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["ad-operacion","ad-fundamentales","ad-dimensiones","ad-formula","ad-descarta"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-analisis-dimensional.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Física</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="../matematicas/expresiones-algebraicas.html">← En matemáticas: expresiones algebraicas</a>
+    <a href="./index.html">Índice de Física</a>
+  </nav>
+</footer>
+
+</body>
+</html>
