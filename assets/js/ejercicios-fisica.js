@@ -35,8 +35,8 @@
   function numero(n) { return n < 0 ? MENOS + -n : String(n); }
   function opcion(html) { return { k: 't:' + html, h: html }; }
 
-  // El número y su unidad no se separan de renglón: 5 m, 15 m/s, 300 K.
-  var NUMERO_UNIDAD = /(\d) (?=(?:kg·m\/s²|m\/s²|m\/s|km\/h|kg\/m³|m²|m³|cm|km|kg|min|mol|cd|m|s|h|g|K|A|N|J|W)(?![\wáéíóúñ²³\/]))/g;
+  // El número y su unidad no se separan de renglón: 5 m, 15 m/s, 300 K, 250 mL, 4 cm².
+  var NUMERO_UNIDAD = /(\d) (?=(?:kg·m\/s²|m\/s²|m\/s|km\/h|kg\/m³|cm²|cm³|km²|mm²|m²|m³|mm|cm|km|nm|µm|kg|mg|mL|min|mol|cd|ms|µs|ns|Hz|kHz|MHz|GHz|Pa|m|s|h|g|L|K|A|N|J|W)(?![\wáéíóúñ²³\/]))/g;
   function juntar(html) { return String(html).replace(NUMERO_UNIDAD, '$1\u00a0'); }
 
   // La correcta y tres falsas distintas (al azar entre las que se ofrecen).
