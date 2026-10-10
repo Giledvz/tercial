@@ -1,0 +1,146 @@
+/* Productos notables: estilos de su escena (el modelo de área), de su tabla de reglas y de su
+   letra en la tele. El molde de la lección vive en /assets/css/leccion.css. base.css le pone
+   contorno y relleno vacío a todo <svg>: aquí cada forma declara los suyos.
+
+   Los pedazos tienen tres tonos, todos de los tokens: el cuadrado grande, los rectángulos (los
+   del doble producto, en el color del nivel) y el cuadrito. El de los rectángulos es el acento
+   mezclado con el fondo, así se ve igual de claro en los dos temas y en prepa y universidad. */
+
+.escena-pn {
+  --pn-grande: var(--color-border-subtle);
+  --pn-chico: var(--color-border-strong);
+  max-width: 34rem;
+}
+
+.pn__ecuacion {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 20px;
+}
+
+.pn__acento { fill: var(--color-accent); }
+
+.pn__pieza { stroke: none; }
+.pn__pieza--grande { fill: var(--pn-grande); }
+.pn__pieza--chico { fill: var(--pn-chico); }
+.pn__pieza--rect { fill: var(--color-accent); fill-opacity: .32; }
+
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .escena-pn { --pn-rect: color-mix(in srgb, var(--color-accent) 32%, var(--color-bg-page)); }
+  .pn__pieza--rect { fill: var(--pn-rect); fill-opacity: 1; }
+}
+
+/* Las piezas que se mueven llevan su propio contorno. */
+.pn__pieza--borde {
+  stroke: var(--color-text-primary);
+  stroke-width: 1.3;
+}
+
+/* El contorno y las divisiones principales; las fichas se separan por un hueco del fondo. */
+.pn__linea {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.3;
+}
+
+.pn__corte {
+  fill: none;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.3;
+  stroke-dasharray: 5 4;
+}
+
+.pn__hueco {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 3;
+}
+
+.pn__hueco-texto {
+  fill: var(--color-text-meta);
+  font-family: var(--font-family-display);
+  font-size: 18px;
+}
+
+/* El área de cada pedazo, con un halo de su mismo tono: las divisiones de las fichas no la cruzan. */
+.pn__rotulo {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 19px;
+  paint-order: stroke fill;
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.pn__rotulo--grande { stroke: var(--pn-grande); }
+.pn__rotulo--rect { stroke: var(--pn-rect); }
+.pn__rotulo--chico { stroke: var(--pn-chico); }
+
+/* Las cotas: cuánto mide cada parte de un lado. */
+.pn__cota-linea {
+  fill: none;
+  stroke: var(--color-text-meta);
+  stroke-width: 1;
+}
+
+.pn__cota-texto {
+  fill: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: 17px;
+}
+
+/* La tabla de reglas: cada producto y su resultado se leen como fórmulas; el nombre y la regla
+   en palabras van abajo, más chicos. */
+.reference-table th .pn-tabla__producto,
+.pn-tabla__resultado {
+  display: block;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.pn-tabla__nombre {
+  display: block;
+  margin-top: var(--space-1);
+}
+
+.pn-tabla__regla {
+  display: block;
+  margin-top: var(--space-1);
+}
+
+.pn-tabla__ejemplo {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-16);
+  white-space: nowrap;
+}
+
+/* «Sin calculadora» cierra la sección: se separa de los ejemplos. */
+.pn-numeros { margin-top: var(--space-6); }
+
+/* ---------- En la tele ---------- */
+html[data-proyeccion] .es-proyectada .escena-pn { max-width: none; }
+
+/* Las notas usan todo el ancho de la tele (al leer miden 68 caracteres). */
+html[data-proyeccion] .es-proyectada .editorial-note { max-width: none; }
+html[data-proyeccion] .es-proyectada .pn-numeros { margin-top: 0; }
+
+/* La tabla de reglas trae cuatro productos con su regla en palabras: filas más juntas, para que
+   quepa casi sin encogerse. */
+html[data-proyeccion] .es-proyectada .pn-tabla th,
+html[data-proyeccion] .es-proyectada .pn-tabla td { padding-block: calc(var(--u) * .55); }
+
+html[data-proyeccion] .es-proyectada .pn-tabla__nombre { white-space: nowrap; }
+
+html[data-proyeccion] .es-proyectada .reference-table th .pn-tabla__producto,
+html[data-proyeccion] .es-proyectada .pn-tabla__resultado { font-size: calc(var(--u) * 2.4); }
+
+html[data-proyeccion] .es-proyectada .pn-tabla__nombre { font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .pn-tabla__regla { font-size: calc(var(--u) * 1.7); line-height: 1.4; }
+html[data-proyeccion] .es-proyectada .pn-tabla__ejemplo { font-size: calc(var(--u) * 2); }

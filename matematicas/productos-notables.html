@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Productos notables · Matemáticas · Tercial</title>
+<meta name="description" content="Binomio al cuadrado, binomios conjugados y binomios con término común: dibujados como rectángulos se ve de dónde sale cada término, incluido el doble producto. Con el binomio al cubo y práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-productos-notables">
+<meta name="tercial:resource-title" content="Productos notables">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="productos-notables">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./productos-notables.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-productos-notables.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-productos-notables.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 5 · Matemáticas</p>
+    <h1 class="hero__title">Productos <em>notables</em></h1>
+    <p class="hero__lede">Hay multiplicaciones que salen tanto que conviene saberse el resultado. Dibujadas como
+      rectángulos se ve de dónde sale cada término, incluido el doble producto que casi todos olvidan; luego se
+      practican hasta que salgan solas.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 5 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/graficas-leer.html">En física: gráficas I: leer pendiente, corte y área</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaProductos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaProductos">
+        <span class="lesson-section__kicker">Idea central</span> Todos contra todos
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">Multiplicar es sacar un <em>área</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>Para multiplicar dos binomios, cada término del primero multiplica a cada término del segundo. En
+          <span class="expresion">(x + 2)(x + 5)</span> son cuatro productos: x por x, x por 5, 2 por x y 2 por 5.
+          Juntos dan <span class="expresion">x² + 5x + 2x + 10 = x² + 7x + 10</span>.</p>
+        <p>Esos cuatro productos son los cuatro pedazos de un rectángulo que mide <span class="expresion">x + 5</span>
+          de base y <span class="expresion">x + 2</span> de altura: un cuadrado x², dos franjas (5x y 2x) y un
+          rectángulo chico de 10. El área completa es la suma de los pedazos.</p>
+        <p>Los <strong>productos notables</strong> son los que salen tan seguido que conviene saberlos de memoria: el
+          binomio al cuadrado, los binomios conjugados y los binomios con término común. No son reglas nuevas: son
+          esta misma multiplicación, ya hecha.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaArea" data-diapositiva="dos" data-productos>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaArea">
+        <span class="lesson-section__kicker">Observa</span> Productos como rectángulos
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un producto. Los lados del rectángulo miden lo que los dos
+      binomios, y cada pedazo es un término del resultado: al final se suman las áreas.</p>
+    <div class="pastillas" role="group" aria-label="Elige un producto">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="cuadrado">(a + b)²</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="comun">(x + 2)(x + 5)</button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="conjugados">(a + b)(a − b)</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate escena-pn" data-escena-pn="area" viewBox="0 0 400 300" role="img" aria-labelledby="areaTitulo">
+        <title id="areaTitulo">Modelo de área de los productos notables: el producto de dos binomios es el área de
+          un rectángulo cuyos lados miden lo que los binomios. (a + b) al cuadrado: un cuadrado de lado a + b
+          partido en un cuadrado a², dos rectángulos ab y un cuadrito b². (x + 2)(x + 5): un rectángulo con un
+          cuadrado x², cinco tiras de x, dos tiras de x y diez fichas de 1. (a + b)(a − b): un rectángulo de
+          a + b por a − b; la tira de b por a − b se corta, da un cuarto de vuelta y se pone arriba, y queda un
+          cuadrado a² con un hueco b² en la esquina.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-productos-texto></div>
+    <div hidden>
+      <p data-texto-caso="cuadrado"><strong class="expresion">(a + b)² = a² + 2ab + b².</strong> El cuadrado de
+        lado a + b se parte en cuatro pedazos: el cuadrado a², el cuadrito b² y dos rectángulos iguales de a por b.
+        Esos dos rectángulos son el 2ab, el término que se pierde cuando se escribe sólo a² + b².</p>
+      <p data-texto-caso="comun"><strong class="expresion">(x + 2)(x + 5) = x² + 7x + 10.</strong> Salen 5 tiras
+        de x por un lado y 2 por el otro: en medio va la suma, <span class="expresion">5 + 2 = 7</span>. Las fichas
+        sueltas forman un rectángulo de 2 por 5: al final va el producto, <span class="expresion">2 × 5 = 10</span>.</p>
+      <p data-texto-caso="conjugados"><strong class="expresion">(a + b)(a − b) = a² − b².</strong> El rectángulo
+        mide a + b por a − b. Se corta la tira de b por a − b y se acomoda arriba: queda el cuadrado a² con un
+        hueco b² en la esquina. No hay término de en medio: al multiplicar, +ab y −ab se cancelan.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En física, las gráficas del movimiento se leen con estas mismas
+      ideas. La recta <span class="expresion">y = mx + b</span> es <span class="expresion">x = x₀ + vt</span> con otros
+      nombres: la pendiente m es la velocidad y el corte b, la posición inicial. Y el área bajo una gráfica de
+      velocidad es un rectángulo como éstos: un auto a 3&nbsp;m/s durante 4&nbsp;s avanza
+      <span class="expresion">3&nbsp;m/s × 4&nbsp;s = 12&nbsp;m</span>, base por altura. Lo verás en
+      <a href="../fisica/graficas-leer.html">Gráficas I: leer pendiente, corte y área</a>.</p>
+  </section>
+
+  <section aria-labelledby="reglasProductos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasProductos">
+        <span class="lesson-section__kicker">Reglas</span> Los que conviene saber de memoria
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Productos notables" tabindex="0">
+      <table class="reference-table reference-table--apilada pn-tabla">
+        <caption class="visually-hidden">Productos notables: el producto, su resultado con la regla en palabras y
+          un ejemplo</caption>
+        <thead>
+          <tr><th scope="col">Producto</th><th scope="col">Resultado</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="pn-tabla__producto">(a + b)²</span><span class="pn-tabla__nombre">Binomio al cuadrado</span></th>
+            <td><span class="pn-tabla__resultado">a² + 2ab + b²</span><span class="pn-tabla__regla">El cuadrado del
+              primero, más el doble del primero por el segundo, más el cuadrado del segundo.</span></td>
+            <td class="pn-tabla__ejemplo">(x + 4)² = x² + 8x + 16</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="pn-tabla__producto">(a − b)²</span><span class="pn-tabla__nombre">Con resta</span></th>
+            <td><span class="pn-tabla__resultado">a² − 2ab + b²</span><span class="pn-tabla__regla">Igual, pero el
+              doble producto lleva menos. El último término siempre es +.</span></td>
+            <td class="pn-tabla__ejemplo">(x − 6)² = x² − 12x + 36</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="pn-tabla__producto">(a + b)(a − b)</span><span class="pn-tabla__nombre">Conjugados</span></th>
+            <td><span class="pn-tabla__resultado">a² − b²</span><span class="pn-tabla__regla">El cuadrado del
+              primero menos el cuadrado del segundo.</span></td>
+            <td class="pn-tabla__ejemplo">(x + 7)(x − 7) = x² − 49</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="pn-tabla__producto">(x + p)(x + q)</span><span class="pn-tabla__nombre">Término común</span></th>
+            <td><span class="pn-tabla__resultado">x² + (p + q)x + pq</span><span class="pn-tabla__regla">En medio, la
+              suma de los dos números; al final, su producto.</span></td>
+            <td class="pn-tabla__ejemplo">(x + 3)(x − 8) = x² − 5x − 24</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> escribir <span class="expresion">(x + 5)² = x² + 25</span>.
+      El cuadrado no se reparte en una suma: faltan los dos rectángulos, el doble producto
+      <span class="expresion">2(x)(5) = 10x</span>. Compruébalo con números: <span class="expresion">(3 + 5)² = 8² = 64</span>,
+      pero <span class="expresion">3² + 5² = 34</span>; lo que falta, 30, es <span class="expresion">2 × 3 × 5</span>.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoProductos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoProductos">
+        <span class="lesson-section__kicker">Cuidado</span> Cada término entra completo
+      </h2>
+    </header>
+    <p class="section-intro">Con su número y con su signo: cada término del binomio se eleva entero. Escríbelo entre
+      paréntesis antes de elevarlo y no se pierde nada.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">Primero</span><p>En <span class="expresion">(3x − 2)²</span>, el cuadrado
+        del primero es <span class="expresion">(3x)² = 9x²</span>. El 3 también se eleva: no es 3x².</p></li>
+      <li><span class="worked-steps__label">Doble producto</span><p><span class="expresion">2(3x)(−2) = −12x</span>.
+        El signo del 2 entra en la cuenta.</p></li>
+      <li><span class="worked-steps__label">Segundo</span><p><span class="expresion">(−2)² = 4</span>, positivo: un
+        cuadrado nunca es negativo.</p></li>
+      <li><span class="worked-steps__label">Junta</span><p><span class="expresion">(3x − 2)² =
+        <strong>9x² − 12x + 4</strong></span>.</p></li>
+    </ol>
+    <p class="editorial-note">En los conjugados pasa lo mismo: <span class="expresion">(4x + 5)(4x − 5) = 16x² − 25</span>,
+      no 4x² − 25.</p>
+  </section>
+
+  <section aria-labelledby="cuboProductos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuboProductos">
+        <span class="lesson-section__kicker">Un paso más</span> El binomio al cubo
+      </h2>
+    </header>
+    <p class="section-intro">El cubo es el cuadrado multiplicado otra vez por el binomio. Se hace una vez y queda la
+      regla.</p>
+    <ol class="worked-steps">
+      <li><span class="worked-steps__label">El cuadrado</span><p><span class="expresion">(a + b)³ = (a + b)²(a + b)</span>
+        <span class="expresion">= (a² + 2ab + b²)(a + b)</span>.</p></li>
+      <li><span class="worked-steps__label">Multiplica</span><p>Todos contra todos:
+        <span class="expresion">a³ + a²b + 2a²b + 2ab² + ab² + b³</span>.</p></li>
+      <li><span class="worked-steps__label">Junta</span><p><span class="expresion">(a + b)³ =
+        <strong>a³ + 3a²b + 3ab² + b³</strong></span>. Con resta, los signos se alternan:
+        <span class="expresion">(a − b)³ = a³ − 3a²b + 3ab² − b³</span>.</p></li>
+    </ol>
+    <p class="editorial-note">Por ejemplo, <span class="expresion">(x + 2)³ = x³ + 3(x²)(2) + 3(x)(4) + 8</span>
+      <span class="expresion">= x³ + 6x² + 12x + 8</span>. Tampoco aquí se reparte: no es x³ + 8.
+      <span data-solo-lectura>En la práctica, el cubo sale en «Todo junto», nivel 3.</span></p>
+  </section>
+
+  <section aria-labelledby="ejemploProductos" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploProductos">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">(x − 9)(x + 4)</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Reconoce</span><p>Término común x, con −9 y 4. El primero da
+            <span class="expresion">x²</span>.</p></li>
+          <li><span class="worked-steps__label">Suma</span><p><span class="expresion">−9 + 4 = −5</span>: en medio va
+            <span class="expresion">−5x</span>.</p></li>
+          <li><span class="worked-steps__label">Producto</span><p><span class="expresion">(−9)(4) = −36</span>: al final
+            va −36.</p></li>
+          <li><span class="worked-steps__label">Junta</span><p><strong class="expresion">x² − 5x − 36</strong></p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">(x + 3)² − (x + 1)(x − 1)</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Cada uno</span><p><span class="expresion">(x + 3)² = x² + 6x + 9</span>
+            y <span class="expresion">(x + 1)(x − 1) = x² − 1</span>.</p></li>
+          <li><span class="worked-steps__label">Paréntesis</span><p>El menos le cambia el signo a todo lo de adentro:
+            <span class="expresion">x² + 6x + 9 − x² + 1</span>.</p></li>
+          <li><span class="worked-steps__label">Junta</span><p>Los x² se cancelan: <strong class="expresion">6x + 10</strong>.</p></li>
+        </ol>
+      </div>
+    </div>
+    <p class="editorial-note pn-numeros"><strong>Sin calculadora.</strong> Los productos notables también sirven con
+      números: <span class="expresion">21² = (20 + 1)² = 400 + 40 + 1 = 441</span>, y
+      <span class="expresion">19 × 21 = (20 − 1)(20 + 1) = 400 − 1 = 399</span>.</p>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 25, "cuantas": 4, "nivel": 2, "generadores": ["pn-cuadrado", "pn-conjugados", "pn-comun", "pn-motor"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-productos-notables.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m5 0h1m3 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m6 0h1m3 0h1m1 0h1m2 0h1m1 0h4m2 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h3m3 0h4m4 0h2m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1m3 0h5m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m3 0h1m2 0h1m1 0h1m2 0h2m2 0h3m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m3 0h1m1 0h2m3 0h3m1 0h1m1 0h1M4 12.5h1m1 0h5m2 0h1m2 0h1m5 0h3m1 0h5m1 0h1m1 0h5M5 13.5h1m1 0h1m4 0h1m1 0h1m2 0h1m1 0h3m4 0h2m2 0h1m1 0h2m1 0h1m2 0h2M4 14.5h2m2 0h1m1 0h1m5 0h2m3 0h1m2 0h1m1 0h1m1 0h8m2 0h3M4 15.5h1m2 0h3m1 0h3m3 0h2m1 0h1m4 0h4m1 0h1m2 0h1m1 0h2m3 0h1M5 16.5h6m2 0h2m1 0h3m1 0h2m4 0h1m1 0h7m1 0h1m1 0h3M4 17.5h1m1 0h1m8 0h2m3 0h2m1 0h5m4 0h1m2 0h1M4 18.5h3m2 0h3m4 0h1m2 0h3m2 0h1m3 0h2m1 0h1m2 0h4m2 0h1M4 19.5h1m1 0h1m2 0h1m2 0h1m3 0h1m1 0h1m1 0h3m2 0h3m2 0h1m1 0h1m1 0h3M4 20.5h2m2 0h6m6 0h1m6 0h3m1 0h1m1 0h2m1 0h1m1 0h3M9 21.5h1m2 0h1m3 0h1m2 0h1m2 0h1m1 0h2m1 0h1m1 0h1m2 0h2m5 0h1M4 22.5h2m1 0h2m1 0h1m2 0h3m2 0h3m2 0h1m1 0h2m4 0h2m2 0h1m1 0h1m1 0h2M4 23.5h2m3 0h1m2 0h1m2 0h1m3 0h1m3 0h3m2 0h1m1 0h5m5 0h1M4 24.5h2m3 0h6m2 0h3m1 0h1m1 0h1m2 0h1m1 0h7m1 0h3M6 25.5h1m1 0h1m3 0h2m2 0h3m4 0h2m2 0h4m1 0h1m4 0h1M4 26.5h2m1 0h1m2 0h1m3 0h1m4 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h2m2 0h4m1 0h2M5 27.5h1m3 0h1m7 0h4m4 0h1m1 0h2m1 0h3m2 0h2m3 0h1M6 28.5h5m3 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h7m1 0h1m1 0h3M4 29.5h2m6 0h3m1 0h2m1 0h2m4 0h3m4 0h1m2 0h1m1 0h1M4 30.5h1m1 0h1m2 0h3m1 0h5m7 0h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h2M4 31.5h1m4 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h5m4 0h2m1 0h2m3 0h2M4 32.5h1m2 0h1m2 0h3m2 0h3m2 0h2m4 0h1m1 0h9m1 0h1M12 33.5h1m2 0h1m1 0h2m1 0h2m1 0h5m1 0h1m1 0h2m3 0h2M4 34.5h7m3 0h1m1 0h2m1 0h3m2 0h2m3 0h2m1 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h2m1 0h2m2 0h5m1 0h1m6 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h3m5 0h1m2 0h8m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h2m2 0h4m1 0h1m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h2m1 0h1m14 0h4M4 39.5h1m5 0h1m3 0h2m3 0h1m2 0h1m1 0h2m1 0h1m3 0h3m2 0h1m3 0h1M4 40.5h7m1 0h1m1 0h1m3 0h4m4 0h2m1 0h2m2 0h1m2 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaProductos">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaProductos">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 productos nuevos; las opciones falsas
+      son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:productos-notables" data-modos='[
+      {"id":"cuadrado","nombre":"Al cuadrado","generadores":["pn-cuadrado"]},
+      {"id":"conjugados","nombre":"Conjugados","generadores":["pn-conjugados"]},
+      {"id":"comun","nombre":"Término común","generadores":["pn-comun"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["pn-todo"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-productos-notables.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/graficas-leer.html">En física: gráficas I: leer pendiente, corte y área →</a>
+  </nav>
+</footer>
+
+</body>
+</html>
