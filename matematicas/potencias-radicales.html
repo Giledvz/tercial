@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Potencias y radicales · Matemáticas · Tercial</title>
+<meta name="description" content="Una potencia es multiplicar un número por sí mismo: con cuadritos, cubitos y fichas se ve de dónde salen las leyes de los exponentes, el exponente cero y el negativo, las potencias de 10 y las raíces. Con práctica sin fin.">
+<meta name="tercial:resource-id" content="fundamentos-matematicas-potencias-radicales">
+<meta name="tercial:resource-title" content="Potencias y radicales">
+<meta name="tercial:subject" content="matematicas">
+<meta name="tercial:topic" content="potencias-radicales">
+<meta name="tercial:kind" content="lesson">
+
+<script>
+  (function () {
+    var p = 'auto', n = null;
+    try {
+      p = localStorage.getItem('tercial-theme-pref') || 'auto';
+      n = localStorage.getItem('tercial-nivel');
+    } catch (_) {}
+    var d = p === 'auto'
+      ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+      : p;
+    var r = document.documentElement;
+    r.setAttribute('data-theme', d);
+    r.setAttribute('data-theme-pref', p);
+    // Los fundamentos sirven a prepa y a universidad: toman el color del nivel desde el que se llegó.
+    if (n === 'prepa' || n === 'uni') r.setAttribute('data-nivel', n);
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/tercial/assets/css/tokens.css">
+<link rel="stylesheet" href="/tercial/assets/css/base.css">
+<link rel="stylesheet" href="/tercial/assets/css/components.css">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="./potencias-radicales.css?v=20261010">
+<script defer src="/tercial/assets/js/theme.js"></script>
+<script defer src="/tercial/assets/js/progress.js?v=1"></script>
+<script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261009-fundamentos"></script>
+<script defer src="/tercial/assets/js/ejercicios-potencias-radicales.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
+<script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
+<script type="module" src="./escenas-potencias-radicales.js?v=20261010"></script>
+</head>
+<body>
+
+<site-nav></site-nav>
+
+<main class="container container--base">
+  <header class="hero" data-diapositiva="portada">
+    <p class="eyebrow">Fundamentos · Semana 3 · Matemáticas</p>
+    <h1 class="hero__title">Potencias y <em>radicales</em></h1>
+    <p class="hero__lede">Una potencia es una multiplicación repetida: el exponente cuenta cuántas veces se multiplica la
+      base por sí misma. Contando factores salen las leyes de los exponentes, el exponente cero y el negativo; la raíz
+      es el camino de regreso.</p>
+    <nav class="material-meta" aria-label="Navegación del material">
+      <a class="material-meta__back" href="./index.html">← Matemáticas</a>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <span>Fundamentos, semana 3 de 8</span>
+      <span class="material-meta__divider" aria-hidden="true">·</span>
+      <a href="../fisica/notacion-cientifica.html">En física: notación científica</a>
+    </nav>
+    <button class="practice-action boton-proyectar" type="button" data-proyectar>Proyectar
+      <span class="boton-proyectar__tecla" aria-hidden="true">P</span></button>
+  </header>
+
+  <section aria-labelledby="ideaPotencias" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ideaPotencias">
+        <span class="lesson-section__kicker">Idea central</span> La base y el exponente
+      </h2>
+    </header>
+    <article class="reading-block">
+      <header class="reading-block__header">
+        <h3 class="reading-block__title">El exponente <em>cuenta</em></h3>
+      </header>
+      <div class="reading-block__body">
+        <p>En <span class="expresion">2<sup>5</sup></span> el 2 es la <strong>base</strong> y el 5 es el
+          <strong>exponente</strong>: el exponente dice cuántas veces aparece la base como factor.
+          <span class="expresion">2<sup>5</sup> = 2 × 2 × 2 × 2 × 2 = 32</span>, no 2 × 5.</p>
+        <p>Por eso <span class="expresion">3<sup>2</sup></span> se lee «tres al cuadrado»: son los 9 cuadritos de un
+          cuadrado de lado 3. Y <span class="expresion">2<sup>3</sup></span>, «dos al cubo», son los 8 cubitos de un cubo
+          de arista 2. La <strong>raíz</strong> hace el camino de regreso: <span class="expresion">√9 = 3</span> es el
+          lado del cuadrado de 9 cuadritos.</p>
+        <p>Las leyes de los exponentes salen de contar factores: al multiplicar se juntan y al dividir se cancelan por
+          pares. Si se cancelan todos, o si sobran abajo, aparecen el exponente cero y el negativo.</p>
+      </div>
+      <footer class="source-line">
+        <span>Lectura · 3 min</span>
+      </footer>
+    </article>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaCuadros" data-diapositiva="dos" data-figura="amplia" data-casos>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaCuadros">
+        <span class="lesson-section__kicker">Observa</span> Cuadrados, cubos y raíces
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige un caso. Cada factor le agrega una dirección a la figura: un
+      factor es una fila, dos factores son un cuadrado y tres, un cubo.</p>
+    <div class="pastillas" role="group" aria-label="Elige un caso">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="cuadrado">3<sup>2</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="cubo">2<sup>3</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="raiz">√16</button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate escena-pot" data-escena-mate="cuadros" viewBox="0 0 400 250" role="img" aria-labelledby="cuadrosTitulo">
+        <title id="cuadrosTitulo">Tres casos. Tres al cuadrado: primero una fila de 3 cuadritos y luego tres filas iguales
+          forman un cuadrado de lado 3 con 9 cuadritos. Dos al cubo: una fila de 2 cubitos, luego otra fila detrás y al
+          final una capa encima, hasta un cubo de arista 2 con 8 cubitos. Raíz de 16: 16 cuadritos en dos filas de 8 se
+          acomodan en un cuadrado de 4 por lado; el lado, 4, es la raíz.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
+    <div hidden>
+      <p data-texto-caso="cuadrado"><strong class="expresion">3<sup>2</sup> = 3 × 3 = 9.</strong> Una fila de 3 cuadritos
+        es un factor 3; tres filas iguales forman un cuadrado de lado 3. Por eso «al cuadrado» es multiplicar un número
+        por sí mismo.</p>
+      <p data-texto-caso="cubo"><strong class="expresion">2<sup>3</sup> = 2 × 2 × 2 = 8.</strong> Cada factor 2 duplica
+        la figura: 2 cubitos en fila, 4 en un cuadrado y 8 en un cubo de arista 2. No es 2 × 3 = 6.</p>
+      <p data-texto-caso="raiz"><strong class="expresion">√16 = 4.</strong> Los 16 cuadritos, en dos filas de 8, se
+        acomodan en un cuadrado de 4 por lado. La raíz cuadrada es ese lado: el número que, multiplicado por sí mismo,
+        da 16.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section class="leccion-escena" aria-labelledby="observaFactores" data-diapositiva="dos" data-figura="amplia" data-casos>
+    <header class="section-header">
+      <h2 class="section-header__title" id="observaFactores">
+        <span class="lesson-section__kicker">Observa</span> Las leyes, contando factores
+      </h2>
+    </header>
+    <p class="section-intro" data-solo-lectura>Elige una operación. Cada ficha es un factor 2: al multiplicar, las fichas
+      se juntan; al dividir, cada una de abajo se cancela con una de arriba.</p>
+    <div class="pastillas" role="group" aria-label="Elige una operación">
+      <button class="pastilla" type="button" aria-pressed="true" data-caso="producto">2<sup>3</sup> · 2<sup>2</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="cociente">2<sup>5</sup> ÷ 2<sup>2</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="potencia">(2<sup>3</sup>)<sup>2</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="cero">2<sup>3</sup> ÷ 2<sup>3</sup></button>
+      <button class="pastilla" type="button" aria-pressed="false" data-caso="negativo">2<sup>2</sup> ÷ 2<sup>5</sup></button>
+    </div>
+    <figure class="leccion-figura" data-lado="figura">
+      <svg class="escena-mate escena-pot" data-escena-mate="factores" viewBox="0 0 400 250" role="img" aria-labelledby="factoresTitulo">
+        <title id="factoresTitulo">Fichas con un 2, cada una es un factor. Al multiplicar dos potencias, los grupos de
+          fichas se juntan y se cuentan todas. Al dividir, las fichas de abajo se cancelan por pares con las de arriba; si
+          se cancelan todas queda 1, y si sobran abajo queda 1 entre las que sobran.</title>
+      </svg>
+    </figure>
+    <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
+    <div hidden>
+      <p data-texto-caso="producto"><strong class="expresion">2<sup>3</sup> · 2<sup>2</sup> = 2<sup>5</sup>.</strong>
+        Tres doses y luego dos doses: al juntarlos son 3 + 2 = 5 factores. Con la misma base, al multiplicar se suman los
+        exponentes.</p>
+      <p data-texto-caso="cociente"><strong class="expresion">2<sup>5</sup> ÷ 2<sup>2</sup> = 2<sup>3</sup>.</strong>
+        Cada 2 de abajo se cancela con uno de arriba: se van 2 pares y quedan 5 − 2 = 3 factores. Al dividir se restan
+        los exponentes.</p>
+      <p data-texto-caso="potencia"><strong class="expresion">(2<sup>3</sup>)<sup>2</sup> = 2<sup>6</sup>.</strong>
+        Elevar al cuadrado es repetir dos veces el 2<sup>3</sup>: dos grupos de 3 factores, 2 × 3 = 6. En una potencia de
+        potencia se multiplican los exponentes.</p>
+      <p data-texto-caso="cero"><strong class="expresion">2<sup>3</sup> ÷ 2<sup>3</sup> = 1.</strong> Todos los
+        factores se cancelan y queda 1. Con la ley, <span class="expresion">2<sup>3 − 3</sup> = 2<sup>0</sup></span>: por
+        eso cualquier número distinto de cero elevado a la 0 da 1.</p>
+      <p data-texto-caso="negativo"><strong class="expresion">2<sup>2</sup> ÷ 2<sup>5</sup> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">2<sup>3</sup></span></span>.</strong>
+        Se cancelan 2 pares y sobran 3 factores abajo. Con la ley, <span class="expresion">2<sup>2 − 5</sup> =
+        2<sup>−3</sup></span>: el exponente negativo quiere decir «uno entre», <span class="expresion">2<sup>−3</sup> =
+        <span class="fr"><span class="fr__n">1</span><span class="fr__d">8</span></span></span>.</p>
+    </div>
+    <div class="practice-actions">
+      <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="reglasLeyes" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasLeyes">
+        <span class="lesson-section__kicker">Reglas</span> Las leyes de los exponentes
+      </h2>
+    </header>
+    <div class="reference-table-wrap" role="region" aria-label="Las leyes de los exponentes" tabindex="0">
+      <table class="reference-table reference-table--apilada">
+        <caption class="visually-hidden">Las leyes de los exponentes, cómo se aplican y un ejemplo de cada una</caption>
+        <thead>
+          <tr><th scope="col">Cuándo</th><th scope="col">Regla</th><th scope="col">Ejemplo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Producto</th><td>Misma base: se suman los exponentes,
+            <span class="expresion">a<sup>m</sup> · a<sup>n</sup> = a<sup>m + n</sup></span>.</td>
+            <td class="pot__ejemplo">x<sup>2</sup> · x<sup>5</sup> = x<sup>7</sup></td></tr>
+          <tr><th scope="row">Cociente</th><td>Misma base: se resta el de abajo,
+            <span class="expresion">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span>.</td>
+            <td class="pot__ejemplo">5<sup>6</sup> ÷ 5<sup>4</sup> = 5<sup>2</sup> = 25</td></tr>
+          <tr><th scope="row">Potencia de potencia</th><td>Se multiplican los exponentes,
+            <span class="expresion">(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup></span>.</td>
+            <td class="pot__ejemplo">(x<sup>4</sup>)<sup>3</sup> = x<sup>12</sup></td></tr>
+          <tr><th scope="row">Producto elevado</th><td>El exponente le toca a cada factor,
+            <span class="expresion">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span>.</td>
+            <td class="pot__ejemplo">(3x)<sup>2</sup> = 9x<sup>2</sup></td></tr>
+          <tr><th scope="row">Fracción elevada</th><td>Arriba y abajo,
+            <span class="expresion">(<span class="fr"><span class="fr__n">a</span><span class="fr__d">b</span></span>)<sup>n</sup> = <span class="fr"><span class="fr__n">a<sup>n</sup></span><span class="fr__d">b<sup>n</sup></span></span></span>.</td>
+            <td class="pot__ejemplo">(<span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span>)<sup>2</sup> = <span class="fr"><span class="fr__n">4</span><span class="fr__d">25</span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="editorial-note"><strong>El error más común:</strong> multiplicar la base por el exponente,
+      <span class="expresion">2<sup>5</sup> = 10</span>. El exponente no multiplica: cuenta los factores,
+      <span class="expresion">2 × 2 × 2 × 2 × 2 = 32</span>. Con las leyes pasa igual: en
+      <span class="expresion">x<sup>2</sup> · x<sup>5</sup></span> los factores se juntan, así que los exponentes se suman,
+      no se multiplican.</p>
+  </section>
+
+  <section aria-labelledby="reglasCeroNegativo" data-diapositiva="dos" data-figura="compacta">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasCeroNegativo">
+        <span class="lesson-section__kicker">Reglas</span> Cero, negativos y potencias de 10
+      </h2>
+    </header>
+    <p class="section-intro">Cada vez que el exponente baja 1, se divide entre la base. La cuenta no se detiene en el 1:
+      sigue hacia el exponente cero y los negativos.</p>
+    <figure class="leccion-figura pot-diez" data-lado="figura">
+      <table class="tabla-diez">
+        <caption class="visually-hidden">Potencias de 10 del 10 a la 3 al 10 a la menos 3, cada una con su valor</caption>
+        <tbody>
+          <tr><th scope="row">10<sup>3</sup></th><td class="tabla-diez__entero">1,000</td><td class="tabla-diez__decimal"></td></tr>
+          <tr><th scope="row">10<sup>2</sup></th><td class="tabla-diez__entero">100</td><td class="tabla-diez__decimal"></td></tr>
+          <tr><th scope="row">10<sup>1</sup></th><td class="tabla-diez__entero">10</td><td class="tabla-diez__decimal"></td></tr>
+          <tr class="tabla-diez__uno"><th scope="row">10<sup>0</sup></th><td class="tabla-diez__entero">1</td><td class="tabla-diez__decimal"></td></tr>
+          <tr><th scope="row">10<sup>−1</sup></th><td class="tabla-diez__entero">0</td><td class="tabla-diez__decimal">.1</td></tr>
+          <tr><th scope="row">10<sup>−2</sup></th><td class="tabla-diez__entero">0</td><td class="tabla-diez__decimal">.01</td></tr>
+          <tr><th scope="row">10<sup>−3</sup></th><td class="tabla-diez__entero">0</td><td class="tabla-diez__decimal">.001</td></tr>
+        </tbody>
+      </table>
+      <figcaption>Cada renglón es el de arriba entre 10: el 1 se corre un lugar a la derecha.</figcaption>
+    </figure>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Exponente cero</span><p>Cualquier número distinto de cero elevado a la 0
+        vale 1: <span class="expresion">7<sup>0</sup> = 1</span> y <span class="expresion">(−3)<sup>0</sup> = 1</span>.</p></li>
+      <li><span class="worked-steps__label">Exponente negativo</span><p>Es «uno entre» la potencia positiva:
+        <span class="expresion">5<sup>−2</sup> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">5<sup>2</sup></span></span>
+        = <span class="fr"><span class="fr__n">1</span><span class="fr__d">25</span></span></span>. Nunca vuelve negativo
+        al número.</p></li>
+      <li><span class="worked-steps__label">Una fracción</span><p>El exponente negativo la voltea:
+        <span class="expresion">(<span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span>)<sup>−1</sup>
+        = <span class="fr"><span class="fr__n">4</span><span class="fr__d">3</span></span></span>.</p></li>
+      <li><span class="worked-steps__label">Potencias de 10</span><p>Si el exponente es positivo, cuenta los ceros; si
+        es negativo, dice en qué lugar después del punto queda el 1.</p></li>
+    </ul>
+    <p class="editorial-note" data-solo-lectura>En física, 10<sup>n</sup> es la herramienta de todos los días: la luz
+      viaja a unos <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span> y la carga de un electrón mide
+      <span class="expresion">1.6 × 10<sup>−19</sup>&nbsp;C</span>. Multiplicar o dividir esos números es sumar o restar
+      exponentes, sin calculadora. Lo verás en <a href="../fisica/notacion-cientifica.html">Notación científica</a>.</p>
+  </section>
+
+  <section aria-labelledby="cuidadoBase" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="cuidadoBase">
+        <span class="lesson-section__kicker">Cuidado</span> Un negativo en la base
+      </h2>
+    </header>
+    <p class="section-intro">El exponente sólo eleva lo que tiene pegado. Con paréntesis, el signo también se
+      multiplica; sin paréntesis, se queda afuera.</p>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Con paréntesis</span><p><span class="expresion">(−3)<sup>2</sup> =
+        (−3)(−3) = 9</span>: dos negativos dan positivo.</p></li>
+      <li><span class="worked-steps__label">Sin paréntesis</span><p><span class="expresion">−3<sup>2</sup> =
+        −(3 × 3) = −9</span>: el exponente sólo eleva al 3.</p></li>
+      <li><span class="worked-steps__label">Exponente impar</span><p><span class="expresion">(−2)<sup>3</sup> =
+        (−2)(−2)(−2) = −8</span>: un número impar de negativos da negativo.</p></li>
+    </ul>
+    <p class="editorial-note" data-solo-lectura>Es la regla de <a href="./signos.html">Operaciones con signos</a>: se
+      cuentan los negativos. Si son pares, el resultado es positivo; si son impares, negativo.</p>
+  </section>
+
+  <section aria-labelledby="reglasRadicales" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="reglasRadicales">
+        <span class="lesson-section__kicker">Reglas</span> Raíces y radicales
+      </h2>
+    </header>
+    <p class="section-intro">La raíz deshace la potencia: <span class="expresion">√a</span> es el número positivo que,
+      multiplicado por sí mismo, da a.</p>
+    <ul class="worked-steps">
+      <li><span class="worked-steps__label">Raíz cuadrada</span><p><span class="expresion">√81 = 9</span> porque
+        <span class="expresion">9 × 9 = 81</span>. La de un negativo no existe con números reales: ningún número
+        multiplicado por sí mismo da −9.</p></li>
+      <li><span class="worked-steps__label">Raíz cúbica</span><p><span class="expresion">∛8 = 2</span> porque
+        <span class="expresion">2 × 2 × 2 = 8</span>. Ésta sí existe para negativos: <span class="expresion">∛(−8) = −2</span>.</p></li>
+      <li><span class="worked-steps__label">De un producto</span><p>Se reparte en cada factor:
+        <span class="expresion">√(4 × 9) = √4 × √9 = 2 × 3 = 6</span>.</p></li>
+      <li><span class="worked-steps__label">Simplificar</span><p>Se separa el cuadrado perfecto más grande:
+        <span class="expresion">√50 = √(25 × 2) = 5√2</span>.</p></li>
+      <li><span class="worked-steps__label">Exponente fraccionario</span><p>El de abajo es la raíz y el de arriba, la
+        potencia: <span class="expresion">8<sup>1/3</sup> = ∛8 = 2</span> y
+        <span class="expresion">8<sup>2/3</sup> = (∛8)<sup>2</sup> = 4</span>.</p></li>
+    </ul>
+    <p class="editorial-note"><strong>Cuidado:</strong> la raíz se reparte en un producto, pero no en una suma.
+      <span class="expresion">√(9 + 16) = √25 = 5</span>, no <span class="expresion">3 + 4 = 7</span>.</p>
+  </section>
+
+  <section aria-labelledby="ejemploPotencias" data-diapositiva="una">
+    <header class="section-header">
+      <h2 class="section-header__title" id="ejemploPotencias">
+        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+      </h2>
+    </header>
+    <div class="ejemplos">
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">2<sup>4</sup> · 2<sup>−6</sup> ÷ 2<sup>−3</sup></h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Producto</span><p>Se suman con su signo:
+            <span class="expresion">4 + (−6) = −2</span>, queda <span class="expresion">2<sup>−2</sup></span>.</p></li>
+          <li><span class="worked-steps__label">Cociente</span><p>Se resta el de abajo:
+            <span class="expresion">−2 − (−3) = −2 + 3 = 1</span>.</p></li>
+          <li><span class="worked-steps__label">Resultado</span><p><span class="expresion">2<sup>1</sup> =
+            <strong>2</strong></span>. Restar un negativo es sumar, como en la semana 1.</p></li>
+        </ol>
+      </div>
+      <div class="ejemplo">
+        <h3 class="ejemplo__planteo">√72</h3>
+        <ol class="worked-steps">
+          <li><span class="worked-steps__label">Cuadrados</span><p>Los cuadrados perfectos que dividen a 72 son 4, 9 y
+            36. El más grande es 36.</p></li>
+          <li><span class="worked-steps__label">Separa</span><p><span class="expresion">√72 = √(36 × 2) = √36 × √2</span>.</p></li>
+          <li><span class="worked-steps__label">Resultado</span><p><span class="expresion">√36 = 6</span>: queda
+            <strong>6√2</strong>. Con el 4 llegas a <span class="expresion">2√18</span> y todavía falta:
+            <span class="expresion">√18 = 3√2</span>.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
+    data-reto='{"segundos": 25, "cuantas": 4, "nivel": 2, "generadores": ["pot-leyes", "pot-cero-neg", "pot-diez", "radicales"]}'></aside>
+
+  <aside class="ahora-tu" data-diapositiva="ahora" data-solo-proyeccion aria-label="Tu tarea">
+    <div class="ahora-tu__texto">
+      <p class="eyebrow">Tarea</p>
+      <h2 class="ahora-tu__titulo">Tu <em>tarea</em></h2>
+      <p>Escanea el código con tu celular: se abre el PDF con los ejercicios de tarea.</p>
+      <p>Para practicar más, la lección tiene ejercicios en línea que se califican solos.</p>
+      <p class="ahora-tu__liga">giledvz.github.io/<wbr>tercial/<wbr>output/<wbr>pdf/<wbr>tarea-potencias-radicales.pdf</p>
+    </div>
+    <div class="ahora-tu__qr"><svg viewBox="0 0 45 45" shape-rendering="crispEdges" role="img" aria-label="Código QR que descarga la tarea en PDF"><path d="M4 4.5h7m5 0h3m1 0h2m5 0h1m1 0h1m2 0h1m1 0h7M4 5.5h1m5 0h1m2 0h4m1 0h1m2 0h1m2 0h1m1 0h1m2 0h4m1 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h3m4 0h2m4 0h2m1 0h1m2 0h1m2 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m6 0h3m3 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m2 0h3m3 0h1m6 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h2m2 0h3m1 0h2m3 0h2m4 0h1m2 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h4m1 0h1m1 0h1m1 0h2m1 0h2m2 0h1m1 0h1M4 12.5h1m1 0h5m2 0h2m2 0h4m2 0h1m2 0h5m3 0h5M4 13.5h2m3 0h1m4 0h3m1 0h2m1 0h2m1 0h1m2 0h1m2 0h1m1 0h2m1 0h1m2 0h2M4 14.5h1m3 0h1m1 0h1m4 0h1m3 0h3m1 0h1m2 0h1m2 0h7m2 0h3M4 15.5h1m1 0h3m4 0h1m3 0h3m3 0h6m1 0h1m2 0h1m1 0h2m3 0h1M4 16.5h1m4 0h2m1 0h1m3 0h1m1 0h4m1 0h1m2 0h1m1 0h7m1 0h1m1 0h3M7 17.5h2m5 0h1m5 0h1m2 0h5m4 0h1m2 0h1M5 18.5h1m1 0h5m1 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h2m1 0h1m2 0h4m2 0h1M5 19.5h1m1 0h2m2 0h2m2 0h1m1 0h1m2 0h1m4 0h3m2 0h1m1 0h1m1 0h3M4 20.5h2m1 0h1m1 0h4m1 0h2m1 0h2m3 0h1m3 0h4m1 0h1m1 0h2m1 0h1m1 0h3M5 21.5h3m1 0h1m1 0h1m1 0h1m3 0h4m4 0h3m1 0h1m2 0h1m6 0h1M4 22.5h1m2 0h4m3 0h3m8 0h2m4 0h1m3 0h1m1 0h1m1 0h2M5 23.5h1m9 0h1m4 0h1m2 0h3m2 0h1m1 0h1m1 0h3m5 0h1M5 24.5h2m3 0h2m1 0h1m1 0h1m1 0h1m3 0h1m4 0h5m1 0h3m1 0h3M5 25.5h1m2 0h1m2 0h2m5 0h1m2 0h1m1 0h3m1 0h4m1 0h1m4 0h1M4 26.5h1m1 0h5m2 0h2m2 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h2m1 0h1m1 0h3m1 0h2M7 27.5h2m2 0h1m1 0h1m1 0h3m1 0h4m2 0h4m1 0h4m1 0h2m3 0h1M4 28.5h2m3 0h6m1 0h1m2 0h2m2 0h1m4 0h4m1 0h2m1 0h1m1 0h3M4 29.5h2m5 0h1m1 0h1m1 0h1m3 0h1m2 0h4m1 0h1m2 0h1m1 0h2m1 0h1m1 0h1M4 30.5h1m2 0h8m2 0h4m4 0h2m1 0h1m1 0h4m1 0h1m3 0h2M4 31.5h1m1 0h3m3 0h2m2 0h1m2 0h1m2 0h1m1 0h3m4 0h2m1 0h2M4 32.5h1m5 0h1m1 0h3m2 0h1m1 0h3m4 0h1m1 0h9m1 0h1M12 33.5h3m2 0h1m2 0h1m2 0h2m1 0h2m3 0h2m3 0h2M4 34.5h7m2 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m1 0h3M4 35.5h1m5 0h1m1 0h1m1 0h1m4 0h2m2 0h1m1 0h1m6 0h1m3 0h2m2 0h1M4 36.5h1m1 0h3m1 0h1m1 0h5m1 0h2m2 0h1m3 0h1m1 0h9m1 0h1m1 0h1M4 37.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h3m2 0h5m1 0h1m3 0h2m1 0h2m2 0h1M4 38.5h1m1 0h3m1 0h1m1 0h2m1 0h2m5 0h1m14 0h4M4 39.5h1m5 0h1m2 0h2m2 0h1m2 0h1m1 0h1m2 0h1m2 0h1m2 0h4m1 0h1m3 0h1M4 40.5h7m1 0h1m1 0h3m3 0h2m4 0h1m2 0h2m3 0h1m1 0h5" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt"/></svg></div>
+  </aside>
+
+  <section id="practica" aria-labelledby="practicaPotencias">
+    <header class="section-header">
+      <h2 class="section-header__title" id="practicaPotencias">
+        <span class="lesson-section__kicker">Practica</span> Una tanda de 10
+      </h2>
+      <span class="section-header__count">Nuevos cada vez</span>
+    </header>
+    <p class="section-intro">Elige qué practicar y el nivel. Cada tanda trae 10 ejercicios nuevos; las opciones
+      falsas son errores de verdad: si eliges una, te dice cuál fue y te enseña los pasos.</p>
+    <div data-sin-fin data-tanda="10" data-clave="matematicas:potencias-radicales" data-modos='[
+      {"id":"leyes","nombre":"Potencias y leyes","generadores":["pot-leyes"]},
+      {"id":"cero","nombre":"Cero, negativos y 10<sup>n</sup>","generadores":["pot-cero-neg","pot-diez"]},
+      {"id":"radicales","nombre":"Radicales","generadores":["radicales"]},
+      {"id":"mezcla","nombre":"Todo junto","generadores":["pot-leyes","pot-cero-neg","pot-diez","radicales"]}]'>
+      <noscript><p class="editorial-note">Hace falta JavaScript para mostrar la práctica.</p></noscript>
+    </div>
+    <div class="practice-actions">
+      <a class="practice-action" href="../output/pdf/tarea-potencias-radicales.pdf?v=20261010" download>Tarea en PDF ↓</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="site-footer__brand"><em>Tercial</em> · Fundamentos · Matemáticas</p>
+  <nav class="site-footer__links" aria-label="Navegación del material">
+    <a href="./index.html">Índice de Matemáticas</a>
+    <a href="../fisica/notacion-cientifica.html">En física: notación científica →</a>
+  </nav>
+</footer>
+
+</body>
+</html>
