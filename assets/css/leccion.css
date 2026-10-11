@@ -1127,6 +1127,145 @@ html[data-proyeccion] .es-proyectada .atom-figure__legend { font-size: calc(var(
 /* Los botones de texto pequeños: «Reiniciar», los ejemplos de una herramienta. */
 html[data-proyeccion] .es-proyectada .practice-reset { font-size: calc(var(--u) * 1.5); }
 
+/* ---------- La tele dice lo básico ----------
+   Una pantalla no repite la lectura: lleva la idea en una frase, la fórmula en grande y, si
+   acaso, un apoyo corto. Lo demás lo explica el maestro, con el pizarrón; la lectura completa
+   queda para el alumno. La versión corta va en [data-solo-proyeccion] y lo largo, en
+   [data-solo-lectura]: al leer, la página no cambia. */
+/* :where() deja la especificidad baja: cada pieza (una rejilla, un recuadro) pone la suya. */
+html[data-proyeccion] .es-proyectada :where([data-solo-proyeccion]:not([data-diapositiva])) { display: block; }
+html[data-proyeccion] .es-proyectada :where(span, strong, em)[data-solo-proyeccion] { display: inline; }
+
+/* La idea: una frase, sus fórmulas en grande (con números y con letras, si hace falta) y un apoyo. */
+html[data-proyeccion] .es-proyectada .tele-idea {
+  display: grid;
+  justify-items: start;
+  row-gap: calc(var(--u) * 2.6);
+}
+
+html[data-proyeccion] .es-proyectada .tele-idea__frase {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: calc(var(--u) * 2.8);
+  line-height: 1.3;
+}
+
+html[data-proyeccion] .es-proyectada .tele-idea__apoyo {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+/* Las fórmulas, alineadas en la flecha: rótulo · antes → después. */
+html[data-proyeccion] .es-proyectada .tele-formulas {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  align-items: center;
+  column-gap: calc(var(--u) * 2.4);
+  row-gap: calc(var(--u) * 1.8);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 4);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+html[data-proyeccion] .es-proyectada .tele-formulas > p { display: contents; font-size: inherit; }
+html[data-proyeccion] .es-proyectada .tele-formulas__flecha { color: var(--color-text-meta); font-family: var(--font-family-body); font-size: .7em; }
+
+html[data-proyeccion] .es-proyectada .tele-formulas__rotulo,
+html[data-proyeccion] .es-proyectada .tele-contraste__marca {
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.3);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* Así no / así sí: lo que está mal va en gris (sin tachar: la raya se comería los signos menos);
+   la marca de lo que está bien lleva el color del nivel. */
+html[data-proyeccion] .es-proyectada .tele-contraste {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  align-items: baseline;
+  column-gap: calc(var(--u) * 2.4);
+  row-gap: calc(var(--u) * 1.4);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 3.4);
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+html[data-proyeccion] .es-proyectada .tele-contraste > p { display: contents; font-size: inherit; }
+
+html[data-proyeccion] .es-proyectada .tele-contraste__mal { color: var(--color-text-meta); }
+
+html[data-proyeccion] .es-proyectada .tele-contraste__bien { color: var(--color-text-primary); }
+html[data-proyeccion] .es-proyectada .tele-contraste__marca--bien { color: var(--color-accent); }
+
+/* Dos comprobaciones lado a lado, cada una con su pregunta y sus datos arriba. */
+html[data-proyeccion] .es-proyectada .tele-grupos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: start;
+  column-gap: calc(var(--u) * 6);
+  row-gap: calc(var(--u) * 2.4);
+}
+
+html[data-proyeccion] .es-proyectada .tele-grupo { display: grid; row-gap: calc(var(--u) * 1.2); align-content: start; }
+html[data-proyeccion] .es-proyectada .tele-grupo__pregunta { margin: 0; color: var(--color-text-primary); font-size: calc(var(--u) * 2.2); }
+html[data-proyeccion] .es-proyectada .tele-grupo__datos { margin: 0; color: var(--color-text-meta); font-family: var(--font-family-display); font-size: calc(var(--u) * 2.2); }
+html[data-proyeccion] .es-proyectada .tele-grupo .tele-contraste { font-size: calc(var(--u) * 2.8); }
+
+/* Lo que se revela con la flecha (leccion.js): ocupa su lugar desde el principio, en blanco. */
+html[data-proyeccion] .es-proyectada [data-revela] > * { transition: opacity .45s ease, visibility .45s; }
+html[data-proyeccion] .es-proyectada [data-revela]:not(.es-revelado) > * { opacity: 0; visibility: hidden; }
+
+/* La respuesta de un ejemplo: un recuadro punteado que espera, y se llena con →. Con dos
+   ejemplos lado a lado, los recuadros quedan a la misma altura. */
+html[data-proyeccion] .es-proyectada .ejemplo:has(> .tele-respuesta) { display: flex; flex-direction: column; }
+html[data-proyeccion] .es-proyectada .ejemplo > .tele-respuesta { margin-top: auto; }
+html[data-proyeccion] .es-proyectada .tele-respuesta {
+  position: relative;
+  min-height: calc(var(--u) * 6);
+  margin-top: calc(var(--u) * 1.6);
+  padding: calc(var(--u) * 1.1) calc(var(--u) * 1.6);
+  display: flex;
+  align-items: center;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color .45s ease;
+}
+
+html[data-proyeccion] .es-proyectada .tele-respuesta.es-revelado {
+  border-style: solid;
+  border-color: var(--color-accent);
+}
+
+html[data-proyeccion] .es-proyectada .tele-respuesta:not(.es-revelado)::before {
+  content: 'Respuesta →';
+  position: absolute;
+  top: 50%;
+  left: calc(var(--u) * 1.6);
+  transform: translateY(-50%);
+  color: var(--color-text-meta);
+  font-family: var(--font-family-mono);
+  font-size: calc(var(--u) * 1.3);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+html[data-proyeccion] .es-proyectada .tele-respuesta p {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+  font-size: calc(var(--u) * 2.8);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
 /* El título de la sección sobre una pantalla de continuación (leccion.js lo pone), en pequeño. */
 .pantalla-contexto { display: none; }
 

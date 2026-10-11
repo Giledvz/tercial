@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261011-ligera">
 <link rel="stylesheet" href="./fisica.css?v=20261009-retos">
 <link rel="stylesheet" href="./despejes.css?v=20261010">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-ligera"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-despejes.js?v=20261010"></script>
@@ -59,8 +59,8 @@
     <p class="eyebrow">Fundamentos · Semana 7 · Física</p>
     <h1 class="hero__title"><em>Despejes</em> en fórmulas físicas</h1>
     <p class="hero__lede">Despejar v de <span class="expresion">d = v·t</span> es lo mismo que despejar x de
-      <span class="expresion">3x = 12</span>. Aquí ves por qué, en qué orden se deshacen las operaciones y cómo
-      sacar el resultado con su unidad.</p>
+      <span class="expresion">3x = 12</span>.<span data-solo-lectura> Aquí ves por qué, en qué orden se deshacen las operaciones y cómo
+      sacar el resultado con su unidad.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -78,7 +78,15 @@
         <span class="lesson-section__kicker">Idea central</span> Una fórmula es una ecuación
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Despejar es dejar sola la letra que buscas.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Con números</span><span>3x = 12</span><span class="tele-formulas__flecha">→</span><span>x = 4</span></p>
+        <p><span class="tele-formulas__rotulo">Con letras</span><span>d = v·t</span><span class="tele-formulas__flecha">→</span><span>v = <span class="fr"><span class="fr__n">d</span><span class="fr__d">t</span></span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Se deshace lo que se le hizo, en orden inverso.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Lo de ayer, <em>con letras</em></h3>
       </header>
@@ -125,14 +133,17 @@
     <div class="leccion-texto" aria-live="polite" data-despejes-texto></div>
     <div hidden>
       <p data-texto-caso="mru"><strong class="expresion">v = <span class="fr"><span class="fr__n">d</span><span class="fr__d">t</span></span>.</strong>
-        Es la ecuación de ayer: en 3x = 12, el 3 multiplica a la x y se divide entre 3. En d = v·t, la t
-        multiplica a la v y se divide entre t. Con números sale un número; con letras, una fórmula.</p>
+        <span data-solo-lectura>Es la ecuación de ayer: en 3x = 12, el 3 multiplica a la x y se divide entre 3. En d = v·t, la t
+        multiplica a la v y se divide entre t. Con números sale un número; con letras, una fórmula.</span><span data-solo-proyeccion>La t
+        multiplica a la v: pasa dividiendo.</span></p>
       <p data-texto-caso="presion"><strong class="expresion">A = <span class="fr"><span class="fr__n">F</span><span class="fr__d">P</span></span>.</strong>
-        La A está abajo, dividiendo: primero se multiplican los dos lados por A para subirla, y luego se divide
-        entre P. Si te sale <span class="expresion">A = P/F</span>, la fracción quedó volteada.</p>
+        <span data-solo-lectura>La A está abajo, dividiendo: primero se multiplican los dos lados por A para subirla, y luego se divide
+        entre P. Si te sale <span class="expresion">A = P/F</span>, la fracción quedó volteada.</span><span data-solo-proyeccion>La A
+        está abajo: primero sube, luego se divide entre P.</span></p>
       <p data-texto-caso="mrua"><strong class="expresion">t = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">a</span></span>.</strong>
-        A la t primero se le multiplicó por a y luego se le sumó v<sub>0</sub>. Se deshace al revés: primero se
-        resta v<sub>0</sub> y luego se divide entre a.</p>
+        <span data-solo-lectura>A la t primero se le multiplicó por a y luego se le sumó v<sub>0</sub>. Se deshace al revés: primero se
+        resta v<sub>0</sub> y luego se divide entre a.</span><span data-solo-proyeccion>Al revés: primero se resta
+        v<sub>0</sub>, luego se divide entre a.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -148,8 +159,8 @@
         <span class="lesson-section__kicker">Reglas</span> Cada operación se deshace con su contraria
       </h2>
     </header>
-    <p class="section-intro">Siempre en los dos lados del igual. «Lo que suma pasa restando» y «lo que multiplica
-      pasa dividiendo» son el atajo de esta tabla.</p>
+    <p class="section-intro">Siempre en los dos lados del igual.<span data-solo-lectura> «Lo que suma pasa restando» y «lo que multiplica
+      pasa dividiendo» son el atajo de esta tabla.</span></p>
     <div class="reference-table-wrap" role="region" aria-label="Cómo se deshace cada operación" tabindex="0">
       <table class="reference-table reference-table--apilada">
         <caption class="visually-hidden">Qué le hacen a la letra que buscas, cómo se deshace y un ejemplo</caption>
@@ -166,9 +177,17 @@
       </table>
     </div>
     <div class="despeje-error" data-diapositiva="una">
-      <p class="editorial-note"><strong>El error más común:</strong> pasar restando lo que multiplica. De
+      <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> pasar restando lo que multiplica. De
         <span class="expresion">F = m·a</span> no sale <span class="expresion">a = F − m</span>: la m multiplica a la
         a, así que pasa dividiendo. Antes de mover una letra, fíjate qué operación la une con la que buscas.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">El error más común: pasar restando lo que multiplica.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">F = m·a → a = F − m</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">F = m·a → a = <span class="fr"><span class="fr__n">F</span><span class="fr__d">m</span></span></span></p>
+        </div>
+        <p class="tele-idea__apoyo">La m multiplica a la a: pasa dividiendo.</p>
+      </div>
     </div>
   </section>
 
@@ -178,9 +197,30 @@
         <span class="lesson-section__kicker">Cuidado</span> Si dudas, comprueba con números
       </h2>
     </header>
-    <p class="section-intro">Las dos trampas de siempre son voltear la fracción y dividir sólo una parte. Las dos
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Inventa números que cumplan la fórmula: tu despeje debe devolverlos.</p>
+      <div class="tele-grupos">
+        <div class="tele-grupo">
+          <p class="tele-grupo__pregunta">¿Volteaste la fracción?</p>
+          <p class="tele-grupo__datos">ρ = m/V, con m = 12 y V = 3: ρ = 4</p>
+          <div class="tele-contraste">
+            <p><span class="tele-contraste__marca tele-contraste__marca--bien">Sí</span><span class="tele-contraste__bien">V = m/ρ = 12 ÷ 4 = 3</span></p>
+            <p><span class="tele-contraste__marca">No</span><span class="tele-contraste__mal">V = ρ/m = 4 ÷ 12</span></p>
+          </div>
+        </div>
+        <div class="tele-grupo">
+          <p class="tele-grupo__pregunta">¿Dividiste toda la resta?</p>
+          <p class="tele-grupo__datos">t = (v − v<sub>0</sub>) ÷ a, con 26, 6 y 4: t = 5</p>
+          <div class="tele-contraste">
+            <p><span class="tele-contraste__marca tele-contraste__marca--bien">Sí</span><span class="tele-contraste__bien">(26 − 6) ÷ 4 = 5</span></p>
+            <p><span class="tele-contraste__marca">No</span><span class="tele-contraste__mal">26 − 6 ÷ 4 = 24.5</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Las dos trampas de siempre son voltear la fracción y dividir sólo una parte. Las dos
       se descubren con números fáciles.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Inventa</span><p>Números que cumplan la fórmula. En
         <span class="expresion">ρ = m/V</span>, con <span class="expresion">m = 12</span> y
         <span class="expresion">V = 3</span>, sale <span class="expresion">ρ = 4</span>.</p></li>
@@ -192,21 +232,24 @@
         escena: <span class="expresion">(26 − 6) ÷ 4 = 5</span>; sin el paréntesis,
         <span class="expresion">26 − 6 ÷ 4 = 24.5</span>.</p></li>
     </ol>
-    <p class="editorial-note">Con la raya de la fracción no hay duda: abarca toda la resta. Cuando la escribes en un
+    <p class="editorial-note" data-solo-lectura>Con la raya de la fracción no hay duda: abarca toda la resta. Cuando la escribes en un
       renglón, la resta va entre paréntesis.</p>
   </section>
 
   <section aria-labelledby="ejemploDespeje" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploDespeje">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Despeja, sustituye y calcula
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Despeja, sustituye y calcula
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un foco conectado a 127&nbsp;V, el voltaje de las casas en
           México, deja pasar 0.5&nbsp;A. ¿Cuál es su resistencia?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>R = <span class="fr"><span class="fr__n">V</span><span class="fr__d">I</span></span> = 254&nbsp;Ω</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Fórmula</span><p>Ley de Ohm: <span class="expresion">V = I·R</span>.</p></li>
           <li><span class="worked-steps__label">Despeja</span><p>I multiplica a R, así que divide:
             <span class="expresion">R = <span class="fr"><span class="fr__n">V</span><span class="fr__d">I</span></span></span>.</p></li>
@@ -218,7 +261,10 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un auto pasa de 12&nbsp;m/s a 30&nbsp;m/s en 6&nbsp;s. ¿Qué aceleración
           tuvo?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>a = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">t</span></span> = 3&nbsp;m/s²</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Fórmula</span><p><span class="expresion">v = v<sub>0</sub> + a·t</span>.</p></li>
           <li><span class="worked-steps__label">Despeja</span><p>Resta v<sub>0</sub> y divide entre t:
             <span class="expresion">a = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">t</span></span></span>.</p></li>

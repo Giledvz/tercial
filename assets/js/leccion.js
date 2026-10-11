@@ -23,6 +23,8 @@
  * vez, con su encabezado; las flechas recorren las partes (todas con la misma letra) antes de
  * cambiar de pantalla. Al llegar de regreso (←), se ve la última parte. Una pantalla dentro de
  * otra lleva arriba, en pequeño, el título de su sección.
+ * Lo marcado con [data-revela] (la respuesta de un ejemplo, para cuando el grupo ya lo resolvió
+ * en el pizarrón) aparece con la flecha →, uno por uno; ← lo vuelve a ocultar.
  * Con #tele en la liga (…/signos.html#tele) la lección abre ya en este modo: sirve
  * para el navegador de la propia tele o una compu conectada a ella, sin teclado.
  */
@@ -216,6 +218,31 @@
     muestra(0);
   }
   diapositivas.forEach(partes);
+
+  // Lo que se revela con la flecha: aparece uno por uno con → y se oculta con ←. Al llegar de
+  // regreso, ya está todo a la vista. Ocupa su lugar desde el principio: al revelarlo, nada se
+  // mueve ni cambia el zoom.
+  function revelables(d) {
+    if (d.__pasos) return;
+    var lista = Array.prototype.filter.call(d.querySelectorAll('[data-revela]'), function (n) {
+      return n.closest('[data-diapositiva]') === d;
+    });
+    if (!lista.length) return;
+    var vistos = 0;
+    function muestra(n) {
+      vistos = n;
+      lista.forEach(function (el, k) { el.classList.toggle('es-revelado', k < n); });
+    }
+    d.__pasos = {
+      siguiente: function () { if (vistos >= lista.length) return false; muestra(vistos + 1); return true; },
+      anterior: function () { if (vistos <= 0) return false; muestra(vistos - 1); return true; }
+    };
+    d.addEventListener('tercial:diapositiva', function (evento) {
+      muestra(evento.detail && evento.detail.direccion < 0 ? lista.length : 0);
+    });
+    muestra(0);
+  }
+  diapositivas.forEach(revelables);
 
   // Una pantalla dentro de otra (una figura, un ejemplo, una nota) lleva arriba, en pequeño, el
   // título de su sección: se lee como continuación. Sólo se ve en la tele.
