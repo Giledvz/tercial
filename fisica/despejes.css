@@ -171,3 +171,9 @@ html[data-proyeccion] .es-proyectada.despeje-error .editorial-note {
   font-size: calc(var(--u) * 2.6);
   line-height: 1.4;
 }
+
+/* En la tele, las cuentas y los números de los planteos van con la letra del texto (cifras sin
+   adornos y griegas de verdad), como las piezas de la tele en leccion.css. La escena conserva la
+   suya: mide sus fichas con la letra real al armarse. */
+html[data-proyeccion] .es-proyectada .despeje__formula,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

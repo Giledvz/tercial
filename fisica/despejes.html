@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261011-ligera">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261011-pizarron">
 <link rel="stylesheet" href="./fisica.css?v=20261009-retos">
-<link rel="stylesheet" href="./despejes.css?v=20261010">
+<link rel="stylesheet" href="./despejes.css?v=20261011-pizarron">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261011-ligera"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-despejes.js?v=20261010"></script>
@@ -198,23 +198,19 @@
       </h2>
     </header>
     <div class="tele-idea" data-solo-proyeccion>
-      <p class="tele-idea__frase">Inventa números que cumplan la fórmula: tu despeje debe devolverlos.</p>
-      <div class="tele-grupos">
-        <div class="tele-grupo">
-          <p class="tele-grupo__pregunta">¿Volteaste la fracción?</p>
-          <p class="tele-grupo__datos">ρ = m/V, con m = 12 y V = 3: ρ = 4</p>
-          <div class="tele-contraste">
-            <p><span class="tele-contraste__marca tele-contraste__marca--bien">Sí</span><span class="tele-contraste__bien">V = m/ρ = 12 ÷ 4 = 3</span></p>
-            <p><span class="tele-contraste__marca">No</span><span class="tele-contraste__mal">V = ρ/m = 4 ÷ 12</span></p>
-          </div>
+      <p class="tele-idea__frase">¿Volteaste la fracción?</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Inventa</p>
+          <p>ρ = <span class="fr"><span class="fr__n">m</span><span class="fr__d">V</span></span></p>
+          <p>m = 12&emsp;V = 3</p>
+          <p>ρ = <span class="fr"><span class="fr__n">12</span><span class="fr__d">3</span></span> = 4</p>
         </div>
-        <div class="tele-grupo">
-          <p class="tele-grupo__pregunta">¿Dividiste toda la resta?</p>
-          <p class="tele-grupo__datos">t = (v − v<sub>0</sub>) ÷ a, con 26, 6 y 4: t = 5</p>
-          <div class="tele-contraste">
-            <p><span class="tele-contraste__marca tele-contraste__marca--bien">Sí</span><span class="tele-contraste__bien">(26 − 6) ÷ 4 = 5</span></p>
-            <p><span class="tele-contraste__marca">No</span><span class="tele-contraste__mal">26 − 6 ÷ 4 = 24.5</span></p>
-          </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Prueba</p>
+          <p class="tele-pizarron__pregunta">¿Tu despeje te devuelve V = 3?</p>
+          <p>V = <span class="fr"><span class="fr__n">m</span><span class="fr__d">ρ</span></span> = <span class="fr"><span class="fr__n">12</span><span class="fr__d">4</span></span> = 3<span class="tele-veredicto">sí</span></p>
+          <p class="tele-pizarron__mal">V = <span class="fr"><span class="fr__n">ρ</span><span class="fr__d">m</span></span> = <span class="fr"><span class="fr__n">4</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span><span class="tele-veredicto tele-veredicto--no">no</span></p>
         </div>
       </div>
     </div>
@@ -234,6 +230,25 @@
     </ol>
     <p class="editorial-note" data-solo-lectura>Con la raya de la fracción no hay duda: abarca toda la resta. Cuando la escribes en un
       renglón, la resta va entre paréntesis.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">¿Dividiste toda la resta?</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Inventa</p>
+            <p>v = v<sub>0</sub> + a·t</p>
+            <p>v<sub>0</sub> = 6&emsp;a = 4&emsp;t = 5</p>
+            <p>v = 6 + 4·5 = 26</p>
+          </div>
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Prueba</p>
+            <p class="tele-pizarron__pregunta">¿Tu despeje te devuelve t = 5?</p>
+            <p>t = <span class="fr"><span class="fr__n">v − v<sub>0</sub></span><span class="fr__d">a</span></span> = <span class="fr"><span class="fr__n">26 − 6</span><span class="fr__d">4</span></span> = 5<span class="tele-veredicto">sí</span></p>
+            <p class="tele-pizarron__mal">t = 26 − 6 ÷ 4 = 26 − 1.5 = 24.5<span class="tele-veredicto tele-veredicto--no">no</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploDespeje" data-diapositiva="una">

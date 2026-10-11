@@ -125,12 +125,17 @@
     return d.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
   }
 
-  // Ajuste: si la pantalla se pasa de alto, todas sus piezas se encogen por igual, lo justo;
-  // si le sobra más de un tercio, crecen hasta llenar 9 de cada 10 partes del alto.
+  // Cabe si no se pasa de alto ni de ancho (una cuenta larga en un renglón, en una tele 4:3).
+  function cabe(d) {
+    return d.scrollHeight <= d.clientHeight + 2 && d.scrollWidth <= d.clientWidth + 2;
+  }
+
+  // Ajuste: si la pantalla se pasa de alto o de ancho, todas sus piezas se encogen por igual, lo
+  // justo; si le sobra más de un tercio del alto, crecen hasta llenar 9 de cada 10 partes.
   function zoomJusto(d, lista) {
     var tipo = d.getAttribute('data-diapositiva');
     lista.forEach(function (n) { n.style.zoom = ''; });
-    if (d.scrollHeight <= d.clientHeight + 2) {
+    if (cabe(d)) {
       if (tipo !== 'una' && tipo !== 'dos') return 1;
       var util = altoUtil(d), ocupado = altoPiezas(lista);
       if (!ocupado || ocupado > util * 0.66) return 1;
@@ -138,7 +143,7 @@
       for (var j = 0; j < 7; j++) {
         var z = (menos + mas) / 2;
         lista.forEach(function (n) { n.style.zoom = z; });
-        if (d.scrollHeight <= d.clientHeight + 2 && altoPiezas(lista) <= util * 0.9) menos = z; else mas = z;
+        if (cabe(d) && altoPiezas(lista) <= util * 0.9) menos = z; else mas = z;
       }
       return menos > 1.01 ? menos : 1;
     }
@@ -146,7 +151,7 @@
     for (var k = 0; k < 7; k++) {
       var medio = (bajo + alto) / 2;
       lista.forEach(function (n) { n.style.zoom = medio; });
-      if (d.scrollHeight <= d.clientHeight + 2) bajo = medio; else alto = medio;
+      if (cabe(d)) bajo = medio; else alto = medio;
     }
     // Con el mismo zoom, el texto no siempre se reacomoda igual: un borde que se redondea distinto
     // cambia un pixel el ancho y baja un renglón que apenas cabía. Se deja un 3 % de holgura y se
@@ -154,7 +159,7 @@
     bajo = Math.max(0.65, bajo * 0.97);
     for (var paso = 0; paso < 8 && bajo > 0.65; paso++) {
       lista.forEach(function (n) { n.style.zoom = bajo.toFixed(3); });
-      if (d.scrollHeight <= d.clientHeight + 2) break;
+      if (cabe(d)) break;
       bajo = Math.max(0.65, bajo - 0.015);
     }
     return bajo;
