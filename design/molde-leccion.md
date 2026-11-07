@@ -60,6 +60,8 @@ base (1 rem) vale 1.25u: lo que el sistema mide en rem crece con la pantalla.
 | `data-diapositiva="ahora"` + `data-solo-proyeccion` | «Tu tarea»: el QR que descarga el PDF de la tarea |
 | `data-solo-proyeccion` en otra pantalla | Una pantalla que sólo existe en la tele (los frascos de Estados) |
 | `data-solo-lectura` | Se oculta en la tele (instrucciones para el alumno, notas largas) |
+| `data-solo-proyeccion` en un bloque o un `span` | La versión corta que sólo existe en la tele (ver «La tele dice lo básico») |
+| `data-revela` | Aparece con →, uno por uno; ← lo vuelve a ocultar (la respuesta de un ejemplo) |
 | `<table data-filas-por-pantalla="5">` | Una tabla larga se ve por partes, con su encabezado en cada una |
 
 La pantalla que está en la tele lleva la clase `es-proyectada`. Ninguna pieza de una lección
@@ -98,6 +100,50 @@ escena vuelve a empezar; la que se va recibe `tercial:sale`.
 **Letra en la tele.** Párrafos 2u, notas 1.6u, pies de figura 1.5u, etiquetas al menos 1.2u.
 Una pieza nueva con letra propia (un texto que explica una escena, una etiqueta mono) lleva su
 regla en `leccion.css`; si no, se queda con los 11–13 px de la lectura.
+
+## La tele dice lo básico
+
+Gil explica y resuelve en el pizarrón; la tele acompaña. Los alumnos la ven desde el fondo del
+salón, y una pantalla con párrafos hace que pierdan el interés. La muestra es Despejes.
+
+- **Una pantalla, una idea.** La idea va en una frase, la fórmula o la figura en grande y, si
+  acaso, un apoyo corto: unas 30 palabras de prosa como máximo. El reto y «Tu tarea» no cambian.
+- **Lo largo queda para la lectura.** La versión corta va con `data-solo-proyeccion` y lo largo,
+  con `data-solo-lectura`. Dentro de una frase: `<span data-solo-lectura>…</span><span
+  data-solo-proyeccion>…</span>`. La lectura no cambia ni un pixel.
+- **Ejemplos.** Se proyecta sólo el problema. La respuesta va al final, en
+  `<div class="tele-respuesta" data-solo-proyeccion data-revela>`, y aparece con → cuando el
+  grupo ya lo resolvió. Los pasos quedan para la lectura.
+- **Una trampa por pantalla.** Si no cabe con lo demás, va en una pantalla anidada:
+  `<div data-diapositiva="una" data-solo-proyeccion>`.
+- **Las figuras se quedan.** Una escena que ya explica algo no se recorta: se recorta la prosa
+  que la rodea.
+
+**Notación de pizarrón.** Lo que no se lee de un vistazo, se pierde; recortar palabras no basta
+si lo que queda es una tira de símbolos.
+- Una ecuación por renglón.
+- Los datos llevan nombre: «m = 12», nunca «con 12».
+- Las fracciones van apiladas (`.fr`, con `.fr__n` y `.fr__d`), con un solo signo de división.
+- Cada cuenta llega a su resultado. En una comprobación, «sí» o «no» al final (`.tele-veredicto`).
+
+**La letra de las cuentas.** En la tele, las cuentas van con `--tele-cuenta` (IBM Plex Sans):
+cifras sin adornos y griegas de verdad. Fraunces no trae ρ, Δ ni Ω, y su 3 y su 4 se leen mal de
+lejos. Vale también para los textos de las escenas con cifras: su regla va en el CSS de la
+lección (o de la materia), sólo en `html[data-proyeccion] .es-proyectada`. Una escena que mide
+su texto (`getComputedTextLength`) se arma otra vez al llegar a su pantalla y al recibir
+`tercial:sale`, un instante después, cuando la página ya volvió a la lectura (así lo hace
+`escenas-despejes.js`).
+
+**Las piezas** (`leccion.css`, sólo en la tele):
+
+| Pieza | Para qué |
+|---|---|
+| `.tele-idea` con `__frase` y `__apoyo` | La idea en una frase y su apoyo |
+| `.tele-formulas` (`__rotulo`, `__flecha`) | Fórmulas en grande, alineadas en la flecha: rótulo · antes → después |
+| `.tele-contraste` (`__marca`, `__mal`, `__bien`) | Así no / así sí: lo malo en gris, sin tachar (la raya se come los signos menos) |
+| `.tele-pizarron` (`__columna`, `__rotulo`, `__pregunta`, `__mal`) | Columnas con una ecuación por renglón: inventa / prueba |
+| `.tele-veredicto` (`--no`) | «sí» o «no» al final del renglón |
+| `.tele-respuesta` + `data-revela` | El recuadro punteado que espera la respuesta y se llena con → |
 
 ## Cierre de la lección
 
@@ -202,6 +248,8 @@ Antes de dar por buena una lección:
   queda bajo los controles, y ninguna pantalla baja de unos 70 % de zoom; si baja, se reparte
   (una pieza a su propia pantalla, una tabla por partes, dos columnas). Revisar también 4K y 4:3.
 - **Letra.** Ningún texto que importe se ve a menos de unos 13 px en la tele de referencia.
+- **Texto.** Ninguna pantalla pasa de unas 30 palabras de prosa, salvo el reto y «Tu tarea»; las
+  cuentas, en notación de pizarrón y con `--tele-cuenta`.
 - **Lectura.** Capturas de la página completa, en 1280 y 390 de ancho, idénticas a las del
   último commit salvo lo que se cambió a propósito.
 - En celular, en claro y en oscuro, y también en WebKit.
