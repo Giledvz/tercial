@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-enlace.js?v=20261008-tanda3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 11 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Enlaces químicos y estructuras de <em>Lewis</em></h1>
-    <p class="hero__lede">Los átomos se unen para quedar más estables: ganan, pierden o comparten electrones
+    <p class="hero__lede"><span data-solo-lectura>Los átomos se unen para quedar más estables: ganan, pierden o comparten electrones
       de valencia hasta parecerse a un gas noble. Cómo lo hacen depende de qué tanto atrae cada uno a los
-      electrones.</p>
+      electrones.</span><span data-solo-proyeccion>Los átomos se unen para quedar más estables. Cómo lo hacen depende
+      de qué tanto atrae cada uno a los electrones.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,11 @@
         <span class="lesson-section__kicker">Idea central</span> La regla del octeto
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los átomos ganan, pierden o comparten electrones hasta tener 8 en su último nivel.</p>
+      <p class="tele-idea__apoyo">El hidrógeno se completa con 2, como el helio.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Ocho electrones en el <em>último nivel</em></h3>
       </header>
@@ -93,9 +98,9 @@
       <svg class="escena" data-escena-enlace="lewis" viewBox="0 0 360 188" role="img" aria-labelledby="lewisTitle">
         <title id="lewisTitle">Símbolos de Lewis del periodo 3: el sodio con un punto, el magnesio con dos y así hasta el argón con ocho; cada punto es un electrón de valencia y el número de puntos coincide con la familia A</title>
       </svg>
-      <figcaption class="atom-figure__caption">En un símbolo de Lewis cada punto es un electrón de valencia:
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>En un símbolo de Lewis cada punto es un electrón de valencia:
         primero uno por lado y después en pares. Igual se escriben el fósforo y el antimonio (5 puntos), el
-        potasio (1) y el bromo (7).</figcaption>
+        potasio (1) y el bromo (7).</span><span data-solo-proyeccion>Cada punto es un electrón de valencia.</span></figcaption>
     </figure>
   </section>
 
@@ -112,16 +117,16 @@
           <tr>
             <th scope="col">Enlace</th>
             <th scope="col">Entre</th>
-            <th scope="col">Los electrones</th>
+            <th scope="col" data-solo-lectura>Los electrones</th>
             <th scope="col">ΔEN</th>
             <th scope="col">Ejemplos</th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Iónico</th><td>Un metal y un no metal</td><td>El metal los cede y el no metal los acepta</td><td>Más de 1.7</td><td>NaCl, KF, CaCl<sub>2</sub></td></tr>
-          <tr><th scope="row">Covalente no polar</th><td>No metales iguales o muy parecidos</td><td>Se comparten por igual</td><td>0 a 0.4</td><td>Cl<sub>2</sub>, N<sub>2</sub>, CH<sub>4</sub></td></tr>
-          <tr><th scope="row">Covalente polar</th><td>No metales distintos</td><td>Se comparten, pero uno los jala más</td><td>0.4 a 1.7</td><td>HCl, H<sub>2</sub>O, NH<sub>3</sub></td></tr>
-          <tr><th scope="row">Metálico</th><td>Metales</td><td>Se mueven libres entre los cationes</td><td>—</td><td>Cobre, hierro, latón</td></tr>
+          <tr><th scope="row">Iónico</th><td>Un metal y un no metal</td><td data-solo-lectura>El metal los cede y el no metal los acepta</td><td>Más de 1.7</td><td>NaCl, KF, CaCl<sub>2</sub></td></tr>
+          <tr><th scope="row">Covalente no polar</th><td>No metales iguales o muy parecidos</td><td data-solo-lectura>Se comparten por igual</td><td>0 a 0.4</td><td>Cl<sub>2</sub>, N<sub>2</sub>, CH<sub>4</sub></td></tr>
+          <tr><th scope="row">Covalente polar</th><td>No metales distintos</td><td data-solo-lectura>Se comparten, pero uno los jala más</td><td>0.4 a 1.7</td><td>HCl, H<sub>2</sub>O, NH<sub>3</sub></td></tr>
+          <tr><th scope="row">Metálico</th><td>Metales</td><td data-solo-lectura>Se mueven libres entre los cationes</td><td>—</td><td>Cobre, hierro, latón</td></tr>
         </tbody>
       </table>
     </div>
@@ -129,11 +134,22 @@
       <svg class="escena" data-escena-enlace="escala" viewBox="0 0 360 166" role="img" aria-labelledby="escalaTitle">
         <title id="escalaTitle">Escala de diferencia de electronegatividad de 0 a 3.4: de 0 a 0.4 covalente no polar, de 0.4 a 1.7 covalente polar y más de 1.7 iónico; los compuestos Cl2 (0), CH4 (0.35), HBr (0.76), NH3 (0.84), AgCl (1.23), KI (1.84), NaCl (2.23) y KF (3.16) caen en su lugar</title>
       </svg>
-      <figcaption class="atom-figure__caption">ΔEN es la diferencia de electronegatividad: la mayor menos la
-        menor. Los límites 0.4 y 1.7 son los de la fuente; algunos libros usan 0.5 o 2.0.</figcaption>
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>ΔEN es la diferencia de electronegatividad: la mayor menos la
+        menor. Los límites 0.4 y 1.7 son los de la fuente; algunos libros usan 0.5 o 2.0.</span><span data-solo-proyeccion>ΔEN
+        es la diferencia de electronegatividad: la mayor menos la menor.</span></figcaption>
     </figure>
-    <p class="editorial-note">Ojo con el AgCl: la plata es un metal, pero su ΔEN con el cloro es de 1.23, así
+    <p class="editorial-note" data-solo-lectura>Ojo con el AgCl: la plata es un metal, pero su ΔEN con el cloro es de 1.23, así
       que el enlace es covalente polar. Por eso el cloruro de plata casi no se disuelve en agua.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">La plata es un metal, pero el AgCl no es iónico.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">metal + no metal → iónico</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">ΔEN = 1.23 → covalente polar</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Lo que decide es la ΔEN.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ionicoSeccion" data-diapositiva="una">
@@ -146,18 +162,20 @@
       <svg class="escena" data-escena-enlace="ionico" viewBox="0 0 360 168" role="img" aria-labelledby="ionicoTitle">
         <title id="ionicoTitle">El sodio, con un electrón de valencia, se lo cede al cloro, que tenía siete; quedan el ion Na+ y el ion Cl- con ocho electrones en su último nivel, que se atraen; al final se ve un cristal de iones Na+ y Cl- alternados</title>
       </svg>
-      <figcaption class="atom-figure__caption">El metal (menos electronegativo) cede su electrón y queda como
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>El metal (menos electronegativo) cede su electrón y queda como
         catión; el no metal lo acepta y queda como anión. Las cargas opuestas se atraen y forman un
-        cristal.</figcaption>
+        cristal.</span><span data-solo-proyeccion>El metal queda como catión y el no metal, como anión: se atraen y
+        forman un cristal.</span></figcaption>
     </figure>
     <figure class="atom-figure" data-diapositiva="una">
       <svg class="escena" data-escena-enlace="estructuras" viewBox="0 0 360 140" role="img" aria-labelledby="estructurasTitle">
         <title id="estructurasTitle">Estructuras de Lewis: el agua con dos pares compartidos y dos pares libres en el oxígeno; el cloruro de sodio como ion sodio positivo junto al ion cloruro entre corchetes con ocho electrones y carga negativa; el metano con cuatro pares compartidos</title>
       </svg>
-      <figcaption class="atom-figure__caption">En el NaCl no hay un par compartido: se escribe con los iones,
+      <p class="atom-figure__caption" data-solo-proyeccion>En el NaCl no hay par compartido: se escribe con los iones.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>En el NaCl no hay un par compartido: se escribe con los iones,
         Na<sup>+</sup> y el cloro entre corchetes con sus 8 electrones y carga −.</figcaption>
     </figure>
-    <p class="editorial-note">Los compuestos iónicos forman cristales y no moléculas, tienen puntos de fusión
+    <p class="editorial-note" data-solo-lectura>Los compuestos iónicos forman cristales y no moléculas, tienen puntos de fusión
       altos, por lo general se disuelven en agua y conducen la electricidad disueltos o fundidos; por eso se usan como
       electrolitos. Sólidos, no conducen. Ejemplos: NaCl, KF, LiBr, CaCl<sub>2</sub>, NaBr.</p>
   </section>
@@ -172,9 +190,9 @@
       <svg class="escena" data-escena-enlace="covalente" viewBox="0 0 360 156" role="img" aria-labelledby="covalenteTitle">
         <title id="covalenteTitle">A la izquierda, dos átomos de cloro comparten un par de electrones a la mitad: enlace covalente no polar. A la derecha, en el HCl el par se corre hacia el cloro y la nube de electrones se carga hacia él: el H queda con carga parcial positiva y el Cl con carga parcial negativa</title>
       </svg>
-      <figcaption class="atom-figure__caption">Entre no metales nadie cede: comparten pares. Si los dos atraen
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>Entre no metales nadie cede: comparten pares. Si los dos atraen
         igual, el par queda a la mitad (no polar); si uno atrae más, se forman cargas parciales δ+ y δ−
-        (polar).</figcaption>
+        (polar).</span><span data-solo-proyeccion>Entre no metales nadie cede: comparten pares.</span></figcaption>
     </figure>
     <div class="comparison-grid" data-diapositiva="una">
       <article class="comparison-item">
@@ -183,9 +201,10 @@
           <h3 class="comparison-item__title">Covalente <em>no polar</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>La nube de electrones se reparte por igual. Está en casi todos los compuestos orgánicos. Puntos de
+          <p><span data-solo-lectura>La nube de electrones se reparte por igual. Está en casi todos los compuestos orgánicos. Puntos de
             fusión y de ebullición bajos; no conducen la electricidad; se disuelven en disolventes no polares,
-            como el aceite.</p>
+            como el aceite.</span><span data-solo-proyeccion>No conducen la electricidad y se disuelven en
+            aceite.</span></p>
         </div>
       </article>
       <article class="comparison-item">
@@ -194,9 +213,10 @@
           <h3 class="comparison-item__title">Covalente <em>polar</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>La nube se carga hacia el átomo más electronegativo. Suelen ser líquidos o gases que se disuelven
+          <p><span data-solo-lectura>La nube se carga hacia el átomo más electronegativo. Suelen ser líquidos o gases que se disuelven
             en agua. Por sí solos casi no conducen; algunos, como el HCl, sí lo hacen al disolverse en agua
-            porque forman iones.</p>
+            porque forman iones.</span><span data-solo-proyeccion>Se disuelven en agua y casi no conducen la
+            electricidad.</span></p>
         </div>
       </article>
     </div>
@@ -204,11 +224,12 @@
       <svg class="escena" data-escena-enlace="multiples" viewBox="0 0 360 144" role="img" aria-labelledby="multiplesTitle">
         <title id="multiplesTitle">Fórmulas estructurales: el metano con cuatro enlaces simples, el eteno con un enlace doble entre los carbonos y el etino con un enlace triple</title>
       </svg>
-      <figcaption class="atom-figure__caption">Cada guion es un par compartido: un enlace simple tiene 2
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>Cada guion es un par compartido: un enlace simple tiene 2
         electrones, uno doble 4 y uno triple 6. El N<sub>2</sub> también tiene un enlace triple:
-        :N≡N:.</figcaption>
+        :N≡N:.</span><span data-solo-proyeccion>Cada guion es un par compartido: un enlace simple tiene 2 electrones,
+        uno doble 4 y uno triple 6.</span></figcaption>
     </figure>
-    <p class="editorial-note">En el <strong>enlace covalente coordinado</strong>, los dos electrones del par
+    <p class="editorial-note" data-solo-lectura>En el <strong>enlace covalente coordinado</strong>, los dos electrones del par
       los pone el mismo átomo. Así el NH<sub>3</sub> usa su par libre para unirse a un H<sup>+</sup> y formar
       el ion amonio, NH<sub>4</sub><sup>+</sup>.</p>
   </section>
@@ -223,11 +244,12 @@
       <svg class="escena" data-escena-enlace="metalico" viewBox="0 0 360 156" role="img" aria-labelledby="metalicoTitle">
         <title id="metalicoTitle">Una red de cationes metálicos fijos y, entre ellos, electrones que se mueven libremente por todo el metal</title>
       </svg>
-      <figcaption class="atom-figure__caption">Los cationes del metal forman una red y sus electrones de
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>Los cationes del metal forman una red y sus electrones de
         valencia se mueven entre todos. Por eso los metales conducen la electricidad y se doblan sin
-        romperse.</figcaption>
+        romperse.</span><span data-solo-proyeccion>Los electrones se mueven libres: por eso los metales conducen la
+        electricidad y se doblan sin romperse.</span></figcaption>
     </figure>
-    <p class="editorial-note">Las <strong>aleaciones</strong> mezclan metales (o un metal con otro elemento): el
+    <p class="editorial-note" data-solo-lectura>Las <strong>aleaciones</strong> mezclan metales (o un metal con otro elemento): el
       latón es cobre con zinc y el acero, hierro con un poco de carbono. Las <strong>amalgamas</strong> son
       aleaciones de mercurio, como las que se usaban para tapar muelas.</p>
   </section>
@@ -242,14 +264,19 @@
       <svg class="escena" data-escena-enlace="puentes" viewBox="0 0 360 180" role="img" aria-labelledby="puentesTitle">
         <title id="puentesTitle">Cinco moléculas de agua; líneas punteadas unen el hidrógeno de una molécula, con carga parcial positiva, con el oxígeno de otra, con carga parcial negativa</title>
       </svg>
-      <figcaption class="atom-figure__caption">El H de una molécula, con carga δ+, atrae el par libre del O de
-        la vecina, con carga δ−. Esa atracción entre moléculas es el puente de hidrógeno.</figcaption>
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>El H de una molécula, con carga δ+, atrae el par libre del O de
+        la vecina, con carga δ−. Esa atracción entre moléculas es el puente de hidrógeno.</span><span data-solo-proyeccion>Cada
+        línea punteada es un puente.</span></figcaption>
     </figure>
-    <p class="editorial-note">No es un enlace dentro de una molécula, sino una atracción entre moléculas. Sólo
+    <p class="editorial-note" data-solo-lectura>No es un enlace dentro de una molécula, sino una atracción entre moléculas. Sólo
       se forma cuando el hidrógeno está unido a <strong>F, O o N</strong>, que son muy electronegativos y
       pequeños; el HCl, aunque el cloro es electronegativo, no forma puentes de hidrógeno porque el cloro es
       demasiado grande. Gracias a ellos el agua hierve a 100 °C, mucho para una molécula tan pequeña, y el
       hielo flota.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Son atracciones entre moléculas, no enlaces dentro de una molécula.</p>
+      <p class="tele-idea__apoyo">Sólo se forman si el H está unido a <strong>F,&nbsp;O&nbsp;o&nbsp;N</strong>.</p>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>

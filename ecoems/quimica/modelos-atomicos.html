@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-kernel"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -75,7 +75,11 @@
         <span class="lesson-section__kicker">Idea central</span> Un modelo se corrige con evidencia
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Un modelo no es una foto: es la mejor explicación de su época.</p>
+      <p class="tele-idea__apoyo">Cuando un experimento muestra algo que no explica, se propone uno nuevo.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Un modelo no es una foto: es la mejor <em>explicación</em> de su época</h3>
       </header>
@@ -106,10 +110,11 @@
           <h3 class="comparison-item__title">Leucipo y <em>Demócrito</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Imaginaron que si partes la materia una y otra vez, llegarías a una partícula que ya no
+          <p><span data-solo-lectura>Imaginaron que si partes la materia una y otra vez, llegarías a una partícula que ya no
             se puede partir. La llamaron <strong>átomo</strong>, que en griego significa
-            «indivisible».</p>
-          <p>Fue una idea filosófica: no hicieron experimentos para comprobarla.</p>
+            «indivisible».</span><span data-solo-proyeccion><strong>Átomo</strong> significa «indivisible». Fue una idea
+            filosófica, sin experimentos.</span></p>
+          <p data-solo-lectura>Fue una idea filosófica: no hicieron experimentos para comprobarla.</p>
         </div>
       </article>
       <article class="comparison-item">
@@ -118,8 +123,9 @@
           <h3 class="comparison-item__title"><em>Empédocles</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Pensaba que todo estaba formado por cuatro elementos: agua, tierra, aire y fuego.</p>
-          <p>Hoy sabemos que existen 118 elementos químicos y que ninguno de esos cuatro lo es: el
+          <p><span data-solo-lectura>Pensaba que todo estaba formado por cuatro elementos: agua, tierra, aire y fuego.</span><span data-solo-proyeccion>Cuatro
+            elementos: agua, tierra, aire y fuego. Hoy sabemos que ninguno lo es.</span></p>
+          <p data-solo-lectura>Hoy sabemos que existen 118 elementos químicos y que ninguno de esos cuatro lo es: el
             agua es un compuesto y el aire, una mezcla.</p>
         </div>
       </article>
@@ -128,8 +134,8 @@
       <svg class="escena escena--democrito" data-escena-atomo="democrito" viewBox="0 0 360 130" role="img" aria-labelledby="democritoTitle">
         <title id="democritoTitle">Un trozo de material se parte a la mitad una y otra vez; cada trozo es más pequeño, hasta que queda una esfera diminuta que el cuchillo ya no puede partir: el átomo</title>
       </svg>
-      <figcaption class="atom-figure__caption">Partir y volver a partir: Demócrito pensó que al final
-        quedaría una partícula que ya no se puede dividir.</figcaption>
+      <figcaption class="atom-figure__caption"><span data-solo-lectura>Partir y volver a partir: Demócrito pensó que al final
+        quedaría una partícula que ya no se puede dividir.</span><span data-solo-proyeccion>Partir y volver a partir.</span></figcaption>
     </figure>
   </section>
 
@@ -140,8 +146,9 @@
       </h2>
       <span class="section-header__count">5 modelos</span>
     </header>
-    <p class="section-intro">Cada tarjeta muestra cómo imaginaba el átomo un científico. Entre una y
-      otra está el descubrimiento que obligó a cambiar el modelo.</p>
+    <p class="section-intro"><span data-solo-lectura>Cada tarjeta muestra cómo imaginaba el átomo un científico. Entre una y
+      otra está el descubrimiento que obligó a cambiar el modelo.</span><span data-solo-proyeccion>Cada modelo nuevo
+      explicó algo que el anterior no podía.</span></p>
 
     <div class="atom-timeline">
       <article class="atom-model" aria-labelledby="modeloDalton" data-diapositiva="una">
@@ -150,7 +157,7 @@
           <h3 class="atom-model__name" id="modeloDalton">John Dalton</h3>
           <p class="atom-model__nick">Esferas sólidas</p>
         </header>
-        <ul class="atom-model__ideas">
+        <ul class="atom-model__ideas" data-solo-lectura>
           <li>La materia está formada por átomos: esferas diminutas, sólidas e indivisibles.</li>
           <li>Los átomos de un mismo elemento son iguales entre sí; los de elementos distintos tienen
             masa y propiedades diferentes.</li>
@@ -161,19 +168,25 @@
             CO y CO<sub>2</sub>, H<sub>2</sub>O y H<sub>2</sub>O<sub>2</sub>, SO<sub>2</sub> y
             SO<sub>3</sub>.</li>
         </ul>
+        <div class="tele-idea" data-solo-proyeccion>
+          <p class="tele-idea__frase">La materia está hecha de átomos indivisibles.</p>
+          <p class="tele-idea__apoyo">En los cambios no se crean ni se destruyen: sólo se reacomodan.</p>
+        </div>
         <figure class="atom-model__figure">
           <svg class="escena escena--dalton" data-escena-atomo="dalton" viewBox="0 0 360 170" role="img" aria-labelledby="daltonTitle">
             <title id="daltonTitle">Un átomo de carbono se une con un átomo de oxígeno y forma monóxido de carbono, CO; otro carbono se une con dos oxígenos y forma dióxido de carbono, CO₂</title>
           </svg>
-          <figcaption class="atom-figure__caption">Un carbono con un oxígeno forma CO; con dos
-            oxígenos, CO<sub>2</sub>. Siempre en números enteros: nunca con medio átomo.</figcaption>
+          <figcaption class="atom-figure__caption"><span data-solo-lectura>Un carbono con un oxígeno forma CO; con dos
+            oxígenos, CO<sub>2</sub>. Siempre en números enteros: nunca con medio átomo.</span><span data-solo-proyeccion>Siempre
+            en números enteros: nunca con medio átomo.</span></figcaption>
         </figure>
       </article>
 
       <aside class="atom-timeline__bridge" aria-label="Descubrimiento que cambió el modelo de Dalton" data-diapositiva="una">
         <p class="atom-timeline__kicker">Lo que lo cambió · 1897</p>
-        <p class="atom-timeline__text">Thomson descubrió el <strong>electrón</strong>, una partícula con
-          carga negativa mucho más pequeña que el átomo. El átomo sí tenía partes: no era indivisible.</p>
+        <p class="atom-timeline__text"><span data-solo-lectura>Thomson descubrió el <strong>electrón</strong>, una partícula con
+          carga negativa mucho más pequeña que el átomo. El átomo sí tenía partes: no era indivisible.</span><span data-solo-proyeccion>Thomson
+          descubrió el <strong>electrón</strong>, con carga negativa: el átomo sí tenía partes.</span></p>
       </aside>
 
       <article class="atom-model" aria-labelledby="modeloThomson" data-diapositiva="una">
@@ -182,16 +195,20 @@
           <h3 class="atom-model__name" id="modeloThomson">Joseph John Thomson</h3>
           <p class="atom-model__nick">El panqué con pasas</p>
         </header>
-        <ul class="atom-model__ideas">
+        <ul class="atom-model__ideas" data-solo-lectura>
           <li>El átomo es una esfera con carga positiva repartida en todo su volumen.</li>
           <li>Los electrones, con carga negativa, están incrustados en ella como las pasas en un panqué.</li>
           <li>Las cargas positivas y negativas se compensan: el átomo completo es neutro.</li>
         </ul>
+        <div class="tele-idea" data-solo-proyeccion>
+          <p class="tele-idea__frase">El átomo es una esfera positiva con electrones incrustados.</p>
+          <p class="tele-idea__apoyo">Las cargas se compensan: el átomo es neutro.</p>
+        </div>
         <figure class="atom-model__figure">
           <svg class="escena escena--thomson" data-escena-atomo="thomson" viewBox="0 0 360 190" role="img" aria-labelledby="thomsonTitle">
             <title id="thomsonTitle">Una esfera con nueve cargas positivas repartidas recibe uno a uno nueve electrones; el marcador muestra que la carga total queda en cero: el átomo es neutro</title>
           </svg>
-          <figcaption class="atom-figure__caption">Nueve cargas positivas y nueve electrones: la carga
+          <figcaption class="atom-figure__caption" data-solo-lectura>Nueve cargas positivas y nueve electrones: la carga
             total es cero.</figcaption>
         </figure>
       </article>
@@ -208,12 +225,15 @@
           <h3 class="atom-model__name" id="modeloRutherford">Ernest Rutherford</h3>
           <p class="atom-model__nick">Un sistema solar diminuto</p>
         </header>
-        <ul class="atom-model__ideas">
+        <ul class="atom-model__ideas" data-solo-lectura>
           <li>El átomo tiene un <strong>núcleo</strong> muy pequeño y denso, con carga positiva, donde
             está casi toda su masa.</li>
           <li>Los electrones se mueven alrededor del núcleo, en un espacio unas cien mil veces más grande
             que él: casi todo el átomo es espacio vacío.</li>
         </ul>
+        <div class="tele-idea" data-solo-proyeccion>
+          <p class="tele-idea__frase">El <strong>núcleo</strong> es diminuto: el átomo está casi vacío.</p>
+        </div>
         <figure class="atom-model__figure">
           <svg class="escena escena--rutherford escena--horizontal" data-escena-atomo="rutherford" viewBox="0 0 360 204" role="img" aria-labelledby="rutherfordTitle rutherfordDesc">
             <title id="rutherfordTitle">Experimento de la lámina de oro</title>
@@ -229,19 +249,20 @@
               <span><span class="particle-key particle-key--proton" aria-hidden="true"></span>núcleo de oro (+)</span>
               <span><span class="particle-key particle-key--electron" aria-hidden="true"></span>electrón (−)</span>
             </span>
-            Rutherford lanzó partículas alfa, con carga positiva, contra una lámina de oro muy delgada.
+            <span data-solo-lectura>Rutherford lanzó partículas alfa, con carga positiva, contra una lámina de oro muy delgada.
             Cada una dejaba un destello en la pantalla. Casi todas la atravesaron sin desviarse; algunas
             se desviaron y muy pocas rebotaron, repelidas por un núcleo también positivo. En el
             experimento real rebotaba 1 de cada 8,000; en la animación pasa más seguido para que puedas
-            verlo.</figcaption>
+            verlo.</span><span data-solo-proyeccion>En el experimento real rebotaba 1 de cada 8,000.</span></figcaption>
         </figure>
       </article>
 
       <aside class="atom-timeline__bridge" aria-label="Problema que cambió el modelo de Rutherford" data-diapositiva="una">
         <p class="atom-timeline__kicker">Lo que lo cambió · 1913</p>
-        <p class="atom-timeline__text">Según la física de la época, un electrón que gira debería perder
+        <p class="atom-timeline__text"><span data-solo-lectura>Según la física de la época, un electrón que gira debería perder
           energía y caer al núcleo. Además, cada elemento emite sólo ciertos colores de luz. Bohr
-          explicó las dos cosas.</p>
+          explicó las dos cosas.</span><span data-solo-proyeccion>¿Por qué el electrón no cae al núcleo? ¿Por qué cada
+          elemento emite sólo ciertos colores de luz?</span></p>
       </aside>
 
       <article class="atom-model" aria-labelledby="modeloBohr" data-diapositiva="una">
@@ -250,7 +271,7 @@
           <h3 class="atom-model__name" id="modeloBohr">Niels Bohr</h3>
           <p class="atom-model__nick">Niveles de energía</p>
         </header>
-        <ul class="atom-model__ideas">
+        <ul class="atom-model__ideas" data-solo-lectura>
           <li>Los electrones giran alrededor del núcleo sólo en ciertos <strong>niveles de energía</strong>,
             como los escalones de una escalera: pueden estar en uno o en otro, pero nunca entre dos.</li>
           <li>Los niveles se nombran K, L, M, N, O, P y Q —o del 1 al 7—, del más cercano al más lejano
@@ -258,19 +279,24 @@
           <li>Un electrón sube a un nivel más alto si absorbe energía y baja si la libera; la energía
             liberada puede verse como luz.</li>
         </ul>
+        <div class="tele-idea" data-solo-proyeccion>
+          <p class="tele-idea__frase">Los electrones sólo están en ciertos <strong>niveles de energía</strong>, como escalones.</p>
+          <p class="tele-idea__apoyo">Pueden estar en uno o en otro, pero nunca entre dos.</p>
+        </div>
         <figure class="atom-model__figure">
           <svg class="escena escena--bohr" data-escena-atomo="bohr" viewBox="0 0 360 222" role="img" aria-labelledby="bohrTitle">
             <title id="bohrTitle">Átomo con niveles K, L, M y N: un electrón del nivel L absorbe energía y salta al nivel N; después regresa al nivel L y libera la energía como luz. A la derecha, una escalera de energía muestra el mismo salto</title>
           </svg>
-          <figcaption class="atom-figure__caption">El electrón absorbe energía y sube del nivel L al N;
+          <figcaption class="atom-figure__caption" data-solo-lectura>El electrón absorbe energía y sube del nivel L al N;
             al regresar, la libera como luz. A la derecha, el mismo salto en la escalera de energía.</figcaption>
         </figure>
       </article>
 
       <aside class="atom-timeline__bridge" aria-label="Descubrimiento que cambió el modelo de Bohr" data-diapositiva="una">
         <p class="atom-timeline__kicker">Lo que lo cambió · década de 1920</p>
-        <p class="atom-timeline__text">Se descubrió que el electrón también se comporta como una onda:
-          no sigue un camino fijo, como un planeta alrededor del Sol.</p>
+        <p class="atom-timeline__text"><span data-solo-lectura>Se descubrió que el electrón también se comporta como una onda:
+          no sigue un camino fijo, como un planeta alrededor del Sol.</span><span data-solo-proyeccion>Se descubrió que el
+          electrón también se comporta como una onda: no sigue un camino fijo.</span></p>
       </aside>
 
       <article class="atom-model" aria-labelledby="modeloSchrodinger" data-diapositiva="una">
@@ -279,7 +305,7 @@
           <h3 class="atom-model__name" id="modeloSchrodinger">Erwin Schrödinger</h3>
           <p class="atom-model__nick">La nube de electrones</p>
         </header>
-        <ul class="atom-model__ideas">
+        <ul class="atom-model__ideas" data-solo-lectura>
           <li>No se puede conocer el camino exacto de un electrón; sólo la región donde es más probable
             encontrarlo.</li>
           <li>Esa región se llama <strong>orbital</strong> y se representa como una nube: donde la nube es
@@ -287,12 +313,17 @@
           <li>Es la base del modelo actual del átomo, que usarás para escribir configuraciones
             electrónicas.</li>
         </ul>
+        <div class="tele-idea" data-solo-proyeccion>
+          <p class="tele-idea__frase">Sólo se sabe en qué región es más probable encontrar al electrón.</p>
+          <p class="tele-idea__apoyo">Esa región se llama <strong>orbital</strong>.</p>
+        </div>
         <figure class="atom-model__figure">
           <svg class="escena escena--nube" data-escena-atomo="nube" viewBox="0 0 360 196" role="img" aria-labelledby="nubeTitle">
             <title id="nubeTitle">A la izquierda, un electrón de Bohr recorre una órbita fija. A la derecha aparecen, uno a uno, cientos de puntos alrededor del núcleo y forman una nube más densa cerca del centro</title>
           </svg>
-          <figcaption class="atom-figure__caption">Cada punto marca un lugar donde podría estar el
-            electrón. Con muchos puntos se forma la nube.</figcaption>
+          <figcaption class="atom-figure__caption"><span data-solo-lectura>Cada punto marca un lugar donde podría estar el
+            electrón. Con muchos puntos se forma la nube.</span><span data-solo-proyeccion>Cada punto marca un lugar donde
+            podría estar el electrón.</span></figcaption>
         </figure>
       </article>
     </div>
@@ -312,7 +343,7 @@
             <th scope="col">Modelo</th>
             <th scope="col">Año</th>
             <th scope="col">Cómo imaginaba el átomo</th>
-            <th scope="col">Qué aportó</th>
+            <th scope="col" data-solo-lectura>Qué aportó</th>
           </tr>
         </thead>
         <tbody>
@@ -320,36 +351,36 @@
             <th scope="row">Dalton</th>
             <td>1803</td>
             <td>Esfera sólida e indivisible</td>
-            <td>Los átomos se combinan en números enteros</td>
+            <td data-solo-lectura>Los átomos se combinan en números enteros</td>
           </tr>
           <tr>
             <th scope="row">Thomson</th>
             <td>1904</td>
             <td>Esfera positiva con electrones incrustados</td>
-            <td>Descubrió el electrón (1897)</td>
+            <td data-solo-lectura>Descubrió el electrón (1897)</td>
           </tr>
           <tr>
             <th scope="row">Rutherford</th>
             <td>1911</td>
             <td>Núcleo diminuto y positivo, con electrones alrededor</td>
-            <td>El átomo es casi todo espacio vacío</td>
+            <td data-solo-lectura>El átomo es casi todo espacio vacío</td>
           </tr>
           <tr>
             <th scope="row">Bohr</th>
             <td>1913</td>
             <td>Electrones en niveles de energía fijos</td>
-            <td>Los electrones saltan de nivel al absorber o liberar energía</td>
+            <td data-solo-lectura>Los electrones saltan de nivel al absorber o liberar energía</td>
           </tr>
           <tr>
             <th scope="row">Schrödinger</th>
             <td>1926</td>
             <td>Nube de electrones (orbitales)</td>
-            <td>Sólo se sabe dónde es probable encontrar al electrón</td>
+            <td data-solo-lectura>Sólo se sabe dónde es probable encontrar al electrón</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Los siete niveles de Bohr coinciden con los siete periodos de la tabla
+    <p class="editorial-note" data-solo-lectura>Los siete niveles de Bohr coinciden con los siete periodos de la tabla
       periódica. Lo aprovecharás en configuración electrónica.</p>
   </section>
 

@@ -1124,6 +1124,10 @@ html[data-proyeccion] .es-proyectada .atom-figure__caption {
 
 html[data-proyeccion] .es-proyectada .atom-figure__legend { font-size: calc(var(--u) * 1.2); }
 
+/* En la tele la separación la pone la pantalla (row-gap): la figura no arrastra el margen de
+   arriba de la lectura. */
+html[data-proyeccion] .es-proyectada .atom-figure { margin-top: 0; }
+
 /* Los botones de texto pequeños: «Reiniciar», los ejemplos de una herramienta. */
 html[data-proyeccion] .es-proyectada .practice-reset { font-size: calc(var(--u) * 1.5); }
 
@@ -1269,13 +1273,17 @@ html[data-proyeccion] .es-proyectada [data-revela]:not(.es-revelado) > * { opaci
    ejemplos lado a lado, los recuadros quedan a la misma altura. */
 html[data-proyeccion] .es-proyectada .ejemplo:has(> .tele-respuesta) { display: flex; flex-direction: column; }
 html[data-proyeccion] .es-proyectada .ejemplo > .tele-respuesta { margin-top: auto; }
+/* Si el ejemplo pide dos cosas, cada respuesta va en su renglón (un <p> por respuesta). */
 html[data-proyeccion] .es-proyectada .tele-respuesta {
   position: relative;
   min-height: calc(var(--u) * 6);
   margin-top: calc(var(--u) * 1.6);
   padding: calc(var(--u) * 1.1) calc(var(--u) * 1.6);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  row-gap: calc(var(--u) * .8);
   border: 1px dashed var(--color-border-strong);
   border-radius: var(--radius-sm);
   transition: border-color .45s ease;
@@ -1470,6 +1478,13 @@ html[data-proyeccion] .es-proyectada.atom-model {
 html[data-proyeccion] .es-proyectada.atom-model > .pantalla-contexto { grid-area: contexto; }
 html[data-proyeccion] .es-proyectada.atom-model .atom-model__head { align-self: end; }
 html[data-proyeccion] .es-proyectada.atom-model .atom-model__ideas { align-self: start; }
+/* Filas a la medida de lo que llevan: la fila elástica de la lectura (1fr) hundía el nombre y
+   la idea hasta media tele. La idea corta de la tele ocupa el lugar de la lista de ideas. */
+html[data-proyeccion] .es-proyectada.atom-model { grid-template-rows: auto auto auto; }
+html[data-proyeccion] .es-proyectada.atom-model > .tele-idea { grid-area: ideas; align-self: start; }
+/* «Sigue la historia» como pantalla: su línea del tiempo trae sólo pantallas anidadas, así que
+   en la tele es un contenedor vacío que sumaba margen y subía el título. */
+html[data-proyeccion] .es-proyectada > .atom-timeline { display: none; }
 
 html[data-proyeccion] .es-proyectada.atom-model .atom-model__figure {
   align-self: center;

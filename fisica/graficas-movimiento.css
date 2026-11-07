@@ -244,6 +244,12 @@
 /* ---------- La tele ---------- */
 html[data-proyeccion] .es-proyectada .escena-historia { max-height: calc(var(--u) * 36); }
 
+/* En la tele, las lecturas de la escena (t, x y v) y los planteos de los ejemplos van con la letra
+   del texto (cifras sin adornos), como las piezas de la tele en leccion.css. La escena no mide sus
+   textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .historia__lectura,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
 html[data-proyeccion] .es-proyectada .formas-tabla thead th { font-size: calc(var(--u) * 1.4); }
 html[data-proyeccion] .es-proyectada .formas-tabla tbody th { font-size: calc(var(--u) * 2); }
 html[data-proyeccion] .es-proyectada .formas-tabla__figura { width: calc(var(--u) * 10); }

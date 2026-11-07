@@ -232,6 +232,15 @@ html[data-proyeccion] .es-proyectada .graficas-tabla tbody th { font-size: calc(
 html[data-proyeccion] .es-proyectada .graficas-tabla thead th { font-size: calc(var(--u) * 1.4); }
 html[data-proyeccion] .es-proyectada .graficas-tabla td.graficas-tabla__ecuacion { font-size: calc(var(--u) * 2.3); }
 
+/* En la tele, las cuentas y lecturas de las escenas, las rectas de la tabla y los números de los
+   planteos van con la letra del texto (cifras sin adornos y una Δ de verdad), como las piezas de la
+   tele en leccion.css. Las escenas no miden sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .gl-formula,
+html[data-proyeccion] .es-proyectada .gl-formula__resultado,
+html[data-proyeccion] .es-proyectada .gl-lectura,
+html[data-proyeccion] .es-proyectada .graficas-tabla__ecuacion,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
 /* Un ejemplo resuelto es su propia pantalla: el planteo y los pasos a la izquierda y la
    gráfica a la derecha, grande. */
 html[data-proyeccion] .es-proyectada .ejemplo__grafica { margin: 0; }
