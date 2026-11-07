@@ -510,6 +510,12 @@ function despejes(svg) {
   // En la tele, la escena empieza desde el principio cada vez que su pantalla aparece.
   const pantalla = svg.closest('[data-diapositiva]');
   if (pantalla) pantalla.addEventListener('tercial:diapositiva', () => elige(clave, true));
+  // En la tele las fichas llevan otra letra (la del texto): al volver a la lectura se miden otra
+  // vez. «tercial:sale» llega antes de que la página deje la tele, así que se espera un instante.
+  // Si sólo se pasó a otra pantalla, la escena queda oculta y se arma al volver a la suya.
+  if (pantalla) pantalla.addEventListener('tercial:sale', () => setTimeout(() => {
+    const antes = t; armar(clave); t = Math.min(antes, fin()); draw(t);
+  }, 0));
   // Con la letra ya cargada se mide otra vez (el ancho de las fichas cambia).
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => { const antes = t; armar(clave); t = Math.min(antes, fin()); draw(t); });

@@ -173,7 +173,11 @@ html[data-proyeccion] .es-proyectada.despeje-error .editorial-note {
 }
 
 /* En la tele, las cuentas y los números de los planteos van con la letra del texto (cifras sin
-   adornos y griegas de verdad), como las piezas de la tele en leccion.css. La escena conserva la
-   suya: mide sus fichas con la letra real al armarse. */
+   adornos y griegas de verdad), como las piezas de la tele en leccion.css. Las fichas de la
+   escena también: la escena las mide con la letra que tengan al armarse (al llegar a su
+   pantalla y otra vez al volver a la lectura). */
 html[data-proyeccion] .es-proyectada .despeje__formula,
-html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+html[data-proyeccion] .es-proyectada .ejemplo__planteo,
+html[data-proyeccion] .es-proyectada .despeje__ficha,
+html[data-proyeccion] .es-proyectada .despeje__etiqueta-letra,
+html[data-proyeccion] .es-proyectada .despeje__chip:not(.despeje__chip--palabra) { font-family: var(--tele-cuenta); }
