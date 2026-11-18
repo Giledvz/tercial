@@ -144,3 +144,16 @@ html[data-proyeccion] .es-proyectada .pn-tabla__resultado { font-size: calc(var(
 html[data-proyeccion] .es-proyectada .pn-tabla__nombre { font-size: calc(var(--u) * 1.2); }
 html[data-proyeccion] .es-proyectada .pn-tabla__regla { font-size: calc(var(--u) * 1.7); line-height: 1.4; }
 html[data-proyeccion] .es-proyectada .pn-tabla__ejemplo { font-size: calc(var(--u) * 2); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: las fórmulas de la tabla, los planteos y los textos de la escena. La escena
+   no mide sus textos (el «=» del segundo renglón se alinea con el producto invisible): sólo
+   cambia la letra. */
+html[data-proyeccion] .es-proyectada .pn-tabla__producto,
+html[data-proyeccion] .es-proyectada .pn-tabla__resultado,
+html[data-proyeccion] .es-proyectada .pn-tabla__ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo,
+html[data-proyeccion] .es-proyectada .pn__ecuacion,
+html[data-proyeccion] .es-proyectada .pn__rotulo,
+html[data-proyeccion] .es-proyectada .pn__cota-texto,
+html[data-proyeccion] .es-proyectada .pn__hueco-texto { font-family: var(--tele-cuenta); }

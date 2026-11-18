@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
-<link rel="stylesheet" href="./factorizacion.css?v=20261010">
+<link rel="stylesheet" href="./factorizacion.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-factorizacion.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -57,9 +57,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 6 · Matemáticas</p>
     <h1 class="hero__title"><em>Factorización</em></h1>
-    <p class="hero__lede">Factorizar es el camino de regreso de los productos notables: te dan el resultado y buscas
+    <p class="hero__lede"><span data-solo-lectura>Factorizar es el camino de regreso de los productos notables: te dan el resultado y buscas
       qué se multiplicó. Con fichas de área se ve por qué <span class="expresion">x² + 5x + 6</span> es
-      <span class="expresion">(x + 2)(x + 3)</span>; luego, cada caso se practica hasta reconocerlo a la primera.</p>
+      <span class="expresion">(x + 2)(x + 3)</span>; luego, cada caso se practica hasta reconocerlo a la primera.</span><span data-solo-proyeccion>Factorizar
+      es el camino de regreso de los productos notables: te dan el resultado y buscas qué se multiplicó.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,15 @@
         <span class="lesson-section__kicker">Idea central</span> Multiplicar al revés
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Factorizar es escribir una expresión como una multiplicación.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Con números</span><span>12</span><span class="tele-formulas__flecha">→</span><span>3 × 4</span></p>
+        <p><span class="tele-formulas__rotulo">Con letras</span><span>x² + 5x + 6</span><span class="tele-formulas__flecha">→</span><span>(x + 2)(x + 3)</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Multiplica tus factores: debe salir lo que te dieron.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Del producto a sus <em>factores</em></h3>
       </header>
@@ -124,20 +133,24 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-fichas-texto></div>
     <div hidden>
-      <p data-texto-caso="trinomio"><strong class="expresion">x² + 5x + 6 = (x + 2)(x + 3).</strong> Las 5 tiras se
+      <p data-texto-caso="trinomio"><strong class="expresion">x² + 5x + 6 = (x + 2)(x + 3).</strong><span data-solo-lectura> Las 5 tiras se
         reparten a la derecha y abajo del cuadro, y en la esquina que queda deben caber justo los 6 cuadritos. Con 4
         y 1, la esquina es de <span class="expresion">4 × 1</span>: no caben. Con 3 y 2, es de
-        <span class="expresion">3 × 2 = 6</span>. Son dos números que sumados dan 5 y multiplicados dan 6.</p>
-      <p data-texto-caso="comun"><strong class="expresion">2x² + 6x = 2x(x + 3).</strong> Cada x² va con tres tiras y
+        <span class="expresion">3 × 2 = 6</span>. Son dos números que sumados dan 5 y multiplicados dan 6.</span><span data-solo-proyeccion> Son
+        dos números que sumados dan 5 y multiplicados dan 6.</span></p>
+      <p data-texto-caso="comun"><strong class="expresion">2x² + 6x = 2x(x + 3).</strong><span data-solo-lectura> Cada x² va con tres tiras y
         salen dos filas iguales. Todo el rectángulo mide 2x de alto, porque <span class="expresion">2x² = 2x · x</span>
         y <span class="expresion">6x = 2x · 3</span>: el 2x se repite en los dos términos, es el factor común. Lo que
-        queda, x + 3, va adentro del paréntesis.</p>
-      <p data-texto-caso="cuadrado"><strong class="expresion">x² + 6x + 9 = (x + 3)².</strong> Las 6 tiras se reparten
+        queda, x + 3, va adentro del paréntesis.</span><span data-solo-proyeccion> El 2x se repite en los dos términos: es el
+        factor común.</span></p>
+      <p data-texto-caso="cuadrado"><strong class="expresion">x² + 6x + 9 = (x + 3)².</strong><span data-solo-lectura> Las 6 tiras se reparten
         3 y 3, y la esquina de <span class="expresion">3 × 3</span> se llena con los 9 cuadritos. Sale un cuadrado de lado x + 3: por eso se llama
-        trinomio cuadrado perfecto.</p>
-      <p data-texto-caso="diferencia"><strong class="expresion">x² − 4 = (x + 2)(x − 2).</strong> Al cuadro de x por x
+        trinomio cuadrado perfecto.</span><span data-solo-proyeccion> Sale un cuadrado de lado x + 3: es un trinomio
+        cuadrado perfecto.</span></p>
+      <p data-texto-caso="diferencia"><strong class="expresion">x² − 4 = (x + 2)(x − 2).</strong><span data-solo-lectura> Al cuadro de x por x
         se le quita uno de 2 por 2, que vale 4. El pedazo de abajo de lo que queda da vuelta y pasa a la derecha: sale
-        un rectángulo de x + 2 de largo por x − 2 de alto.</p>
+        un rectángulo de x + 2 de largo por x − 2 de alto.</span><span data-solo-proyeccion> Al cuadro se le quita uno de
+        2 por 2, que vale 4.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -160,24 +173,38 @@
       <table class="reference-table reference-table--apilada">
         <caption class="visually-hidden">Los cuatro casos de factorización: cómo se reconoce cada uno y un ejemplo</caption>
         <thead>
-          <tr><th scope="col">Caso</th><th scope="col">Cómo se reconoce</th><th scope="col">Ejemplo</th></tr>
+          <tr><th scope="col">Caso</th><th scope="col" data-solo-lectura>Cómo se reconoce</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row" class="factor__caso">Factor común</th><td>Algo se repite en todos los términos: sale una
+          <tr><th scope="row" class="factor__caso">Factor común</th><td data-solo-lectura>Algo se repite en todos los términos: sale una
             vez y adentro queda lo que sobra de cada uno.</td><td class="factor__ejemplo">6x² − 9x = 3x(2x − 3)</td></tr>
-          <tr><th scope="row" class="factor__caso">Diferencia de cuadrados</th><td>Dos cuadrados que se restan, como x² y
+          <tr><th scope="row" class="factor__caso">Diferencia de cuadrados</th><td data-solo-lectura>Dos cuadrados que se restan, como x² y
             25, o 9x², que es (3x)²: <span class="expresion">a² − b² = (a + b)(a − b)</span>.</td><td class="factor__ejemplo">x² − 25 = (x + 5)(x − 5)</td></tr>
-          <tr><th scope="row" class="factor__caso">Trinomio cuadrado perfecto</th><td>El primero y el último son cuadrados
+          <tr><th scope="row" class="factor__caso">Trinomio cuadrado perfecto</th><td data-solo-lectura>El primero y el último son cuadrados
             y el de en medio es el doble del producto de sus raíces: <span class="expresion">a² ± 2ab + b² = (a ± b)²</span>.</td><td class="factor__ejemplo">x² − 10x + 25 = (x − 5)²</td></tr>
-          <tr><th scope="row" class="factor__caso">Trinomio <span class="expresion">x² + bx + c</span></th><td>Dos números que multiplicados den c y
+          <tr><th scope="row" class="factor__caso">Trinomio <span class="expresion">x² + bx + c</span></th><td data-solo-lectura>Dos números que multiplicados den c y
             sumados den b.</td><td class="factor__ejemplo">x² + 7x + 10 = (x + 2)(x + 5)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> ver <span class="expresion">x² + 9</span> y escribir
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> ver <span class="expresion">x² + 9</span> y escribir
       <span class="expresion">(x + 3)²</span> o <span class="expresion">(x + 3)(x − 3)</span>. Multiplica y verás: el
       primero da <span class="expresion">x² + 6x + 9</span> y el segundo, <span class="expresion">x² − 9</span>. Una
       suma de dos cuadrados no se factoriza; una diferencia, sí.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Una suma de dos cuadrados no se factoriza.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Multiplica</p>
+            <p class="tele-pizarron__pregunta">¿Alguno da x² + 9?</p>
+            <p>(x + 3)² = x² + 6x + 9<span class="tele-veredicto tele-veredicto--no">no</span></p>
+            <p>(x + 3)(x − 3) = x² − 9<span class="tele-veredicto tele-veredicto--no">no</span></p>
+          </div>
+        </div>
+        <p class="tele-idea__apoyo">Una diferencia, sí.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="cuidadoComun" data-diapositiva="una">
@@ -186,9 +213,26 @@
         <span class="lesson-section__kicker">Cuidado</span> Primero lo que se repite
       </h2>
     </header>
-    <p class="section-intro">Se factoriza por completo. Si todos los términos traen algo en común, sácalo primero: lo
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Se factoriza por completo.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Factoriza</p>
+          <p>3x² − 27</p>
+          <p>= 3(x² − 9)</p>
+          <p>= 3(x + 3)(x − 3)</p>
+        </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Comprueba</p>
+          <p class="tele-pizarron__pregunta">¿Regresa a 3x² − 27?</p>
+          <p>(x + 3)(x − 3) = x² − 9</p>
+          <p>3(x² − 9) = 3x² − 27<span class="tele-veredicto">sí</span></p>
+        </div>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Se factoriza por completo. Si todos los términos traen algo en común, sácalo primero: lo
       que queda casi siempre es uno de los cuatro casos.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Lo común</span><p><span class="expresion">3x² − 27 = 3(x² − 9)</span>: los
         dos términos son múltiplos de 3.</p></li>
       <li><span class="worked-steps__label">El caso</span><p><span class="expresion">x² − 9</span> es una diferencia de
@@ -196,21 +240,34 @@
       <li><span class="worked-steps__label">Comprueba</span><p><span class="expresion">(x + 3)(x − 3) = x² − 9</span>,
         y por 3 regresa a <span class="expresion">3x² − 27</span>.</p></li>
     </ol>
-    <p class="editorial-note">Dos descuidos típicos: quedarse en <span class="expresion">3(x² − 9)</span>, que todavía se
+    <p class="editorial-note" data-solo-lectura>Dos descuidos típicos: quedarse en <span class="expresion">3(x² − 9)</span>, que todavía se
       parte, y perder el 1 cuando un término es justo lo que se repite: <span class="expresion">4x² + 2x =
       2x(2x + 1)</span>, no <span class="expresion">2x(2x)</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Si un término es lo que se repite, adentro queda un 1.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">4x² + 2x = 2x(2x)</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">4x² + 2x = 2x(2x + 1)</span></p>
+        </div>
+        <p class="tele-idea__apoyo">2x(2x) da sólo 4x²: falta el 2x.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploFactorizar" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploFactorizar">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">x² − 2x − 15</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>(x + 3)(x − 5)</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Busca</span><p>Dos números que multiplicados den −15 y sumados den
             −2.</p></li>
           <li><span class="worked-steps__label">Prueba</span><p>Dan −15: 1 y −15, −1 y 15, 3 y −5, −3 y 5. Sólo
@@ -221,7 +278,10 @@
       </div>
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">2x² + 7x + 3</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>(2x + 1)(x + 3)</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Extremos</span><p><span class="expresion">2x² = 2x · x</span> y
             <span class="expresion">3 = 1 · 3</span>: se acomodan en <span class="expresion">(2x …)(x …)</span>.</p></li>
           <li><span class="worked-steps__label">En cruz</span><p>Es la tijera. En <span class="expresion">(2x + 1)(x + 3)</span>,

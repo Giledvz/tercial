@@ -170,3 +170,16 @@ html[data-proyeccion] .es-proyectada .expande {
 html[data-proyeccion] .es-proyectada .expande__fila { font-size: calc(var(--u) * 4.2); line-height: 1.25; }
 html[data-proyeccion] .es-proyectada .expande__grupo { border-width: max(2px, calc(var(--u) * .2)); }
 html[data-proyeccion] .es-proyectada .expande__pie { font-size: calc(var(--u) * 1.5); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: las expresiones de las tablas, los planteos, las equis contadas y los
+   textos de las escenas. Las escenas no miden sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada th.expr-celda,
+html[data-proyeccion] .es-proyectada .expr-ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo,
+html[data-proyeccion] .es-proyectada .expande,
+html[data-proyeccion] .es-proyectada .ficha__nombre,
+html[data-proyeccion] .es-proyectada .fichas__ecuacion,
+html[data-proyeccion] .es-proyectada .fichas__resultado,
+html[data-proyeccion] .es-proyectada .fichas__lugar,
+html[data-proyeccion] .es-proyectada .fichas__medida { font-family: var(--tele-cuenta); }

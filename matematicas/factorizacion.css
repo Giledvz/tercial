@@ -131,3 +131,12 @@ html[data-proyeccion] .es-proyectada .leccion-figura .escena-fichas { max-width:
 
 /* En la tele, el nombre del caso es contenido, no una etiqueta. */
 html[data-proyeccion] .es-proyectada .reference-table .factor__caso { font-size: calc(var(--u) * 1.9); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: los ejemplos de la tabla, los planteos y los textos de la escena. La escena
+   no mide sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .factor__ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo,
+html[data-proyeccion] .es-proyectada .ficha__nombre,
+html[data-proyeccion] .es-proyectada .fichas__cota-texto,
+html[data-proyeccion] .es-proyectada .fichas__ecuacion { font-family: var(--tele-cuenta); }

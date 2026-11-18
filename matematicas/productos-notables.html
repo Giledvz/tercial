@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
-<link rel="stylesheet" href="./productos-notables.css?v=20261010">
+<link rel="stylesheet" href="./productos-notables.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-productos-notables.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -57,9 +57,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 5 · Matemáticas</p>
     <h1 class="hero__title">Productos <em>notables</em></h1>
-    <p class="hero__lede">Hay multiplicaciones que salen tanto que conviene saberse el resultado. Dibujadas como
+    <p class="hero__lede"><span data-solo-lectura>Hay multiplicaciones que salen tanto que conviene saberse el resultado. Dibujadas como
       rectángulos se ve de dónde sale cada término, incluido el doble producto que casi todos olvidan; luego se
-      practican hasta que salgan solas.</p>
+      practican hasta que salgan solas.</span><span data-solo-proyeccion>Hay multiplicaciones que salen tanto que
+      conviene saberse el resultado.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,18 @@
         <span class="lesson-section__kicker">Idea central</span> Todos contra todos
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Cada término del primero multiplica a cada término del segundo.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>(x + 2)(x + 5)</p>
+          <p>= x² + 5x + 2x + 10</p>
+          <p>= x² + 7x + 10</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Un producto notable es esta misma multiplicación, ya hecha.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Multiplicar es sacar un <em>área</em></h3>
       </header>
@@ -123,15 +135,19 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-productos-texto></div>
     <div hidden>
-      <p data-texto-caso="cuadrado"><strong class="expresion">(a + b)² = a² + 2ab + b².</strong> El cuadrado de
+      <p data-texto-caso="cuadrado"><strong class="expresion">(a + b)² = a² + 2ab + b².</strong><span data-solo-lectura> El cuadrado de
         lado a + b se parte en cuatro pedazos: el cuadrado a², el cuadrito b² y dos rectángulos iguales de a por b.
-        Esos dos rectángulos son el 2ab, el término que se pierde cuando se escribe sólo a² + b².</p>
-      <p data-texto-caso="comun"><strong class="expresion">(x + 2)(x + 5) = x² + 7x + 10.</strong> Salen 5 tiras
+        Esos dos rectángulos son el 2ab, el término que se pierde cuando se escribe sólo a² + b².</span><span data-solo-proyeccion> Los
+        dos rectángulos de a por b son el 2ab.</span></p>
+      <p data-texto-caso="comun"><strong class="expresion">(x + 2)(x + 5) = x² + 7x + 10.</strong><span data-solo-lectura> Salen 5 tiras
         de x por un lado y 2 por el otro: en medio va la suma, <span class="expresion">5 + 2 = 7</span>. Las fichas
-        sueltas forman un rectángulo de 2 por 5: al final va el producto, <span class="expresion">2 × 5 = 10</span>.</p>
-      <p data-texto-caso="conjugados"><strong class="expresion">(a + b)(a − b) = a² − b².</strong> El rectángulo
+        sueltas forman un rectángulo de 2 por 5: al final va el producto, <span class="expresion">2 × 5 = 10</span>.</span><span data-solo-proyeccion> En
+        medio va la suma, <span class="expresion">5 + 2 = 7</span>; al final, el producto,
+        <span class="expresion">2 × 5 = 10</span>.</span></p>
+      <p data-texto-caso="conjugados"><strong class="expresion">(a + b)(a − b) = a² − b².</strong><span data-solo-lectura> El rectángulo
         mide a + b por a − b. Se corta la tira de b por a − b y se acomoda arriba: queda el cuadrado a² con un
-        hueco b² en la esquina. No hay término de en medio: al multiplicar, +ab y −ab se cancelan.</p>
+        hueco b² en la esquina. No hay término de en medio: al multiplicar, +ab y −ab se cancelan.</span><span data-solo-proyeccion> No
+        hay término de en medio: +ab y −ab se cancelan.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -160,35 +176,45 @@
         <tbody>
           <tr>
             <th scope="row"><span class="pn-tabla__producto">(a + b)²</span><span class="pn-tabla__nombre">Binomio al cuadrado</span></th>
-            <td><span class="pn-tabla__resultado">a² + 2ab + b²</span><span class="pn-tabla__regla">El cuadrado del
+            <td><span class="pn-tabla__resultado">a² + 2ab + b²</span><span class="pn-tabla__regla" data-solo-lectura>El cuadrado del
               primero, más el doble del primero por el segundo, más el cuadrado del segundo.</span></td>
             <td class="pn-tabla__ejemplo">(x + 4)² = x² + 8x + 16</td>
           </tr>
           <tr>
             <th scope="row"><span class="pn-tabla__producto">(a − b)²</span><span class="pn-tabla__nombre">Con resta</span></th>
-            <td><span class="pn-tabla__resultado">a² − 2ab + b²</span><span class="pn-tabla__regla">Igual, pero el
+            <td><span class="pn-tabla__resultado">a² − 2ab + b²</span><span class="pn-tabla__regla" data-solo-lectura>Igual, pero el
               doble producto lleva menos. El último término siempre es +.</span></td>
             <td class="pn-tabla__ejemplo">(x − 6)² = x² − 12x + 36</td>
           </tr>
           <tr>
             <th scope="row"><span class="pn-tabla__producto">(a + b)(a − b)</span><span class="pn-tabla__nombre">Conjugados</span></th>
-            <td><span class="pn-tabla__resultado">a² − b²</span><span class="pn-tabla__regla">El cuadrado del
+            <td><span class="pn-tabla__resultado">a² − b²</span><span class="pn-tabla__regla" data-solo-lectura>El cuadrado del
               primero menos el cuadrado del segundo.</span></td>
             <td class="pn-tabla__ejemplo">(x + 7)(x − 7) = x² − 49</td>
           </tr>
           <tr>
             <th scope="row"><span class="pn-tabla__producto">(x + p)(x + q)</span><span class="pn-tabla__nombre">Término común</span></th>
-            <td><span class="pn-tabla__resultado">x² + (p + q)x + pq</span><span class="pn-tabla__regla">En medio, la
+            <td><span class="pn-tabla__resultado">x² + (p + q)x + pq</span><span class="pn-tabla__regla" data-solo-lectura>En medio, la
               suma de los dos números; al final, su producto.</span></td>
             <td class="pn-tabla__ejemplo">(x + 3)(x − 8) = x² − 5x − 24</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> escribir <span class="expresion">(x + 5)² = x² + 25</span>.
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> escribir <span class="expresion">(x + 5)² = x² + 25</span>.
       El cuadrado no se reparte en una suma: faltan los dos rectángulos, el doble producto
       <span class="expresion">2(x)(5) = 10x</span>. Compruébalo con números: <span class="expresion">(3 + 5)² = 8² = 64</span>,
       pero <span class="expresion">3² + 5² = 34</span>; lo que falta, 30, es <span class="expresion">2 × 3 × 5</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El cuadrado no se reparte en una suma.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">(x + 5)² = x² + 25</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">(x + 5)² = x² + 10x + 25</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Faltan los dos rectángulos: el doble producto, 2(x)(5) = 10x.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="cuidadoProductos" data-diapositiva="una">
@@ -197,9 +223,20 @@
         <span class="lesson-section__kicker">Cuidado</span> Cada término entra completo
       </h2>
     </header>
-    <p class="section-intro">Con su número y con su signo: cada término del binomio se eleva entero. Escríbelo entre
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Cada término se eleva entero, con su número y su signo.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>(3x − 2)²</p>
+          <p>= (3x)² + 2(3x)(−2) + (−2)²</p>
+          <p>= 9x² − 12x + 4</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Escríbelo entre paréntesis antes de elevarlo.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>Con su número y con su signo: cada término del binomio se eleva entero. Escríbelo entre
       paréntesis antes de elevarlo y no se pierde nada.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Primero</span><p>En <span class="expresion">(3x − 2)²</span>, el cuadrado
         del primero es <span class="expresion">(3x)² = 9x²</span>. El 3 también se eleva: no es 3x².</p></li>
       <li><span class="worked-steps__label">Doble producto</span><p><span class="expresion">2(3x)(−2) = −12x</span>.
@@ -209,8 +246,21 @@
       <li><span class="worked-steps__label">Junta</span><p><span class="expresion">(3x − 2)² =
         <strong>9x² − 12x + 4</strong></span>.</p></li>
     </ol>
-    <p class="editorial-note">En los conjugados pasa lo mismo: <span class="expresion">(4x + 5)(4x − 5) = 16x² − 25</span>,
+    <p class="editorial-note" data-solo-lectura>En los conjugados pasa lo mismo: <span class="expresion">(4x + 5)(4x − 5) = 16x² − 25</span>,
       no 4x² − 25.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">En los conjugados pasa lo mismo: el 4 también se eleva.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p>(4x + 5)(4x − 5)</p>
+            <p>= (4x)² − 5²</p>
+            <p>= 16x² − 25</p>
+          </div>
+        </div>
+        <p class="tele-idea__apoyo">No es 4x² − 25.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="cuboProductos" data-diapositiva="una">
@@ -219,9 +269,19 @@
         <span class="lesson-section__kicker">Un paso más</span> El binomio al cubo
       </h2>
     </header>
-    <p class="section-intro">El cubo es el cuadrado multiplicado otra vez por el binomio. Se hace una vez y queda la
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El cubo es el cuadrado multiplicado otra vez por el binomio.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>(a + b)³ = a³ + 3a²b + 3ab² + b³</p>
+          <p>(a − b)³ = a³ − 3a²b + 3ab² − b³</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Con resta, los signos se alternan.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>El cubo es el cuadrado multiplicado otra vez por el binomio. Se hace una vez y queda la
       regla.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">El cuadrado</span><p><span class="expresion">(a + b)³ = (a + b)²(a + b)</span>
         <span class="expresion">= (a² + 2ab + b²)(a + b)</span>.</p></li>
       <li><span class="worked-steps__label">Multiplica</span><p>Todos contra todos:
@@ -230,21 +290,37 @@
         <strong>a³ + 3a²b + 3ab² + b³</strong></span>. Con resta, los signos se alternan:
         <span class="expresion">(a − b)³ = a³ − 3a²b + 3ab² − b³</span>.</p></li>
     </ol>
-    <p class="editorial-note">Por ejemplo, <span class="expresion">(x + 2)³ = x³ + 3(x²)(2) + 3(x)(4) + 8</span>
+    <p class="editorial-note" data-solo-lectura>Por ejemplo, <span class="expresion">(x + 2)³ = x³ + 3(x²)(2) + 3(x)(4) + 8</span>
       <span class="expresion">= x³ + 6x² + 12x + 8</span>. Tampoco aquí se reparte: no es x³ + 8.
       <span data-solo-lectura>En la práctica, el cubo sale en «Todo junto», nivel 3.</span></p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El cubo tampoco se reparte.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p>(x + 2)³</p>
+            <p>= x³ + 3(x²)(2) + 3(x)(4) + 8</p>
+            <p>= x³ + 6x² + 12x + 8</p>
+          </div>
+        </div>
+        <p class="tele-idea__apoyo">No es x³ + 8.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploProductos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploProductos">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">(x − 9)(x + 4)</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>x² − 5x − 36</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Reconoce</span><p>Término común x, con −9 y 4. El primero da
             <span class="expresion">x²</span>.</p></li>
           <li><span class="worked-steps__label">Suma</span><p><span class="expresion">−9 + 4 = −5</span>: en medio va
@@ -255,8 +331,13 @@
         </ol>
       </div>
       <div class="ejemplo">
-        <h3 class="ejemplo__planteo">(x + 3)² − (x + 1)(x − 1)</h3>
-        <ol class="worked-steps">
+        <h3 class="ejemplo__planteo" data-solo-lectura>(x + 3)² − (x + 1)(x − 1)</h3>
+        <h3 class="ejemplo__planteo" data-solo-proyeccion><span class="expresion">(x + 3)²</span>
+          <span class="expresion">− (x + 1)(x − 1)</span></h3>
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>6x + 10</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Cada uno</span><p><span class="expresion">(x + 3)² = x² + 6x + 9</span>
             y <span class="expresion">(x + 1)(x − 1) = x² − 1</span>.</p></li>
           <li><span class="worked-steps__label">Paréntesis</span><p>El menos le cambia el signo a todo lo de adentro:
@@ -265,9 +346,30 @@
         </ol>
       </div>
     </div>
-    <p class="editorial-note pn-numeros"><strong>Sin calculadora.</strong> Los productos notables también sirven con
+    <p class="editorial-note pn-numeros" data-solo-lectura><strong>Sin calculadora.</strong> Los productos notables también sirven con
       números: <span class="expresion">21² = (20 + 1)² = 400 + 40 + 1 = 441</span>, y
       <span class="expresion">19 × 21 = (20 − 1)(20 + 1) = 400 − 1 = 399</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los productos notables también sirven con números.</p>
+      <div class="ejemplos">
+        <div class="ejemplo">
+          <h3 class="ejemplo__planteo">21²</h3>
+          <div class="tele-respuesta" data-revela>
+            <p>(20 + 1)²</p>
+            <p>= 400 + 40 + 1</p>
+            <p>= 441</p>
+          </div>
+        </div>
+        <div class="ejemplo">
+          <h3 class="ejemplo__planteo">19 × 21</h3>
+          <div class="tele-respuesta" data-revela>
+            <p>(20 − 1)(20 + 1)</p>
+            <p>= 400 − 1</p>
+            <p>= 399</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago"
