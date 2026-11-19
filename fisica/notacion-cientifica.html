@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
-<link rel="stylesheet" href="./notacion-cientifica.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./fisica.css?v=20261118-tele">
+<link rel="stylesheet" href="./notacion-cientifica.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-notacion-cientifica.js?v=20261010"></script>
@@ -58,10 +58,12 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 3 · Física</p>
     <h1 class="hero__title">Notación <em>científica</em></h1>
-    <p class="hero__lede">La luz recorre 300,000,000&nbsp;m cada segundo y un protón tiene una carga de
+    <p class="hero__lede" data-solo-lectura>La luz recorre 300,000,000&nbsp;m cada segundo y un protón tiene una carga de
       0.00000000000000000016&nbsp;C. Con potencias de 10 se escriben <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span>
       y <span class="expresion">1.6 × 10<sup>−19</sup>&nbsp;C</span>, y se multiplican y se comparan de cabeza, sin
       calculadora, como en el examen.</p>
+    <p class="hero__lede" data-solo-proyeccion>La luz recorre 300,000,000&nbsp;m cada segundo: con potencias de 10 se
+      escribe <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span>.</p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -79,7 +81,15 @@
         <span class="lesson-section__kicker">Idea central</span> Un coeficiente y una potencia de 10
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El exponente cuenta los saltos del punto.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Grande</span><span>3,200,000</span><span class="tele-formulas__flecha">→</span><span>3.2 × 10<sup>6</sup></span></p>
+        <p><span class="tele-formulas__rotulo">Menor que 1</span><span>0.0045</span><span class="tele-formulas__flecha">→</span><span>4.5 × 10<sup>−3</sup></span></p>
+      </div>
+      <p class="tele-idea__apoyo">El coeficiente va de 1 a menos de 10.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El exponente <em>cuenta lugares</em></h3>
       </header>
@@ -124,15 +134,18 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-salto-texto></div>
     <div hidden>
-      <p data-texto-caso="luz"><strong class="expresion">300,000,000&nbsp;m = 3 × 10<sup>8</sup>&nbsp;m.</strong> Es lo
+      <p data-texto-caso="luz"><strong class="expresion">300,000,000&nbsp;m = 3 × 10<sup>8</sup>&nbsp;m.</strong><span data-solo-lectura> Es lo
         que recorre la luz en un segundo. En un número entero el punto está al final, aunque no se escriba: salta
-        8 lugares a la izquierda, hasta después del 3. El número es grande, así que el exponente es positivo.</p>
-      <p data-texto-caso="tierra"><strong class="expresion">12,700,000&nbsp;m = 1.27 × 10<sup>7</sup>&nbsp;m.</strong> Es
+        8 lugares a la izquierda, hasta después del 3. El número es grande, así que el exponente es positivo.</span><span data-solo-proyeccion> El
+        punto salta 8 lugares a la izquierda: el exponente es positivo.</span></p>
+      <p data-texto-caso="tierra"><strong class="expresion">12,700,000&nbsp;m = 1.27 × 10<sup>7</sup>&nbsp;m.</strong><span data-solo-lectura> Es
         el diámetro de la Tierra. El punto salta 7 lugares, hasta después del 1: el 2 y el 7 se quedan en el
-        coeficiente, y los ceros del final ya no hacen falta.</p>
-      <p data-texto-caso="globulo"><strong class="expresion">0.0000075&nbsp;m = 7.5 × 10<sup>−6</sup>&nbsp;m.</strong> Es
+        coeficiente, y los ceros del final ya no hacen falta.</span><span data-solo-proyeccion> Salta 7 lugares; los
+        ceros del final ya no hacen falta.</span></p>
+      <p data-texto-caso="globulo"><strong class="expresion">0.0000075&nbsp;m = 7.5 × 10<sup>−6</sup>&nbsp;m.</strong><span data-solo-lectura> Es
         el ancho de un glóbulo rojo. Ahora el punto salta a la derecha, 6 lugares, hasta después del 7, la primera
-        cifra que no es cero. El número es menor que 1, así que el exponente es negativo.</p>
+        cifra que no es cero. El número es menor que 1, así que el exponente es negativo.</span><span data-solo-proyeccion> El
+        punto salta 6 lugares a la derecha: el exponente es negativo.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -148,6 +161,7 @@
         <span class="lesson-section__kicker">Reglas</span> Escribir y leer
       </h2>
     </header>
+    <p class="tele-idea__frase" data-solo-proyeccion>El punto va después de la primera cifra que no es cero.</p>
     <p class="section-intro" data-solo-lectura>Para escribir un número en notación científica, el punto va después de
       la primera cifra que no es cero y el exponente cuenta los lugares que saltó. Para leerlo, el punto regresa.</p>
     <div class="reference-table-wrap" role="region" aria-label="Números escritos en notación científica" tabindex="0">
@@ -165,10 +179,20 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> contar los ceros en vez de los lugares. 45,000 tiene
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> contar los ceros en vez de los lugares. 45,000 tiene
       tres ceros, pero el punto salta cuatro lugares: también pasa sobre el 5. Y el signo va con el tamaño:
       <span class="expresion">4.5 × 10<sup>4</sup> = 45,000</span>; el número menor que 1 es
       <span class="expresion">4.5 × 10<sup>−4</sup> = 0.00045</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Se cuentan los lugares, no los ceros.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">45,000 = 4.5 × 10<sup>3</sup></span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">45,000 = 4.5 × 10<sup>4</sup></span></p>
+        </div>
+        <p class="tele-idea__apoyo">El punto también pasa sobre el 5.</p>
+      </div>
+    </div>
   </section>
 
   <section class="leccion-escena" aria-labelledby="observaEscala" data-diapositiva="dos" data-figura="amplia" data-escala>
@@ -195,18 +219,22 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-escala-texto></div>
     <div hidden>
-      <p data-texto-objeto="tierra"><strong class="expresion">La Tierra: 1.27 × 10<sup>7</sup>&nbsp;m.</strong> Desde
+      <p data-texto-objeto="tierra"><strong class="expresion">La Tierra: 1.27 × 10<sup>7</sup>&nbsp;m.</strong><span data-solo-lectura> Desde
         1&nbsp;m, siete pasos de ×10 llegan a 10<sup>7</sup>&nbsp;m, diez millones de metros; el 1.27 dice que la Tierra mide
-        un poco más. Una persona, con 1.7&nbsp;m, casi no se separa de 1&nbsp;m.</p>
-      <p data-texto-objeto="celula"><strong class="expresion">Una célula: unos 10<sup>−5</sup>&nbsp;m.</strong> Cinco
+        un poco más. Una persona, con 1.7&nbsp;m, casi no se separa de 1&nbsp;m.</span><span data-solo-proyeccion> Desde
+        1&nbsp;m, siete pasos de ×10.</span></p>
+      <p data-texto-objeto="celula"><strong class="expresion">Una célula: unos 10<sup>−5</sup>&nbsp;m.</strong><span data-solo-lectura> Cinco
         pasos de ÷10: 0.00001&nbsp;m, una centésima de milímetro. Los pasos hacia lo pequeño se cuentan con exponente
-        negativo.</p>
-      <p data-texto-objeto="virus"><strong class="expresion">Un virus: unos 10<sup>−7</sup>&nbsp;m.</strong> Siete pasos
+        negativo.</span><span data-solo-proyeccion> Cinco pasos de ÷10: hacia lo pequeño, el exponente es
+        negativo.</span></p>
+      <p data-texto-objeto="virus"><strong class="expresion">Un virus: unos 10<sup>−7</sup>&nbsp;m.</strong><span data-solo-lectura> Siete pasos
         de ÷10. De la célula al virus hay dos pasos más: la célula es <span class="expresion">10<sup>2</sup> = 100</span>
-        veces más grande.</p>
-      <p data-texto-objeto="atomo"><strong class="expresion">Un átomo: unos 10<sup>−10</sup>&nbsp;m.</strong> Diez pasos
+        veces más grande.</span><span data-solo-proyeccion> Dos pasos más que la célula: la célula es 100 veces más
+        grande.</span></p>
+      <p data-texto-objeto="atomo"><strong class="expresion">Un átomo: unos 10<sup>−10</sup>&nbsp;m.</strong><span data-solo-lectura> Diez pasos
         de ÷10. Del átomo a la Tierra hay unos 17 pasos: la Tierra es unas 10<sup>17</sup> veces más grande, un número que
-        sin potencias de 10 no cabe en un renglón.</p>
+        sin potencias de 10 no cabe en un renglón.</span><span data-solo-proyeccion> Diez pasos de ÷10. Hasta la Tierra
+        hay unos 17 pasos.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -219,8 +247,22 @@
         <span class="lesson-section__kicker">Compara</span> ¿Cuál es más grande?
       </h2>
     </header>
-    <p class="section-intro">Primero se miran los exponentes; los coeficientes sólo deciden si los exponentes empatan.</p>
-    <ol class="worked-steps">
+    <p class="section-intro" data-solo-lectura>Primero se miran los exponentes; los coeficientes sólo deciden si los exponentes empatan.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Primero se miran los exponentes.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Exponentes</p>
+          <p>2 × 10<sup>7</sup> &gt; 9 × 10<sup>6</sup></p>
+          <p>10<sup>−3</sup> &gt; 10<sup>−6</sup></p>
+        </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Si empatan</p>
+          <p>7 × 10<sup>−4</sup> &gt; 3 × 10<sup>−4</sup></p>
+        </div>
+      </div>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Exponentes</span><p><span class="expresion">2 × 10<sup>7</sup> &gt; 9 × 10<sup>6</sup></span>,
         aunque 9 &gt; 2: un paso de ×10 pesa más que cualquier coeficiente.</p></li>
       <li><span class="worked-steps__label">Negativos</span><p><span class="expresion">10<sup>−3</sup> &gt; 10<sup>−6</sup></span>:
@@ -230,9 +272,19 @@
       <li><span class="worked-steps__label">Cuántas veces</span><p>Se divide, y los exponentes se restan:
         <span class="expresion">10<sup>9</sup> ÷ 10<sup>3</sup> = 10<sup>6</sup></span>, un millón de veces.</p></li>
     </ol>
-    <p class="editorial-note"><strong>Primero ajusta, luego compara:</strong> <span class="expresion">25 × 10<sup>3</sup></span>
+    <p class="editorial-note" data-solo-lectura><strong>Primero ajusta, luego compara:</strong> <span class="expresion">25 × 10<sup>3</sup></span>
       parece mayor que <span class="expresion">3 × 10<sup>4</sup></span> porque 25 &gt; 3, pero
       <span class="expresion">25 × 10<sup>3</sup> = 2.5 × 10<sup>4</sup></span>, que es menor.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Primero ajusta, luego compara.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">25 × 10<sup>3</sup> &gt; 3 × 10<sup>4</sup></span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">2.5 × 10<sup>4</sup> &lt; 3 × 10<sup>4</sup></span></p>
+        </div>
+        <p class="tele-idea__apoyo">25 × 10<sup>3</sup> es 2.5 × 10<sup>4</sup>.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="reglasPrefijos" data-diapositiva="una">
@@ -269,9 +321,18 @@
         <span class="lesson-section__kicker">Reglas</span> Multiplicar y dividir sin calculadora
       </h2>
     </header>
-    <p class="section-intro">Los coeficientes se operan por un lado y las potencias de 10 por otro; al final, el
+    <p class="section-intro" data-solo-lectura>Los coeficientes se operan por un lado y las potencias de 10 por otro; al final, el
       coeficiente se ajusta para que quede entre 1 y 10. Así se hace <span class="expresion">(6 × 10<sup>5</sup>) × (4 × 10<sup>−2</sup>)</span>:</p>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Al multiplicar, los exponentes se suman.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Coeficientes</span><span>6 × 4</span><span class="tele-formulas__flecha">→</span><span>24</span></p>
+        <p><span class="tele-formulas__rotulo">Potencias</span><span>10<sup>5</sup> × 10<sup>−2</sup></span><span class="tele-formulas__flecha">→</span><span>10<sup>3</sup></span></p>
+        <p><span class="tele-formulas__rotulo">Ajusta</span><span>24 × 10<sup>3</sup></span><span class="tele-formulas__flecha">→</span><span>2.4 × 10<sup>4</sup></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Al dividir, se restan.</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Coeficientes</span><p><span class="expresion">6 × 4 = 24</span>.</p></li>
       <li><span class="worked-steps__label">Potencias</span><p>Al multiplicar se suman los exponentes:
         <span class="expresion">10<sup>5</sup> × 10<sup>−2</sup> = 10<sup>5 + (−2)</sup> = 10<sup>3</sup></span>. Al dividir, se restan.</p></li>
@@ -279,7 +340,7 @@
         el coeficiente se hizo 10 veces más chico y el exponente sube 1. Si queda menor que 1, baja:
         <span class="expresion">0.5 × 10<sup>3</sup> = 5 × 10<sup>2</sup></span>.</p></li>
     </ol>
-    <p class="editorial-note"><strong>El error más común:</strong> multiplicar los exponentes.
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> multiplicar los exponentes.
       <span class="expresion">10<sup>5</sup> × 10<sup>−2</sup></span> no es <span class="expresion">10<sup>−10</sup></span>,
       es <span class="expresion">10<sup>3</sup></span>. Y no dejar el resultado sin ajustar:
       <span class="expresion">24 × 10<sup>3</sup></span> vale lo mismo, pero no está en notación científica.</p>
@@ -287,19 +348,33 @@
       <a href="../matematicas/potencias-radicales.html">Potencias y radicales</a>:
       <span class="expresion">a<sup>m</sup> × a<sup>n</sup> = a<sup>m + n</sup></span> y
       <span class="expresion">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span>, ahora con base 10.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">¿Multiplicaste los exponentes?</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">10<sup>5</sup> × 10<sup>−2</sup> = 10<sup>−10</sup></span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">10<sup>5</sup> × 10<sup>−2</sup> = 10<sup>3</sup></span></p>
+        </div>
+        <p class="tele-idea__apoyo">Los exponentes se suman: 5 + (−2) = 3.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploNotacion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploNotacion">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">La luz del Sol tarda unos 500&nbsp;s en llegar y viaja a
           <span class="expresion">3 × 10<sup>8</sup>&nbsp;m/s</span>. ¿A qué distancia está el Sol?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>d = 15 × 10<sup>10</sup>&nbsp;m</p>
+          <p>d = 1.5 × 10<sup>11</sup>&nbsp;m</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Distancia</span><p>Velocidad × tiempo:
             <span class="expresion">(3 × 10<sup>8</sup>&nbsp;m/s)(500&nbsp;s)</span>, y <span class="expresion">500 = 5 × 10<sup>2</sup></span>.</p></li>
           <li><span class="worked-steps__label">Opera</span><p><span class="expresion">3 × 5 = 15</span> y
@@ -312,7 +387,11 @@
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un cabello mide <span class="expresion">8 × 10<sup>−5</sup>&nbsp;m</span>
           de grueso y una bacteria, <span class="expresion">2 × 10<sup>−6</sup>&nbsp;m</span>. ¿Cuántas bacterias caben a lo
           ancho del cabello?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>n = <span class="fr"><span class="fr__n">8 × 10<sup>−5</sup></span><span class="fr__d">2 × 10<sup>−6</sup></span></span></p>
+          <p>n = 4 × 10<sup>1</sup> = 40</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Divide</span><p><span class="expresion">(8 × 10<sup>−5</sup>) ÷ (2 × 10<sup>−6</sup>)</span>:
             <span class="expresion">8 ÷ 2 = 4</span>.</p></li>
           <li><span class="worked-steps__label">Potencias</span><p>Se restan: <span class="expresion">−5 − (−6) = −5 + 6 = 1</span>;

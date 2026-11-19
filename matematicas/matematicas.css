@@ -154,3 +154,10 @@ html[data-proyeccion] .es-proyectada .tabla-signos td {
 }
 
 html[data-proyeccion] .es-proyectada .tabla-signos thead th:first-child { font-size: calc(var(--u) * 3.4); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: la ecuación de la recta, los ejemplos de la tabla de signos y los planteos.
+   La escena de la recta no mide su texto: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .recta__ecuacion,
+html[data-proyeccion] .es-proyectada .signos__ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

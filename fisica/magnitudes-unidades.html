@@ -36,12 +36,12 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./fisica.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -56,9 +56,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 1 · Física</p>
     <h1 class="hero__title">Magnitudes y <em>unidades</em></h1>
-    <p class="hero__lede">En física todo resultado es un número con su unidad: 5 m, 3 s, 70 kg. Aquí están las
+    <p class="hero__lede"><span data-solo-lectura>En física todo resultado es un número con su unidad: 5 m, 3 s, 70 kg. Aquí están las
       siete unidades con las que se arma todo lo demás, cómo se escriben bien y por qué una velocidad puede ser
-      negativa.</p>
+      negativa.</span><span data-solo-proyeccion>En física todo resultado es un número con su unidad: 5 m, 3 s,
+      70 kg.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -76,7 +77,15 @@
         <span class="lesson-section__kicker">Idea central</span> Medir es comparar
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Un número sin unidad no dice nada.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Sin unidad</span><span>5</span><span class="tele-formulas__flecha">→</span><span>¿5 m o 5 km?</span></p>
+        <p><span class="tele-formulas__rotulo">Medir</span><span>2 m</span><span class="tele-formulas__flecha">→</span><span>2 veces el metro</span></p>
+      </div>
+      <p class="tele-idea__apoyo">En un examen, la unidad descarta opciones.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Un número sin unidad <em>no dice nada</em></h3>
       </header>
@@ -186,8 +195,10 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Las mayúsculas cambian el significado: K es kelvin y k es kilo; M es mega, un
+    <p class="editorial-note" data-solo-lectura>Las mayúsculas cambian el significado: K es kelvin y k es kilo; M es mega, un
       millón, y m es metro, o mili si va antes de otro símbolo, como en mm.</p>
+    <p class="tele-idea__apoyo" data-solo-proyeccion>Las mayúsculas cambian el significado: K es kelvin y k es kilo; M es
+      mega y m es metro.</p>
   </section>
 
   <section class="leccion-escena" aria-labelledby="observaSigno" data-diapositiva="dos" data-figura="amplia" data-auto>
@@ -213,15 +224,17 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-auto-texto></div>
     <div hidden>
-      <p data-texto-movimiento="mas5"><strong class="expresion">v = +5 m/s.</strong> Cada segundo el auto avanza
+      <p data-texto-movimiento="mas5"><strong class="expresion">v = +5 m/s.</strong><span data-solo-lectura> Cada segundo el auto avanza
         5 m hacia la derecha, el lado positivo del eje: las copias quedan a 5 m una de otra. Eso quiere decir
-        m/s: metros en cada segundo.</p>
-      <p data-texto-movimiento="mas10"><strong class="expresion">v = +10 m/s.</strong> Al doble de velocidad, el
+        m/s: metros en cada segundo.</span><span data-solo-proyeccion> Cada segundo avanza 5 m hacia la derecha, el
+        lado positivo.</span></p>
+      <p data-texto-movimiento="mas10"><strong class="expresion">v = +10 m/s.</strong><span data-solo-lectura> Al doble de velocidad, el
         doble de distancia cada segundo: las copias quedan a 10 m y llega al mismo lugar en la mitad del
-        tiempo.</p>
-      <p data-texto-movimiento="menos5"><strong class="expresion">v = −5 m/s.</strong> La misma rapidez, 5 m cada
+        tiempo.</span><span data-solo-proyeccion> Al doble de velocidad, el doble de distancia cada segundo.</span></p>
+      <p data-texto-movimiento="menos5"><strong class="expresion">v = −5 m/s.</strong><span data-solo-lectura> La misma rapidez, 5 m cada
         segundo, pero hacia la izquierda, el lado negativo: x baja de 23 m a 18, 13, 8 y 3. El signo no quiere
-        decir «más lento»: dice hacia dónde.</p>
+        decir «más lento»: dice hacia dónde.</span><span data-solo-proyeccion> La misma rapidez, pero hacia la
+        izquierda: el signo dice hacia dónde.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir el video</button>
@@ -234,14 +247,18 @@
   <section aria-labelledby="ejemploFisica" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploFisica">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un auto en <span class="expresion">x = 30 m</span> va a
           <span class="expresion">−5 m/s</span>. ¿Dónde está 4 s después?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>x = 30 + 4 × (−5)</p>
+          <p>x = 10 m</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Cada segundo</span><p>x cambia −5 m: el auto va hacia la
             izquierda.</p></li>
           <li><span class="worked-steps__label">En 4 s</span><p><span class="expresion">4 × (−5 m) = −20 m</span>.</p></li>
@@ -252,7 +269,11 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un salón mide <span class="expresion">8 m × 6 m × 3 m</span>.
           ¿Cuánto aire cabe?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>V = 8 × 6 × 3</p>
+          <p>V = 144 m³</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Fórmula</span><p>Volumen = largo × ancho × alto.</p></li>
           <li><span class="worked-steps__label">Números</span><p><span class="expresion">8 × 6 × 3 = 144</span>.</p></li>
           <li><span class="worked-steps__label">Unidades</span><p><span class="expresion">m × m × m = m³</span>. Caben

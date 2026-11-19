@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
-<link rel="stylesheet" href="./ecuaciones-primer-grado.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./matematicas.css?v=20261118-tele">
+<link rel="stylesheet" href="./ecuaciones-primer-grado.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-ecuaciones-primer-grado.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -57,9 +57,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 7 · Matemáticas</p>
     <h1 class="hero__title">Ecuaciones de primer <em>grado</em></h1>
-    <p class="hero__lede">Una ecuación es una balanza en equilibrio: lo que haces de un lado lo haces del otro,
+    <p class="hero__lede"><span data-solo-lectura>Una ecuación es una balanza en equilibrio: lo que haces de un lado lo haces del otro,
       hasta que la x queda sola. Aquí se ve por qué funciona, cómo se resuelve con paréntesis y con fracciones, y
-      cómo se plantea un problema con palabras.</p>
+      cómo se plantea un problema con palabras.</span><span data-solo-proyeccion>Una ecuación es una balanza en equilibrio: lo
+      que haces de un lado lo haces del otro, hasta que la x queda sola.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,15 @@
         <span class="lesson-section__kicker">Idea central</span> Una balanza en equilibrio
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Lo que haces de un lado, hazlo del otro.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Quita 1</span><span>2x + 1 = 9</span><span class="tele-formulas__flecha">→</span><span>2x = 8</span></p>
+        <p><span class="tele-formulas__rotulo">Parte en 2</span><span>2x = 8</span><span class="tele-formulas__flecha">→</span><span>x = 4</span></p>
+        <p><span class="tele-formulas__rotulo">Comprueba</span><span>2 × 4 + 1 = 9</span><span class="tele-veredicto">sí</span><span></span></p>
+      </div>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Lo que haces de un lado, <em>hazlo del otro</em></h3>
       </header>
@@ -123,15 +132,18 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-balanza-texto></div>
     <div hidden>
-      <p data-texto-caso="un-lado"><strong class="expresion">3x + 2 = 11.</strong> Si quitas 2 sólo de un lado, la
+      <p data-texto-caso="un-lado"><strong class="expresion">3x + 2 = 11.</strong><span data-solo-lectura> Si quitas 2 sólo de un lado, la
         balanza se inclina. Quitando 2 de los dos lados queda <span class="expresion">3x = 9</span>, y al partir en
-        3, <strong class="expresion">x = 3</strong>.</p>
-      <p data-texto-caso="dos-lados"><strong class="expresion">5x + 1 = 2x + 7.</strong> Se quitan 2 cajas de cada
+        3, <strong class="expresion">x = 3</strong>.</span><span data-solo-proyeccion> Si quitas 2 sólo de un lado, la balanza
+        se inclina.</span></p>
+      <p data-texto-caso="dos-lados"><strong class="expresion">5x + 1 = 2x + 7.</strong><span data-solo-lectura> Se quitan 2 cajas de cada
         lado y luego 1 cubo: <span class="expresion">3x = 6</span>. Al partir en 3, <strong class="expresion">x =
-        2</strong>. Como todo se hace de los dos lados, la balanza no se mueve.</p>
-      <p data-texto-caso="parentesis"><strong class="expresion">2(x + 3) = 14.</strong> Son dos paquetes iguales:
+        2</strong>. Como todo se hace de los dos lados, la balanza no se mueve.</span><span data-solo-proyeccion> Se quitan 2
+        cajas y 1 cubo de cada lado.</span></p>
+      <p data-texto-caso="parentesis"><strong class="expresion">2(x + 3) = 14.</strong><span data-solo-lectura> Son dos paquetes iguales:
         el 2 multiplica a la x y también al 3, <span class="expresion">2x + 6 = 14</span>. Se quitan 6 de cada lado,
-        <span class="expresion">2x = 8</span>, y <strong class="expresion">x = 4</strong>.</p>
+        <span class="expresion">2x = 8</span>, y <strong class="expresion">x = 4</strong>.</span><span data-solo-proyeccion> El 2
+        multiplica a la x y también al 3.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -165,10 +177,19 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> pasar un número sin cambiarle la operación. En
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> pasar un número sin cambiarle la operación. En
       <span class="expresion">x + 5 = 12</span> el 5 suma, así que pasa restando: <span class="expresion">x = 12 − 5
       = 7</span>, no 12 + 5. Y el 3 de <span class="expresion">3x = 21</span> multiplica: pasa dividiendo, no
       restando.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error más común: no cambiar la operación.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">x + 5 = 12 → x = 12 + 5 = 17</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">x + 5 = 12 → x = 12 − 5 = 7</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="reglasOrden" data-diapositiva="una">
@@ -178,18 +199,19 @@
       </h2>
     </header>
     <ol class="worked-steps">
-      <li><span class="worked-steps__label">Paréntesis</span><p>Quítalos: el número de afuera multiplica a
-        <strong>cada</strong> término de adentro.</p></li>
-      <li><span class="worked-steps__label">Fracciones</span><p>Multiplica los dos lados por el denominador (si hay
-        varios, por su mínimo común múltiplo): las fracciones desaparecen.</p></li>
-      <li><span class="worked-steps__label">Agrupa</span><p>Las x de un lado y los números del otro, cada uno con
-        la operación contraria; luego junta los términos semejantes.</p></li>
-      <li><span class="worked-steps__label">Despeja</span><p>Divide entre el número que multiplica a la x, con
-        todo y su signo.</p></li>
-      <li><span class="worked-steps__label">Comprueba</span><p>Pon el resultado en la ecuación original: los dos
-        lados deben dar lo mismo.</p></li>
+      <li><span class="worked-steps__label">Paréntesis</span><p><span data-solo-lectura>Quítalos: el número de afuera multiplica a
+        <strong>cada</strong> término de adentro.</span><span data-solo-proyeccion>Quítalos.</span></p></li>
+      <li><span class="worked-steps__label">Fracciones</span><p><span data-solo-lectura>Multiplica los dos lados por el denominador (si hay
+        varios, por su mínimo común múltiplo): las fracciones desaparecen.</span><span data-solo-proyeccion>Quítalas.</span></p></li>
+      <li><span class="worked-steps__label">Agrupa</span><p><span data-solo-lectura>Las x de un lado y los números del otro, cada uno con
+        la operación contraria; luego junta los términos semejantes.</span><span data-solo-proyeccion>Las x de un lado, los números
+        del otro.</span></p></li>
+      <li><span class="worked-steps__label">Despeja</span><p><span data-solo-lectura>Divide entre el número que multiplica a la x, con
+        todo y su signo.</span><span data-solo-proyeccion>Divide entre lo que multiplica a la x.</span></p></li>
+      <li><span class="worked-steps__label">Comprueba</span><p><span data-solo-lectura>Pon el resultado en la ecuación original: los dos
+        lados deben dar lo mismo.</span><span data-solo-proyeccion>Los dos lados dan lo mismo.</span></p></li>
     </ol>
-    <p class="editorial-note">No siempre hacen falta los cinco: si no hay paréntesis ni fracciones, se empieza en
+    <p class="editorial-note" data-solo-lectura>No siempre hacen falta los cinco: si no hay paréntesis ni fracciones, se empieza en
       el tercero.</p>
   </section>
 
@@ -199,9 +221,17 @@
         <span class="lesson-section__kicker">Cuidado</span> Paréntesis y fracciones
       </h2>
     </header>
-    <p class="section-intro">Lo de afuera multiplica a <strong>todo</strong> lo de adentro, y la raya de una
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Lo de afuera multiplica a todo lo de adentro.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Distribuye</span><span>5(x − 2)</span><span class="tele-formulas__flecha">→</span><span>5x − 10</span></p>
+        <p><span class="tele-formulas__rotulo">Un menos</span><span>−(x − 6)</span><span class="tele-formulas__flecha">→</span><span>−x + 6</span></p>
+        <p><span class="tele-formulas__rotulo">La raya agrupa</span><span><span class="fr"><span class="fr__n">x + 4</span><span class="fr__d">2</span></span> = 9</span><span class="tele-formulas__flecha">→</span><span>x + 4 = 18</span></p>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Lo de afuera multiplica a <strong>todo</strong> lo de adentro, y la raya de una
       fracción agrupa a todo su numerador.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Distribuye</span><p><span class="expresion">5(x − 2) = 5x
         <strong>− 10</strong></span>, no 5x − 2.</p></li>
       <li><span class="worked-steps__label">Un menos</span><p><span class="expresion">−(x − 6) = −x
@@ -214,9 +244,19 @@
         class="fr__n">x + 4</span><span class="fr__d">2</span></span> = 9</span> se vuelve
         <span class="expresion">x + 4 = 18</span>, así que x = 14.</p></li>
     </ol>
-    <p class="editorial-note">El error típico es multiplicar o dividir un solo término: de
+    <p class="editorial-note" data-solo-lectura>El error típico es multiplicar o dividir un solo término: de
       <span class="expresion"><span class="fr"><span class="fr__n">x</span><span class="fr__d">3</span></span> + 2
       = 7</span> no sale <span class="expresion">x + 2 = 21</span>. Cada término de cada lado se multiplica por 3.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">¿Multiplicaste cada término?</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal"><span class="fr"><span class="fr__n">x</span><span class="fr__d">3</span></span> + 2 = 7 → x + 2 = 21</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien"><span class="fr"><span class="fr__n">x</span><span class="fr__d">3</span></span> + 2 = 7 → x + 6 = 21</span></p>
+        </div>
+        <p class="tele-idea__apoyo">El 2 también se multiplica por 3.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="plantear" data-diapositiva="una">
@@ -239,7 +279,7 @@
           <tr><th scope="row">Un número aumentado en 5</th><td class="ecuacion__ejemplo">x + 5</td></tr>
           <tr><th scope="row">El triple de un número, menos 4</th><td class="ecuacion__ejemplo">3x − 4</td></tr>
           <tr><th scope="row">La mitad de un número</th><td class="ecuacion__ejemplo"><span class="fr"><span class="fr__n">x</span><span class="fr__d">2</span></span></td></tr>
-          <tr><th scope="row">Dos números consecutivos</th><td class="ecuacion__ejemplo">x y x + 1</td></tr>
+          <tr><th scope="row">Dos números consecutivos</th><td class="ecuacion__ejemplo">x, x + 1</td></tr>
           <tr><th scope="row">Es, da, obtienes</th><td class="ecuacion__ejemplo">=</td></tr>
         </tbody>
       </table>
@@ -249,13 +289,16 @@
   <section aria-labelledby="ejemploEcuacion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploEcuacion">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">3(x − 2) = x + 8</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>x = 7</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Paréntesis</span><p><span class="expresion">3x − 6 = x + 8</span>.</p></li>
           <li><span class="worked-steps__label">Agrupa</span><p><span class="expresion">3x − x = 8 + 6</span>, es
             decir, <span class="expresion">2x = 14</span>.</p></li>
@@ -268,7 +311,10 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">El largo de un terreno mide 8&nbsp;m más que el ancho, y
           su perímetro es de 64&nbsp;m. ¿Cuánto mide el ancho?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>Ancho: 12&nbsp;m</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Nombra</span><p>Ancho: x. Largo: x + 8.</p></li>
           <li><span class="worked-steps__label">Plantea</span><p><span class="expresion">2x + 2(x + 8) = 64</span>.</p></li>
           <li><span class="worked-steps__label">Resuelve</span><p><span class="expresion">4x + 16 = 64</span>, así

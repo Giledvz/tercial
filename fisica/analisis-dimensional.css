@@ -139,6 +139,22 @@
 
 html[data-proyeccion] .es-proyectada .reference-table th.ad__letra { font-size: calc(var(--u) * 3.2); }
 
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: las de las escenas, las de las tablas y los planteos de los ejemplos.
+   Las piezas de la operación se colocan con su ancho en Fraunces (ANCHO, en la escena) y cada
+   una va centrada en su lugar. En Plex Sans las cifras y el × miden hasta 3.6 px más y las
+   unidades y la raya, hasta 2.7 px menos: nada se encima (el espacio más angosto baja de 5.5 a
+   4.4 px), pero km/h y m/s² quedan un poco más sueltos. */
+html[data-proyeccion] .es-proyectada .cancela__pieza,
+html[data-proyeccion] .es-proyectada .cancela__resultado,
+html[data-proyeccion] .es-proyectada .escena-ad__algebra,
+html[data-proyeccion] .es-proyectada .suma__ecuacion,
+html[data-proyeccion] .es-proyectada .suma__rotulo,
+html[data-proyeccion] .es-proyectada .suma__total,
+html[data-proyeccion] .es-proyectada .ad__expr,
+html[data-proyeccion] .es-proyectada .si__simbolo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
 /* En la tele, las magnitudes de la tabla de reglas son contenido, no etiquetas. */
 html[data-proyeccion] .es-proyectada .ad-reglas tbody th {
   color: var(--color-text-primary);

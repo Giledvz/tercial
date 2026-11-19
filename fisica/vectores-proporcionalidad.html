@@ -36,19 +36,19 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
-<link rel="stylesheet" href="./vectores-proporcionalidad.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./fisica.css?v=20261118-tele">
+<link rel="stylesheet" href="./vectores-proporcionalidad.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-vectores-proporcionalidad.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
-<script type="module" src="./escenas-vectores-proporcionalidad.js?v=20261010"></script>
+<script type="module" src="./escenas-vectores-proporcionalidad.js?v=20261118"></script>
 </head>
 <body>
 
@@ -58,8 +58,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 8 · Física</p>
     <h1 class="hero__title">Vectores y razonamiento <em>proporcional</em></h1>
-    <p class="hero__lede">Una fuerza o un desplazamiento no se suman como números: importa hacia dónde apuntan. Aquí se
-      suman con flechas, sin senos ni cosenos, y se contesta «¿qué pasa si duplico…?» sin hacer la cuenta completa.</p>
+    <p class="hero__lede"><span data-solo-lectura>Una fuerza o un desplazamiento no se suman como números: importa hacia dónde apuntan. Aquí se
+      suman con flechas, sin senos ni cosenos, y se contesta «¿qué pasa si duplico…?» sin hacer la cuenta completa.</span><span data-solo-proyeccion>Una
+      fuerza o un desplazamiento no se suman como números: importa hacia dónde apuntan.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,15 @@
         <span class="lesson-section__kicker">Idea central</span> Sumar con flechas
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Un vector dice cuánto y hacia dónde.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">En línea</span><span>5&nbsp;m + (−2&nbsp;m)</span><span class="tele-formulas__flecha">→</span><span>3&nbsp;m</span></p>
+        <p><span class="tele-formulas__rotulo">En ángulo recto</span><span>3&nbsp;m + 4&nbsp;m</span><span class="tele-formulas__flecha">→</span><span>5&nbsp;m</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Se suman cabeza-cola.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Un vector dice <em>cuánto y hacia dónde</em></h3>
       </header>
@@ -120,14 +129,18 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-suma-texto></div>
     <div hidden>
-      <p data-texto-caso="linea"><strong class="expresion">5&nbsp;m + (−2&nbsp;m) = +3&nbsp;m.</strong> En una recta, sumar vectores es
-        sumar con signo. Caminaste 7&nbsp;m, pero quedaste a 3&nbsp;m del inicio: ése es tu desplazamiento.</p>
-      <p data-texto-caso="cabeza"><strong>3&nbsp;m al este y luego 4&nbsp;m al norte.</strong> Caminaste 7&nbsp;m, pero quedaste a 5&nbsp;m.
-        La resultante, girada con un compás hasta el eje, mide 5 cuadros: <span class="expresion">3² + 4² = 5²</span>.</p>
-      <p data-texto-caso="paralelogramo"><strong>Dos cuerdas de 50&nbsp;N jalan la caja.</strong> Las copias cierran el
-        paralelogramo y su diagonal es la resultante: 80&nbsp;N, no 100&nbsp;N. Lo que cada cuerda jala de lado se cancela.</p>
-      <p data-texto-caso="componentes"><strong>13&nbsp;m son 12&nbsp;m de lado y 5&nbsp;m hacia arriba:</strong> sus componentes,
-        cabeza-cola al revés. Si la flecha se para, la horizontal se achica y la vertical crece; a 45°, son iguales.</p>
+      <p data-texto-caso="linea"><strong class="expresion">5&nbsp;m + (−2&nbsp;m) = +3&nbsp;m.</strong><span data-solo-lectura> En una recta, sumar vectores es
+        sumar con signo. Caminaste 7&nbsp;m, pero quedaste a 3&nbsp;m del inicio: ése es tu desplazamiento.</span><span data-solo-proyeccion> En
+        una recta, sumar vectores es sumar con signo.</span></p>
+      <p data-texto-caso="cabeza"><strong>3&nbsp;m al este y luego 4&nbsp;m al norte.</strong><span data-solo-lectura> Caminaste 7&nbsp;m, pero quedaste a 5&nbsp;m.
+        La resultante, girada con un compás hasta el eje, mide 5 cuadros: <span class="expresion">3² + 4² = 5²</span>.</span><span data-solo-proyeccion> Caminaste
+        7&nbsp;m, pero quedaste a 5&nbsp;m.</span></p>
+      <p data-texto-caso="paralelogramo"><strong>Dos cuerdas de 50&nbsp;N jalan la caja.</strong><span data-solo-lectura> Las copias cierran el
+        paralelogramo y su diagonal es la resultante: 80&nbsp;N, no 100&nbsp;N. Lo que cada cuerda jala de lado se cancela.</span><span data-solo-proyeccion> La
+        diagonal es la resultante: 80&nbsp;N, no 100&nbsp;N.</span></p>
+      <p data-texto-caso="componentes"><strong>13&nbsp;m son 12&nbsp;m de lado y 5&nbsp;m hacia arriba:</strong><span data-solo-lectura> sus componentes,
+        cabeza-cola al revés. Si la flecha se para, la horizontal se achica y la vertical crece; a 45°, son iguales.</span><span data-solo-proyeccion> sus
+        componentes. Si la flecha se para, la vertical crece.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -142,6 +155,7 @@
         <span class="lesson-section__kicker">Reglas</span> Cómo se suman dos vectores
       </h2>
     </header>
+    <p class="tele-idea__frase" data-solo-proyeccion>La resultante depende de hacia dónde apuntan.</p>
     <div class="reference-table-wrap" role="region" aria-label="La resultante de dos vectores según hacia dónde apuntan" tabindex="0">
       <table class="reference-table reference-table--apilada vp-tabla">
         <caption class="visually-hidden">La resultante de dos vectores según hacia dónde apuntan, con un ejemplo de 3&nbsp;N y 4&nbsp;N</caption>
@@ -149,16 +163,26 @@
           <tr><th scope="col">Si apuntan…</th><th scope="col">La resultante</th><th scope="col">Con 3&nbsp;N y 4&nbsp;N</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Hacia el mismo lado</th><td>Se suman los tamaños: es la más grande posible.</td><td class="vp__formula">3 + 4 = 7&nbsp;N</td></tr>
-          <tr><th scope="row">En sentidos contrarios</th><td>Se restan, y gana el sentido del más grande.</td><td class="vp__formula">4 − 3 = 1&nbsp;N</td></tr>
-          <tr><th scope="row">Perpendiculares</th><td>Pitágoras: forman un triángulo rectángulo y la resultante es la hipotenusa.</td><td class="vp__formula">√(9 + 16) = 5&nbsp;N</td></tr>
-          <tr><th scope="row">Con otro ángulo</th><td>Queda entre la resta y la suma; se dibuja con el paralelogramo.</td><td class="vp__formula">entre 1 y 7&nbsp;N</td></tr>
+          <tr><th scope="row">Hacia el mismo lado</th><td><span data-solo-lectura>Se suman los tamaños: es la más grande posible.</span><span data-solo-proyeccion>Se suman</span></td><td class="vp__formula">3 + 4 = 7&nbsp;N</td></tr>
+          <tr><th scope="row">En sentidos contrarios</th><td><span data-solo-lectura>Se restan, y gana el sentido del más grande.</span><span data-solo-proyeccion>Se restan</span></td><td class="vp__formula">4 − 3 = 1&nbsp;N</td></tr>
+          <tr><th scope="row">Perpendiculares</th><td><span data-solo-lectura>Pitágoras: forman un triángulo rectángulo y la resultante es la hipotenusa.</span><span data-solo-proyeccion>Pitágoras</span></td><td class="vp__formula">√(9 + 16) = 5&nbsp;N</td></tr>
+          <tr><th scope="row">Con otro ángulo</th><td><span data-solo-lectura>Queda entre la resta y la suma; se dibuja con el paralelogramo.</span><span data-solo-proyeccion>Paralelogramo</span></td><td class="vp__formula">entre 1 y 7&nbsp;N</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> sumar los tamaños de dos vectores perpendiculares,
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> sumar los tamaños de dos vectores perpendiculares,
       <span class="expresion">3 + 4 = 7</span>. Eso sólo vale si apuntan hacia el mismo lado. Perpendiculares dan 5: la
       hipotenusa siempre es más corta que los dos catetos juntos.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error más común: sumar tamaños de vectores perpendiculares.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">3 + 4 = 7&nbsp;N</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">√(9 + 16) = 5&nbsp;N</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Sólo se suman si apuntan al mismo lado.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ternas" data-diapositiva="una">
@@ -167,7 +191,8 @@
         <span class="lesson-section__kicker">Sin calculadora</span> Las ternas de Pitágoras
       </h2>
     </header>
-    <p class="section-intro">En el examen no hay calculadora: los números se escogen para que la raíz salga exacta.
+    <p class="tele-idea__frase" data-solo-proyeccion>En el examen, la raíz sale exacta: reconoce estas ternas.</p>
+    <p class="section-intro" data-solo-lectura>En el examen no hay calculadora: los números se escogen para que la raíz salga exacta.
       Conviene reconocer estas ternas y sus múltiplos: 30 y 40 dan 50, porque es la terna 3-4-5 por 10.</p>
     <div class="reference-table-wrap" role="region" aria-label="Ternas de Pitágoras" tabindex="0">
       <table class="reference-table reference-table--apilada vp-tabla vp-ternas">
@@ -182,7 +207,8 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>En matemáticas</strong> esto es una ecuación de segundo grado. Si una flecha de
+    <p class="tele-idea__apoyo" data-solo-proyeccion>Y sus múltiplos: 30 y 40 dan 50, la terna 3-4-5 por&nbsp;10.</p>
+    <p class="editorial-note" data-solo-lectura><strong>En matemáticas</strong> esto es una ecuación de segundo grado. Si una flecha de
       13&nbsp;m tiene una componente de 5&nbsp;m, la otra cumple <span class="expresion">x² + 25 = 169</span>, o sea
       <span class="expresion">x² = 144</span>: x = 12 o x = −12. La solución negativa es la misma componente, apuntando
       al revés. Lo viste en <a href="../matematicas/cuadraticas-sistemas.html">Ecuaciones de segundo grado y sistemas</a>.</p>
@@ -194,9 +220,18 @@
         <span class="lesson-section__kicker">Componentes</span> Qué componente es mayor
       </h2>
     </header>
-    <p class="section-intro">Toda flecha es la suma de una horizontal y una vertical puestas cabeza-cola: son sus
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Toda flecha es una horizontal más una vertical.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Menos de 45°</span><span>horizontal</span><span>&gt;</span><span>vertical</span></p>
+        <p><span class="tele-formulas__rotulo">Más de 45°</span><span>vertical</span><span>&gt;</span><span>horizontal</span></p>
+        <p><span class="tele-formulas__rotulo">A 45°</span><span>horizontal</span><span>=</span><span>vertical</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Ninguna componente mide más que la flecha.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>Toda flecha es la suma de una horizontal y una vertical puestas cabeza-cola: son sus
       componentes. Para compararlas no hacen falta senos ni cosenos.</p>
-    <ul class="worked-steps">
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Menos de 45°</span><p>La flecha está más acostada que parada: la componente
         horizontal es la mayor.</p></li>
       <li><span class="worked-steps__label">Más de 45°</span><p>Está más parada que acostada: la mayor es la vertical.</p></li>
@@ -204,7 +239,7 @@
       <li><span class="worked-steps__label">Nunca más</span><p>Una componente nunca mide más que la flecha: es un cateto
         y la flecha es la hipotenusa. Una flecha horizontal tiene componente vertical cero.</p></li>
     </ul>
-    <p class="editorial-note"><strong>En matemáticas</strong> un sistema de 2 × 2 tiene dos incógnitas, x y y. Un vector
+    <p class="editorial-note" data-solo-lectura><strong>En matemáticas</strong> un sistema de 2 × 2 tiene dos incógnitas, x y y. Un vector
       en el plano también trae dos números, sus componentes, y se suman por separado: lo horizontal con lo horizontal y
       lo vertical con lo vertical. En el paralelogramo, hacia adelante <span class="expresion">40 + 40 = 80</span> y de
       lado <span class="expresion">30 − 30 = 0</span>.</p>
@@ -216,7 +251,23 @@
         <span class="lesson-section__kicker">Idea central</span> ¿Qué pasa si duplico?
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si duplicas una variable, mira dónde está.</p>
+      <div class="tele-pizarron vp-duplica">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Multiplicando</p>
+          <p>d = v·t</p>
+          <p>t × 2 → d × 2</p>
+        </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Dividiendo</p>
+          <p>t = <span class="fr"><span class="fr__n">d</span><span class="fr__d">v</span></span></p>
+          <p>v × 2 → t ÷ 2</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Al cuadrado, el doble se vuelve 4 veces.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Lo que importa es <em>el factor</em></h3>
       </header>
@@ -252,9 +303,10 @@
       </svg>
     </figure>
     <div class="leccion-texto" aria-live="polite">
-      <p><strong>Al doble de distancia, la cuarta parte.</strong> La luz que a la distancia d cabe en 1 cuadro, a 2d se
+      <p><strong>Al doble de distancia, la cuarta parte.</strong><span data-solo-lectura> La luz que a la distancia d cabe en 1 cuadro, a 2d se
         reparte en 4 y a 3d en 9: en cada cuadro caen <span class="expresion">36 ÷ 4 = 9</span> puntos y luego
-        <span class="expresion">36 ÷ 9 = 4</span>.</p>
+        <span class="expresion">36 ÷ 9 = 4</span>.</span><span data-solo-proyeccion> La luz de 1 cuadro, a 2d se reparte en 4, y a 3d,
+        en 9.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -278,29 +330,43 @@
         </thead>
         <tbody>
           <tr><th scope="row">Directa</th><td class="vp__formula">y = k·x</td><td class="vp__factor">y × 2</td><td class="vp__factor">y × 3</td><td class="vp__formula">d = v·t</td></tr>
-          <tr><th scope="row">Inversa</th><td class="vp__formula">y = k / x</td><td class="vp__factor">y ÷ 2</td><td class="vp__factor">y ÷ 3</td><td class="vp__formula">t = d / v</td></tr>
+          <tr><th scope="row">Inversa</th><td class="vp__formula"><span data-solo-lectura>y = k / x</span><span data-solo-proyeccion>y = <span class="fr"><span class="fr__n">k</span><span class="fr__d">x</span></span></span></td><td class="vp__factor">y ÷ 2</td><td class="vp__factor">y ÷ 3</td><td class="vp__formula"><span data-solo-lectura>t = d / v</span><span data-solo-proyeccion>t = <span class="fr"><span class="fr__n">d</span><span class="fr__d">v</span></span></span></td></tr>
           <tr><th scope="row">Al cuadrado</th><td class="vp__formula">y = k·x²</td><td class="vp__factor">y × 4</td><td class="vp__factor">y × 9</td><td class="vp__formula">E = ½·m·v²</td></tr>
-          <tr><th scope="row">Inversa al cuadrado</th><td class="vp__formula">y = k / x²</td><td class="vp__factor vp__factor--ojo">y ÷ 4</td><td class="vp__factor vp__factor--ojo">y ÷ 9</td><td class="vp__formula">F = G·m<sub>1</sub>·m<sub>2</sub> / r²</td></tr>
+          <tr><th scope="row">Inversa al cuadrado</th><td class="vp__formula"><span data-solo-lectura>y = k / x²</span><span data-solo-proyeccion>y = <span class="fr"><span class="fr__n">k</span><span class="fr__d">x²</span></span></span></td><td class="vp__factor vp__factor--ojo">y ÷ 4</td><td class="vp__factor vp__factor--ojo">y ÷ 9</td><td class="vp__formula"><span data-solo-lectura>F = G·m<sub>1</sub>·m<sub>2</sub> / r²</span><span data-solo-proyeccion>F = <span class="fr"><span class="fr__n">G·m<sub>1</sub>·m<sub>2</sub></span><span class="fr__d">r²</span></span></span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> confundir la mitad con la cuarta parte. Si r se
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> confundir la mitad con la cuarta parte. Si r se
       duplica en <span class="expresion">F = k·q<sub>1</sub>·q<sub>2</sub> / r²</span>, la fuerza no queda a la mitad:
       <span class="expresion">2² = 4</span>, cae a la cuarta parte. Y como r está dividiendo, al alejar las cargas la
       fuerza baja; aplicar la regla al revés la haría subir.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error más común: confundir la mitad con la cuarta parte.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">r × 2 → F ÷ 2</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">r × 2 → F ÷ 4</span></p>
+        </div>
+        <p class="tele-idea__apoyo">r está al cuadrado: 2² = 4.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploVectores" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploVectores">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un dron vuela <span class="expresion">8&nbsp;km</span> al norte y
           luego <span class="expresion">6&nbsp;km</span> al este. ¿A qué distancia quedó del punto de partida?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>d² = 8² + 6² = 100</p>
+          <p>d = 10&nbsp;km</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Dibuja</span><p>Cabeza-cola: el norte y el este forman un ángulo recto,
             y la resultante es la hipotenusa.</p></li>
           <li><span class="worked-steps__label">Pitágoras</span><p><span class="expresion">8² + 6² = 64 + 36 = 100</span>.</p></li>
@@ -311,7 +377,10 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Dos cargas se atraen con <span class="expresion">36&nbsp;N</span>.
           Si la distancia entre ellas se triplica, ¿con qué fuerza se atraen?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>F = <span class="fr"><span class="fr__n">36&nbsp;N</span><span class="fr__d">3²</span></span> = 4&nbsp;N</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Fórmula</span><p>En <span class="expresion">F = k·q<sub>1</sub>·q<sub>2</sub> / r²</span>,
             r está dividiendo y al cuadrado.</p></li>
           <li><span class="worked-steps__label">Factor</span><p><span class="expresion">r × 3</span>, así que

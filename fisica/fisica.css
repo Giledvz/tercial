@@ -110,3 +110,10 @@ html[data-proyeccion] .es-proyectada .si-tabla tbody th {
   letter-spacing: 0;
   text-transform: none;
 }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos y griegas de verdad):
+   la lectura de la pista, los símbolos y las medidas de las tablas del SI y los planteos. */
+html[data-proyeccion] .es-proyectada .pista__lectura,
+html[data-proyeccion] .es-proyectada .si__simbolo,
+html[data-proyeccion] .es-proyectada .reference-table th.si__medida,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

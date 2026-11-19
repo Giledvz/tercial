@@ -36,12 +36,12 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./matematicas.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
@@ -55,9 +55,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 1 · Matemáticas</p>
     <h1 class="hero__title">Operaciones con <em>signos</em></h1>
-    <p class="hero__lede">Un número con signo dice cuánto y hacia dónde. En la recta numérica se ve por qué
+    <p class="hero__lede"><span data-solo-lectura>Un número con signo dice cuánto y hacia dónde. En la recta numérica se ve por qué
       restar es sumar el contrario y por qué menos por menos da más; luego las reglas se practican hasta que
-      salgan solas.</p>
+      salgan solas.</span><span data-solo-proyeccion>Un número con signo dice cuánto y hacia dónde.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -75,7 +75,15 @@
         <span class="lesson-section__kicker">Idea central</span> Cuánto y hacia dónde
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El signo dice hacia dónde; el valor absoluto, qué tan lejos del&nbsp;cero.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Restar</span><span>7 − 3</span><span class="tele-formulas__flecha">→</span><span>7 + (−3)</span></p>
+        <p><span class="tele-formulas__rotulo">Menos por menos</span><span>(−3) × (−2)</span><span class="tele-formulas__flecha">→</span><span>6</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Restar es sumar el contrario.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El signo dice <em>hacia dónde</em></h3>
       </header>
@@ -121,19 +129,23 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-signos-texto></div>
     <div hidden>
-      <p data-texto-ejemplo="suma"><strong class="expresion">4 + (−6) = −2.</strong> Cuatro pasos a la derecha
+      <p data-texto-ejemplo="suma"><strong class="expresion">4 + (−6) = −2.</strong><span data-solo-lectura> Cuatro pasos a la derecha
         y luego seis a la izquierda. Los signos son distintos: se restan los valores absolutos,
         <span class="expresion">6 − 4 = 2</span>, y gana el signo del −6, que pesa más porque está más lejos
-        del cero.</p>
-      <p data-texto-ejemplo="resta"><strong class="expresion">−3 − 5 = −8.</strong> Restar 5 es sumar −5: la flecha punteada del 5
-        da la vuelta y apunta a la izquierda. Son 3 pasos a la izquierda y luego otros 5.</p>
-      <p data-texto-ejemplo="resta-negativo"><strong class="expresion">−2 − (−7) = 5.</strong> Restar −7 es sumar 7: la flecha
-        punteada del −7 da la vuelta y apunta a la derecha. Desde el −2, siete pasos a la derecha llegan al 5.</p>
-      <p data-texto-ejemplo="producto"><strong class="expresion">(−3) × 2 = −6.</strong> Multiplicar por 2 es dar dos veces el
-        paso de −3: 3 a la izquierda y otros 3 a la izquierda.</p>
-      <p data-texto-ejemplo="producto-negativo"><strong class="expresion">(−3) × (−2) = 6.</strong> Dos pasos de −3 llegan al −6.
+        del cero.</span><span data-solo-proyeccion> Cuatro pasos a la derecha y luego seis a la izquierda.</span></p>
+      <p data-texto-ejemplo="resta"><strong class="expresion">−3 − 5 = −8.</strong><span data-solo-lectura> Restar 5 es sumar −5: la flecha punteada del 5
+        da la vuelta y apunta a la izquierda. Son 3 pasos a la izquierda y luego otros 5.</span><span data-solo-proyeccion> Restar 5
+        es sumar −5: la flecha del 5 da la vuelta.</span></p>
+      <p data-texto-ejemplo="resta-negativo"><strong class="expresion">−2 − (−7) = 5.</strong><span data-solo-lectura> Restar −7 es sumar 7: la flecha
+        punteada del −7 da la vuelta y apunta a la derecha. Desde el −2, siete pasos a la derecha llegan al 5.</span><span data-solo-proyeccion> Restar
+        −7 es sumar 7: la flecha del −7 da la vuelta.</span></p>
+      <p data-texto-ejemplo="producto"><strong class="expresion">(−3) × 2 = −6.</strong><span data-solo-lectura> Multiplicar por 2 es dar dos veces el
+        paso de −3: 3 a la izquierda y otros 3 a la izquierda.</span><span data-solo-proyeccion> Multiplicar por 2 es
+        dar dos veces el paso de −3.</span></p>
+      <p data-texto-ejemplo="producto-negativo"><strong class="expresion">(−3) × (−2) = 6.</strong><span data-solo-lectura> Dos pasos de −3 llegan al −6.
         El signo del −2 le da media vuelta: el −6 pasa por arriba del cero hasta el 6, y cada paso de −3 se
-        vuelve +3. Por eso menos por menos da más.</p>
+        vuelve +3. Por eso menos por menos da más.</span><span data-solo-proyeccion> El signo del −2 le da media
+        vuelta: menos por menos da más.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -156,16 +168,26 @@
           <tr><th scope="col">Cuándo</th><th scope="col">Regla</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Mismo signo</th><td>Se suman los valores absolutos y se deja el signo.</td><td class="signos__ejemplo">−4 + (−7) = −11</td></tr>
-          <tr><th scope="row">Signos distintos</th><td>Se restan los valores absolutos y gana el signo del que está más lejos del cero.</td><td class="signos__ejemplo">−9 + 4 = −5</td></tr>
-          <tr><th scope="row">Una resta</th><td>Se cambia por la suma del contrario: <span class="expresion">a − b = a + (−b)</span>.</td><td class="signos__ejemplo">3 − 8 = 3 + (−8) = −5</td></tr>
+          <tr><th scope="row">Mismo signo</th><td><span data-solo-lectura>Se suman los valores absolutos y se deja el signo.</span><span data-solo-proyeccion>Se suman y se deja el signo.</span></td><td class="signos__ejemplo">−4 + (−7) = −11</td></tr>
+          <tr><th scope="row">Signos distintos</th><td><span data-solo-lectura>Se restan los valores absolutos y gana el signo del que está más lejos del cero.</span><span data-solo-proyeccion>Se restan y gana el que está más lejos del&nbsp;cero.</span></td><td class="signos__ejemplo">−9 + 4 = −5</td></tr>
+          <tr><th scope="row">Una resta</th><td><span data-solo-lectura>Se cambia por la suma del contrario: <span class="expresion">a − b = a + (−b)</span>.</span><span data-solo-proyeccion>Se suma el contrario.</span></td><td class="signos__ejemplo">3 − 8 = 3 + (−8) = −5</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> ver <span class="expresion">−3 − 5</span> y pensar
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> ver <span class="expresion">−3 − 5</span> y pensar
       «menos por menos, más». Ahí no se multiplica nada: son dos pasos a la izquierda,
       <span class="expresion">−3 + (−5) = −8</span>. «Menos por menos da más» sólo vale al multiplicar o dividir, y
       con un menos pegado a un paréntesis: <span class="expresion">−(−5) = 5</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error más común: «menos por menos, más» en&nbsp;una&nbsp;resta.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">−3 − 5 = 8</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">−3 − 5 = −3 + (−5) = −8</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Ahí no se multiplica nada.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="reglasProducto" data-diapositiva="dos" data-figura="compacta">
@@ -174,7 +196,24 @@
         <span class="lesson-section__kicker">Reglas</span> Multiplicar y dividir
       </h2>
     </header>
-    <p class="section-intro">Primero el signo y luego el número. Signos iguales dan positivo; signos distintos,
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Signos iguales dan positivo; signos&nbsp;distintos,&nbsp;negativo.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Dividir</p>
+          <p>20 ÷ (−4) = −5</p>
+          <p>(−18) ÷ (−6) = 3</p>
+        </div>
+      </div>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Varios factores</p>
+          <p class="tele-pizarron__pregunta">Se cuentan los negativos.</p>
+          <p>(−1)(−2)(−3) = −6</p>
+        </div>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Primero el signo y luego el número. Signos iguales dan positivo; signos distintos,
       negativo.</p>
     <table class="tabla-signos" data-lado="figura">
       <caption class="visually-hidden">Ley de los signos: el signo del primer número va en cada fila y el del
@@ -187,7 +226,7 @@
         <tr><th scope="row">−</th><td>−</td><td class="tabla-signos__ojo">+</td></tr>
       </tbody>
     </table>
-    <ul class="worked-steps">
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Dividir</span><p>La misma regla: <span class="expresion">20 ÷ (−4) = −5</span>
         y <span class="expresion">(−18) ÷ (−6) = 3</span>.</p></li>
       <li><span class="worked-steps__label">Varios factores</span><p>Se cuentan los negativos: si son pares, el
@@ -201,9 +240,26 @@
         <span class="lesson-section__kicker">Cuidado</span> Un menos delante de un paréntesis
       </h2>
     </header>
-    <p class="section-intro">Le cambia el signo a <strong>todo</strong> lo de adentro, no sólo al primer número.
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El menos le cambia el signo a todo lo de&nbsp;adentro.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Abre</p>
+          <p>10 − (4 − 7)</p>
+          <p>= 10 − 4 + 7</p>
+          <p>= 13</p>
+        </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Adentro primero</p>
+          <p>10 − (4 − 7)</p>
+          <p>= 10 − (−3)</p>
+          <p>= 10 + 3 = 13</p>
+        </div>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Le cambia el signo a <strong>todo</strong> lo de adentro, no sólo al primer número.
       Hay dos caminos y los dos dan lo mismo.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Abre</span><p><span class="expresion">10 − (4 − 7) = 10 − 4
         <strong>+ 7</strong> = 13</span>. El −7 de adentro se vuelve +7.</p></li>
       <li><span class="worked-steps__label">Adentro primero</span><p><span class="expresion">10 − (4 − 7) =
@@ -211,20 +267,45 @@
       <li><span class="worked-steps__label">Con un número</span><p>Si delante hay un número, multiplica a cada
         término: <span class="expresion">−2(5 − 8) = −10 <strong>+ 16</strong> = 6</span>.</p></li>
     </ol>
-    <p class="editorial-note">El error típico es cambiar sólo el primer signo:
+    <p class="editorial-note" data-solo-lectura>El error típico es cambiar sólo el primer signo:
       <span class="expresion">10 − 4 − 7 = −1</span>. Si dudas, resuelve por el otro camino y compara.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Si delante hay un número, multiplica a&nbsp;cada&nbsp;término.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Con un número</p>
+            <p>−2(5 − 8)</p>
+            <p>= −10 + 16</p>
+            <p>= 6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error típico: cambiar sólo el primer signo.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">10 − (4 − 7) = 10 − 4 − 7 = −1</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">10 − (4 − 7) = 10 − 4 + 7 = 13</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploSignos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploSignos">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">−7 + 4 − (−2) − 6</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>6 + (−13) = −7</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Restas</span><p>Cada resta se vuelve suma del contrario:
             <span class="expresion">−7 + 4 + 2 + (−6)</span>.</p></li>
           <li><span class="worked-steps__label">Agrupa</span><p>Positivos: <span class="expresion">4 + 2 = 6</span>.
@@ -235,7 +316,11 @@
       </div>
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">(−2) × 3 × (−1) × (−5)</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>2 × 3 × 1 × 5 = 30</p>
+          <p>Tres negativos: −30</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Signo</span><p>Hay tres negativos, un número impar: el resultado
             es negativo.</p></li>
           <li><span class="worked-steps__label">Número</span><p>Sin los signos: <span class="expresion">2 × 3 × 1 × 5 = 30</span>.</p></li>

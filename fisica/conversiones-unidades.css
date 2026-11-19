@@ -251,3 +251,15 @@ html[data-proyeccion] .es-proyectada .conv-cuenta {
 html[data-proyeccion] .es-proyectada .conv-figura { gap: calc(var(--u) * 1.6); }
 
 html[data-proyeccion] .es-proyectada .reference-table.conv-tabla tbody th { font-size: calc(var(--u) * 2.2); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: la cuenta y las lecturas de la escena, las equivalencias de la tabla y los
+   planteos de los ejemplos. La escena no mide sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .conv-cuenta,
+html[data-proyeccion] .es-proyectada .conv-lectura,
+html[data-proyeccion] .es-proyectada .conv-reloj,
+html[data-proyeccion] .es-proyectada .conv-cota__texto,
+html[data-proyeccion] .es-proyectada .conv-cuadro__texto,
+html[data-proyeccion] .es-proyectada .conv-cuadro__cuenta,
+html[data-proyeccion] .es-proyectada .conv-tabla__equivalencias,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

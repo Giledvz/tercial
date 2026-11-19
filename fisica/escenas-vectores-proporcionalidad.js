@@ -253,7 +253,9 @@ function casoComponentes(capa, lect) {
       eh.textContent = redondo(h) + ' m';
       set(ev, { x: P(h, 0)[0] + 9, y: P(0, v / 2)[1] + 4.5, opacity: r2(clamp(pvv * 3 - 2)) });
       ev.textContent = redondo(v) + ' m';
-      const [lx, ly] = alLado(...P(0, 0), ...P(h, v), 14, 1);
+      // La etiqueta va centrada: cuando la flecha se para, la normal apunta casi de lado y medio
+      // rótulo regresaría sobre la flecha. Se aleja lo que mide medio rótulo en esa dirección.
+      const [lx, ly] = alLado(...P(0, 0), ...P(h, v), 14 + 18 * Math.sin(ang), 1);
       set(er, { x: lx, y: ly, opacity: r2(clamp(pv * 3 - 2)) });
       const mayor = Math.abs(h - v) < 0.05 ? 'son iguales' : h > v ? 'la horizontal' : 'la vertical';
       lect.valores([ph > 0 ? uno(h * ph) + ' m' : '', pvv > 0 ? uno(v * pvv) + ' m' : '', pvv >= 1 ? mayor : '']);

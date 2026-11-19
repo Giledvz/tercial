@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
-<link rel="stylesheet" href="./fracciones.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./matematicas.css?v=20261118-tele">
+<link rel="stylesheet" href="./fracciones.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fracciones.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -58,8 +58,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 2 · Matemáticas</p>
     <h1 class="hero__title">Operaciones con <em>fracciones</em></h1>
-    <p class="hero__lede">Una fracción cuenta partes iguales de un entero. Con barras se ve cuándo dos fracciones
-      valen lo mismo, por qué para sumar las partes deben ser del mismo tamaño y qué es «tres cuartos de 20».</p>
+    <p class="hero__lede"><span data-solo-lectura>Una fracción cuenta partes iguales de un entero. Con barras se ve cuándo dos fracciones
+      valen lo mismo, por qué para sumar las partes deben ser del mismo tamaño y qué es «tres cuartos de 20».</span><span data-solo-proyeccion>Una
+      fracción cuenta partes iguales de un entero.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,14 @@
         <span class="lesson-section__kicker">Idea central</span> Partes iguales de un entero
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El de abajo parte el entero; el de arriba cuenta cuántas partes tomas.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">División</span><span><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span></span><span class="tele-formulas__flecha">→</span><span>3 ÷ 4 = 0.75</span></p>
+        <p><span class="tele-formulas__rotulo">Equivalentes</span><span><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span></span><span class="tele-formulas__flecha">→</span><span><span class="fr"><span class="fr__n">6</span><span class="fr__d">8</span></span></span></p>
+      </div>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El de abajo parte, el de arriba <em>cuenta</em></h3>
       </header>
@@ -124,18 +132,22 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-barras-texto></div>
     <div hidden>
-      <p data-texto-caso="equivalentes"><strong class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">4</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">8</span><span class="fr__d">12</span></span>.</strong> Cada parte se
+      <p data-texto-caso="equivalentes"><strong class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">4</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">8</span><span class="fr__d">12</span></span>.</strong><span data-solo-lectura> Cada parte se
         parte en dos: hay el doble de partes y se pinta el doble, así que arriba y abajo se multiplica por 2. Lo
-        pintado llega al mismo lugar: las tres valen lo mismo.</p>
-      <p data-texto-caso="de"><strong class="expresion"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> de 20 = 15.</strong> El 4 reparte las 20 bolitas en
+        pintado llega al mismo lugar: las tres valen lo mismo.</span><span data-solo-proyeccion> Arriba y abajo por 2:
+        lo pintado no cambia.</span></p>
+      <p data-texto-caso="de"><strong class="expresion"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> de 20 = 15.</strong><span data-solo-lectura> El 4 reparte las 20 bolitas en
         cuatro grupos iguales: <span class="expresion">20 ÷ 4 = 5</span>. El 3 dice cuántos grupos se toman:
-        <span class="expresion">3 × 5 = 15</span>.</p>
-      <p data-texto-caso="suma"><strong class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span>.</strong> Medios y tercios no se
+        <span class="expresion">3 × 5 = 15</span>.</span><span data-solo-proyeccion> El 4 reparte en grupos de 5; el 3
+        toma 3 grupos.</span></p>
+      <p data-texto-caso="suma"><strong class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span>.</strong><span data-solo-lectura> Medios y tercios no se
         cuentan juntos: no son del mismo tamaño. Partidos en sextos, <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">6</span></span></span> y
-        <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">2</span><span class="fr__d">6</span></span></span>; ya juntos, son 5 sextos.</p>
-      <p data-texto-caso="producto"><strong class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span>.</strong> Primero se
+        <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">2</span><span class="fr__d">6</span></span></span>; ya juntos, son 5 sextos.</span><span data-solo-proyeccion> Medios
+        y tercios no son del mismo tamaño: primero, todo a sextos.</span></p>
+      <p data-texto-caso="producto"><strong class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span>.</strong><span data-solo-lectura> Primero se
         pintan 3 de las 4 columnas; luego, de eso, 2 de los 3 renglones. Quedan <span class="expresion">2 × 3 = 6</span>
-        cuadritos de <span class="expresion">3 × 4 = 12</span>: arriba por arriba y abajo por abajo.</p>
+        cuadritos de <span class="expresion">3 × 4 = 12</span>: arriba por arriba y abajo por abajo.</span><span data-solo-proyeccion> Arriba
+        por arriba y abajo por abajo.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -157,9 +169,9 @@
           <tr><th scope="col">Para</th><th scope="col">Se hace</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Amplificar</th><td>Arriba y abajo se multiplican por el mismo número.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">10</span></span> = <span class="fr"><span class="fr__n">9</span><span class="fr__d">15</span></span></td></tr>
-          <tr><th scope="row">Simplificar</th><td>Arriba y abajo se dividen entre el mismo número, hasta que ya no tengan divisor común.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">18</span><span class="fr__d">24</span></span> = <span class="fr"><span class="fr__n">9</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span></td></tr>
-          <tr><th scope="row">Comprobar</th><td>Son equivalentes si los productos cruzados son iguales.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> y <span class="fr"><span class="fr__n">10</span><span class="fr__d">15</span></span>: 2 × 15 = 3 × 10</td></tr>
+          <tr><th scope="row">Amplificar</th><td><span data-solo-lectura>Arriba y abajo se multiplican por el mismo número.</span><span data-solo-proyeccion>Arriba y abajo se multiplican.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">10</span></span> = <span class="fr"><span class="fr__n">9</span><span class="fr__d">15</span></span></td></tr>
+          <tr><th scope="row">Simplificar</th><td><span data-solo-lectura>Arriba y abajo se dividen entre el mismo número, hasta que ya no tengan divisor común.</span><span data-solo-proyeccion>Arriba y abajo se dividen.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">18</span><span class="fr__d">24</span></span> = <span class="fr"><span class="fr__n">9</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span></td></tr>
+          <tr><th scope="row">Comprobar</th><td><span data-solo-lectura>Son equivalentes si los productos cruzados son iguales.</span><span data-solo-proyeccion>Los productos cruzados son iguales.</span></td><td class="fracciones__ejemplo"><span data-solo-lectura><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> y <span class="fr"><span class="fr__n">10</span><span class="fr__d">15</span></span>: 2 × 15 = 3 × 10</span><div data-solo-proyeccion><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> y <span class="fr"><span class="fr__n">10</span><span class="fr__d">15</span></span></div><div data-solo-proyeccion>2 × 15 = 30</div><div data-solo-proyeccion>3 × 10 = 30<span class="tele-veredicto">sí</span></div></td></tr>
         </tbody>
       </table>
     </div>
@@ -168,7 +180,18 @@
         suman un múltiplo de 3; entre 5 si terminan en 0 o en 5. Si no ves el divisor más grande, ve por partes.</p></li>
     </ul>
     <div class="fracciones-puente" data-diapositiva="una">
-      <p class="editorial-note"><strong>En física.</strong> Multiplicar arriba y abajo por 2 es multiplicar por
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Multiplicar por <span class="fr"><span class="fr__n">2</span><span class="fr__d">2</span></span> es multiplicar por 1.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">En física</p>
+            <p>1&nbsp;km = 1,000&nbsp;m</p>
+            <p><span class="fr"><span class="fr__n">1,000&nbsp;m</span><span class="fr__d">1&nbsp;km</span></span> = 1</p>
+            <p>5&nbsp;km × <span class="fr"><span class="fr__n">1,000&nbsp;m</span><span class="fr__d">1&nbsp;km</span></span> = 5,000&nbsp;m</p>
+          </div>
+        </div>
+      </div>
+      <p class="editorial-note" data-solo-lectura><strong>En física.</strong> Multiplicar arriba y abajo por 2 es multiplicar por
         <span class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">2</span></span> = 1</span>: por eso la cantidad no cambia. Convertir unidades es lo mismo:
         como 1&nbsp;km = 1,000&nbsp;m, la fracción <span class="fr"><span class="fr__n">1,000&nbsp;m</span><span class="fr__d">1&nbsp;km</span></span> vale 1, y
         <span class="expresion">5&nbsp;km × <span class="fr"><span class="fr__n">1,000&nbsp;m</span><span class="fr__d">1&nbsp;km</span></span> = 5,000&nbsp;m</span>. Lo verás en
@@ -182,9 +205,23 @@
         <span class="lesson-section__kicker">Reglas</span> La fracción de una cantidad
       </h2>
     </header>
-    <p class="section-intro">«De» quiere decir «por». Para sacar <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> de 35 se reparte entre el denominador y se
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Para sacar <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> de 35, reparte entre 5 y toma 2.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Reparte</p>
+          <p>35 ÷ 5 = 7</p>
+        </div>
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Toma</p>
+          <p>2 × 7 = 14</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">«De» quiere decir «por».</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>«De» quiere decir «por». Para sacar <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> de 35 se reparte entre el denominador y se
       toma el numerador.</p>
-    <ol class="worked-steps">
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Reparte</span><p>Divide entre el denominador:
         <span class="expresion">35 ÷ 5 = 7</span>. Es lo que vale cada parte.</p></li>
       <li><span class="worked-steps__label">Toma</span><p>Multiplica por el numerador:
@@ -192,7 +229,7 @@
       <li><span class="worked-steps__label">Con «×»</span><p>Es lo mismo que
         <span class="expresion"><span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> × 35 = <span class="fr"><span class="fr__n">70</span><span class="fr__d">5</span></span> = 14</span>. Conviene dividir primero: los números quedan chicos.</p></li>
     </ol>
-    <p class="editorial-note">Una hora tiene 60 minutos: <span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> de hora son <span class="expresion">60 ÷ 3 × 2 = 40</span>
+    <p class="editorial-note" data-solo-lectura>Una hora tiene 60 minutos: <span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> de hora son <span class="expresion">60 ÷ 3 × 2 = 40</span>
       minutos. Y si el numerador es mayor que el denominador, sale más que la cantidad:
       <span class="expresion"><span class="fr"><span class="fr__n">5</span><span class="fr__d">4</span></span> de 20 = 25</span>.</p>
   </section>
@@ -210,15 +247,16 @@
           <tr><th scope="col">Cuándo</th><th scope="col">Se hace</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Mismo denominador</th><td>Se suman o se restan los numeradores; el denominador se queda.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">2</span><span class="fr__d">7</span></span> + <span class="fr"><span class="fr__n">3</span><span class="fr__d">7</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">7</span></span></td></tr>
-          <tr><th scope="row">Distinto denominador</th><td>Se pasan las dos a un común denominador, el mínimo común múltiplo, y se suman los numeradores.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">12</span></span> + <span class="fr"><span class="fr__n">2</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">12</span></span></td></tr>
+          <tr><th scope="row">Mismo denominador</th><td><span data-solo-lectura>Se suman o se restan los numeradores; el denominador se queda.</span><span data-solo-proyeccion>Se suman los de arriba; el de abajo se queda.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">2</span><span class="fr__d">7</span></span> + <span class="fr"><span class="fr__n">3</span><span class="fr__d">7</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">7</span></span></td></tr>
+          <tr><th scope="row">Distinto denominador</th><td><span data-solo-lectura>Se pasan las dos a un común denominador, el mínimo común múltiplo, y se suman los numeradores.</span><span data-solo-proyeccion>Primero, las dos a un común denominador.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">12</span></span> + <span class="fr"><span class="fr__n">2</span><span class="fr__d">12</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">12</span></span></td></tr>
           <tr><th scope="row">Con un entero</th><td>El entero se escribe con el mismo denominador.</td><td class="fracciones__ejemplo">2 + <span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">10</span><span class="fr__d">5</span></span> + <span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">13</span><span class="fr__d">5</span></span></td></tr>
         </tbody>
       </table>
     </div>
     <ul class="worked-steps">
-      <li><span class="worked-steps__label">El común</span><p>Recorre los múltiplos del denominador mayor hasta dar
-        con uno que el otro también divida. Para 4 y 6: el 6 no, el 12 sí.</p></li>
+      <li><span class="worked-steps__label">El común</span><p><span data-solo-lectura>Recorre los múltiplos del denominador mayor hasta dar
+        con uno que el otro también divida. Para 4 y 6: el 6 no, el 12 sí.</span><span data-solo-proyeccion>Para 4 y 6,
+        múltiplos de 6: el 6 no, el 12 sí.</span></p></li>
     </ul>
   </section>
 
@@ -228,7 +266,15 @@
         <span class="lesson-section__kicker">Cuidado</span> Sumar de frente
       </h2>
     </header>
-    <p class="section-intro">Sumar arriba con arriba y abajo con abajo da <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></span>,
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Sólo se juntan partes del&nbsp;mismo&nbsp;tamaño.</p>
+      <div class="tele-contraste">
+        <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></span></p>
+        <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Primero, todo a sextos.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>Sumar arriba con arriba y abajo con abajo da <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></span>,
       y está mal: <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> es menos que <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span>, y sumarle algo no puede dar menos.</p>
     <figure class="leccion-figura" data-lado="figura">
       <svg class="escena-mate" viewBox="0 0 400 184" role="img" aria-labelledby="frenteTitulo">
@@ -267,7 +313,7 @@
         <path d="M370 158L374 162.5L382 153" class="barra__marca"/>
       </svg>
     </figure>
-    <p class="editorial-note"><strong>El error más común:</strong> sumar de frente. El denominador dice de qué
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> sumar de frente. El denominador dice de qué
       tamaño son las partes, y sólo se juntan partes del mismo tamaño:
       <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> + <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">6</span></span> + <span class="fr"><span class="fr__n">2</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span></span>. Restar de frente también está mal.</p>
   </section>
@@ -285,35 +331,60 @@
           <tr><th scope="col">Para</th><th scope="col">Se hace</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Multiplicar</th><td>Numerador por numerador y denominador por denominador. No hace falta común denominador.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">20</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">10</span></span></td></tr>
-          <tr><th scope="row">Con un entero</th><td>El entero es una fracción sobre 1: sólo multiplica al numerador.</td><td class="fracciones__ejemplo">3 × <span class="fr"><span class="fr__n">2</span><span class="fr__d">7</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">7</span></span></td></tr>
-          <tr><th scope="row">Dividir</th><td>Se voltea la segunda (su recíproco) y se multiplica.</td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> ÷ <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> × <span class="fr"><span class="fr__n">5</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">15</span><span class="fr__d">8</span></span></td></tr>
+          <tr><th scope="row">Multiplicar</th><td><span data-solo-lectura>Numerador por numerador y denominador por denominador. No hace falta común denominador.</span><span data-solo-proyeccion>Arriba por arriba y abajo por abajo.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">20</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">10</span></span></td></tr>
+          <tr><th scope="row">Con un entero</th><td><span data-solo-lectura>El entero es una fracción sobre 1: sólo multiplica al numerador.</span><span data-solo-proyeccion>Sólo multiplica al de arriba.</span></td><td class="fracciones__ejemplo">3 × <span class="fr"><span class="fr__n">2</span><span class="fr__d">7</span></span> = <span class="fr"><span class="fr__n">6</span><span class="fr__d">7</span></span></td></tr>
+          <tr><th scope="row">Dividir</th><td><span data-solo-lectura>Se voltea la segunda (su recíproco) y se multiplica.</span><span data-solo-proyeccion>Se voltea la segunda y se multiplica.</span></td><td class="fracciones__ejemplo"><span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> ÷ <span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span> = <span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span> × <span class="fr"><span class="fr__n">5</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">15</span><span class="fr__d">8</span></span></td></tr>
         </tbody>
       </table>
     </div>
     <div data-diapositiva="una">
-      <ul class="worked-steps">
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Si puedes, simplifica antes de multiplicar.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Simplifica antes</p>
+            <p><span class="fr"><span class="fr__n">4</span><span class="fr__d">9</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">6</span></span></p>
+          </div>
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Signos</p>
+            <p>−<span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = −<span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></p>
+          </div>
+        </div>
+      </div>
+      <ul class="worked-steps" data-solo-lectura>
         <li><span class="worked-steps__label">Simplifica antes</span><p>Si un número de arriba y uno de abajo tienen
           un divisor común, divídelos antes de multiplicar. En <span class="expresion"><span class="fr"><span class="fr__n">4</span><span class="fr__d">9</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span></span>, el 4
           con el 8 y el 3 con el 9 dejan <span class="expresion"><span class="fr"><span class="fr__n">1</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">6</span></span></span>.</p></li>
         <li><span class="worked-steps__label">Signos</span><p>La ley de los signos de la semana 1 vale igual:
           <span class="expresion">−<span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> × <span class="fr"><span class="fr__n">3</span><span class="fr__d">5</span></span> = −<span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span></span>.</p></li>
       </ul>
-      <p class="editorial-note">Dividir entre una fracción menor que 1 da más: <span class="expresion">3 ÷ <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = 6</span>,
+      <p class="editorial-note" data-solo-lectura>Dividir entre una fracción menor que 1 da más: <span class="expresion">3 ÷ <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span> = 6</span>,
         porque en 3 enteros caben 6 medios. Y al dividir se voltea la segunda, nunca la primera.</p>
+    </div>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Dividir entre una fracción menor que 1 da más.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Voltea la segunda</span><span>3 ÷ <span class="fr"><span class="fr__n">1</span><span class="fr__d">2</span></span></span><span class="tele-formulas__flecha">→</span><span>3 × <span class="fr"><span class="fr__n">2</span><span class="fr__d">1</span></span> = 6</span></p>
+        </div>
+        <p class="tele-idea__apoyo">En 3 enteros caben 6 medios.</p>
+      </div>
     </div>
   </section>
 
   <section aria-labelledby="ejemploFracciones" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploFracciones">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo"><span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span> − <span class="fr"><span class="fr__n">3</span><span class="fr__d">8</span></span></h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p><span class="fr"><span class="fr__n">20</span><span class="fr__d">24</span></span> − <span class="fr"><span class="fr__n">9</span><span class="fr__d">24</span></span> = <span class="fr"><span class="fr__n">11</span><span class="fr__d">24</span></span></p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Común</span><p>Múltiplos de 8: 8, 16, 24. El 6 divide a 24: el común
             denominador es 24.</p></li>
           <li><span class="worked-steps__label">Convierte</span><p><span class="expresion"><span class="fr"><span class="fr__n">5</span><span class="fr__d">6</span></span> = <span class="fr"><span class="fr__n">20</span><span class="fr__d">24</span></span></span> (por 4)
@@ -325,7 +396,11 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">De 36 alumnos aprobaron <span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span>, y de ellos, <span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> sacó 10.
           ¿Cuántos sacaron 10?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> de 36 = 24</p>
+          <p><span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> de 24 = 6&nbsp;alumnos</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Aprobaron</span><p><span class="fr"><span class="fr__n">2</span><span class="fr__d">3</span></span> de 36: <span class="expresion">36 ÷ 3 × 2 = 24</span>.</p></li>
           <li><span class="worked-steps__label">Sacaron 10</span><p><span class="fr"><span class="fr__n">1</span><span class="fr__d">4</span></span> de 24: <span class="expresion">24 ÷ 4 =
             <strong>6</strong></span> alumnos.</p></li>

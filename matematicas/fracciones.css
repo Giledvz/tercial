@@ -140,13 +140,23 @@ html[data-proyeccion] .es-proyectada .fracciones-tabla td { vertical-align: midd
 
 html[data-proyeccion] .es-proyectada .fracciones__ejemplo { font-size: calc(var(--u) * 2.2); }
 
-/* El puente con física es una nota, pero en la tele tiene su propia pantalla: se lee como párrafo. */
+/* «Comprobar» en la tele va en renglones, como en el pizarrón: las dos fracciones y sus productos
+   cruzados, cada uno con su resultado. */
+html[data-proyeccion] .es-proyectada .fracciones__ejemplo > div + div { margin-top: calc(var(--u) * .6); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos: Fraunces trae un 3 de
+   techo plano y bolitas en el 2 y el 4), como las piezas de la tele en leccion.css: los ejemplos
+   de las tablas, los planteos y las fracciones de las barras. */
+html[data-proyeccion] .es-proyectada .fracciones__ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo,
+html[data-proyeccion] .es-proyectada .fr-svg__num,
+html[data-proyeccion] .es-proyectada .fr-svg__por,
+html[data-proyeccion] .es-proyectada .ec__signo,
+html[data-proyeccion] .es-proyectada .barra__cifra { font-family: var(--tele-cuenta); }
+
+/* El puente con física es una nota; en la tele tiene su propia pantalla, con la cuenta en el
+   pizarrón (la nota queda para la lectura). */
 .fracciones-puente { margin-top: var(--space-5); }
-html[data-proyeccion] .es-proyectada.fracciones-puente .editorial-note {
-  max-width: none;
-  font-size: calc(var(--u) * 2.2);
-  line-height: 1.5;
-}
 
 /* Un punto justo después de una fracción no se despega de ella. */
 .leccion-texto strong > .fr:last-child { margin-right: 0; }

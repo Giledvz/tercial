@@ -127,3 +127,17 @@ html[data-proyeccion] .es-proyectada .ecuacion__ejemplo { font-size: calc(var(--
 }
 
 html[data-proyeccion] .es-proyectada .plantear-tabla tbody th { font-size: calc(var(--u) * 2); }
+
+/* En la tele, las cuentas de la balanza, las ecuaciones de las tablas y los planteos van con la
+   letra del texto (cifras sin adornos), como las piezas de la tele en leccion.css. La escena no
+   mide sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .platillos__ecuacion,
+html[data-proyeccion] .es-proyectada .platillos__op,
+html[data-proyeccion] .es-proyectada .ecuacion__ejemplo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
+/* La frase de la idea, su apoyo y el planteo de los ejemplos, si se parten, van en renglones
+   parejos: ninguna palabra sola abajo. */
+html[data-proyeccion] .es-proyectada .tele-idea__frase,
+html[data-proyeccion] .es-proyectada .tele-idea__apoyo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { text-wrap: balance; }

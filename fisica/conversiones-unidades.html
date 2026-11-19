@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
-<link rel="stylesheet" href="./conversiones-unidades.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./fisica.css?v=20261118-tele">
+<link rel="stylesheet" href="./conversiones-unidades.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-conversiones-unidades.js?v=20261010"></script>
@@ -58,9 +58,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 2 · Física</p>
     <h1 class="hero__title"><em>Conversiones</em> de unidades</h1>
-    <p class="hero__lede">En física, la misma cantidad aparece en unidades distintas: kilómetros y metros, horas y
+    <p class="hero__lede"><span data-solo-lectura>En física, la misma cantidad aparece en unidades distintas: kilómetros y metros, horas y
       segundos, km/h y m/s. Aquí verás que convertir es multiplicar por una fracción que vale 1, cómo se escoge la que
-      tacha la unidad que sobra y de dónde sale el 3.6 de las velocidades.</p>
+      tacha la unidad que sobra y de dónde sale el 3.6 de las velocidades.</span><span data-solo-proyeccion>En física, la
+      misma cantidad aparece en unidades distintas: kilómetros y metros, horas y segundos, km/h y m/s.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -78,7 +79,17 @@
         <span class="lesson-section__kicker">Idea central</span> Convertir es multiplicar por 1
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Convertir cambia la unidad, no la cantidad.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p><span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">1 km</span></span> = 1</p>
+          <p>2 <span class="conv-u conv-u--tachada">km</span> × <span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">1 <span class="conv-u conv-u--tachada">km</span></span></span> = 2,000 m</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Lo que está arriba y abajo se tacha.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Una fracción que <em>vale 1</em></h3>
       </header>
@@ -124,18 +135,22 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-conv-texto></div>
     <div hidden>
-      <p data-texto-caso="km"><strong class="expresion">2.4 km = 2,400 m.</strong> En las dos reglas, 1 km cae en la
+      <p data-texto-caso="km"><strong class="expresion">2.4 km = 2,400 m.</strong><span data-solo-lectura> En las dos reglas, 1 km cae en la
         misma marca que 1,000 m: por eso la fracción 1,000 m / 1 km vale 1. Al multiplicar, los km se tachan y quedan
-        metros. La barra no cambió de largo: es la misma distancia, con otro número.</p>
-      <p data-texto-caso="min"><strong class="expresion">150 min = 2.5 h.</strong> Para quitar los minutos, el factor
+        metros. La barra no cambió de largo: es la misma distancia, con otro número.</span><span data-solo-proyeccion> La
+        barra no cambia de largo: es la misma distancia.</span></p>
+      <p data-texto-caso="min"><strong class="expresion">150 min = 2.5 h.</strong><span data-solo-lectura> Para quitar los minutos, el factor
         los lleva abajo: 1 h / 60 min. La hora es más grande que el minuto, así que el número baja:
-        <span class="expresion">150 ÷ 60 = 2.5</span>.</p>
-      <p data-texto-caso="vel"><strong class="expresion">72 km/h = 20 m/s.</strong> 72 km/h quiere decir 72 km en 1 h.
+        <span class="expresion">150 ÷ 60 = 2.5</span>.</span><span data-solo-proyeccion> La hora es más grande que el
+        minuto: el número baja.</span></p>
+      <p data-texto-caso="vel"><strong class="expresion">72 km/h = 20 m/s.</strong><span data-solo-lectura> 72 km/h quiere decir 72 km en 1 h.
         Un factor tacha los km y otro las horas: <span class="expresion">72 × 1,000 ÷ 3,600 = 20</span>. Compruébalo en
-        la pista: en un segundo, el auto avanza 20 m.</p>
-      <p data-texto-caso="area"><strong class="expresion">1 cm² = 100 mm².</strong> Un centímetro mide 10 mm, pero un
+        la pista: en un segundo, el auto avanza 20 m.</span><span data-solo-proyeccion> Un factor tacha los km y otro
+        las horas.</span></p>
+      <p data-texto-caso="area"><strong class="expresion">1 cm² = 100 mm².</strong><span data-solo-lectura> Un centímetro mide 10 mm, pero un
         centímetro cuadrado tiene 10 filas de 10 cuadritos de 1 mm²: 100. El factor se usa una vez por cada lado: en
-        un área va al cuadrado.</p>
+        un área va al cuadrado.</span><span data-solo-proyeccion> 10 filas de 10 cuadritos: en un área, el factor va
+        al cuadrado.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -171,13 +186,31 @@
         </tbody>
       </table>
     </div>
-    <ul class="worked-steps">
+    <div class="tele-pizarron" data-solo-proyeccion>
+      <div class="tele-pizarron__columna">
+        <p class="tele-pizarron__rotulo">El tiempo va de 60 en 60</p>
+        <p>1 min = 60 s</p>
+        <p>1 h = 60 min</p>
+        <p>1 h = 60 × 60 s = 3,600 s</p>
+      </div>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Tiempo</span><p>No va de 10 en 10, sino de 60 en 60:
         <span class="expresion">1 min = 60 s</span>, <span class="expresion">1 h = 60 min</span> y
         <span class="expresion">1 h = 60 × 60 s = 3,600 s</span>.</p></li>
     </ul>
-    <p class="editorial-note">Por eso 1.5 h es una hora y media, 90 min, y no «1 h 50 min». Y la k de kilo va con
+    <p class="editorial-note" data-solo-lectura>Por eso 1.5 h es una hora y media, 90 min, y no «1 h 50 min». Y la k de kilo va con
       minúscula: K mayúscula es el kelvin.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">1.5 h es una hora y media.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">1.5 h = 1 h 50 min</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">1.5 h = 90 min</span></p>
+        </div>
+        <p class="tele-idea__apoyo">El tiempo no va de 10 en 10.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="reglasFactor" data-diapositiva="una">
@@ -186,8 +219,19 @@
         <span class="lesson-section__kicker">Reglas</span> El factor que tacha
       </h2>
     </header>
-    <p class="section-intro">Toda conversión se hace igual. Por ejemplo, 650 g a kilogramos:</p>
-    <ol class="worked-steps">
+    <p class="section-intro" data-solo-lectura>Toda conversión se hace igual. Por ejemplo, 650 g a kilogramos:</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La unidad que quieres quitar va abajo.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Gramos a kilogramos</p>
+          <p>1 kg = 1,000 g</p>
+          <p>650 <span class="conv-u conv-u--tachada">g</span> × <span class="fr"><span class="fr__n">1 kg</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">g</span></span></span> = 0.65 kg</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">El kilogramo es más grande: el número baja.</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Equivalencia</span><p>La que une las dos unidades:
         <span class="expresion">1 kg = 1,000 g</span>.</p></li>
       <li><span class="worked-steps__label">Factor</span><p>La unidad que quieres quitar va abajo:
@@ -198,10 +242,20 @@
       <li><span class="worked-steps__label">Revisa</span><p>El kilogramo es más grande que el gramo: el número tenía que
         bajar, y bajó.</p></li>
     </ol>
-    <p class="editorial-note"><strong>El error más común:</strong> voltear el factor.
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> voltear el factor.
       <span class="expresion">650 g × <span class="fr"><span class="fr__n">1,000 g</span><span class="fr__d">1 kg</span></span></span>
       da 650,000 g²/kg: los gramos no se cancelan, se juntan. Si al final la unidad no es la que buscabas, la fracción
       está al revés.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">¿Volteaste el factor?</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">g × <span class="fr"><span class="fr__n">g</span><span class="fr__d">kg</span></span> = g²/kg</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien"><span class="conv-u conv-u--tachada">g</span> × <span class="fr"><span class="fr__n">kg</span><span class="fr__d"><span class="conv-u conv-u--tachada">g</span></span></span> = kg</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Los gramos no se cancelan: se juntan.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="comparaVelocidad" data-diapositiva="una">
@@ -210,9 +264,19 @@
         <span class="lesson-section__kicker">Compara</span> km/h y m/s: el 3.6
       </h2>
     </header>
-    <p class="section-intro">Las dos miden velocidad, pero de una a otra cambian dos unidades a la vez: los kilómetros
+    <p class="section-intro" data-solo-lectura>Las dos miden velocidad, pero de una a otra cambian dos unidades a la vez: los kilómetros
       y las horas.</p>
-    <ul class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">De km/h a m/s se divide entre 3.6.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>54 km/h = <span class="fr"><span class="fr__n">54</span><span class="fr__d">3.6</span></span> m/s = 15 m/s</p>
+          <p>25 m/s = 25 × 3.6 km/h = 90 km/h</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Un km/h es 1,000 m en 3,600 s.</p>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Por qué 3.6</span><p>Un km/h es 1,000 m en 3,600 s:
         <span class="expresion">1 km/h = <span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">3,600 s</span></span>
         = <span class="fr"><span class="fr__n">1</span><span class="fr__d">3.6</span></span> m/s</span>.
@@ -222,9 +286,19 @@
       <li><span class="worked-steps__label">Multiplica</span><p>De m/s a km/h, por 3.6:
         <span class="expresion">25 × 3.6 = 25 × 36 ÷ 10 = 90 km/h</span>.</p></li>
     </ul>
-    <p class="editorial-note">Revisa con sentido común: el m/s es la unidad más grande, así que en m/s el número es más
+    <p class="editorial-note" data-solo-lectura>Revisa con sentido común: el m/s es la unidad más grande, así que en m/s el número es más
       chico. Un auto a 100 km/h va a unos 28 m/s; si te sale 360 m/s, iría más rápido que el sonido, que recorre unos
       340 m cada segundo.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Revisa: en m/s, el número es más chico.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">100 km/h = 360 m/s</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">100 km/h ≈ 28 m/s</span></p>
+        </div>
+        <p class="tele-idea__apoyo">A 360 m/s iría más rápido que el sonido.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="cuidadoAreas" data-diapositiva="una">
@@ -233,9 +307,20 @@
         <span class="lesson-section__kicker">Cuidado</span> En un área, el factor va al cuadrado
       </h2>
     </header>
-    <p class="section-intro">Un metro cuadrado es un cuadro de 1 m por lado, o sea, de 100 cm por lado. Por eso no son
+    <p class="section-intro" data-solo-lectura>Un metro cuadrado es un cuadro de 1 m por lado, o sea, de 100 cm por lado. Por eso no son
       100 cm², sino muchos más.</p>
-    <ul class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Un metro cuadrado mide 100 cm por lado.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p class="tele-pizarron__rotulo">Área</p>
+          <p>1 m² = 100 cm × 100 cm</p>
+          <p>1 m² = 10,000 cm²</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">En un volumen, va al cubo: 1 m³ = 1,000,000 cm³.</p>
+    </div>
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Área</span><p><span class="expresion">1 m² = 100 cm × 100 cm = 10,000 cm²</span>.
         El factor va al cuadrado:
         <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">100 cm</span><span class="fr__d">1 m</span></span><span class="conv-par">)</span><span class="conv-exp">2</span></span>.</p></li>
@@ -244,20 +329,34 @@
       <li><span class="worked-steps__label">Litros</span><p>Un litro es un cubo de 10 cm por lado:
         <span class="expresion">1 L = 1,000 cm³</span>. En un metro cúbico caben 1,000 L.</p></li>
     </ul>
-    <p class="editorial-note">El error de siempre es no elevar el factor: <span class="expresion">3 m² = 300 cm²</span>
+    <p class="editorial-note" data-solo-lectura>El error de siempre es no elevar el factor: <span class="expresion">3 m² = 300 cm²</span>
       está mal. Son <span class="expresion">3 × 10,000 = 30,000 cm²</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error de siempre: no elevar el factor.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">3 m² = 300 cm²</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">3 m² = 30,000 cm²</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Un m² tiene 10,000 cm², no 100.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploConversiones" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploConversiones">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Cuántos segundos tiene un día?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>t = 24 × 60 × 60</p>
+          <p>t = 86,400 s</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Datos</span><p><span class="expresion">1 día = 24 h</span>, <span class="expresion">1 h = 60 min</span> y
             <span class="expresion">1 min = 60 s</span>.</p></li>
           <li><span class="worked-steps__label">Factores</span><p><span class="expresion">24 <span class="conv-u conv-u--tachada">h</span> ×
@@ -271,7 +370,11 @@
       </div>
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">El sonido recorre 340 m cada segundo. ¿A cuántos km/h va?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>v = 340 × 3.6</p>
+          <p>v = 1,224 km/h</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Factores</span><p><span class="expresion"><span class="fr"><span class="fr__n">340 <span class="conv-u conv-u--tachada">m</span></span><span class="fr__d">1 <span class="conv-u conv-u--tachada">s</span></span></span> ×
             <span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span> ×
             <span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span></span>:

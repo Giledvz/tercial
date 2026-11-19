@@ -218,3 +218,17 @@ html[data-proyeccion] .es-proyectada .tabla-diez th { padding-right: calc(var(--
 html[data-proyeccion] .es-proyectada .pot-diez { margin: 0; }
 html[data-proyeccion] .es-proyectada .pot-diez figcaption { max-width: calc(var(--u) * 30); margin-top: calc(var(--u) * 1); }
 html[data-proyeccion] .es-proyectada .pot__ejemplo { font-size: calc(var(--u) * 2.2); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos: Fraunces trae un 3 de
+   techo plano y bolitas en el 2 y el 4), como las piezas de la tele en leccion.css: las ecuaciones
+   y los números de las escenas, los ejemplos de las leyes, las potencias de 10 y los planteos.
+   Las escenas no miden sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .pot-ecuacion,
+html[data-proyeccion] .es-proyectada .pot-cota__num,
+html[data-proyeccion] .es-proyectada .pot-ficha__num,
+html[data-proyeccion] .es-proyectada .pot-punto,
+html[data-proyeccion] .es-proyectada .pot-etiqueta,
+html[data-proyeccion] .es-proyectada .pot-uno,
+html[data-proyeccion] .es-proyectada .pot__ejemplo,
+html[data-proyeccion] .es-proyectada .tabla-diez,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

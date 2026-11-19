@@ -218,3 +218,13 @@ html[data-proyeccion] .es-proyectada .nc-numero,
 html[data-proyeccion] .es-proyectada .reference-table th.nc-numero { font-size: calc(var(--u) * 2.2); }
 
 html[data-proyeccion] .es-proyectada .reference-table th.nc-prefijo { font-size: calc(var(--u) * 2); }
+
+/* En la tele, las cuentas van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css: las cifras y las lecturas de las escenas, los números de las tablas y los
+   planteos de los ejemplos. Las escenas no miden sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .salto__cifra,
+html[data-proyeccion] .es-proyectada .salto__unidad,
+html[data-proyeccion] .es-proyectada .salto__resultado,
+html[data-proyeccion] .es-proyectada .escala__lectura,
+html[data-proyeccion] .es-proyectada .nc-numero,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }

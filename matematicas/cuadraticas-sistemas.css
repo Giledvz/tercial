@@ -196,3 +196,41 @@
 /* ---------- En la tele ---------- */
 html[data-proyeccion] .es-proyectada .reference-table tbody th.cs-forma { font-size: calc(var(--u) * 2.2); }
 html[data-proyeccion] .es-proyectada .cs-formula { margin: 0; font-size: calc(var(--u) * 4.4); }
+
+/* En la tele, las cuentas de las escenas, las formas y los ejemplos de las tablas, la fórmula
+   general y los planteos van con la letra del texto (cifras sin adornos), como las piezas de la
+   tele en leccion.css. Las escenas no miden sus textos: sólo cambia la letra. «no se factoriza»
+   es una nota, no una cuenta: se queda en Fraunces, con su cursiva. */
+html[data-proyeccion] .es-proyectada .cs-ecuacion,
+html[data-proyeccion] .es-proyectada .cs-raiz-etiqueta,
+html[data-proyeccion] .es-proyectada .cs-cruce-etiqueta,
+html[data-proyeccion] .es-proyectada .cs-leyenda,
+html[data-proyeccion] .es-proyectada .cs-resultado,
+html[data-proyeccion] .es-proyectada .cs-nota,
+html[data-proyeccion] .es-proyectada .cs-forma,
+html[data-proyeccion] .es-proyectada .cs-ejemplo,
+html[data-proyeccion] .es-proyectada .cs-formula,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
+html[data-proyeccion] .es-proyectada .cs-ecuacion--nota { font-family: var(--font-family-display); }
+
+/* La frase de la idea, su apoyo y el planteo de los ejemplos, si se parten, van en renglones
+   parejos: ninguna palabra sola abajo. */
+html[data-proyeccion] .es-proyectada .tele-idea__frase,
+html[data-proyeccion] .es-proyectada .tele-idea__apoyo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { text-wrap: balance; }
+
+/* «La fórmula general»: los renglones del pizarrón no se parten, así que la columna de la izquierda
+   no se angosta más que ellos; si en una tele 4:3 no caben junto a la fórmula, la pantalla crece
+   menos (leccion.js ve que se pasa de ancho) en vez de encimarlos. */
+html[data-proyeccion] .es-proyectada[data-diapositiva="dos"]:has(.cs-formula) {
+  grid-template-columns: minmax(min-content, 1fr) auto;
+}
+
+/* El √ de Plex Sans es más bajo que el de Fraunces: en la tele, el techo de la raíz baja hasta su
+   punta (la caja de b² − 4ac se ciñe a la letra). */
+html[data-proyeccion] .es-proyectada .cs-formula .rad__dentro {
+  display: inline-block;
+  padding-top: 0;
+  line-height: .75;
+}

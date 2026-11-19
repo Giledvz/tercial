@@ -250,3 +250,40 @@ html[data-proyeccion] .es-proyectada .vp-tabla tbody th {
   letter-spacing: 0;
   text-transform: none;
 }
+
+/* En la tele, las cuentas y lecturas de las escenas, las fórmulas de las tablas y los números de
+   los planteos van con la letra del texto (cifras sin adornos), como las piezas de la tele en
+   leccion.css. Las escenas no miden sus textos: sólo cambia la letra. */
+html[data-proyeccion] .es-proyectada .vec__etiqueta,
+html[data-proyeccion] .es-proyectada .vec__lectura,
+html[data-proyeccion] .es-proyectada .luz__cuenta,
+html[data-proyeccion] .es-proyectada .luz__distancia,
+html[data-proyeccion] .es-proyectada .vp__formula,
+html[data-proyeccion] .es-proyectada .vp__factor,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { font-family: var(--tele-cuenta); }
+
+/* Plex Sans no se carga en cursiva: d, 2d y 3d van rectas, como las letras de las demás cuentas
+   de la tele, en lugar de una cursiva inclinada a la fuerza. */
+html[data-proyeccion] .es-proyectada .luz__distancia { font-style: normal; }
+
+/* La frase de la idea, su apoyo y el planteo de los ejemplos, si se parten, van en renglones
+   parejos: ninguna palabra sola abajo. */
+html[data-proyeccion] .es-proyectada .tele-idea__frase,
+html[data-proyeccion] .es-proyectada .tele-idea__apoyo,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo { text-wrap: balance; }
+
+/* En la tele, los encabezados de las tablas no se parten («Si x × 2»). */
+html[data-proyeccion] .es-proyectada .vp-tabla thead th { white-space: nowrap; }
+
+/* «¿Qué pasa si duplico?»: las dos columnas del pizarrón van renglón con renglón, así la fracción
+   de t = d/v no baja el efecto de su columna. */
+html[data-proyeccion] .es-proyectada .vp-duplica {
+  grid-template-rows: repeat(3, auto);
+  row-gap: calc(var(--u) * 1.5);
+}
+
+html[data-proyeccion] .es-proyectada .vp-duplica > .tele-pizarron__columna {
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  align-items: center;
+}

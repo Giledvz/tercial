@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./matematicas.css?v=20261009-retos">
-<link rel="stylesheet" href="./potencias-radicales.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./matematicas.css?v=20261118-tele">
+<link rel="stylesheet" href="./potencias-radicales.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-potencias-radicales.js?v=20261010"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
@@ -57,9 +57,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 3 · Matemáticas</p>
     <h1 class="hero__title">Potencias y <em>radicales</em></h1>
-    <p class="hero__lede">Una potencia es una multiplicación repetida: el exponente cuenta cuántas veces se multiplica la
+    <p class="hero__lede"><span data-solo-lectura>Una potencia es una multiplicación repetida: el exponente cuenta cuántas veces se multiplica la
       base por sí misma. Contando factores salen las leyes de los exponentes, el exponente cero y el negativo; la raíz
-      es el camino de regreso.</p>
+      es el camino de regreso.</span><span data-solo-proyeccion>Una potencia es una multiplicación repetida; la raíz
+      es el camino de regreso.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Matemáticas</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -77,7 +78,15 @@
         <span class="lesson-section__kicker">Idea central</span> La base y el exponente
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El exponente cuenta cuántas veces aparece la base como factor.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Potencia</span><span>2<sup>5</sup></span><span class="tele-formulas__flecha">→</span><span>2 × 2 × 2 × 2 × 2 = 32</span></p>
+        <p><span class="tele-formulas__rotulo">Raíz</span><span>√9</span><span class="tele-formulas__flecha">→</span><span>3</span></p>
+      </div>
+      <p class="tele-idea__apoyo">2<sup>5</sup> no es 2 × 5.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El exponente <em>cuenta</em></h3>
       </header>
@@ -121,14 +130,15 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
     <div hidden>
-      <p data-texto-caso="cuadrado"><strong class="expresion">3<sup>2</sup> = 3 × 3 = 9.</strong> Una fila de 3 cuadritos
+      <p data-texto-caso="cuadrado"><strong class="expresion">3<sup>2</sup> = 3 × 3 = 9.</strong><span data-solo-lectura> Una fila de 3 cuadritos
         es un factor 3; tres filas iguales forman un cuadrado de lado 3. Por eso «al cuadrado» es multiplicar un número
-        por sí mismo.</p>
-      <p data-texto-caso="cubo"><strong class="expresion">2<sup>3</sup> = 2 × 2 × 2 = 8.</strong> Cada factor 2 duplica
-        la figura: 2 cubitos en fila, 4 en un cuadrado y 8 en un cubo de arista 2. No es 2 × 3 = 6.</p>
-      <p data-texto-caso="raiz"><strong class="expresion">√16 = 4.</strong> Los 16 cuadritos, en dos filas de 8, se
+        por sí mismo.</span><span data-solo-proyeccion> Tres filas de 3: un cuadrado de lado&nbsp;3.</span></p>
+      <p data-texto-caso="cubo"><strong class="expresion">2<sup>3</sup> = 2 × 2 × 2 = 8.</strong><span data-solo-lectura> Cada factor 2 duplica
+        la figura: 2 cubitos en fila, 4 en un cuadrado y 8 en un cubo de arista 2. No es 2 × 3 = 6.</span><span data-solo-proyeccion> Cada
+        factor 2 duplica la figura. No es <span class="expresion">2 × 3 = 6</span>.</span></p>
+      <p data-texto-caso="raiz"><strong class="expresion">√16 = 4.</strong><span data-solo-lectura> Los 16 cuadritos, en dos filas de 8, se
         acomodan en un cuadrado de 4 por lado. La raíz cuadrada es ese lado: el número que, multiplicado por sí mismo,
-        da 16.</p>
+        da 16.</span><span data-solo-proyeccion> Los 16 cuadritos forman un cuadrado de lado&nbsp;4.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -159,22 +169,25 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-caso-texto></div>
     <div hidden>
-      <p data-texto-caso="producto"><strong class="expresion">2<sup>3</sup> · 2<sup>2</sup> = 2<sup>5</sup>.</strong>
+      <p data-texto-caso="producto"><strong class="expresion">2<sup>3</sup> · 2<sup>2</sup> = 2<sup>5</sup>.</strong><span data-solo-lectura>
         Tres doses y luego dos doses: al juntarlos son 3 + 2 = 5 factores. Con la misma base, al multiplicar se suman los
-        exponentes.</p>
-      <p data-texto-caso="cociente"><strong class="expresion">2<sup>5</sup> ÷ 2<sup>2</sup> = 2<sup>3</sup>.</strong>
+        exponentes.</span><span data-solo-proyeccion> Con la misma base, al multiplicar se suman los exponentes.</span></p>
+      <p data-texto-caso="cociente"><strong class="expresion">2<sup>5</sup> ÷ 2<sup>2</sup> = 2<sup>3</sup>.</strong><span data-solo-lectura>
         Cada 2 de abajo se cancela con uno de arriba: se van 2 pares y quedan 5 − 2 = 3 factores. Al dividir se restan
-        los exponentes.</p>
-      <p data-texto-caso="potencia"><strong class="expresion">(2<sup>3</sup>)<sup>2</sup> = 2<sup>6</sup>.</strong>
+        los exponentes.</span><span data-solo-proyeccion> Al dividir se restan los exponentes.</span></p>
+      <p data-texto-caso="potencia"><strong class="expresion">(2<sup>3</sup>)<sup>2</sup> = 2<sup>6</sup>.</strong><span data-solo-lectura>
         Elevar al cuadrado es repetir dos veces el 2<sup>3</sup>: dos grupos de 3 factores, 2 × 3 = 6. En una potencia de
-        potencia se multiplican los exponentes.</p>
-      <p data-texto-caso="cero"><strong class="expresion">2<sup>3</sup> ÷ 2<sup>3</sup> = 1.</strong> Todos los
+        potencia se multiplican los exponentes.</span><span data-solo-proyeccion> En una potencia de potencia se
+        multiplican los exponentes.</span></p>
+      <p data-texto-caso="cero"><strong class="expresion">2<sup>3</sup> ÷ 2<sup>3</sup> = 1.</strong><span data-solo-lectura> Todos los
         factores se cancelan y queda 1. Con la ley, <span class="expresion">2<sup>3 − 3</sup> = 2<sup>0</sup></span>: por
-        eso cualquier número distinto de cero elevado a la 0 da 1.</p>
-      <p data-texto-caso="negativo"><strong class="expresion">2<sup>2</sup> ÷ 2<sup>5</sup> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">2<sup>3</sup></span></span>.</strong>
+        eso cualquier número distinto de cero elevado a la 0 da 1.</span><span data-solo-proyeccion> Todo se cancela:
+        <span class="expresion">2<sup>0</sup> = 1</span>.</span></p>
+      <p data-texto-caso="negativo"><strong class="expresion">2<sup>2</sup> ÷ 2<sup>5</sup> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">2<sup>3</sup></span></span>.</strong><span data-solo-lectura>
         Se cancelan 2 pares y sobran 3 factores abajo. Con la ley, <span class="expresion">2<sup>2 − 5</sup> =
         2<sup>−3</sup></span>: el exponente negativo quiere decir «uno entre», <span class="expresion">2<sup>−3</sup> =
-        <span class="fr"><span class="fr__n">1</span><span class="fr__d">8</span></span></span>.</p>
+        <span class="fr"><span class="fr__n">1</span><span class="fr__d">8</span></span></span>.</span><span data-solo-proyeccion> Sobran 3
+        abajo: <span class="expresion">2<sup>−3</sup> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">8</span></span></span>.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -194,29 +207,38 @@
           <tr><th scope="col">Cuándo</th><th scope="col">Regla</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Producto</th><td>Misma base: se suman los exponentes,
-            <span class="expresion">a<sup>m</sup> · a<sup>n</sup> = a<sup>m + n</sup></span>.</td>
+          <tr><th scope="row">Producto</th><td><span data-solo-lectura>Misma base: se suman los exponentes,
+            <span class="expresion">a<sup>m</sup> · a<sup>n</sup> = a<sup>m + n</sup></span>.</span><span class="expresion" data-solo-proyeccion>a<sup>m</sup> · a<sup>n</sup> = a<sup>m + n</sup></span></td>
             <td class="pot__ejemplo">x<sup>2</sup> · x<sup>5</sup> = x<sup>7</sup></td></tr>
-          <tr><th scope="row">Cociente</th><td>Misma base: se resta el de abajo,
-            <span class="expresion">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span>.</td>
+          <tr><th scope="row">Cociente</th><td><span data-solo-lectura>Misma base: se resta el de abajo,
+            <span class="expresion">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span>.</span><span class="expresion" data-solo-proyeccion>a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m − n</sup></span></td>
             <td class="pot__ejemplo">5<sup>6</sup> ÷ 5<sup>4</sup> = 5<sup>2</sup> = 25</td></tr>
-          <tr><th scope="row">Potencia de potencia</th><td>Se multiplican los exponentes,
-            <span class="expresion">(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup></span>.</td>
+          <tr><th scope="row">Potencia de potencia</th><td><span data-solo-lectura>Se multiplican los exponentes,
+            <span class="expresion">(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup></span>.</span><span class="expresion" data-solo-proyeccion>(a<sup>m</sup>)<sup>n</sup> = a<sup>m × n</sup></span></td>
             <td class="pot__ejemplo">(x<sup>4</sup>)<sup>3</sup> = x<sup>12</sup></td></tr>
-          <tr><th scope="row">Producto elevado</th><td>El exponente le toca a cada factor,
-            <span class="expresion">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span>.</td>
+          <tr><th scope="row">Producto elevado</th><td><span data-solo-lectura>El exponente le toca a cada factor,
+            <span class="expresion">(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span>.</span><span class="expresion" data-solo-proyeccion>(ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></span></td>
             <td class="pot__ejemplo">(3x)<sup>2</sup> = 9x<sup>2</sup></td></tr>
-          <tr><th scope="row">Fracción elevada</th><td>Arriba y abajo,
-            <span class="expresion">(<span class="fr"><span class="fr__n">a</span><span class="fr__d">b</span></span>)<sup>n</sup> = <span class="fr"><span class="fr__n">a<sup>n</sup></span><span class="fr__d">b<sup>n</sup></span></span></span>.</td>
+          <tr><th scope="row">Fracción elevada</th><td><span data-solo-lectura>Arriba y abajo,
+            <span class="expresion">(<span class="fr"><span class="fr__n">a</span><span class="fr__d">b</span></span>)<sup>n</sup> = <span class="fr"><span class="fr__n">a<sup>n</sup></span><span class="fr__d">b<sup>n</sup></span></span></span>.</span><span class="expresion" data-solo-proyeccion>(<span class="fr"><span class="fr__n">a</span><span class="fr__d">b</span></span>)<sup>n</sup> = <span class="fr"><span class="fr__n">a<sup>n</sup></span><span class="fr__d">b<sup>n</sup></span></span></span></td>
             <td class="pot__ejemplo">(<span class="fr"><span class="fr__n">2</span><span class="fr__d">5</span></span>)<sup>2</sup> = <span class="fr"><span class="fr__n">4</span><span class="fr__d">25</span></span></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> multiplicar la base por el exponente,
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> multiplicar la base por el exponente,
       <span class="expresion">2<sup>5</sup> = 10</span>. El exponente no multiplica: cuenta los factores,
       <span class="expresion">2 × 2 × 2 × 2 × 2 = 32</span>. Con las leyes pasa igual: en
       <span class="expresion">x<sup>2</sup> · x<sup>5</sup></span> los factores se juntan, así que los exponentes se suman,
       no se multiplican.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El error más común: multiplicar la base por&nbsp;el&nbsp;exponente.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">2<sup>5</sup> = 2 × 5 = 10</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">2<sup>5</sup> = 2 × 2 × 2 × 2 × 2 = 32</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="reglasCeroNegativo" data-diapositiva="dos" data-figura="compacta">
@@ -225,7 +247,15 @@
         <span class="lesson-section__kicker">Reglas</span> Cero, negativos y potencias de 10
       </h2>
     </header>
-    <p class="section-intro">Cada vez que el exponente baja 1, se divide entre la base. La cuenta no se detiene en el 1:
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Cada vez que el exponente baja 1, se divide entre&nbsp;la&nbsp;base.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Cero</span><span>7<sup>0</sup></span><span class="tele-formulas__flecha">→</span><span>1</span></p>
+        <p><span class="tele-formulas__rotulo">Negativo</span><span>5<sup>−2</sup></span><span class="tele-formulas__flecha">→</span><span><span class="fr"><span class="fr__n">1</span><span class="fr__d">5<sup>2</sup></span></span> = <span class="fr"><span class="fr__n">1</span><span class="fr__d">25</span></span></span></p>
+        <p><span class="tele-formulas__rotulo">Fracción</span><span>(<span class="fr"><span class="fr__n">3</span><span class="fr__d">4</span></span>)<sup>−1</sup></span><span class="tele-formulas__flecha">→</span><span><span class="fr"><span class="fr__n">4</span><span class="fr__d">3</span></span></span></p>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>Cada vez que el exponente baja 1, se divide entre la base. La cuenta no se detiene en el 1:
       sigue hacia el exponente cero y los negativos.</p>
     <figure class="leccion-figura pot-diez" data-lado="figura">
       <table class="tabla-diez">
@@ -240,9 +270,9 @@
           <tr><th scope="row">10<sup>−3</sup></th><td class="tabla-diez__entero">0</td><td class="tabla-diez__decimal">.001</td></tr>
         </tbody>
       </table>
-      <figcaption>Cada renglón es el de arriba entre 10: el 1 se corre un lugar a la derecha.</figcaption>
+      <figcaption data-solo-lectura>Cada renglón es el de arriba entre 10: el 1 se corre un lugar a la derecha.</figcaption>
     </figure>
-    <ul class="worked-steps">
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Exponente cero</span><p>Cualquier número distinto de cero elevado a la 0
         vale 1: <span class="expresion">7<sup>0</sup> = 1</span> y <span class="expresion">(−3)<sup>0</sup> = 1</span>.</p></li>
       <li><span class="worked-steps__label">Exponente negativo</span><p>Es «uno entre» la potencia positiva:
@@ -267,9 +297,17 @@
         <span class="lesson-section__kicker">Cuidado</span> Un negativo en la base
       </h2>
     </header>
-    <p class="section-intro">El exponente sólo eleva lo que tiene pegado. Con paréntesis, el signo también se
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El exponente sólo eleva lo que tiene pegado.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Con paréntesis</span><span>(−3)<sup>2</sup></span><span class="tele-formulas__flecha">→</span><span>(−3)(−3) = 9</span></p>
+        <p><span class="tele-formulas__rotulo">Sin paréntesis</span><span>−3<sup>2</sup></span><span class="tele-formulas__flecha">→</span><span>−(3 × 3) = −9</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Base negativa y exponente impar: <span class="expresion">(−2)<sup>3</sup> = −8</span>.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>El exponente sólo eleva lo que tiene pegado. Con paréntesis, el signo también se
       multiplica; sin paréntesis, se queda afuera.</p>
-    <ul class="worked-steps">
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Con paréntesis</span><p><span class="expresion">(−3)<sup>2</sup> =
         (−3)(−3) = 9</span>: dos negativos dan positivo.</p></li>
       <li><span class="worked-steps__label">Sin paréntesis</span><p><span class="expresion">−3<sup>2</sup> =
@@ -287,9 +325,19 @@
         <span class="lesson-section__kicker">Reglas</span> Raíces y radicales
       </h2>
     </header>
-    <p class="section-intro">La raíz deshace la potencia: <span class="expresion">√a</span> es el número positivo que,
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La raíz deshace la potencia.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Cuadrada</span><span>√81</span><span class="tele-formulas__flecha">→</span><span>9</span></p>
+        <p><span class="tele-formulas__rotulo">Cúbica</span><span>∛8</span><span class="tele-formulas__flecha">→</span><span>2</span></p>
+        <p><span class="tele-formulas__rotulo">De un producto</span><span>√(4 × 9)</span><span class="tele-formulas__flecha">→</span><span>√4 × √9 = 6</span></p>
+        <p><span class="tele-formulas__rotulo">Simplificar</span><span>√50</span><span class="tele-formulas__flecha">→</span><span>√(25 × 2) = 5√2</span></p>
+        <p><span class="tele-formulas__rotulo">Fraccionario</span><span>8<sup>1/3</sup></span><span class="tele-formulas__flecha">→</span><span>∛8 = 2</span></p>
+      </div>
+    </div>
+    <p class="section-intro" data-solo-lectura>La raíz deshace la potencia: <span class="expresion">√a</span> es el número positivo (o cero) que,
       multiplicado por sí mismo, da a.</p>
-    <ul class="worked-steps">
+    <ul class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Raíz cuadrada</span><p><span class="expresion">√81 = 9</span> porque
         <span class="expresion">9 × 9 = 81</span>. La de un negativo no existe con números reales: ningún número
         multiplicado por sí mismo da −9.</p></li>
@@ -303,20 +351,33 @@
         potencia: <span class="expresion">8<sup>1/3</sup> = ∛8 = 2</span> y
         <span class="expresion">8<sup>2/3</sup> = (∛8)<sup>2</sup> = 4</span>.</p></li>
     </ul>
-    <p class="editorial-note"><strong>Cuidado:</strong> la raíz se reparte en un producto, pero no en una suma.
+    <p class="editorial-note" data-solo-lectura><strong>Cuidado:</strong> la raíz se reparte en un producto, pero no en una suma.
       <span class="expresion">√(9 + 16) = √25 = 5</span>, no <span class="expresion">3 + 4 = 7</span>.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">La raíz se reparte en un producto, pero no en&nbsp;una&nbsp;suma.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">√(9 + 16) = 3 + 4 = 7</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">√(9 + 16) = √25 = 5</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploPotencias" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploPotencias">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">2<sup>4</sup> · 2<sup>−6</sup> ÷ 2<sup>−3</sup></h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>4 + (−6) − (−3) = 1</p>
+          <p>2<sup>1</sup> = 2</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Producto</span><p>Se suman con su signo:
             <span class="expresion">4 + (−6) = −2</span>, queda <span class="expresion">2<sup>−2</sup></span>.</p></li>
           <li><span class="worked-steps__label">Cociente</span><p>Se resta el de abajo:
@@ -327,7 +388,10 @@
       </div>
       <div class="ejemplo">
         <h3 class="ejemplo__planteo">√72</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>√72 = √36 × √2 = 6√2</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Cuadrados</span><p>Los cuadrados perfectos que dividen a 72 son 4, 9 y
             36. El más grande es 36.</p></li>
           <li><span class="worked-steps__label">Separa</span><p><span class="expresion">√72 = √(36 × 2) = √36 × √2</span>.</p></li>

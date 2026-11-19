@@ -36,13 +36,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
-<link rel="stylesheet" href="./fisica.css?v=20261009-retos">
-<link rel="stylesheet" href="./analisis-dimensional.css?v=20261010">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
+<link rel="stylesheet" href="./fisica.css?v=20261118-tele">
+<link rel="stylesheet" href="./analisis-dimensional.css?v=20261118-tele">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-analisis-dimensional.js?v=20261010"></script>
@@ -58,9 +58,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Fundamentos · Semana 4 · Física</p>
     <h1 class="hero__title">Análisis <em>dimensional</em></h1>
-    <p class="hero__lede">Las unidades se operan como las literales del álgebra: se multiplican, se dividen y se
+    <p class="hero__lede"><span data-solo-lectura>Las unidades se operan como las literales del álgebra: se multiplican, se dividen y se
       cancelan. Con eso sabes qué unidad debe salir, revisas si una fórmula puede estar bien y, en el examen,
-      descartas opciones sin hacer una sola cuenta.</p>
+      descartas opciones sin hacer una sola cuenta.</span><span data-solo-proyeccion>Las unidades se operan como las
+      literales del álgebra: se multiplican, se dividen y se cancelan.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -78,7 +79,16 @@
         <span class="lesson-section__kicker">Idea central</span> Las unidades son literales
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Las unidades se operan como letras.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Suma</span><span>3 m + 2 m</span><span class="tele-formulas__flecha">→</span><span>5 m</span></p>
+        <p><span class="tele-formulas__rotulo">Multiplica</span><span>m × m</span><span class="tele-formulas__flecha">→</span><span>m²</span></p>
+        <p><span class="tele-formulas__rotulo">Cancela</span><span><span class="fr"><span class="fr__n">km</span><span class="fr__d">h</span></span> × h</span><span class="tele-formulas__flecha">→</span><span>km</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Si sale otra unidad, hubo un error.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Se operan <em>como letras</em></h3>
       </header>
@@ -123,18 +133,21 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-cancela-texto></div>
     <div hidden>
-      <p data-texto-caso="km-h"><strong class="expresion">90 km/h × 2 h = 180 km.</strong> En una sola fracción,
+      <p data-texto-caso="km-h"><strong class="expresion">90 km/h × 2 h = 180 km.</strong><span data-solo-lectura> En una sola fracción,
         la h de 2 h queda arriba y la de km/h, abajo: se cancelan. Los números van aparte,
-        <span class="expresion">90 × 2 = 180</span>, y queda una distancia.</p>
-      <p data-texto-caso="km-kmh"><strong class="expresion">150 km ÷ 60 km/h = 2.5 h.</strong> Dividir entre una
+        <span class="expresion">90 × 2 = 180</span>, y queda una distancia.</span><span data-solo-proyeccion> La h de
+        arriba se cancela con la de abajo.</span></p>
+      <p data-texto-caso="km-kmh"><strong class="expresion">150 km ÷ 60 km/h = 2.5 h.</strong><span data-solo-lectura> Dividir entre una
         fracción es multiplicar por su inversa: km/h se voltea y la h sube. Los km de arriba y de abajo se
-        cancelan, y queda un tiempo.</p>
-      <p data-texto-caso="kg-ms2"><strong class="expresion">5 kg × 4 m/s² = 20 N.</strong> Aquí nada se repite
+        cancelan, y queda un tiempo.</span><span data-solo-proyeccion> km/h se voltea y la h sube: los km se
+        cancelan.</span></p>
+      <p data-texto-caso="kg-ms2"><strong class="expresion">5 kg × 4 m/s² = 20 N.</strong><span data-solo-lectura> Aquí nada se repite
         arriba y abajo: no se cancela nada y las unidades se juntan, kg·m/s². Se usa tanto que tiene nombre:
-        el newton.</p>
-      <p data-texto-caso="ms2-s"><strong class="expresion">10 m/s² × 3 s = 30 m/s.</strong> s² es s · s, y la s
+        el newton.</span><span data-solo-proyeccion> Nada se cancela: kg·m/s² se llama newton.</span></p>
+      <p data-texto-caso="ms2-s"><strong class="expresion">10 m/s² × 3 s = 30 m/s.</strong><span data-solo-lectura> s² es s · s, y la s
         que multiplica cancela sólo una de las dos: queda m/s, una velocidad. Es la de una piedra que lleva 3 s
-        cayendo, con <span class="expresion"><i>g</i> ≈ 10 m/s²</span>.</p>
+        cayendo, con <span class="expresion"><i>g</i> ≈ 10 m/s²</span>.</span><span data-solo-proyeccion> s² es s · s:
+        la s cancela sólo una de las dos.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -167,15 +180,18 @@
     </figure>
     <div class="leccion-texto" aria-live="polite" data-suma-texto></div>
     <div hidden>
-      <p data-texto-suma="m-m"><strong class="expresion">3 m + 2 m = 5 m.</strong> Dos longitudes en la misma
+      <p data-texto-suma="m-m"><strong class="expresion">3 m + 2 m = 5 m.</strong><span data-solo-lectura> Dos longitudes en la misma
         unidad: se ponen una tras otra y la cinta marca 5 m. Como <span class="expresion">3<i>x</i> + 2<i>x</i> = 5<i>x</i></span>,
-        se suman los números y la unidad se queda.</p>
-      <p data-texto-suma="m-cm"><strong class="expresion">2 m + 60 cm = 2.6 m.</strong> Las dos son longitudes:
+        se suman los números y la unidad se queda.</span><span data-solo-proyeccion> Se suman los números y la unidad
+        se queda.</span></p>
+      <p data-texto-suma="m-cm"><strong class="expresion">2 m + 60 cm = 2.6 m.</strong><span data-solo-lectura> Las dos son longitudes:
         sí se ponen una tras otra. Pero para escribir el total hace falta una sola unidad,
-        <span class="expresion">60 cm = 0.6 m</span>. Sumar 2 + 60 = 62 no dice nada: ¿62 qué?</p>
-      <p data-texto-suma="m-s"><strong class="expresion">3 m + 2 s no tiene sentido.</strong> Una longitud y un
+        <span class="expresion">60 cm = 0.6 m</span>. Sumar 2 + 60 = 62 no dice nada: ¿62 qué?</span><span data-solo-proyeccion> Primero,
+        una sola unidad: 60 cm = 0.6 m.</span></p>
+      <p data-texto-suma="m-s"><strong class="expresion">3 m + 2 s no tiene sentido.</strong><span data-solo-lectura> Una longitud y un
         tiempo no caben en la misma regla. En álgebra, <span class="expresion">3<i>x</i> + 2<i>y</i></span> se queda
-        así; en física, una suma así avisa que la fórmula está mal.</p>
+        así; en física, una suma así avisa que la fórmula está mal.</span><span data-solo-proyeccion> Una longitud y
+        un tiempo no caben en la misma regla.</span></p>
     </div>
     <div class="practice-actions">
       <button class="practice-action" type="button" data-repetir>Repetir la animación</button>
@@ -213,9 +229,19 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note"><strong>El error más común:</strong> cancelar un cuadrado completo. En
+    <p class="editorial-note" data-solo-lectura><strong>El error más común:</strong> cancelar un cuadrado completo. En
       <span class="expresion">m/s² × s</span> se va una sola s, porque s² es s × s: queda m/s. Igual que
       <span class="expresion"><i>x</i>² ÷ <i>x</i> = <i>x</i></span>, y no 1.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">¿Cancelaste todo el cuadrado?</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal"><span class="fr"><span class="fr__n">m</span><span class="fr__d">s²</span></span> × s = m</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien"><span class="fr"><span class="fr__n">m</span><span class="fr__d">s²</span></span> × s = <span class="fr"><span class="fr__n">m</span><span class="fr__d">s</span></span></span></p>
+        </div>
+        <p class="tele-idea__apoyo">s² es s × s: se va una sola s.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="dimensionesLMT" data-diapositiva="una">
@@ -224,7 +250,8 @@
         <span class="lesson-section__kicker">Dimensiones</span> Todo se arma con L, M y T
       </h2>
     </header>
-    <p class="section-intro">La dimensión dice qué tipo de cantidad es, sin importar la unidad: 5 m y 3 km son
+    <p class="tele-idea__frase" data-solo-proyeccion>La dimensión es el tipo de cantidad: 5 m y 3 km son longitudes, L.</p>
+    <p class="section-intro" data-solo-lectura>La dimensión dice qué tipo de cantidad es, sin importar la unidad: 5 m y 3 km son
       longitudes, L. Los corchetes se leen «dimensiones de»: <span class="expresion">[<i>v</i>] = L/T</span>.</p>
     <div class="reference-table-wrap" role="region" aria-label="Unidades y dimensiones" tabindex="0">
       <table class="reference-table reference-table--apilada si-tabla" data-filas-por-pantalla="4">
@@ -262,7 +289,8 @@
         <span class="lesson-section__kicker">Cuidado</span> La misma letra, dos cosas
       </h2>
     </header>
-    <p class="section-intro">En una fórmula, la letra es una magnitud y se escribe en cursiva; junto a un número,
+    <p class="tele-idea__frase" data-solo-proyeccion>En una fórmula es una magnitud; junto a un número, una unidad.</p>
+    <p class="section-intro" data-solo-lectura>En una fórmula, la letra es una magnitud y se escribe en cursiva; junto a un número,
       es una unidad y va derecha. Al sustituir, cada letra se cambia por su valor con su unidad.</p>
     <div class="reference-table-wrap" role="region" aria-label="Letras que son magnitud o unidad" tabindex="0">
       <table class="reference-table reference-table--apilada">
@@ -277,8 +305,18 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Si en <span class="expresion"><i>F</i> = <i>m</i>·<i>a</i></span> la <i>m</i> se toma
+    <p class="editorial-note" data-solo-lectura>Si en <span class="expresion"><i>F</i> = <i>m</i>·<i>a</i></span> la <i>m</i> se toma
       por metros, sale m²/s², que no es una fuerza: la masa va en kg, y la fuerza, en kg·m/s².</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">En <i>F</i> = <i>m</i>·<i>a</i>, la <i>m</i> es la masa: va en kg.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">m × m/s² = m²/s²</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">kg × m/s² = kg·m/s²</span></p>
+        </div>
+        <p class="tele-idea__apoyo">m²/s² no es una fuerza.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="armaExamen" data-diapositiva="una">
@@ -294,7 +332,11 @@
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un carrito parte del reposo con aceleración <i>a</i>
           durante un tiempo <i>t</i>. ¿Recorre <span class="expresion"><i>d</i> = ½<i>at</i></span> o
           <span class="expresion"><i>d</i> = ½<i>at</i>²</span>?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p><span class="fr"><span class="fr__n">m</span><span class="fr__d">s²</span></span> × s = <span class="fr"><span class="fr__n">m</span><span class="fr__d">s</span></span><span class="tele-veredicto tele-veredicto--no">no</span></p>
+          <p><span class="fr"><span class="fr__n">m</span><span class="fr__d">s²</span></span> × s² = m<span class="tele-veredicto">sí</span></p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">La primera</span><p><span class="expresion">(m/s²) × s = m/s</span>:
             es una velocidad. Se descarta.</p></li>
           <li><span class="worked-steps__label">La segunda</span><p><span class="expresion">(m/s²) × s² = m</span>:
@@ -306,7 +348,10 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Piden la rapidez de un ciclista. Las opciones son
           6 m, 6 m/s, 6 m/s² y 6 s.</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>v = 6 m/s</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">La unidad</span><p>Una rapidez va en m/s o en km/h.</p></li>
           <li><span class="worked-steps__label">Descarta</span><p>6 m es una distancia; 6 m/s², una aceleración, y
             6 s, un tiempo.</p></li>
@@ -320,14 +365,18 @@
   <section aria-labelledby="ejemploDimensional" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploDimensional">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Paso a paso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
     <div class="ejemplos">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Qué unidad tiene la energía cinética,
           <span class="expresion"><i>E</i> = ½<i>mv</i>²</span>?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>kg × (m/s)²</p>
+          <p>kg·m²/s² = J</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Sustituye</span><p>Cada letra por su unidad:
             <span class="expresion">kg × (m/s)²</span>. El ½ no tiene unidad.</p></li>
           <li><span class="worked-steps__label">El cuadrado</span><p>Afecta a todo el paréntesis:
@@ -339,7 +388,11 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">Un autobús va a <span class="expresion">80 km/h</span>
           durante <span class="expresion">45 min</span>. ¿Cuánto avanza?</h3>
-        <ol class="worked-steps">
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>45 min = 0.75 h</p>
+          <p>d = 60 km</p>
+        </div>
+        <ol class="worked-steps" data-solo-lectura>
           <li><span class="worked-steps__label">Las unidades</span><p><span class="expresion">km/h × min</span> no se
             cancela: h y min son unidades distintas. Hay que convertir.</p></li>
           <li><span class="worked-steps__label">Convierte</span><p><span class="expresion">45 min = 0.75 h</span>,
