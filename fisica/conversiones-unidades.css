@@ -52,7 +52,8 @@
   pointer-events: none;
 }
 
-/* Un factor al cuadrado o al cubo: paréntesis tan altos como la fracción y el exponente arriba.
+/* Un factor entre paréntesis tan altos como la fracción: los dos de las velocidades, o uno al cuadrado
+   o al cubo, con el exponente arriba.
    También en las opciones de la práctica y del reto, que escribe el generador. */
 .conv-pot {
   display: inline-flex;
@@ -65,6 +66,14 @@
   font-weight: var(--font-weight-regular);
   line-height: 1;
   transform: translateY(-.05em);
+}
+
+/* En la tele, la velocidad del sonido lleva los dos paréntesis en un solo renglón:
+   su ejemplo toma más ancho y la cuenta no se parte. */
+html[data-proyeccion] .es-proyectada .ejemplos--parentesis { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+html[data-proyeccion] .es-proyectada .ejemplos--parentesis .tele-respuesta p {
+  font-size: calc(var(--u) * 2.4);
+  white-space: nowrap;
 }
 
 .conv-exp {

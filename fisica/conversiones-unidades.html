@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Conversiones de unidades · Física · Tercial</title>
-<meta name="description" content="Convertir es multiplicar por una fracción que vale 1: cómo se escoge el factor que tacha la unidad que sobra, los prefijos k, c y m, las horas, los minutos y los segundos, de dónde sale el 3.6 de las velocidades y por qué en un área el factor va al cuadrado. Con práctica sin fin.">
+<meta name="description" content="Convertir es multiplicar por una fracción que vale 1: cómo se escoge el factor que tacha la unidad que sobra, los prefijos k, c y m, las horas, los minutos y los segundos, los dos paréntesis de las velocidades (uno para la distancia y otro para el tiempo) y por qué en un área el factor va al cuadrado. Con práctica sin fin.">
 <meta name="tercial:resource-id" content="fundamentos-fisica-conversiones-unidades">
 <meta name="tercial:resource-title" content="Conversiones de unidades">
 <meta name="tercial:subject" content="fisica">
@@ -38,14 +38,14 @@
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
 <link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./fisica.css?v=20261118-tele">
-<link rel="stylesheet" href="./conversiones-unidades.css?v=20261118-tele">
+<link rel="stylesheet" href="./conversiones-unidades.css?v=20261119">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js?v=20261009-fundamentos"></script>
 <script defer src="/tercial/assets/js/leccion.js?v=20261011-pizarron"></script>
 <script defer src="/tercial/assets/js/ejercicios-motor.js?v=20261010-semanas"></script>
 <script defer src="/tercial/assets/js/ejercicios-fisica.js?v=20261010-semanas"></script>
-<script defer src="/tercial/assets/js/ejercicios-conversiones-unidades.js?v=20261010"></script>
+<script defer src="/tercial/assets/js/ejercicios-conversiones-unidades.js?v=20261119"></script>
 <script defer src="/tercial/assets/js/practica-sin-fin.js?v=20261009-retos"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-conversiones-unidades.js?v=20261010"></script>
@@ -60,7 +60,7 @@
     <h1 class="hero__title"><em>Conversiones</em> de unidades</h1>
     <p class="hero__lede"><span data-solo-lectura>En física, la misma cantidad aparece en unidades distintas: kilómetros y metros, horas y
       segundos, km/h y m/s. Aquí verás que convertir es multiplicar por una fracción que vale 1, cómo se escoge la que
-      tacha la unidad que sobra y de dónde sale el 3.6 de las velocidades.</span><span data-solo-proyeccion>En física, la
+      tacha la unidad que sobra y por qué una velocidad se convierte con dos paréntesis.</span><span data-solo-proyeccion>En física, la
       misma cantidad aparece en unidades distintas: kilómetros y metros, horas y segundos, km/h y m/s.</span></p>
     <nav class="material-meta" aria-label="Navegación del material">
       <a class="material-meta__back" href="./index.html">← Física</a>
@@ -261,30 +261,32 @@
   <section aria-labelledby="comparaVelocidad" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="comparaVelocidad">
-        <span class="lesson-section__kicker">Compara</span> km/h y m/s: el 3.6
+        <span class="lesson-section__kicker">Compara</span> km/h y m/s: dos paréntesis
       </h2>
     </header>
     <p class="section-intro" data-solo-lectura>Las dos miden velocidad, pero de una a otra cambian dos unidades a la vez: los kilómetros
-      y las horas.</p>
+      y las horas. Por eso la cuenta lleva dos paréntesis: uno para la distancia y otro para el tiempo.</p>
     <div class="tele-idea" data-solo-proyeccion>
-      <p class="tele-idea__frase">De km/h a m/s se divide entre 3.6.</p>
+      <p class="tele-idea__frase">Un paréntesis para la distancia y otro para el tiempo.</p>
       <div class="tele-pizarron">
         <div class="tele-pizarron__columna">
-          <p>54 km/h = <span class="fr"><span class="fr__n">54</span><span class="fr__d">3.6</span></span> m/s = 15 m/s</p>
-          <p>25 m/s = 25 × 3.6 km/h = 90 km/h</p>
+          <p>54 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">km</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">h</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">1 <span class="conv-u conv-u--tachada">km</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 <span class="conv-u conv-u--tachada">h</span></span><span class="fr__d">3,600 s</span></span><span class="conv-par">)</span></span> = 15 m/s</p>
+          <p>25 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">m</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">s</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span><span class="conv-par">)</span></span> = 90 km/h</p>
         </div>
       </div>
-      <p class="tele-idea__apoyo">Un km/h es 1,000 m en 3,600 s.</p>
+      <p class="tele-idea__apoyo">Un km son 1,000 m y una hora, 3,600 s.</p>
     </div>
     <ul class="worked-steps" data-solo-lectura>
-      <li><span class="worked-steps__label">Por qué 3.6</span><p>Un km/h es 1,000 m en 3,600 s:
-        <span class="expresion">1 km/h = <span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">3,600 s</span></span>
-        = <span class="fr"><span class="fr__n">1</span><span class="fr__d">3.6</span></span> m/s</span>.
-        Al revés, <span class="expresion">1 m/s = 3.6 km/h</span>.</p></li>
-      <li><span class="worked-steps__label">Divide</span><p>De km/h a m/s, entre 3.6. Sin calculadora, recorre el punto en
-        los dos números: <span class="expresion">54 ÷ 3.6 = 540 ÷ 36 = 15 m/s</span>.</p></li>
-      <li><span class="worked-steps__label">Multiplica</span><p>De m/s a km/h, por 3.6:
-        <span class="expresion">25 × 3.6 = 25 × 36 ÷ 10 = 90 km/h</span>.</p></li>
+      <li><span class="worked-steps__label">Distancia</span><p>Como <span class="expresion">1 km = 1,000 m</span>, el primer paréntesis
+        es <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">1 km</span></span><span class="conv-par">)</span></span>: los km van abajo para que se tachen con los de arriba.</p></li>
+      <li><span class="worked-steps__label">Tiempo</span><p>Como <span class="expresion">1 h = 3,600 s</span>, el segundo es
+        <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 h</span><span class="fr__d">3,600 s</span></span><span class="conv-par">)</span></span>: la hora va arriba para que se tache con la de abajo.</p></li>
+      <li><span class="worked-steps__label">Multiplica</span><p><span class="expresion">54 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">km</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">h</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1,000 m</span><span class="fr__d">1 <span class="conv-u conv-u--tachada">km</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 <span class="conv-u conv-u--tachada">h</span></span><span class="fr__d">3,600 s</span></span><span class="conv-par">)</span></span></span>
+        <span class="expresion">= <span class="fr"><span class="fr__n">54,000 m</span><span class="fr__d">3,600 s</span></span> = 15 m/s</span>. Sin calculadora, quita dos ceros arriba y
+        abajo: <span class="expresion">540 ÷ 36 = 15</span>.</p></li>
+      <li><span class="worked-steps__label">Al revés</span><p>De m/s a km/h, los dos paréntesis se voltean:
+        <span class="expresion">25 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">m</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">s</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span><span class="conv-par">)</span></span></span>
+        <span class="expresion">= <span class="fr"><span class="fr__n">90,000 km</span><span class="fr__d">1,000 h</span></span> = 90 km/h</span>.</p></li>
     </ul>
     <p class="editorial-note" data-solo-lectura>Revisa con sentido común: el m/s es la unidad más grande, así que en m/s el número es más
       chico. Un auto a 100 km/h va a unos 28 m/s; si te sale 360 m/s, iría más rápido que el sonido, que recorre unos
@@ -349,7 +351,7 @@
         <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Paso a paso
       </h2>
     </header>
-    <div class="ejemplos">
+    <div class="ejemplos ejemplos--parentesis">
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Cuántos segundos tiene un día?</h3>
         <div class="tele-respuesta" data-solo-proyeccion data-revela>
@@ -371,17 +373,14 @@
       <div class="ejemplo">
         <h3 class="ejemplo__planteo ejemplo__planteo--frase">El sonido recorre 340 m cada segundo. ¿A cuántos km/h va?</h3>
         <div class="tele-respuesta" data-solo-proyeccion data-revela>
-          <p>v = 340 × 3.6</p>
+          <p>v = 340 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">m</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">s</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span><span class="conv-par">)</span></span></p>
           <p>v = 1,224 km/h</p>
         </div>
         <ol class="worked-steps" data-solo-lectura>
-          <li><span class="worked-steps__label">Factores</span><p><span class="expresion"><span class="fr"><span class="fr__n">340 <span class="conv-u conv-u--tachada">m</span></span><span class="fr__d">1 <span class="conv-u conv-u--tachada">s</span></span></span> ×
-            <span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span> ×
-            <span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span></span>:
-            se tachan los metros y los segundos.</p></li>
-          <li><span class="worked-steps__label">Números</span><p><span class="expresion">340 × 3,600 ÷ 1,000 = 340 × 3.6</span>.</p></li>
-          <li><span class="worked-steps__label">A mano</span><p><span class="expresion">340 × 3 = 1,020</span> y
-            <span class="expresion">340 × 0.6 = 204</span>; juntos, <span class="expresion">1,020 + 204 = 1,224</span>.</p></li>
+          <li><span class="worked-steps__label">Paréntesis</span><p><span class="expresion">340 <span class="fr"><span class="fr__n"><span class="conv-u conv-u--tachada">m</span></span><span class="fr__d"><span class="conv-u conv-u--tachada">s</span></span></span> <span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">1 km</span><span class="fr__d">1,000 <span class="conv-u conv-u--tachada">m</span></span></span><span class="conv-par">)</span></span><span class="conv-pot"><span class="conv-par">(</span><span class="fr"><span class="fr__n">3,600 <span class="conv-u conv-u--tachada">s</span></span><span class="fr__d">1 h</span></span><span class="conv-par">)</span></span></span>:
+            uno para los metros y otro para los segundos.</p></li>
+          <li><span class="worked-steps__label">Números</span><p><span class="expresion">340 × 3,600 ÷ 1,000</span>. Los tres ceros
+            del 1,000 se van con uno del 340 y dos del 3,600: <span class="expresion">34 × 36 = 1,224</span>.</p></li>
           <li><span class="worked-steps__label">Resultado</span><p>El sonido va a <strong>1,224 km/h</strong>.</p></li>
         </ol>
       </div>

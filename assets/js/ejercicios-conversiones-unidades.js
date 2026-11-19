@@ -8,7 +8,7 @@
  *                   (en el nivel 3, áreas, volúmenes y la pareja de factores de km/h ↔ m/s)
  *   conv-medidas    longitud, masa, volumen y tiempo con prefijos (k, c, m) y con h, min y s;
  *                   en el nivel 3, áreas y volúmenes: el factor va al cuadrado o al cubo
- *   conv-velocidad  km/h ↔ m/s (÷ 3.6 y × 3.6); en el nivel 3, cuál de cuatro velocidades
+ *   conv-velocidad  km/h ↔ m/s con dos paréntesis; en el nivel 3, cuál de cuatro velocidades
  *                   escritas en unidades distintas es la más rápida
  *
  * Las opciones falsas son errores de verdad: el factor al revés (multiplicar en vez de
@@ -45,6 +45,8 @@
   function med(x, u) { return fmt(x) + NB + u; }
   function igual(a, ua, b, ub) { return med(a, ua) + ' = ' + med(b, ub); }
   function fr(n, d) { return '<span class="fr"><span class="fr__n">' + n + '</span><span class="fr__d">' + d + '</span></span>'; }
+  // Sin exponente: los dos paréntesis de las velocidades, uno para la distancia y otro para el tiempo.
+  function par(html) { return '<span class="conv-pot"><span class="conv-par">(</span>' + html + '<span class="conv-par">)</span></span>'; }
   // Un factor al cuadrado o al cubo: el exponente va como dígito, del tamaño de un exponente.
   function pot(html, e) {
     var d = e === '²' ? '2' : e === '³' ? '3' : e;
@@ -418,7 +420,8 @@
   }
 
   /* =====================================================================
-     conv-velocidad · km/h ↔ m/s. 1 km/h = 1,000 m ÷ 3,600 s = 1 ÷ 3.6 m/s.
+     conv-velocidad · km/h ↔ m/s con dos paréntesis: uno para la distancia (1 km = 1,000 m) y otro
+     para el tiempo (1 h = 3,600 s).
      ===================================================================== */
   var CONTEXTOS = [
     { quien: 'Un ciclista', v: 27, u: 'km/h' },
@@ -434,24 +437,25 @@
   function convierteVelocidad(v, deKmh, enunciado, texto) {
     var r = deKmh ? v / 3.6 : v * 3.6;
     var falsas = deKmh ? [
-      falsa(v * 3.6, 'm/s', 'Multiplicaste por 3.6: de km/h a m/s se divide. El m/s es más grande que el km/h, así que el número baja.'),
+      falsa(v * 3.6, 'm/s', 'Volteaste los paréntesis: así no se tachan los km ni las horas. El m/s es más grande que el km/h, así que el número baja.'),
       falsa(v * 1000, 'm/s', 'Faltó convertir las horas: además de × 1,000 por los kilómetros, en 1 h hay 3,600 s.'),
       falsa(v / 3600, 'm/s', 'Faltó pasar los kilómetros a metros: además de ÷ 3,600, va × 1,000.'),
       falsa(v * 1000 / 60, 'm/s', 'Una hora tiene 3,600 s, no 60: 60 son sus minutos.'),
-      falsa(v / 36, 'm/s', 'Se recorrió el punto: es ÷ 3.6, no ÷ 36.')
+      falsa(v / 36, 'm/s', 'Al quitar ceros, quita los mismos arriba y abajo: 1,000 ÷ 3,600 = 10 ÷ 36, no 1 ÷ 36.')
     ] : [
-      falsa(v / 3.6, 'km/h', 'Dividiste entre 3.6: de m/s a km/h se multiplica. El km/h es más chico que el m/s, así que el número crece.'),
+      falsa(v / 3.6, 'km/h', 'Volteaste los paréntesis: así no se tachan los metros ni los segundos. El km/h es más chico que el m/s, así que el número crece.'),
       falsa(v * 3600, 'km/h', 'Faltó pasar los metros a kilómetros: además de × 3,600, va ÷ 1,000.'),
       falsa(v / 1000, 'km/h', 'Faltó convertir los segundos: además de ÷ 1,000, en 1 h hay 3,600 s.'),
       falsa(v * 60 / 1000, 'km/h', 'Una hora tiene 3,600 s, no 60: 60 son sus minutos.'),
-      falsa(v * 36, 'km/h', 'Se recorrió el punto: es × 3.6, no × 36.')
+      falsa(v * 36, 'km/h', 'Al quitar ceros, quita los mismos arriba y abajo: 3,600 ÷ 1,000 = 36 ÷ 10, no 36.')
     ];
     var pasos = deKmh
-      ? ['1 km/h es 1,000 m en 3,600 s: de km/h a m/s se divide entre 3.6.',
-        'Sin calculadora: ' + fmt(v) + ' ÷ 3.6 = ' + fmt(v * 10) + ' ÷ 36 = ' + fmt(r) + '.',
+      ? ['Un paréntesis para la distancia y otro para el tiempo: ' + med(v, 'km/h') + NB + par(KM_A_M) + par(H_ARRIBA) + '.',
+        'Se tachan los km y las horas: queda ' + fmt(v * 1000) + ' ÷ 3,600. Sin calculadora, quita dos ceros arriba y abajo: ' +
+          fmt(v * 10) + ' ÷ 36 = ' + fmt(r) + '.',
         'Resultado: <b>' + med(r, 'm/s') + '</b>.']
-      : ['De m/s a km/h se multiplica por 3.6: en 1 h hay 3,600 s, y 1,000 m son 1 km.',
-        'Sin calculadora: ' + fmt(v) + ' × 3.6 = ' + fmt(v) + ' × 36 ÷ 10 = ' + fmt(v * 36) + ' ÷ 10.',
+      : ['Un paréntesis para la distancia y otro para el tiempo: ' + med(v, 'm/s') + NB + par(M_A_KM) + par(S_ARRIBA) + '.',
+        'Se tachan los metros y los segundos: queda ' + fmt(v * 3600) + ' ÷ 1,000 = ' + fmt(r) + '.',
         'Resultado: <b>' + med(r, 'km/h') + '</b>.'];
     return arma(enunciado, med(r, deKmh ? 'm/s' : 'km/h'), falsas, {
       tema: 'km/h y m/s', ask: texto ? 'Elige la correcta' : 'Convierte', texto: texto, pasos: pasos
@@ -501,7 +505,7 @@
     var todas = [{ ms: maxima, u: muestraMax }].concat(otras);
     return arma('¿Cuál de estas velocidades es la más rápida?', correcta, falsas, {
       tema: 'km/h y m/s', ask: 'Compara', texto: true,
-      pasos: ['Pásalas a la misma unidad, m/s (los km/h se dividen entre 3.6): ' +
+      pasos: ['Pásalas a la misma unidad, m/s (los km/h, con los dos paréntesis): ' +
         todas.map(function (o) { return med(o.ms, 'm/s'); }).join(' · ') + '.',
         'La más rápida es <b>' + correcta + '</b>.']
     });
