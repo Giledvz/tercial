@@ -106,10 +106,15 @@
 }
 
 /* La ley de los signos para multiplicar y dividir, en su cuadro de siempre.
-   «Menos por menos», el caso que sorprende, va en el color del nivel. */
+   «Menos por menos», el caso que sorprende, va en el color del nivel.
+   Los encabezados (la fila de arriba y la columna de la izquierda) llevan un fondo tenue del
+   mismo color, para que se distingan de los resultados sin un cambio brusco (Gil, 2026-11-20). */
 .tabla-signos {
   margin-top: var(--space-5);
-  border-collapse: collapse;
+  /* Bordes separados y cada celda dibuja sólo el derecho y el de abajo: con «collapse», Chrome
+     dibujaba doble la línea entre el encabezado y los resultados (2 px en pantallas Retina). */
+  border-collapse: separate;
+  border-spacing: 0;
   font-family: var(--font-family-display);
   /* Fraunces adelgaza sus trazos en tamaños grandes; los signos conservan su grosor en la tele. */
   font-variation-settings: "opsz" 30;
@@ -123,12 +128,18 @@
   width: 4.5rem;
   height: 4.5rem;
   padding: 0;
-  border: var(--border-thin) solid var(--color-border);
+  border: 0 solid var(--color-border);
+  border-right-width: var(--border-thin);
+  border-bottom-width: var(--border-thin);
 }
+
+.tabla-signos thead th { border-top-width: var(--border-thin); }
+.tabla-signos tr > :first-child { border-left-width: var(--border-thin); }
 
 .tabla-signos th {
   color: var(--color-text-meta);
   font-weight: var(--font-weight-regular);
+  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 .tabla-signos thead th:first-child {
