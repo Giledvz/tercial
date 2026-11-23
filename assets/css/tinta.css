@@ -57,6 +57,13 @@ html[data-proyeccion][data-escribiendo] .tinta-herramientas {
 
 .tinta-color--acento .tinta-color__punto { background: var(--color-accent); }
 
+/* El rojo, para lo muy importante (Gil, 2026-11-23). Es la tinta del maestro, como un plumón rojo
+   en el pizarrón, no un color de la página. Es vivo y frío para que no se confunda con el terracota,
+   y más claro en el tema oscuro. */
+:root { --tinta-roja: #d0172f; }
+[data-theme="dark"] { --tinta-roja: #ff6170; }
+.tinta-color--roja .tinta-color__punto { background: var(--tinta-roja); }
+
 .tinta-limpia.es-pregunta {
   color: var(--color-accent);
   border-color: var(--color-accent);

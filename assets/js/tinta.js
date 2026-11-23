@@ -6,7 +6,8 @@
  * siempre: oprimir botones y pasar pantallas con ← →. La palma no raya, porque sólo escribe el
  * lápiz. El trazo engorda con la presión.
  * Con la tinta prendida aparecen sus herramientas:
- *   - dos colores, el del texto y el acento de la página;
+ *   - tres colores: el del texto, el acento de la página y rojo para lo muy importante (Gil,
+ *     2026-11-23);
  *   - el «Borrador», que quita un trazo completo al tocarlo;
  *   - «Borrar todo», que pide un segundo toque para no borrar por accidente.
  * Cada pantalla guarda su tinta: al regresar a ella, ahí sigue. La tinta se mide en unidades de
@@ -102,8 +103,9 @@
   // Los colores salen de la página (cambian con el tema y con el nivel): se piden al dibujar.
   function tono(c) {
     var d = diapositivas[actual] || raiz, cs = getComputedStyle(d);
-    var v = cs.getPropertyValue(c === 'acento' ? '--color-accent' : '--color-text-primary').trim();
-    return v || (c === 'acento' ? '#c2410c' : '#1f1a16');
+    var token = c === 'acento' ? '--color-accent' : c === 'roja' ? '--tinta-roja' : '--color-text-primary';
+    var v = cs.getPropertyValue(token).trim();
+    return v || (c === 'acento' ? '#c2410c' : c === 'roja' ? '#d0172f' : '#1f1a16');
   }
   function estilo(c) {
     ctx.strokeStyle = ctx.fillStyle = tono(c);
@@ -289,6 +291,7 @@
     grupo.innerHTML =
       '<button class="proyeccion-controles__boton tinta-color" type="button" data-tinta-color="texto" aria-label="Tinta del color del texto" aria-pressed="true"><span class="tinta-color__punto"></span></button>' +
       '<button class="proyeccion-controles__boton tinta-color tinta-color--acento" type="button" data-tinta-color="acento" aria-label="Tinta del color de acento" aria-pressed="false"><span class="tinta-color__punto"></span></button>' +
+      '<button class="proyeccion-controles__boton tinta-color tinta-color--roja" type="button" data-tinta-color="roja" aria-label="Tinta roja, para lo muy importante" aria-pressed="false"><span class="tinta-color__punto"></span></button>' +
       '<button class="proyeccion-controles__salir" type="button" data-tinta-borrador aria-pressed="false">Borrador</button>' +
       '<button class="proyeccion-controles__salir tinta-limpia" type="button" data-tinta-limpia>Borrar todo</button>';
     var escribir = document.createElement('button');
@@ -328,6 +331,7 @@
     marca('[data-tinta]', escribiendo);
     marca('[data-tinta-color="texto"]', !borrador && color === 'texto');
     marca('[data-tinta-color="acento"]', !borrador && color === 'acento');
+    marca('[data-tinta-color="roja"]', !borrador && color === 'roja');
     marca('[data-tinta-borrador]', borrador);
     var limpia = barra.querySelector('[data-tinta-limpia]');
     if (limpia) limpia.disabled = !(tinta[actual] || []).length;
