@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css?v=20260826-svg-text">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
@@ -71,7 +71,11 @@
         <span class="lesson-section__kicker">Idea central</span> Separar sin transformar
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los métodos de separación aprovechan diferencias físicas sin producir sustancias nuevas.</p>
+      <p class="tele-idea__apoyo">Tamaño de partícula, densidad, solubilidad, magnetismo o punto de ebullición.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">¿Qué propiedad distingue a los <em>componentes</em>?</h3>
       </header>
@@ -86,6 +90,19 @@
         <span>Lectura · 9 min</span>
       </footer>
     </article>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Una mezcla puede requerir más de un paso.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Agua, arena y sal</p>
+            <p>1. Filtrar la arena</p>
+            <p>2. Evaporar o destilar el agua</p>
+          </div>
+        </div>
+        <p class="tele-idea__apoyo">Destilas si también quieres recuperar el agua.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="rutaMetodo" data-diapositiva="una">
@@ -95,9 +112,11 @@
       </h2>
     </header>
     <ol class="decision-list">
-      <li><strong>¿Qué estados hay?</strong><br>Reconoce si combinas sólidos, líquidos o sustancias disueltas.</li>
+      <li><strong>¿Qué estados hay?</strong><br><span data-solo-lectura>Reconoce si combinas sólidos, líquidos o sustancias disueltas.</span><span data-solo-proyeccion>Sólidos,
+        líquidos o sustancias disueltas.</span></li>
       <li><strong>¿La mezcla es uniforme?</strong><br>Las fases visibles abren opciones como filtración o decantación.</li>
-      <li><strong>¿Qué propiedad cambia?</strong><br>Elige el método por tamaño, densidad, magnetismo, solubilidad o ebullición.</li>
+      <li><strong>¿Qué propiedad cambia?</strong><br><span data-solo-lectura>Elige el método por tamaño, densidad, magnetismo, solubilidad o ebullición.</span><span data-solo-proyeccion>Tamaño,
+        densidad, magnetismo, solubilidad o ebullición.</span></li>
     </ol>
   </section>
 
@@ -110,18 +129,18 @@
     </header>
     <div class="reference-table-wrap">
       <table class="reference-table" data-filas-por-pantalla="5">
-        <thead><tr><th>Método</th><th>Sirve principalmente para</th><th>Propiedad que aprovecha</th><th>Ejemplo</th></tr></thead>
+        <thead><tr><th>Método</th><th data-solo-lectura>Sirve principalmente para</th><th>Propiedad que aprovecha</th><th>Ejemplo</th></tr></thead>
         <tbody>
-          <tr><td><strong>Filtración</strong></td><td>sólido insoluble + líquido</td><td>tamaño de partícula</td><td>café; arena y agua</td></tr>
-          <tr><td><strong>Decantación</strong></td><td>líquidos que no se mezclan (inmiscibles) o un sólido asentado en el fondo</td><td>densidad</td><td>aceite y agua; arena y agua</td></tr>
-          <tr><td><strong>Tamizado</strong></td><td>sólidos de tamaños diferentes</td><td>tamaño de partícula</td><td>grumos de harina; grava y arena</td></tr>
-          <tr><td><strong>Imantación</strong></td><td>un componente magnético</td><td>magnetismo</td><td>limaduras de hierro y tierra</td></tr>
-          <tr><td><strong>Centrifugación</strong></td><td>sólidos muy finos suspendidos en un líquido</td><td>densidad: el giro rápido acelera que lo más denso se vaya al fondo</td><td>componentes de la sangre</td></tr>
-          <tr><td><strong>Evaporación</strong></td><td>sólido disuelto + líquido</td><td>el líquido se evapora y el sólido se queda</td><td>sal de agua de mar</td></tr>
-          <tr><td><strong>Cristalización</strong></td><td>purificar un sólido disuelto</td><td>solubilidad</td><td>cristales de sal al evaporar agua</td></tr>
-          <tr><td><strong>Destilación</strong></td><td>líquidos que se mezclan (miscibles) o recuperar el disolvente</td><td>punto de ebullición</td><td>agua y alcohol; componentes del petróleo</td></tr>
-          <tr><td><strong>Cromatografía</strong></td><td>sustancias disueltas</td><td>solubilidad: cada sustancia avanza a distinta velocidad</td><td>componentes de una tinta</td></tr>
-          <tr><td><strong>Sublimación</strong></td><td>un sólido que pasa directamente a gas</td><td>capacidad de sublimar</td><td>hielo seco; naftalina; yodo</td></tr>
+          <tr><td><strong>Filtración</strong></td><td data-solo-lectura>sólido insoluble + líquido</td><td>tamaño de partícula</td><td>café; arena y agua</td></tr>
+          <tr><td><strong>Decantación</strong></td><td data-solo-lectura>líquidos que no se mezclan (inmiscibles) o un sólido asentado en el fondo</td><td>densidad</td><td>aceite y agua; arena y agua</td></tr>
+          <tr><td><strong>Tamizado</strong></td><td data-solo-lectura>sólidos de tamaños diferentes</td><td>tamaño de partícula</td><td>grumos de harina; grava y arena</td></tr>
+          <tr><td><strong>Imantación</strong></td><td data-solo-lectura>un componente magnético</td><td>magnetismo</td><td>limaduras de hierro y tierra</td></tr>
+          <tr><td><strong>Centrifugación</strong></td><td data-solo-lectura>sólidos muy finos suspendidos en un líquido</td><td><span data-solo-lectura>densidad: el giro rápido acelera que lo más denso se vaya al fondo</span><span data-solo-proyeccion>densidad, con un giro rápido</span></td><td>componentes de la sangre</td></tr>
+          <tr><td><strong>Evaporación</strong></td><td data-solo-lectura>sólido disuelto + líquido</td><td>el líquido se evapora y el sólido se queda</td><td>sal de agua de mar</td></tr>
+          <tr><td><strong>Cristalización</strong></td><td data-solo-lectura>purificar un sólido disuelto</td><td>solubilidad</td><td>cristales de sal al evaporar agua</td></tr>
+          <tr><td><strong>Destilación</strong></td><td data-solo-lectura>líquidos que se mezclan (miscibles) o recuperar el disolvente</td><td>punto de ebullición</td><td>agua y alcohol; componentes del petróleo</td></tr>
+          <tr><td><strong>Cromatografía</strong></td><td data-solo-lectura>sustancias disueltas</td><td>solubilidad: cada sustancia avanza a distinta velocidad</td><td>componentes de una tinta</td></tr>
+          <tr><td><strong>Sublimación</strong></td><td data-solo-lectura>un sólido que pasa directamente a gas</td><td>capacidad de sublimar</td><td>hielo seco; naftalina; yodo</td></tr>
         </tbody>
       </table>
     </div>

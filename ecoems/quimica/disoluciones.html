@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css?v=20260826-svg-text">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
@@ -49,8 +49,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 01 · 6 de 6 · Aprende y practica</p>
     <h1 class="hero__title">Disoluciones: soluto y <em>disolvente</em></h1>
-    <p class="hero__lede">Una disolución es una mezcla en la que no puedes ver sus partes. Aprende a reconocer
-      qué se disuelve, en qué se disuelve y cuánto hay de cada cosa.</p>
+    <p class="hero__lede"><span data-solo-lectura>Una disolución es una mezcla en la que no puedes ver sus partes. Aprende a reconocer
+      qué se disuelve, en qué se disuelve y cuánto hay de cada cosa.</span><span data-solo-proyeccion>Una disolución es
+      una mezcla en la que no puedes ver sus partes.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -72,7 +73,16 @@
         <span class="lesson-section__kicker">Idea central</span> Una sola fase, dos funciones
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Una disolución es una mezcla homogénea: forma una sola fase.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>disolución = soluto + disolvente</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">No distingues sus componentes, pero siguen ahí: se separan por métodos físicos.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Una disolución es una mezcla <em>homogénea</em></h3>
       </header>
@@ -136,8 +146,10 @@
           <h3 class="comparison-item__title"><em>Soluto</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Es la sustancia que se disuelve. Casi siempre está en menor cantidad. Puede ser sólido, líquido o gas.</p>
-          <ul class="example-list"><li>sal en agua salada</li><li>azúcar en limonada</li><li>CO<sub>2</sub> en refresco</li></ul>
+          <p data-solo-lectura>Es la sustancia que se disuelve. Casi siempre está en menor cantidad. Puede ser sólido, líquido o gas.</p>
+          <p data-solo-proyeccion>Casi siempre está en menor cantidad.</p>
+          <ul class="example-list" data-solo-lectura><li>sal en agua salada</li><li>azúcar en limonada</li><li>CO<sub>2</sub> en refresco</li></ul>
+          <div data-solo-proyeccion><ul class="example-list"><li>sal</li><li>azúcar</li><li>CO<sub>2</sub></li></ul></div>
         </div>
       </article>
       <article class="comparison-item">
@@ -146,8 +158,10 @@
           <h3 class="comparison-item__title"><em>Disolvente</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Es el componente que disuelve al soluto. Casi siempre está en mayor cantidad y decide si la disolución es sólida, líquida o gaseosa.</p>
-          <ul class="example-list"><li>agua en agua salada</li><li>agua en limonada</li><li>agua en refresco</li></ul>
+          <p data-solo-lectura>Es el componente que disuelve al soluto. Casi siempre está en mayor cantidad y decide si la disolución es sólida, líquida o gaseosa.</p>
+          <p data-solo-proyeccion>Casi siempre está en mayor cantidad.</p>
+          <ul class="example-list" data-solo-lectura><li>agua en agua salada</li><li>agua en limonada</li><li>agua en refresco</li></ul>
+          <div data-solo-proyeccion><ul class="example-list"><li>agua</li></ul></div>
         </div>
       </article>
     </div>
@@ -162,12 +176,12 @@
     </header>
     <div class="reference-table-wrap">
       <table class="reference-table">
-        <thead><tr><th>Descripción</th><th>Qué significa</th><th>Clave para distinguirla</th></tr></thead>
+        <thead><tr><th>Descripción</th><th>Qué significa</th><th data-solo-lectura>Clave para distinguirla</th></tr></thead>
         <tbody>
-          <tr><td><strong>Diluida</strong></td><td>contiene poco soluto respecto al disolvente</td><td>la proporción de soluto es baja</td></tr>
-          <tr><td><strong>Concentrada</strong></td><td>contiene una proporción relativamente alta de soluto</td><td>aún puede admitir más soluto</td></tr>
-          <tr><td><strong>Saturada</strong></td><td>alcanzó la cantidad máxima que puede disolverse en esas condiciones</td><td>depende especialmente de la temperatura</td></tr>
-          <tr><td><strong>Sobresaturada</strong></td><td>contiene más soluto disuelto que una saturada estable</td><td>es inestable y el exceso puede cristalizar</td></tr>
+          <tr><td><strong>Diluida</strong></td><td><span data-solo-lectura>contiene poco soluto respecto al disolvente</span><span data-solo-proyeccion>poco soluto respecto al disolvente</span></td><td data-solo-lectura>la proporción de soluto es baja</td></tr>
+          <tr><td><strong>Concentrada</strong></td><td><span data-solo-lectura>contiene una proporción relativamente alta de soluto</span><span data-solo-proyeccion>mucho soluto, pero aún admite más</span></td><td data-solo-lectura>aún puede admitir más soluto</td></tr>
+          <tr><td><strong>Saturada</strong></td><td><span data-solo-lectura>alcanzó la cantidad máxima que puede disolverse en esas condiciones</span><span data-solo-proyeccion>el máximo que puede disolverse a esa temperatura</span></td><td data-solo-lectura>depende especialmente de la temperatura</td></tr>
+          <tr><td><strong>Sobresaturada</strong></td><td><span data-solo-lectura>contiene más soluto disuelto que una saturada estable</span><span data-solo-proyeccion>más soluto que una saturada: es inestable</span></td><td data-solo-lectura>es inestable y el exceso puede cristalizar</td></tr>
         </tbody>
       </table>
     </div>
@@ -179,11 +193,20 @@
         <span class="lesson-section__kicker">Calcula</span> Concentración masa a masa
       </h2>
     </header>
-    <div class="formula-block">
+    <div class="formula-block" data-solo-lectura>
       <p class="formula-block__expression">% m/m = masa del soluto ÷ masa de la disolución × 100</p>
       <p class="formula-block__note">Primero calcula la masa total: masa de la disolución = masa del soluto + masa del disolvente.</p>
     </div>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Se divide entre la masa de la disolución, no entre la del disolvente.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>% m/m = <span class="fr"><span class="fr__n">masa del soluto</span><span class="fr__d">masa de la disolución</span></span> × 100</p>
+        </div>
+      </div>
+      <p class="tele-idea__apoyo">Primero suma: masa del soluto + masa del disolvente.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <p class="reading-block__kicker">Ejemplo resuelto</p>
         <h3 class="reading-block__title">23 g de KOH en 400 g de agua</h3>
@@ -193,6 +216,14 @@
         <p>Entonces: (23 g ÷ 423 g) × 100 = <strong>5.44 % m/m</strong>.</p>
       </div>
     </article>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <h3 class="ejemplo__planteo ejemplo__planteo--frase">Se disuelven 23&nbsp;g de KOH en 400&nbsp;g de agua. ¿Cuál es
+        la concentración en % m/m?</h3>
+      <div class="tele-respuesta" data-revela>
+        <p>disolución = 23&nbsp;g + 400&nbsp;g = 423&nbsp;g</p>
+        <p>% m/m = <span class="fr"><span class="fr__n">23&nbsp;g</span><span class="fr__d">423&nbsp;g</span></span> × 100 = 5.44&nbsp;%</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="calculadoraDisolucion" data-diapositiva="una">
@@ -202,7 +233,8 @@
       </h2>
     </header>
     <form class="calculator" id="solutionCalculator">
-      <p class="section-intro" id="calculatorHelp">Escribe masas en la misma unidad. El resultado indicará la masa total y el porcentaje m/m.</p>
+      <p class="section-intro" id="calculatorHelp"><span data-solo-lectura>Escribe masas en la misma unidad. El resultado indicará la masa total y el porcentaje m/m.</span><span data-solo-proyeccion>Escribe
+        las dos masas en la misma unidad.</span></p>
       <div class="calculator__fields">
         <div class="calculator__field">
           <label for="soluteMass">Masa del soluto</label>

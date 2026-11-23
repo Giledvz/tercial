@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css?v=20260824-production">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
@@ -75,10 +75,11 @@
 
     <div class="classification-route">
       <div class="classification-route__root">
-        <span>Punto de partida</span>
+        <span data-solo-lectura>Punto de partida</span>
         <strong>Materia</strong>
       </div>
-      <p class="classification-route__question">Primera pregunta · ¿Hay una sola sustancia o hay varias?</p>
+      <p class="classification-route__question"><span data-solo-lectura>Primera pregunta · ¿Hay una sola sustancia o hay varias?</span><span data-solo-proyeccion>¿Hay una
+        sola sustancia o hay varias?</span></p>
 
       <div class="comparison-grid">
         <article class="comparison-item classification-route__branch">
@@ -87,16 +88,18 @@
             <h3 class="comparison-item__title">Sustancia <em>pura</em></h3>
           </header>
           <div class="comparison-item__body">
-            <p>Está formada por un solo tipo de componente: átomos o moléculas iguales.</p>
-            <p class="classification-route__next">Segunda pregunta · ¿sus partículas contienen un solo tipo de átomo?</p>
+            <p data-solo-lectura>Está formada por un solo tipo de componente: átomos o moléculas iguales.</p>
+            <p class="classification-route__next"><span data-solo-lectura>Segunda pregunta · ¿sus partículas contienen un solo tipo de átomo?</span><span data-solo-proyeccion>¿Un
+              solo tipo de átomo?</span></p>
             <dl class="classification-route__outcomes">
               <div>
                 <dt>Elemento</dt>
-                <dd>Sí. Sólo hay un tipo de átomo, aunque pueda formar moléculas como O<sub>2</sub>.</dd>
+                <dd data-solo-lectura>Sí. Sólo hay un tipo de átomo, aunque pueda formar moléculas como O<sub>2</sub>.</dd>
+                <dd data-solo-proyeccion>Sí.</dd>
               </div>
               <div>
                 <dt>Compuesto</dt>
-                <dd>No. Hay distintos elementos unidos químicamente en una proporción fija.</dd>
+                <dd><span data-solo-lectura>No. Hay distintos elementos unidos químicamente en una proporción fija.</span><span data-solo-proyeccion>No.</span></dd>
               </div>
             </dl>
           </div>
@@ -108,16 +111,17 @@
             <h3 class="comparison-item__title"><em>Mezcla</em></h3>
           </header>
           <div class="comparison-item__body">
-            <p>Dos o más sustancias juntas que conservan sus propiedades y se pueden separar por métodos físicos.</p>
-            <p class="classification-route__next">Segunda pregunta · ¿la composición se ve uniforme?</p>
+            <p data-solo-lectura>Dos o más sustancias juntas que conservan sus propiedades y se pueden separar por métodos físicos.</p>
+            <p class="classification-route__next"><span data-solo-lectura>Segunda pregunta · ¿la composición se ve uniforme?</span><span data-solo-proyeccion>¿Se
+              ve uniforme?</span></p>
             <dl class="classification-route__outcomes">
               <div>
                 <dt>Homogénea</dt>
-                <dd>Sí. Se observa una sola fase y no se distinguen los componentes.</dd>
+                <dd><span data-solo-lectura>Sí. Se observa una sola fase y no se distinguen los componentes.</span><span data-solo-proyeccion>Sí.</span></dd>
               </div>
               <div>
                 <dt>Heterogénea</dt>
-                <dd>No. Se distinguen componentes, regiones o más de una fase.</dd>
+                <dd><span data-solo-lectura>No. Se distinguen componentes, regiones o más de una fase.</span><span data-solo-proyeccion>No.</span></dd>
               </div>
             </dl>
           </div>
@@ -144,9 +148,9 @@
             <g data-capa="particulas"></g>
           </svg>
           <h3>Elemento</h3>
-          <p>Un solo tipo de átomo.</p>
+          <p><span data-solo-lectura>Un solo tipo de átomo.</span><span data-solo-proyeccion>Átomos iguales.</span></p>
           <p class="classification-model__examples">Na · Fe · O<sub>2</sub></p>
-          <p class="classification-model__note">O<sub>2</sub> tiene dos átomos, pero iguales: sigue siendo un elemento.</p>
+          <p class="classification-model__note" data-solo-lectura>O<sub>2</sub> tiene dos átomos, pero iguales: sigue siendo un elemento.</p>
         </article>
 
         <article class="classification-model">
@@ -156,7 +160,8 @@
             <g data-capa="particulas"></g>
           </svg>
           <h3>Compuesto</h3>
-          <p>Dos o más elementos unidos químicamente, siempre en la misma proporción.</p>
+          <p><span data-solo-lectura>Dos o más elementos unidos químicamente, siempre en la misma proporción.</span><span data-solo-proyeccion>Átomos
+            distintos, unidos.</span></p>
           <p class="classification-model__examples">H<sub>2</sub>O · NaCl · CO</p>
         </article>
 
@@ -167,7 +172,8 @@
             <g data-capa="particulas"></g>
           </svg>
           <h3>Mezcla homogénea</h3>
-          <p>Una sola fase: no distingues sus componentes a simple vista.</p>
+          <p><span data-solo-lectura>Una sola fase: no distingues sus componentes a simple vista.</span><span data-solo-proyeccion>Una
+            sola fase.</span></p>
           <p class="classification-model__examples">aire · bronce · agua con azúcar</p>
         </article>
 
@@ -179,10 +185,39 @@
             <g data-capa="particulas"></g>
           </svg>
           <h3>Mezcla heterogénea</h3>
-          <p>Dos o más fases: distingues sus componentes a simple vista.</p>
+          <p><span data-solo-lectura>Dos o más fases: distingues sus componentes a simple vista.</span><span data-solo-proyeccion>Dos
+            o más fases.</span></p>
           <p class="classification-model__examples">ensalada · agua y aceite · sangre</p>
-          <p class="classification-model__note">La sangre parece uniforme, pero al microscopio se distinguen sus partes.</p>
+          <p class="classification-model__note" data-solo-lectura>La sangre parece uniforme, pero al microscopio se distinguen sus partes.</p>
         </article>
+      </div>
+    </div>
+
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">O<sub>2</sub> tiene dos átomos, pero iguales: sigue siendo un elemento.</p>
+        <div class="tele-pizarron">
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Elemento</p>
+            <p>O<sub>2</sub></p>
+          </div>
+          <div class="tele-pizarron__columna">
+            <p class="tele-pizarron__rotulo">Compuesto</p>
+            <p>CO</p>
+          </div>
+        </div>
+        <p class="tele-idea__apoyo">Cuenta los tipos de átomo, no los átomos.</p>
+      </div>
+    </div>
+
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">La sangre parece uniforme, pero al microscopio se distinguen sus partes.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">sangre: homogénea</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">sangre: heterogénea</span></p>
+        </div>
+        <p class="tele-idea__apoyo">A simple vista no siempre basta.</p>
       </div>
     </div>
   </section>
