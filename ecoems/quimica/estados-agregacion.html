@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-hielo-naftalina">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
@@ -72,7 +72,11 @@
         <span class="lesson-section__kicker">Idea central</span> Una sustancia, distintas organizaciones
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">En un cambio de estado no se forma una sustancia&nbsp;nueva.</p>
+      <p class="tele-idea__apoyo">El hielo, el agua líquida y el vapor siguen siendo H<sub>2</sub>O.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">No cambia la identidad; cambia la <em>disposición</em></h3>
       </header>
@@ -213,8 +217,7 @@
         <figcaption>Gas</figcaption>
       </figure>
     </div>
-    <p class="editorial-note">Los tres frascos tienen las mismas partículas; la de color deja un rastro para
-      seguir cómo se mueve en cada estado.</p>
+    <p class="editorial-note">Sigue la partícula de color: su rastro muestra cómo se mueve.</p>
   </aside>
 
   <section aria-labelledby="cambiosEstado" data-diapositiva="una">
@@ -303,8 +306,11 @@
     </figure>
     <div class="phase-change-examples" aria-labelledby="phaseChangeExamplesTitle" data-diapositiva="una">
       <h3 class="phase-change-examples__title" id="phaseChangeExamplesTitle">Ejemplos para reconocerlos</h3>
-      <p class="phase-change-examples__intro">Cada cambio tiene su inverso, por eso los verás en pareja: primero el que
+      <p class="phase-change-examples__intro" data-solo-lectura>Cada cambio tiene su inverso, por eso los verás en pareja: primero el que
         ocurre al calentar y después el que ocurre al enfriar.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Cada cambio tiene su inverso: uno ocurre al calentar y el otro, al enfriar.</p>
+      </div>
       <ul class="phase-change-examples__grid">
         <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="fusion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioFusion">
@@ -431,7 +437,7 @@
           </svg>
           <h4 class="phase-change-example__name">Sublimación</h4>
           <p class="phase-change-example__route"><span class="phase-change-diagram__key phase-change-diagram__key--calor">sólido → gas · absorbe calor</span></p>
-          <p class="phase-change-example__text">Al calentar suavemente naftalina en una cuchara, pasa directo a gas sin derretirse: se hace más pequeña y suelta vapor.</p>
+          <p class="phase-change-example__text"><span data-solo-lectura>Al calentar suavemente naftalina en una cuchara, pasa directo a gas sin derretirse: se hace más pequeña y suelta vapor.</span><span data-solo-proyeccion>Al calentar suavemente naftalina, pasa directo a gas sin&nbsp;derretirse.</span></p>
         </li>
         <li class="phase-change-example" data-diapositiva="una">
           <svg class="escena escena--cambio" data-escena="cambio" data-tipo="deposicion" viewBox="0 0 240 150" role="img" aria-labelledby="cambioDeposicion">
@@ -472,7 +478,7 @@
           </svg>
           <h4 class="phase-change-example__name">Licuefacción</h4>
           <p class="phase-change-example__route"><span class="phase-change-diagram__key">gas → líquido · al comprimirlo</span></p>
-          <p class="phase-change-example__text">Un gas se vuelve líquido al comprimirlo con mucha presión, como el gas de los encendedores.</p>
+          <p class="phase-change-example__text"><span data-solo-lectura>Un gas se vuelve líquido al comprimirlo con mucha presión, como el gas de los encendedores.</span><span data-solo-proyeccion>Así se licúa el gas de los encendedores.</span></p>
         </li>
       </ul>
     </div>

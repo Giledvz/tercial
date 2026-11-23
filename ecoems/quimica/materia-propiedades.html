@@ -31,12 +31,12 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-madera-hielo">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script defer src="./propiedades-escenas.js?v=20261008-madera-hielo"></script>
 </head>
@@ -69,7 +69,11 @@
         <span class="lesson-section__kicker">Comienza aquí</span> Idea central
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La materia es todo aquello que ocupa un lugar en el espacio y tiene masa.</p>
+      <p class="tele-idea__apoyo">Para describirla usamos propiedades.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">¿Qué es la <em>materia</em>?</h3>
       </header>
@@ -99,7 +103,7 @@
           <h3 class="comparison-item__title">Propiedades <em>físicas</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Se observan o miden sin que la materia se convierta en otra cosa. Algunas se perciben con los
+          <p data-solo-lectura>Se observan o miden sin que la materia se convierta en otra cosa. Algunas se perciben con los
             sentidos, como el color o el olor (en el laboratorio nunca se prueba nada); otras se miden, como la
             densidad (cuánta masa cabe en cierto volumen) o el punto de fusión (la temperatura a la que un
             sólido se derrite).</p>
@@ -119,7 +123,7 @@
           <h3 class="comparison-item__title">Propiedades <em>químicas</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Indican cómo se comporta una sustancia en presencia de otra: si puede convertirse en una
+          <p data-solo-lectura>Indican cómo se comporta una sustancia en presencia de otra: si puede convertirse en una
             sustancia nueva. Por ejemplo, la oxidación (un clavo que se vuelve óxido rojizo) o la inflamabilidad
             (si puede arder).</p>
           <ul class="example-list example-list--dots" aria-label="Ejemplos de propiedades químicas">
@@ -139,13 +143,17 @@
         <span class="lesson-section__kicker">Afina la idea</span> ¿Dependen de la cantidad?
       </h2>
     </header>
-    <p class="section-intro">Las propiedades físicas también se agrupan en dos tipos, según dependan o no
+    <p class="section-intro" data-solo-lectura>Las propiedades físicas también se agrupan en dos tipos, según dependan o no
       de cuánta materia hay.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Las extensivas sí dependen de cuánta materia hay; las intensivas, no.</p>
+      <p class="tele-idea__apoyo">Por eso las intensivas ayudan a identificar sustancias.</p>
+    </div>
     <div class="comparison-grid">
       <article class="comparison-item">
         <header class="comparison-item__header"><h3 class="comparison-item__title">Propiedades extensivas</h3></header>
         <div class="comparison-item__body">
-          <p>Dependen de cuánta materia hay. Si cambia la cantidad de la muestra, también cambia el
+          <p data-solo-lectura>Dependen de cuánta materia hay. Si cambia la cantidad de la muestra, también cambia el
             valor de la propiedad.</p>
           <ul class="example-list example-list--dots" aria-label="Ejemplos de propiedades extensivas">
             <li>masa</li><li>peso</li><li>longitud</li><li>volumen</li>
@@ -155,7 +163,7 @@
       <article class="comparison-item">
         <header class="comparison-item__header"><h3 class="comparison-item__title">Propiedades intensivas</h3></header>
         <div class="comparison-item__body">
-          <p>No dependen de la cantidad y por eso ayudan a identificar o comparar sustancias.</p>
+          <p data-solo-lectura>No dependen de la cantidad y por eso ayudan a identificar o comparar sustancias.</p>
           <ul class="example-list example-list--dots" aria-label="Ejemplos de propiedades intensivas">
             <li>densidad</li><li>punto de fusión</li><li>punto de ebullición</li>
           </ul>

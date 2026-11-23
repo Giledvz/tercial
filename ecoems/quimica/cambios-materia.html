@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css?v=20260824-production">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tandas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
@@ -70,7 +70,11 @@
         <span class="lesson-section__kicker">Idea central</span> La identidad decide
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si se forma una sustancia nueva, el cambio es <strong>químico</strong>; si no, es <strong>físico</strong>.</p>
+      <p class="tele-idea__apoyo">En un cambio físico pueden variar la forma, el tamaño, la posición o el&nbsp;estado.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">¿Después del cambio siguen presentes las <em>mismas sustancias</em>?</h3>
       </header>
@@ -87,6 +91,12 @@
       <footer class="source-line">
       </footer>
     </article>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Que se pueda revertir es una pista, no la regla.</p>
+        <p class="tele-idea__apoyo">Romper papel es un cambio físico, aunque no puedas reconstruir la hoja.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="observaTransformacion" data-diapositiva="una">
@@ -118,7 +128,8 @@
             <text class="escena__etiqueta" x="434" y="82" data-proceso></text>
           </svg>
         </div>
-        <p class="transformation-example__conclusion"><strong>Cambio físico.</strong> Cambian el orden y el movimiento; cada molécula sigue siendo H<sub>2</sub>O.</p>
+        <p class="transformation-example__conclusion" data-solo-proyeccion><strong>Cambio físico.</strong> Cada molécula sigue siendo&nbsp;H<sub>2</sub>O.</p>
+        <p class="transformation-example__conclusion" data-solo-lectura><strong>Cambio físico.</strong> Cambian el orden y el movimiento; cada molécula sigue siendo H<sub>2</sub>O.</p>
       </article>
 
       <article class="transformation-example transformation-example--chemical">
@@ -144,7 +155,7 @@
             <text class="escena__ecuacion" x="300" y="222" text-anchor="middle"><tspan data-lado="reactivos">HCl + NaOH</tspan><tspan class="escena__flecha" dx="10">→</tspan><tspan data-lado="productos" dx="10">NaCl + H<tspan class="escena__sub" dy="4">2</tspan><tspan dy="-4">O</tspan></tspan></text>
           </svg>
         </div>
-        <p class="transformation-example__conclusion"><strong>Cambio químico.</strong> Los átomos se reorganizan y las sustancias finales son diferentes de las iniciales.</p>
+        <p class="transformation-example__conclusion"><strong>Cambio químico.</strong><span data-solo-lectura> Los átomos se reorganizan y las sustancias finales son diferentes de las iniciales.</span><span data-solo-proyeccion> Los mismos átomos forman sustancias nuevas.</span></p>
       </article>
     </div>
   </section>
@@ -165,7 +176,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr data-solo-lectura>
             <td><span class="change-comparison-table__label">Qué sucede</span><p>La sustancia sigue siendo la misma antes y después.</p></td>
             <td><span class="change-comparison-table__label">Qué sucede</span><p>Una o más sustancias se convierten en sustancias diferentes.</p></td>
           </tr>
