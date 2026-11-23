@@ -27,11 +27,14 @@
  * en el pizarrón) aparece con la flecha →, uno por uno; ← lo vuelve a ocultar.
  * Con #tele en la liga (…/signos.html#tele) la lección abre ya en este modo: sirve
  * para el navegador de la propia tele o una compu conectada a ella, sin teclado.
+ * La tinta (escribir con el Apple Pencil encima de la tele, con el botón «Escribir») vive en
+ * tinta.js: se carga la primera vez que se proyecta, con la misma versión que este archivo.
  */
 (function () {
   'use strict';
 
   var raiz = document.documentElement;
+  var propio = document.currentScript && document.currentScript.src;
   var diapositivas = Array.prototype.slice.call(document.querySelectorAll('[data-diapositiva]'));
   if (!diapositivas.length) return;
 
@@ -277,6 +280,15 @@
     return mejor;
   }
 
+  var tintaPedida = false;
+  function cargaTinta() {
+    if (tintaPedida || !propio || !/leccion\.js/.test(propio)) return;
+    tintaPedida = true;
+    var s = document.createElement('script');
+    s.src = propio.replace(/leccion\.js/, 'tinta.js');
+    document.head.appendChild(s);
+  }
+
   function entrar() {
     if (raiz.hasAttribute('data-proyeccion')) return;
     if (!controles) crearControles();
@@ -287,6 +299,7 @@
     ir(inicio);
     botonCompleta();
     pantallaCompleta();
+    cargaTinta();
   }
 
   function salir() {
