@@ -1773,3 +1773,53 @@ html[data-proyeccion] .proyeccion-controles {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* ---------- Pase final de la tele ligera (2026-11-23) ----------
+   Lo que encontraron los agentes al aligerar las 23 lecciones de Química. Cada regla se probó en
+   la pantalla donde hacía falta. Todo vive sólo en la tele: la lectura no cambia. */
+
+/* Fracciones apiladas: la raya cubre al número más ancho, arriba o abajo. Antes medía sólo lo del
+   numerador y quedaba corta bajo «masa de la disolución». */
+html[data-proyeccion] .es-proyectada .fr { align-items: stretch; text-align: center; }
+
+/* Listas de ejemplos: su raya está a 14 px fijos y la letra de la tele crece a 2u. Con la sangría
+   en em ya no tapa la primera letra (H⁺, Na⁺, Cl⁻). Las de punto miden sus columnas en u, como su
+   letra, así que «inflamabilidad» ya no se encima con su vecina. */
+html[data-proyeccion] .es-proyectada .example-list li { padding-left: 1.4em; }
+html[data-proyeccion] .es-proyectada .example-list--dots {
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--u) * 17), 1fr));
+  column-gap: calc(var(--u) * 2);
+}
+
+/* Las cuentas de las piezas van con la letra del texto (la regla de la tele): sin el 3 de techo
+   plano ni las bolitas de Fraunces. */
+html[data-proyeccion] .es-proyectada .formula-block__expression,
+html[data-proyeccion] .es-proyectada .ejemplo__planteo .expresion,
+html[data-proyeccion] .es-proyectada .ruta__formula,
+html[data-proyeccion] .es-proyectada .balanza__formula,
+html[data-proyeccion] .es-proyectada .balanza__coef,
+html[data-proyeccion] .es-proyectada .balanza__simbolo,
+html[data-proyeccion] .es-proyectada .redox__vista,
+html[data-proyeccion] .es-proyectada .redox__semi { font-family: var(--tele-cuenta); }
+
+/* Lo que se mira de lejos: las semirreacciones, la notación de un isótopo, las segundas preguntas
+   de la ruta de la materia y los nombres de sus cuatro clases. */
+html[data-proyeccion] .es-proyectada .redox__semi { font-size: calc(var(--u) * 2.6); }
+html[data-proyeccion] .es-proyectada .redox__signo { font-size: .5em; }
+html[data-proyeccion] .es-proyectada .isotope-notation__x { font-size: calc(var(--u) * 11); }
+html[data-proyeccion] .es-proyectada .isotope-notation__scripts,
+html[data-proyeccion] .es-proyectada .isotope-notation__charge { font-size: calc(var(--u) * 3.2); }
+html[data-proyeccion] .es-proyectada .classification-route__next { font-size: calc(var(--u) * 1.8); }
+html[data-proyeccion] .es-proyectada .classification-model h3 { font-size: calc(var(--u) * 2.2); }
+
+/* El mapa del mol: cajas parejas y letra que se lee. */
+html[data-proyeccion] .es-proyectada .mol-map { align-items: stretch; }
+html[data-proyeccion] .es-proyectada .mol-map__box { align-content: center; padding: calc(var(--u) * 1.2) calc(var(--u) * .6); }
+html[data-proyeccion] .es-proyectada .mol-map__box strong { font-size: calc(var(--u) * 1.8); }
+html[data-proyeccion] .es-proyectada .mol-map__box span { font-size: calc(var(--u) * 1.2); }
+html[data-proyeccion] .es-proyectada .mol-map__arrows { align-content: center; gap: calc(var(--u) * .8); font-size: calc(var(--u) * 1.3); }
+
+/* Las herramientas: la nota de Tendencias se queda para la lectura, porque la mayor de cada
+   propiedad ya está marcada en la tabla. Y el resultado de la suma no se parte entre renglones. */
+html[data-proyeccion] .es-proyectada .tendencias__nota { display: none; }
+html[data-proyeccion] .es-proyectada .suma__texto strong { white-space: nowrap; }
