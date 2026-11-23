@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-tanda2"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -72,7 +72,15 @@
         <span class="lesson-section__kicker">Idea central</span> El mol es una docena gigante
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los átomos son diminutos: se cuentan por moles.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Una docena</span><span>12 cosas</span><span></span><span></span></p>
+        <p><span class="tele-formulas__rotulo">Un mol</span><span>6.022 × 10<sup>23</sup> partículas</span><span></span><span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Es el <strong>número de Avogadro</strong>. Un mol de carbono pesa 12 g.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Contar átomos de <em>montón</em> en montón</h3>
       </header>
@@ -100,7 +108,8 @@
       <svg class="escena escena--balanza" data-escena-atomo="balanza" viewBox="0 0 360 212" role="img" aria-labelledby="balanzaTitle">
         <title id="balanzaTitle">Una balanza recibe un mol de carbono, 12 gramos, en un platillo y un mol de sal, 58.5 gramos, en el otro; las lupas muestran el mismo número de partículas y la balanza se inclina hacia la sal</title>
       </svg>
-      <figcaption class="atom-figure__caption">Los dos platillos tienen 6.022 × 10<sup>23</sup> partículas,
+      <p class="atom-figure__caption" data-solo-proyeccion>Cada partícula de sal (NaCl) pesa más que un átomo de carbono.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Los dos platillos tienen 6.022 × 10<sup>23</sup> partículas,
         pero cada partícula de sal (NaCl) pesa más que un átomo de carbono. Por eso un mol de cada
         sustancia tiene distinta masa.</figcaption>
     </figure>
@@ -112,11 +121,14 @@
         <span class="lesson-section__kicker">Calcula</span> La masa molar
       </h2>
     </header>
-    <p class="section-intro">La masa molar es la masa de un mol, en gramos por mol (g/mol). Se calcula
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La masa molar es la masa de un mol, en g/mol.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>La masa molar es la masa de un mol, en gramos por mol (g/mol). Se calcula
       igual que en la fuente: cada elemento, sus átomos por su masa atómica, y al final se suma.</p>
     <div class="formula-block">
       <p class="formula-block__expression">H<sub>2</sub>O: 2 × 1 + 1 × 16 = 18 g/mol</p>
-      <p class="formula-block__note">El subíndice dice cuántos átomos hay de cada elemento; si no hay
+      <p class="formula-block__note" data-solo-lectura>El subíndice dice cuántos átomos hay de cada elemento; si no hay
         subíndice, es uno.</p>
     </div>
     <div class="molar-calc" data-masa-molar data-lado="figura">
@@ -155,8 +167,9 @@
         <span class="lesson-section__kicker">Convierte</span> Partículas, moles y gramos
       </h2>
     </header>
-    <p class="section-intro">El mol está en medio de todo: para ir de partículas a gramos, o al revés,
-      siempre pasas por los moles.</p>
+    <p class="section-intro"><span data-solo-lectura>El mol está en medio de todo: para ir de partículas a gramos, o al revés,
+      siempre pasas por los moles.</span><span data-solo-proyeccion>Para ir de partículas a gramos, siempre pasas por
+      los moles.</span></p>
     <div class="mol-map" role="img" aria-label="Mapa de conversiones: de partículas a moles se divide entre 6.022 por 10 a la 23; de moles a partículas se multiplica. De moles a gramos se multiplica por la masa molar; de gramos a moles se divide.">
       <div class="mol-map__box"><strong>Partículas</strong><span>átomos o moléculas</span></div>
       <div class="mol-map__arrows" aria-hidden="true">
@@ -175,21 +188,28 @@
   <section aria-labelledby="ejemplosMol" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemplosMol">
-        <span class="lesson-section__kicker">Ejemplos resueltos</span> Dos conversiones de la fuente
+        <span class="lesson-section__kicker">Ejemplos<span data-solo-lectura> resueltos</span></span> Dos conversiones de la fuente
       </h2>
     </header>
     <div class="config-examples">
       <article class="config-example">
-        <p class="config-example__element">De partículas a moles</p>
-        <p class="config-example__note">¿Cuántos moles de CO<sub>2</sub> hay en 9.65 × 10<sup>23</sup> moléculas?</p>
-        <p class="config-example__config">9.65 × 10<sup>23</sup> ÷ 6.022 × 10<sup>23</sup> = <strong>1.60 mol</strong></p>
-        <p class="config-example__note">Las potencias 10<sup>23</sup> se cancelan: sólo divides 9.65 entre 6.022.</p>
+        <p class="config-example__element" data-solo-lectura>De partículas a moles</p>
+        <p class="config-example__note" data-solo-lectura>¿Cuántos moles de CO<sub>2</sub> hay en 9.65 × 10<sup>23</sup> moléculas?</p>
+        <p class="config-example__note" data-solo-proyeccion>¿Cuántos moles de CO<sub>2</sub> hay en 9.65&nbsp;×&nbsp;10<sup>23</sup> moléculas?</p>
+        <p class="config-example__config" data-solo-lectura>9.65 × 10<sup>23</sup> ÷ 6.022 × 10<sup>23</sup> = <strong>1.60 mol</strong></p>
+        <p class="config-example__note" data-solo-lectura>Las potencias 10<sup>23</sup> se cancelan: sólo divides 9.65 entre 6.022.</p>
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p><span class="fr"><span class="fr__n">9.65</span><span class="fr__d">6.022</span></span> =&nbsp;1.60&nbsp;mol</p>
+        </div>
       </article>
       <article class="config-example">
-        <p class="config-example__element">De moles a gramos</p>
+        <p class="config-example__element" data-solo-lectura>De moles a gramos</p>
         <p class="config-example__note">¿Cuántos gramos hay en 5 moles de agua?</p>
-        <p class="config-example__config">Masa molar del H<sub>2</sub>O = 18 g/mol<br>5 mol × 18 g/mol = <strong>90 g</strong></p>
-        <p class="config-example__note">Los «mol» se cancelan y queda la respuesta en gramos.</p>
+        <p class="config-example__config" data-solo-lectura>Masa molar del H<sub>2</sub>O = 18 g/mol<br>5 mol × 18 g/mol = <strong>90 g</strong></p>
+        <p class="config-example__note" data-solo-lectura>Los «mol» se cancelan y queda la respuesta en gramos.</p>
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>5&nbsp;mol&nbsp;×&nbsp;18&nbsp;g/mol =&nbsp;90&nbsp;g</p>
+        </div>
       </article>
     </div>
   </section>

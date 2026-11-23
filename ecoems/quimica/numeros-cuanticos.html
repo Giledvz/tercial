@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-tanda2"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -72,7 +72,17 @@
         <span class="lesson-section__kicker">Idea central</span> Cuatro números, una dirección
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Como en un hotel, cada electrón tiene su dirección.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo"></span><span>piso</span><span class="tele-formulas__flecha">→</span><span>nivel</span></p>
+        <p><span class="tele-formulas__rotulo"></span><span>tipo de habitación</span><span class="tele-formulas__flecha">→</span><span>subnivel</span></p>
+        <p><span class="tele-formulas__rotulo"></span><span>cuarto</span><span class="tele-formulas__flecha">→</span><span>orbital</span></p>
+        <p><span class="tele-formulas__rotulo"></span><span>cama</span><span class="tele-formulas__flecha">→</span><span>giro</span></p>
+      </div>
+      <p class="tele-idea__apoyo">En un átomo, dos electrones nunca tienen los cuatro números iguales.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Cada electrón tiene su <em>propia</em> dirección</h3>
       </header>
@@ -95,32 +105,32 @@
       <h2 class="section-header__title" id="cuatroNumeros">
         <span class="lesson-section__kicker">Distingue</span> Qué dice cada número
       </h2>
-      <span class="section-header__count">n · l · m · s</span>
+      <span class="section-header__count" data-solo-lectura>n · l · m · s</span>
     </header>
     <div class="quantum-grid">
       <article class="quantum-card">
         <p class="quantum-card__symbol">n</p>
         <h3 class="quantum-card__name">Principal</h3>
-        <p class="quantum-card__text">El nivel de energía. Es el mismo número que el periodo.</p>
+        <p class="quantum-card__text"><span data-solo-lectura>El nivel de energía. Es el mismo número que el periodo.</span><span data-solo-proyeccion>El nivel.</span></p>
         <p class="quantum-card__values">1, 2, 3, … 7</p>
       </article>
       <article class="quantum-card">
         <p class="quantum-card__symbol">l</p>
         <h3 class="quantum-card__name">Secundario</h3>
-        <p class="quantum-card__text">El subnivel, es decir, el tipo de orbital.</p>
-        <p class="quantum-card__values">s = 0 · p = 1 · d = 2 · f = 3</p>
+        <p class="quantum-card__text"><span data-solo-lectura>El subnivel, es decir, el tipo de orbital.</span><span data-solo-proyeccion>El subnivel.</span></p>
+        <p class="quantum-card__values"><span data-solo-lectura>s = 0 · p = 1 · d = 2 · f = 3</span><span data-solo-proyeccion>s = 0<br>p = 1<br>d = 2<br>f = 3</span></p>
       </article>
       <article class="quantum-card">
         <p class="quantum-card__symbol">m</p>
         <h3 class="quantum-card__name">Magnético</h3>
-        <p class="quantum-card__text">El orbital dentro del subnivel: cada caja del diagrama.</p>
-        <p class="quantum-card__values">de −l a +l · en p: −1, 0, +1</p>
+        <p class="quantum-card__text"><span data-solo-lectura>El orbital dentro del subnivel: cada caja del diagrama.</span><span data-solo-proyeccion>El orbital.</span></p>
+        <p class="quantum-card__values"><span data-solo-lectura>de −l a +l · en p: −1, 0, +1</span><span data-solo-proyeccion>de −l a +l</span></p>
       </article>
       <article class="quantum-card">
         <p class="quantum-card__symbol">s</p>
         <h3 class="quantum-card__name">Espín</h3>
-        <p class="quantum-card__text">El giro del electrón: hacia arriba o hacia abajo.</p>
-        <p class="quantum-card__values">+½ (↑) · −½ (↓)</p>
+        <p class="quantum-card__text"><span data-solo-lectura>El giro del electrón: hacia arriba o hacia abajo.</span><span data-solo-proyeccion>El giro.</span></p>
+        <p class="quantum-card__values"><span data-solo-lectura>+½ (↑) · −½ (↓)</span><span data-solo-proyeccion>+½ (↑)<br>−½ (↓)</span></p>
       </article>
     </div>
     <div class="reference-table-wrap" role="region" aria-labelledby="cuatroNumeros" tabindex="0" data-diapositiva="una">
@@ -150,7 +160,11 @@
         <span class="lesson-section__kicker">Observa</span> El diagrama de orbitales
       </h2>
     </header>
-    <p class="section-intro">Cada caja es un orbital y cada flecha, un electrón. Las cajas se llenan
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Primero uno en cada caja, todos hacia arriba; después se aparean, con giro contrario.</p>
+      <p class="tele-idea__apoyo">Cada caja es un orbital y cada flecha, un electrón.</p>
+    </div>
+    <p class="section-intro" data-solo-lectura>Cada caja es un orbital y cada flecha, un electrón. Las cajas se llenan
       con dos reglas: primero entra un electrón en cada caja, todos girando hacia arriba (regla de
       Hund); después se aparean, cada uno con giro contrario, porque en una caja caben sólo dos
       (principio de exclusión de Pauli).</p>
@@ -158,7 +172,7 @@
       <svg class="escena escena--orbitales" data-escena-atomo="orbitales" viewBox="0 0 360 130" role="img" aria-labelledby="orbitalesTitle">
         <title id="orbitalesTitle">Seis electrones entran uno por uno al subnivel 2p: los tres primeros ocupan cada caja girando hacia arriba y los tres siguientes se aparean girando hacia abajo; se muestran los números m y s del último en llegar</title>
       </svg>
-      <figcaption class="atom-figure__caption">Las cajas se cuentan de izquierda a derecha: m = −1, 0,
+      <figcaption class="atom-figure__caption" data-solo-lectura>Las cajas se cuentan de izquierda a derecha: m = −1, 0,
         +1. El electrón que llega solo a su caja tiene s = +½; el que completa el par, s = −½.</figcaption>
     </figure>
   </section>
@@ -204,7 +218,7 @@
             <div><dt>m · magnético</dt><dd data-cajas-m></dd></div>
             <div><dt>s · espín</dt><dd data-cajas-s></dd></div>
           </dl>
-          <p class="diagonal-tool__note" data-cajas-why></p>
+          <p class="diagonal-tool__note" data-cajas-why data-solo-lectura></p>
           <p class="visually-hidden" data-cajas-live aria-live="polite"></p>
         </div>
       </div>
@@ -214,10 +228,14 @@
   <section aria-labelledby="ejemploCuanticos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploCuanticos">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> El último electrón del indio
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> El último electrón del indio
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Indio, Z = 49: ¿qué números cuánticos tiene su último electrón?</p>
+      <p class="tele-idea__apoyo">Aquí, la flecha hacia arriba vale +½.</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Configura</span><p><sup>49</sup>In: [Kr] 5s<sup>2</sup>
         4d<sup>10</sup> <strong>5p<sup>1</sup></strong>. El último electrón entró en 5p.</p></li>
       <li><span class="worked-steps__label">n y l</span><p>5p está en el nivel 5 y es un subnivel p:
@@ -227,7 +245,13 @@
       <li><span class="worked-steps__label">Gira</span><p>Está solo en su caja y apunta hacia arriba:
         <strong>s = +½</strong>.</p></li>
     </ol>
-    <p class="editorial-note">Algunos libros escriben −½ para la primera flecha y +½ para la segunda.
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>n = 5</p>
+      <p>l = 1</p>
+      <p>m = −1</p>
+      <p>s = +½</p>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Algunos libros escriben −½ para la primera flecha y +½ para la segunda.
       Aquí seguimos la convención de la fuente: la flecha hacia arriba vale +½.</p>
   </section>
 

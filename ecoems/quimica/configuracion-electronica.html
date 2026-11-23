@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-atajo-gas">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-atajo-gas">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-atomo.js?v=20261008-kernel"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 3 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Configuración <em>electrónica</em></h1>
-    <p class="hero__lede">Los electrones de un átomo no están en cualquier lugar: ocupan niveles y
+    <p class="hero__lede"><span data-solo-lectura>Los electrones de un átomo no están en cualquier lugar: ocupan niveles y
       subniveles en un orden fijo. Escribir ese orden te dice en qué periodo y en qué familia está el
-      elemento.</p>
+      elemento.</span><span data-solo-proyeccion>Los electrones ocupan niveles y subniveles en un orden fijo. Ese
+      orden te dice el periodo y la familia del elemento.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,14 @@
         <span class="lesson-section__kicker">Idea central</span> Primero se llenan los lugares de menor energía
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La configuración es la dirección de cada electrón.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Sodio</span><span>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup></span><span></span><span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">En cada <strong>orbital</strong> caben, como máximo, 2 electrones.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">La configuración es la <em>dirección</em> de cada electrón</h3>
       </header>
@@ -101,13 +109,14 @@
       <div class="config-anatomy__term" aria-hidden="true"><span>3</span><span>p</span><sup>5</sup></div>
       <ul class="config-anatomy__parts">
         <li><span class="config-anatomy__glyph">3</span><span class="config-anatomy__tag">Nivel de energía</span>
-          Va del 1 al 7. Es el número de la capa, como los niveles de Bohr.</li>
+          <span data-solo-lectura>Va del 1 al 7. Es el número de la capa, como los niveles de Bohr.</span><span data-solo-proyeccion>Del 1 al 7.</span></li>
         <li><span class="config-anatomy__glyph">p</span><span class="config-anatomy__tag">Subnivel</span>
-          El tipo de orbital: s, p, d o f.</li>
+          <span data-solo-lectura>El tipo de orbital: s, p, d o f.</span><span data-solo-proyeccion>s, p, d o f.</span></li>
         <li><span class="config-anatomy__glyph config-anatomy__glyph--sup">5</span><span class="config-anatomy__tag">Electrones</span>
-          Cuántos electrones hay en ese subnivel.</li>
+          <span data-solo-lectura>Cuántos electrones hay en ese subnivel.</span><span data-solo-proyeccion>Los que hay en ese subnivel.</span></li>
       </ul>
-      <figcaption class="atom-figure__caption" id="anatomiaCaption">3p<sup>5</sup> se lee «tres pe cinco»:
+      <p class="atom-figure__caption" data-solo-proyeccion>3p<sup>5</sup> se lee «tres pe cinco».</p>
+      <figcaption class="atom-figure__caption" id="anatomiaCaption" data-solo-lectura>3p<sup>5</sup> se lee «tres pe cinco»:
         en el subnivel p del nivel 3 hay 5 electrones.</figcaption>
     </figure>
   </section>
@@ -117,7 +126,7 @@
       <h2 class="section-header__title" id="tiposOrbital">
         <span class="lesson-section__kicker">Observa</span> Cuatro tipos de orbital
       </h2>
-      <span class="section-header__count">s · p · d · f</span>
+      <span class="section-header__count" data-solo-lectura>s · p · d · f</span>
     </header>
     <ul class="orbital-grid">
       <li class="orbital-type">
@@ -169,7 +178,7 @@
         <p class="orbital-type__shape-name">formas más complejas</p>
       </li>
     </ul>
-    <p class="editorial-note">En cada orbital caben 2 electrones. Por eso un subnivel s admite 2; uno p,
+    <p class="editorial-note" data-solo-lectura>En cada orbital caben 2 electrones. Por eso un subnivel s admite 2; uno p,
       6; uno d, 10, y uno f, 14. El punto del centro es el núcleo.</p>
   </section>
 
@@ -232,7 +241,11 @@
         <span class="lesson-section__kicker">Atajo</span> La configuración abreviada con gas noble
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El gas noble anterior resume los niveles llenos.</p>
+      <p class="tele-idea__apoyo">Su símbolo va entre corchetes; después, sólo los electrones que faltan.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Los gases nobles resumen los niveles <em>llenos</em></h3>
       </header>
@@ -249,7 +262,7 @@
       <svg class="escena escena--kernel" data-escena-atomo="kernel" viewBox="0 0 360 120" role="img" aria-labelledby="kernelTitle">
         <title id="kernelTitle">Las configuraciones completas del sodio, el bromo y el plomo se abrevian: los subniveles que coinciden con el gas noble anterior se juntan en su símbolo entre corchetes</title>
       </svg>
-      <figcaption class="atom-figure__caption">Los subniveles del gas noble se juntan en un solo símbolo;
+      <figcaption class="atom-figure__caption" data-solo-lectura>Los subniveles del gas noble se juntan en un solo símbolo;
         sólo quedan a la vista los últimos.</figcaption>
     </figure>
     <div class="reference-table-wrap" role="region" aria-labelledby="configuracionAbreviada" tabindex="0" data-diapositiva="una">
@@ -273,7 +286,7 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Usa el gas noble con menos electrones que el elemento y que esté más
+    <p class="editorial-note" data-solo-lectura>Usa el gas noble con menos electrones que el elemento y que esté más
       cerca de él. La forma abreviada no cambia el periodo ni los electrones de valencia: sólo ahorra
       escritura.</p>
   </section>
@@ -287,47 +300,71 @@
     <div class="rule-grid rule-grid--three">
       <article class="rule-card">
         <p class="rule-card__formula">Periodo</p>
-        <p class="rule-card__text">Es el nivel más alto que aparece en la configuración.</p>
+        <p class="rule-card__text"><span data-solo-lectura>Es el nivel más alto que aparece en la configuración.</span><span data-solo-proyeccion>El nivel más alto.</span></p>
       </article>
       <article class="rule-card">
         <p class="rule-card__formula">Electrones de valencia</p>
-        <p class="rule-card__text">Son los del último nivel: suma los electrones s y p de ese número.</p>
+        <p class="rule-card__text"><span data-solo-lectura>Son los del último nivel: suma los electrones s y p de ese número.</span><span data-solo-proyeccion>Los del último nivel: suma los s y
+          los p.</span></p>
       </article>
       <article class="rule-card">
         <p class="rule-card__formula">Familia (grupo A)</p>
-        <p class="rule-card__text">Es el número de electrones de valencia, escrito en números romanos.</p>
+        <p class="rule-card__text"><span data-solo-lectura>Es el número de electrones de valencia, escrito en números romanos.</span><span data-solo-proyeccion>El número de electrones de valencia, en
+          romanos.</span></p>
       </article>
     </div>
 
     <div class="config-examples" data-diapositiva="una">
       <article class="config-example">
         <p class="config-example__element"><sup>11</sup>Na · sodio</p>
-        <p class="config-example__config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> <strong>3s<sup>1</sup></strong></p>
-        <dl class="config-example__facts">
+        <p class="config-example__config" data-solo-lectura>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> <strong>3s<sup>1</sup></strong></p>
+        <p class="config-example__config" data-solo-proyeccion>[Ne] 3s<sup>1</sup></p>
+        <dl class="config-example__facts" data-solo-lectura>
           <div><dt>Periodo</dt><dd>3 · el nivel más alto es 3</dd></div>
           <div><dt>Valencia</dt><dd>1 electrón · 3s<sup>1</sup></dd></div>
           <div><dt>Familia</dt><dd>IA</dd></div>
           <div><dt>Por niveles</dt><dd>2 · 8 · 1</dd></div>
           <div><dt>Abreviada</dt><dd>[Ne] 3s<sup>1</sup></dd></div>
         </dl>
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>Periodo: 3</p>
+          <p>Valencia: 1</p>
+          <p>Familia: IA</p>
+        </div>
       </article>
       <article class="config-example">
         <p class="config-example__element"><sup>35</sup>Br · bromo</p>
-        <p class="config-example__config">1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> <strong>4s<sup>2</sup></strong> 3d<sup>10</sup> <strong>4p<sup>5</sup></strong></p>
-        <dl class="config-example__facts">
+        <p class="config-example__config" data-solo-lectura>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> <strong>4s<sup>2</sup></strong> 3d<sup>10</sup> <strong>4p<sup>5</sup></strong></p>
+        <p class="config-example__config" data-solo-proyeccion>[Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup></p>
+        <dl class="config-example__facts" data-solo-lectura>
           <div><dt>Periodo</dt><dd>4 · el nivel más alto es 4</dd></div>
           <div><dt>Valencia</dt><dd>4s<sup>2</sup> + 4p<sup>5</sup> = 7 electrones</dd></div>
           <div><dt>Familia</dt><dd>VIIA</dd></div>
           <div><dt>Por niveles</dt><dd>2 · 8 · 18 · 7</dd></div>
           <div><dt>Abreviada</dt><dd>[Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup></dd></div>
         </dl>
-        <p class="config-example__note">Ojo: 3d<sup>10</sup> no cuenta para la valencia, porque es del nivel 3.</p>
+        <p class="config-example__note" data-solo-lectura>Ojo: 3d<sup>10</sup> no cuenta para la valencia, porque es del nivel 3.</p>
+        <div class="tele-respuesta" data-solo-proyeccion data-revela>
+          <p>Periodo: 4</p>
+          <p>Valencia: 7</p>
+          <p>Familia: VIIA</p>
+        </div>
       </article>
     </div>
-    <p class="editorial-note">Estas reglas sirven para los elementos de los grupos A (bloques s y p). Los
+    <p class="editorial-note" data-solo-lectura>Estas reglas sirven para los elementos de los grupos A (bloques s y p). Los
       metales de transición, como el hierro, se leen de otra forma; los verás en «Bloques s, p, d y f».
       El helio es la excepción: tiene 2 electrones de valencia, pero va con los gases nobles (VIIIA)
       porque su único nivel está lleno.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Sólo cuentan los electrones del último nivel.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">4s<sup>2</sup> + 3d<sup>10</sup> + 4p<sup>5</sup> = 17</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">4s<sup>2</sup> + 4p<sup>5</sup> = 7</span></p>
+        </div>
+        <p class="tele-idea__apoyo">El 3d<sup>10</sup> es del nivel 3.</p>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
