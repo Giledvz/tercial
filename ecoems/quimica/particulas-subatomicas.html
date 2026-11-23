@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -74,7 +74,11 @@
         <span class="lesson-section__kicker">Idea central</span> Tres partículas, tres papeles
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El núcleo guarda la masa; los electrones, la carga negativa.</p>
+      <p class="tele-idea__apoyo">Un protón tiene unas 1,800 veces más masa que un electrón.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El núcleo guarda la <em>masa</em>; los electrones, la carga negativa</h3>
       </header>
@@ -176,7 +180,7 @@
             <div><dt>Número de masa · A = p<sup>+</sup> + n<sup>0</sup></dt><dd data-builder-a>6 + 6 = 12</dd></div>
             <div><dt>Carga · p<sup>+</sup> − e<sup>−</sup></dt><dd data-builder-charge>6 − 6 = 0 · átomo neutro</dd></div>
           </dl>
-          <p class="atom-builder__note" data-builder-note></p>
+          <p class="atom-builder__note" data-builder-note data-solo-lectura></p>
         </div>
         <button class="practice-reset atom-builder__reset" type="button" data-builder-reset>Volver al carbono</button>
       </div>
@@ -201,13 +205,13 @@
       <ul class="isotope-notation__keys">
         <li><span class="isotope-notation__tag">Arriba a la izquierda</span> <strong>A</strong>, número de masa: protones + neutrones.</li>
         <li><span class="isotope-notation__tag">Abajo a la izquierda</span> <strong>Z</strong>, número atómico: los protones.</li>
-        <li><span class="isotope-notation__tag">Arriba a la derecha</span> la <strong>carga</strong>; si no aparece, el átomo es neutro.</li>
+        <li><span class="isotope-notation__tag">Arriba a la derecha</span> la <strong>carga</strong><span data-solo-lectura>; si no aparece, el átomo es neutro.</span><span data-solo-proyeccion>; si no aparece, es neutro.</span></li>
       </ul>
-      <figcaption class="atom-figure__caption" id="notacionCaption">El ion sodio: 11 protones, 23 − 11 = 12
+      <figcaption class="atom-figure__caption" id="notacionCaption" data-solo-lectura>El ion sodio: 11 protones, 23 − 11 = 12
         neutrones y, como perdió un electrón, 10 electrones.</figcaption>
     </figure>
 
-    <div class="rule-grid">
+    <div class="rule-grid" data-solo-lectura>
       <article class="rule-card">
         <p class="rule-card__formula">Z = p<sup>+</sup></p>
         <p class="rule-card__text">El número atómico es el número de protones. Identifica al elemento:
@@ -228,15 +232,43 @@
           positivo (catión); si gana, queda negativo (anión).</p>
       </article>
     </div>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Si pierde electrones, queda positivo: catión.</p>
+        <p class="tele-idea__apoyo">Si gana electrones, queda negativo: anión.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Ion sodio</span><span><sup>23</sup><sub>11</sub>Na<sup>1+</sup></span><span></span><span></span></p>
+        </div>
+      </div>
+      <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Cuántos protones, neutrones y electrones tiene?</h3>
+      <div class="tele-respuesta" data-revela>
+        <p>protones&nbsp;=&nbsp;11</p>
+        <p>neutrones&nbsp;=&nbsp;23&nbsp;−&nbsp;11&nbsp;=&nbsp;12</p>
+        <p>electrones&nbsp;=&nbsp;11&nbsp;−&nbsp;1&nbsp;=&nbsp;10</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ejemploParticulas" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploParticulas">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> El ion aluminio, <sup>27</sup>Al<sup>3+</sup>
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> El ion aluminio, <sup>27</sup>Al<sup>3+</sup>
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Número atómico</span><span>Z = 13</span><span></span><span></span></p>
+      </div>
+    </div>
+    <h3 class="ejemplo__planteo ejemplo__planteo--frase" data-solo-proyeccion>¿Cuántos protones, neutrones y electrones
+      tiene este ion?</h3>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>protones&nbsp;=&nbsp;13</p>
+      <p>neutrones&nbsp;=&nbsp;27&nbsp;−&nbsp;13&nbsp;=&nbsp;14</p>
+      <p>electrones&nbsp;=&nbsp;13&nbsp;−&nbsp;3&nbsp;=&nbsp;10</p>
+      <p>carga&nbsp;=&nbsp;13&nbsp;−&nbsp;10&nbsp;=&nbsp;3+<span class="tele-veredicto">sí</span></p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Protones</span><p>El aluminio tiene Z = 13, así que tiene
         <strong>13 protones</strong>.</p></li>
       <li><span class="worked-steps__label">Neutrones</span><p>n<sup>0</sup> = A − Z = 27 − 13 =

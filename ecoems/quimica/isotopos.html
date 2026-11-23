@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-desplegables">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-desplegables">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -51,8 +51,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 5 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Isótopos, iones y <em>alótropos</em></h1>
-    <p class="hero__lede">Tres palabras que se confunden y una idea que las une: en los tres casos el
-      elemento es el mismo, porque no cambian sus protones. Lo que cambia es otra cosa.</p>
+    <p class="hero__lede"><span data-solo-lectura>Tres palabras que se confunden y una idea que las une: en los tres casos el
+      elemento es el mismo, porque no cambian sus protones. Lo que cambia es otra cosa.</span><span data-solo-proyeccion>En los
+      tres casos el elemento es el mismo, porque no cambian sus protones.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -72,7 +73,15 @@
         <span class="lesson-section__kicker">Idea central</span> Los protones deciden el elemento
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si cambia Z, cambia el elemento; si cambia otra cosa, no.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Número atómico</span><span>Z = protones</span><span></span><span></span></p>
+        <p><span class="tele-formulas__rotulo">Número de masa</span><span>A = protones + neutrones</span><span></span><span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Todo átomo con 6 protones es carbono.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Si cambia Z, cambia el elemento; si cambia otra cosa, <em>no</em></h3>
       </header>
@@ -96,13 +105,17 @@
         <span class="lesson-section__kicker">Isótopos</span> Mismo elemento, distinta masa
       </h2>
     </header>
-    <p class="section-intro">Los isótopos son átomos de un mismo elemento que tienen distinto número de
+    <p class="section-intro" data-solo-lectura>Los isótopos son átomos de un mismo elemento que tienen distinto número de
       neutrones y, por eso, distinto número de masa. Tienen los mismos protones y los mismos electrones.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los isótopos tienen distinto número de neutrones y, por eso, distinta masa.</p>
+    </div>
     <figure class="atom-figure atom-figure--wide">
       <svg class="escena escena--isotopos" data-escena-atomo="isotopos" viewBox="0 0 360 160" role="img" aria-labelledby="isotoposTitle">
         <title id="isotoposTitle">Tres átomos de hidrógeno con un protón y un electrón cada uno: el protio no tiene neutrones, al deuterio llega un neutrón y al tritio dos; su número de masa es 1, 2 y 3</title>
       </svg>
-      <figcaption class="atom-figure__caption">Los tres son hidrógeno porque tienen un protón. Al agregar
+      <p class="atom-figure__caption" data-solo-proyeccion>Los tres son hidrógeno porque tienen un protón.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Los tres son hidrógeno porque tienen un protón. Al agregar
         neutrones sólo cambia la masa: 1, 2 y 3 uma.</figcaption>
     </figure>
     <div class="comparison-grid" data-diapositiva="una">
@@ -112,7 +125,14 @@
           <h3 class="comparison-item__title"><sup>12</sup><sub>6</sub>C</h3>
         </header>
         <div class="comparison-item__body">
-          <p>6 protones, 6 electrones y 12 − 6 = <strong>6 neutrones</strong>. Es el más abundante.</p>
+          <p data-solo-lectura>6 protones, 6 electrones y 12 − 6 = <strong>6 neutrones</strong>. Es el más abundante.</p>
+          <div class="tele-pizarron" data-solo-proyeccion>
+            <div class="tele-pizarron__columna"><p>protones = 6</p></div>
+          </div>
+          <div class="tele-respuesta" data-solo-proyeccion data-revela>
+            <p>neutrones&nbsp;=&nbsp;12&nbsp;−&nbsp;6&nbsp;=&nbsp;6</p>
+          </div>
+          <p data-solo-proyeccion>Es el más abundante.</p>
         </div>
       </article>
       <article class="comparison-item">
@@ -121,8 +141,15 @@
           <h3 class="comparison-item__title"><sup>14</sup><sub>6</sub>C</h3>
         </header>
         <div class="comparison-item__body">
-          <p>6 protones, 6 electrones y 14 − 6 = <strong>8 neutrones</strong>. Es radiactivo y sirve
+          <p data-solo-lectura>6 protones, 6 electrones y 14 − 6 = <strong>8 neutrones</strong>. Es radiactivo y sirve
             para calcular la edad de restos antiguos.</p>
+          <div class="tele-pizarron" data-solo-proyeccion>
+            <div class="tele-pizarron__columna"><p>protones = 6</p></div>
+          </div>
+          <div class="tele-respuesta" data-solo-proyeccion data-revela>
+            <p>neutrones&nbsp;=&nbsp;14&nbsp;−&nbsp;6&nbsp;=&nbsp;8</p>
+          </div>
+          <p data-solo-proyeccion>Es radiactivo: sirve para calcular la edad de restos antiguos.</p>
         </div>
       </article>
     </div>
@@ -134,13 +161,18 @@
         <span class="lesson-section__kicker">Alótropos</span> Mismo elemento, distinto acomodo
       </h2>
     </header>
-    <p class="section-intro">Los alótropos son formas de un mismo elemento, en el mismo estado de
+    <p class="section-intro" data-solo-lectura>Los alótropos son formas de un mismo elemento, en el mismo estado de
       agregación, cuyos átomos están acomodados de manera distinta. Por eso tienen propiedades distintas.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los alótropos tienen sus átomos acomodados de distinta forma.</p>
+    </div>
     <figure class="atom-figure atom-figure--wide">
       <svg class="escena escena--alotropos" data-escena-atomo="alotropos" viewBox="0 0 360 194" role="img" aria-labelledby="alotroposTitle">
         <title id="alotroposTitle">Dos modelos de átomos de carbono girando: el grafito, formado por capas de hexágonos unidas débilmente, y el diamante, una red rígida en la que cada átomo se une a otros cuatro</title>
       </svg>
-      <figcaption class="atom-figure__caption">Grafito y diamante son sólo carbono. En el grafito las capas
+      <p class="atom-figure__caption" data-solo-proyeccion>Los dos son sólo carbono: el grafito es suave; el diamante,
+        el material natural más duro.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Grafito y diamante son sólo carbono. En el grafito las capas
         se deslizan: por eso es suave y sirve para la punta de los lápices. En el diamante cada átomo se
         une a otros cuatro: por eso es el material natural más duro.</figcaption>
     </figure>
@@ -210,7 +242,7 @@
           <tr>
             <th scope="col">Son…</th>
             <th scope="col">Qué cambia</th>
-            <th scope="col">Qué se conserva</th>
+            <th scope="col" data-solo-lectura>Qué se conserva</th>
             <th scope="col">Ejemplo</th>
           </tr>
         </thead>
@@ -218,19 +250,19 @@
           <tr>
             <th scope="row">Isótopos</th>
             <td>Los neutrones y, con ellos, la masa (A)</td>
-            <td>Protones y electrones</td>
+            <td data-solo-lectura>Protones y electrones</td>
             <td><sup>12</sup>C y <sup>14</sup>C</td>
           </tr>
           <tr>
             <th scope="row">Iones</th>
             <td>Los electrones y, con ellos, la carga</td>
-            <td>Protones y neutrones</td>
+            <td data-solo-lectura>Protones y neutrones</td>
             <td>Na y Na<sup>+</sup></td>
           </tr>
           <tr>
             <th scope="row">Alótropos</th>
             <td>El acomodo de los átomos</td>
-            <td>El elemento y su estado</td>
+            <td data-solo-lectura>El elemento y su estado</td>
             <td>Grafito y diamante</td>
           </tr>
         </tbody>
