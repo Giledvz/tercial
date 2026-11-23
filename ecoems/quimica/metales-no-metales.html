@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,8 +51,9 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 8 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Metales, no metales y <em>metaloides</em></h1>
-    <p class="hero__lede">Más de 90 de los 118 elementos son metales. Una línea en escalera los separa
-      de los no metales, y pegados a ella están los metaloides, que tienen un poco de los dos.</p>
+    <p class="hero__lede"><span data-solo-lectura>Más de 90 de los 118 elementos son metales. Una línea en escalera los separa
+      de los no metales, y pegados a ella están los metaloides, que tienen un poco de los dos.</span><span data-solo-proyeccion>Más
+      de 90 de los 118 elementos son metales. Una línea en escalera los separa de los no metales.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -78,11 +79,15 @@
           <title id="mapaTitle">Tabla periódica coloreada: los metales ocupan la izquierda, el centro y las dos filas de abajo; los no metales, la esquina de arriba a la derecha y el hidrógeno; los seis metaloides, boro, silicio, germanio, arsénico, antimonio y telurio, están junto a una línea en escalera que va del boro al astato</title>
         </svg>
       </div>
-      <figcaption class="atom-figure__caption">La escalera va del boro al astato. A su izquierda, los
+      <figcaption class="atom-figure__caption" data-solo-lectura>La escalera va del boro al astato. A su izquierda, los
         metales; a su derecha, los no metales; pegados a ella, los metaloides. En el celular, desliza la
         tabla de lado.</figcaption>
     </figure>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">A la izquierda de la escalera, los metales; a la derecha, los no metales.</p>
+      <p class="tele-idea__apoyo">Pegados a ella, los seis metaloides.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Izquierda, derecha y <em>la escalera</em></h3>
       </header>
@@ -103,6 +108,12 @@
     <p class="editorial-note" data-solo-lectura>Los elementos de la última fila, del 104 en adelante, se fabrican en
       laboratorios y duran muy poco; se clasifican por su lugar en la tabla, pero casi no se conocen sus
       propiedades.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El hidrógeno está en el grupo IA, pero es un gas no metálico.</p>
+        <p class="tele-idea__apoyo">Va ahí porque tiene 1 electrón de valencia, como los metales alcalinos.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="fisicasMetales" data-diapositiva="una">
@@ -111,20 +122,24 @@
         <span class="lesson-section__kicker">Observa</span> Propiedades físicas
       </h2>
     </header>
-    <p class="section-intro">Las propiedades físicas se observan sin que la sustancia cambie: el brillo,
+    <p class="section-intro" data-solo-lectura>Las propiedades físicas se observan sin que la sustancia cambie: el brillo,
       el estado, si se deja doblar y si conduce el calor y la electricidad.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Las propiedades físicas se observan sin que la sustancia cambie.</p>
+    </div>
     <figure class="atom-figure">
       <svg class="escena escena--propiedad" data-escena-tabla="martillo" viewBox="0 0 360 166" role="img" aria-labelledby="martilloTitle">
         <title id="martilloTitle">Un martillo golpea tres veces un bloque de cobre, que se aplana en una lámina cada vez más delgada; otro martillo golpea una vez un trozo de azufre, que se rompe en pedazos</title>
       </svg>
-      <figcaption class="atom-figure__caption">El cobre se aplana sin romperse: es maleable (y dúctil:
+      <figcaption class="atom-figure__caption" data-solo-lectura>El cobre se aplana sin romperse: es maleable (y dúctil:
         también se estira en hilos). El azufre, de un golpe, se rompe: es quebradizo.</figcaption>
     </figure>
     <figure class="atom-figure" data-diapositiva="una">
       <svg class="escena escena--propiedad" data-escena-tabla="circuito" viewBox="0 0 360 172" role="img" aria-labelledby="circuitoTitle">
         <title id="circuitoTitle">Un circuito con una pila y un foco: con una barra de cobre, los electrones que empuja la pila recorren todo el circuito y el foco enciende; con un trozo de azufre, los electrones llegan hasta él, se detienen en fila y el foco queda apagado</title>
       </svg>
-      <figcaption class="atom-figure__caption">Los puntos son los electrones que empuja la pila. Con el
+      <p class="atom-figure__caption" data-solo-proyeccion>Los puntos son los electrones que empuja la pila.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Los puntos son los electrones que empuja la pila. Con el
         cobre recorren todo el circuito y el foco enciende. Con el azufre llegan hasta él y se detienen en
         fila: no pasa la corriente, porque el azufre es un aislante.</figcaption>
     </figure>
@@ -178,8 +193,11 @@
         <span class="lesson-section__kicker">Compara</span> Propiedades químicas
       </h2>
     </header>
-    <p class="section-intro">Las propiedades químicas aparecen cuando la sustancia reacciona y se
+    <p class="section-intro" data-solo-lectura>Las propiedades químicas aparecen cuando la sustancia reacciona y se
       transforma en otra.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Las propiedades químicas aparecen cuando la sustancia reacciona y se transforma en otra.</p>
+    </div>
     <div class="comparison-grid">
       <article class="comparison-item">
         <header class="comparison-item__header">
@@ -187,7 +205,7 @@
           <h3 class="comparison-item__title">Pierden electrones: <em>cationes</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Al reaccionar pierden sus electrones de valencia y quedan con carga positiva.</p>
+          <p data-solo-lectura>Al reaccionar pierden sus electrones de valencia y quedan con carga positiva.</p>
           <ul class="example-list"><li>Na<sup>+</sup></li><li>Mg<sup>2+</sup></li><li>Ca<sup>2+</sup></li></ul>
         </div>
       </article>
@@ -197,14 +215,14 @@
           <h3 class="comparison-item__title">Ganan electrones: <em>aniones</em></h3>
         </header>
         <div class="comparison-item__body">
-          <p>Al reaccionar ganan electrones y quedan con carga negativa.</p>
+          <p data-solo-lectura>Al reaccionar ganan electrones y quedan con carga negativa.</p>
           <ul class="example-list"><li>Cl<sup>−</sup></li><li>O<sup>2−</sup></li><li>N<sup>3−</sup></li></ul>
         </div>
       </article>
     </div>
     <div class="rutas-oxidos" data-rutas data-diapositiva="una">
       <div class="ruta">
-        <p class="ruta__titulo">Metal con oxígeno</p>
+        <p class="ruta__titulo" data-solo-lectura>Metal con oxígeno</p>
         <ol class="ruta__pasos" aria-label="Del magnesio a un hidróxido">
           <li class="ruta__paso" style="--i: 0"><span class="ruta__formula">2Mg + O<sub>2</sub></span><span class="ruta__nombre">metal + oxígeno</span></li>
           <li class="ruta__flecha" style="--i: 1" aria-hidden="true">→</li>
@@ -214,7 +232,7 @@
         </ol>
       </div>
       <div class="ruta">
-        <p class="ruta__titulo">No metal con oxígeno</p>
+        <p class="ruta__titulo" data-solo-lectura>No metal con oxígeno</p>
         <ol class="ruta__pasos" aria-label="Del carbono a un oxiácido">
           <li class="ruta__paso" style="--i: 0"><span class="ruta__formula">C + O<sub>2</sub></span><span class="ruta__nombre">no metal + oxígeno</span></li>
           <li class="ruta__flecha" style="--i: 1" aria-hidden="true">→</li>
@@ -225,10 +243,17 @@
       </div>
     </div>
     <div data-diapositiva="una">
-      <p class="editorial-note">El hidróxido de magnesio es la «leche de magnesia» de los antiácidos, y el
+      <p class="editorial-note" data-solo-lectura>El hidróxido de magnesio es la «leche de magnesia» de los antiácidos, y el
         ácido carbónico se forma en los refrescos con gas. Además, muchos metales reaccionan con los ácidos
         y liberan hidrógeno, como el zinc: Zn + 2HCl → ZnCl<sub>2</sub> + H<sub>2</sub>. Los no metales,
         por lo general, no.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Muchos metales reaccionan con los ácidos y liberan hidrógeno.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Zinc</span><span>Zn + 2HCl</span><span class="tele-formulas__flecha">→</span><span>ZnCl<sub>2</sub> + H<sub>2</sub></span></p>
+        </div>
+        <p class="tele-idea__apoyo">Los no metales, por lo general, no.</p>
+      </div>
     </div>
   </section>
 
@@ -260,10 +285,16 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Las familias A son los <strong>elementos representativos</strong>; las
+    <p class="editorial-note" data-solo-lectura>Las familias A son los <strong>elementos representativos</strong>; las
       familias B, los <strong>elementos de transición</strong>; y los lantánidos y actínidos, los
       <strong>elementos de transición interna</strong>. El hidrógeno va arriba del grupo IA, pero no es
       un metal alcalino.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Las familias A son los <strong>elementos representativos</strong>; las B, los <strong>de transición</strong>.</p>
+        <p class="tele-idea__apoyo">Los lantánidos y los actínidos son los <strong>de transición interna</strong>.</p>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>

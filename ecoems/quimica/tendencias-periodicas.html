@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 10 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Tendencias <em>periódicas</em></h1>
-    <p class="hero__lede">Con sólo ver dónde está un elemento en la tabla puedes saber si es grande o
+    <p class="hero__lede"><span data-solo-lectura>Con sólo ver dónde está un elemento en la tabla puedes saber si es grande o
       pequeño, si atrae electrones con fuerza o si los pierde con facilidad. Cinco propiedades cambian de
-      forma ordenada a lo largo de los periodos y los grupos.</p>
+      forma ordenada a lo largo de los periodos y los grupos.</span><span data-solo-proyeccion>Con sólo ver dónde
+      está un elemento en la tabla puedes saber si es grande o pequeño.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,14 @@
         <span class="lesson-section__kicker">Idea central</span> Dos razones lo explican todo
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Abajo</span><span>+1 nivel</span><span class="tele-formulas__flecha">→</span><span>crece</span></p>
+        <p><span class="tele-formulas__rotulo">Derecha</span><span>+1 protón</span><span class="tele-formulas__flecha">→</span><span>se encoge</span></p>
+      </div>
+      <p class="tele-idea__frase">Un átomo grande retiene poco a sus electrones; uno pequeño los sujeta con fuerza.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Más niveles hacia abajo, más carga <em>hacia la derecha</em></h3>
       </header>
@@ -95,7 +103,8 @@
       <svg class="escena escena--tabla" data-escena-tabla="radios" viewBox="0 0 360 236" role="img" aria-labelledby="radiosTitle">
         <title id="radiosTitle">Átomos dibujados a escala: en el periodo 3, del sodio al argón, cada átomo tiene un protón más y es más pequeño; en el grupo IA, del litio al cesio, cada átomo tiene un nivel más y es más grande</title>
       </svg>
-      <figcaption class="atom-figure__caption">Radios calculados, a escala. El cesio mide unas cuatro veces lo
+      <p class="atom-figure__caption" data-solo-proyeccion>Radios calculados, a escala: el cesio mide unas cuatro veces lo que el argón.</p>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Radios calculados, a escala. El cesio mide unas cuatro veces lo
         que el argón: sus electrones externos están en el sexto nivel; los del argón, en el
         tercero.</figcaption>
     </figure>
@@ -142,23 +151,26 @@
         <thead>
           <tr>
             <th scope="col">Propiedad</th>
-            <th scope="col">Qué mide</th>
+            <th scope="col" data-solo-lectura>Qué mide</th>
             <th scope="col">Aumenta hacia</th>
             <th scope="col">La mayor</th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Radio atómico</th><td>Distancia del núcleo al electrón más externo</td><td>Abajo y a la izquierda</td><td>Cesio (el menor: helio)</td></tr>
-          <tr><th scope="row">Energía de ionización</th><td>Energía para arrancar el electrón más externo</td><td>Arriba y a la derecha</td><td>Helio</td></tr>
-          <tr><th scope="row">Afinidad electrónica</th><td>Energía que se libera al ganar un electrón</td><td>Arriba y a la derecha, con excepciones</td><td>Cloro</td></tr>
-          <tr><th scope="row">Electronegatividad</th><td>Atracción por los electrones de un enlace</td><td>Arriba y a la derecha</td><td>Flúor</td></tr>
-          <tr><th scope="row">Carácter metálico</th><td>Facilidad para perder electrones</td><td>Abajo y a la izquierda</td><td>Cesio</td></tr>
+          <tr><th scope="row">Radio atómico</th><td data-solo-lectura>Distancia del núcleo al electrón más externo</td><td>Abajo y a la izquierda</td><td>Cesio (el menor: helio)</td></tr>
+          <tr><th scope="row">Energía de ionización</th><td data-solo-lectura>Energía para arrancar el electrón más externo</td><td>Arriba y a la derecha</td><td>Helio</td></tr>
+          <tr><th scope="row">Afinidad electrónica</th><td data-solo-lectura>Energía que se libera al ganar un electrón</td><td>Arriba y a la derecha, con excepciones</td><td>Cloro</td></tr>
+          <tr><th scope="row">Electronegatividad</th><td data-solo-lectura>Atracción por los electrones de un enlace</td><td>Arriba y a la derecha</td><td>Flúor</td></tr>
+          <tr><th scope="row">Carácter metálico</th><td data-solo-lectura>Facilidad para perder electrones</td><td>Abajo y a la izquierda</td><td>Cesio</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Para recordarlo: el radio y el carácter metálico aumentan hacia abajo a la
+    <p class="editorial-note" data-solo-lectura>Para recordarlo: el radio y el carácter metálico aumentan hacia abajo a la
       izquierda; las otras tres, hacia arriba a la derecha. Un átomo grande retiene poco a sus electrones:
       los pierde fácil, atrae poco a los ajenos y cuesta poco arrancarle uno.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El radio y el carácter metálico aumentan hacia abajo a la izquierda; las otras tres, hacia arriba a la derecha.</p>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>

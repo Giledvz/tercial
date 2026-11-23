@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261008-tanda3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261008-tanda3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-tabla.js?v=20261008-tanda3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 02 · 9 de 11 · Aprende y practica</p>
     <h1 class="hero__title">Bloques <em>s, p, d y f</em></h1>
-    <p class="hero__lede">La forma de la tabla periódica no es un capricho: sale de la regla de las
+    <p class="hero__lede"><span data-solo-lectura>La forma de la tabla periódica no es un capricho: sale de la regla de las
       diagonales. Cada región, o bloque, reúne a los elementos cuyo último electrón entra en el mismo
-      tipo de subnivel.</p>
+      tipo de subnivel.</span><span data-solo-proyeccion>La forma de la tabla periódica no es un capricho: sale de
+      la regla de las diagonales.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -79,10 +80,14 @@
           <title id="bloquesTitle">Los elementos aparecen uno por uno en orden de número atómico y cada uno se acomoda en el bloque de su último subnivel: el bloque s de 2 columnas a la izquierda, el bloque p de 6 columnas a la derecha, el bloque d de 10 columnas en medio y el bloque f de 14 columnas abajo</title>
         </svg>
       </div>
-      <figcaption class="atom-figure__caption">Arriba se ve qué subnivel se está llenando. Al final, cada
+      <figcaption class="atom-figure__caption" data-solo-lectura>Arriba se ve qué subnivel se está llenando. Al final, cada
         bloque tiene tantas columnas como electrones caben en su subnivel: 2, 6, 10 y 14.</figcaption>
     </figure>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La letra del último subnivel que se llena es el bloque.</p>
+      <p class="tele-idea__apoyo">El periodo es el nivel más alto de la configuración.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">El último subnivel decide <em>el bloque</em></h3>
       </header>
@@ -126,10 +131,19 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Ojo con el número del subnivel: en el periodo 4 el bloque d llena el 3d y en
+    <p class="editorial-note" data-solo-lectura>Ojo con el número del subnivel: en el periodo 4 el bloque d llena el 3d y en
       el periodo 6 el bloque f llena el 4f. Los subniveles d van un nivel atrás del periodo, y los f, dos.
       El helio, 1s<sup>2</sup>, es del bloque s, pero se coloca con los gases nobles porque su único nivel
       está lleno.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Ojo con el número: los subniveles d van un nivel atrás del periodo, y los f, dos.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Bloque d</span><span>4d</span><span class="tele-formulas__flecha">→</span><span>periodo 5</span></p>
+          <p><span class="tele-formulas__rotulo">Bloque f</span><span>5f</span><span class="tele-formulas__flecha">→</span><span>periodo 7</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="ubicarBloques" data-diapositiva="dos">
@@ -166,10 +180,13 @@
   <section aria-labelledby="ejemploBloques" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploBloques">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> ¿Dónde va el selenio?
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> ¿Dónde va el selenio?
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El selenio tiene Z = 34. ¿En qué bloque, periodo y columna va?</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Configura</span><p><sup>34</sup>Se: [Ar] 4s<sup>2</sup>
         3d<sup>10</sup> <strong>4p<sup>4</sup></strong>.</p></li>
       <li><span class="worked-steps__label">Bloque</span><p>El último subnivel es 4p: bloque
@@ -179,15 +196,29 @@
       <li><span class="worked-steps__label">Columna</span><p>En el bloque p, a 12 se le suman los electrones
         p: 12 + 4 = <strong>16</strong>, la familia VIA.</p></li>
     </ol>
-    <p class="editorial-note">En el bloque d se suman los electrones del último s y del d: el hierro,
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>Se: [Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>4</sup></p>
+      <p>Bloque p</p>
+      <p>Periodo 4</p>
+      <p>Columna = 12 + 4 = 16, la VIA</p>
+    </div>
+    <p class="editorial-note" data-solo-lectura>En el bloque d se suman los electrones del último s y del d: el hierro,
       4s<sup>2</sup> 3d<sup>6</sup>, va en la columna 2 + 6 = 8. La plata es un caso especial: la regla de
       las diagonales da [Kr] 5s<sup>2</sup> 4d<sup>9</sup>, pero en la realidad es [Kr] 5s<sup>1</sup>
       4d<sup>10</sup>, porque el 4d lleno la vuelve más estable. Para el bloque no cambia nada: es del
       bloque d, columna 11.</p>
-    <p class="editorial-note">En estas tablas el lutecio (Lu) y el laurencio (Lr) quedan en el grupo 3, y
+    <p class="editorial-note" data-solo-lectura>En estas tablas el lutecio (Lu) y el laurencio (Lr) quedan en el grupo 3, y
       el bloque f tiene 14 columnas: del lantano al iterbio y del actinio al nobelio. Así sale de la regla
       de las diagonales. Otras tablas, como la de la lección anterior, ponen a los lantánidos y a los
       actínidos completos en las dos filas de abajo, de 15 en 15.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">En el bloque d, la columna suma los electrones del último s y los del d.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Hierro</span><span>4s<sup>2</sup> 3d<sup>6</sup></span><span class="tele-formulas__flecha">→</span><span>2 + 6 = 8</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
