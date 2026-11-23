@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -72,7 +72,16 @@
         <span class="lesson-section__kicker">Idea central</span> Primero la familia, después el nombre
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Lo que hay en la fórmula dice de qué familia es.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Metal + O</span><span>CaO</span><span class="tele-formulas__flecha">→</span><span>óxido metálico</span></p>
+        <p><span class="tele-formulas__rotulo">Metal + OH</span><span>KOH</span><span class="tele-formulas__flecha">→</span><span>hidróxido</span></p>
+        <p><span class="tele-formulas__rotulo">Empieza con H</span><span>HCl</span><span class="tele-formulas__flecha">→</span><span>ácido</span></p>
+        <p><span class="tele-formulas__rotulo">Metal + no metal</span><span>NaCl</span><span class="tele-formulas__flecha">→</span><span>sal</span></p>
+      </div>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">La fórmula dice de qué <em>familia</em> es</h3>
       </header>
@@ -128,7 +137,7 @@
       </h2>
     </header>
     <div class="reference-table-wrap" role="region" aria-labelledby="familiasNomenclatura" tabindex="0">
-      <table class="reference-table" data-filas-por-pantalla="5">
+      <table class="reference-table" data-filas-por-pantalla="3">
         <caption class="visually-hidden">Cómo se reconoce y cómo se nombra cada familia de compuestos inorgánicos, con ejemplos</caption>
         <thead>
           <tr>
@@ -152,9 +161,17 @@
       </table>
     </div>
     <div data-diapositiva="una">
-      <p class="editorial-note">Los prefijos son mono, di, tri, tetra, penta, hexa, hepta, octa, nona y deca.
+      <p class="editorial-note" data-solo-lectura>Los prefijos son mono, di, tri, tetra, penta, hexa, hepta, octa, nona y deca.
         Con un solo átomo del primer elemento no se escribe mono-: CO<sub>2</sub> es dióxido de carbono y CO,
         monóxido de carbono.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Con un solo átomo del primer elemento no se escribe mono-.</p>
+        <div class="tele-formulas">
+          <p><span>CO<sub>2</sub></span><span class="tele-formulas__flecha">→</span><span>dióxido de carbono</span><span></span></p>
+          <p><span>CO</span><span class="tele-formulas__flecha">→</span><span>monóxido de carbono</span><span></span></p>
+        </div>
+        <p class="tele-idea__apoyo">Mono · di · tri · tetra · penta · hexa · hepta · octa · nona · deca</p>
+      </div>
     </div>
   </section>
 
@@ -164,8 +181,11 @@
         <span class="lesson-section__kicker">Consulta</span> Iones con oxígeno y sus ácidos
       </h2>
     </header>
-    <p class="section-intro">El nombre del ion da el de su ácido: -ato cambia a -ico e -ito a -oso. Con
+    <p class="section-intro" data-solo-lectura>El nombre del ion da el de su ácido: -ato cambia a -ico e -ito a -oso. Con
       cuatro iones del mismo elemento se agregan hipo- (el de menos oxígeno) y per- (el de más).</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">El nombre del ion da el de su ácido: -ato cambia a -ico e -ito a -oso.</p>
+    </div>
     <div class="reference-table-wrap" role="region" aria-labelledby="ionesNomenclatura" tabindex="0">
       <table class="reference-table reference-table--ajustada reference-table--formulas" data-filas-por-pantalla="6">
         <caption class="visually-hidden">Iones con oxígeno más comunes, su carga y el ácido que forman</caption>
@@ -189,19 +209,31 @@
       </table>
     </div>
     <div data-diapositiva="una">
-      <p class="editorial-note">Las sales binarias usan la raíz del no metal con -uro: cloruro, bromuro,
+      <p class="editorial-note" data-solo-lectura>Las sales binarias usan la raíz del no metal con -uro: cloruro, bromuro,
         yoduro, fluoruro, sulfuro (azufre) y nitruro (nitrógeno). El oxígeno no forma «oxuros»: con un metal da
         un óxido.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">Las sales binarias usan la raíz del no metal con -uro.</p>
+        <div class="tele-formulas">
+          <p><span>cloro</span><span class="tele-formulas__flecha">→</span><span>cloruro</span><span></span></p>
+          <p><span>azufre</span><span class="tele-formulas__flecha">→</span><span>sulfuro</span><span></span></p>
+          <p><span>nitrógeno</span><span class="tele-formulas__flecha">→</span><span>nitruro</span><span></span></p>
+        </div>
+        <p class="tele-idea__apoyo">El oxígeno no forma «oxuros»: con un metal da un óxido.</p>
+      </div>
     </div>
   </section>
 
   <section aria-labelledby="ejemploNomenclatura" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploNomenclatura">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">¿Cómo se llama el Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>?</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">La familia</span><p>Hay un metal (Fe) y un ion con oxígeno
         (SO<sub>4</sub>): es una <strong>oxisal</strong>. Su receta: ion + de + metal.</p></li>
       <li><span class="worked-steps__label">El ion</span><p>SO<sub>4</sub><sup>2−</sup> es el ion
@@ -210,7 +242,14 @@
         suman +6: cada uno vale <strong>+3</strong>.</p></li>
       <li><span class="worked-steps__label">El nombre</span><p><strong>Sulfato de hierro (III)</strong>.</p></li>
     </ol>
-    <p class="editorial-note">Al revés también funciona: para escribir la fórmula del nitrato de calcio
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>Familia: oxisal</p>
+      <p>Ion: SO<sub>4</sub><sup>2−</sup>, sulfato</p>
+      <p>2Fe + 3(−2) = 0</p>
+      <p>Fe = +3</p>
+      <p>Sulfato de hierro (III)</p>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Al revés también funciona: para escribir la fórmula del nitrato de calcio
       junta Ca<sup>2+</sup> con NO<sub>3</sub><sup>−</sup>. Hacen falta dos nitratos para compensar el +2:
       Ca(NO<sub>3</sub>)<sub>2</sub>.</p>
   </section>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -51,9 +51,11 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 1 de 9 · Aprende y practica</p>
     <h1 class="hero__title">Números de <em>oxidación</em></h1>
-    <p class="hero__lede">El número de oxidación dice cuántos electrones perdió o ganó un átomo, o cuántos
+    <p class="hero__lede"><span data-solo-lectura>El número de oxidación dice cuántos electrones perdió o ganó un átomo, o cuántos
       parece haber perdido o ganado dentro de un compuesto. Con unas cuantas reglas lo calculas y sabes
-      quién se oxida y quién se reduce en una reacción.</p>
+      quién se oxida y quién se reduce en una reacción.</span><span data-solo-proyeccion>El número de oxidación dice
+      cuántos electrones perdió o ganó un átomo. Con unas cuantas reglas lo calculas y sabes quién se oxida y quién
+      se reduce.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +75,12 @@
         <span class="lesson-section__kicker">Idea central</span> Perder es subir; ganar es bajar
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si un átomo pierde electrones, su número sube: <strong>se&nbsp;oxida</strong>. Si gana
+        electrones, su número baja: <strong>se&nbsp;reduce</strong>.</p>
+      <p class="tele-idea__apoyo">Los electrones que pierde una sustancia los gana otra.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Cada electrón que se va suma uno; cada uno que llega <em>resta uno</em></h3>
       </header>
@@ -96,7 +103,7 @@
       <svg class="escena escena--reaccion" data-escena-reaccion="recta" viewBox="0 0 400 238" role="img" aria-labelledby="rectaTitle">
         <title id="rectaTitle">A la izquierda, un átomo de cobre pierde dos electrones y queda como ion Cu²⁺, más pequeño; su número de oxidación sube de 0 a +2. A la derecha, un ion Fe³⁺ gana tres electrones y queda como hierro metálico, más grande; su número baja de +3 a 0. Abajo, la recta de los números de oxidación muestra los dos recorridos.</title>
       </svg>
-      <figcaption class="atom-figure__caption">Radios a escala con valores medidos: el ion Cu<sup>2+</sup>
+      <figcaption class="atom-figure__caption" data-solo-lectura>Radios a escala con valores medidos: el ion Cu<sup>2+</sup>
         mide poco más de la mitad que el átomo de cobre y el hierro metálico, casi el doble que el ion Fe<sup>3+</sup>.
         Sólo se dibujan los electrones que se van o que llegan.</figcaption>
     </figure>
@@ -109,7 +116,7 @@
       </h2>
     </header>
     <div class="reference-table-wrap" role="region" aria-labelledby="reglasOxidacion" tabindex="0">
-      <table class="reference-table">
+      <table class="reference-table" data-filas-por-pantalla="5">
         <caption class="visually-hidden">Reglas para asignar números de oxidación, con ejemplos</caption>
         <thead>
           <tr>
@@ -133,9 +140,17 @@
       </table>
     </div>
     <div data-diapositiva="una">
-      <p class="editorial-note">Si dos reglas chocan, manda la que está más arriba en la tabla. En el NaH el
+      <p class="editorial-note" data-solo-lectura>Si dos reglas chocan, manda la que está más arriba en la tabla. En el NaH el
         sodio es del grupo IA y vale +1; para que la suma dé 0, el hidrógeno tiene que valer −1. El flúor
         vale −1 en todos sus compuestos.</p>
+      <div class="tele-idea" data-solo-proyeccion>
+        <p class="tele-idea__frase">En los hidruros metálicos, como el NaH, el hidrógeno vale −1.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">Grupo IA</span><span>Na = +1</span><span></span><span></span></p>
+          <p><span class="tele-formulas__rotulo">Suma 0</span><span>+1 + H = 0</span><span class="tele-formulas__flecha">→</span><span>H = −1</span></p>
+        </div>
+        <p class="tele-idea__apoyo">El flúor vale −1 en todos sus compuestos.</p>
+      </div>
     </div>
   </section>
 
@@ -169,10 +184,13 @@
   <section aria-labelledby="ejemploOxidacion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploOxidacion">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>: primero el ion
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>: primero el ion
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">¿Cuánto vale el fósforo en el Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>?</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">El metal</span><p>El calcio es del grupo IIA: vale +2. Hay tres:
         3(+2) = <strong>+6</strong>.</p></li>
       <li><span class="worked-steps__label">El ion</span><p>Para que el compuesto sume 0, los dos PO<sub>4</sub>
@@ -180,7 +198,13 @@
       <li><span class="worked-steps__label">El átomo</span><p>Dentro del ion la suma es su carga:
         P + 4(−2) = −3, así que <strong>P = +5</strong>.</p></li>
     </ol>
-    <p class="editorial-note">Con el mismo camino sale el Cr<sub>2</sub>(SeO<sub>3</sub>)<sub>3</sub> de la fuente:
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>Ca: 3(+2) = +6</p>
+      <p>PO<sub>4</sub> = <span class="fr"><span class="fr__n">−6</span><span class="fr__d">2</span></span> = −3</p>
+      <p>P + 4(−2) = −3</p>
+      <p>P = +5</p>
+    </div>
+    <p class="editorial-note" data-solo-lectura>Con el mismo camino sale el Cr<sub>2</sub>(SeO<sub>3</sub>)<sub>3</sub> de la fuente:
       el ion SeO<sub>3</sub> tiene carga −2, así que cada cromo vale +3 y el selenio, +4.</p>
   </section>
 

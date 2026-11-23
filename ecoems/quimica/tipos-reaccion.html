@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -51,9 +51,11 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 3 de 9 · Aprende y practica</p>
     <h1 class="hero__title">Tipos de <em>reacción</em></h1>
-    <p class="hero__lede">En una reacción los átomos de los reactivos no desaparecen: se reacomodan para
+    <p class="hero__lede"><span data-solo-lectura>En una reacción los átomos de los reactivos no desaparecen: se reacomodan para
       formar los productos. Según cómo se reacomodan, la reacción es de síntesis, de descomposición o de
-      sustitución, simple o doble.</p>
+      sustitución, simple o doble.</span><span data-solo-proyeccion>En una reacción los átomos no desaparecen: se
+      reacomodan para formar los productos. Según cómo se reacomodan, la reacción es de síntesis, de
+      descomposición o de sustitución, simple o doble.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +75,15 @@
         <span class="lesson-section__kicker">Idea central</span> Los mismos átomos, otro acomodo
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">A la izquierda van los reactivos y a la derecha, los productos.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo"></span><span>2H<sub>2</sub> + O<sub>2</sub></span><span class="tele-formulas__flecha">→</span><span>2H<sub>2</sub>O</span></p>
+        <p><span class="tele-formulas__rotulo">Átomos de H</span><span>4</span><span class="tele-formulas__flecha">→</span><span>4</span></p>
+        <p><span class="tele-formulas__rotulo">Átomos de O</span><span>2</span><span class="tele-formulas__flecha">→</span><span>2</span></p>
+      </div>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Cómo se lee una <em>ecuación química</em></h3>
       </header>
@@ -115,20 +125,24 @@
       <div class="reacomodo__clave" aria-label="Clave de colores" data-reacomodo-clave></div>
       <div class="reacomodo__texto" aria-live="polite" data-reacomodo-texto></div>
       <div hidden>
-        <p data-texto-tipo="sintesis"><strong>Síntesis o combinación.</strong> Dos o más sustancias forman una
-          sola: A + B → AB. Dos moléculas de hidrógeno y una de oxígeno forman dos de agua.</p>
-        <p data-texto-tipo="descomposicion"><strong>Descomposición.</strong> Una sustancia se separa en dos o
+        <p data-texto-tipo="sintesis"><span data-solo-lectura><strong>Síntesis o combinación.</strong> Dos o más sustancias forman una
+          sola: A + B → AB. Dos moléculas de hidrógeno y una de oxígeno forman dos de agua.</span><span data-solo-proyeccion><strong>Síntesis
+          o combinación.</strong> Dos o más sustancias forman una sola: <span class="expresion">A + B → AB</span>.</span></p>
+        <p data-texto-tipo="descomposicion"><span data-solo-lectura><strong>Descomposición.</strong> Una sustancia se separa en dos o
           más: AB → A + B. El agua oxigenada se descompone poco a poco en agua y oxígeno; en una herida
-          burbujea porque una enzima de la sangre acelera esa descomposición.</p>
-        <p data-texto-tipo="simple"><strong>Sustitución simple.</strong> Un elemento toma el lugar de otro en un
+          burbujea porque una enzima de la sangre acelera esa descomposición.</span><span data-solo-proyeccion><strong>Descomposición.</strong>
+          Una sustancia se separa en dos o más: <span class="expresion">AB → A + B</span>.</span></p>
+        <p data-texto-tipo="simple"><strong>Sustitución simple.</strong><span data-solo-lectura> Un elemento toma el lugar de otro en un
           compuesto: A + BC → AC + B. Cada átomo de zinc entrega dos electrones y pasa a la disolución como
-          Zn<sup>2+</sup>; cada Cu<sup>2+</sup> los recibe y se deposita como cobre. El azul del sulfato de cobre se va perdiendo.</p>
-        <p data-texto-tipo="doble"><strong>Sustitución doble.</strong> Dos compuestos intercambian sus iones:
+          Zn</span><sup data-solo-lectura>2+</sup><span data-solo-lectura>; cada Cu</span><sup data-solo-lectura>2+</sup><span data-solo-lectura> los recibe y se deposita como cobre. El azul del sulfato de cobre se va perdiendo.</span><span data-solo-proyeccion> Un
+          elemento toma el lugar de otro en un compuesto: <span class="expresion">A + BC → AC + B</span>.</span></p>
+        <p data-texto-tipo="doble"><strong>Sustitución doble.</strong><span data-solo-lectura> Dos compuestos intercambian sus iones:
           AB + CD → AD + CB. La plata y el cloruro forman cloruro de plata, que no se disuelve y cae al fondo
-          como un sólido blanco; Na<sup>+</sup> y NO<sub>3</sub><sup>−</sup> siguen disueltos.</p>
+          como un sólido blanco; Na</span><sup data-solo-lectura>+</sup><span data-solo-lectura> y NO</span><sub data-solo-lectura>3</sub><sup data-solo-lectura>−</sup><span data-solo-lectura> siguen disueltos.</span><span data-solo-proyeccion> Dos
+          compuestos intercambian sus iones: <span class="expresion">AB + CD → AD + CB</span>.</span></p>
       </div>
     </div>
-    <p class="editorial-note">Los radios son reales: moléculas con radios de van der Waals y distancias de
+    <p class="editorial-note" data-solo-lectura>Los radios son reales: moléculas con radios de van der Waals y distancias de
       enlace medidas; iones con sus radios iónicos. Por eso el Cu<sup>2+</sup> se ve tan pequeño junto al sulfato.</p>
   </section>
 
@@ -157,9 +171,19 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">La neutralización (ácido + base → sal + agua) es una sustitución doble; la
+    <p class="editorial-note" data-solo-lectura>La neutralización (ácido + base → sal + agua) es una sustitución doble; la
       verás en ácidos y bases. Las sustituciones simples siempre son de óxido-reducción: un elemento pierde
       electrones y otro los gana. Las dobles, como la del cloruro de plata, no lo son.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__apoyo">La neutralización (ácido + base → sal + agua) es una sustitución doble.</p>
+    </div>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Las sustituciones simples siempre son de <span class="expresion">óxido-reducción</span>:
+          un elemento pierde electrones y otro los gana.</p>
+        <p class="tele-idea__apoyo">Las dobles, como la del cloruro de plata, no lo son.</p>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
