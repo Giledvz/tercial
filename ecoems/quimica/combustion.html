@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -72,7 +72,16 @@
         <span class="lesson-section__kicker">Idea central</span> Combustible + comburente
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">La combustión libera calor y luz: es una reacción exotérmica.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Combustible</span><span>gas</span><span></span><span></span></p>
+        <p><span class="tele-formulas__rotulo">Comburente</span><span>oxígeno del aire</span><span></span><span></span></p>
+        <p><span class="tele-formulas__rotulo">Calor</span><span>una chispa</span><span></span><span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Si se quita un lado del triángulo del fuego, se apaga.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Lo que arde, el oxígeno y la <em>energía</em> que se libera</h3>
       </header>
@@ -117,15 +126,18 @@
       </figure>
       <div class="mechero__texto" aria-live="polite" data-mechero-texto></div>
       <div hidden>
-        <p data-texto-aire="abierto"><strong>Combustión completa.</strong> El metano se mezcla con aire antes de
+        <p data-texto-aire="abierto"><strong>Combustión completa.</strong><span data-solo-lectura> El metano se mezcla con aire antes de
           salir: cada molécula encuentra el oxígeno que necesita y todo el carbono termina como CO<sub>2</sub>.
-          La flama azul es la más caliente y no deja hollín.</p>
-        <p data-texto-aire="cerrado"><strong>Combustión incompleta.</strong> El oxígeno sólo llega por fuera de
+          La flama azul es la más caliente y no deja hollín.</span><span data-solo-proyeccion> El gas se mezcla con
+          aire: todo el carbono termina como CO<sub>2</sub> y no queda hollín.</span></p>
+        <p data-texto-aire="cerrado"><strong>Combustión incompleta.</strong><span data-solo-lectura> El oxígeno sólo llega por fuera de
           la flama y no alcanza: se forma monóxido de carbono, tóxico, y partículas de carbono. Esas partículas,
-          calientes, brillan en amarillo; las que escapan son el humo negro.</p>
+          calientes, brillan en amarillo; las que escapan son el humo negro.</span><span data-solo-proyeccion> El oxígeno
+          no alcanza: salen monóxido de carbono, tóxico, y hollín, partículas de carbono que brillan en
+          amarillo.</span></p>
       </div>
     </div>
-    <p class="editorial-note">Por eso una estufa con flama amarilla ensucia las ollas y un calentador sin
+    <p class="editorial-note" data-solo-lectura>Por eso una estufa con flama amarilla ensucia las ollas y un calentador sin
       ventilación es peligroso: el monóxido de carbono no tiene color ni olor.</p>
   </section>
 
@@ -139,15 +151,15 @@
       <table class="reference-table">
         <caption class="visually-hidden">Diferencias entre la combustión completa y la incompleta</caption>
         <thead>
-          <tr><th scope="col">Combustión</th><th scope="col">Oxígeno</th><th scope="col">Productos</th><th scope="col">Flama</th><th scope="col">Ejemplo</th></tr>
+          <tr><th scope="col">Combustión</th><th scope="col">Oxígeno</th><th scope="col">Productos</th><th scope="col">Flama</th><th scope="col" data-solo-lectura>Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Completa</th><td>Suficiente</td><td>CO<sub>2</sub> + H<sub>2</sub>O + energía</td><td>Azul, sin humo</td><td>CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O</td></tr>
-          <tr><th scope="row">Incompleta</th><td>Escaso</td><td>CO, C (hollín) y H<sub>2</sub>O; menos energía</td><td>Amarilla, con humo negro</td><td>2CH<sub>4</sub> + 3O<sub>2</sub> → 2CO + 4H<sub>2</sub>O</td></tr>
+          <tr><th scope="row">Completa</th><td>Suficiente</td><td>CO<sub>2</sub> + H<sub>2</sub>O + energía</td><td>Azul, sin humo</td><td data-solo-lectura>CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O</td></tr>
+          <tr><th scope="row">Incompleta</th><td>Escaso</td><td>CO, C (hollín) y H<sub>2</sub>O; menos energía</td><td>Amarilla, con humo negro</td><td data-solo-lectura>2CH<sub>4</sub> + 3O<sub>2</sub> → 2CO + 4H<sub>2</sub>O</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">La respiración celular se parece a una combustión completa, pero sin flama:
+    <p class="editorial-note" data-solo-lectura>La respiración celular se parece a una combustión completa, pero sin flama:
       C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub> → 6CO<sub>2</sub> + 6H<sub>2</sub>O + energía.
       La célula guarda esa energía en moléculas de ATP.</p>
   </section>
@@ -155,10 +167,19 @@
   <section aria-labelledby="ejemploCombustion" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploCombustion">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> El gas LP: propano
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> El gas LP: propano
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <div class="tele-formulas">
+        <p><span>C<sub>3</sub>H<sub>8</sub> + O<sub>2</sub></span><span class="tele-formulas__flecha">→</span><span>CO<sub>2</sub> + H<sub>2</sub>O</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Orden: carbono, hidrógeno y al final oxígeno.</p>
+    </div>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> → 3CO<sub>2</sub> + 4H<sub>2</sub>O</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Escribe</span><p>C<sub>3</sub>H<sub>8</sub> + O<sub>2</sub> →
         CO<sub>2</sub> + H<sub>2</sub>O: combustión completa del propano.</p></li>
       <li><span class="worked-steps__label">Carbono</span><p>3 carbonos a la izquierda: <strong>3CO<sub>2</sub></strong>.</p></li>
@@ -166,7 +187,7 @@
       <li><span class="worked-steps__label">Oxígeno</span><p>A la derecha hay 3 × 2 + 4 = 10 oxígenos:
         <strong>5O<sub>2</sub></strong>. Queda C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> → 3CO<sub>2</sub> + 4H<sub>2</sub>O.</p></li>
     </ol>
-    <p class="editorial-note">El orden carbono, hidrógeno y al final oxígeno funciona con todas las
+    <p class="editorial-note" data-solo-lectura>El orden carbono, hidrógeno y al final oxígeno funciona con todas las
       combustiones: el oxígeno queda al último porque está en los dos productos.</p>
   </section>
 

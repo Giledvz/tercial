@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 7 de 9 · Para profundizar</p>
     <h1 class="hero__title">Balanceo por <em>óxido-reducción</em></h1>
-    <p class="hero__lede">En una reacción redox una sustancia pierde electrones y otra los gana. Para
+    <p class="hero__lede"><span data-solo-lectura>En una reacción redox una sustancia pierde electrones y otra los gana. Para
       balancearla se igualan los electrones que se pierden con los que se ganan; lo demás se termina por
-      tanteo.</p>
+      tanteo.</span><span data-solo-proyeccion>En una reacción redox una sustancia pierde electrones y otra los gana.
+      Para balancear, los perdidos deben ser los ganados.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,15 @@
         <span class="lesson-section__kicker">Idea central</span> Electrones que pasan de uno a otro
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si algún número de oxidación cambia, es redox.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Se oxida</span><span>C: +2</span><span class="tele-formulas__flecha">→</span><span>+4</span></p>
+        <p><span class="tele-formulas__rotulo">Se reduce</span><span>Fe: +3</span><span class="tele-formulas__flecha">→</span><span>0</span></p>
+      </div>
+      <p class="tele-idea__apoyo">El que sube pierde electrones; el que baja, los gana.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Si algún número de oxidación cambia, <em>es redox</em></h3>
       </header>
@@ -101,7 +110,7 @@
         <span class="lesson-section__kicker">Paso a paso</span> Siete pasos para balancear
       </h2>
     </header>
-    <p class="section-intro">Elige una ecuación y avanza con «Siguiente». Encima de cada símbolo va su número
+    <p class="section-intro" data-solo-lectura>Elige una ecuación y avanza con «Siguiente». Encima de cada símbolo va su número
       de oxidación: en terracota el que se oxida y en tinta fuerte el que se reduce.</p>
     <div class="redox" data-redox>
       <div class="pastillas" role="group" aria-label="Elige una ecuación">
@@ -138,8 +147,9 @@
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Al terminar siempre se comprueban dos cosas: los átomos de cada elemento y los
-      electrones. Si los perdidos no son los ganados, falta multiplicar alguna semirreacción.</p>
+    <p class="editorial-note"><span data-solo-lectura>Al terminar siempre se comprueban dos cosas: los átomos de cada elemento y los
+      electrones. Si los perdidos no son los ganados, falta multiplicar alguna semirreacción.</span><span data-solo-proyeccion>Al
+      terminar, comprueba los átomos y los electrones.</span></p>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 6 de 9 · Aprende y practica</p>
     <h1 class="hero__title">Balanceo por <em>tanteo</em></h1>
-    <p class="hero__lede">En una reacción los átomos no se crean ni se destruyen: sólo se reacomodan. Una
+    <p class="hero__lede"><span data-solo-lectura>En una reacción los átomos no se crean ni se destruyen: sólo se reacomodan. Una
       ecuación balanceada tiene los mismos átomos de cada elemento a la izquierda y a la derecha, y por
-      tanteo se prueban coeficientes, en orden, hasta que todo cuadra.</p>
+      tanteo se prueban coeficientes, en orden, hasta que todo cuadra.</span><span data-solo-proyeccion>En una reacción
+      los átomos no se crean ni se destruyen: sólo se reacomodan.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,15 @@
         <span class="lesson-section__kicker">Idea central</span> Los átomos se conservan
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Para balancear se cambian los coeficientes, nunca los subíndices.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Agua</span><span>H<sub>2</sub>O</span><span></span><span></span></p>
+        <p><span class="tele-formulas__rotulo">Agua oxigenada</span><span>H<sub>2</sub>O<sub>2</sub></span><span></span><span></span></p>
+      </div>
+      <p class="tele-idea__apoyo">Si cambias un subíndice, cambias la sustancia.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Se cambian los coeficientes, <em>nunca los subíndices</em></h3>
       </header>
@@ -100,9 +109,12 @@
         <span class="lesson-section__kicker">Prueba</span> La balanza de átomos
       </h2>
     </header>
-    <p class="section-intro">Elige una ecuación y cambia los coeficientes con − y +. Cada barra cuenta los
+    <p class="section-intro" data-solo-lectura>Elige una ecuación y cambia los coeficientes con − y +. Cada barra cuenta los
       átomos de un elemento: gris a la izquierda de la flecha, terracota a la derecha. Cuando miden lo
       mismo, ese elemento cuadra.</p>
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Si las barras miden igual, ese elemento cuadra.</p>
+    </div>
     <div class="balanza" data-balanza>
       <div class="pastillas" role="group" aria-label="Elige una ecuación">
         <button class="pastilla" type="button" aria-pressed="true" data-ecuacion="alumina">Al<sub>2</sub>O<sub>3</sub> + HCl</button>
@@ -126,10 +138,19 @@
   <section aria-labelledby="ejemploBalanceo" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploBalanceo">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> Al<sub>2</sub>O<sub>3</sub> + HCl → AlCl<sub>3</sub> + H<sub>2</sub>O
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> <span data-solo-lectura>Al<sub>2</sub>O<sub>3</sub> + HCl → AlCl<sub>3</sub> + H<sub>2</sub>O</span><span data-solo-proyeccion>Balancea en orden</span>
       </h2>
     </header>
-    <ol class="worked-steps">
+    <div class="tele-idea" data-solo-proyeccion>
+      <div class="tele-formulas">
+        <p><span>Al<sub>2</sub>O<sub>3</sub> + HCl</span><span class="tele-formulas__flecha">→</span><span>AlCl<sub>3</sub> + H<sub>2</sub>O</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Orden: metales, no metales, oxígeno e hidrógeno.</p>
+    </div>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>Al<sub>2</sub>O<sub>3</sub> + 6HCl → 2AlCl<sub>3</sub> + 3H<sub>2</sub>O</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Metal</span><p>Hay 2 aluminios a la izquierda y 1 a la derecha:
         <strong>2AlCl<sub>3</sub></strong>.</p></li>
       <li><span class="worked-steps__label">No metal</span><p>Ahora hay 6 cloros a la derecha:
@@ -139,7 +160,7 @@
       <li><span class="worked-steps__label">Hidrógeno</span><p>6 a la izquierda (6HCl) y 6 a la derecha
         (3H<sub>2</sub>O): ya cuadra. Queda Al<sub>2</sub>O<sub>3</sub> + 6HCl → 2AlCl<sub>3</sub> + 3H<sub>2</sub>O.</p></li>
     </ol>
-    <p class="editorial-note">Si un grupo como SO<sub>4</sub> o PO<sub>4</sub> pasa entero de un lado al otro,
+    <p class="editorial-note" data-solo-lectura>Si un grupo como SO<sub>4</sub> o PO<sub>4</sub> pasa entero de un lado al otro,
       se puede contar como una sola pieza: en 3Ca(OH)<sub>2</sub> + 2H<sub>3</sub>PO<sub>4</sub> hay dos
       PO<sub>4</sub> de cada lado.</p>
   </section>
