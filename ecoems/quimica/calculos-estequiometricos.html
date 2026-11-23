@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 9 de 9 · Para profundizar</p>
     <h1 class="hero__title">Cálculos <em>estequiométricos</em></h1>
-    <p class="hero__lede">Una ecuación balanceada es una receta: sus coeficientes dicen en qué proporción
+    <p class="hero__lede"><span data-solo-lectura>Una ecuación balanceada es una receta: sus coeficientes dicen en qué proporción
       reaccionan y se forman las sustancias, en moléculas y en moles. Con esa proporción y la masa molar se
-      calcula cuánto se necesita y cuánto se produce.</p>
+      calcula cuánto se necesita y cuánto se produce.</span><span data-solo-proyeccion>Una ecuación balanceada es una receta:
+      sus coeficientes dicen en qué proporción reaccionan y se forman las sustancias.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,15 @@
         <span class="lesson-section__kicker">Idea central</span> La ecuación es una receta
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Los coeficientes cuentan moléculas y moles.</p>
+      <div class="tele-formulas">
+        <p><span class="tele-formulas__rotulo">Moléculas</span><span>2H<sub>2</sub> + O<sub>2</sub></span><span class="tele-formulas__flecha">→</span><span>2H<sub>2</sub>O</span></p>
+        <p><span class="tele-formulas__rotulo">Moles</span><span>2&nbsp;mol + 1&nbsp;mol</span><span class="tele-formulas__flecha">→</span><span>2&nbsp;mol</span></p>
+      </div>
+      <p class="tele-idea__apoyo">Un mol siempre tiene el mismo número de partículas.</p>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Los coeficientes cuentan moléculas <em>y moles</em></h3>
       </header>
@@ -106,8 +115,19 @@
           </tbody>
         </table>
       </div>
-      <p class="editorial-note">Entran 3 mol y salen 2: los moles no tienen por qué conservarse. La masa sí:
-        4 g + 32 g = 36 g.</p>
+      <p class="editorial-note"><span data-solo-lectura>Entran 3 mol y salen 2: los moles no tienen por qué conservarse. La masa sí:
+        4 g + 32 g = 36 g.</span><span data-solo-proyeccion>Entran 3 mol y salen 2: los moles no tienen por qué
+        conservarse. La masa sí: <span class="expresion">4 g + 32 g = 36 g</span>.</span></p>
+    </div>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">Siempre se va por los moles.</p>
+        <div class="tele-formulas">
+          <p><span class="tele-formulas__rotulo">÷ masa molar</span><span>g de A</span><span class="tele-formulas__flecha">→</span><span>mol de A</span></p>
+          <p><span class="tele-formulas__rotulo">Coeficientes</span><span>mol de A</span><span class="tele-formulas__flecha">→</span><span>mol de B</span></p>
+          <p><span class="tele-formulas__rotulo">× masa molar</span><span>mol de B</span><span class="tele-formulas__flecha">→</span><span>g de B</span></p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -133,21 +153,23 @@
       <div class="reacomodo__clave" aria-label="Clave de colores" data-reacomodo-clave></div>
       <div class="reacomodo__texto" aria-live="polite" data-reacomodo-texto></div>
       <div hidden>
-        <p data-texto-tipo="receta-exacta"><strong>4 H<sub>2</sub> y 2 O<sub>2</sub>: no sobra nada.</strong> La
+        <p data-texto-tipo="receta-exacta"><strong>4 H<sub>2</sub> y 2 O<sub>2</sub>: no sobra nada.</strong><span data-solo-lectura> La
           receta pide 2 H<sub>2</sub> por cada O<sub>2</sub> y aquí hay justo esa proporción: se forman
-          4 H<sub>2</sub>O.</p>
-        <p data-texto-tipo="receta-hidrogeno"><strong>5 H<sub>2</sub> y 2 O<sub>2</sub>: sobra 1 H<sub>2</sub>.</strong>
+          4 H<sub>2</sub>O.</span><span data-solo-proyeccion> Se forman 4&nbsp;H<sub>2</sub>O.</span></p>
+        <p data-texto-tipo="receta-hidrogeno"><strong>5 H<sub>2</sub> y 2 O<sub>2</sub>: sobra 1 H<sub>2</sub>.</strong><span data-solo-lectura>
           Los 2 O<sub>2</sub> sólo alcanzan para 4 H<sub>2</sub>. El O<sub>2</sub> es el <strong>reactivo
-          limitante</strong>: se acaba primero y decide cuánta agua se forma.</p>
-        <p data-texto-tipo="receta-oxigeno"><strong>4 H<sub>2</sub> y 3 O<sub>2</sub>: sobra 1 O<sub>2</sub>.</strong>
+          limitante</strong>: se acaba primero y decide cuánta agua se forma.</span><span data-solo-proyeccion> El
+          O<sub>2</sub> es el <strong>reactivo limitante</strong>: se acaba primero.</span></p>
+        <p data-texto-tipo="receta-oxigeno"><strong>4 H<sub>2</sub> y 3 O<sub>2</sub>: sobra 1 O<sub>2</sub>.</strong><span data-solo-lectura>
           Los 4 H<sub>2</sub> sólo usan 2 O<sub>2</sub>. Ahora el limitante es el H<sub>2</sub>, aunque hay más
-          oxígeno del que se necesita.</p>
+          oxígeno del que se necesita.</span><span data-solo-proyeccion> Ahora el limitante es el
+          H<sub>2</sub>.</span></p>
       </div>
       <div class="practice-actions">
         <button class="practice-action" type="button" data-repetir>Repetir la reacción</button>
       </div>
     </div>
-    <p class="editorial-note">En el laboratorio no se cuentan moléculas, se pesan gramos; pero la receta es la
+    <p class="editorial-note" data-solo-lectura>En el laboratorio no se cuentan moléculas, se pesan gramos; pero la receta es la
       misma en moles: 5 mol de H<sub>2</sub> con 2 mol de O<sub>2</sub> también dejan 1 mol de H<sub>2</sub> sin
       reaccionar.</p>
   </section>
@@ -155,12 +177,20 @@
   <section aria-labelledby="ejemploGramos" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploGramos">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> De gramos a gramos
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> De gramos a gramos
       </h2>
     </header>
-    <p class="section-intro">¿Cuántos gramos de agua se forman con 8 g de H<sub>2</sub>?
+    <p class="section-intro" data-solo-lectura>¿Cuántos gramos de agua se forman con 8 g de H<sub>2</sub>?
       2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O</p>
-    <ol class="worked-steps">
+    <h3 class="ejemplo__planteo ejemplo__planteo--frase" data-solo-proyeccion>¿Cuántos gramos de agua se forman con
+      8&nbsp;g de H<sub>2</sub>? (H&nbsp;1,&nbsp;O&nbsp;16)<br><span class="expresion">2H<sub>2</sub> + O<sub>2</sub> →
+      2H<sub>2</sub>O</span></h3>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>moles de H<sub>2</sub> = <span class="fr"><span class="fr__n">8&nbsp;g</span><span class="fr__d">2&nbsp;g/mol</span></span> = 4&nbsp;mol</p>
+      <p>moles de agua = moles de H<sub>2</sub> = 4&nbsp;mol</p>
+      <p>agua = 4&nbsp;mol × 18&nbsp;g/mol = 72&nbsp;g</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">A moles</span><p>8 g ÷ 2 g/mol = <strong>4 mol</strong> de
         H<sub>2</sub>.</p></li>
       <li><span class="worked-steps__label">Receta</span><p>2 mol de H<sub>2</sub> forman 2 mol de
@@ -178,9 +208,18 @@
         <span class="lesson-section__kicker">Reactivo limitante</span> Lo que se acaba primero manda
       </h2>
     </header>
-    <p class="section-intro">Se mezclan 10 g de H<sub>2</sub> con 64 g de O<sub>2</sub>. ¿Cuánta agua se
+    <p class="section-intro" data-solo-lectura>Se mezclan 10 g de H<sub>2</sub> con 64 g de O<sub>2</sub>. ¿Cuánta agua se
       forma?</p>
-    <ol class="worked-steps">
+    <h3 class="ejemplo__planteo ejemplo__planteo--frase" data-solo-proyeccion>Se mezclan 10&nbsp;g de H<sub>2</sub> con
+      64&nbsp;g de O<sub>2</sub>. ¿Cuánta agua se forma? (H&nbsp;1,&nbsp;O&nbsp;16)<br><span class="expresion">2H<sub>2</sub> +
+      O<sub>2</sub> → 2H<sub>2</sub>O</span></h3>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>moles de H<sub>2</sub> = <span class="fr"><span class="fr__n">10&nbsp;g</span><span class="fr__d">2&nbsp;g/mol</span></span> = 5&nbsp;mol</p>
+      <p>moles de O<sub>2</sub> = <span class="fr"><span class="fr__n">64&nbsp;g</span><span class="fr__d">32&nbsp;g/mol</span></span> = 2&nbsp;mol</p>
+      <p>limitante = O<sub>2</sub></p>
+      <p>agua = 4&nbsp;mol × 18&nbsp;g/mol = 72&nbsp;g</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Moles</span><p>H<sub>2</sub>: 10 ÷ 2 = 5 mol. O<sub>2</sub>:
         64 ÷ 32 = 2 mol.</p></li>
       <li><span class="worked-steps__label">Receta</span><p>2 mol de O<sub>2</sub> piden 4 mol de
@@ -190,7 +229,7 @@
       <li><span class="worked-steps__label">Comprueba</span><p>10 g + 64 g = 74 g: 72 g de agua y 2 g de
         H<sub>2</sub> que sobran.</p></li>
     </ol>
-    <p class="editorial-note">Masas atómicas que usamos: H 1, C 12, N 14, O 16, Mg 24, Cl 35.5, Ca 40,
+    <p class="editorial-note" data-solo-lectura>Masas atómicas que usamos: H 1, C 12, N 14, O 16, Mg 24, Cl 35.5, Ca 40,
       Zn 65.4.</p>
   </section>
 

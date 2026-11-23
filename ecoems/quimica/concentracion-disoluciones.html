@@ -31,13 +31,13 @@
 <link rel="stylesheet" href="/tercial/assets/css/tokens.css">
 <link rel="stylesheet" href="/tercial/assets/css/base.css">
 <link rel="stylesheet" href="/tercial/assets/css/components.css">
-<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261009-retos">
+<link rel="stylesheet" href="/tercial/assets/css/leccion.css?v=20261106-tele">
 <link rel="stylesheet" href="./quimica-material.css?v=20261009-tema3">
 <link rel="stylesheet" href="./controles-quimica.css?v=20261009-tema3">
 <script defer src="/tercial/assets/js/theme.js"></script>
 <script defer src="/tercial/assets/js/progress.js?v=1"></script>
 <script defer src="/tercial/assets/js/site-nav.js"></script>
-<script defer src="/tercial/assets/js/leccion.js?v=20261010-teclas"></script>
+<script defer src="/tercial/assets/js/leccion.js?v=20261123-tinta"></script>
 <script defer src="/tercial/assets/js/reto.js?v=20261009-retos"></script>
 <script type="module" src="./escenas-reaccion.js?v=20261009-tema3"></script>
 <script defer src="./practica-quimica.js?v=20261008-desplegables"></script>
@@ -51,9 +51,10 @@
   <header class="hero" data-diapositiva="portada">
     <p class="eyebrow">Tema 03 · 8 de 9 · Para profundizar</p>
     <h1 class="hero__title">Concentración de <em>disoluciones</em></h1>
-    <p class="hero__lede">La concentración dice cuánto soluto hay en cierta cantidad de disolución. Se puede
+    <p class="hero__lede"><span data-solo-lectura>La concentración dice cuánto soluto hay en cierta cantidad de disolución. Se puede
       dar en porcentaje, en partes por millón o en molaridad, la forma que más se usa en química: moles de
-      soluto por litro de disolución.</p>
+      soluto por litro de disolución.</span><span data-solo-proyeccion>La concentración dice cuánto soluto hay en cierta
+      cantidad de disolución.</span></p>
     <nav class="material-meta" aria-label="Navegación y etiquetas del material">
       <a class="material-meta__back" href="./index.html">← Química</a>
       <span class="material-meta__divider" aria-hidden="true">·</span>
@@ -73,7 +74,17 @@
         <span class="lesson-section__kicker">Idea central</span> Soluto entre disolución
       </h2>
     </header>
-    <article class="reading-block">
+    <div class="tele-idea" data-solo-proyeccion>
+      <p class="tele-idea__frase">Siempre se divide entre la disolución, no entre el disolvente.</p>
+      <div class="tele-pizarron">
+        <div class="tele-pizarron__columna">
+          <p>sal = 10 g&emsp;agua = 90 g</p>
+          <p>disolución = 10 g + 90 g = 100 g</p>
+          <p>% m/m = <span class="fr"><span class="fr__n">10 g</span><span class="fr__d">100 g</span></span> × 100 = 10 %</p>
+        </div>
+      </div>
+    </div>
+    <article class="reading-block" data-solo-lectura>
       <header class="reading-block__header">
         <h3 class="reading-block__title">Siempre se divide entre <em>la disolución</em></h3>
       </header>
@@ -91,6 +102,15 @@
         <span>Lectura · 5 min</span>
       </footer>
     </article>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">La molaridad cuenta el soluto en moles.</p>
+        <div class="tele-formulas">
+          <p><span>M = <span class="fr"><span class="fr__n">moles de soluto</span><span class="fr__d">litros de disolución</span></span></span></p>
+        </div>
+        <p class="tele-idea__apoyo">Una disolución 1 M de NaCl tiene 58.5 g de sal, un mol, en cada litro.</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="observaAforo" data-diapositiva="dos">
@@ -108,21 +128,34 @@
         </svg>
       </figure>
       <ol class="aforo__pasos" aria-label="Pasos para preparar la disolución">
-        <li data-aforo-paso="1"><strong>Pesa el soluto.</strong> 0.050 mol × 159.5 g/mol = 7.98 g de
-          CuSO<sub>4</sub>. Se pasan al matraz con un embudo.</li>
-        <li data-aforo-paso="2"><strong>Disuelve.</strong> Se agrega agua hasta la mitad y se agita. El sulfato
-          de cobre sin agua es un polvo blanco; disuelto, el ion cobre(II) tiñe el agua de azul.</li>
-        <li data-aforo-paso="3"><strong>Afora.</strong> Se completa con agua hasta la marca; las últimas gotas,
-          con gotero, hasta que el fondo del menisco toque la marca vista a la altura de los ojos.</li>
-        <li data-aforo-paso="4"><strong>Tapa y mezcla.</strong> Se tapa y se agita o se invierte hasta que el
-          color quede parejo: 250 mL de disolución 0.20 M.</li>
+        <li data-aforo-paso="1"><strong>Pesa el soluto.</strong><span data-solo-lectura> 0.050 mol × 159.5 g/mol = 7.98 g de
+          CuSO<sub>4</sub>. Se pasan al matraz con un embudo.</span><span data-solo-proyeccion> 7.98 g de
+          CuSO<sub>4</sub>.</span></li>
+        <li data-aforo-paso="2"><strong>Disuelve.</strong><span data-solo-lectura> Se agrega agua hasta la mitad y se agita. El sulfato
+          de cobre sin agua es un polvo blanco; disuelto, el ion cobre(II) tiñe el agua de azul.</span><span data-solo-proyeccion> Agua
+          hasta la mitad.</span></li>
+        <li data-aforo-paso="3"><strong>Afora.</strong><span data-solo-lectura> Se completa con agua hasta la marca; las últimas gotas,
+          con gotero, hasta que el fondo del menisco toque la marca vista a la altura de los ojos.</span><span data-solo-proyeccion> Agua
+          hasta la marca.</span></li>
+        <li data-aforo-paso="4"><strong>Tapa y mezcla.</strong><span data-solo-lectura> Se tapa y se agita o se invierte hasta que el
+          color quede parejo: 250 mL de disolución 0.20 M.</span><span data-solo-proyeccion> Color
+          parejo.</span></li>
       </ol>
       <div class="practice-actions">
         <button class="practice-action" type="button" data-repetir>Repetir la preparación</button>
       </div>
     </div>
-    <p class="editorial-note">No se miden 250 mL de agua: se agrega agua hasta que la disolución completa llega
+    <p class="editorial-note" data-solo-lectura>No se miden 250 mL de agua: se agrega agua hasta que la disolución completa llega
       a la marca. Por eso la molaridad se calcula con el volumen de la disolución.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">La molaridad usa el volumen de la disolución, no el del agua.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">7.98 g + 250 mL de agua</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">7.98 g + agua hasta la marca</span></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="comparaConcentracion" data-diapositiva="una">
@@ -135,28 +168,37 @@
       <table class="reference-table">
         <caption class="visually-hidden">Formas de expresar la concentración de una disolución</caption>
         <thead>
-          <tr><th scope="col">Forma</th><th scope="col">Cómo se calcula</th><th scope="col">Ejemplo</th></tr>
+          <tr><th scope="col" data-solo-lectura>Forma</th><th scope="col">Cómo se calcula</th><th scope="col">Ejemplo</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">% m/m</th><td>gramos de soluto ÷ gramos de disolución × 100</td><td>El agua de mar tiene unos 3.5 g de sales en cada 100 g</td></tr>
-          <tr><th scope="row">% m/v</th><td>gramos de soluto ÷ mL de disolución × 100</td><td>El suero fisiológico es NaCl al 0.9 % m/v: 0.9 g en cada 100 mL</td></tr>
-          <tr><th scope="row">% v/v</th><td>mL de soluto ÷ mL de disolución × 100</td><td>El alcohol para heridas es de 70 % v/v</td></tr>
-          <tr><th scope="row">ppm</th><td>mg de soluto ÷ kg de disolución; en agua, ÷ L</td><td>La OMS pide que el agua potable no pase de 1.5 ppm de flúor</td></tr>
-          <tr><th scope="row">Molaridad</th><td>moles de soluto ÷ litros de disolución</td><td>NaCl 1 M: 58.5 g en cada litro de disolución</td></tr>
+          <tr><th scope="row" data-solo-lectura>% m/m</th><td><span data-solo-lectura>gramos de soluto ÷ gramos de disolución × 100</span><span class="expresion" data-solo-proyeccion>% m/m = <span class="fr"><span class="fr__n">gramos de soluto</span><span class="fr__d">gramos de disolución</span></span> × 100</span></td><td><span data-solo-lectura>El agua de mar tiene unos 3.5 g de sales en cada 100 g</span><span data-solo-proyeccion>Agua de mar: unos 3.5 %</span></td></tr>
+          <tr><th scope="row" data-solo-lectura>% m/v</th><td><span data-solo-lectura>gramos de soluto ÷ mL de disolución × 100</span><span class="expresion" data-solo-proyeccion>% m/v = <span class="fr"><span class="fr__n">gramos de soluto</span><span class="fr__d">mL de disolución</span></span> × 100</span></td><td><span data-solo-lectura>El suero fisiológico es NaCl al 0.9 % m/v: 0.9 g en cada 100 mL</span><span data-solo-proyeccion>Suero fisiológico: 0.9 %</span></td></tr>
+          <tr><th scope="row" data-solo-lectura>% v/v</th><td><span data-solo-lectura>mL de soluto ÷ mL de disolución × 100</span><span class="expresion" data-solo-proyeccion>% v/v = <span class="fr"><span class="fr__n">mL de soluto</span><span class="fr__d">mL de disolución</span></span> × 100</span></td><td><span data-solo-lectura>El alcohol para heridas es de 70 % v/v</span><span data-solo-proyeccion>Alcohol para heridas: 70 %</span></td></tr>
+          <tr><th scope="row" data-solo-lectura>ppm</th><td><span data-solo-lectura>mg de soluto ÷ kg de disolución; en agua, ÷ L</span><span class="expresion" data-solo-proyeccion>ppm = <span class="fr"><span class="fr__n">mg de soluto</span><span class="fr__d">kg de disolución</span></span></span></td><td><span data-solo-lectura>La OMS pide que el agua potable no pase de 1.5 ppm de flúor</span><span data-solo-proyeccion>Flúor en agua potable: hasta 1.5 ppm</span></td></tr>
+          <tr><th scope="row" data-solo-lectura>Molaridad</th><td><span data-solo-lectura>moles de soluto ÷ litros de disolución</span><span class="expresion" data-solo-proyeccion>M = <span class="fr"><span class="fr__n">moles de soluto</span><span class="fr__d">litros de disolución</span></span></span></td><td>NaCl 1 M: 58.5 g en cada litro de disolución</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="editorial-note">Las partes por millón sirven para cantidades muy pequeñas: 1 ppm es 1 mg en un
-      kilogramo, y un litro de agua pesa casi exactamente un kilogramo.</p>
+    <p class="editorial-note"><span data-solo-lectura>Las partes por millón sirven para cantidades muy pequeñas: 1 ppm es 1 mg en un
+      kilogramo, y un litro de agua pesa casi exactamente un kilogramo.</span><span data-solo-proyeccion>1 ppm es 1 mg en un
+      kilogramo, y un litro de agua pesa casi 1 kg.</span></p>
   </section>
 
   <section aria-labelledby="ejemploMolaridad" data-diapositiva="una">
     <header class="section-header">
       <h2 class="section-header__title" id="ejemploMolaridad">
-        <span class="lesson-section__kicker">Ejemplo resuelto</span> De gramos a molaridad y de regreso
+        <span class="lesson-section__kicker">Ejemplo<span data-solo-lectura> resuelto</span></span> De gramos a molaridad y de regreso
       </h2>
     </header>
-    <ol class="worked-steps">
+    <h3 class="ejemplo__planteo ejemplo__planteo--frase" data-solo-proyeccion>¿Cuál es la molaridad de 40&nbsp;g de NaOH en
+      500&nbsp;mL de disolución? (Na&nbsp;23,&nbsp;O&nbsp;16,&nbsp;H&nbsp;1)</h3>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>masa molar = 23 + 16 + 1 = 40&nbsp;g/mol</p>
+      <p>moles = <span class="fr"><span class="fr__n">40&nbsp;g</span><span class="fr__d">40&nbsp;g/mol</span></span> = 1&nbsp;mol</p>
+      <p>500&nbsp;mL = 0.500&nbsp;L</p>
+      <p>M = <span class="fr"><span class="fr__n">1&nbsp;mol</span><span class="fr__d">0.500&nbsp;L</span></span> = 2&nbsp;M</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Moles</span><p>40 g de NaOH en 500 mL de disolución. La masa molar es
         23 + 16 + 1 = 40 g/mol: hay <strong>1 mol</strong>.</p></li>
       <li><span class="worked-steps__label">Litros</span><p>500 mL = <strong>0.500 L</strong>: el volumen
@@ -165,8 +207,18 @@
       <li><span class="worked-steps__label">De regreso</span><p>Para 250 mL de KCl 0.4 M: 0.4 × 0.250 L =
         0.1 mol, y 0.1 mol × 74.5 g/mol = <strong>7.45 g</strong> de KCl.</p></li>
     </ol>
-    <p class="editorial-note">Masas atómicas que usamos: H 1, C 12, N 14, O 16, Na 23, S 32, Cl 35.5, K 39,
+    <p class="editorial-note" data-solo-lectura>Masas atómicas que usamos: H 1, C 12, N 14, O 16, Na 23, S 32, Cl 35.5, K 39,
       Fe 55.8, Cu 63.5.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <h3 class="ejemplo__planteo ejemplo__planteo--frase">¿Cuántos gramos de KCl hacen falta para 250&nbsp;mL de
+        disolución 0.4&nbsp;M? (K&nbsp;39,&nbsp;Cl&nbsp;35.5)</h3>
+      <div class="tele-respuesta" data-revela>
+        <p>250&nbsp;mL = 0.250&nbsp;L</p>
+        <p>moles = 0.4&nbsp;mol/L × 0.250&nbsp;L = 0.1&nbsp;mol</p>
+        <p>masa molar = 39 + 35.5 = 74.5&nbsp;g/mol</p>
+        <p>masa = 0.1&nbsp;mol × 74.5&nbsp;g/mol = 7.45&nbsp;g</p>
+      </div>
+    </div>
   </section>
 
   <section aria-labelledby="retoConcentracion" data-diapositiva="una">
@@ -175,9 +227,18 @@
         <span class="lesson-section__kicker">Reto</span> Diluir un ácido concentrado
       </h2>
     </header>
-    <p class="section-intro">El ácido clorhídrico concentrado tiene 37 % de HCl en masa y una densidad de
+    <p class="section-intro" data-solo-lectura>El ácido clorhídrico concentrado tiene 37 % de HCl en masa y una densidad de
       1.14 g/mL. ¿Cuántos mililitros se miden para preparar 250 mL de HCl 1.4 M?</p>
-    <ol class="worked-steps">
+    <h3 class="ejemplo__planteo ejemplo__planteo--frase" data-solo-proyeccion>El ácido clorhídrico concentrado tiene 37&nbsp;% de HCl
+      en masa y una densidad de 1.14&nbsp;g/mL. ¿Cuántos mililitros se miden para preparar 250&nbsp;mL de HCl
+      1.4&nbsp;M? (H&nbsp;1,&nbsp;Cl&nbsp;35.5)</h3>
+    <div class="tele-respuesta" data-solo-proyeccion data-revela>
+      <p>moles = 1.4&nbsp;mol/L × 0.250&nbsp;L = 0.35&nbsp;mol</p>
+      <p>HCl puro = 0.35&nbsp;mol × 36.5&nbsp;g/mol = 12.78&nbsp;g</p>
+      <p>ácido al 37&nbsp;% = <span class="fr"><span class="fr__n">12.78&nbsp;g</span><span class="fr__d">0.37</span></span> = 34.5&nbsp;g</p>
+      <p>volumen = <span class="fr"><span class="fr__n">34.5&nbsp;g</span><span class="fr__d">1.14&nbsp;g/mL</span></span> = 30.3&nbsp;mL</p>
+    </div>
+    <ol class="worked-steps" data-solo-lectura>
       <li><span class="worked-steps__label">Moles</span><p>1.4 mol/L × 0.250 L = <strong>0.35 mol</strong> de
         HCl.</p></li>
       <li><span class="worked-steps__label">Gramos</span><p>0.35 mol × 36.5 g/mol = <strong>12.78 g</strong> de
@@ -187,8 +248,18 @@
       <li><span class="worked-steps__label">Mililitros</span><p>34.5 g ÷ 1.14 g/mL = <strong>30.3 mL</strong>.
         Se ponen en agua y se afora a 250 mL.</p></li>
     </ol>
-    <p class="editorial-note">En el laboratorio el ácido se vierte sobre el agua, nunca al revés: al mezclarse
+    <p class="editorial-note" data-solo-lectura>En el laboratorio el ácido se vierte sobre el agua, nunca al revés: al mezclarse
       se calienta, y si el agua cae sobre el ácido puede salpicar.</p>
+    <div data-diapositiva="una" data-solo-proyeccion>
+      <div class="tele-idea">
+        <p class="tele-idea__frase">El ácido se vierte sobre el agua, nunca al revés.</p>
+        <div class="tele-contraste">
+          <p><span class="tele-contraste__marca">Así no</span><span class="tele-contraste__mal">agua sobre ácido</span></p>
+          <p><span class="tele-contraste__marca tele-contraste__marca--bien">Así sí</span><span class="tele-contraste__bien">ácido sobre agua</span></p>
+        </div>
+        <p class="tele-idea__apoyo">Se calienta: el agua sobre el ácido puede salpicar.</p>
+      </div>
+    </div>
   </section>
 
   <aside class="reto" data-diapositiva="reto" data-solo-proyeccion aria-label="Reto relámpago" data-reto>
